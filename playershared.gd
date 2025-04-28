@@ -7,7 +7,7 @@ var snap = Vector3.DOWN
 
 # Onready
 @onready var view = $view
-@onready var collidertop = $top
+#@onready var collidertop = $top
 @onready var colliderbottom = $bottom
 #func _ready(): -> void():
 #	pass
@@ -25,7 +25,6 @@ var ply_backspeed = 20
 var ply_maxspeed = 32
 var ply_accelerate = 20
 var ply_airaccelerate = 20
-var ply_noclipaccelerate = 20
 var ply_airspeedcap = 15
 var ply_maxacceleration = 1000
 var ply_friction = 4
@@ -40,7 +39,7 @@ var ply_crouchedheight = -1
 var ply_crouchlerpweight = 0.4
 
 # Bools
-var noclip : bool
+#var noclip : bool
 var crouching : bool
 var crouched : bool
 var sprinting : bool

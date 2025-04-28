@@ -16,10 +16,8 @@ func CheckVelocity():
 		vel = -ply_maxvelocity
 
 func Move(delta):
-	if noclip == true:
-		NoclipMove(delta)
 		
-	elif is_on_floor() and noclip == false:
+	if is_on_floor():
 		WalkMove(delta)
 	else:
 		AirMove(delta)
@@ -81,7 +79,6 @@ func WalkMove(delta):
 	
 	Accelerate(wishdir, wishspeed, ply_accelerate, delta)
 	
-	$top.set_disabled(false)
 	$bottom.set_disabled(false)
 	
 func AirMove(delta):
@@ -118,44 +115,42 @@ func AirMove(delta):
 	
 	AirAccelerate(wishdir, wishspeed, ply_airaccelerate, delta)
 	
-	$top.set_disabled(false)
 	$bottom.set_disabled(false)
 	
-func NoclipMove(delta):
-	var forward = Vector3.FORWARD
-	var side = Vector3.LEFT
-	var up = Vector3.UP
-	
-	forward = forward.rotated(Vector3.UP, $view.rotation.y)
-	side = side.rotated(Vector3.UP, $view.rotation.y)
-	
-	forward = forward.normalized()
-	side = side.normalized()
-	
-	var fmove = forwardmove
-	var smove = sidemove
-	var umove = xlook
-	
-	var wishvel = side * smove + forward * fmove
-	if fmove != 0:
-		wishvel.y += $view.rotation_degrees.x * 50
-	
-	var wishdir = wishvel.normalized()
-	# VectorNormalize in the original source code doesn't actually return the length of the normalized vector
-	# It returns the length of the vector before it was normalized
-	var wishspeed = wishvel.length()
-	
-	# clamp to game defined max speed
-	if wishspeed != 0.0 and wishspeed > maxspeed:
-		wishvel *= maxspeed / wishspeed
-		wishspeed = maxspeed
-		
-	Friction(delta)
-	
-	Accelerate(wishdir, wishspeed, ply_maxacceleration, delta)
-
-	$top.set_disabled(true)
-	$bottom.set_disabled(true)
+#func NoclipMove(delta):
+	#var forward = Vector3.FORWARD
+	#var side = Vector3.LEFT
+	#var up = Vector3.UP
+	#
+	#forward = forward.rotated(Vector3.UP, $view.rotation.y)
+	#side = side.rotated(Vector3.UP, $view.rotation.y)
+	#
+	#forward = forward.normalized()
+	#side = side.normalized()
+	#
+	#var fmove = forwardmove
+	#var smove = sidemove
+	#var umove = xlook
+	#
+	#var wishvel = side * smove + forward * fmove
+	#if fmove != 0:
+		#wishvel.y += $view.rotation_degrees.x * 50
+	#
+	#var wishdir = wishvel.normalized()
+	## VectorNormalize in the original source code doesn't actually return the length of the normalized vector
+	## It returns the length of the vector before it was normalized
+	#var wishspeed = wishvel.length()
+	#
+	## clamp to game defined max speed
+	#if wishspeed != 0.0 and wishspeed > maxspeed:
+		#wishvel *= maxspeed / wishspeed
+		#wishspeed = maxspeed
+		#
+	#Friction(delta)
+	#
+	#Accelerate(wishdir, wishspeed, ply_maxacceleration, delta)
+#
+	#$bottom.set_disabled(true)
 	
 func Accelerate(wishdir, wishspeed, accel, delta):
 	# See if we are changing direction a bit

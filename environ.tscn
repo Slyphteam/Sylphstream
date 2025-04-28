@@ -31,3 +31,4 @@ shadow_enabled = true
 mesh = SubResource("PlaneMesh_4xowi")
 
 [node name="Player" parent="." instance=ExtResource("1_366xt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.95121)
