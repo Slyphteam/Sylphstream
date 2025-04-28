@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=6 format=3 uid="uid://bh3powm0a35or"]
+
+[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://player.tscn" id="1_366xt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -25,8 +27,7 @@ environment = SubResource("Environment_noarx")
 transform = Transform3D(-0.940841, 0.293453, -0.169424, -1.49013e-08, 0.499998, 0.866027, 0.338849, 0.814793, -0.470418, -0.600918, 1.25346, -1.02504)
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.607501, 0, 0.794319, 0, 1, 0, -0.794319, 0, 0.607501, 2.39581, 0.543355, 2.53942)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_4xowi")
+
+[node name="Player" parent="." instance=ExtResource("1_366xt")]
