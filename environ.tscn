@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=7 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://player.tscn" id="1_366xt"]
 
@@ -18,6 +18,9 @@ glow_enabled = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_4xowi"]
 size = Vector2(8, 8)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_366xt"]
+points = PackedVector3Array(-4, 0, -4, -4, 0, 4, 4, 0, -4, 4, 0, 4)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -30,5 +33,10 @@ shadow_enabled = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_4xowi")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_366xt")
+
 [node name="Player" parent="." instance=ExtResource("1_366xt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.95121)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65097, 1.95121)

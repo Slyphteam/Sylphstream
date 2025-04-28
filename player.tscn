@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1comohc3tpa5"]
 
-[ext_resource type="Script" uid="uid://dy422cfwbyx5h" path="res://playershared.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://playertry2.gd" id="1_4flbx"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sh265"]
 height = 1.75
@@ -15,11 +15,11 @@ script = ExtResource("1_4flbx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01781, 0)
 mesh = SubResource("CylinderMesh_sh265")
 
-[node name="view" type="Camera3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.569639, -0.254839)
+[node name="bottom" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0125, 0)
+shape = SubResource("ConvexPolygonShape3D_4flbx")
+
+[node name="came" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58745, -0.254839)
 fov = 100.0
 far = 500.0
-
-[node name="Bottom" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.795709, 0)
-shape = SubResource("ConvexPolygonShape3D_4flbx")
