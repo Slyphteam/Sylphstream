@@ -26,7 +26,7 @@ transform = Transform3D(-0.940841, 0.293453, -0.169424, -1.49013e-08, 0.499998, 
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.607501, 0, 0.794319, 0, 1, 0, -0.794319, 0, 0.607501, 1.36133, 0.543355, 1.14779)
+transform = Transform3D(0.607501, 0, 0.794319, 0, 1, 0, -0.794319, 0, 0.607501, 2.39581, 0.543355, 2.53942)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_4xowi")
