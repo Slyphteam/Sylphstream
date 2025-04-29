@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-const sourcelike = false
+const sourcelike = true
 
 #player input/movement variables
 const walkspeed = 20 #basic multiplier to walking
@@ -13,7 +13,7 @@ var leftright : float #variables for how "walking" we are in either cardinal dir
 var forback : float
 
 const maxspeed = 32 # used in player velocity calculations as a clamp - handlefloorsourcelike
-const maxacceleration = 1000 # used in dosourcelikeaccelerate
+const accelerateby = 1000 # used in dosourcelikeaccelerate
 
 
 @onready var playerCam = $came
@@ -45,6 +45,7 @@ func _physics_process(delta: float) -> void:
 
 	if sourcelike:
 		getInputs()
+		handleMove(delta, Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
 	else:
 		# Handle jump.
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -86,10 +87,21 @@ func handleFloorSourcelike(delta):
 		desiredSpeed = maxspeed # clamp it
 	
 	
-	#Accelerate(wishdir, wishspeed, ply_accelerate, delta)
+	doSourceAccelerate(desiredDir, desiredSpeed, delta)
 	
-func doSourceAccelerate(desiredVector, desiredSpeed, delta):
+func doSourceAccelerate(desiredDir, desiredSpeed, delta):
+	var currentspeed = velocity.dot(desiredDir) # are we changing direction?
+	var addedspeed = desiredSpeed - currentspeed # reduce by amount
 	
+	if addedspeed <= 0: #no need to do anything
+		return
+	
+	var acelspeed = accelerateby * delta * desiredSpeed
+	
+	acelspeed = min(acelspeed, addedspeed) #cap by addspeed
+	
+	for i in range(3): #the comment says adjust velocity but i truly have no idea what this does
+		velocity+= acelspeed * desiredDir
 	
 	#now that we've updated velocity, the godot function will take it from here
 	checkVelocityAndMove()
