@@ -243,7 +243,6 @@ func move_and_slide_sourcelike()->bool:
 	# Reset previously detected floor
 	#stats.on_floor  = false
 
-
 	#check floor
 	var checkMotion := velocity * (1/60.)
 	#checkMotion.y  -= stats.ply_gravity * (1/360.)
