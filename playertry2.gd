@@ -26,6 +26,7 @@ var onFloor = false
 
 const maxspeed = 32 # used in player velocity calculations as a clamp - handlefloorsourcelike
 const accelerateby = 1000 # used in dosourcelikeaccelerate
+const gravityAmount = 140
 
 
 @onready var playerCam = $came
@@ -72,8 +73,6 @@ func getInputs():
 		forback = clamp(forback, minIn, maxIn)
 
 func _physics_process(delta: float) -> void:
-	
-
 	if sourcelike:
 		getInputs()
 		handleMove(delta, Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
@@ -88,14 +87,14 @@ func _physics_process(delta: float) -> void:
 		handleMove(delta, input_dir) 
 	
 func handleMove(delta, inputs):
-	#if not is_on_floor(): #air movement is the same
+	if not is_on_floor(): #air movement is the same
 	#	handleair(delta)
-	#else: 
+		handleSourcelikeAir(delta)
+	else: 
 		if sourcelike:
 			handleFloorSourcelike(delta)
 		else:
 			handlefloorTemplate(delta, inputs)
-
 
 func handleFloorSourcelike(delta):
 	#alter the forward movement by camera's azimuth rotation. shouldnt do anything yet.
@@ -107,10 +106,7 @@ func handleFloorSourcelike(delta):
 	
 	#deal with friction
 	handleFriction(delta)
-	
 	desiredVec.y = 0; #but no y.
-	
-	
 	
 	var desiredDir = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
@@ -118,7 +114,6 @@ func handleFloorSourcelike(delta):
 	if desiredSpeed !=0.0 and desiredSpeed>maxspeed:
 		desiredVec *= maxspeed / desiredSpeed # update our vector to not be too silly
 		desiredSpeed = maxspeed # clamp it
-	
 	
 	doSourceAccelerate(desiredDir, desiredSpeed, delta)
 	
@@ -138,6 +133,8 @@ func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 	
 	#now that we've updated velocity, the godot function will take it from here
 	checkVelocityAndMove()
+	
+
 
 # given inputs and our delta, figures out
 func handlefloorTemplate(delta, inputs):
@@ -150,13 +147,73 @@ func handlefloorTemplate(delta, inputs):
 		playerVelocity.z = move_toward(playerVelocity.z, 0, SPEED)
 	checkVelocityAndMove()
 
+##################################AIR MOVEMENT
 func handleair(delta):
 	velocity += get_gravity() * delta
 	checkVelocityAndMove()
+
+func handleSourcelikeAir(delta):
+	var forward = Vector3.FORWARD
+	var side = Vector3.LEFT
 	
+	forward = forward.rotated(Vector3.UP, playerCam.rotation.y)
+	side = side.rotated(Vector3.UP, playerCam.rotation.y)
+	
+	forward = forward.normalized()
+	side = side.normalized()
+	
+	#var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	#var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	
+	var fmove = forback
+	var smove = leftright
+	
+	#snap = Vector3.ZERO
+	playerVelocity.y -= gravityAmount * delta
+	
+	var wishvel = side * smove + forward * fmove
+	
+	# Zero out y value
+	wishvel.y = 0
+	
+	var wishdir = wishvel.normalized()
+	# VectorNormalize in the original source code doesn't actually return the length of the normalized vector
+	# It returns the length of the vector before it was normalized
+	var wishspeed = wishvel.length()
+	
+	# clamp to game defined max speed
+	if wishspeed != 0.0 and wishspeed > maxspeed:
+		wishvel *= maxspeed / wishspeed
+		wishspeed = maxspeed
+	
+	doSourceAirAccelerate(wishdir, wishspeed, delta) #let the airaccelerate function do its work
+	checkVelocityAndMove() #and move afterwards
+	
+func doSourceAirAccelerate(desiredDir, desiredSpeed, delta):
+	var accel = 20 #global airaccelerate 
+	desiredSpeed = min(desiredSpeed, 15) # global airspeed cap 
+	# See if we are changing direction a bit
+	var currentspeed = playerVelocity.dot(desiredDir)
+	## Reduce wishspeed by the amount of veer.
+	var addspeed = desiredSpeed - currentspeed
+	
+	if addspeed <= 0: # early return
+		return
+#
+	## Determine amount of accleration.
+	var accelspeed = accel * desiredSpeed * delta 
+	#
+	## Cap at addspeed
+	accelspeed = min(accelspeed, addspeed)
+	#
+	for i in range(3):
+		# Adjust velocity.
+		playerVelocity += accelspeed * desiredDir
+
+################################ GENERALIZED MOVEMENT
+#this is the function that ACTUALLY causes the player to move
 func checkVelocityAndMove():
 	var maxvelocity = 35000; #why isn't this a constant declared higher? because you cant assign vectors to ints
-	
 	
 	if playerVelocity.length() > maxvelocity: #how does declaring it down here do anything? genuinely couldnt tell you
 		playerVelocity = maxvelocity
