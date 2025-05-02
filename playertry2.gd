@@ -10,7 +10,7 @@ const gravAmount = 60
 var ylook : float
 var xlook : float
 # even more but constants
-var ply_mousesensitivity = 1.5
+var mousesensitivity = 0.3
 var ply_maxlookangle_down = -90
 var ply_maxlookangle_up = 90
 var ply_ylookspeed = 0.3
@@ -47,28 +47,30 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("ui_click"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 			
 	#if Input.is_action_pressed("in_crouch"):
 		#crouching = true
 	#elif Input.is_action_just_released("in_crouch"):
 		#crouching = false
 		
+func InputMouse(event):
+	xlook += -event.relative.y * mousesensitivity
+	ylook += -event.relative.x * mousesensitivity
+	
+	
+	xlook = clamp(xlook, -90, 90)
+	
 func ViewAngles(delta):
 	playerCam.rotation_degrees.x = xlook
 	playerCam.rotation_degrees.y = ylook
-	
-func InputMouse(event):
-	xlook += -event.relative.y * ply_xlookspeed 
-	ylook += -event.relative.x * ply_ylookspeed
-	
-	
-	xlook = clamp(xlook, ply_maxlookangle_down, ply_maxlookangle_up)
 
 # handle wasd inputs
 # will listen to keypresses and update the movement variables above
+#mouse movement is handled by _input
 func getInputs():
 	
 	leftright += int(walkspeed) * (int(Input.get_action_strength("ui_left") * 50)) # why are there constants here?
@@ -87,10 +89,19 @@ func getInputs():
 		forback = 0
 	else:
 		forback = clamp(forback, minIn, maxIn)
+		
+
 
 func _physics_process(delta: float) -> void:
 	if sourcelike:
 		getInputs()
+		playerCam.fov = clamp(70+sqrt(playerVelocity.length()*7),90, 180)
+		
+	
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			ViewAngles(delta)
+		
+		
 		handleMove(delta, Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
 	else:
 		# Handle jump.
@@ -113,7 +124,7 @@ func handleMove(delta, inputs):
 		#else:
 		#	handlefloorTemplate(delta, inputs)
 	
-	if Input.is_action_pressed("jump") && canjump:
+	if Input.is_action_pressed("ui_jump") && canjump:
 		if not crouching:
 			touchFloor = false
 			doJump()
