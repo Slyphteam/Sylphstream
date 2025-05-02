@@ -15,7 +15,7 @@ script = ExtResource("1_4flbx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01781, 0)
 mesh = SubResource("CylinderMesh_sh265")
 
-[node name="bottom" type="CollisionShape3D" parent="."]
+[node name="shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0125, 0)
 shape = SubResource("ConvexPolygonShape3D_4flbx")
 
