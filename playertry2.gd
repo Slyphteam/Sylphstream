@@ -33,7 +33,7 @@ var canjump = true
 var jumpheight = 4
 
 const maxspeed = 32 # used in player velocity calculations as a clamp - handlefloorsourcelike
-const accelerateby = 1000 # used in dosourcelikeaccelerate
+const accelerateby = 7 # used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
 const gravityAmount = 140
 
 
@@ -73,12 +73,15 @@ func ViewAngles():
 # will listen to keypresses and update the movement variables above
 #mouse movement is handled by _input
 func getInputs():
+	var bonus = 50
 	
-	leftright += int(walkspeed) * (int(Input.get_action_strength("ui_left") * 50)) # why are there constants here?
-	leftright -= int(walkspeed) * (int(Input.get_action_strength("ui_right") * 50)) #like, why not just do 20*50
+	#TODO: add sprinting code that doubles bonus.
 	
-	forback += int(walkspeed) * (int(Input.get_action_strength("ui_up") * 50))
-	forback -= int(walkspeed) * (int(Input.get_action_strength("ui_down") * 50))
+	leftright += int(walkspeed) * (int(Input.get_action_strength("ui_left") * bonus)) # why are there constants here?
+	leftright -= int(walkspeed) * (int(Input.get_action_strength("ui_right") * bonus)) #like, why not just do 20*50
+	
+	forback += int(walkspeed) * (int(Input.get_action_strength("ui_up") * bonus))
+	forback -= int(walkspeed) * (int(Input.get_action_strength("ui_down") * bonus))
 	
 	# clamp left/right movement
 	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
@@ -127,11 +130,11 @@ func handleMove(delta, inputs):
 		#else:
 		#	handlefloorTemplate(delta, inputs)
 	
-	#if Input.is_action_pressed("ui_jump") && canjump:
-		#if not crouching:
-			#touchingFloor = false
-			#justjumped  = true
-			#doJump()
+	if Input.is_action_pressed("ui_jump") && canjump:
+		if not crouching:
+			touchingFloor = false
+			justjumped  = true
+			doJump()
 			#
 			#state_machine.transition_to("Air", {do_jump = true})
 		
@@ -163,6 +166,7 @@ func handleFloorSourcelike(delta):
 	doSourceAccelerate(desiredDir, desiredSpeed, delta)
 	
 func doSourceAccelerate(desiredDir, desiredSpeed, delta):
+	
 	
 	var currentspeed = playerVelocity.dot(desiredDir) # are we changing direction?
 	var addedspeed = desiredSpeed - currentspeed # reduce by amount
