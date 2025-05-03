@@ -1,15 +1,12 @@
 #extends  "res://playershared.gd"
 extends CharacterBody3D
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
 const sourcelike = true
 const gravAmount = 60
 
 #player camera variables
 var ylook : float
 var xlook : float
-# even more but constants
 var mousesensitivity = 0.3
 var ply_maxlookangle_down = -90
 var ply_maxlookangle_up = 90
@@ -23,6 +20,7 @@ var leftright : float #variables for how "walking" we are in either cardinal dir
 var forback : float
 var playerVelocity: Vector3 = Vector3.ZERO
 var onFloor = false
+const maxvelocity = 4000; #this might not seem insane but keep in mind 20 is walking speed
 
 #crouching/jumping variables
 var touchingFloor = true
@@ -30,16 +28,13 @@ var crouching = false
 var canjump = true
 var jumpheight = 4
 
-const gravityAmount = 140
 
-# these affect the "slipperinesS" of the player
-
-
+# these affect the "slipperiness" of the player
 const debugging = true
 const walkspeed = 20 # formerly at 5
-var friction = 3 #formerly at 7
-var stopspeed = 50 # 50 equal to around 4 units of speed loss per tick with 3 friction
-const accelerateby = 7 #4 used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
+const friction = 3 #formerly at 7
+const stopspeed = 50 # 50 equal to around 4 units of speed loss per tick with 3 friction
+const accelerateamount = 7 #4 used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
 const maxspeed = 16 #31 used in player velocity calculations as a clamp - handlefloorsourcelike
 
 @onready var playerCam = $came
@@ -98,55 +93,43 @@ func getInputs():
 		forback = 0
 	else:
 		forback = clamp(forback, minIn, maxIn)
-		
 
 
 func _physics_process(delta: float) -> void:
-	if sourcelike:
-		getInputs()
+	getInputs()
 		
-		#playerCam.fov = clamp(70+sqrt(playerVelocity*7),90, 180) #formerly playerVelocity.length()*7
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			ViewAngles()
+	#playerCam.fov = clamp(70+sqrt(playerVelocity*7),90, 180) #formerly playerVelocity.length()*7
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		ViewAngles()
 		
-		handleMove(delta, Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
-	else:
-		# Handle jump.
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
-
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		handleMove(delta, input_dir) 
-		
+	handleMove(delta)
 	checkVelocityAndMove()
 
-func handleMove(delta, inputs):
+
+func handleMove(delta):
 	if (is_on_floor()): #air movement is the same
-	#	handleair(delta)
 		
 		handleFloorSourcelike(delta)
 		
 	else: 
-		#if sourcelike:
 		handleSourcelikeAir(delta)
-		#else:
-		#	handlefloorTemplate(delta, inputs)
 	
 	if Input.is_action_pressed("ui_jump") && canjump:
 		if not crouching:
 			touchingFloor = false
 			canjump = false
 			doJump()
-			#
-			#state_machine.transition_to("Air", {do_jump = true})
 	
+	if playerVelocity.length() > maxvelocity:
+		print("MAX VELOCITY HIT!")
+		#playerVelocity = maxvelocity playervelocity is a VECTOR. what???
+		#return # this still doesn't reduce the player velocity by a serious amount
+		playerVelocity *= 0.5 #this seems to work!
+
 
 func handleFloorSourcelike(delta):
-
-	#if(not canjump): #now that we've touched the floor again, reset our jumping ability
-		#canjump = true
+	if(not canjump): #now that we've touched the floor again, reset our jumping ability
+		canjump = true
 	
 	#alter the forward movement by camera's azimuth rotation. shouldnt do anything yet.
 	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
@@ -158,11 +141,10 @@ func handleFloorSourcelike(delta):
 	#deal with friction
 	handleFriction(delta)
 	
-	
 	var desiredDir = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
 	
-	#a really funny bug to have happen is zeroing out the desiredvec.y
+	#a really funny bug to have happen was zeroing out the desiredvec.y here
 	#which meant you could just phase through the floor by trying hard enough. 
 	#and also fly.
 	
@@ -172,7 +154,8 @@ func handleFloorSourcelike(delta):
 	
 	desiredVec.y = 0; #but no y. 
 	doSourceAccelerate(desiredDir, desiredSpeed, delta)
-	
+
+
 func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 	
 	var currentspeed = playerVelocity.dot(desiredDir) # are we changing direction?
@@ -183,42 +166,23 @@ func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 	
 	#if debugging:
 		#print("accelerating by:", addedspeed)
-	var acelspeed = accelerateby * delta * desiredSpeed
+	var acelspeed = accelerateamount * delta * desiredSpeed
 	
-	#playerVelocity -= gravAmount * delta
-	acelspeed = min(acelspeed, addedspeed) #cap by addspeed
+	playerVelocity.y -= gravAmount * delta
 	
 	for i in range(3): #the comment says adjust velocity but i truly have no idea what this does
 		playerVelocity+= acelspeed * desiredDir
-	
-	#now that we've updated velocity, the godot function will take it from here
-	#checkVelocityAndMove()
-	
-# given inputs and our delta, figures out
-func handlefloorTemplate(delta, inputs):
-	var direction := (transform.basis * Vector3(inputs.x, 0, inputs.y)).normalized()
-	if direction:
-		playerVelocity.x = direction.x * SPEED
-		playerVelocity.z = direction.z * SPEED
-	else:
-		playerVelocity.x = move_toward(playerVelocity.x, 0, SPEED)
-		playerVelocity.z = move_toward(playerVelocity.z, 0, SPEED)
-	#checkVelocityAndMove()
 
 ##################################AIR MOVEMENT
-func doJump():
-	#stats.snap = Vector3.ZERO
 
-	#if not (canjump) ||  velocity.y>15:
-			#return
-		
+func doJump():
+	
 	var flGroundFactor = 1.0
 	var flMul : float
 	
 	#trying to emulate that crouch jumping is slightly higher than jump crouching but not completely 
 	#accurate. Reasion why you jump higher mid crouch is because the game forgets to apply gravity for 
 	#the first frame. This attempts to recreate it by removing one frame of gravity to make up for it
-		
 	
 	if crouching: 
 		flMul = sqrt(2 * gravAmount * jumpheight) + ((1./60.) * gravAmount)
@@ -228,14 +192,7 @@ func doJump():
 		flMul = sqrt(2 * gravAmount * jumpheight)
 	var jumpvel =  flGroundFactor * flMul  + max(0, playerVelocity.y)
 	playerVelocity.y = max(jumpvel, jumpvel + playerVelocity.y)
-	#print("nomral jump: ",playerVelocity.y)
 
-#template jumping
-func handleair(delta):
-	velocity += get_gravity() * delta
-	#checkVelocityAndMove()
-
-#
 func handleSourcelikeAir(delta):
 	if debugging:
 		print("in air!")
@@ -255,8 +212,7 @@ func handleSourcelikeAir(delta):
 	var smove = leftright
 	
 	#snap = Vector3.ZERO
-	playerVelocity.y -= gravityAmount * delta
-	
+	playerVelocity.y -= gravAmount * delta
 	var wishvel = side * smove + forward * fmove
 	
 	# Zero out y value
@@ -273,8 +229,8 @@ func handleSourcelikeAir(delta):
 		wishspeed = maxspeed
 	
 	doSourceAirAccelerate(wishdir, wishspeed, delta) #let the airaccelerate function do its work
-	#checkVelocityAndMove() #and move afterwards
-	
+
+
 func doSourceAirAccelerate(desiredDir, desiredSpeed, delta):
 	var accel = 20 #global airaccelerate 
 	desiredSpeed = min(desiredSpeed, 15) # global airspeed cap 
@@ -297,11 +253,11 @@ func doSourceAirAccelerate(desiredDir, desiredSpeed, delta):
 		playerVelocity += accelspeed * desiredDir
 
 ################################ GENERALIZED MOVEMENT
+
 #this is the function that ACTUALLY causes the player to move
 func checkVelocityAndMove():
-	var maxvelocity = 4000; 
 	if playerVelocity.length() > maxvelocity:
-		print("MAX VELOCITY HIT!")
+		if(debugging): print("MAX VELOCITY HIT!")
 		#playerVelocity = maxvelocity playervelocity is a VECTOR. what???
 		#return # this still doesn't reduce the player velocity by a serious amount
 		playerVelocity *= 0.5 #this seems to work!
@@ -321,9 +277,6 @@ func handleFriction(delta):
 	if speed <= 0:
 		return
 	
-	
-	var speedcheck = playerVelocity.length()
-
 	var control = stopspeed if speed < stopspeed else speed
 	# Add the amount to the drop amount.
 	var drop = control * friction * delta
@@ -340,8 +293,10 @@ func handleFriction(delta):
 		playerVelocity *= newspeed
 		
 		#if(debugging):
+			#var speedcheck = playerVelocity.length()
 			#print("Old/hampered velocity:", speedcheck, " : ", playerVelocity.length())
-		
+
+
 func move_and_slide_sourcelike()->bool:
 	var collided := false
 	# Reset previously detected floor
@@ -349,7 +304,7 @@ func move_and_slide_sourcelike()->bool:
 
 	#check floor
 	var checkMotion := velocity * (1/60.)
-	#checkMotion.y  -= stats.ply_gravity * (1/360.)
+	checkMotion.y  -= gravAmount * (1/360.)
 		
 	var testcol := move_and_collide(checkMotion, true)
 
@@ -362,19 +317,13 @@ func move_and_slide_sourcelike()->bool:
 	var motion := velocity * get_delta_time()
 	
 	for step in max_slides:
-		
-		
 		var collision := move_and_collide(motion)
-		
 		if not collision:
 			# No collision, so move has finished
-		
 			break
 
 		# Calculate velocity to slide along the surface
-	
 		var normal = collision.get_normal()
-		
 		motion = collision.get_remainder().slide(normal)
 		velocity = velocity.slide(normal)
 		# Collision has occurred
@@ -384,5 +333,4 @@ func move_and_slide_sourcelike()->bool:
 func get_delta_time() -> float:
 	if Engine.is_in_physics_frame():
 		return get_physics_process_delta_time()
-
 	return get_process_delta_time()
