@@ -7,6 +7,11 @@ extends Node
 
 #--KNOWN PROBLEMS:
 # jumping is HORRIBLY broken. 
+#how is jumping broken?
+#-- Players can jump midair, which behaves as expected
+#-- If players jump while on the ground, they'll get a TON added to their velocity
+#but they won't actually move.
+#-- players holding space will jump heigher instead of a fixed amount
 
 #NEEDS DOING (in presumed  order of precedence):
 #scenery

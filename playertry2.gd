@@ -4,6 +4,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const sourcelike = true
+const debugging = true
 const gravAmount = 60
 
 #player camera variables
@@ -17,7 +18,6 @@ var ply_ylookspeed = 0.3
 var ply_xlookspeed = 0.3
 
 #player input/movement variables
-const walkspeed = 20 #basic multiplier to walking
 const maxIn = 4096 #boundaries for the most "walking" we want to be doing
 const minIn = -4096
 var leftright : float #variables for how "walking" we are in either cardinal direction
@@ -33,7 +33,7 @@ var canjump = true
 var jumpheight = 4
 
 const maxspeed = 32 # used in player velocity calculations as a clamp - handlefloorsourcelike
-const accelerateby = 7 # used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
+const accelerateby = 6 # used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
 const gravityAmount = 140
 
 
@@ -73,8 +73,8 @@ func ViewAngles():
 # will listen to keypresses and update the movement variables above
 #mouse movement is handled by _input
 func getInputs():
-	var bonus = 50
-	
+	var bonus = 1
+	const walkspeed = 1 # think of this as the "weight" of the player #5 feels right
 	#TODO: add sprinting code that doubles bonus.
 	
 	leftright += int(walkspeed) * (int(Input.get_action_strength("ui_left") * bonus)) # why are there constants here?
@@ -174,7 +174,8 @@ func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 	if addedspeed <= 0: #no need to do anything
 		return
 	
-	print("accelerating")
+	#if debugging:
+		#print("accelerating by:", addedspeed)
 	var acelspeed = accelerateby * delta * desiredSpeed
 	
 	#playerVelocity -= gravAmount * delta
@@ -217,13 +218,15 @@ func doJump():
 	playerVelocity.y = max(jumpvel, jumpvel + playerVelocity.y)
 	#print("nomral jump: ",playerVelocity.y)
 
-
+#template jumping
 func handleair(delta):
 	velocity += get_gravity() * delta
 	checkVelocityAndMove()
 
+#
 func handleSourcelikeAir(delta):
-	print("in air!")
+	if debugging:
+		print("in air!")
 	var forward = Vector3.FORWARD
 	var side = Vector3.LEFT
 	
@@ -284,11 +287,16 @@ func doSourceAirAccelerate(desiredDir, desiredSpeed, delta):
 ################################ GENERALIZED MOVEMENT
 #this is the function that ACTUALLY causes the player to move
 func checkVelocityAndMove():
-	var maxvelocity = 35000; #why isn't this a constant declared higher? because you cant assign vectors to ints
+	var maxvelocity = 4000; #why isn't this a constant declared higher? because you cant assign vectors to ints
 	
 	if playerVelocity.length() > maxvelocity: #how does declaring it down here do anything? genuinely couldnt tell you
-		playerVelocity = maxvelocity
+		print("MAX VELOCITY HIT!")
+		#playerVelocity = maxvelocity playervelocity is a VECTOR, dummy. what???
+		#return # this still doesn't reduce the player velocity by a serious amount
+		playerVelocity *= 0.5 #this seems to work!
 	
+	
+	print("Velocity:", playerVelocity.length())
 	velocity = playerVelocity
 	move_and_slide()
 	playerVelocity = velocity
