@@ -20,7 +20,7 @@ var leftright : float #variables for how "walking" we are in either cardinal dir
 var forback : float
 var playerVelocity: Vector3 = Vector3.ZERO
 var onFloor = false
-const maxvelocity = 4000; #this might not seem insane but keep in mind 20 is walking speed
+const maxvelocity = 100; #this might not seem insane but keep in mind 20 is walking speed
 
 #crouching/jumping variables
 var touchingFloor = true
@@ -93,6 +93,7 @@ func getInputs():
 		forback = 0
 	else:
 		forback = clamp(forback, minIn, maxIn)
+	
 
 
 func _physics_process(delta: float) -> void:
@@ -101,15 +102,23 @@ func _physics_process(delta: float) -> void:
 	#playerCam.fov = clamp(70+sqrt(playerVelocity*7),90, 180) #formerly playerVelocity.length()*7
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		ViewAngles()
+	
 		
 	handleMove(delta)
 	checkVelocityAndMove()
 
 
 func handleMove(delta):
-	if (is_on_floor()): #air movement is the same
+	if (is_on_floor()):
+		
+		#this does a SHOCKINGLY good job at emulating source bunnyhopping
+		if (not canjump):
+			if(not Input.is_action_pressed("ui_jump") ): 
+				canjump = true
 		
 		handleFloorSourcelike(delta)
+		
+
 		
 	else: 
 		handleSourcelikeAir(delta)
@@ -128,12 +137,13 @@ func handleMove(delta):
 
 
 func handleFloorSourcelike(delta):
-	if(not canjump): #now that we've touched the floor again, reset our jumping ability
-		canjump = true
+		#TODO: ADD A TIMER
 	
 	#alter the forward movement by camera's azimuth rotation. shouldnt do anything yet.
 	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	
+
 	
 	#calculate a vector based of our inputs and angles
 	var desiredVec = (leftright * sideAngle) + (forback * forwAngle)
@@ -199,20 +209,14 @@ func handleSourcelikeAir(delta):
 	var forward = Vector3.FORWARD
 	var side = Vector3.LEFT
 	
-	forward = forward.rotated(Vector3.UP, playerCam.rotation.y)
-	side = side.rotated(Vector3.UP, playerCam.rotation.y)
+	forward = forward.rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	side = side.rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	
-	forward = forward.normalized()
-	side = side.normalized()
-	
-	#var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
-	#var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	playerVelocity.y -= gravAmount * delta
 	
 	var fmove = forback
 	var smove = leftright
 	
-	#snap = Vector3.ZERO
-	playerVelocity.y -= gravAmount * delta
 	var wishvel = side * smove + forward * fmove
 	
 	# Zero out y value
