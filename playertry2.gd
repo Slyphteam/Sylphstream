@@ -95,17 +95,48 @@ func getInputs():
 		forback = clamp(forback, minIn, maxIn)
 	
 
-
+var prevBob = 0;
+var bobOffset = 0;
 func _physics_process(delta: float) -> void:
 	getInputs()
 		
-	#playerCam.fov = clamp(70+sqrt(playerVelocity*7),90, 180) #formerly playerVelocity.length()*7
+	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		ViewAngles()
 	
 		
 	handleMove(delta)
 	checkVelocityAndMove()
+	
+	#Adjust FOV
+	playerCam.fov = clamp(70+sqrt(playerVelocity.length()*7),90, 180) 
+	
+	#create viewbob
+	bob_time += delta * float(is_on_floor())
+	bobOffset = doHeadBob(bob_time, prevBob)
+	playerCam.transform.origin.y = bobOffset+1.75
+	prevBob = bobOffset
+
+const cam_amplitude = 0.05
+const bobFreqDef = 2
+var bob_time = 0
+func doHeadBob(time, prev)->float:
+	var pos = Vector3.ZERO
+	#var velocityMult = 1
+	var playerSpeed = playerVelocity.length()
+	
+	var new_ratio =  1 + (playerSpeed / (maxspeed + 5 * 2 ))
+	
+	var cam_freq = bobFreqDef *  new_ratio# bound frequency linearly between 1.5 and 2.7
+	if(new_ratio > 1):
+		print("Ratio: ", new_ratio)
+		
+	
+	var newOffset = sin(time * cam_freq) * cam_amplitude #plug in cam_Freq if you want to get experimental
+	newOffset = (newOffset +(3*prev))/4
+	#if(cam_freq > bobFreqDef):
+		#print("Bob difference: ", prev, " : ", newOffset)
+	return newOffset
 
 
 func handleMove(delta):
