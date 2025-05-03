@@ -22,11 +22,12 @@ const maxIn = 4096 #boundaries for the most "walking" we want to be doing
 const minIn = -4096
 var leftright : float #variables for how "walking" we are in either cardinal direction
 var forback : float
-var playerVelocity = Vector3.ZERO
+var playerVelocity: Vector3 = Vector3.ZERO
 var onFloor = false
 
 #crouching/jumping variables
-var touchFloor = true
+var touchingFloor = true
+var justjumped = false
 var crouching = false
 var canjump = true
 var jumpheight = 4
@@ -64,7 +65,7 @@ func InputMouse(event):
 	
 	xlook = clamp(xlook, -90, 90)
 	
-func ViewAngles(delta):
+func ViewAngles():
 	playerCam.rotation_degrees.x = xlook
 	playerCam.rotation_degrees.y = ylook
 
@@ -95,11 +96,11 @@ func getInputs():
 func _physics_process(delta: float) -> void:
 	if sourcelike:
 		getInputs()
-		playerCam.fov = clamp(70+sqrt(playerVelocity.length()*7),90, 180)
+		#playerCam.fov = clamp(70+sqrt(playerVelocity*7),90, 180) #formerly playerVelocity.length()*7
 		
 	
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			ViewAngles(delta)
+			ViewAngles()
 		
 		
 		handleMove(delta, Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
@@ -114,22 +115,24 @@ func _physics_process(delta: float) -> void:
 		handleMove(delta, input_dir) 
 	
 func handleMove(delta, inputs):
-	if is_on_floor(): #air movement is the same
+	if (is_on_floor()): #air movement is the same
 	#	handleair(delta)
+		
 		handleFloorSourcelike(delta)
 		
 	else: 
 		#if sourcelike:
 		handleSourcelikeAir(delta)
+		justjumped = false
 		#else:
 		#	handlefloorTemplate(delta, inputs)
 	
-	if Input.is_action_pressed("ui_jump") && canjump:
-		if not crouching:
-			touchFloor = false
-			doJump()
-			
-			
+	#if Input.is_action_pressed("ui_jump") && canjump:
+		#if not crouching:
+			#touchingFloor = false
+			#justjumped  = true
+			#doJump()
+			#
 			#state_machine.transition_to("Air", {do_jump = true})
 		
 
@@ -143,15 +146,20 @@ func handleFloorSourcelike(delta):
 	
 	#deal with friction
 	handleFriction(delta)
-	desiredVec.y = 0; #but no y.
+	
 	
 	var desiredDir = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
+	
+	#a really funny bug to have happen is zeroing out the desiredvec.y
+	#which meant you could just phase through the floor by trying hard enough. 
+	#and also fly.
 	
 	if desiredSpeed !=0.0 and desiredSpeed>maxspeed:
 		desiredVec *= maxspeed / desiredSpeed # update our vector to not be too silly
 		desiredSpeed = maxspeed # clamp it
 	
+	desiredVec.y = 0; #but no y. 
 	doSourceAccelerate(desiredDir, desiredSpeed, delta)
 	
 func doSourceAccelerate(desiredDir, desiredSpeed, delta):
@@ -191,23 +199,18 @@ func doJump():
 
 	if not (canjump) ||  velocity.y>15:
 			return
+		
 	var flGroundFactor = 1.0
-	
-	
 	var flMul : float
 	
 	if crouching: #trying to emulate that crouch jumping is slightly higher than jump crouching but not completely accurate. Reasion why you jump higher mid crouch is because the game forgets to apply gravity for the first frame. This attempts to recreate it by removing one frame of gravity to make up for it
 		flMul = sqrt(2 * gravAmount * jumpheight) + ((1./60.) * gravAmount)
 		
-		
 	else:
 		move_and_collide(Vector3(0, 2-playerShape.scale.y, 0))		
 		flMul = sqrt(2 * gravAmount * jumpheight)
-	
-	
 	var jumpvel =  flGroundFactor * flMul  + max(0, playerVelocity.y)
-	
-	playerVelocity = max(jumpvel, jumpvel + playerVelocity.y)
+	playerVelocity.y = max(jumpvel, jumpvel + playerVelocity.y)
 	#print("nomral jump: ",playerVelocity.y)
 
 
@@ -216,6 +219,7 @@ func handleair(delta):
 	checkVelocityAndMove()
 
 func handleSourcelikeAir(delta):
+	print("in air!")
 	var forward = Vector3.FORWARD
 	var side = Vector3.LEFT
 	
@@ -302,9 +306,8 @@ func handleFriction(delta):
 		
 func move_and_slide_sourcelike()->bool:
 	var collided := false
-
 	# Reset previously detected floor
-	touchFloor  = false
+	touchingFloor  = false
 
 	#check floor
 	var checkMotion := velocity * (1/60.)
@@ -315,7 +318,7 @@ func move_and_slide_sourcelike()->bool:
 	if testcol:
 		var testNormal = testcol.get_normal()
 		if testNormal.angle_to(up_direction) < deg_to_rad(45) :
-			touchFloor = true
+			touchingFloor = true
 
 	# Loop performing the move
 	var motion := velocity * get_delta_time()
