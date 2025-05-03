@@ -4,7 +4,6 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const sourcelike = true
-const debugging = true
 const gravAmount = 60
 
 #player camera variables
@@ -32,10 +31,17 @@ var crouching = false
 var canjump = true
 var jumpheight = 4
 
-const maxspeed = 32 # used in player velocity calculations as a clamp - handlefloorsourcelike
-const accelerateby = 6 # used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
 const gravityAmount = 140
 
+# these affect the "slipperinesS" of the player
+
+
+const debugging = true
+const walkspeed = 20 # works at 5
+var friction = 3 #at 7
+var stopspeed = 50 # 50 equal to around 4 units of speed loss per tick with 3 friction
+const accelerateby = 7 #4 used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
+const maxspeed = 16 #31 used in player velocity calculations as a clamp - handlefloorsourcelike
 
 @onready var playerCam = $came
 @onready var playerShape = $shape
@@ -73,12 +79,12 @@ func ViewAngles():
 # will listen to keypresses and update the movement variables above
 #mouse movement is handled by _input
 func getInputs():
-	var bonus = 1
-	const walkspeed = 1 # think of this as the "weight" of the player #5 feels right
+	var bonus = 1 # formerly 1
 	#TODO: add sprinting code that doubles bonus.
-	
-	leftright += int(walkspeed) * (int(Input.get_action_strength("ui_left") * bonus)) # why are there constants here?
-	leftright -= int(walkspeed) * (int(Input.get_action_strength("ui_right") * bonus)) #like, why not just do 20*50
+	# why are there constants here?
+	#like, why not just do 20*50
+	leftright += int(walkspeed) * (int(Input.get_action_strength("ui_left") * bonus)) 
+	leftright -= int(walkspeed) * (int(Input.get_action_strength("ui_right") * bonus)) 
 	
 	forback += int(walkspeed) * (int(Input.get_action_strength("ui_up") * bonus))
 	forback -= int(walkspeed) * (int(Input.get_action_strength("ui_down") * bonus))
@@ -116,6 +122,8 @@ func _physics_process(delta: float) -> void:
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		handleMove(delta, input_dir) 
+		
+	checkVelocityAndMove()
 	
 func handleMove(delta, inputs):
 	if (is_on_floor()): #air movement is the same
@@ -137,7 +145,7 @@ func handleMove(delta, inputs):
 			doJump()
 			#
 			#state_machine.transition_to("Air", {do_jump = true})
-		
+	
 
 func handleFloorSourcelike(delta):
 	#alter the forward movement by camera's azimuth rotation. shouldnt do anything yet.
@@ -167,7 +175,6 @@ func handleFloorSourcelike(delta):
 	
 func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 	
-	
 	var currentspeed = playerVelocity.dot(desiredDir) # are we changing direction?
 	var addedspeed = desiredSpeed - currentspeed # reduce by amount
 	
@@ -185,7 +192,7 @@ func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 		playerVelocity+= acelspeed * desiredDir
 	
 	#now that we've updated velocity, the godot function will take it from here
-	checkVelocityAndMove()
+	#checkVelocityAndMove()
 	
 # given inputs and our delta, figures out
 func handlefloorTemplate(delta, inputs):
@@ -196,7 +203,7 @@ func handlefloorTemplate(delta, inputs):
 	else:
 		playerVelocity.x = move_toward(playerVelocity.x, 0, SPEED)
 		playerVelocity.z = move_toward(playerVelocity.z, 0, SPEED)
-	checkVelocityAndMove()
+	#checkVelocityAndMove()
 
 ##################################AIR MOVEMENT
 func doJump():
@@ -208,7 +215,12 @@ func doJump():
 	var flGroundFactor = 1.0
 	var flMul : float
 	
-	if crouching: #trying to emulate that crouch jumping is slightly higher than jump crouching but not completely accurate. Reasion why you jump higher mid crouch is because the game forgets to apply gravity for the first frame. This attempts to recreate it by removing one frame of gravity to make up for it
+	#trying to emulate that crouch jumping is slightly higher than jump crouching but not completely 
+	#accurate. Reasion why you jump higher mid crouch is because the game forgets to apply gravity for 
+	#the first frame. This attempts to recreate it by removing one frame of gravity to make up for it
+		
+	
+	if crouching: 
 		flMul = sqrt(2 * gravAmount * jumpheight) + ((1./60.) * gravAmount)
 		
 	else:
@@ -221,7 +233,7 @@ func doJump():
 #template jumping
 func handleair(delta):
 	velocity += get_gravity() * delta
-	checkVelocityAndMove()
+	#checkVelocityAndMove()
 
 #
 func handleSourcelikeAir(delta):
@@ -261,7 +273,7 @@ func handleSourcelikeAir(delta):
 		wishspeed = maxspeed
 	
 	doSourceAirAccelerate(wishdir, wishspeed, delta) #let the airaccelerate function do its work
-	checkVelocityAndMove() #and move afterwards
+	#checkVelocityAndMove() #and move afterwards
 	
 func doSourceAirAccelerate(desiredDir, desiredSpeed, delta):
 	var accel = 20 #global airaccelerate 
@@ -287,34 +299,48 @@ func doSourceAirAccelerate(desiredDir, desiredSpeed, delta):
 ################################ GENERALIZED MOVEMENT
 #this is the function that ACTUALLY causes the player to move
 func checkVelocityAndMove():
-	var maxvelocity = 4000; #why isn't this a constant declared higher? because you cant assign vectors to ints
-	
-	if playerVelocity.length() > maxvelocity: #how does declaring it down here do anything? genuinely couldnt tell you
+	var maxvelocity = 4000; 
+	if playerVelocity.length() > maxvelocity:
 		print("MAX VELOCITY HIT!")
-		#playerVelocity = maxvelocity playervelocity is a VECTOR, dummy. what???
+		#playerVelocity = maxvelocity playervelocity is a VECTOR. what???
 		#return # this still doesn't reduce the player velocity by a serious amount
 		playerVelocity *= 0.5 #this seems to work!
 	
-	
-	print("Velocity:", playerVelocity.length())
+	if(debugging):
+		var speedcheck = playerVelocity.length()
+		if(speedcheck > 0):
+			print("Velocity:", speedcheck)
+		
 	velocity = playerVelocity
 	move_and_slide()
 	playerVelocity = velocity
 
 func handleFriction(delta):
 	var speed = playerVelocity.length()
-	var friction = 4 # I know this should be a constant but I'm just trying to get things working at this point
-	var stopspeed = 100
+	
+	if speed <= 0:
+		return
+	
+	
+	var speedcheck = playerVelocity.length()
+
 	var control = stopspeed if speed < stopspeed else speed
-	var drop = 0 + (control * friction * delta)
+	# Add the amount to the drop amount.
+	var drop = control * friction * delta
+
+	# scale the velocity
 	var newspeed = speed - drop
 	if newspeed < 0:
 		newspeed = 0
+	
 	if newspeed != speed:
 		# Determine proportion of old speed we are using.
 		newspeed /= speed
 		# Adjust velocity according to proportion.
 		playerVelocity *= newspeed
+		
+		#if(debugging):
+			#print("Old/hampered velocity:", speedcheck, " : ", playerVelocity.length())
 		
 func move_and_slide_sourcelike()->bool:
 	var collided := false
