@@ -8,13 +8,9 @@ extends Node
 #--KNOWN PROBLEMS:
 #if players have a lot of forward velocity, they can't strafe!
 
-
 #NEEDS DOING (in presumed  order of precedence):
-#fix how EASY bunnyhopping is
 #sprinting
 #crouching
-#fine-tuning to make it feel like gmod
-# double check handleSourcelikeAir
 
 #FIXED PROBLEMS:
 #    Player seems to fall through the world if they're going too fast?
