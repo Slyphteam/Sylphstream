@@ -6,6 +6,7 @@ extends Node
 # the godot3 and godot4 sourcelike projects people have worked on
 
 #--KNOWN PROBLEMS:
+#if players have a lot of forward velocity, they can't strafe!
 # jumping is HORRIBLY broken. 
 #how is jumping broken?
 #-- Players can jump midair, which behaves as expected

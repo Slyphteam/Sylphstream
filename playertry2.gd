@@ -26,7 +26,6 @@ var onFloor = false
 
 #crouching/jumping variables
 var touchingFloor = true
-var justjumped = false
 var crouching = false
 var canjump = true
 var jumpheight = 4
@@ -37,8 +36,8 @@ const gravityAmount = 140
 
 
 const debugging = true
-const walkspeed = 20 # works at 5
-var friction = 3 #at 7
+const walkspeed = 20 # formerly at 5
+var friction = 3 #formerly at 7
 var stopspeed = 50 # 50 equal to around 4 units of speed loss per tick with 3 friction
 const accelerateby = 7 #4 used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
 const maxspeed = 16 #31 used in player velocity calculations as a clamp - handlefloorsourcelike
@@ -105,12 +104,10 @@ func getInputs():
 func _physics_process(delta: float) -> void:
 	if sourcelike:
 		getInputs()
-		#playerCam.fov = clamp(70+sqrt(playerVelocity*7),90, 180) #formerly playerVelocity.length()*7
 		
-	
+		#playerCam.fov = clamp(70+sqrt(playerVelocity*7),90, 180) #formerly playerVelocity.length()*7
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			ViewAngles()
-		
 		
 		handleMove(delta, Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down"))
 	else:
@@ -124,7 +121,7 @@ func _physics_process(delta: float) -> void:
 		handleMove(delta, input_dir) 
 		
 	checkVelocityAndMove()
-	
+
 func handleMove(delta, inputs):
 	if (is_on_floor()): #air movement is the same
 	#	handleair(delta)
@@ -134,20 +131,23 @@ func handleMove(delta, inputs):
 	else: 
 		#if sourcelike:
 		handleSourcelikeAir(delta)
-		justjumped = false
 		#else:
 		#	handlefloorTemplate(delta, inputs)
 	
 	if Input.is_action_pressed("ui_jump") && canjump:
 		if not crouching:
 			touchingFloor = false
-			justjumped  = true
+			canjump = false
 			doJump()
 			#
 			#state_machine.transition_to("Air", {do_jump = true})
 	
 
 func handleFloorSourcelike(delta):
+
+	#if(not canjump): #now that we've touched the floor again, reset our jumping ability
+		#canjump = true
+	
 	#alter the forward movement by camera's azimuth rotation. shouldnt do anything yet.
 	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
@@ -209,8 +209,8 @@ func handlefloorTemplate(delta, inputs):
 func doJump():
 	#stats.snap = Vector3.ZERO
 
-	if not (canjump) ||  velocity.y>15:
-			return
+	#if not (canjump) ||  velocity.y>15:
+			#return
 		
 	var flGroundFactor = 1.0
 	var flMul : float
