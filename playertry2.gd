@@ -117,23 +117,28 @@ func _physics_process(delta: float) -> void:
 	playerCam.transform.origin.y = bobOffset+1.75
 	prevBob = bobOffset
 
-const cam_amplitude = 0.05
-const bobFreqDef = 2
+const bobAmplitude = 0.05
+const bobFreq = 2
 var bob_time = 0
 func doHeadBob(time, prev)->float:
 	var pos = Vector3.ZERO
 	#var velocityMult = 1
 	var playerSpeed = playerVelocity.length()
 	
-	var new_ratio =  1 + (playerSpeed / (maxspeed + 5 * 2 ))
-	
-	var cam_freq = bobFreqDef *  new_ratio# bound frequency linearly between 1.5 and 2.7
-	if(new_ratio > 1):
-		print("Ratio: ", new_ratio)
+	#create a ratio that's dependent on playerspeed. 
+	#rougly between 1 and 1.5
+	var newRatio =  1 + (playerSpeed / (maxspeed * 2 ))
+	if(newRatio > 1):
+		print("Ratio: ", newRatio)
 		
+	var new_freq = bobFreq *  newRatio #apply ratio to frequency
+	var new_amplitude = bobAmplitude * newRatio # bump up the amplitude
 	
-	var newOffset = sin(time * cam_freq) * cam_amplitude #plug in cam_Freq if you want to get experimental
-	newOffset = (newOffset +(3*prev))/4
+	var newOffset = sin(time * new_freq) * new_amplitude #plug in cam_Freq if you want to get experimental
+	
+	# even though we really aren't applying an insane amount, still weight the offset to the previous
+	# in order to prevent jitteriness from sudden changes
+	newOffset = (newOffset +(3*prev))/4 
 	#if(cam_freq > bobFreqDef):
 		#print("Bob difference: ", prev, " : ", newOffset)
 	return newOffset
