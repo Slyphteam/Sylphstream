@@ -1,6 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=29 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://player.tscn" id="1_366xt"]
+[ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://turret.tscn" id="2_ldjjd"]
+[ext_resource type="PackedScene" uid="uid://bcnk6qssnjhpe" path="res://fourier_9.tscn" id="3_ovnwt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -74,6 +76,12 @@ points = PackedVector3Array(2.97616, 2, 2.97616, -2.97616, -2, -2.97616, -2.9761
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0u4ar"]
 points = PackedVector3Array(2.97616, 2, 2.97616, -2.97616, -2, -2.97616, -2.97616, -2, 2.97616, -2.97616, 2, -2.97616, 2.97616, -2, -2.97616, 2.97616, 2, -2.97616, 2.97616, -2, 2.97616, -2.97616, 2, 2.97616)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6wnxl"]
+size = Vector3(1, 1, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ycbjd"]
+size = Vector3(1, 1, 16)
 
 [node name="Node3D" type="Node3D"]
 
@@ -199,3 +207,21 @@ shape = SubResource("ConvexPolygonShape3D_36h38")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/MeshInstance3D/MeshInstance3D2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0u4ar")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6377, 1.02011, 21.4463)
+mesh = SubResource("BoxMesh_6wnxl")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.1337, 1.02011, 16.8556)
+mesh = SubResource("BoxMesh_ycbjd")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.1337, 1.02011, 26.0492)
+mesh = SubResource("BoxMesh_ycbjd")
+
+[node name="slyphstream turret" parent="." instance=ExtResource("2_ldjjd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 46.7291, 0.514868, 19.7332)
+
+[node name="fourier9" parent="." instance=ExtResource("3_ovnwt")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 42.6286, 1.42702, 17.8148)

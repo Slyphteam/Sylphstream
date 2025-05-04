@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnh842aerijfv"
-path.s3tc="res://.godot/imported/devtexture.png-924c97479578f2379f9de753f551073f.s3tc.ctex"
+uid="uid://bilpnwa5cslec"
+path.s3tc="res://.godot/imported/fourier9_fourier9.png-6441e8edae1f59c087fb6b9c9a79ca01.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "ed2e7588dfbcc22b7ddbc999af51ffdd"
+}
 
 [deps]
 
-source_file="res://textures/devtexture.png"
-dest_files=["res://.godot/imported/devtexture.png-924c97479578f2379f9de753f551073f.s3tc.ctex"]
+source_file="res://models/fourier9_fourier9.png"
+dest_files=["res://.godot/imported/fourier9_fourier9.png-6441e8edae1f59c087fb6b9c9a79ca01.s3tc.ctex"]
 
 [params]
 

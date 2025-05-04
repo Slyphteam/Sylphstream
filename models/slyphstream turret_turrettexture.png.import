@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnh842aerijfv"
-path.s3tc="res://.godot/imported/devtexture.png-924c97479578f2379f9de753f551073f.s3tc.ctex"
+uid="uid://bp0msqy13wna5"
+path.s3tc="res://.godot/imported/slyphstream turret_turrettexture.png-c9e9ed0444cd0711c75fe62632655dd4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "8cd8a29aa2f36db95f81a92409045597"
+}
 
 [deps]
 
-source_file="res://textures/devtexture.png"
-dest_files=["res://.godot/imported/devtexture.png-924c97479578f2379f9de753f551073f.s3tc.ctex"]
+source_file="res://models/slyphstream turret_turrettexture.png"
+dest_files=["res://.godot/imported/slyphstream turret_turrettexture.png-c9e9ed0444cd0711c75fe62632655dd4.s3tc.ctex"]
 
 [params]
 
