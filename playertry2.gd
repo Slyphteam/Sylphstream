@@ -29,13 +29,27 @@ var canjump = true
 var jumpheight = 4
 
 
-# these affect the "slipperiness" of the player
-const debugging = true
-const walkMod = 10 # 10 responsiveness
-const friction = 3 # 3 stopping speed, if passes threshhold, bad things happen
-const stopspeed = 50 # 50 equal to around 4 units of speed loss per tick with 3 friction
-const accelerateamount = 7 #7 used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
-const maxspeed = 16 #16 used in player velocity calculations as a clamp - handlefloorsourcelike
+# these are all VERY important variables and as such I'll talk a lot about them
+const debugging = true #except this one it just decides debug text
+#This is used in "counting" the amount of input and affects responsiveness
+const walkMod = 50 # formerly 50
+#This is a force applied to the player each time. It is applied AFTER acceleration is calculated
+const friction = 3 # 3 
+#this is similar to friction. at 50  3 equal to around 4 units of speed loss per tick
+const stopspeed = 50 # 50
+# used as a constant in  dosourcelikeaccelerate
+const accelerateamount = 7 #7 #WHY WAS THIS A THOUSAND??? HUH??????
+# used to limit speed. is not ACTUALLY the player's maximum speed due to weird reasons.
+const maxspeed = 12 #16
+
+var sprinting = false
+
+
+#if friction is too high, it SEEMS like it totally zeroes out playerVelocity, but
+#somehow speed seems to still be applied after the fact?
+# this seems to be the case.
+#if so, does this mean that friction was useless outside of stopping?
+#that seems like it would make a lot of sense.
 
 @onready var playerCam = $came
 @onready var playerShape = $shape
@@ -51,7 +65,14 @@ func _input(event):
 	if event.is_action_pressed("ui_click"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	
+	
+	#this might seem odd, but without these checks in this way,
+	# the player only sprints for 5-6 ticks before stopping.
+	if event.is_action_pressed("ui_sprint"):
+		sprinting = true
+	if event.is_action_released("ui_sprint"):
+		sprinting = false
 			
 	#if Input.is_action_pressed("in_crouch"):
 		#crouching = true
@@ -187,8 +208,7 @@ func handleFloorSourcelike(delta):
 	#calculate a vector based of our inputs and angles
 	var desiredVec = (leftright * sideAngle) + (forback * forwAngle)
 	
-	#deal with friction
-	handleFriction(delta)
+
 	
 	var desiredDir = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
@@ -197,12 +217,18 @@ func handleFloorSourcelike(delta):
 	#which meant you could just phase through the floor by trying hard enough. 
 	#and also fly.
 	
-	if desiredSpeed !=0.0 and desiredSpeed>maxspeed:
-		desiredVec *= maxspeed / desiredSpeed # update our vector to not be too silly
-		desiredSpeed = maxspeed # clamp it
+	var curMax = maxspeed;
+	if(sprinting): curMax *= 2;
+	
+	if desiredSpeed !=0.0 and desiredSpeed>curMax:
+		desiredVec *= curMax / desiredSpeed # update our vector to not be too silly
+		desiredSpeed = curMax # clamp it
 	
 	desiredVec.y = 0; #but no y. 
 	doSourceAccelerate(desiredDir, desiredSpeed, delta)
+	
+		#deal with friction
+	handleFriction(delta)
 
 
 func doSourceAccelerate(desiredDir, desiredSpeed, delta):
@@ -243,8 +269,7 @@ func doJump():
 	playerVelocity.y = max(jumpvel, jumpvel + playerVelocity.y)
 
 func handleSourcelikeAir(delta):
-	if debugging:
-		print("in air!")
+
 	var forward = Vector3.FORWARD
 	var side = Vector3.LEFT
 	
@@ -266,7 +291,8 @@ func handleSourcelikeAir(delta):
 	# It returns the length of the vector before it was normalized
 	var wishspeed = wishvel.length()
 	
-	# clamp to game defined max speed
+	# TODO: UPDATE THIS
+	# clamp to game defined max speed # but what if we didn't? :)
 	if wishspeed != 0.0 and wishspeed > maxspeed:
 		wishvel *= maxspeed / wishspeed
 		wishspeed = maxspeed
@@ -309,11 +335,13 @@ func checkVelocityAndMove():
 		var speedcheck = playerVelocity.length()
 		if(speedcheck > 0):
 			print("Velocity:", speedcheck)
+			#print("Sprinting:", sprinting)
 		
 	velocity = playerVelocity
 	move_and_slide()
 	playerVelocity = velocity
 
+#updates the playerVelocity variable based on friction variables
 func handleFriction(delta):
 	var speed = playerVelocity.length()
 	
@@ -329,15 +357,23 @@ func handleFriction(delta):
 	if newspeed < 0:
 		newspeed = 0
 	
+	
+	
 	if newspeed != speed:
 		# Determine proportion of old speed we are using.
 		newspeed /= speed
 		# Adjust velocity according to proportion.
+		
+		#var speedcheck = playerVelocity.length()
 		playerVelocity *= newspeed
 		
 		#if(debugging):
-			#var speedcheck = playerVelocity.length()
-			#print("Old/hampered velocity:", speedcheck, " : ", playerVelocity.length())
+			
+		#	print("Old/hampered velocity:", speedcheck, " : ", playerVelocity.length())
+		
+		
+		
+		
 
 
 func move_and_slide_sourcelike()->bool:
