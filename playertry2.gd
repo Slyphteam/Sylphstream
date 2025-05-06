@@ -31,7 +31,7 @@ var jumpheight = 4
 
 # these affect the "slipperiness" of the player
 const debugging = true
-const walkspeed = 20 # formerly at 5
+const walkMod = 50 
 const friction = 3 #formerly at 7
 const stopspeed = 50 # 50 equal to around 4 units of speed loss per tick with 3 friction
 const accelerateamount = 7 #4 used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
@@ -74,14 +74,17 @@ func ViewAngles():
 #mouse movement is handled by _input
 func getInputs():
 	var bonus = 1 # formerly 1
-	#TODO: add sprinting code that doubles bonus.
-	# why are there constants here?
-	#like, why not just do 20*50
-	leftright += int(walkspeed) * (int(Input.get_action_strength("ui_left") * bonus)) 
-	leftright -= int(walkspeed) * (int(Input.get_action_strength("ui_right") * bonus)) 
 	
-	forback += int(walkspeed) * (int(Input.get_action_strength("ui_up") * bonus))
-	forback -= int(walkspeed) * (int(Input.get_action_strength("ui_down") * bonus))
+	#okay, let's talk about movement. 
+	# presently, 20 feels like good running. 
+	# this is determined by walkMod?
+	
+	
+	leftright += int(walkMod) * (int(Input.get_action_strength("ui_left") * bonus)) 
+	leftright -= int(walkMod) * (int(Input.get_action_strength("ui_right") * bonus)) 
+	
+	forback += int(walkMod) * (int(Input.get_action_strength("ui_up") * bonus))
+	forback -= int(walkMod) * (int(Input.get_action_strength("ui_down") * bonus))
 	
 	# clamp left/right movement
 	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
@@ -108,12 +111,12 @@ func _physics_process(delta: float) -> void:
 	handleMove(delta)
 	checkVelocityAndMove()
 	
-	#Adjust FOV
-	playerCam.fov = clamp(70+sqrt(playerVelocity.length()*7),90, 180) 
+	#Adjust FOV. 87 feels the best; 85 too low and 90 too high
+	playerCam.fov = clamp(87 + sqrt(playerVelocity.length()), 90, 180) 
 	
 	#create viewbob
 	bob_time += delta * float(is_on_floor())
-	bobOffset = doHeadBob(bob_time, prevBob)
+	bobOffset = doHeadBob(bob_time, prevBob) # this needs more tweaking but it's fine for now
 	playerCam.transform.origin.y = bobOffset+1.75
 	prevBob = bobOffset
 
@@ -128,8 +131,8 @@ func doHeadBob(time, prev)->float:
 	#create a ratio that's dependent on playerspeed. 
 	#rougly between 1 and 1.5
 	var newRatio =  1 + (playerSpeed / (maxspeed * 2 ))
-	if(newRatio > 1):
-		print("Ratio: ", newRatio)
+	#if(newRatio > 1):
+	#	print("Ratio: ", newRatio)
 		
 	var new_freq = bobFreq *  newRatio #apply ratio to frequency
 	var new_amplitude = bobAmplitude * newRatio # bump up the amplitude

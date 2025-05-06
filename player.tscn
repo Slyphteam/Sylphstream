@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1comohc3tpa5"]
 
-[ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://playertry2.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://ck2llps3i8eq1" path="res://intentoryManager.gd" id="1_4flbx"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sh265"]
 height = 1.75
