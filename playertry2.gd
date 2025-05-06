@@ -31,11 +31,11 @@ var jumpheight = 4
 
 # these affect the "slipperiness" of the player
 const debugging = true
-const walkMod = 50 
-const friction = 3 #formerly at 7
+const walkMod = 10 # 10 responsiveness
+const friction = 3 # 3 stopping speed, if passes threshhold, bad things happen
 const stopspeed = 50 # 50 equal to around 4 units of speed loss per tick with 3 friction
-const accelerateamount = 7 #4 used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
-const maxspeed = 16 #31 used in player velocity calculations as a clamp - handlefloorsourcelike
+const accelerateamount = 7 #7 used in dosourcelikeaccelerate #WHY WAS THIS A THOUSAND??? HUH??????
+const maxspeed = 16 #16 used in player velocity calculations as a clamp - handlefloorsourcelike
 
 @onready var playerCam = $came
 @onready var playerShape = $shape
