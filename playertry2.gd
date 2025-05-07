@@ -18,7 +18,7 @@ const maxIn = 4096 #boundaries for the most "walking" we want to be doing
 const minIn = -4096
 var leftright : float #variables for how "walking" we are in either cardinal direction
 var forback : float
-var playerVelocity: Vector3 = Vector3.ZERO
+var playerVelocity: Vector3 = Vector3.ZERO # player's calculated velocity
 var onFloor = false
 const maxvelocity = 100; #this might not seem insane but keep in mind 20 is walking speed
 
@@ -31,7 +31,7 @@ var jumpheight = 4
 
 # these are all VERY important variables and as such I'll talk a lot about them
 const debugging = true #except this one it just decides debug text
-#This is used in "counting" the amount of input and affects responsiveness
+#How long it takes the player to get up to full steam
 const walkMod = 50 # formerly 50
 #This is a force applied to the player each time. It is applied AFTER acceleration is calculated
 const friction = 3 # 3 
@@ -247,6 +247,9 @@ func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 	
 	for i in range(3): #the comment says adjust velocity but i truly have no idea what this does
 		playerVelocity+= acelspeed * desiredDir
+		
+		
+	
 
 ##################################AIR MOVEMENT
 
