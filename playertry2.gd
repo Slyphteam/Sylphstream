@@ -22,28 +22,31 @@ var playerVelocity: Vector3 = Vector3.ZERO # player's calculated velocity
 var onFloor = false
 const maxvelocity = 100; #this might not seem insane but keep in mind 20 is walking speed
 
-#crouching/jumping variables
+#crouching/jumping/sprinting (modified movement) variables
 var touchingFloor = true
-var crouching = false
 var canjump = true
-var jumpheight = 4
+var jumpheight = 2
+var sprinting = false
+var crouching = false
 
 
 # these are all VERY important variables and as such I'll talk a lot about them
 const debugging = true #except this one it just decides debug text
 #How long it takes the player to get up to full steam
-const walkMod = 50 # formerly 50
-const sprintMod = 1
+const walkMod = 50 # walking players have a lot of control
+const crouchMod = 200 # crouching players have a LOT of control
+const crouchMult = 0.6
+const sprintMod = 3 #it takes time to get up to a sprint though
+const sprintMult = 1.5
+# used to limit speed. Affected by crouchMult and sprintMult
+const maxspeed = 12 #16
+
 #This is a force applied to the player each time. It is applied AFTER acceleration is calculated
 const friction = 2 # 3 
 #this is similar to friction. at 50  3 equal to around 4 units of speed loss per tick
 const stopspeed = 50 # 50
 # used as a constant in  dosourcelikeaccelerate
 const accelerateamount = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
-# used to limit speed. is not ACTUALLY the player's maximum speed due to weird reasons.
-const maxspeed = 14 #16
-
-var sprinting = false
 
 
 #if friction is too high, it SEEMS like it totally zeroes out playerVelocity, but
@@ -54,6 +57,7 @@ var sprinting = false
 
 @onready var playerCam = $came
 @onready var playerShape = $shape
+@onready var playerCollider = $playercollide
 
 
 func _input(event):
@@ -75,16 +79,18 @@ func _input(event):
 	if event.is_action_released("ui_sprint"):
 		sprinting = false
 			
-	#if Input.is_action_pressed("in_crouch"):
-		#crouching = true
-	#elif Input.is_action_just_released("in_crouch"):
-		#crouching = false
+	if Input.is_action_pressed("ui_crouch"):
+		if(!crouching): #if we weren't already crouching, update camera
+			transitionCrouch(true) ## having this here...
+			crouching = true
+	if Input.is_action_just_released("ui_crouch"):
+		if(crouching): #if we're leaving crouching, alsp update camera
+			transitionCrouch(false) ##and having this here feels like bad code
+			crouching = false
 		
 func InputMouse(event):
 	xlook += -event.relative.y * mousesensitivity
 	ylook += -event.relative.x * mousesensitivity
-	
-	
 	xlook = clamp(xlook, -90, 90)
 	
 func ViewAngles():
@@ -96,17 +102,13 @@ func ViewAngles():
 #mouse movement is handled by _input
 func getInputs():
 	
-	var bonus = sprintMod # formerly 1
-	if(sprinting):
-		bonus = walkMod
-	
-	
-	#okay, let's talk about movement. 
-	# presently, 20 feels like good running. 
-	# this is determined by walkMod?
-	
-	
-	
+	#update the movement bonus based on our current mode
+	var bonus = walkMod # 50 - good control
+	if(crouching):
+		bonus = crouchMod # 150 - EXCELLENT control
+	elif(sprinting):
+		bonus = sprintMod #1 - poor control
+		
 	leftright += int(bonus) * (int(Input.get_action_strength("ui_left") )) 
 	leftright -= int(bonus) * (int(Input.get_action_strength("ui_right"))) 
 	
@@ -124,22 +126,27 @@ func getInputs():
 	else:
 		forback = clamp(forback, minIn, maxIn)
 	
-
+# these need to be moved once I fix viewbobbing
 var prevBob = 0;
 var bobOffset = 0;
 func _physics_process(delta: float) -> void:
+	
+	#Deal with inputs
 	getInputs()
 		
-	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		ViewAngles()
 	
-		
+	#start our decision tree for movement
 	handleMove(delta)
-	checkVelocityAndMove()
+	checkVelocityAndMove() #now that we've calculated, actually apply the move
 	
+	#CAMERA CODE BELOW
+	#CrouchCamera()
 	#Adjust FOV. 87 feels the best; 85 too low and 90 too high
 	playerCam.fov = clamp(87 + sqrt(playerVelocity.length()), 90, 180) 
+	
+	#TODO: apply camera tilt by amount of sideways velocity
 	
 	#create viewbob
 	#bob_time += delta * float(is_on_floor())
@@ -150,8 +157,10 @@ func _physics_process(delta: float) -> void:
 const bobAmplitude = 0.05
 const bobFreq = 2
 var bob_time = 0
+
+# function that applies a headbob. Temporarily disabled.
 func doHeadBob(time, prev)->float:
-	var pos = Vector3.ZERO
+	
 	#var velocityMult = 1
 	var playerSpeed = playerVelocity.length()
 	
@@ -173,8 +182,29 @@ func doHeadBob(time, prev)->float:
 		#print("Bob difference: ", prev, " : ", newOffset)
 	return newOffset
 
+#Updates the player camera as they enter or leave a crouching state.
+func transitionCrouch(entering):
+	
+	if(playerShape.scale.y > 1 || playerShape.scale.y < 0.2 || playerCollider.scale.y > 1 || playerCollider.scale.y < 0.2 ):
+		return
+	
+	if(entering): #we are entering crouch
+		playerShape.scale.y -= 1
+		playerCollider.scale.y -= 1
 
+	else: #we are exiting crouch
+		#TODO: add a check to see if the player has enough room TO stand
+		#return if they don't
+		playerShape.scale.y += 1
+		playerCollider.scale.y += 1
+	
+	#in theory this code should never do anything since we have an early return but I've left it JIC
+	playerShape.scale.y = clamp(playerShape.scale.y, 0.2, 1)
+	playerCollider.scale.y = clamp(playerCollider.scale.y, 0.2, 1)
+	
+# this is the MAIN function that determines where and how the player will move
 func handleMove(delta):
+	
 	if (is_on_floor()):
 		
 		#this does a SHOCKINGLY good job at emulating source bunnyhopping
@@ -183,8 +213,6 @@ func handleMove(delta):
 				canjump = true
 		
 		handleFloorSourcelike(delta)
-		
-
 		
 	else: 
 		handleSourcelikeAir(delta)
@@ -195,21 +223,24 @@ func handleMove(delta):
 			canjump = false
 			doJump()
 	
-	if playerVelocity.length() > maxvelocity:
-		print("MAX VELOCITY HIT!")
-		#playerVelocity = maxvelocity playervelocity is a VECTOR. what???
-		#return # this still doesn't reduce the player velocity by a serious amount
-		playerVelocity *= 0.5 #this seems to work!
+	#this was moved to checkVelocityandmove
+	#if playerVelocity.length() > maxvelocity:
+		#print("MAX VELOCITY HIT!")
+		##playerVelocity = maxvelocity playervelocity is a VECTOR. what???
+		##return # this still doesn't reduce the player velocity by a serious amount
+		#playerVelocity *= 0.5 #this seems to work!
 
 
 func handleFloorSourcelike(delta):
-		#TODO: ADD A TIMER
+		#TODO: ADD A TIMER 
+		#what did I mean by add a timer???? huh??
 	
 	#alter the forward movement by camera's azimuth rotation. shouldnt do anything yet.
 	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	# hey wait shouldn't one of these be y and the other be x?
 	
-
+	
 	
 	#calculate a vector based of our inputs and angles
 	var desiredVec = (leftright * sideAngle) + (forback * forwAngle)
@@ -223,8 +254,13 @@ func handleFloorSourcelike(delta):
 	#which meant you could just phase through the floor by trying hard enough. 
 	#and also fly.
 	
+	#Apply conditional modifiers to our max speed
 	var curMax = maxspeed;
-	if(sprinting): curMax *= 1.5;
+	if(crouching && sprinting): #TODO: update this to be crouching and speed above threshhold?
+		#TODO: add sliding code!
+		curMax *= crouchMult; #for the time being, just apply crouch
+	elif(sprinting): curMax *= sprintMult; 
+	elif(crouching): curMax *= crouchMult; #the case of sprinting and crouching is handled further up
 	
 	if desiredSpeed !=0.0 and desiredSpeed>curMax:
 		desiredVec *= curMax / desiredSpeed # update our vector to not be too silly
@@ -277,8 +313,13 @@ func doJump():
 	var jumpvel =  flGroundFactor * flMul  + max(0, playerVelocity.y)
 	playerVelocity.y = max(jumpvel, jumpvel + playerVelocity.y)
 
-func handleSourcelikeAir(delta):
+#the air movement function
+# this differs from sourcelike floor in a few ways:
+# 1: no multipliers on crouching/spring
+# 2: a LOT less control
 
+func handleSourcelikeAir(delta):
+	 
 	var forward = Vector3.FORWARD
 	var side = Vector3.LEFT
 	
@@ -287,10 +328,10 @@ func handleSourcelikeAir(delta):
 	
 	playerVelocity.y -= gravAmount * delta
 	
-	var fmove = forback
-	var smove = leftright
+	var fmove = forback * 0.1
+	var smove = leftright * 0.1
 	
-	var wishvel = side * smove + forward * fmove
+	var wishvel = (side * smove + forward * fmove) * 0.1 # players should NOT have a lot of air control
 	
 	# Zero out y value
 	wishvel.y = 0
@@ -340,11 +381,10 @@ func checkVelocityAndMove():
 		#return # this still doesn't reduce the player velocity by a serious amount
 		playerVelocity *= 0.5 #this seems to work!
 	
-	if(debugging):
-		var speedcheck = playerVelocity.length()
-		if(speedcheck > 0):
-			print("Velocity:", speedcheck)
-			#print("Sprinting:", sprinting)
+	#if(debugging):
+		#var speedcheck = playerVelocity.length()
+		#if(speedcheck > 0):
+			#print("Velocity:", speedcheck)
 		
 	velocity = playerVelocity
 	move_and_slide()
@@ -357,7 +397,12 @@ func handleFriction(delta):
 	if speed <= 0:
 		return
 	
-	var control = stopspeed if speed < stopspeed else speed
+	#godot didn't like this code so I've commented it out 
+	#var control = stopspeed if speed < stopspeed else speed
+	var control = speed
+	if (speed < stopspeed) :
+		control = stopspeed
+	
 	# Add the amount to the drop amount.
 	var drop = control * friction * delta
 
@@ -379,10 +424,6 @@ func handleFriction(delta):
 		#if(debugging):
 			
 		#	print("Old/hampered velocity:", speedcheck, " : ", playerVelocity.length())
-		
-		
-		
-		
 
 
 func move_and_slide_sourcelike()->bool:
