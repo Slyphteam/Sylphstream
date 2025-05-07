@@ -33,14 +33,15 @@ var jumpheight = 4
 const debugging = true #except this one it just decides debug text
 #How long it takes the player to get up to full steam
 const walkMod = 50 # formerly 50
+const sprintMod = 1
 #This is a force applied to the player each time. It is applied AFTER acceleration is calculated
-const friction = 3 # 3 
+const friction = 2 # 3 
 #this is similar to friction. at 50  3 equal to around 4 units of speed loss per tick
 const stopspeed = 50 # 50
 # used as a constant in  dosourcelikeaccelerate
-const accelerateamount = 7 #7 #WHY WAS THIS A THOUSAND??? HUH??????
+const accelerateamount = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 # used to limit speed. is not ACTUALLY the player's maximum speed due to weird reasons.
-const maxspeed = 12 #16
+const maxspeed = 14 #16
 
 var sprinting = false
 
@@ -94,18 +95,23 @@ func ViewAngles():
 # will listen to keypresses and update the movement variables above
 #mouse movement is handled by _input
 func getInputs():
-	var bonus = 1 # formerly 1
+	
+	var bonus = sprintMod # formerly 1
+	if(sprinting):
+		bonus = walkMod
+	
 	
 	#okay, let's talk about movement. 
 	# presently, 20 feels like good running. 
 	# this is determined by walkMod?
 	
 	
-	leftright += int(walkMod) * (int(Input.get_action_strength("ui_left") * bonus)) 
-	leftright -= int(walkMod) * (int(Input.get_action_strength("ui_right") * bonus)) 
 	
-	forback += int(walkMod) * (int(Input.get_action_strength("ui_up") * bonus))
-	forback -= int(walkMod) * (int(Input.get_action_strength("ui_down") * bonus))
+	leftright += int(bonus) * (int(Input.get_action_strength("ui_left") )) 
+	leftright -= int(bonus) * (int(Input.get_action_strength("ui_right"))) 
+	
+	forback += int(bonus) * (int(Input.get_action_strength("ui_up") ))
+	forback -= int(bonus) * (int(Input.get_action_strength("ui_down")))
 	
 	# clamp left/right movement
 	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
@@ -136,10 +142,10 @@ func _physics_process(delta: float) -> void:
 	playerCam.fov = clamp(87 + sqrt(playerVelocity.length()), 90, 180) 
 	
 	#create viewbob
-	bob_time += delta * float(is_on_floor())
-	bobOffset = doHeadBob(bob_time, prevBob) # this needs more tweaking but it's fine for now
-	playerCam.transform.origin.y = bobOffset+1.75
-	prevBob = bobOffset
+	#bob_time += delta * float(is_on_floor())
+	#bobOffset = doHeadBob(bob_time, prevBob) # this needs more tweaking but it's fine for now
+	#playerCam.transform.origin.y = bobOffset+1.75
+	#prevBob = bobOffset
 
 const bobAmplitude = 0.05
 const bobFreq = 2
@@ -218,7 +224,7 @@ func handleFloorSourcelike(delta):
 	#and also fly.
 	
 	var curMax = maxspeed;
-	if(sprinting): curMax *= 2;
+	if(sprinting): curMax *= 1.5;
 	
 	if desiredSpeed !=0.0 and desiredSpeed>curMax:
 		desiredVec *= curMax / desiredSpeed # update our vector to not be too silly
