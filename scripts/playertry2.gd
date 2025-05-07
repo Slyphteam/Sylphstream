@@ -63,7 +63,7 @@ const accelerateamount = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 @onready var playerCollider = $playercollide
 
 func _init():
-	invenManager = invenManagerClass.new($came/weaponparent)
+	invenManager = invenManagerClass.new()#$came/weaponparent)
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -481,16 +481,17 @@ func get_delta_time() -> float:
 # INVENTORY MANAGEMENT CODE
 var invenManager;
 class invenManagerClass:
-	#var weapParent = load("res://scripts/weapon_parent.gd")
-	
+	var weapParent = load("res://scripts/weapon_parent.gd")
 	
 	var ammo_9mm = 22
 	enum Ammotypes {blankammo, ninemm}
 	var heldItem 
+	var modelreference
 	
-	func _init(wepRef):
-		heldItem = wepRef
+	func _init():#wepRef):
+		#modelreference = wepRef
+		heldItem = weapParent.new(Ammotypes)
 	
 	func tryShoot():
-		print("pew!")
+		heldItem.tryShoot()
 	
