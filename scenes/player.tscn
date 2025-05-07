@@ -26,5 +26,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58745, -0.254839)
 fov = 100.0
 far = 500.0
 
-[node name="weapon parent" parent="came" instance=ExtResource("2_onrkg")]
+[node name="weaponparent" parent="came" instance=ExtResource("2_onrkg")]
 transform = Transform3D(-2.18557e-08, 0.5, -2.18557e-08, 0, -2.18557e-08, -0.5, -0.5, -2.18557e-08, 9.55343e-16, -0.0225522, 0.610427, 0.0283728)

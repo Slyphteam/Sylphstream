@@ -49,16 +49,21 @@ const stopspeed = 50 # 50
 const accelerateamount = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 
 
+
+
 #if friction is too high, it SEEMS like it totally zeroes out playerVelocity, but
 #somehow speed seems to still be applied after the fact?
 # this seems to be the case.
 #if so, does this mean that friction was useless outside of stopping?
 #that seems like it would make a lot of sense.
 
+
 @onready var playerCam = $came
 @onready var playerShape = $shape
 @onready var playerCollider = $playercollide
 
+func _init():
+	invenManager = invenManagerClass.new($came/weaponparent)
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -68,8 +73,14 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 	if event.is_action_pressed("ui_click"):
+		
+		if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
+			invenManager.tryShoot()
+			
+		
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
 	
 	
 	#this might seem odd, but without these checks in this way,
@@ -463,3 +474,23 @@ func get_delta_time() -> float:
 	if Engine.is_in_physics_frame():
 		return get_physics_process_delta_time()
 	return get_process_delta_time()
+	
+	
+
+
+# INVENTORY MANAGEMENT CODE
+var invenManager;
+class invenManagerClass:
+	#var weapParent = load("res://scripts/weapon_parent.gd")
+	
+	
+	var ammo_9mm = 22
+	enum Ammotypes {blankammo, ninemm}
+	var heldItem 
+	
+	func _init(wepRef):
+		heldItem = wepRef
+	
+	func tryShoot():
+		print("pew!")
+	
