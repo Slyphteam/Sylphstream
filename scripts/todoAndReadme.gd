@@ -15,6 +15,7 @@ extends Node
 # It's a lot less prevalent now though
 
 #NEEDS DOING (in presumed order of precedence):
+# change the speed multipliers to one variable that is incremented/decremented based on player state
 #Add different accelerations based on player state?
 #fix viewbob and add camera tilt
 #weapons
