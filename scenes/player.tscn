@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=6 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://ck2llps3i8eq1" path="res://scripts/intentoryManager.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://k3fjxxfrvjw" path="res://scenes/weapon_parent.tscn" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://d3g2ip8m58ave" path="res://scripts/weapon_parent.gd" id="3_qhqgy"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sh265"]
 height = 1.75
@@ -28,3 +29,4 @@ far = 500.0
 
 [node name="weaponparent" parent="came" instance=ExtResource("2_onrkg")]
 transform = Transform3D(-2.18557e-08, 0.5, -2.18557e-08, 0, -2.18557e-08, -0.5, -0.5, -2.18557e-08, 9.55343e-16, -0.0225522, 0.610427, 0.0283728)
+script = ExtResource("3_qhqgy")
