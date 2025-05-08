@@ -17,7 +17,7 @@ Dynamic spread and locational damage with weapon system
 
 Weapon switching
 
-Implementation of all planned weapons
+Implementation of all core weapons
 
 First finite state enemy
 
@@ -28,6 +28,10 @@ Neural network/entity API
 Neural network training on aiming
 
 Neural network training on reloading, recoil control, and aiming down sights
+
+Implementation of grenade, fragmentation, and explosive systems
+
+Implementation of all planned weapons
 
 Neural network training on simple movement
 
