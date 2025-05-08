@@ -17,10 +17,11 @@ extends Node
 #NEEDS DOING (in presumed order of precedence):
 # change the speed multipliers to one variable that is incremented/decremented based on player state
 #Add different accelerations based on player state?
+#KICKING!!!
+#crouch sliding
 #fix viewbob and add camera tilt
 #weapons
 #turret AI
-#crouch sliding
 
 #FIXED PROBLEMS:
 # friction now actually functions in a meaningful way
