@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://k3fjxxfrvjw"]
+[gd_scene load_steps=3 format=3 uid="uid://k3fjxxfrvjw"]
 
 [ext_resource type="PackedScene" uid="uid://by1cb6m3fiv80" path="res://models/weapon parent.glb" id="1_jgg72"]
+[ext_resource type="Script" uid="uid://d3g2ip8m58ave" path="res://scripts/weapon_parent.gd" id="2_g06jn"]
 
 [node name="weapon parent" instance=ExtResource("1_jgg72")]
+
+[node name="gun parent" parent="." index="0"]
+script = ExtResource("2_g06jn")

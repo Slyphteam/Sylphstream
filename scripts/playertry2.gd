@@ -73,15 +73,12 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 	if event.is_action_pressed("ui_click"):
-		
+		# are we in mouse mode?
 		if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
-			invenManager.tryShoot()
-			
+			invenManager.doShoot() #if so, shoot our current weapon
 		
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		
-	
 	
 	#this might seem odd, but without these checks in this way,
 	# the player only sprints for 5-6 ticks before stopping.
@@ -98,6 +95,9 @@ func _input(event):
 		if(crouching): #if we're leaving crouching, alsp update camera
 			transitionCrouch(false) ##and having this here feels like bad code
 			crouching = false
+	
+	if event.is_action_pressed("ui_reload"):
+		invenManager.doReload()
 		
 func InputMouse(event):
 	xlook += -event.relative.y * mousesensitivity
@@ -483,15 +483,25 @@ var invenManager;
 class invenManagerClass:
 	var weapParent = load("res://scripts/weapon_parent.gd")
 	
-	var ammo_9mm = 22
-	enum Ammotypes {blankammo, ninemm}
+	enum Ammotypes {ammoBlank, ammoPistol, ammoRifle}
+	var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
+	
 	var heldItem 
 	var modelreference
 	
-	func _init():#wepRef):
-		#modelreference = wepRef
-		heldItem = weapParent.new(Ammotypes)
+	func getAmmoAmt(type):
+		return heldAmmunition.type
 	
-	func tryShoot():
+	func _init():#wepRef):
+		heldAmmunition.ammoBlank = 100
+		heldAmmunition.ammoPistol = 24
+		#modelreference = wepRef
+		heldItem = weapParent.new(Ammotypes, self)
+	
+	#inventory manager function that tells the held item to attempt shooting
+	func doShoot():
 		heldItem.tryShoot()
 	
+	#inventory manager function that tells the held item to attempt reloading
+	func doReload():
+		heldItem.startReload()
