@@ -9,9 +9,11 @@ https://docs.google.com/document/d/118_IEV_9k2dqLq8unO5gw8Gx04xngHV5QysfVkentBs/
 
 ### Unimplemented, though planned features:
 
-Crouchsliding
-
 Weapon system
+
+Dynamic viewbob and viewtilt with player velocity
+
+Kicking
 
 Dynamic spread and locational damage with weapon system
 
