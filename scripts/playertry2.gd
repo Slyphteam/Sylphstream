@@ -19,6 +19,7 @@ const minIn = -4096
 var leftright : float #variables for how "walking" we are in either cardinal direction
 var forback : float
 var playerVelocity: Vector3 = Vector3.ZERO # player's calculated velocity
+var playerSpeed = 0 # speed of player to prevent too many playerVelocity.length calls
 var onFloor = false
 const maxvelocity = 100; #this might not seem insane but keep in mind 20 is walking speed
 
@@ -154,7 +155,7 @@ func _physics_process(delta: float) -> void:
 	#CAMERA CODE BELOW
 	#CrouchCamera()
 	#Adjust FOV. 87 feels the best; 85 too low and 90 too high
-	playerCam.fov = clamp(87 + sqrt(playerVelocity.length()), 90, 180) 
+	playerCam.fov = clamp(87 + sqrt(playerSpeed), 90, 180) 
 	
 	#TODO: apply camera tilt by amount of sideways velocity
 	
@@ -172,7 +173,6 @@ var bob_time = 0
 func doHeadBob(time, prev)->float:
 	
 	#var velocityMult = 1
-	var playerSpeed = playerVelocity.length()
 	
 	#create a ratio that's dependent on playerspeed. 
 	#rougly between 1 and 1.5
@@ -297,10 +297,11 @@ func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 	
 	playerVelocity.y -= gravAmount * delta
 	
+	
 	for i in range(3): #the comment says adjust velocity but i truly have no idea what this does
 		playerVelocity+= acelspeed * desiredDir
-		
-		
+	
+	playerSpeed = playerVelocity.length() # update playerspeed
 	
 
 ##################################AIR MOVEMENT
@@ -322,6 +323,7 @@ func doJump():
 		flMul = sqrt(2 * gravAmount * jumpheight)
 	var jumpvel =  flGroundFactor * flMul  + max(0, playerVelocity.y)
 	playerVelocity.y = max(jumpvel, jumpvel + playerVelocity.y)
+	playerSpeed = playerVelocity.length() #update playerSpeed
 
 #the air movement function
 # this differs from sourcelike floor in a few ways:
@@ -337,6 +339,7 @@ func handleSourcelikeAir(delta):
 	side = side.rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	
 	playerVelocity.y -= gravAmount * delta
+	playerSpeed = playerVelocity.length() #update speed
 	
 	var fmove = forback * 0.1
 	var smove = leftright * 0.1
@@ -380,57 +383,58 @@ func doSourceAirAccelerate(desiredDir, desiredSpeed, delta):
 	for i in range(3):
 		# Adjust velocity.
 		playerVelocity += accelspeed * desiredDir
+	playerSpeed = playerVelocity.length()
 
 ################################ GENERALIZED MOVEMENT
 
 #this is the function that ACTUALLY causes the player to move
 func checkVelocityAndMove():
-	if playerVelocity.length() > maxvelocity:
+	if playerSpeed > maxvelocity:
 		if(debugging): print("MAX VELOCITY HIT!")
 		#playerVelocity = maxvelocity playervelocity is a VECTOR. what???
 		#return # this still doesn't reduce the player velocity by a serious amount
 		playerVelocity *= 0.5 #this seems to work!
+		playerSpeed = playerVelocity.length()
 	
 	if(debugging):
-		var speedcheck = playerVelocity.length()
-		if(speedcheck > 0):
-			print("Velocity:", speedcheck)
+		if(playerSpeed > 0):
+			print("Velocity:", playerSpeed)
 		
 	velocity = playerVelocity
 	move_and_slide()
 	playerVelocity = velocity
+	playerSpeed = playerVelocity.length()
 
 #updates the playerVelocity variable based on friction variables
 func handleFriction(delta, fricMod):
-	var speed = playerVelocity.length()
-	
-	if speed <= 0:
+	if playerSpeed <= 0:
 		return
 	
 	#godot didn't like this code so I've commented it out 
 	#var control = stopspeed if speed < stopspeed else speed
-	var control = speed
-	if (speed < stopspeed) :
+	var control = playerSpeed
+	if (playerSpeed < stopspeed) :
 		control = stopspeed * fricMod #fricmod lets us dynamically alter applied friction
 	
 	# Add the amount to the drop amount.
 	var drop = control * friction * delta * fricMod
 
 	# scale the velocity
-	var newspeed = speed - drop
+	var newspeed = playerSpeed - drop
 	if newspeed < 0:
 		newspeed = 0
 	
 	
 	
-	if newspeed != speed:
+	if newspeed != playerSpeed:
 		# Determine proportion of old speed we are using.
-		newspeed /= speed
+		newspeed /= playerSpeed
 		# Adjust velocity according to proportion.
 		
 		#var speedcheck = playerVelocity.length()
 		playerVelocity *= newspeed
-		
+		playerSpeed = playerVelocity.length()
+	
 		#if(debugging):
 			
 		#	print("Old/hampered velocity:", speedcheck, " : ", playerVelocity.length())
