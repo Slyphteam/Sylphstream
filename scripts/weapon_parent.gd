@@ -1,4 +1,4 @@
-extends Node3D
+extends Node # find a better body to extend
 const wepName  = "imcoder!"
 const selection = 1
 var manager
@@ -33,8 +33,8 @@ func _process(delta):
 	if(reloading):
 		print("Reloading!")
 		if(reloadTime >= reloadDuration):
-			return
 			finishReload();
+			return
 		reloadTime += 1; #include delta in here after you get it to work
 	
 func startReload():

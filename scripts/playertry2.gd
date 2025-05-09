@@ -30,25 +30,31 @@ var jumpheight = 2
 var sprinting = false
 var crouching = false
 
+var crouchSliding = true
+const crouchSlideStart = 17
+const crouchSlideEnd = 4
+const crouchSlideFric = 0.3
+
 
 # these are all VERY important variables and as such I'll talk a lot about them
-const debugging = true #except this one it just decides debug text
+const debugging = false #except this one it just decides debug text
 #How long it takes the player to get up to full steam
-const sprintMod = 3 #it takes time to get up to a sprint though
+const sprintMod = 2 #it takes time to get up to a sprint though
 const walkMod = 50 # walking players have a lot of control
 const crouchMod = 200 # crouching players have a LOT of control
 
 # used to limit speed. Affected by crouch and sprint bonus
-const maxspeed = 12 #16
-const crouchBonus = -5
-const sprintBonus = 6
+var curMax = 12
+const walkSpeed = 12 #16
+const crouchSpeed = 7
+const sprintSpeed = 18
 
 #This is a force applied to the player each time. It is applied AFTER acceleration is calculated
 const friction = 2 # 3 
 #this is similar to friction. at 50  3 equal to around 4 units of speed loss per tick
 const stopspeed = 50 # 50
 # used as a constant in  dosourcelikeaccelerate
-const accelerateamount = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
+const accelerate = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 
 
 #if friction is too high, it SEEMS like it totally zeroes out playerVelocity, but
@@ -82,11 +88,13 @@ func _input(event):
 	
 	#this might seem odd, but without these checks in this way,
 	# the player only sprints for 5-6 ticks before stopping.
-	if event.is_action_pressed("ui_sprint"):
+
+	if (event.is_action_pressed("ui_sprint")):
 		sprinting = true
 	if event.is_action_released("ui_sprint"):
 		sprinting = false
-			
+	
+	
 	if Input.is_action_pressed("ui_crouch"):
 		if(!crouching): #if we weren't already crouching, update camera
 			transitionCrouch(true) ## having this here...
@@ -176,7 +184,7 @@ func doHeadBob(time, prev)->float:
 	
 	#create a ratio that's dependent on playerspeed. 
 	#rougly between 1 and 1.5
-	var newRatio =  1 + (playerSpeed / (maxspeed * 2 ))
+	var newRatio =  1 + (playerSpeed / (curMax * 2 ))
 	#if(newRatio > 1):
 	#	print("Ratio: ", newRatio)
 		
@@ -217,13 +225,17 @@ func handleMove(delta):
 	
 	if (is_on_floor()):
 		
-		#this does a SHOCKINGLY good job at emulating source bunnyhopping
-		if (not canjump):
-			if(not Input.is_action_pressed("ui_jump") ): 
-				canjump = true
+		if(crouchSliding):
+			doCrouchSlide(delta)
 		
-		handleFloorSourcelike(delta)
-		
+		else:
+			#this does a SHOCKINGLY good job at emulating source bunnyhopping
+			if (not canjump):
+				if(not Input.is_action_pressed("ui_jump") ): 
+					canjump = true
+			
+			handleFloorSourcelike(delta)
+			
 	else: 
 		handleSourcelikeAir(delta)
 	
@@ -263,14 +275,17 @@ func handleFloorSourcelike(delta):
 	#and also fly.
 	
 	#Apply conditional modifiers to our max speed
-	var curMax = maxspeed;
+	curMax = walkSpeed;
 	var fricMod = 1;
 	
-	if(crouching && sprinting): #TODO: update this to be crouching and speed above threshhold?
-		curMax += crouchBonus; #only apply crouch movement bonus
-		fricMod = 0.5; #
-	elif(sprinting): curMax += sprintBonus; 
-	elif(crouching): curMax += crouchBonus; #the case of sprinting and crouching is handled further up
+	if(crouching): # Enter into a crouchslide!
+		curMax = crouchSpeed; #only apply crouch movement bonus
+		if(playerSpeed > crouchSlideStart):
+			crouchSliding = true
+			print("crouchsliding! speed:", playerSpeed)
+	elif(sprinting): curMax = sprintSpeed; 
+	
+	
 	
 	if desiredSpeed !=0.0 and desiredSpeed>curMax:
 		desiredVec *= curMax / desiredSpeed # update our vector to not be too silly
@@ -282,6 +297,35 @@ func handleFloorSourcelike(delta):
 		#deal with friction
 	handleFriction(delta, fricMod)
 
+#crouchsliding is much like walking, except we ignore keyboard inputs and only coast on mouse
+func doCrouchSlide(delta):
+	
+	#Crouchsliding will continue as long as the player is fast enough or still crouching
+	if(!(crouching) || (playerSpeed < crouchSlideEnd)):
+		print("No longer crouchsliding! speed:", playerSpeed)
+		crouchSliding = false #stop crouchsliding
+		handleMove(delta) #don't return, but instead break loop and re-evaluate
+	
+	
+	
+	#var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	#var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	#
+	##calculate a vector based of our inputs and angles
+	#var desiredVec = (sideAngle + forwAngle) #should we add some constant?
+	#
+	#var desiredDir = desiredVec.normalized()
+	#var desiredSpeed = desiredVec.length()
+	#
+	##ordinarily, there'd be a speed check here, but we don't have to worry 
+	##about players gaining speed while crouchsliding 
+	#
+	#desiredVec.y = 0; #but no y. 
+	#doSourceAccelerate(desiredDir, desiredSpeed, delta)
+	
+		#deal with friction
+	handleFriction(delta, crouchSlideFric)	
+
 
 func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 	
@@ -291,9 +335,7 @@ func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 	if addedspeed <= 0: #no need to do anything
 		return
 	
-	#if debugging:
-		#print("accelerating by:", addedspeed)
-	var acelspeed = accelerateamount * delta * desiredSpeed
+	var acelspeed = accelerate * delta * desiredSpeed
 	
 	playerVelocity.y -= gravAmount * delta
 	
@@ -356,9 +398,9 @@ func handleSourcelikeAir(delta):
 	
 	# TODO: UPDATE THIS
 	# clamp to game defined max speed # but what if we didn't? :)
-	if wishspeed != 0.0 and wishspeed > maxspeed:
-		wishvel *= maxspeed / wishspeed
-		wishspeed = maxspeed
+	if wishspeed != 0.0 and wishspeed > curMax:
+		wishvel *= curMax / wishspeed
+		wishspeed = curMax
 	
 	doSourceAirAccelerate(wishdir, wishspeed, delta) #let the airaccelerate function do its work
 
@@ -479,7 +521,6 @@ func get_delta_time() -> float:
 	return get_process_delta_time()
 	
 	
-
 
 # INVENTORY MANAGEMENT CODE
 var invenManager;

@@ -6,19 +6,15 @@ extends Node
 # the godot3 and godot4 sourcelike projects people have worked on
 
 #--KNOWN PROBLEMS:
+# it's REALLY hard to jump up on a platform
+#players can't "step" up a ledge, no matter how small
 # mouse wiggling gives a CRAZY boost to speed when moving
-# the dynamic headbobbing just adds jitteriness!
-# or is there just a lot of jitteriness?
 #------if players have a lot of forward velocity, they can't strafe!
-# this wasn't a problem before commit b6f117a, before which checkvelocityandmove was called 
-# twice (once during phys process and once during the accelerate functions)
-# It's a lot less prevalent now though
+# this wasn't a problem before commit b6f117a, but is a lot better
 
 #NEEDS DOING (in presumed order of precedence):
-# change the speed multipliers to one variable that is incremented/decremented based on player state
-#Add different accelerations based on player state?
+#mouse movement to crouchsliding?
 #KICKING!!!
-#crouch sliding
 #fix viewbob and add camera tilt
 #weapons
 #turret AI
