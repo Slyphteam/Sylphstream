@@ -33,13 +33,14 @@ var crouching = false
 # these are all VERY important variables and as such I'll talk a lot about them
 const debugging = true #except this one it just decides debug text
 #How long it takes the player to get up to full steam
+const sprintMod = 3 #it takes time to get up to a sprint though
 const walkMod = 50 # walking players have a lot of control
 const crouchMod = 200 # crouching players have a LOT of control
-const crouchMult = 0.6
-const sprintMod = 3 #it takes time to get up to a sprint though
-const sprintMult = 1.5
-# used to limit speed. Affected by crouchMult and sprintMult
+
+# used to limit speed. Affected by crouch and sprint bonus
 const maxspeed = 12 #16
+const crouchBonus = -5
+const sprintBonus = 6
 
 #This is a force applied to the player each time. It is applied AFTER acceleration is calculated
 const friction = 2 # 3 
@@ -47,8 +48,6 @@ const friction = 2 # 3
 const stopspeed = 50 # 50
 # used as a constant in  dosourcelikeaccelerate
 const accelerateamount = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
-
-
 
 
 #if friction is too high, it SEEMS like it totally zeroes out playerVelocity, but
@@ -256,8 +255,6 @@ func handleFloorSourcelike(delta):
 	#calculate a vector based of our inputs and angles
 	var desiredVec = (leftright * sideAngle) + (forback * forwAngle)
 	
-
-	
 	var desiredDir = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
 	
@@ -267,11 +264,13 @@ func handleFloorSourcelike(delta):
 	
 	#Apply conditional modifiers to our max speed
 	var curMax = maxspeed;
+	var fricMod = 1;
+	
 	if(crouching && sprinting): #TODO: update this to be crouching and speed above threshhold?
-		#TODO: add sliding code!
-		curMax *= crouchMult; #for the time being, just apply crouch
-	elif(sprinting): curMax *= sprintMult; 
-	elif(crouching): curMax *= crouchMult; #the case of sprinting and crouching is handled further up
+		curMax += crouchBonus; #only apply crouch movement bonus
+		fricMod = 0.5; #
+	elif(sprinting): curMax += sprintBonus; 
+	elif(crouching): curMax += crouchBonus; #the case of sprinting and crouching is handled further up
 	
 	if desiredSpeed !=0.0 and desiredSpeed>curMax:
 		desiredVec *= curMax / desiredSpeed # update our vector to not be too silly
@@ -281,7 +280,7 @@ func handleFloorSourcelike(delta):
 	doSourceAccelerate(desiredDir, desiredSpeed, delta)
 	
 		#deal with friction
-	handleFriction(delta)
+	handleFriction(delta, fricMod)
 
 
 func doSourceAccelerate(desiredDir, desiredSpeed, delta):
@@ -392,17 +391,17 @@ func checkVelocityAndMove():
 		#return # this still doesn't reduce the player velocity by a serious amount
 		playerVelocity *= 0.5 #this seems to work!
 	
-	#if(debugging):
-		#var speedcheck = playerVelocity.length()
-		#if(speedcheck > 0):
-			#print("Velocity:", speedcheck)
+	if(debugging):
+		var speedcheck = playerVelocity.length()
+		if(speedcheck > 0):
+			print("Velocity:", speedcheck)
 		
 	velocity = playerVelocity
 	move_and_slide()
 	playerVelocity = velocity
 
 #updates the playerVelocity variable based on friction variables
-func handleFriction(delta):
+func handleFriction(delta, fricMod):
 	var speed = playerVelocity.length()
 	
 	if speed <= 0:
@@ -412,10 +411,10 @@ func handleFriction(delta):
 	#var control = stopspeed if speed < stopspeed else speed
 	var control = speed
 	if (speed < stopspeed) :
-		control = stopspeed
+		control = stopspeed * fricMod #fricmod lets us dynamically alter applied friction
 	
 	# Add the amount to the drop amount.
-	var drop = control * friction * delta
+	var drop = control * friction * delta * fricMod
 
 	# scale the velocity
 	var newspeed = speed - drop
