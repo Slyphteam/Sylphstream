@@ -1,7 +1,10 @@
 # Welcome to Sylphstream!
 
 Sylphstream is a first person shooter deveoped in the Godot engine that aims to recreate the signature feel, high skill ceiling, and fast pace of source engine PVP by
-pitting players against machine-learning driven opponents in 1-on-1 combat
+pitting players against machine-learning driven opponents in 1-on-1 combat.
+
+All content (as it stands) is listed under CC BY-NC-SA 3.0
+[![license-badge](https://shields.io/badge/license-CC--BY--NC--SA-lightgrey?style=for-the-badge)](https://creativecommons.org/licenses/by-nc-sa/3.0/)
 
 ### A more detailed roadmap and design doc can be found in here:
 
