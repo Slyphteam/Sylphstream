@@ -27,6 +27,7 @@ shape = SubResource("ConvexPolygonShape3D_4flbx")
 script = ExtResource("2_dqkch")
 
 [node name="Timer" type="Timer" parent="inventory manager"]
+one_shot = true
 
 [node name="came" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58745, -0.254839)
@@ -36,3 +37,5 @@ far = 500.0
 [node name="weaponparent" parent="came" instance=ExtResource("2_onrkg")]
 transform = Transform3D(-2.18557e-08, 0.5, -2.18557e-08, 0, -2.18557e-08, -0.5, -0.5, -2.18557e-08, 9.55343e-16, -0.0225522, 0.610427, 0.0283728)
 script = ExtResource("3_qhqgy")
+
+[connection signal="timeout" from="inventory manager/Timer" to="inventory manager" method="_on_timer_timeout"]
