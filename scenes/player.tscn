@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=8 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/playertry2.gd" id="1_qhqgy"]
 [ext_resource type="Script" uid="uid://bkwepucx16mmq" path="res://scripts/inventorymanager.gd" id="2_dqkch"]
 [ext_resource type="PackedScene" uid="uid://k3fjxxfrvjw" path="res://scenes/weapon_parent.tscn" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://d3g2ip8m58ave" path="res://scripts/weapon_parent.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scenes/reticle.gd" id="5_qlg0r"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sh265"]
 height = 1.75
@@ -37,5 +38,25 @@ far = 500.0
 [node name="weaponparent" parent="came" instance=ExtResource("2_onrkg")]
 transform = Transform3D(-2.18557e-08, 0.5, -2.18557e-08, 0, -2.18557e-08, -0.5, -0.5, -2.18557e-08, 9.55343e-16, -0.0225522, 0.610427, 0.0283728)
 script = ExtResource("3_qhqgy")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_qlg0r")
 
 [connection signal="timeout" from="inventory manager/Timer" to="inventory manager" method="_on_timer_timeout"]
