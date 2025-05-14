@@ -106,7 +106,7 @@ func _input(event):
 			crouching = false
 	
 	if event.is_action_pressed("ui_reload"):
-		invenManager.doReload()
+		invenManager.startReload()
 		
 func InputMouse(event):
 	xlook += -event.relative.y * mousesensitivity
