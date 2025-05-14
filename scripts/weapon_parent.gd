@@ -43,22 +43,17 @@ func doReload():
 	
 	var ammoPool = manager.getAmmoAmt(chambering)
 	var takenAmount = 0;
-	if(ammoPool >= maxCapacity):
-		takenAmount += (maxCapacity - capacity)
+	#if(ammoPool >= maxCapacity):
+	takenAmount += (maxCapacity - capacity)
 		 #need to do partial reloads
 		
 	if(capacity > 0):
 		takenAmount+=1
-
-	manager.updateAmmoAmt(chambering, takenAmount)
-	capacity+=takenAmount
 	
-	print("Finished reload! Rounds: ", capacity)
-
-#func startReload():
-	#print("Starting reload!")
-	#reloading = true
-#
-#func finishReload():
-	#
-	#reloading = false
+	print("  Capacity prior to update: ", capacity)
+	
+	var newCap = manager.withdrawAmmo(chambering, takenAmount)
+	print("  withdrawn ammo: ", newCap)
+	
+	capacity += newCap
+	print("  Finished reload! Rounds: ", capacity)

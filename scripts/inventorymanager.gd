@@ -8,10 +8,20 @@ var heldItem
 var modelreference
 @onready var reloadtimer = $Timer
 
-func updateAmmoAmt(amTyp, amount):
+func withdrawAmmo(amTyp, amount):
 	if(amTyp == 1):
 		print("Taking ", amount, " from pool of ", heldAmmunition.ammoPistol)
+		if(amount >= heldAmmunition.ammoPistol):
+			
+			
+			print("making do with ", heldAmmunition.ammoPistol)
+			var leftover = heldAmmunition.ammoPistol
+			heldAmmunition.ammoPistol = 0
+			return leftover
+		
 		heldAmmunition.ammoPistol -= amount;
+		return amount
+	
 		
 	else:
 		print("Tried to update invalid ammo type!")
@@ -28,7 +38,7 @@ func getAmmoAmt(amTyp) -> int:
 	
 func _init():#wepRef):
 	heldAmmunition.ammoBlank = 100
-	heldAmmunition.ammoPistol = 80
+	heldAmmunition.ammoPistol = 16
 	#modelreference = wepRef
 	heldItem = weapParent.new(Ammotypes, self)
 	#reloadtimer.wait_time = 1.5
