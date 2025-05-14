@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/playertry2.gd" id="1_qhqgy"]
-[ext_resource type="Script" uid="uid://bkwepucx16mmq" path="res://scenes/itemnode.gd" id="2_dqkch"]
+[ext_resource type="Script" uid="uid://bkwepucx16mmq" path="res://scripts/inventorymanager.gd" id="2_dqkch"]
 [ext_resource type="PackedScene" uid="uid://k3fjxxfrvjw" path="res://scenes/weapon_parent.tscn" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://d3g2ip8m58ave" path="res://scripts/weapon_parent.gd" id="3_qhqgy"]
 
@@ -25,6 +25,8 @@ shape = SubResource("ConvexPolygonShape3D_4flbx")
 
 [node name="inventory manager" type="Node" parent="."]
 script = ExtResource("2_dqkch")
+
+[node name="Timer" type="Timer" parent="inventory manager"]
 
 [node name="came" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58745, -0.254839)
