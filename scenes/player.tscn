@@ -59,4 +59,40 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_qlg0r")
 
+[node name="Top" type="Line2D" parent="Control/CenterContainer"]
+points = PackedVector2Array(0, -15, 0, -25)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Top_highlight" type="Line2D" parent="Control/CenterContainer/Top"]
+points = PackedVector2Array(0, -16, 0, -24)
+width = 1.0
+
+[node name="Bot" type="Line2D" parent="Control/CenterContainer"]
+points = PackedVector2Array(0, 15, 0, 25)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Bot_highlight" type="Line2D" parent="Control/CenterContainer/Bot"]
+points = PackedVector2Array(0, 16, 0, 24)
+width = 1.0
+
+[node name="Left" type="Line2D" parent="Control/CenterContainer"]
+points = PackedVector2Array(-15, 0, -25, 0)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Left_highlight" type="Line2D" parent="Control/CenterContainer/Left"]
+points = PackedVector2Array(-16, 0, -24, 0)
+width = 1.0
+
+[node name="Right" type="Line2D" parent="Control/CenterContainer"]
+points = PackedVector2Array(15, 0, 25, 0)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Right_highlight" type="Line2D" parent="Control/CenterContainer/Right"]
+points = PackedVector2Array(16, 0, 24, 0)
+width = 1.0
+
 [connection signal="timeout" from="inventory manager/Timer" to="inventory manager" method="_on_timer_timeout"]
