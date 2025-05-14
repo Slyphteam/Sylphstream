@@ -67,8 +67,8 @@ const accelerate = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 @onready var playerCam = $came
 @onready var playerShape = $shape
 @onready var playerCollider = $playercollide
-@onready var invenManager = $"inventory manager"
-
+#@onready var invenManager = $"inventory manager"
+@onready var invenManager = $came/weapon_rig
 #func _init():
 #	invenManager = invenManagerClass.new()#$came/weaponparent)
 

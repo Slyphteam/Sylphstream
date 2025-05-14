@@ -1,9 +1,10 @@
+extends Node3D
+@onready var reloadtimer = $debugReloadtimer
 #script to be depricated
 
-extends Node # find a better body to extend
 const wepName  = "imcoder!"
 const selection = 1
-var manager
+@onready var manager = $".."
 var chambering : int
 const maxCapacity = 8
 var capacity = 0
@@ -13,18 +14,19 @@ const reloadDuration = 4
 var reloadTime = 0
 
 
-func _init(ammoTypes, assignedManager):
-	print("gun parent loaded!")
-	chambering = ammoTypes.ammoPistol
-	manager = assignedManager
+func _init():#ammoTypes, assignedManager):
+	chambering = 1 # pistol
+	#pass
+	#print("gun parent loaded!")
+	#chambering = ammoTypes.ammoPistol
+	#manager = assignedManager
 	capacity = maxCapacity
-	
+	#
 
 func tryShoot():
 	
-	
 	if(capacity > 0):
-		print("pew!")
+		print("pew!!!!")
 		capacity-=1
 	else:
 		print("click!")
@@ -40,9 +42,15 @@ func tryShoot():
 			#return
 		#reloadTime += 1; #include delta in here after you get it to work
 
+func startReload():
+	reloadtimer.start();
 
-func doReload():
+
+#func doReload():
 	
+
+
+func _on_debug_reloadtimer_timeout() -> void:
 	var ammoPool = manager.getAmmoAmt(chambering)
 	var takenAmount = 0;
 	#if(ammoPool >= maxCapacity):

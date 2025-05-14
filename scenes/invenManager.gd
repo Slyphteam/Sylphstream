@@ -1,13 +1,11 @@
-#script to be depredcated
 extends Node
-var weapParent = load("res://scripts/weapon_parent.gd")
 	
 enum Ammotypes {ammoBlank, ammoPistol, ammoRifle}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
-var heldItem 
+@onready var heldItem = $debug_gun
 var modelreference
-@onready var reloadtimer = $Timer
+
 
 func withdrawAmmo(amTyp, amount):
 	if(amTyp == 1):
@@ -41,7 +39,7 @@ func _init():#wepRef):
 	heldAmmunition.ammoBlank = 100
 	heldAmmunition.ammoPistol = 16
 	#modelreference = wepRef
-	
+	#heldItem = weapParent.new(Ammotypes, self)
 	#reloadtimer.wait_time = 1.5
 	
 	#inventory manager function that tells the held item to attempt shooting
@@ -50,17 +48,21 @@ func doShoot():
 	
 	#inventory manager function that tells the held item to attempt reloading
 func startReload():
-	if(!reloading):
-		#TODO: logic here to determine if we CAN reload
-		print("starting reload! 9mm ammo: ", heldAmmunition.ammoPistol);
-		reloadtimer.start()
-		reloading = true
 	
+	if(!reloading):
+		heldItem.startReload()
+	
+	#if(!reloading):
+		##TODO: logic here to determine if we CAN reload
+		#print("starting reload! 9mm ammo: ", heldAmmunition.ammoPistol);
+		#reloadtimer.start()
+		#reloading = true
+	#
 
 # this will be called ONCE the reload timer is finished
-func _on_timer_timeout() -> void:
-	if (reloading):
-		heldItem.doReload()
-		reloading = false
-	else:
-		pass # Replace with function body.
+#func _on_timer_timeout() -> void:
+	#if (reloading):
+		#heldItem.doReload()
+		#reloading = false
+	#else:
+		#pass # Replace with function body.
