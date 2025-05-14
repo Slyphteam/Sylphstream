@@ -23,7 +23,7 @@ mesh = SubResource("CylinderMesh_sh265")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0125, 0)
 shape = SubResource("ConvexPolygonShape3D_4flbx")
 
-[node name="inventory manager" type="Node" parent="."]
+[node name="itemnode" type="Node" parent="."]
 script = ExtResource("2_dqkch")
 
 [node name="came" type="Camera3D" parent="."]

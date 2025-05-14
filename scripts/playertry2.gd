@@ -67,9 +67,10 @@ const accelerate = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 @onready var playerCam = $came
 @onready var playerShape = $shape
 @onready var playerCollider = $playercollide
+@onready var invenManager = $"inventory manager"
 
-func _init():
-	invenManager = invenManagerClass.new()#$came/weaponparent)
+#func _init():
+#	invenManager = invenManagerClass.new()#$came/weaponparent)
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -523,29 +524,5 @@ func get_delta_time() -> float:
 	
 
 # INVENTORY MANAGEMENT CODE
-var invenManager;
-class invenManagerClass:
-	var weapParent = load("res://scripts/weapon_parent.gd")
-	
-	enum Ammotypes {ammoBlank, ammoPistol, ammoRifle}
-	var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
-	
-	var heldItem 
-	var modelreference
-	
-	func getAmmoAmt(type):
-		return heldAmmunition.type
-	
-	func _init():#wepRef):
-		heldAmmunition.ammoBlank = 100
-		heldAmmunition.ammoPistol = 24
-		#modelreference = wepRef
-		heldItem = weapParent.new(Ammotypes, self)
-	
-	#inventory manager function that tells the held item to attempt shooting
-	func doShoot():
-		heldItem.tryShoot()
-	
-	#inventory manager function that tells the held item to attempt reloading
-	func doReload():
-		heldItem.startReload()
+
+#class invenManagerClass:
