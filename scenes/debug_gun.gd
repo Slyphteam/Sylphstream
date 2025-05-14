@@ -12,6 +12,7 @@ var reloadtime = 1.5
 
 const reloadDuration = 4
 var reloadTime = 0
+var reloading = false
 
 
 func _init():#ammoTypes, assignedManager):
@@ -43,14 +44,18 @@ func tryShoot():
 		#reloadTime += 1; #include delta in here after you get it to work
 
 func startReload():
-	reloadtimer.start();
+	if(!reloading):
+		print("Starting reload!")
+		reloading = true
+		reloadtimer.start();
 
 
 #func doReload():
 	
 
-
+# this is the function that handles all reloading
 func _on_debug_reloadtimer_timeout() -> void:
+	reloading = false
 	var ammoPool = manager.getAmmoAmt(chambering)
 	var takenAmount = 0;
 	#if(ammoPool >= maxCapacity):
@@ -60,10 +65,9 @@ func _on_debug_reloadtimer_timeout() -> void:
 	if(capacity > 0):
 		takenAmount+=1
 	
-	print("  Capacity prior to update: ", capacity)
 	
 	var newCap = manager.withdrawAmmo(chambering, takenAmount)
-	print("  withdrawn ammo: ", newCap)
+	#print("  withdrawn ammo: ", newCap)
 	
 	capacity += newCap
-	print("  Finished reload! Rounds: ", capacity)
+	print("Finished reload! Rounds: ", capacity)

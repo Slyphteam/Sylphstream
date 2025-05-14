@@ -49,8 +49,8 @@ func doShoot():
 	#inventory manager function that tells the held item to attempt reloading
 func startReload():
 	
-	if(!reloading):
-		heldItem.startReload()
+	
+	heldItem.startReload()
 	
 	#if(!reloading):
 		##TODO: logic here to determine if we CAN reload
