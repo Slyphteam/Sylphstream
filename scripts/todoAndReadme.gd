@@ -6,14 +6,15 @@ extends Node
 # the godot3 and godot4 sourcelike projects people have worked on
 
 #--KNOWN PROBLEMS:
-# it's REALLY hard to jump up on a platform
+# it's REALLY hard to jump up on a platform (is it?_
 #players can't "step" up a ledge, no matter how small
 # mouse wiggling gives a CRAZY boost to speed when moving
 #------if players have a lot of forward velocity, they can't strafe!
 # this wasn't a problem before commit b6f117a, but is a lot better
 
 #NEEDS DOING (in presumed order of precedence):
-#mouse movement to crouchsliding?
+#weapon switching
+#dynamic crosshair (once shooting)
 #KICKING!!!
 #fix viewbob and add camera tilt
 #weapons

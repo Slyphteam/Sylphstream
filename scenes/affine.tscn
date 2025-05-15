@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c835kamfm3byn"]
+
+[ext_resource type="PackedScene" uid="uid://di7d712p2saor" path="res://models/affine.glb" id="1_0yccn"]
+
+[node name="affine" instance=ExtResource("1_0yccn")]

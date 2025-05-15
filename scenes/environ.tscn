@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=29 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/player.tscn" id="1_366xt"]
 [ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/turret.tscn" id="2_ldjjd"]
 [ext_resource type="PackedScene" uid="uid://bcnk6qssnjhpe" path="res://scenes/fourier_9.tscn" id="3_ovnwt"]
+[ext_resource type="PackedScene" uid="uid://c835kamfm3byn" path="res://scenes/affine.tscn" id="4_20ccn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -66,10 +67,10 @@ size = Vector3(4, 1, 4)
 points = PackedVector3Array(-2, -0.5, -2, -2, 0.5, -2, 2, -0.5, -2, -2, -0.5, 2, -2, 0.5, 2, 2, 0.5, -2, 2, -0.5, 2, 2, 0.5, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6wnxl"]
-size = Vector3(1, 1, 8)
+size = Vector3(1, 1.5, 8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ycbjd"]
-size = Vector3(1, 1, 16)
+size = Vector3(1, 1.5, 16)
 
 [sub_resource type="BoxMesh" id="BoxMesh_drpe3"]
 size = Vector3(6, 4, 6)
@@ -180,17 +181,28 @@ mesh = SubResource("BoxMesh_ovnwt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_20ccn")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6377, 1.02011, 21.4463)
+[node name="Range" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.638, 1.02, 21.446)
 mesh = SubResource("BoxMesh_6wnxl")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.1337, 1.02011, 16.8556)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/Range"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.4957, 0.00011003, -4.5904)
 mesh = SubResource("BoxMesh_ycbjd")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.1337, 1.02011, 26.0492)
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Environment/Range/MeshInstance3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1936, 0, 0)
 mesh = SubResource("BoxMesh_ycbjd")
+skeleton = NodePath("../../..")
+
+[node name="slyphstream turret" parent="Environment/Range" instance=ExtResource("2_ldjjd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.0911, -0.505132, -1.7128)
+
+[node name="fourier9" parent="Environment/Range" instance=ExtResource("3_ovnwt")]
+transform = Transform3D(0.0601629, 0, -0.242653, 0, 0.25, 0, 0.242653, 0, 0.0601629, 0.500229, 0.612839, -3.83542)
+
+[node name="affine" parent="Environment/Range" instance=ExtResource("4_20ccn")]
+transform = Transform3D(0.332691, -0.558405, 0, 0.558405, 0.332691, 0, 0, 0, 0.65, -0.404499, 0.584593, -2.66398)
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.1564, 1.13379, -21.4827)
@@ -219,9 +231,3 @@ shape = SubResource("ConvexPolygonShape3D_36h38")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0u4ar")
-
-[node name="slyphstream turret" parent="." instance=ExtResource("2_ldjjd")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 46.7291, 0.514868, 19.7332)
-
-[node name="fourier9" parent="." instance=ExtResource("3_ovnwt")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 42.6286, 1.42702, 17.8148)
