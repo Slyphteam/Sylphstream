@@ -1,9 +1,9 @@
 [gd_scene load_steps=29 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/Player associated/turret.tscn" id="1_20ccn"]
-[ext_resource type="PackedScene" uid="uid://bcnk6qssnjhpe" path="res://scenes/Player associated/fourier_9.tscn" id="2_2yn2u"]
-[ext_resource type="PackedScene" uid="uid://c835kamfm3byn" path="res://scenes/Player associated/affine.tscn" id="4_20ccn"]
-[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/Player associated/player.tscn" id="4_m2myf"]
+[ext_resource type="PackedScene" uid="uid://cxqoq8el0tj0a" path="res://models/glbs and textures/affine.glb" id="2_l4465"]
+[ext_resource type="PackedScene" uid="uid://cvknlaho2280u" path="res://models/glbs and textures/fourier9.glb" id="3_l4465"]
+[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/player2.tscn" id="4_2yn2u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -195,11 +195,8 @@ skeleton = NodePath("../../..")
 [node name="slyphstream turret" parent="Environment/Range" instance=ExtResource("1_20ccn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.0911, -0.505132, -1.7128)
 
-[node name="fourier9" parent="Environment/Range" instance=ExtResource("2_2yn2u")]
-transform = Transform3D(0.0601629, 0, -0.242653, 0, 0.25, 0, 0.242653, 0, 0.0601629, 0.500229, 0.612839, -3.83542)
-
-[node name="affine" parent="Environment/Range" instance=ExtResource("4_20ccn")]
-transform = Transform3D(0.332691, -0.558405, 0, 0.558405, 0.332691, 0, 0, 0, 0.65, -0.404499, 0.584593, -2.66398)
+[node name="affine" parent="Environment/Range" instance=ExtResource("2_l4465")]
+transform = Transform3D(0.785986, 2.70243e-08, -0.618244, 0.618244, -3.43566e-08, 0.785986, 0, -1, -4.37114e-08, -0.424908, 0.848665, -4.28248)
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.1564, 1.13379, -21.4827)
@@ -229,4 +226,8 @@ shape = SubResource("ConvexPolygonShape3D_36h38")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0u4ar")
 
-[node name="Player" parent="." instance=ExtResource("4_m2myf")]
+[node name="Player2" parent="." instance=ExtResource("4_2yn2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23113, 0)
+
+[node name="fourier9" parent="." instance=ExtResource("3_l4465")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5122, 2, 18.5707)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bglxhrjkl00gg"]
 
-[ext_resource type="PackedScene" uid="uid://bqxnl4mvtgpau" path="res://models/slyphstream turret.glb" id="1_3oylf"]
+[ext_resource type="PackedScene" uid="uid://bqxnl4mvtgpau" path="res://models/glbs and textures/slyphstream turret.glb" id="1_3oylf"]
 
 [node name="slyphstream turret" instance=ExtResource("1_3oylf")]
 

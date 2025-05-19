@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://by1cb6m3fiv80"
-path="res://.godot/imported/weapon parent.glb-49d604a0ded61bc36a9a068959a9e681.scn"
+path="res://.godot/imported/weapon parent.glb-0101b486a2fbd8b218b64fdee4279be3.scn"
 
 [deps]
 
-source_file="res://models/weapon parent.glb"
-dest_files=["res://.godot/imported/weapon parent.glb-49d604a0ded61bc36a9a068959a9e681.scn"]
+source_file="res://models/glbs and textures/weapon parent.glb"
+dest_files=["res://.godot/imported/weapon parent.glb-0101b486a2fbd8b218b64fdee4279be3.scn"]
 
 [params]
 

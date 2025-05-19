@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b28q0hswb65ia"
-path="res://.godot/imported/fourier9.glb-056a3882544b9785177f830c0e39d923.scn"
+uid="uid://bqxnl4mvtgpau"
+path="res://.godot/imported/slyphstream turret.glb-fbd867081cc928660587f255f9e06bc0.scn"
 
 [deps]
 
-source_file="res://models/fourier9.glb"
-dest_files=["res://.godot/imported/fourier9.glb-056a3882544b9785177f830c0e39d923.scn"]
+source_file="res://models/glbs and textures/slyphstream turret.glb"
+dest_files=["res://.godot/imported/slyphstream turret.glb-fbd867081cc928660587f255f9e06bc0.scn"]
 
 [params]
 

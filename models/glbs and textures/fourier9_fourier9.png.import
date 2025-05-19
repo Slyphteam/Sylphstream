@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doxy4xvg5lljk"
-path.s3tc="res://.godot/imported/weapon parent_parent.png-54af6180b2febbc1e850af086788c0da.s3tc.ctex"
+uid="uid://bvexp2c30hfnq"
+path.s3tc="res://.godot/imported/fourier9_fourier9.png-bb16314e64a3db474656805c92024e4a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "a34d7719214572e9da45f9cb4a5eab2e"
+"md5": "ed2e7588dfbcc22b7ddbc999af51ffdd"
 }
 
 [deps]
 
-source_file="res://models/weapon parent_parent.png"
-dest_files=["res://.godot/imported/weapon parent_parent.png-54af6180b2febbc1e850af086788c0da.s3tc.ctex"]
+source_file="res://models/glbs and textures/fourier9_fourier9.png"
+dest_files=["res://.godot/imported/fourier9_fourier9.png-bb16314e64a3db474656805c92024e4a.s3tc.ctex"]
 
 [params]
 

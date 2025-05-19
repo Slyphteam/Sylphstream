@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcnk6qssnjhpe"]
-
-[ext_resource type="PackedScene" uid="uid://b28q0hswb65ia" path="res://models/fourier9.glb" id="1_08pr7"]
-
-[node name="fourier9" instance=ExtResource("1_08pr7")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, -1)
