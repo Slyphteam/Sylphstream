@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=8 format=3 uid="uid://c1comohc3tpa5"]
 
-[ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/playertry2.gd" id="1_qhqgy"]
-[ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scenes/reticle.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/Player movement and input.gd" id="1_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://k3fjxxfrvjw" path="res://scenes/Player associated/weapon_parent.tscn" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scenes/Player associated/reticle.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scenes/Player associated/invenManager.gd" id="5_tuyoq"]
+[ext_resource type="Script" uid="uid://eus3n6wjx51q" path="res://scenes/Player associated/debug_gun.gd" id="6_fjrip"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sh265"]
 height = 1.75
@@ -9,7 +12,7 @@ height = 1.75
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4flbx"]
 points = PackedVector3Array(0.117981, -0.839238, -0.48528, 0.117981, 0.839238, 0.48528, 0.196793, 0.83988, 0.459314, -0.196811, 0.839864, -0.459306, -0.459309, -0.839867, 0.196805, 0.485298, -0.839306, 0.117909, 0.459305, 0.8399, -0.196813, -0.459309, 0.839867, 0.196805, -0.117912, -0.839268, 0.485297, -0.401046, -0.82793, -0.297573, -0.485277, 0.839232, -0.117994, 0.196793, -0.83988, 0.459314, 0.459305, 0.8399, 0.196813, 0.196793, 0.83988, -0.459314, 0.401083, -0.828051, -0.297523, -0.297516, 0.828021, 0.401088, -0.196811, -0.839864, -0.459306, 0.378362, -0.835003, 0.326204, -0.485277, -0.839232, -0.117994, -0.297516, -0.828021, 0.401088, -0.401046, 0.82793, -0.297573, 0.485298, -0.839306, -0.117909, -0.117912, 0.839268, 0.485297, -0.117912, 0.839268, -0.485297, 0.485298, 0.839306, -0.117909, 0.297563, 0.82795, 0.401053, 0.297563, 0.82795, -0.401053, -0.485277, 0.839232, 0.117994, 0.297563, -0.82795, -0.401053, -0.401046, -0.82793, 0.297573, -0.297516, 0.828021, -0.401088, -0.117912, -0.839268, -0.485297)
 
-[node name="Player2" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_qhqgy")
 
 [node name="playercollide" type="MeshInstance3D" parent="."]
@@ -27,6 +30,14 @@ fov = 100.0
 far = 500.0
 
 [node name="weapon_rig" type="Node3D" parent="came"]
+script = ExtResource("5_tuyoq")
+
+[node name="debug_gun" parent="came/weapon_rig" instance=ExtResource("2_onrkg")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.1, 1.4, 0)
+script = ExtResource("6_fjrip")
+
+[node name="debugReloadtimer" type="Timer" parent="came/weapon_rig/debug_gun"]
+one_shot = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -83,3 +94,5 @@ default_color = Color(0, 0, 0, 1)
 [node name="Right_highlight" type="Line2D" parent="Control/CenterContainer/Right"]
 points = PackedVector2Array(16, 0, 24, 0)
 width = 1.0
+
+[connection signal="timeout" from="came/weapon_rig/debug_gun/debugReloadtimer" to="came/weapon_rig/debug_gun" method="_on_debug_reloadtimer_timeout"]

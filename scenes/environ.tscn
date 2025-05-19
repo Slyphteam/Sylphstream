@@ -1,9 +1,9 @@
 [gd_scene load_steps=29 format=3 uid="uid://bh3powm0a35or"]
 
-[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/player.tscn" id="1_366xt"]
-[ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/turret.tscn" id="2_ldjjd"]
-[ext_resource type="PackedScene" uid="uid://bcnk6qssnjhpe" path="res://scenes/fourier_9.tscn" id="3_ovnwt"]
-[ext_resource type="PackedScene" uid="uid://c835kamfm3byn" path="res://scenes/affine.tscn" id="4_20ccn"]
+[ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/Player associated/turret.tscn" id="1_20ccn"]
+[ext_resource type="PackedScene" uid="uid://bcnk6qssnjhpe" path="res://scenes/Player associated/fourier_9.tscn" id="2_2yn2u"]
+[ext_resource type="PackedScene" uid="uid://c835kamfm3byn" path="res://scenes/Player associated/affine.tscn" id="4_20ccn"]
+[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/Player associated/player.tscn" id="4_m2myf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -192,10 +192,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1936, 0, 0)
 mesh = SubResource("BoxMesh_ycbjd")
 skeleton = NodePath("../../..")
 
-[node name="slyphstream turret" parent="Environment/Range" instance=ExtResource("2_ldjjd")]
+[node name="slyphstream turret" parent="Environment/Range" instance=ExtResource("1_20ccn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.0911, -0.505132, -1.7128)
 
-[node name="fourier9" parent="Environment/Range" instance=ExtResource("3_ovnwt")]
+[node name="fourier9" parent="Environment/Range" instance=ExtResource("2_2yn2u")]
 transform = Transform3D(0.0601629, 0, -0.242653, 0, 0.25, 0, 0.242653, 0, 0.0601629, 0.500229, 0.612839, -3.83542)
 
 [node name="affine" parent="Environment/Range" instance=ExtResource("4_20ccn")]
@@ -229,4 +229,4 @@ shape = SubResource("ConvexPolygonShape3D_36h38")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0u4ar")
 
-[node name="Player" parent="." instance=ExtResource("1_366xt")]
+[node name="Player" parent="." instance=ExtResource("4_m2myf")]

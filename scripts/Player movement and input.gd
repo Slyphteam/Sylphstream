@@ -30,7 +30,7 @@ var jumpheight = 2
 var sprinting = false
 var crouching = false
 
-var crouchSliding = true
+var crouchSliding = false
 const crouchSlideStart = 17
 const crouchSlideEnd = 4
 const crouchSlideFric = 0.3
