@@ -1,16 +1,17 @@
 [gd_resource type="Resource" script_class="Wep" load_steps=3 format=3 uid="uid://bhtixavevlm6g"]
 
+[ext_resource type="ArrayMesh" uid="uid://0nhfjsnbpesa" path="res://models/mesh models/affine mesh.res" id="1_ekmq1"]
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponresources/weapon_resource.gd" id="1_seqrj"]
-[ext_resource type="ArrayMesh" path="res://models/mesh models/affine mesh.res" id="1_yq83c"]
 
 [resource]
 script = ExtResource("1_seqrj")
 wepName = &"Affine"
 selection = 1
-mesh = ExtResource("1_yq83c")
-position = Vector3(0, 0, 0)
-rotation = Vector3(0, 0, 0)
-scale = Vector3(0, 0, 0)
+mesh = ExtResource("1_ekmq1")
+position = Vector3(0, -0.3, -0.3)
+rotation = Vector3(90, 90, 0)
+scale = Vector3(0.3, 0.3, 0.3)
+scalar = 0.0
 chambering = 2
 maxCapacity = 10
 capacity = 0
