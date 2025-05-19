@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Wep" load_steps=2 format=3 uid="uid://d20dbcn47dl7l"]
+
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponresources/weapon_resource.gd" id="1_jg5tv"]
+
+[resource]
+script = ExtResource("1_jg5tv")
+wepName = &""
+selection = 0
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 0, 0)
+scale = Vector3(0, 0, 0)
+scalar = 0.0
+chambering = 0
+maxCapacity = 0
+capacity = 0
+reloadtime = 0.0
+reloading = false
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"
