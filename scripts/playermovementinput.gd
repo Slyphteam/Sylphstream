@@ -67,8 +67,8 @@ const accelerate = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 #that seems like it would make a lot of sense.
 
 @onready var playerCam = $came
-@onready var playerShape = $shape
-@onready var playerCollider = $playercollide
+@onready var playerShape = $playermodel
+@onready var playerCollider = $playercollider
 #@onready var invenManager = $"inventory manager"
 @onready var invenManager = $came/weapon_rig
 #func _init():
@@ -118,6 +118,7 @@ func InputMouse(event):
 func ViewAngles():
 	playerCam.rotation_degrees.x = xlook
 	playerCam.rotation_degrees.y = ylook
+	playerShape.rotation_degrees.y = ylook
 
 # handle wasd inputs
 # will listen to keypresses and update the movement variables above
@@ -205,22 +206,22 @@ func doHeadBob(time, prev)->float:
 
 #Updates the player camera as they enter or leave a crouching state.
 func transitionCrouch(entering):
-	
-	if(playerShape.scale.y > 1 || playerShape.scale.y < 0.2 || playerCollider.scale.y > 1 || playerCollider.scale.y < 0.2 ):
+	#playerShape.scale.y > 1 || playerShape.scale.y < 0.2 ||
+	if( playerCollider.scale.y > 1 || playerCollider.scale.y < 0.2 ):
 		return
 	
 	if(entering): #we are entering crouch
-		playerShape.scale.y -= 0.8
-		playerCollider.scale.y -= 0.8
+	#	playerShape.scale.y -= 0.8
+		playerCollider.scale.y -= 0.4
 
 	else: #we are exiting crouch
 		#TODO: add a check to see if the player has enough room TO stand
 		#return if they don't
-		playerShape.scale.y += 0.8
-		playerCollider.scale.y += 0.8
+	#	playerShape.scale.y += 0.8
+		playerCollider.scale.y += 0.4
 	
 	#in theory this code should never do anything since we have an early return but I've left it JIC
-	playerShape.scale.y = clamp(playerShape.scale.y, 0.2, 1)
+	#playerShape.scale.y = clamp(playerShape.scale.y, 0.2, 1)
 	playerCollider.scale.y = clamp(playerCollider.scale.y, 0.2, 1)
 	
 # this is the MAIN function that determines where and how the player will move

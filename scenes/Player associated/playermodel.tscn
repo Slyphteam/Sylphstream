@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dadgd6x31ovo8"]
+
+[ext_resource type="PackedScene" uid="uid://b663es48t2t74" path="res://models/glbs and textures/playermodel.glb" id="1_ac63u"]
+
+[node name="playermodel" instance=ExtResource("1_ac63u")]
+
+[node name="Millian_001" parent="." index="0"]
+transform = Transform3D(-0.2, 3.01992e-08, 0, -3.01992e-08, -0.2, 0, 0, 0, 0.2, 0, 1.35111, -0.0197619)
+
+[node name="Legs armature_001" parent="." index="1"]
+transform = Transform3D(-0.2, 3.01992e-08, 0, -3.01992e-08, -0.2, 0, 0, 0, 0.2, 0, 1.35111, -0.0197619)
