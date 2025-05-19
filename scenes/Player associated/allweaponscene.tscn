@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://digru0udrlad7"]
-
-[ext_resource type="ArrayMesh" uid="uid://0nhfjsnbpesa" path="res://models/mesh models/affine mesh.res" id="2_ai5wy"]
-
-[node name="parent" type="Node3D"]
-
-[node name="AffineMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.871354, 0, -4.36919)
-mesh = ExtResource("2_ai5wy")

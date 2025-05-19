@@ -210,14 +210,14 @@ func transitionCrouch(entering):
 		return
 	
 	if(entering): #we are entering crouch
-		playerShape.scale.y -= 1
-		playerCollider.scale.y -= 1
+		playerShape.scale.y -= 0.8
+		playerCollider.scale.y -= 0.8
 
 	else: #we are exiting crouch
 		#TODO: add a check to see if the player has enough room TO stand
 		#return if they don't
-		playerShape.scale.y += 1
-		playerCollider.scale.y += 1
+		playerShape.scale.y += 0.8
+		playerCollider.scale.y += 0.8
 	
 	#in theory this code should never do anything since we have an early return but I've left it JIC
 	playerShape.scale.y = clamp(playerShape.scale.y, 0.2, 1)

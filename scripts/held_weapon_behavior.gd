@@ -49,7 +49,6 @@ func startReload():
 
 func _on_reload_timer_timeout() -> void:
 	reloading = false
-	var ammoPool = manager.getAmmoAmt(chambering)
 	var takenAmount = 0;
 	takenAmount += (maxCapacity - capacity)
 		
