@@ -16,20 +16,20 @@ func _init():
 	capacity = maxCapacity
 
 func tryShoot():
-	pass
-	#if(capacity > 0):
-		#print("pew!!!!")
-		#capacity-=1
-	#else:
-		#print("click!")
+
+	if(capacity > 0):
+		print("pew!!!!")
+		capacity-=1
+	else:
+		print("click!")
 		
 
 func startReload():
-	pass
-	#if(!reloading):
-		#print("Starting reload!")
-		#reloading = true
-		#reloadtimer.start();
+
+	if(!reloading):
+		print("Starting reload!")
+		reloading = true
+		reloadtimer.start();
 
 
 # this is the function that handles all reloading

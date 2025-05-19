@@ -1,10 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=5 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/playertry2.gd" id="1_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://k3fjxxfrvjw" path="res://scenes/weapon_parent.tscn" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scenes/reticle.gd" id="5_qlg0r"]
-[ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scenes/invenManager.gd" id="5_tuyoq"]
-[ext_resource type="Script" uid="uid://eus3n6wjx51q" path="res://scenes/debug_gun.gd" id="6_fjrip"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sh265"]
 height = 1.75
@@ -30,14 +27,6 @@ fov = 100.0
 far = 500.0
 
 [node name="weapon_rig" type="Node3D" parent="came"]
-script = ExtResource("5_tuyoq")
-
-[node name="debug_gun" parent="came/weapon_rig" instance=ExtResource("2_onrkg")]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.1, 1.4, 0)
-script = ExtResource("6_fjrip")
-
-[node name="debugReloadtimer" type="Timer" parent="came/weapon_rig/debug_gun"]
-one_shot = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -94,5 +83,3 @@ default_color = Color(0, 0, 0, 1)
 [node name="Right_highlight" type="Line2D" parent="Control/CenterContainer/Right"]
 points = PackedVector2Array(16, 0, 24, 0)
 width = 1.0
-
-[connection signal="timeout" from="came/weapon_rig/debug_gun/debugReloadtimer" to="came/weapon_rig/debug_gun" method="_on_debug_reloadtimer_timeout"]
