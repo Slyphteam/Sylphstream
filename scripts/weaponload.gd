@@ -10,6 +10,9 @@ func load_weapon():
 	weapon_mesh.mesh = WEP_TYPE.mesh
 	position = WEP_TYPE.position
 	rotation_degrees = WEP_TYPE.rotation
+	scale = WEP_TYPE.scale
+	#for i in scale:
+		#i*= WEP_TYPE.scalar
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

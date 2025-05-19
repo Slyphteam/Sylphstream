@@ -7,6 +7,7 @@ class_name Wep extends Resource
 @export var position : Vector3
 @export var rotation : Vector3
 @export var scale : Vector3
+@export var scalar : float
 #@onready var manager = $".."
 @export_category("Variables")
 @export var chambering : int

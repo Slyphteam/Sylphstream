@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/Player movement and input.gd" id="1_qlg0r"]
-[ext_resource type="PackedScene" uid="uid://k3fjxxfrvjw" path="res://scenes/Player associated/weapon_parent.tscn" id="3_tuyoq"]
-[ext_resource type="Script" uid="uid://eus3n6wjx51q" path="res://scenes/Player associated/debug_gun.gd" id="4_fjrip"]
-[ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scenes/Player associated/reticle.gd" id="5_smehm"]
-[ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scenes/Player associated/invenManager.gd" id="5_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://k3fjxxfrvjw" path="res://scenes/weapon_parent.tscn" id="3_tuyoq"]
+[ext_resource type="Script" uid="uid://eus3n6wjx51q" path="res://scripts/debug_gun.gd" id="4_fjrip"]
+[ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/reticle.gd" id="5_smehm"]
+[ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/invenManager.gd" id="5_tuyoq"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sh265"]
 height = 1.75

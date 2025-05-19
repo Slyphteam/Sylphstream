@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://bh3powm0a35or"]
 
-[ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/Player associated/turret.tscn" id="1_20ccn"]
+[ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/turret.tscn" id="1_20ccn"]
 [ext_resource type="PackedScene" uid="uid://cxqoq8el0tj0a" path="res://models/glbs and textures/affine.glb" id="2_l4465"]
 [ext_resource type="PackedScene" uid="uid://cvknlaho2280u" path="res://models/glbs and textures/fourier9.glb" id="3_l4465"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/player2.tscn" id="4_2yn2u"]

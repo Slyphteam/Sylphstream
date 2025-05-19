@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Wep" load_steps=3 format=3 uid="uid://bhtixavevlm6g"]
 
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weapon_resource.gd" id="1_seqrj"]
-[ext_resource type="ArrayMesh" uid="uid://cke43emefi8r6" path="res://models/mesh models/affine mesh.res" id="1_yq83c"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponresources/weapon_resource.gd" id="1_seqrj"]
+[ext_resource type="ArrayMesh" path="res://models/mesh models/affine mesh.res" id="1_yq83c"]
 
 [resource]
 script = ExtResource("1_seqrj")

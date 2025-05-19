@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://k3fjxxfrvjw"]
-
-[ext_resource type="PackedScene" uid="uid://by1cb6m3fiv80" path="res://models/glbs and textures/weapon parent.glb" id="1_lc7og"]
-
-[node name="weapon parent" instance=ExtResource("1_lc7og")]
