@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://bh3powm0a35or"]
 
-[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/player.tscn" id="1_366xt"]
 [ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/turret.tscn" id="2_ldjjd"]
 [ext_resource type="PackedScene" uid="uid://bcnk6qssnjhpe" path="res://scenes/fourier_9.tscn" id="3_ovnwt"]
+[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/player2.tscn" id="4_2yn2u"]
 [ext_resource type="PackedScene" uid="uid://c835kamfm3byn" path="res://scenes/affine.tscn" id="4_20ccn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
@@ -89,9 +89,6 @@ environment = SubResource("Environment_noarx")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.940841, 0.293453, -0.169424, -1.49013e-08, 0.499998, 0.866027, 0.338849, 0.814793, -0.470418, -0.600918, 1.25346, -1.02504)
 shadow_enabled = true
-
-[node name="Player" parent="." instance=ExtResource("1_366xt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8053, 1.951)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -231,3 +228,5 @@ shape = SubResource("ConvexPolygonShape3D_36h38")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0u4ar")
+
+[node name="Player2" parent="." instance=ExtResource("4_2yn2u")]
