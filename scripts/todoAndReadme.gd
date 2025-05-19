@@ -13,6 +13,8 @@ extends Node
 # this wasn't a problem before commit b6f117a, but is a lot better
 
 #NEEDS DOING (in presumed order of precedence):
+#fix weapon clipping
+#update weapon system to modular example
 #weapon switching
 #dynamic crosshair (once shooting)
 #KICKING!!!

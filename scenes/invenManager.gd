@@ -38,6 +38,7 @@ func getAmmoAmt(amTyp) -> int:
 func _init():#wepRef):
 	heldAmmunition.ammoBlank = 100
 	heldAmmunition.ammoPistol = 16
+	heldAmmunition.ammoRifle = 20
 	#modelreference = wepRef
 	#heldItem = weapParent.new(Ammotypes, self)
 	#reloadtimer.wait_time = 1.5
