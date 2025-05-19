@@ -1,11 +1,12 @@
-extends Node
+extends Node3D
 	
 enum Ammotypes {ammoBlank, ammoPistol, ammoRifle}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
-@onready var heldItem = $debug_gun
-var modelreference
+@onready var heldItem = $debug_gun 
 
+#@export var WEP_TYPE: Wep
+#@onready var weapon_mesh: MeshInstance3D = $held_weapon
 
 func withdrawAmmo(amTyp, amount):
 	if(amTyp == 1):
@@ -39,10 +40,19 @@ func _init():#wepRef):
 	heldAmmunition.ammoBlank = 100
 	heldAmmunition.ammoPistol = 16
 	heldAmmunition.ammoRifle = 20
-	#modelreference = wepRef
-	#heldItem = weapParent.new(Ammotypes, self)
-	#reloadtimer.wait_time = 1.5
 	
+	#load_weapon()
+#
+#func load_weapon():
+	#
+	#print("hi!")
+	#print("Loading mesh: ", WEP_TYPE.mesh)
+	#weapon_mesh.mesh = WEP_TYPE.mesh
+	#
+	#position = WEP_TYPE.position
+	#rotation_degrees = WEP_TYPE.rotation
+	#scale = WEP_TYPE.scale
+	#
 	#inventory manager function that tells the held item to attempt shooting
 func doShoot():
 	heldItem.tryShoot()

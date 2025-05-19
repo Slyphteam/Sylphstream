@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/turret.tscn" id="1_20ccn"]
 [ext_resource type="PackedScene" uid="uid://cxqoq8el0tj0a" path="res://models/glbs and textures/affine.glb" id="2_l4465"]
 [ext_resource type="PackedScene" uid="uid://cvknlaho2280u" path="res://models/glbs and textures/fourier9.glb" id="3_l4465"]
-[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/player2.tscn" id="4_2yn2u"]
+[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/player.tscn" id="4_2yn2u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -226,8 +226,7 @@ shape = SubResource("ConvexPolygonShape3D_36h38")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0u4ar")
 
-[node name="Player2" parent="." instance=ExtResource("4_2yn2u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23113, 0)
+[node name="Player" parent="Environment" instance=ExtResource("4_2yn2u")]
 
 [node name="fourier9" parent="." instance=ExtResource("3_l4465")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5122, 2, 18.5707)
