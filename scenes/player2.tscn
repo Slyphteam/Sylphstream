@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=8 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://egb7lpcf5yt7" path="res://scripts/player movement type 2.gd" id="1_5xf2g"]
+[ext_resource type="PackedScene" uid="uid://digru0udrlad7" path="res://scenes/Player associated/allweaponscene.tscn" id="2_dj65e"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scenes/Player associated/reticle.gd" id="2_ia6ct"]
+[ext_resource type="Script" uid="uid://dv1kk0eu3mjpc" path="res://scenes/Player associated/weaponload.gd" id="3_hb4is"]
+[ext_resource type="Resource" uid="uid://dl3namc4nef0" path="res://scripts/weaponresources/debugwep_info.tres" id="4_hb4is"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sh265"]
 height = 1.75
@@ -27,6 +30,10 @@ fov = 100.0
 far = 500.0
 
 [node name="weapon rig type 2" type="Node3D" parent="came"]
+
+[node name="weapons parent" parent="came/weapon rig type 2" instance=ExtResource("2_dj65e")]
+script = ExtResource("3_hb4is")
+WEP_TYPE = ExtResource("4_hb4is")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

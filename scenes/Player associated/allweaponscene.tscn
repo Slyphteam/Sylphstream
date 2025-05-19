@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://digru0udrlad7"]
+[gd_scene load_steps=2 format=3 uid="uid://digru0udrlad7"]
+
+[ext_resource type="ArrayMesh" uid="uid://crtk8p0p6eefb" path="res://models/mesh models/debug weapon mesh.res" id="1_biemo"]
 
 [node name="parent" type="Node3D"]
+
+[node name="DebugWeaponMesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159604, 0, -0.432722)
+mesh = ExtResource("1_biemo")
