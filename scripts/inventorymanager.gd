@@ -1,4 +1,5 @@
-#script to be depredcated
+#This is a DEPRECATED script that has been superceded by invenManager.
+#Its functionality was that of both inventory management and reload timing
 extends Node
 var weapParent = load("res://scripts/weapon_parent.gd")
 	

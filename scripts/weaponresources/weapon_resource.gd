@@ -1,5 +1,5 @@
 class_name Wep extends Resource
-
+#This is the template class used for firearms.
 @export_category("Weapon Information")
 @export var wepName  : StringName
 @export var selection : int

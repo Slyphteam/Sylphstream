@@ -1,3 +1,7 @@
+# this is a DEPRECATED script that has been superceded by held_weapon_behavior
+#It acts in much the same way, but only works for a single weapon and does not load
+#from any external resources.
+
 extends Node3D
 @onready var reloadtimer = $debugReloadtimer
 

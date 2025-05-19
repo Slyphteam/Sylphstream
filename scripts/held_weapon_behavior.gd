@@ -1,3 +1,6 @@
+# this is THE script that drives weapon behavior and loads weapon models/stats
+#into a game instance. It answers directly to the invenmanager script.
+
 extends Node3D
 
 @export var WEP_TYPE: Wep

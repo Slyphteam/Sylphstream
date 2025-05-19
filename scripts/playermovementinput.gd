@@ -1,4 +1,7 @@
-#extends  "res://playershared.gd"
+#this script is the PRIMARY driver for kinematic player behavior and input/output.
+#This script also communicates with the invenManager script for reloading, shooting,
+#and general interactions with the held object
+
 extends CharacterBody3D
 
 const sourcelike = true
@@ -51,9 +54,9 @@ const sprintSpeed = 18
 
 #This is a force applied to the player each time. It is applied AFTER acceleration is calculated
 const friction = 2 # 3 
-#this is similar to friction. at 50  3 equal to around 4 units of speed loss per tick
+#this is similar to friction. at 50 - 3 equals to around 4 units of speed loss per tick
 const stopspeed = 50 # 50
-# used as a constant in  dosourcelikeaccelerate
+# used as a constant in dosourcelikeaccelerate
 const accelerate = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 
 
@@ -63,10 +66,13 @@ const accelerate = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 #if so, does this mean that friction was useless outside of stopping?
 #that seems like it would make a lot of sense.
 
-
 @onready var playerCam = $came
 @onready var playerShape = $shape
 @onready var playerCollider = $playercollide
+#@onready var invenManager = $"inventory manager"
+@onready var invenManager = $came/weapon_rig
+#func _init():
+#	invenManager = invenManagerClass.new()#$came/weaponparent)
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -76,7 +82,9 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 	if event.is_action_pressed("ui_click"):
-		7
+		# are we in mouse mode?
+		if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
+			invenManager.doShoot() #if so, shoot our current weapon
 		
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -99,7 +107,8 @@ func _input(event):
 			transitionCrouch(false) ##and having this here feels like bad code
 			crouching = false
 	
-
+	if event.is_action_pressed("ui_reload"):
+		invenManager.startReload()
 		
 func InputMouse(event):
 	xlook += -event.relative.y * mousesensitivity
@@ -112,7 +121,7 @@ func ViewAngles():
 
 # handle wasd inputs
 # will listen to keypresses and update the movement variables above
-#mouse movement is handled by _input
+#mouse movement is not here and handled by _input
 func getInputs():
 	
 	#update the movement bonus based on our current mode
@@ -224,6 +233,7 @@ func handleMove(delta):
 		
 		else:
 			#this does a SHOCKINGLY good job at emulating source bunnyhopping
+			#this code can be modified for auto-bunnyhopping but that's super busted
 			if (not canjump):
 				if(not Input.is_action_pressed("ui_jump") ): 
 					canjump = true
@@ -515,3 +525,7 @@ func get_delta_time() -> float:
 	return get_process_delta_time()
 	
 	
+
+# INVENTORY MANAGEMENT CODE
+
+#class invenManagerClass:

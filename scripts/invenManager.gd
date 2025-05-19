@@ -1,5 +1,9 @@
+#this is THE script that keeps tabs on player ammunition, tells weapons how much they can
+# reload by, and conveys commands from the player to the held weapon.
+#it answers directly to the player script and commands the held_weapon_behavior script
+
 extends Node3D
-	
+
 enum Ammotypes {ammoBlank, ammoPistol, ammoRifle}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
@@ -53,7 +57,4 @@ func doShoot():
 	heldItem.tryShoot()
 
 func startReload():
-	
-	
 	heldItem.startReload()
-	

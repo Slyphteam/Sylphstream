@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c1comohc3tpa5"]
 
-[ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/Player movement and input.gd" id="1_qlg0r"]
+[ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Resource" uid="uid://dl3namc4nef0" path="res://scripts/weaponresources/debugwep_info.tres" id="3_fjrip"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/invenManager.gd" id="5_tuyoq"]

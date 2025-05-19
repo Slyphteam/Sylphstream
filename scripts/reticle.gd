@@ -1,3 +1,4 @@
+#this is the script that manages the aiming reticle
 extends CenterContainer
 
 var dot_rad: float = 2

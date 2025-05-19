@@ -1,4 +1,4 @@
-#script to be depricated
+#This is a DEPRECATED script that acted as a hard-set instance of the debug weapon
 
 extends Node # find a better body to extend
 const wepName  = "imcoder!"
