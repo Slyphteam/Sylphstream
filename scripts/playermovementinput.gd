@@ -71,6 +71,8 @@ const accelerate = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 @onready var playerCollider = $playercollider
 #@onready var invenManager = $"inventory manager"
 @onready var invenManager = $came/weapon_rig
+
+#@onready var checkerRay = $playercollider/checkerRayCast
 #func _init():
 #	invenManager = invenManagerClass.new()#$came/weaponparent)
 
@@ -216,6 +218,7 @@ func transitionCrouch(entering):
 
 	else: #we are exiting crouch
 		#TODO: add a check to see if the player has enough room TO stand
+		#checkRay()
 		#return if they don't
 	#	playerShape.scale.y += 0.8
 		playerCollider.scale.y += 0.4
@@ -223,6 +226,12 @@ func transitionCrouch(entering):
 	#in theory this code should never do anything since we have an early return but I've left it JIC
 	#playerShape.scale.y = clamp(playerShape.scale.y, 0.2, 1)
 	playerCollider.scale.y = clamp(playerCollider.scale.y, 0.2, 1)
+	
+#func checkRay():
+	#print("are we colliding?")
+	#if(checkerRay.get_collider() ):
+		#print("yep")
+
 	
 # this is the MAIN function that determines where and how the player will move
 func handleMove(delta):

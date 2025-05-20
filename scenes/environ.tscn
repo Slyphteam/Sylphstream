@@ -220,6 +220,7 @@ mesh = SubResource("BoxMesh_drpe3")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/MeshInstance3D5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86546, 4.04599, 9.77292)
+layers = 3
 mesh = SubResource("BoxMesh_drpe3")
 skeleton = NodePath("../../MeshInstance3D5")
 

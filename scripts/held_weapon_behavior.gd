@@ -5,6 +5,7 @@ extends Node3D
 
 @export var WEP_TYPE: Wep
 @onready var weapon_mesh: MeshInstance3D = $weapModel
+@onready var our_reticle: CenterContainer = $"../../../Control/CenterContainer"
 
 #Resource loading code:
 func _ready() -> void:
@@ -23,23 +24,59 @@ func load_weapon():
 #weapon behavior code
 @onready var reloadtimer = $reloadTimer
 @onready var manager = $".."
+#Variables we calculate with
 var capacity
 var reloading 
+var currentRecoil: float = 0
+
+#variables inferred from the resource
 var chambering 
 var maxCapacity 
+var minRecoil
+var maxRecoil
+var recoveryAmount
+var recoilAmount
 
 func init_stats():
+	#grap all our variables
 	maxCapacity = WEP_TYPE.maxCapacity
+	chambering = WEP_TYPE.chambering
+	minRecoil = WEP_TYPE.minRecoil
+	maxRecoil = WEP_TYPE.maxRecoil
+	recoveryAmount = WEP_TYPE.recoverAmount
+	recoilAmount = WEP_TYPE.recoilAmount
+	
+	print("recovery amount", recoveryAmount)
+	
+	our_reticle.adjust_spread(minRecoil)
+	
+	#initialize stats
 	capacity = maxCapacity
 	reloading = false
-	chambering = WEP_TYPE.chambering
+	currentRecoil = minRecoil
 
 func tryShoot():
 	if(capacity > 0):
-		print("pew!!!!")
+		currentRecoil += recoilAmount
+		if(currentRecoil > maxRecoil):
+			currentRecoil = maxRecoil
+		
+		print("Pew! Recoil: ", currentRecoil)
+		our_reticle.adjust_spread(currentRecoil)
+		
 		capacity-=1
 	else:
 		print("click!")
+	
+func _process(delta: float): 
+	
+	#we SHOULD be using delta here buuuuuut nahhhhhhhhhhh
+	if(currentRecoil > minRecoil):
+		#i lied the actual reason is because I don't trust floating imprecision to not fuck things up
+		currentRecoil = currentRecoil - recoveryAmount 
+		if(currentRecoil < minRecoil):
+			currentRecoil = minRecoil
+		our_reticle.adjust_spread(currentRecoil)
 
 func startReload():
 	if(!reloading):

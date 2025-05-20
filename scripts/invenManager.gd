@@ -58,3 +58,6 @@ func doShoot():
 
 func startReload():
 	heldItem.startReload()
+#
+#func update_aim():
+	#pass
