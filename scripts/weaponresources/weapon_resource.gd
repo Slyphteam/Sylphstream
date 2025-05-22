@@ -12,8 +12,8 @@ class_name Wep extends Resource
 @export_category("Variables")
 @export var chambering : int
 @export var maxCapacity : int
-@export var capacity : int
-@export var reloadtime : float
+#@export var capacity : int
+@export var reloadtime : float = 1
 #@export var reloading : bool
 @export var maxRecoil : float #maximum pixels of offset
 @export var minRecoil : float #absolute minimum pixels of offset

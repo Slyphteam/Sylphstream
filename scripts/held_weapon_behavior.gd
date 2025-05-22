@@ -41,6 +41,7 @@ var recoilAmount
 
 var debtCutoff = 10 #at what point do we just apply the recoil debt flat out?
 var recoveryCutoff #at what point do we increase our recoil recovery?
+var recoveryDivisor
 
 func init_stats():
 	#grab all our variables
@@ -50,6 +51,7 @@ func init_stats():
 	totalMaxRecoil = WEP_TYPE.maxRecoil
 	recoveryAmount = WEP_TYPE.recoverAmount
 	recoilAmount = WEP_TYPE.recoilAmount
+	reloadtimer.wait_time = WEP_TYPE.reloadtime
 	
 	
 	#initialize stats
@@ -58,17 +60,15 @@ func init_stats():
 	maxRecoil = totalMaxRecoil
 	minRecoil = totalMinRecoil
 	currentRecoil = minRecoil
+	recoveryCutoff = maxRecoil / 3
+	recoveryDivisor = maxRecoil * 2 * (1+recoveryAmount)
 	
 	our_reticle.adjust_spread(minRecoil)
 
 func tryShoot():
 	if(capacity > 0):
-		recoilDebt += recoilAmount #experimental, 
-		
-		calcRecoil()
-		
+		recoilDebt += recoilAmount #all recoil is calculated elsewhere
 		print("Pew! Recoil: ", currentRecoil)
-		our_reticle.adjust_spread(currentRecoil)
 		
 		capacity-=1
 	
@@ -79,24 +79,40 @@ func _process(delta: float):
 	
 	calcRecoil() #apply any "debt" we've acculmulated
 	
-	#we SHOULD be using delta here buuuuuut nahhhhhhhhhh
-	#i lied the real reason is I don't trust float imprecision
-	if(currentRecoil > minRecoil):
-		currentRecoil = currentRecoil - recoveryAmount 
-		if(currentRecoil < minRecoil):
-			currentRecoil = minRecoil
-		our_reticle.adjust_spread(currentRecoil)
-		
+#apply any "debt" we've accumulated and 
 func calcRecoil():
-	if(recoilDebt < debtCutoff): #debtcutoff is a constant equal to 10
-		currentRecoil += recoilDebt
-		recoilDebt = 0
-	else:
-		currentRecoil += (0.5 * recoilDebt)
-		recoilDebt -= (0.5 * recoilDebt)
+	
+	#apply recoil debt. Ensures that guns with high recoil don't feel unpleasantly snappy
+	if(recoilDebt > 0):
+		if(recoilDebt < debtCutoff): #debtcutoff is a constant equal to 10
+			currentRecoil += recoilDebt #add ALL the rest of the debt and set to 0
+			recoilDebt = 0
+		else:
+			currentRecoil += (0.5 * recoilDebt)
+			recoilDebt -= (0.5 * recoilDebt)
 		
-	if(currentRecoil > maxRecoil):
-		currentRecoil = maxRecoil
+		#still don't exceed the maximum
+		if(currentRecoil > maxRecoil):
+			currentRecoil = maxRecoil
+	
+	
+	#calculate recovery
+	#recoverycutoff is the point at which we switch from linear to square root recovery amount
+	#recoverydivisor is calculated above and slightly complex but behaves like a constant
+	if(currentRecoil <= minRecoil): #don't bother 
+		return
+	else: #otherwise: currentRecoil > minRecoil
+		#we SHOULD be using delta here buuuuuut I don't trust float imprecision
+		if(currentRecoil <= recoveryCutoff): #1/4th of maxrecoil
+			currentRecoil -= recoveryAmount 
+			if(currentRecoil < minRecoil):
+				currentRecoil = minRecoil
+		else:
+			var amnt = sqrt(currentRecoil / recoveryDivisor) 
+			currentRecoil-= amnt
+	
+	#update the UI
+	our_reticle.adjust_spread(currentRecoil)
 
 func startReload():
 	if(!reloading):
