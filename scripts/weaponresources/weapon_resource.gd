@@ -10,12 +10,13 @@ class_name Wep extends Resource
 #@export var scalar : float
 #@onready var manager = $".."
 @export_category("Variables")
-@export var chambering : int
-@export var maxCapacity : int
+@export var chambering : int = 1
+@export var maxCapacity : int = 5
 #@export var capacity : int
 @export var reloadtime : float = 1
 #@export var reloading : bool
-@export var maxRecoil : float #maximum pixels of offset
-@export var minRecoil : float #absolute minimum pixels of offset
-@export var recoilAmount: float #pixels of recoil per shot.
-@export var recoverAmount: float #pixels per second. Feels best between 1 and 0.25
+@export var aimBonus: float = 5 #the amount by which ADS boons the aimcone. Should NEVER be greater than minRecoil
+@export var maxRecoil : float = 50 #maximum pixels of offset
+@export var minRecoil : float = 10 #absolute minimum pixels of offset
+@export var recoilAmount: float = 5 #pixels of recoil per shot.
+@export var recoverAmount: float = 0.5 #pixels per second. Feels best between 1 and 0.25

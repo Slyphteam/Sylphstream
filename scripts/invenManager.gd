@@ -53,15 +53,25 @@ func _init():#wepRef):
 	heldAmmunition.ammoBlank = 100
 	heldAmmunition.ammoPistol = 16
 	heldAmmunition.ammoRifle = 20
+	
+
 
 func doShoot():
 	heldItem.tryShoot()
 
 func startReload():
 	heldItem.startReload()
-	
+
 func toggleSights():
-	print("Aiming")
+	heldItem.toggleADS()
+	#if(aimdownsights):
+		#print("Obliterating accuracy")
+		#heldItem.adjustAcuracy(50)
+		#aimdownsights = false
+		#return
+	#else:
+	#print("Aiming")
+	#heldItem.adjustAcuracy(-10)
 	
 #
 #func update_aim():
