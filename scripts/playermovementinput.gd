@@ -78,7 +78,7 @@ const accelerate = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		InputMouse(event)
+		input_Mouse(event)
 		
 	
 	#TODO: look into adding a better way to check inputs because surely this is not optimal
@@ -104,11 +104,11 @@ func _input(event):
 	
 	if Input.is_action_pressed("ui_crouch"):
 		if(!crouching): #if we weren't already crouching, update camera
-			transitionCrouch(true) ## having this here...
+			transition_Crouch(true) ## having this here...
 			crouching = true
 	if Input.is_action_just_released("ui_crouch"):
 		if(crouching): #if we're leaving crouching, alsp update camera
-			transitionCrouch(false) ##and having this here feels like bad code
+			transition_Crouch(false) ##and having this here feels like bad code
 			crouching = false
 	
 	if event.is_action_pressed("ui_reload"):
@@ -118,13 +118,13 @@ func _input(event):
 		invenManager.toggleSights()
 	
 		
-func InputMouse(event):
+func input_Mouse(event):
 	xlook += -event.relative.y * mousesensitivity
 	ylook += -event.relative.x * mousesensitivity
 	xlook = clamp(xlook, -90, 90)
 
 ##Apply camera and body rotation based on xlook and ylook variables
-func ViewAngles():
+func view_Angles():
 	playerCam.rotation_degrees.x = xlook
 	playerCam.rotation_degrees.y = ylook
 	playerShape.rotation_degrees.y = ylook #ensure the playermodel stays behind the camera
@@ -165,10 +165,10 @@ func _physics_process(delta: float) -> void:
 	getInputs()
 		
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		ViewAngles()
+		view_Angles()
 	
 	#start our decision tree for movement
-	handleMove(delta)
+	handle_Move(delta)
 	checkVelocityAndMove() #now that we've calculated, actually apply the move
 	
 	#CAMERA CODE BELOW
@@ -212,7 +212,7 @@ func doHeadBob(time, prev)->float:
 	return newOffset
 
 ##Updates the player camera as they enter or leave a crouching state.
-func transitionCrouch(entering):
+func transition_Crouch(entering):
 	#playerShape.scale.y > 1 || playerShape.scale.y < 0.2 ||
 	if( playerCollider.scale.y > 1 || playerCollider.scale.y < 0.2 ):
 		return
@@ -239,12 +239,12 @@ func transitionCrouch(entering):
 
 	
 ##This is the MAIN function that determines where and how the player will move
-func handleMove(delta):
+func handle_Move(delta):
 	
 	if (is_on_floor()):
 		
 		if(crouchSliding):
-			doCrouchSlide(delta)
+			do_Crouch_Slide(delta)
 		
 		else:
 			#this does a SHOCKINGLY good job at emulating source bunnyhopping
@@ -253,16 +253,16 @@ func handleMove(delta):
 				if(not Input.is_action_pressed("ui_jump") ): 
 					canjump = true
 			
-			handleFloorSourcelike(delta)
+			handle_Floor_Sourcelike(delta)
 			
 	else: 
-		handleSourcelikeAir(delta)
+		handle_Sourcelike_Air(delta)
 	
 	if Input.is_action_pressed("ui_jump") && canjump:
 		if not crouching:
 			touchingFloor = false
 			canjump = false
-			doJump()
+			do_Jump()
 	
 	#this was moved to checkVelocityandmove
 	#if playerVelocity.length() > maxvelocity:
@@ -272,7 +272,7 @@ func handleMove(delta):
 		#playerVelocity *= 0.5 #this seems to work!
 
 ##this is the PRIMARY function that handles floor logic.
-func handleFloorSourcelike(delta):
+func handle_Floor_Sourcelike(delta):
 		#TODO: ADD A TIMER 
 		#what did I mean by add a timer???? huh??
 	
@@ -311,19 +311,19 @@ func handleFloorSourcelike(delta):
 		desiredSpeed = curMax # clamp it
 	
 	desiredVec.y = 0; #but no y. 
-	doSourceAccelerate(desiredDir, desiredSpeed, delta)
+	do_Source_Accelerate(desiredDir, desiredSpeed, delta)
 	
 		#deal with friction
-	handleFriction(delta, fricMod)
+	handle_Friction(delta, fricMod)
 
 ##crouchsliding is much like walking, except we ignore keyboard inputs and only coast on mouse
-func doCrouchSlide(delta):
+func do_Crouch_Slide(delta):
 	
 	#Crouchsliding will continue as long as the player is fast enough or still crouching
 	if(!(crouching) || (playerSpeed < crouchSlideEnd)):
 		print("No longer crouchsliding! speed:", playerSpeed)
 		crouchSliding = false #stop crouchsliding
-		handleMove(delta) #don't return, but instead break loop and re-evaluate
+		handle_Move(delta) #don't return, but instead break loop and re-evaluate
 	
 	
 	
@@ -343,10 +343,10 @@ func doCrouchSlide(delta):
 	#doSourceAccelerate(desiredDir, desiredSpeed, delta)
 	
 		#deal with friction
-	handleFriction(delta, crouchSlideFric)	
+	handle_Friction(delta, crouchSlideFric)	
 
 ##Function that calculates and updates player's velocity
-func doSourceAccelerate(desiredDir, desiredSpeed, delta):
+func do_Source_Accelerate(desiredDir, desiredSpeed, delta):
 	
 	var currentspeed = playerVelocity.dot(desiredDir) # are we changing direction?
 	var addedspeed = desiredSpeed - currentspeed # reduce by amount
@@ -367,7 +367,7 @@ func doSourceAccelerate(desiredDir, desiredSpeed, delta):
 
 ##################################AIR MOVEMENT
 
-func doJump():
+func do_Jump():
 	
 	var flGroundFactor = 1.0
 	var flMul : float
@@ -391,7 +391,7 @@ func doJump():
 # 1: no multipliers on crouching/spring
 # 2: a LOT less control
 ##Very similar to floor movement, but no multipliers on crouch/sprinting and less control
-func handleSourcelikeAir(delta):
+func handle_Sourcelike_Air(delta):
 	 
 	var forward = Vector3.FORWARD
 	var side = Vector3.LEFT
@@ -467,7 +467,7 @@ func checkVelocityAndMove():
 	playerSpeed = playerVelocity.length()
 
 ##updates the playerVelocity variable based on friction variables
-func handleFriction(delta, fricMod):
+func handle_Friction(delta, fricMod):
 	if playerSpeed <= 0:
 		return
 	
