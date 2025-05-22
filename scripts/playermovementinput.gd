@@ -47,10 +47,10 @@ const walkMod = 50 # walking players have a lot of control
 const crouchMod = 200 # crouching players have a LOT of control
 
 # used to limit speed. Affected by crouch and sprint bonus
-var curMax = 12
-const walkSpeed = 12 #16
-const crouchSpeed = 7
-const sprintSpeed = 18
+var curMax = 13
+const walkSpeed = 13 
+const crouchSpeed = -6 # negative bonus of 6 to player speed
+const sprintSpeed = 5 # +5
 
 #This is a force applied to the player each time. It is applied AFTER acceleration is calculated
 const friction = 2 # 3 
@@ -80,6 +80,8 @@ func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		InputMouse(event)
 		
+	
+	#TODO: look into adding a better way to check inputs because surely this is not optimal
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
@@ -93,7 +95,7 @@ func _input(event):
 	
 	#this might seem odd, but without these checks in this way,
 	# the player only sprints for 5-6 ticks before stopping.
-
+	# TODO: ensure this is_action_held doesn't actually work for this
 	if (event.is_action_pressed("ui_sprint")):
 		sprinting = true
 	if event.is_action_released("ui_sprint"):
@@ -112,6 +114,10 @@ func _input(event):
 	if event.is_action_pressed("ui_reload"):
 		invenManager.startReload()
 		
+	if event.is_action_pressed("ui_ads"):
+		invenManager.toggleSights()
+	
+		
 func InputMouse(event):
 	xlook += -event.relative.y * mousesensitivity
 	ylook += -event.relative.x * mousesensitivity
@@ -120,9 +126,8 @@ func InputMouse(event):
 func ViewAngles():
 	playerCam.rotation_degrees.x = xlook
 	playerCam.rotation_degrees.y = ylook
-	playerShape.rotation_degrees.y = ylook
+	playerShape.rotation_degrees.y = ylook #ensure the playermodel stays behind the camera
 
-# handle wasd inputs
 # will listen to keypresses and update the movement variables above
 #mouse movement is not here and handled by _input
 func getInputs():
@@ -293,11 +298,11 @@ func handleFloorSourcelike(delta):
 	var fricMod = 1;
 	
 	if(crouching): # Enter into a crouchslide!
-		curMax = crouchSpeed; #only apply crouch movement bonus
+		curMax += crouchSpeed; #only apply crouch movement bonus
 		if(playerSpeed > crouchSlideStart):
 			crouchSliding = true
 			print("crouchsliding! speed:", playerSpeed)
-	elif(sprinting): curMax = sprintSpeed; 
+	elif(sprinting): curMax += sprintSpeed; 
 	
 	
 	

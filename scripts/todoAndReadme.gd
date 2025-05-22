@@ -24,9 +24,16 @@ extends Node
 # this wasn't a problem before commit b6f117a, but is a lot better?
 
 #NEEDS DOING (in presumed order of precedence):
-#fix weapon clipping (but do i really care that much ?)
+#ADS before ANY new firearms
+#player hud! it's been long enough!
+#recoil moves camera!
+#speed-based dynamic crosshair with the minimum
+#make reload time actually dependent on weapon info!
+
+#ammo pickups
 #weapon switching
-#dynamic crosshair (once shooting)
+#fix weapon clipping (but do i really care that much ?)
+
 #KICKING!!!
 #fix viewbob 
 # add camera tilt

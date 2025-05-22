@@ -17,6 +17,6 @@ capacity = 0
 reloadtime = 0.0
 maxRecoil = 50.0
 minRecoil = 10.0
-recoilAmount = 10.0
+recoilAmount = 15.0
 recoverAmount = 0.5
 metadata/_custom_type_script = "uid://b24hqmuxy0hut"

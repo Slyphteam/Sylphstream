@@ -13,8 +13,7 @@ func _ready() -> void:
 	init_stats()
 
 func load_weapon():
-	print("hi!")
-	print("Loading mesh: ", WEP_TYPE.mesh)
+	print("Loading weapon mesh: ", WEP_TYPE.mesh)
 	weapon_mesh.mesh = WEP_TYPE.mesh
 	
 	position = WEP_TYPE.position
@@ -28,55 +27,76 @@ func load_weapon():
 var capacity
 var reloading 
 var currentRecoil: float = 0
+var minRecoil
+var maxRecoil
+var recoilDebt = 0
 
 #variables inferred from the resource
 var chambering 
 var maxCapacity 
-var minRecoil
-var maxRecoil
+var totalMaxRecoil
+var totalMinRecoil
 var recoveryAmount
 var recoilAmount
 
+var debtCutoff = 10 #at what point do we just apply the recoil debt flat out?
+var recoveryCutoff #at what point do we increase our recoil recovery?
+
 func init_stats():
-	#grap all our variables
+	#grab all our variables
 	maxCapacity = WEP_TYPE.maxCapacity
 	chambering = WEP_TYPE.chambering
-	minRecoil = WEP_TYPE.minRecoil
-	maxRecoil = WEP_TYPE.maxRecoil
+	totalMinRecoil = WEP_TYPE.minRecoil
+	totalMaxRecoil = WEP_TYPE.maxRecoil
 	recoveryAmount = WEP_TYPE.recoverAmount
 	recoilAmount = WEP_TYPE.recoilAmount
 	
-	print("recovery amount", recoveryAmount)
-	
-	our_reticle.adjust_spread(minRecoil)
 	
 	#initialize stats
 	capacity = maxCapacity
 	reloading = false
+	maxRecoil = totalMaxRecoil
+	minRecoil = totalMinRecoil
 	currentRecoil = minRecoil
+	
+	our_reticle.adjust_spread(minRecoil)
 
 func tryShoot():
 	if(capacity > 0):
-		currentRecoil += recoilAmount
-		if(currentRecoil > maxRecoil):
-			currentRecoil = maxRecoil
+		recoilDebt += recoilAmount #experimental, 
+		
+		calcRecoil()
 		
 		print("Pew! Recoil: ", currentRecoil)
 		our_reticle.adjust_spread(currentRecoil)
 		
 		capacity-=1
+	
 	else:
 		print("click!")
 	
 func _process(delta: float): 
 	
-	#we SHOULD be using delta here buuuuuut nahhhhhhhhhhh
+	calcRecoil() #apply any "debt" we've acculmulated
+	
+	#we SHOULD be using delta here buuuuuut nahhhhhhhhhh
+	#i lied the real reason is I don't trust float imprecision
 	if(currentRecoil > minRecoil):
-		#i lied the actual reason is because I don't trust floating imprecision to not fuck things up
 		currentRecoil = currentRecoil - recoveryAmount 
 		if(currentRecoil < minRecoil):
 			currentRecoil = minRecoil
 		our_reticle.adjust_spread(currentRecoil)
+		
+func calcRecoil():
+	if(recoilDebt < debtCutoff): #debtcutoff is a constant equal to 10
+		currentRecoil += recoilDebt
+		recoilDebt = 0
+	else:
+		currentRecoil += (0.5 * recoilDebt)
+		recoilDebt -= (0.5 * recoilDebt)
+		
+	if(currentRecoil > maxRecoil):
+		currentRecoil = maxRecoil
 
 func startReload():
 	if(!reloading):

@@ -49,6 +49,7 @@ func getAmmoAmt(amTyp) -> int:
 	#return heldAmmunition.amTyp
 
 func _init():#wepRef):
+	print("Hello and welcome to Sylphstream!")
 	heldAmmunition.ammoBlank = 100
 	heldAmmunition.ammoPistol = 16
 	heldAmmunition.ammoRifle = 20
@@ -58,6 +59,10 @@ func doShoot():
 
 func startReload():
 	heldItem.startReload()
+	
+func toggleSights():
+	print("Aiming")
+	
 #
 #func update_aim():
 	#pass
