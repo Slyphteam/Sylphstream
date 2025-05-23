@@ -3,12 +3,19 @@ extends PanelContainer
 
 func _ready():
 	Globalscript.datapanel = self
-	add_Property("test","test")
-	
-var newprop
-func add_Property (title: String, value):
-	newprop = Label.new()
-	propertyContainer.add_child(newprop)
-	newprop.name = title
-	newprop.text = title + value
-	
+	add_Property("testy","test", 0)
+
+
+
+#var newprop
+func add_Property (title: String, value, order):
+	var propCheck = propertyContainer.find_child(title,true,false)
+	if(not propCheck):
+		print("Adding new property!")
+		propCheck = Label.new()
+		propertyContainer.add_child(propCheck)
+		propCheck.name = title
+		propCheck.text = title  + ": "+ str(value)
+	else:
+		propCheck.text = title  + ": "+ str(value)
+		propertyContainer.move_child(propCheck, order)

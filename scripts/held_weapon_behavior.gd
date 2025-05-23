@@ -12,6 +12,8 @@ func _ready() -> void:
 	load_weapon()
 	init_stats()
 
+
+
 func load_weapon():
 	print("Loading weapon mesh: ", WEP_TYPE.mesh)
 	weapon_mesh.mesh = WEP_TYPE.mesh
@@ -19,6 +21,8 @@ func load_weapon():
 	position = WEP_TYPE.position
 	rotation_degrees = WEP_TYPE.rotation
 	scale = WEP_TYPE.scale
+	
+
 
 #weapon behavior code
 @onready var reloadtimer = $reloadTimer
@@ -95,10 +99,13 @@ func _on_reload_timer_timeout() -> void:
 	
 	capacity += newCap
 	print("Finished reload! Rounds: ", capacity)
+	Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 6)
 
 
 func _process(delta: float): 
 	
+	Globalscript.datapanel.add_Property("Current capacity ", capacity, 4)
+	Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 5)
 	calcRecoil() 
 	
 ##Apply any recoil "debt" accumulated and calculate recovery

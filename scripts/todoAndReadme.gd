@@ -17,11 +17,13 @@ extends Node
 
 
 #--KNOWN PROBLEMS:
-# it's REALLY hard to jump up on a platform (is it?)
-#players can't "step" up a ledge, no matter how small
-# mouse wiggling gives a CRAZY boost to speed when moving
-#------if players have a lot of forward velocity, they can't strafe!
-# this wasn't a problem before commit b6f117a, but is a lot better?
+#--if players have a lot of forward velocity, they can't strafe!
+# ^^^^ what if movement input was exclusive if a certain condition was met?
+# this wasn't a problem before commit b6f117a when move had two calls, but is a lot better?
+#-- it's REALLY hard to jump up on a platform (is it?)
+#--players can't "step" up a ledge, no matter how small
+#--mouse wiggling gives a CRAZY boost to speed when moving
+
 
 #NEEDS DOING (in presumed order of precedence):
 #player hud! it's been long enough!

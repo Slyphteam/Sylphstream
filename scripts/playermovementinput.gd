@@ -160,6 +160,8 @@ func _physics_process(delta: float) -> void:
 	handle_Move(delta)
 	checkVelocityAndMove() #now that we've calculated, actually apply the move
 	
+	Globalscript.datapanel.add_Property("Current speed", int(playerSpeed), 1)
+	
 	#CAMERA CODE BELOW
 	#CrouchCamera()
 	#Adjust FOV. 87 feels the best; 85 too low and 90 too high
