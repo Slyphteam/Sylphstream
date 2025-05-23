@@ -34,12 +34,11 @@ var sprinting = false
 var crouching = false
 
 var crouchSliding = false
-const crouchSlideStart = 17
-const crouchSlideEnd = 4
-const crouchSlideFric = 0.3
+const crouchSlideStart = 17 #start speed
+const crouchSlideEnd = 4 #end speed
+const crouchSlideFric = 0.15 #reductive multiplier on friction
 
-
-# these are all VERY important variables and as such I'll talk a lot about them
+# these are all VERY important variables
 const debugging = false #except this one it just decides debug text
 #How long it takes the player to get up to full steam
 const sprintMod = 2 #it takes time to get up to a sprint though
@@ -49,27 +48,18 @@ const crouchMod = 200 # crouching players have a LOT of control
 # used to limit speed. Affected by crouch and sprint bonus
 var curMax = 13
 const walkSpeed = 13 
-const crouchSpeed = -6 # negative bonus of 6 to player speed
-const sprintSpeed = 5 # +5
+const crouchSpeed = -6 # negative "bonus" of 6 to player speed
+const sprintSpeed = 5 # positive bonus of 5
 
 #This is a force applied to the player each time. It is applied AFTER acceleration is calculated
-const friction = 2 # 3 
-#this is similar to friction. at 50 - 3 equals to around 4 units of speed loss per tick
-const stopspeed = 50 # 50
+const friction = 100
 # used as a constant in dosourcelikeaccelerate
-const accelerate = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
-
-
-#if friction is too high, it SEEMS like it totally zeroes out playerVelocity, but
-#somehow speed seems to still be applied after the fact?
-# this seems to be the case.
-#if so, does this mean that friction was useless outside of stopping?
-#that seems like it would make a lot of sense.
+const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 
 @onready var playerCam = $came
 @onready var playerShape = $playermodel
 @onready var playerCollider = $playercollider
-#@onready var invenManager = $"inventory manager"
+#@onready var invenManager = $"inventory manager" #invenmanager moved to weapon rig
 @onready var invenManager = $came/weapon_rig
 
 #@onready var checkerRay = $playercollider/checkerRayCast
@@ -79,7 +69,7 @@ const accelerate = 5 #7 #WHY WAS THIS A THOUSAND??? HUH??????
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		input_Mouse(event)
-		
+	
 	
 	#TODO: look into adding a better way to check inputs because surely this is not optimal
 	if event.is_action_pressed("ui_cancel"):
@@ -117,7 +107,6 @@ func _input(event):
 	if event.is_action_pressed("ui_ads"):
 		invenManager.toggleSights()
 	
-		
 func input_Mouse(event):
 	xlook += -event.relative.y * mousesensitivity
 	ylook += -event.relative.x * mousesensitivity
@@ -188,7 +177,7 @@ const bobAmplitude = 0.05
 const bobFreq = 2
 var bob_time = 0
 
-##function that applies a headbob. Temporarily disabled.
+##function that applies a headbob. Currently disabled.
 func doHeadBob(time, prev)->float:
 	
 	#var velocityMult = 1
@@ -218,7 +207,7 @@ func transition_Crouch(entering):
 		return
 	
 	if(entering): #we are entering crouch
-	#	playerShape.scale.y -= 0.8
+	#	playerShape.scale.y -= 0.8 #it's jank so we are no longer changing the playermodel's size
 		playerCollider.scale.y -= 0.4
 
 	else: #we are exiting crouch
@@ -279,9 +268,8 @@ func handle_Floor_Sourcelike(delta):
 	#alter the forward movement by camera's azimuth rotation. shouldnt do anything yet.
 	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
-	# hey wait shouldn't one of these be y and the other be x?
-	
-	
+	# it might seem weird that both of these are the playercam's y rotation
+	# but that's because it corresponds to yaw. We don't want pitch and roll.
 	
 	#calculate a vector based of our inputs and angles
 	var desiredVec = (leftright * sideAngle) + (forback * forwAngle)
@@ -289,13 +277,11 @@ func handle_Floor_Sourcelike(delta):
 	var desiredDir = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
 	
-	#a really funny bug to have happen was zeroing out the desiredvec.y here
-	#which meant you could just phase through the floor by trying hard enough. 
-	#and also fly.
+	#a really funny bug to have happen was zeroing out the desiredvec.y here instead of lower
+	#which meant you could just phase through the floor by trying hard enough. and also fly.
 	
 	#Apply conditional modifiers to our max speed
 	curMax = walkSpeed;
-	var fricMod = 1;
 	
 	if(crouching): # Enter into a crouchslide!
 		curMax += crouchSpeed; #only apply crouch movement bonus
@@ -304,19 +290,17 @@ func handle_Floor_Sourcelike(delta):
 			print("crouchsliding! speed:", playerSpeed)
 	elif(sprinting): curMax += sprintSpeed; 
 	
-	
-	
 	if desiredSpeed !=0.0 and desiredSpeed>curMax:
 		desiredVec *= curMax / desiredSpeed # update our vector to not be too silly
 		desiredSpeed = curMax # clamp it
 	
-	desiredVec.y = 0; #but no y. 
+	desiredVec.y = 0; #zero out the y
 	do_Source_Accelerate(desiredDir, desiredSpeed, delta)
 	
 		#deal with friction
-	handle_Friction(delta, fricMod)
+	handle_Friction(delta, 1) #normal friction
 
-##crouchsliding is much like walking, except we ignore keyboard inputs and only coast on mouse
+##Supercedes normal floor movement. Ignore keyboard/mouse directional inputs and just coast.
 func do_Crouch_Slide(delta):
 	
 	#Crouchsliding will continue as long as the player is fast enough or still crouching
@@ -325,25 +309,7 @@ func do_Crouch_Slide(delta):
 		crouchSliding = false #stop crouchsliding
 		handle_Move(delta) #don't return, but instead break loop and re-evaluate
 	
-	
-	
-	#var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
-	#var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
-	#
-	##calculate a vector based of our inputs and angles
-	#var desiredVec = (sideAngle + forwAngle) #should we add some constant?
-	#
-	#var desiredDir = desiredVec.normalized()
-	#var desiredSpeed = desiredVec.length()
-	#
-	##ordinarily, there'd be a speed check here, but we don't have to worry 
-	##about players gaining speed while crouchsliding 
-	#
-	#desiredVec.y = 0; #but no y. 
-	#doSourceAccelerate(desiredDir, desiredSpeed, delta)
-	
-		#deal with friction
-	handle_Friction(delta, crouchSlideFric)	
+	handle_Friction(delta, crouchSlideFric) #crouchslidefric is a static variable = 0.15
 
 ##Function that calculates and updates player's velocity
 func do_Source_Accelerate(desiredDir, desiredSpeed, delta):
@@ -358,12 +324,10 @@ func do_Source_Accelerate(desiredDir, desiredSpeed, delta):
 	
 	playerVelocity.y -= gravAmount * delta
 	
-	
 	for i in range(3): #the comment says adjust velocity but i truly have no idea what this does
 		playerVelocity+= acelspeed * desiredDir
 	
 	playerSpeed = playerVelocity.length() # update playerspeed
-	
 
 ##################################AIR MOVEMENT
 
@@ -390,14 +354,12 @@ func do_Jump():
 # this differs from sourcelike floor in a few ways:
 # 1: no multipliers on crouching/spring
 # 2: a LOT less control
+#TODO: Go through this with a FINE tooth comb to see if our weird air speed is from here
 ##Very similar to floor movement, but no multipliers on crouch/sprinting and less control
 func handle_Sourcelike_Air(delta):
 	 
-	var forward = Vector3.FORWARD
-	var side = Vector3.LEFT
-	
-	forward = forward.rotated(Vector3.UP, playerCam.rotation.y).normalized()
-	side = side.rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	var forward =  Vector3.FORWARD.rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	var side = Vector3.LEFT.rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	
 	playerVelocity.y -= gravAmount * delta
 	playerSpeed = playerVelocity.length() #update speed
@@ -429,16 +391,15 @@ func do_Source_AirAccelerate(desiredDir, desiredSpeed, delta):
 	desiredSpeed = min(desiredSpeed, 15) # global airspeed cap 
 	# See if we are changing direction a bit
 	var currentspeed = playerVelocity.dot(desiredDir)
-	## Reduce wishspeed by the amount of veer.
+	# Reduce wishspeed by the amount of veer.
 	var addspeed = desiredSpeed - currentspeed
 	
 	if addspeed <= 0: # early return
 		return
 #
-	## Determine amount of accleration.
+	# Determine amount of accleration.
 	var accelspeed = accel * desiredSpeed * delta 
-	#
-	## Cap at addspeed
+	# Cap at addspeed
 	accelspeed = min(accelspeed, addspeed)
 	#
 	for i in range(3):
@@ -471,33 +432,23 @@ func handle_Friction(delta, fricMod):
 	if playerSpeed <= 0:
 		return
 	
-	#godot didn't like this code so I've commented it out 
-	#var control = stopspeed if speed < stopspeed else speed
-	var control = playerSpeed
-	if (playerSpeed < stopspeed) :
-		control = stopspeed * fricMod #fricmod lets us dynamically alter applied friction
-	
 	# Add the amount to the drop amount.
-	var drop = control * friction * delta * fricMod
+	var drop = friction * delta * fricMod
 
 	# scale the velocity
 	var newspeed = playerSpeed - drop
 	if newspeed < 0:
 		newspeed = 0
 	
-	
-	
 	if newspeed != playerSpeed:
 		# Determine proportion of old speed we are using.
 		newspeed /= playerSpeed
 		# Adjust velocity according to proportion.
 		
-		#var speedcheck = playerVelocity.length()
 		playerVelocity *= newspeed
 		playerSpeed = playerVelocity.length()
 	
 		#if(debugging):
-			
 		#	print("Old/hampered velocity:", speedcheck, " : ", playerVelocity.length())
 
 
