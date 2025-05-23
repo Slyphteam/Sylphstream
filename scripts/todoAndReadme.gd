@@ -24,9 +24,10 @@ extends Node
 # this wasn't a problem before commit b6f117a, but is a lot better?
 
 #NEEDS DOING (in presumed order of precedence):
-#ADS before ANY new firearms
 #player hud! it's been long enough!
-#recoil moves camera!
+#recoil moves camera -> important for Sylphs later
+#bullets WHOOOO!
+#bullets change with recoil
 #speed-based dynamic crosshair with the minimum
 #make reload time actually dependent on weapon info!
 

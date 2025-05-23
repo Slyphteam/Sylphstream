@@ -421,10 +421,10 @@ func handle_Sourcelike_Air(delta):
 		wishvel *= curMax / wishspeed
 		wishspeed = curMax
 	
-	doSourceAirAccelerate(wishdir, wishspeed, delta) #let the airaccelerate function do its work
+	do_Source_AirAccelerate(wishdir, wishspeed, delta) #let the airaccelerate function do its work
 
 
-func doSourceAirAccelerate(desiredDir, desiredSpeed, delta):
+func do_Source_AirAccelerate(desiredDir, desiredSpeed, delta):
 	var accel = 20 #global airaccelerate 
 	desiredSpeed = min(desiredSpeed, 15) # global airspeed cap 
 	# See if we are changing direction a bit

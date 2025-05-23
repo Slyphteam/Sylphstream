@@ -5,7 +5,7 @@ extends Node3D
 
 @export var WEP_TYPE: Wep
 @onready var weapon_mesh: MeshInstance3D = $weapModel
-@onready var our_reticle: CenterContainer = $"../../../Control/CenterContainer"
+@onready var our_reticle: CenterContainer = $"../../../Control/Reticle"
 
 #Resource loading code:
 func _ready() -> void:
@@ -150,7 +150,7 @@ func toggleADS():
 func adjustAcuracy(amnt):
 	
 	#I REALLY don't trust float imprecision here
-	recoveryAmount -= amnt /25 #buff recovery speed by a fraction of the amount. Keep in mind amount is penalty.
+	recoveryAmount -= amnt /25 #buff recovery speed by a fraction of the penalty amount
 	
 	if(amnt > 0): #if we're growing reticle, apply the debt. Otherwise let the reticle shrink.
 		recoilDebt+=amnt

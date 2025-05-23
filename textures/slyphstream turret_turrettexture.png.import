@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp0msqy13wna5"
-path.s3tc="res://.godot/imported/slyphstream turret_turrettexture.png-a7225f460893f319d36b9ca2b4104d7b.s3tc.ctex"
+path.s3tc="res://.godot/imported/slyphstream turret_turrettexture.png-3fb5f06af3da615b6ccc8bfb2ce069ab.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/glbs and textures/slyphstream turret_turrettexture.png"
-dest_files=["res://.godot/imported/slyphstream turret_turrettexture.png-a7225f460893f319d36b9ca2b4104d7b.s3tc.ctex"]
+source_file="res://textures/slyphstream turret_turrettexture.png"
+dest_files=["res://.godot/imported/slyphstream turret_turrettexture.png-3fb5f06af3da615b6ccc8bfb2ce069ab.s3tc.ctex"]
 
 [params]
 

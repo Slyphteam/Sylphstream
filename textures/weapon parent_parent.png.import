@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://806n6fd6s5ea"
-path.s3tc="res://.godot/imported/playermodel_ultrasimple.png-bb52d2feeb96045b13cad80022acaf78.s3tc.ctex"
+uid="uid://doxy4xvg5lljk"
+path.s3tc="res://.godot/imported/weapon parent_parent.png-46bb7bc12d65ee7d43b96afe42d44bd9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "61ab8c92535f1e5d2c0937b6547ff48e"
+"md5": "a34d7719214572e9da45f9cb4a5eab2e"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/playermodel_ultrasimple.png"
-dest_files=["res://.godot/imported/playermodel_ultrasimple.png-bb52d2feeb96045b13cad80022acaf78.s3tc.ctex"]
+source_file="res://textures/weapon parent_parent.png"
+dest_files=["res://.godot/imported/weapon parent_parent.png-46bb7bc12d65ee7d43b96afe42d44bd9.s3tc.ctex"]
 
 [params]
 

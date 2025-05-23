@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpixkb3lglhdv"
-path.s3tc="res://.godot/imported/affine_affinetexturefinal.png-f8e037ac781af922ac3a54ebd88b567a.s3tc.ctex"
+path.s3tc="res://.godot/imported/affine_affinetexturefinal.png-2aba16f0c50434039d7978d43eaebfd4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/glbs and textures/affine_affinetexturefinal.png"
-dest_files=["res://.godot/imported/affine_affinetexturefinal.png-f8e037ac781af922ac3a54ebd88b567a.s3tc.ctex"]
+source_file="res://textures/affine_affinetexturefinal.png"
+dest_files=["res://.godot/imported/affine_affinetexturefinal.png-2aba16f0c50434039d7978d43eaebfd4.s3tc.ctex"]
 
 [params]
 
