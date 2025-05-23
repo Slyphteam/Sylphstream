@@ -105,7 +105,7 @@ func _on_reload_timer_timeout() -> void:
 func _process(delta: float): 
 	
 	Globalscript.datapanel.add_Property("Current capacity ", capacity, 4)
-	Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 5)
+	Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 5) #runtime here!!!
 	calcRecoil() 
 	
 ##Apply any recoil "debt" accumulated and calculate recovery
