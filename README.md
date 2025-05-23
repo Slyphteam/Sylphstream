@@ -12,7 +12,12 @@ All content (as it stands) is listed under CC BY-NC-SA 3.0
 https://docs.google.com/document/d/118_IEV_9k2dqLq8unO5gw8Gx04xngHV5QysfVkentBs/edit?tab=t.0
 
 ### Features in active development:
-Weapon system
+
+Player UI
+
+Ballistic system
+
+Dynamic spread
 
 Dynamic player body and player animations
 
@@ -21,11 +26,9 @@ Decal/casing system
 Kicking
 
 
-### Unimplemented, though planned features:
+### Planned features:
 
 Dynamic viewbob and viewtilt with player velocity
-
-Dynamic spread and locational damage with weapon system
 
 Weapon switching
 
