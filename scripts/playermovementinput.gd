@@ -32,6 +32,7 @@ var canjump = true
 var jumpheight = 2
 var sprinting = false
 var crouching = false
+var aiming = false
 
 var crouchSliding = false
 const crouchSlideStart = 17 #start speed
@@ -48,8 +49,9 @@ const crouchMod = 200 # crouching players have a LOT of control
 # used to limit speed. Affected by crouch and sprint bonus
 var curMax = 13
 const walkSpeed = 13 
-const crouchSpeed = -6 # negative "bonus" of 6 to player speed
+const crouchSpeed = -5.5 # negative "bonus" of 6 to player speed
 const sprintSpeed = 5 # positive bonus of 5
+const aimSpeed = -4 #mouse sensitivity is handled in toggle_ADS_Stats
 
 #This is a force applied to the player each time. It is applied AFTER acceleration is calculated
 const friction = 100
@@ -106,6 +108,7 @@ func _input(event):
 		
 	if event.is_action_pressed("ui_ads"):
 		invenManager.toggleSights()
+		toggle_ADS_Stats()
 	
 func input_Mouse(event):
 	xlook += -event.relative.y * mousesensitivity
@@ -229,6 +232,16 @@ func transition_Crouch(entering):
 		#print("yep")
 
 	
+	
+##Function that toggles mouse sensitivity. Speed is handled elsewhere. Maybe make dependent on weapons stat????
+func toggle_ADS_Stats():
+	if(aiming): # we want to un-aim
+		mousesensitivity = 0.3
+		aiming = false
+	else:
+		mousesensitivity = 0.2
+		aiming = true
+		
 ##This is the MAIN function that determines where and how the player will move
 func handle_Move(delta):
 	
@@ -285,6 +298,10 @@ func handle_Floor_Sourcelike(delta):
 	#Apply conditional modifiers to our max speed
 	curMax = walkSpeed;
 	
+	if(aiming):
+		curMax += aimSpeed
+		#if(crouching):
+			#curMax =1 # ensure we can actually MOVE while crouching ADS
 	if(crouching): # Enter into a crouchslide!
 		curMax += crouchSpeed; #only apply crouch movement bonus
 		if(playerSpeed > crouchSlideStart):
@@ -292,15 +309,33 @@ func handle_Floor_Sourcelike(delta):
 			print("crouchsliding! speed:", playerSpeed)
 	elif(sprinting): curMax += sprintSpeed; 
 	
-	if desiredSpeed !=0.0 and desiredSpeed>curMax:
+	#print("desired speed: ", desiredSpeed)
+
+#BIG TODO: GO THROUGH MOVEMENT WITH A FINE TOOTH COMB AND FIGURE OUT WHY THIS IS THE BEHAVIOR OF CODE	
+#desired speed: 2800.0
+#limited speed: 13
+#desired speed: 2850.00024414063
+#limited speed: 13
+#desired speed: 2900.00024414063
+#limited speed: 13
+
+	
+	
+	#player is not moving if speed is less than 3.5
+	if desiredSpeed !=0.0 and desiredSpeed > curMax:
+		
 		desiredVec *= curMax / desiredSpeed # update our vector to not be too silly
 		desiredSpeed = curMax # clamp it
+		#print("limited speed: ", desiredSpeed)
+	
 	
 	desiredVec.y = 0; #zero out the y
 	do_Source_Accelerate(desiredDir, desiredSpeed, delta)
 	
 		#deal with friction
 	handle_Friction(delta, 1) #normal friction
+	
+
 
 ##Supercedes normal floor movement. Ignore keyboard/mouse directional inputs and just coast.
 func do_Crouch_Slide(delta):
