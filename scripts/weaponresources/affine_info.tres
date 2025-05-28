@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_seqrj")
 wepName = &"Affine"
+wepDesc = &"A 10-round rifle in semi auto. The potent, low-recoil cartridge more than makes up for capacity."
 selection = 1
 mesh = ExtResource("1_ekmq1")
 position = Vector3(1.2, -0.7, -0.5)

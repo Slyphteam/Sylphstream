@@ -4,15 +4,18 @@
 
 [resource]
 script = ExtResource("1_jg5tv")
-wepName = &""
+wepName = &"Hands"
+wepDesc = &"Bare. Hands."
 selection = 0
 position = Vector3(0, 0, 0)
 rotation = Vector3(0, 0, 0)
 scale = Vector3(0, 0, 0)
-scalar = 0.0
 chambering = 0
 maxCapacity = 0
-capacity = 0
 reloadtime = 0.0
-reloading = false
+aimBonus = 5.0
+maxRecoil = 50.0
+minRecoil = 0.0
+recoilAmount = 0.0
+recoverAmount = 0.5
 metadata/_custom_type_script = "uid://b24hqmuxy0hut"

@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("2_3h1ty")
-wepName = &"Degub"
+wepName = &"Degubby"
+wepDesc = &"A weapon that you PROBABLY shouldn\'t have unless you know what you\'re doing!"
 selection = 1
 mesh = ExtResource("1_3h1ty")
 position = Vector3(0.5, -0.3, -0.3)
@@ -13,8 +14,8 @@ rotation = Vector3(90, 90, 0)
 scale = Vector3(0.3, 0.3, 0.3)
 chambering = 1
 maxCapacity = 8
-capacity = 0
 reloadtime = 1.0
+aimBonus = 5.0
 maxRecoil = 50.0
 minRecoil = 10.0
 recoilAmount = 15.0

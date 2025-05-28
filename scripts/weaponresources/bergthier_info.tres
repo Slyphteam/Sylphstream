@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_cec0b")
 wepName = &"Bergthier GS5"
+wepDesc = &"A fairly unremarkable, though chimeric pistol chambered in 7.822 Longman"
 selection = 1
 mesh = ExtResource("1_lrkhd")
 position = Vector3(0.4, -0.2, -0.7)

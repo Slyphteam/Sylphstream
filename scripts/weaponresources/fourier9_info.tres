@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_4i5ms")
 wepName = &"Fourier 9"
+wepDesc = &"A cheap, not entirely robust carbine that places an emphasis on the importance of transmissions."
 selection = 1
 mesh = ExtResource("1_hhp0u")
 position = Vector3(0.5, -0.3, -0.3)
