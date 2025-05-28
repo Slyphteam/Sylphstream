@@ -51,8 +51,8 @@ func getAmmoAmt(amTyp) -> int:
 func _init():#wepRef):
 	print("Hello and welcome to Sylphstream!")
 	heldAmmunition.ammoBlank = 100
-	heldAmmunition.ammoPistol = 16
-	heldAmmunition.ammoRifle = 20
+	heldAmmunition.ammoPistol = 51
+	heldAmmunition.ammoRifle = 30
 	
 
 

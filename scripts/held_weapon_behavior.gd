@@ -157,7 +157,7 @@ func toggleADS():
 func adjustAcuracy(amnt):
 	
 	#I REALLY don't trust float imprecision here
-	recoveryAmount -= amnt /25 #buff recovery speed by a fraction of the penalty amount
+	recoveryAmount -= amnt / 10 #buff recovery speed by a fraction of the penalty amount
 	
 	if(amnt > 0): #if we're growing reticle, apply the debt. Otherwise let the reticle shrink.
 		recoilDebt+=amnt

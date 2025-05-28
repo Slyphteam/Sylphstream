@@ -10,7 +10,7 @@ const gravAmount = 60
 #player camera variables
 var ylook : float
 var xlook : float
-var mousesensitivity = 0.3
+var mousesensitivity = 0.25
 var ply_maxlookangle_down = -90
 var ply_maxlookangle_up = 90
 var ply_ylookspeed = 0.3
@@ -236,10 +236,10 @@ func transition_Crouch(entering):
 ##Function that toggles mouse sensitivity. Speed is handled elsewhere. Maybe make dependent on weapons stat????
 func toggle_ADS_Stats():
 	if(aiming): # we want to un-aim
-		mousesensitivity = 0.3
+		mousesensitivity = 0.25
 		aiming = false
 	else:
-		mousesensitivity = 0.2
+		mousesensitivity = 0.15
 		aiming = true
 		
 ##This is the MAIN function that determines where and how the player will move
