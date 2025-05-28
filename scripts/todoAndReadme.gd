@@ -26,14 +26,13 @@ extends Node
 
 
 #NEEDS DOING (in presumed order of precedence):
-#player hud! it's been long enough!
+#ads reduces sensitivity + zooms
 #recoil moves camera -> important for Sylphs later
 #bullets WHOOOO!
 #bullets change with recoil
-#speed-based dynamic crosshair with the minimum
-#make reload time actually dependent on weapon info!
-
 #ammo pickups
+#speed-based dynamic crosshair
+#context-sensitive leaning
 #weapon switching
 #fix weapon clipping (but do i really care that much ?)
 

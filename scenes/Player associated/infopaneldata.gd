@@ -19,3 +19,4 @@ func add_Property (title: String, value, order):
 	else:
 		propCheck.text = title  + ": "+ str(value)
 		propertyContainer.move_child(propCheck, order)
+		

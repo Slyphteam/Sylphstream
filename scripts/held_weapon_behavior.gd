@@ -99,13 +99,13 @@ func _on_reload_timer_timeout() -> void:
 	
 	capacity += newCap
 	print("Finished reload! Rounds: ", capacity)
-	Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 6)
+	Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 5)
 
 
 func _process(delta: float): 
 	
-	Globalscript.datapanel.add_Property("Current capacity ", capacity, 4)
-	Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 5) #runtime here!!!
+	Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
+	Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!
 	calcRecoil() 
 	
 ##Apply any recoil "debt" accumulated and calculate recovery
