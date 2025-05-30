@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dnwo3bse6gc68"
-path="res://.godot/imported/bergthier gs5.glb-8c285c51963eca0f6ddad7fe1e82d54b.scn"
+uid="uid://b2xnle2gfobbu"
+path="res://.godot/imported/bergther 2.glb-1b4ff46df2be10b28743c30a14d0bffc.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/bergthier gs5.glb"
-dest_files=["res://.godot/imported/bergthier gs5.glb-8c285c51963eca0f6ddad7fe1e82d54b.scn"]
+source_file="res://models/glbs and textures/bergther 2.glb"
+dest_files=["res://.godot/imported/bergther 2.glb-1b4ff46df2be10b28743c30a14d0bffc.scn"]
 
 [params]
 
@@ -34,13 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"bergthier gs5_Cube_001": {
+"bergther 2_Cube_001": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://models/mesh models/bergthier.res"
+"save_to_file/path": "res://models/mesh models/bergther.res"
 }
 }
 }

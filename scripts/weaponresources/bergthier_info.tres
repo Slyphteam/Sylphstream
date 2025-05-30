@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="Wep" load_steps=3 format=3 uid="uid://dml6uaueraa87"]
 
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponresources/weapon_resource.gd" id="1_cec0b"]
-[ext_resource type="ArrayMesh" uid="uid://cy1oybt6nr1m5" path="res://models/mesh models/bergthier.res" id="1_lrkhd"]
+[ext_resource type="ArrayMesh" uid="uid://b6o5gbnl7uilv" path="res://models/mesh models/bergther.res" id="1_lrkhd"]
 
 [resource]
 script = ExtResource("1_cec0b")
-wepName = &"Bergthier GS5"
+wepName = &"Bergther GS5"
 wepDesc = &"A fairly unremarkable, though chimeric pistol chambered in 7.822 Longman"
 selection = 1
 mesh = ExtResource("1_lrkhd")
-position = Vector3(0.4, -0.2, -0.7)
+position = Vector3(0.6, -0.2, -0.7)
 rotation = Vector3(90, 90, 0)
 scale = Vector3(0.21, 0.062, 0.158)
 chambering = 1
