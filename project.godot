@@ -30,6 +30,10 @@ window/size/mode=2
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[global_group]
+
+damage_interactible="Objects that have special effects when hit by an item. KNOW WHAT YOU ARE DOING WITH THIS."
+
 [input]
 
 ui_left={

@@ -85,17 +85,43 @@ func init_stats():
 
 func tryShoot():
 	if(capacity > 0 && not reloading):
-		recoilDebt += recoilAmount #all recoil is calculated elsewhere
 		
+		#Consume bullet
 		capacity-=1
 		
-		 #aimkickbonus is half of kick amount which prevents int division
+		#apply aimcone recoil. Calculations are elsewhere
+		recoilDebt += recoilAmount 
+		
+		doShoot() #actually shoot the bullet
+		
+		#afterwards, apply camera recoil. Aimkickbonus is always half of kick amount.
 		var lift = randi_range((aimKickBonus/2)+1, kickAmount)
 		var drift = randi_range((0 - aimKickBonus), aimKickBonus)
 		manager.applyViewpunch(drift, lift)
+		
 		print("Pew! Recoil: ", int(currentRecoil), " Kick: ", lift, ";", drift)
+		
 	else:
 		print("click!")
+
+##This function will always fire a bullet from the center of the screen
+func doShoot():
+		var space = manager.get_space_state()
+		var orig = manager.get_Origin()
+		var end = manager.get_End(orig)
+		var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
+		raycheck.collide_with_bodies = true
+		var castResult = space.intersect_ray(raycheck)
+		
+		if(castResult):
+			var hitObject = castResult.get("collider")
+			if(hitObject.is_in_group("damage_interactible")):
+				doBulletInteract(hitObject)
+				
+		
+
+func doBulletInteract(victim):
+	print("You hit something!")
 
 ##Starts reload timer
 func startReload():
@@ -106,11 +132,10 @@ func startReload():
 
 func _on_reload_timer_timeout() -> void:
 	reloading = false
-	var takenAmount = 0;
-	takenAmount += (maxCapacity - capacity)
-		
+	var takenAmount = (maxCapacity - capacity)
+	
 	if(capacity > 0):
-		takenAmount+=1
+		takenAmount+=1 #we have 1 in the chamber, so plus 1 the weapon
 
 	var newCap = manager.withdrawAmmo(chambering, takenAmount)
 	

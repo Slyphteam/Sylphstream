@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhux7iep3xeg7"]
+[gd_scene load_steps=4 format=3 uid="uid://bhux7iep3xeg7"]
 
 [ext_resource type="PackedScene" uid="uid://bqdd1b0onim05" path="res://models/glbs and textures/target.glb" id="1_b37e2"]
+[ext_resource type="Script" uid="uid://dprqev26kkm4h" path="res://scenes/target_script.gd" id="2_b5a2r"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b37e2"]
 points = PackedVector3Array(-0.108269, -0.1577, -1.15395, -0.252454, -0.1577, -1.11802, 0.108008, -0.1577, 1.15395, 1.26981, 0.139884, -0.118807, -1.03144, 0.139884, -1.03148, -0.937673, -0.1577, 0.937711, 0.938048, -0.1577, -0.93812, 1.03165, 0.139884, -1.03173, 1.03165, 0.139884, 1.03173, -1.03144, 0.139884, 1.03148, 0.634646, 0.258967, -0.634548, 0.938048, -0.1577, 0.93812, -1.1544, -0.1577, -0.108006, 0.634646, 0.258967, 0.634548, -0.634681, 0.258967, -0.634548, 0.0790358, 0.139884, -1.26934, -1.26984, 0.139884, 0.0792874, -0.119095, 0.139884, 1.26934, -0.937673, -0.1577, -0.937711, -0.634681, 0.258967, 0.634548, 1.15459, -0.1577, 0.0718676, 1.26981, 0.139884, 0.118807, 0.118811, 0.139884, 1.26934, -0.119095, 0.139884, -1.26934, -1.26984, 0.139884, -0.118807, -1.1544, -0.1577, 0.0720795, 1.15459, -0.1577, -0.108027, -0.07211, -0.1577, 1.15395, 0.0718491, -0.1577, -1.15395, -1.07121, 0.139884, -0.912427, -0.91261, 0.139884, -1.071, -0.973832, -0.1577, -0.829479)
 
 [node name="target" instance=ExtResource("1_b37e2")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Target" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Target" index="0" groups=["damage_interactible"]]
+script = ExtResource("2_b5a2r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Target/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_b37e2")

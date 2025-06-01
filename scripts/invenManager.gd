@@ -82,4 +82,13 @@ func toggleSights():
 ##Apply viewpunch to the player, in degrees. Requires a connected player object.
 func applyViewpunch(azimuth, zenith):
 	player.apply_Viewpunch(azimuth, zenith)
+
+func get_space_state():
+	return player.playerCam.get_world_3d().direct_space_state 
+	 
+func get_Origin():
+	return player.playerCam.project_ray_origin(get_viewport().size / 2)
+	
+func get_End(orig):
+	return orig + player.playerCam.project_ray_normal(get_viewport().size / 2) * 1000
 	
