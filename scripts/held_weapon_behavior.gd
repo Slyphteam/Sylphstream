@@ -44,9 +44,11 @@ var recoveryAmount
 var recoilAmount
 var aimbonus
 
-var debtCutoff = 10 #at what point do we just apply the recoil debt flat out?
-var recoveryCutoff #at what point do we increase our recoil recovery?
-var recoveryDivisor
+var debtCutoff = 10 ##at what point do we just apply the recoil debt flat out?
+var recoveryCutoff ##at what point do we increase our recoil recovery?
+var recoveryDivisor ##Used in recoil recovery computation
+var kickAmount: int ##Used in randomly generating recoil viewpunch
+var aimKickBonus ##Used because we don't like integer division around these parts
 
 func init_stats():
 	#grab all our variables
@@ -68,15 +70,30 @@ func init_stats():
 	currentRecoil = minRecoil
 	recoveryCutoff = maxRecoil / 3
 	recoveryDivisor = maxRecoil * 2 * (1+recoveryAmount)
+	#include aimbonus and recovery speed in calculating. Essentially, the "ergonomics"
+	#recoil amount (reduced)              #negative penalty for low recovery
+	kickAmount = (recoilAmount / 4) + ((5 / ((10 * recoveryAmount))+1) ) - 3
+	aimKickBonus = (kickAmount / 2)
+	
+	if(kickAmount <=0):
+		kickAmount = 1
+		aimKickBonus = 0
+	
 	
 	our_reticle.adjust_spread(minRecoil)
+
 
 func tryShoot():
 	if(capacity > 0 && not reloading):
 		recoilDebt += recoilAmount #all recoil is calculated elsewhere
-		print("Pew! Recoil: ", currentRecoil)
+		
 		capacity-=1
-	
+		
+		 #aimkickbonus is half of kick amount which prevents int division
+		var lift = randi_range((aimKickBonus/2)+1, kickAmount)
+		var drift = randi_range((0 - aimKickBonus), aimKickBonus)
+		manager.applyViewpunch(drift, lift)
+		print("Pew! Recoil: ", int(currentRecoil), " Kick: ", lift, ";", drift)
 	else:
 		print("click!")
 
@@ -142,16 +159,19 @@ func calcRecoil():
 	#update the UI
 	our_reticle.adjust_spread(currentRecoil)
 
+
 var aimdownsights = false
 func toggleADS():
 	if(aimdownsights):
-		adjustAcuracy(aimbonus) #these shoul d be reversed
+		kickAmount += aimKickBonus
+		adjustAcuracy(aimbonus)
 		aimdownsights = false
-		print("unaiming. recovery speed: ", recoveryAmount)
+		print("unaiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
 	else:
+		kickAmount -= aimKickBonus
 		adjustAcuracy(0 - aimbonus)
 		aimdownsights = true
-		print("aiming. recovery speed: ", recoveryAmount)
+		print("aiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
 
 ##Updates the max/min aimcone by a given value. Can be negative.
 func adjustAcuracy(amnt):

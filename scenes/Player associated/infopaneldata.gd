@@ -5,8 +5,6 @@ func _ready():
 	Globalscript.datapanel = self
 	add_Property("testy","test", 0)
 
-
-
 #var newprop
 func add_Property (title: String, value, order):
 	var propCheck = propertyContainer.find_child(title,true,false)

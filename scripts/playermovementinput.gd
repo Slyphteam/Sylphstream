@@ -526,3 +526,12 @@ func get_delta_time() -> float:
 	if Engine.is_in_physics_frame():
 		return get_physics_process_delta_time()
 	return get_process_delta_time()
+
+##Jolt camera, by degrees x and y
+func apply_Viewpunch(azimuth, zenith):
+	
+	
+	
+	ylook += azimuth
+	xlook += zenith
+	

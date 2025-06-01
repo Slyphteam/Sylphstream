@@ -8,6 +8,7 @@ enum Ammotypes {ammoBlank, ammoPistol, ammoRifle}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
 @onready var heldItem = $weaponHolder
+@onready var player = $"../.."
 
 func withdrawAmmo(amTyp, amount):
 	print("Selected type ", amTyp)
@@ -54,7 +55,7 @@ func _init():#wepRef):
 	heldAmmunition.ammoPistol = 51
 	heldAmmunition.ammoRifle = 30
 	
-
+#functions going down the hierarchy
 
 func doShoot():
 	heldItem.tryShoot()
@@ -76,3 +77,9 @@ func toggleSights():
 #
 #func update_aim():
 	#pass
+
+#Functions going up the hierarchy
+##Apply viewpunch to the player, in degrees. Requires a connected player object.
+func applyViewpunch(azimuth, zenith):
+	player.apply_Viewpunch(azimuth, zenith)
+	
