@@ -121,7 +121,7 @@ func doShoot():
 		
 
 func doBulletInteract(victim):
-	print("You hit something!")
+	victim.hit_By_Bullet(1,2,3,4)
 
 ##Starts reload timer
 func startReload():

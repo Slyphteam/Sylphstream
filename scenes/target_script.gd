@@ -1,2 +1,4 @@
-extends StaticBody3D
-var canbehit = true
+extends bullet_reactive
+
+func hit_By_Bullet(dam, damtype, dir, origin):
+	print("Target hit!")
