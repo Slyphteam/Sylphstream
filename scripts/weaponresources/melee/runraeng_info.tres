@@ -5,13 +5,15 @@
 [resource]
 script = ExtResource("1_6ag5h")
 wepName = &"Runræng"
-wepDesc = &"A Thai steel machete, handmade in a village. The blade feels sturdy in your hands."
+wepDesc = &"A Thai steel machete, handmade from a distant village. The blade feels sturdy in your hands."
 position = Vector3(0, -0.3, -0.3)
 rotation = Vector3(90, 90, 0)
 scale = Vector3(1, 1, 1)
 damage = 50
+variance = 0.2
 reach = 1.0
 speed = 80
 canThrust = true
+canParry = true
 effectiveParry = false
 metadata/_custom_type_script = "uid://c3mmopjw0avmi"

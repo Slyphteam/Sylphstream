@@ -5,13 +5,15 @@
 [resource]
 script = ExtResource("1_rioib")
 wepName = &"Buraq"
-wepDesc = &"A Kilji created for the king of Sinai long ago. It glimmers in the light."
+wepDesc = &"An Ottoman Kilji brought back from a foreign port. The inscription reads, \"For the King of Sinai\""
 position = Vector3(0, -0.3, -0.3)
 rotation = Vector3(90, 90, 0)
 scale = Vector3(1, 1, 1)
 damage = 65
+variance = 0.2
 reach = 1.75
 speed = 120
 canThrust = true
 canParry = false
+effectiveParry = true
 metadata/_custom_type_script = "uid://c3mmopjw0avmi"

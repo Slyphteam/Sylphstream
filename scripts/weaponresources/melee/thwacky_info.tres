@@ -5,12 +5,13 @@
 [resource]
 script = ExtResource("1_w8120")
 wepName = &"Big Super Gliggle Thwackicus the Second"
-wepDesc = &"A terrifying Macuahuitl handmade from garbage. Dangerous to all involved parties. Jesus Christ."
+wepDesc = &"A terrifying Macuahuitl made from literal garbage. Dangerous to all involved parties. Jesus Christ."
 position = Vector3(0, -0.3, -0.3)
 rotation = Vector3(90, 90, 0)
 scale = Vector3(1, 1, 1)
-damage = 95
-reach = 2.0
+damage = 75
+variance = 1.0
+reach = 1.0
 speed = 140
 canThrust = false
 canParry = true
