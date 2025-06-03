@@ -4,12 +4,13 @@
 
 [resource]
 script = ExtResource("1_a17ar")
-wepName = &"Adjustor"
+wepName = &"The Grungler"
 wepDesc = &"You really aren\'t sure what this tool is, but it\'s heavy."
 position = Vector3(0, -0.3, -0.3)
 rotation = Vector3(90, 90, 0)
 scale = Vector3(1, 1, 1)
 damage = 70
+variance = 0.2
 reach = 2.5
 speed = 300
 canThrust = false
