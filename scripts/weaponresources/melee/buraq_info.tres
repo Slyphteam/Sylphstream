@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Mel" load_steps=2 format=3 uid="uid://cdavx6lb5f7ya"]
+
+[ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/weaponresources/melee_resource.gd" id="1_rioib"]
+
+[resource]
+script = ExtResource("1_rioib")
+wepName = &"Buraq"
+wepDesc = &"A Kilji created for the king of Sinai long ago. It glimmers in the light."
+position = Vector3(0, -0.3, -0.3)
+rotation = Vector3(90, 90, 0)
+scale = Vector3(1, 1, 1)
+damage = 65
+reach = 1.75
+speed = 120
+canThrust = true
+canParry = false
+metadata/_custom_type_script = "uid://c3mmopjw0avmi"

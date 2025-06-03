@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Mel" load_steps=2 format=3 uid="uid://bql3ktbr5dtn1"]
+
+[ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/weaponresources/melee_resource.gd" id="1_wmn0m"]
+
+[resource]
+script = ExtResource("1_wmn0m")
+wepName = &"Cavalcade"
+wepDesc = &"An intricate, though ornamental one-handed longsword. If nothing else, the reach makes it useful."
+position = Vector3(0, -0.3, -0.3)
+rotation = Vector3(90, 90, 0)
+scale = Vector3(1, 1, 1)
+damage = 20
+reach = 2.5
+speed = 150
+canThrust = true
+canParry = true
+metadata/_custom_type_script = "uid://c3mmopjw0avmi"
