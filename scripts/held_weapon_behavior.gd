@@ -43,6 +43,7 @@ var totalMinRecoil
 var recoveryAmount
 var recoilAmount
 var aimbonus
+var damage 
 
 var debtCutoff = 10 ##at what point do we just apply the recoil debt flat out?
 var recoveryCutoff ##at what point do we increase our recoil recovery?
@@ -60,6 +61,7 @@ func init_stats():
 	recoilAmount = WEP_TYPE.recoilAmount
 	reloadtimer.wait_time = WEP_TYPE.reloadtime
 	aimbonus = WEP_TYPE.aimBonus
+	damage = WEP_TYPE.damage
 	
 	
 	#initialize stats
@@ -108,7 +110,9 @@ func tryShoot():
 func doShoot():
 		var space = manager.get_space_state()
 		var orig = manager.get_Origin()
-		var end = manager.get_End(orig)
+		var end:Vector3 = manager.get_End(orig, 0, 0)
+		#end.
+		
 		var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
 		raycheck.collide_with_bodies = true
 		var castResult = space.intersect_ray(raycheck)

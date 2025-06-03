@@ -286,12 +286,21 @@ func handle_Floor_Sourcelike(delta):
 	# it might seem weird that both of these are the playercam's y rotation
 	# but that's because it corresponds to yaw. We don't want pitch and roll.
 	
+	
+	
+	
 	#calculate a vector based of our inputs and angles
 	var desiredVec = (leftright * sideAngle) + (forback * forwAngle)
 	
 	var desiredDir = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
 	
+	#var playerRot = playerCam.rotation
+	#var yangle = Vector3(0, playerCam.rotation.y, 0) #how high is the player looking?
+	#var xangle = Vector3(playerCam.rotation.x, 0, 0)
+	#if(playerSpeed > 10):
+		#print("wowee!")
+		
 	#a really funny bug to have happen was zeroing out the desiredvec.y here instead of lower
 	#which meant you could just phase through the floor by trying hard enough. and also fly.
 	

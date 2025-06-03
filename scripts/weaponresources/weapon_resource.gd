@@ -10,6 +10,7 @@ class_name Wep extends Resource
 @export var scale : Vector3 = Vector3.ONE
 @export_category("Variables")
 @export var chambering : int = 1 ## 1- Pistol; 2- Light rifle (5.56); 3- Heavy rifle (30 caliber); 4- Shotgun; 5- Plinking (.22 lr); 6- Magnum
+@export var damage: int = 1
 @export var maxCapacity : int = 5
 @export var reloadtime : float = 1 ##In seconds
 @export var aimBonus: float = 5 ##the amount by which ADS boons the aimcone. Should NEVER be greater than minRecoil
