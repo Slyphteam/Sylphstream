@@ -4,8 +4,8 @@
 extends Node3D
 
 @export var WEP_TYPE: Wep
-@onready var weapon_mesh: MeshInstance3D = $weapModel
-@onready var our_reticle: CenterContainer = $"../../../Control/Reticle"
+@export var weapon_mesh: MeshInstance3D
+@export var our_reticle: CenterContainer
 
 #Resource loading code:
 func _ready() -> void:

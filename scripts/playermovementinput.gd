@@ -58,11 +58,13 @@ const friction = 100
 # used as a constant in dosourcelikeaccelerate
 const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 
-@onready var playerCam = $came
-@onready var playerShape = $playermodel
-@onready var playerCollider = $playercollider
+@export_group("References")
+@export var camCage : Node3D
+@export var playerCam : Camera3D
+@export var playerShape : Node3D
+@export var playerCollider : CollisionShape3D
 #@onready var invenManager = $"inventory manager" #invenmanager moved to weapon rig
-@onready var invenManager = $came/weapon_rig
+@export var invenManager : Node3D
 
 #@onready var checkerRay = $playercollider/checkerRayCast
 #func _init():
@@ -117,8 +119,8 @@ func input_Mouse(event):
 
 ##Apply camera and body rotation based on xlook and ylook variables
 func view_Angles():
-	playerCam.rotation_degrees.x = xlook
-	playerCam.rotation_degrees.y = ylook
+	camCage.rotation_degrees.x = xlook
+	camCage.rotation_degrees.y = ylook
 	playerShape.rotation_degrees.y = ylook #ensure the playermodel stays behind the camera
 
 ##Will listen to keypresses and update the movement variables above. Will NOT update mouse (handled by _input)
@@ -177,6 +179,8 @@ func _physics_process(delta: float) -> void:
 	#bobOffset = doHeadBob(bob_time, prevBob) # this needs more tweaking but it's fine for now
 	#playerCam.transform.origin.y = bobOffset+1.75
 	#prevBob = bobOffset
+	
+	# new viewbob is handled in camera script
 
 const bobAmplitude = 0.05
 const bobFreq = 2
@@ -281,8 +285,8 @@ func handle_Floor_Sourcelike(delta):
 		#what did I mean by add a timer???? huh??
 	
 	#alter the forward movement by camera's azimuth rotation. shouldnt do anything yet.
-	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
-	var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, camCage.rotation.y).normalized()
+	var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, camCage.rotation.y).normalized()
 	# it might seem weird that both of these are the playercam's y rotation
 	# but that's because it corresponds to yaw. We don't want pitch and roll.
 	
@@ -395,8 +399,8 @@ func do_Jump():
 ##Very similar to floor movement, but no multipliers on crouch/sprinting and less control
 func handle_Sourcelike_Air(delta):
 	 
-	var forward =  Vector3.FORWARD.rotated(Vector3.UP, playerCam.rotation.y).normalized()
-	var side = Vector3.LEFT.rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	var forward =  Vector3.FORWARD.rotated(Vector3.UP, camCage.rotation.y).normalized()
+	var side = Vector3.LEFT.rotated(Vector3.UP, camCage.rotation.y).normalized()
 	
 	playerVelocity.y -= gravAmount * delta
 	playerSpeed = playerVelocity.length() #update speed
