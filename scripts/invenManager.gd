@@ -101,3 +101,5 @@ func get_End(orig, lift, drift):
 	
 	return end 
 	
+func get_Rotation():
+	return player.playerCam.rotation

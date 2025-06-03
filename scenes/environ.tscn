@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxqoq8el0tj0a" path="res://models/glbs and textures/affine.glb" id="2_l4465"]
 [ext_resource type="PackedScene" uid="uid://cvknlaho2280u" path="res://models/glbs and textures/fourier9.glb" id="3_l4465"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/Player associated/player.tscn" id="4_2yn2u"]
-[ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/target.tscn" id="4_m2myf"]
+[ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="4_m2myf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

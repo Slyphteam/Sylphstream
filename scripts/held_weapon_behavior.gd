@@ -121,8 +121,20 @@ func doShoot():
 			var hitObject = castResult.get("collider")
 			if(hitObject.is_in_group("damage_interactible")):
 				doBulletInteract(hitObject)
+				doHitDecal(castResult.get("position"))
 				
-		
+
+#var decals = 0
+var hitdecalscene = preload("res://scenes/trivial/bullet_decal.tscn")
+func doHitDecal(pos):
+	print("hi!!!")
+	var decalInstance = hitdecalscene.instantiate()
+	get_tree().root.add_child(decalInstance)
+	decalInstance.global_position = pos
+	decalInstance.rotation = manager.get_Rotation()
+	await get_tree().create_timer(10).timeout
+	decalInstance.queue_free()
+	
 
 func doBulletInteract(victim):
 	victim.hit_By_Bullet(1,2,3,4)
