@@ -131,7 +131,10 @@ func doHitDecal(pos):
 	var decalInstance = hitdecalscene.instantiate()
 	get_tree().root.add_child(decalInstance)
 	decalInstance.global_position = pos
+	var silly = manager.get_Rotation()
 	decalInstance.rotation = manager.get_Rotation()
+	
+	decalInstance.rotation.z = randi_range(-2, 2)
 	await get_tree().create_timer(10).timeout
 	decalInstance.queue_free()
 	

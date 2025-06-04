@@ -26,9 +26,9 @@ extends Node
 
 
 #NEEDS DOING (in presumed order of precedence):
-#ads reduces sensitivity + zooms
-#recoil moves camera -> important for Sylphs later
-#bullets WHOOOO!
+#SOUNDS!!!!!!!!!!
+#ads zooms
+#recoil moves camera 
 #bullets change with recoil
 #ammo pickups
 #speed-based dynamic crosshair

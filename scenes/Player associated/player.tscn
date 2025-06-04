@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://c1comohc3tpa5"]
 
-[ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/playermovementinput.gd" id="1_qlg0r"]
-[ext_resource type="Resource" uid="uid://bhtixavevlm6g" path="res://scripts/weaponresources/affine_info.tres" id="4_l4qvo"]
-[ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/reticle.gd" id="5_smehm"]
-[ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/invenManager.gd" id="5_tuyoq"]
+[ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/player/playermovementinput.gd" id="1_qlg0r"]
+[ext_resource type="Resource" uid="uid://sy0ndq1n1a7f" path="res://scripts/weaponresources/fourier9_info.tres" id="4_l4qvo"]
+[ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/player/reticle.gd" id="5_smehm"]
+[ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/player/invenManager.gd" id="5_tuyoq"]
 [ext_resource type="Script" uid="uid://du7arwj5oiahi" path="res://scripts/held_weapon_behavior.gd" id="6_fjrip"]
 [ext_resource type="Script" uid="uid://dk8huytauryvd" path="res://scenes/Player associated/infopaneldata.gd" id="6_hn4sd"]
 [ext_resource type="Theme" uid="uid://dwx0gcw8npl2a" path="res://resources/debugtheme.tres" id="6_l4qvo"]
