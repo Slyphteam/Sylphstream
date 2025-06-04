@@ -8,7 +8,7 @@ enum Ammotypes {ammoBlank, ammoPistol, ammoRifle}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
 @onready var heldItem = $weaponHolder
-@onready var player = $"../.."
+@onready var player = $"../../.."
 
 func withdrawAmmo(amTyp, amount):
 	print("Selected type ", amTyp)

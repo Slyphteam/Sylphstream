@@ -5,7 +5,7 @@ extends Node3D
 
 @export var WEP_TYPE: Wep
 @onready var weapon_mesh: MeshInstance3D = $weapModel
-@onready var our_reticle: CenterContainer = $"../../../Control/Reticle"
+@onready var our_reticle: CenterContainer = $"../../../../Control/Reticle"
 @onready var gunshotPlayer: AudioStreamPlayer3D = $gunshotPlayer
 @onready var reloadPlayer: AudioStreamPlayer3D = $reloadPlayer
 

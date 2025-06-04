@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=11 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/player/playermovementinput.gd" id="1_qlg0r"]
+[ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scenes/Player associated/cam_behavior.gd" id="2_f4klr"]
 [ext_resource type="Resource" uid="uid://bhtixavevlm6g" path="res://resources/weapon resources/firearm/affine_info.tres" id="4_l4qvo"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/player/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/player/invenManager.gd" id="5_tuyoq"]
@@ -19,33 +20,38 @@ script = ExtResource("1_qlg0r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0125, 0)
 shape = SubResource("ConvexPolygonShape3D_4flbx")
 
-[node name="came" type="Camera3D" parent="."]
+[node name="camCage" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73, 0)
+
+[node name="came" type="Camera3D" parent="camCage" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72968, 0.0272837)
 fov = 100.0
 far = 500.0
+script = ExtResource("2_f4klr")
+player = NodePath("../..")
 
-[node name="weapon_rig" type="Node3D" parent="came"]
+[node name="weapon_rig" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
 
-[node name="weaponHolder" type="Node3D" parent="came/weapon_rig"]
+[node name="weaponHolder" type="Node3D" parent="camCage/came/weapon_rig"]
 script = ExtResource("6_fjrip")
 WEP_TYPE = ExtResource("4_l4qvo")
 
-[node name="weapModel" type="MeshInstance3D" parent="came/weapon_rig/weaponHolder"]
+[node name="weapModel" type="MeshInstance3D" parent="camCage/came/weapon_rig/weaponHolder"]
 
-[node name="reloadTimer" type="Timer" parent="came/weapon_rig/weaponHolder"]
+[node name="reloadTimer" type="Timer" parent="camCage/came/weapon_rig/weaponHolder"]
 one_shot = true
 
-[node name="checkerRayCast" type="RayCast3D" parent="came/weapon_rig/weaponHolder"]
+[node name="checkerRayCast" type="RayCast3D" parent="camCage/came/weapon_rig/weaponHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0748162, -0.567973)
 target_position = Vector3(0, 0, -100)
 collision_mask = 3
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="gunshotPlayer" type="AudioStreamPlayer3D" parent="came/weapon_rig/weaponHolder"]
+[node name="gunshotPlayer" type="AudioStreamPlayer3D" parent="camCage/came/weapon_rig/weaponHolder"]
 
-[node name="reloadPlayer" type="AudioStreamPlayer3D" parent="came/weapon_rig/weaponHolder"]
+[node name="reloadPlayer" type="AudioStreamPlayer3D" parent="camCage/came/weapon_rig/weaponHolder"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -117,4 +123,4 @@ layout_mode = 2
 [node name="playermodel" parent="." instance=ExtResource("6_tgbf5")]
 transform = Transform3D(-1, 0, -8.74228e-08, 1.89307e-08, 0.976273, -0.216542, 8.53485e-08, -0.216542, -0.976273, 0, 0.214829, -0.00661127)
 
-[connection signal="timeout" from="came/weapon_rig/weaponHolder/reloadTimer" to="came/weapon_rig/weaponHolder" method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="camCage/came/weapon_rig/weaponHolder/reloadTimer" to="camCage/came/weapon_rig/weaponHolder" method="_on_reload_timer_timeout"]

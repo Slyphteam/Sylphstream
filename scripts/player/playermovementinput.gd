@@ -58,11 +58,11 @@ const friction = 100
 # used as a constant in dosourcelikeaccelerate
 const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 
-@onready var playerCam = $came
+@onready var playerCam = $camCage/came
 @onready var playerShape = $playermodel
 @onready var playerCollider = $playercollider
 #@onready var invenManager = $"inventory manager" #invenmanager moved to weapon rig
-@onready var invenManager = $came/weapon_rig
+@onready var invenManager =$camCage/came/weapon_rig
 
 #@onready var checkerRay = $playercollider/checkerRayCast
 #func _init():
