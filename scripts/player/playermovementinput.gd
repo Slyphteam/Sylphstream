@@ -42,8 +42,8 @@ const crouchSlideFric = 0.15 #reductive multiplier on friction
 # these are all VERY important variables
 const debugging = false #except this one it just decides debug text
 #How long it takes the player to get up to full steam
-const sprintMod = 1 #it takes time to get up to a sprint though
-const walkMod = 1 # walking players have a lot of control
+const sprintMod = 3 #it takes time to get up to a sprint though
+const walkMod = 3 # walking players have a lot of control
 const crouchMod = 5 # crouching players have a LOT of control
 
 # used to limit speed. Affected by crouch and sprint bonus
