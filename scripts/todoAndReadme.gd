@@ -4,35 +4,31 @@ extends Node
 # DIRECTORY OF WHERE SHIT IS:
 
 # the MOST important scripts are as follow:
-# --held_weapon_behavior: acts as a data instance for the held weapon
-# -- invnManager (NOT invnetorymanager): Tracking ammunition and communicating 
+# --scripts/player/held_weapon_behavior: acts as a data instance for the held weapon
+# -- scripts/player/invenManager (NOT invnetorymanager): Tracking ammunition and communicating 
 #    with the player/held item
-# --playermovementinput: Kinematic controller for the player, input/output
+# --scripts/player/playermovementinput: Kinematic controller for the player, input/output
 
 # Other places are as follow:
-# scripts/weaponresources contains all the templates for implemented weapons
-# Models-> glbs and textures for the raws of all imported models
-# Scenes -> player associated -> player for the actual player scene
-# Scenes -> environ for the test environment I have the player in
-
+# resources/weaponresources contains all the templates for implemented weapons
+# Models/glbs and textures for the raws of all imported models
+# Scenes/player associated/player for the actual player scene
+# Scenes/environ for the test environment I have the player in
 
 #--KNOWN PROBLEMS:
-#--if players have a lot of forward velocity, they can't strafe!
-# ^^^^ what if movement input was exclusive if a certain condition was met?
-# this wasn't a problem before commit b6f117a when move had two calls, but is a lot better?
 #-- it's REALLY hard to jump up on a platform (is it?)
 #--players can't "step" up a ledge, no matter how small
-#--mouse wiggling gives a CRAZY boost to speed when moving
 
 
 #NEEDS DOING (in presumed order of precedence):
 #SOUNDS!!!!!!!!!!
-#ads zooms
-#recoil moves camera 
-#bullets change with recoil
-#ammo pickups
-#speed-based dynamic crosshair
+#footstep sounds
+#change invenmanager to be the child of a custom class so we can have differing method calls
+#ADS makes the camesa zoom in
+#inaccuracy with the dynamic recoil system
+#crosshair changes with speed
 #context-sensitive leaning
+#ammo pickups
 #weapon switching
 #fix weapon clipping (but do i really care that much ?)
 

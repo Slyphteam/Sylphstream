@@ -140,7 +140,9 @@ func doHitDecal(pos):
 	
 
 func doBulletInteract(victim):
-	victim.hit_By_Bullet(1,2,3,4)
+	var alteredDamage = damage
+	alteredDamage += randi_range(-3, 3)
+	victim.hit_By_Bullet(alteredDamage,2,3,4)
 
 ##Starts reload timer
 func startReload():
