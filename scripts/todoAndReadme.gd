@@ -21,6 +21,10 @@ extends Node
 
 
 #NEEDS DOING (in presumed order of precedence):
+#Create generic invenmanager class
+#Create player version of Invenmanager class
+#create generic weapon class
+#create weaponholder scene that generates a weapon class on startup
 #get better pistol gunshot
 #footstep sounds
 #change invenmanager to be the child of a custom class so we can have differing method calls

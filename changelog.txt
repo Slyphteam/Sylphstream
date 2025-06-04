@@ -1,2 +1,6 @@
+6/4:
+Weapon class now has damage that is sent to hit object on valid hit
+Imports gunshots and reload sounds
+All implemented guns now have audio
 6/3:
 Shooting now raycasts and, on collision with a valid target object, creates a decal
