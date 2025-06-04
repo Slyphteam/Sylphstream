@@ -42,9 +42,9 @@ const crouchSlideFric = 0.15 #reductive multiplier on friction
 # these are all VERY important variables
 const debugging = false #except this one it just decides debug text
 #How long it takes the player to get up to full steam
-const sprintMod = 2 #it takes time to get up to a sprint though
-const walkMod = 50 # walking players have a lot of control
-const crouchMod = 200 # crouching players have a LOT of control
+const sprintMod = 1 #it takes time to get up to a sprint though
+const walkMod = 1 # walking players have a lot of control
+const crouchMod = 5 # crouching players have a LOT of control
 
 # used to limit speed. Affected by crouch and sprint bonus
 var curMax = 13
@@ -125,11 +125,14 @@ func view_Angles():
 func getInputs():
 	
 	#update the movement bonus based on our current mode
-	var bonus = walkMod # 50 - good control
+	var bonus = walkMod 
+	var limit = walkSpeed
 	if(crouching):
-		bonus = crouchMod # 150 - EXCELLENT control
+		limit += crouchSpeed 
+		bonus = crouchMod 
 	elif(sprinting):
-		bonus = sprintMod #1 - poor control
+		limit += sprintSpeed
+		bonus = sprintMod 
 		
 	leftright += int(bonus) * (int(Input.get_action_strength("ui_left") )) 
 	leftright -= int(bonus) * (int(Input.get_action_strength("ui_right"))) 
@@ -141,12 +144,12 @@ func getInputs():
 	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		leftright = 0
 	else:
-		leftright = clamp(leftright, minIn, maxIn) 
+		leftright = clamp(leftright, (0-limit), limit) 
 	#clamp forwards/backwards input
 	if Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down"):
 		forback = 0
 	else:
-		forback = clamp(forback, minIn, maxIn)
+		forback = clamp(forback, (0-limit), limit)
 	
 # these need to be moved once I fix viewbobbing
 var prevBob = 0;
@@ -294,21 +297,20 @@ func handle_Floor_Sourcelike(delta):
 	
 	var desiredDir = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
+
 	
-	#var playerRot = playerCam.rotation
-	#var yangle = Vector3(0, playerCam.rotation.y, 0) #how high is the player looking?
-	#var xangle = Vector3(playerCam.rotation.x, 0, 0)
-	#if(playerSpeed > 10):
-		#print("wowee!")
-		
 	#a really funny bug to have happen was zeroing out the desiredvec.y here instead of lower
 	#which meant you could just phase through the floor by trying hard enough. and also fly.
 	
 	#Apply conditional modifiers to our max speed
 	curMax = walkSpeed;
-	
+		
 	if(aiming):
-		curMax += aimSpeed
+		if(crouching):
+			curMax -=1
+		else:
+			curMax += aimSpeed
+			
 		#if(crouching):
 			#curMax =1 # ensure we can actually MOVE while crouching ADS
 	if(crouching): # Enter into a crouchslide!
@@ -318,18 +320,9 @@ func handle_Floor_Sourcelike(delta):
 			print("crouchsliding! speed:", playerSpeed)
 	elif(sprinting): curMax += sprintSpeed; 
 	
+	
+	
 	#print("desired speed: ", desiredSpeed)
-
-#BIG TODO: GO THROUGH MOVEMENT WITH A FINE TOOTH COMB AND FIGURE OUT WHY THIS IS THE BEHAVIOR OF CODE	
-#desired speed: 2800.0
-#limited speed: 13
-#desired speed: 2850.00024414063
-#limited speed: 13
-#desired speed: 2900.00024414063
-#limited speed: 13
-
-	
-	
 	#player is not moving if speed is less than 3.5
 	if desiredSpeed !=0.0 and desiredSpeed > curMax:
 		
