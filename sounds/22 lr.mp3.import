@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7xne0xmb6kea"
+path="res://.godot/imported/22 lr.mp3-b1b5b0d3d7b944da2ecd1aff7dcca8b3.mp3str"
+
+[deps]
+
+source_file="res://sounds/22 lr.mp3"
+dest_files=["res://.godot/imported/22 lr.mp3-b1b5b0d3d7b944da2ecd1aff7dcca8b3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
