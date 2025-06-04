@@ -21,7 +21,7 @@ extends Node
 
 
 #NEEDS DOING (in presumed order of precedence):
-#SOUNDS!!!!!!!!!!
+#get better pistol gunshot
 #footstep sounds
 #change invenmanager to be the child of a custom class so we can have differing method calls
 #ADS makes the camesa zoom in

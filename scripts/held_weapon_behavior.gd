@@ -6,6 +6,8 @@ extends Node3D
 @export var WEP_TYPE: Wep
 @onready var weapon_mesh: MeshInstance3D = $weapModel
 @onready var our_reticle: CenterContainer = $"../../../Control/Reticle"
+@onready var gunshotPlayer: AudioStreamPlayer3D = $gunshotPlayer
+@onready var reloadPlayer: AudioStreamPlayer3D = $reloadPlayer
 
 #Resource loading code:
 func _ready() -> void:
@@ -63,6 +65,9 @@ func init_stats():
 	aimbonus = WEP_TYPE.aimBonus
 	damage = WEP_TYPE.damage
 	
+	gunshotPlayer.stream = WEP_TYPE.gunshot
+	reloadPlayer.stream = WEP_TYPE.reload
+	
 	
 	#initialize stats
 	capacity = maxCapacity
@@ -93,6 +98,7 @@ func tryShoot():
 		
 		#apply aimcone recoil. Calculations are elsewhere
 		recoilDebt += recoilAmount 
+		makeGunshot()
 		
 		doShoot() #actually shoot the bullet
 		
@@ -105,6 +111,11 @@ func tryShoot():
 		
 	else:
 		print("click!")
+
+func makeGunshot():
+	gunshotPlayer.pitch_scale = 1 + randf_range(-0.05, 0.05)
+	gunshotPlayer.play()
+
 
 ##This function will always fire a bullet from the center of the screen
 func doShoot():
@@ -127,7 +138,6 @@ func doShoot():
 #var decals = 0
 var hitdecalscene = preload("res://scenes/trivial/bullet_decal.tscn")
 func doHitDecal(pos):
-	print("hi!!!")
 	var decalInstance = hitdecalscene.instantiate()
 	get_tree().root.add_child(decalInstance)
 	decalInstance.global_position = pos
@@ -146,10 +156,16 @@ func doBulletInteract(victim):
 
 ##Starts reload timer
 func startReload():
-	if(!reloading):
-		print("Starting reload!")
-		reloading = true
-		reloadtimer.start();
+	
+	if(reloading || (capacity >= maxCapacity + 1)):
+		print("nuh uh")
+		return
+	
+	
+	reloadPlayer.play()
+	print("Starting reload!")
+	reloading = true
+	reloadtimer.start();
 
 func _on_reload_timer_timeout() -> void:
 	reloading = false

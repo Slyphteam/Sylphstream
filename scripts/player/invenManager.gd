@@ -97,7 +97,7 @@ func get_End(orig, lift, drift):
 	var upAxis = Vector3(0, player.playerCam.rotation.y, 0) #get an axis of rotation for up/down from camera
 	var sideAxis = Vector3(player.playerCam.rotation.x, 0, 0) #ditto for azimuth
 	end = end.rotated(upAxis.normalized(), deg_to_rad(lift)) #rotate
-	end = end.rotated(sideAxis.normalized(), deg_to_rad(drift))
+	#end = end.rotated(sideAxis.normalized(), deg_to_rad(drift))
 	
 	return end 
 	
