@@ -173,40 +173,6 @@ func _physics_process(delta: float) -> void:
 	#Adjust FOV. 87 feels the best; 85 too low and 90 too high
 	playerCam.fov = clamp(87 + sqrt(playerSpeed), 90, 180) 
 	
-	#TODO: apply camera tilt by amount of sideways velocity
-	
-	#create viewbob
-	#bob_time += delta * float(is_on_floor())
-	#bobOffset = doHeadBob(bob_time, prevBob) # this needs more tweaking but it's fine for now
-	#playerCam.transform.origin.y = bobOffset+1.75
-	#prevBob = bobOffset
-
-const bobAmplitude = 0.05
-const bobFreq = 2
-var bob_time = 0
-
-##function that applies a headbob. Currently disabled.
-func doHeadBob(time, prev)->float:
-	
-	#var velocityMult = 1
-	
-	#create a ratio that's dependent on playerspeed. 
-	#rougly between 1 and 1.5
-	var newRatio =  1 + (playerSpeed / (curMax * 2 ))
-	#if(newRatio > 1):
-	#	print("Ratio: ", newRatio)
-		
-	var new_freq = bobFreq *  newRatio #apply ratio to frequency
-	var new_amplitude = bobAmplitude * newRatio # bump up the amplitude
-	
-	var newOffset = sin(time * new_freq) * new_amplitude #plug in cam_Freq if you want to get experimental
-	
-	# even though we really aren't applying an insane amount, still weight the offset to the previous
-	# in order to prevent jitteriness from sudden changes
-	newOffset = (newOffset +(3*prev))/4 
-	#if(cam_freq > bobFreqDef):
-		#print("Bob difference: ", prev, " : ", newOffset)
-	return newOffset
 
 ##Updates the player camera as they enter or leave a crouching state.
 func transition_Crouch(entering):

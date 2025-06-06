@@ -5,7 +5,7 @@
 class_name PLAYERINVENMANAGER extends INVENMANAGER
 
 func _ready():
-
+	
 	print("Hello and welcome to Sylphstream!")
 	heldAmmunition.ammoBlank = 100
 	heldAmmunition.ammoPistol = 51

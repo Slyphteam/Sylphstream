@@ -3,7 +3,7 @@
 
 extends Node3D
 
-@export var WEP_TYPE: Wep
+@export var WEP_TYPE: WEAPON_PARENT
 @onready var weapon_mesh: MeshInstance3D = $weapModel
 @onready var our_reticle: CenterContainer = $"../../../../Control/Reticle"
 @onready var gunshotPlayer: AudioStreamPlayer3D = $gunshotPlayer
@@ -80,7 +80,7 @@ func init_stats():
 	#include aimbonus and recovery speed in calculating. Essentially, the "ergonomics"
 	#recoil amount (reduced)              #negative penalty for low recovery
 	kickAmount = (recoilAmount / 4) + ((5 / ((10 * recoveryAmount))+1) ) - 3
-	aimKickBonus = (kickAmount / 2)
+	@warning_ignore("integer_division") aimKickBonus = (kickAmount / 2) 
 	
 	if(kickAmount <=0):
 		kickAmount = 1

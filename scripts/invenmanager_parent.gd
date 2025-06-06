@@ -5,6 +5,7 @@ enum Ammotypes {ammoBlank, ammoPistol, ammoRifle}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
 var heldItem: Node3D #TODO: MAKE GENERIC ITEM TYPE
+var activeItem: WEAPON_PARENT
 var user : Node3D
 
 ##Get references to helditem and user. should be called in ready, here because it's not optional
