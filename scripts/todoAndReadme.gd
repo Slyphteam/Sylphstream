@@ -17,17 +17,13 @@ extends Node
 
 #--KNOWN PROBLEMS:
 #-- it's REALLY hard to jump up on a platform (is it?)
-#--players can't "step" up a ledge, no matter how small
+#-- players can't "step" up a ledge, no matter how small
+#-- weapons jitter while player is holding movement keys on floor
 
 
 #NEEDS DOING (in presumed order of precedence):
-#Create generic invenmanager class
-#Create player version of Invenmanager class
-#create generic weapon class
-#create weaponholder scene that generates a weapon class on startup
 #get better pistol gunshot
 #footstep sounds
-#change invenmanager to be the child of a custom class so we can have differing method calls
 #ADS makes the camesa zoom in
 #inaccuracy with the dynamic recoil system
 #crosshair changes with speed
