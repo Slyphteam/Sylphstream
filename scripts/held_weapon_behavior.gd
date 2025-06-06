@@ -141,7 +141,6 @@ func doHitDecal(pos):
 	var decalInstance = hitdecalscene.instantiate()
 	get_tree().root.add_child(decalInstance)
 	decalInstance.global_position = pos
-	var silly = manager.get_Rotation()
 	decalInstance.rotation = manager.get_Rotation()
 	
 	decalInstance.rotation.z = randi_range(-2, 2)
@@ -181,7 +180,7 @@ func _on_reload_timer_timeout() -> void:
 	Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 5)
 
 
-func _process(delta: float): 
+func _process(_delta: float): 
 	
 	Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
 	Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!

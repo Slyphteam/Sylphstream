@@ -1,5 +1,5 @@
 extends Node3D
-
+##This is a DEPRECATED script that formerly loaded weapon information
 @export var WEP_TYPE: Wep
 @onready var weapon_mesh: MeshInstance3D = $wepmodel
 # Called when the node enters the scene tree for the first time.
@@ -8,8 +8,8 @@ func _ready() -> void:
 
 func load_weapon():
 	
-	print("hi!")
-	print("Loading mesh: ", WEP_TYPE.mesh)
+	print("hi!!!!!!!!!!!!")
+	print("Loading blah blah mesh: ", WEP_TYPE.mesh)
 	weapon_mesh.mesh = WEP_TYPE.mesh
 	
 	position = WEP_TYPE.position

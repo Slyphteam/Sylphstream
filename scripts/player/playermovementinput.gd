@@ -62,11 +62,11 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 @onready var playerShape = $playermodel
 @onready var playerCollider = $playercollider
 #@onready var invenManager = $"inventory manager" #invenmanager moved to weapon rig
-@onready var invenManager =$camCage/came/weapon_rig
+@onready var invenManager = $camCage/came/weapon_rig
 
 #@onready var checkerRay = $playercollider/checkerRayCast
 #func _init():
-#	invenManager = invenManagerClass.new()#$came/weaponparent)
+	#invenManager.Assign_User_And_Wep(self, $camCage/came/weapon_rig/weaponHolder)
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -530,7 +530,7 @@ func get_delta_time() -> float:
 	return get_process_delta_time()
 
 ##Jolt camera, by degrees x and y
-func apply_Viewpunch(azimuth, zenith):
+func apply_Viewpunch(azimuth: float, zenith: float):
 	
 	
 	

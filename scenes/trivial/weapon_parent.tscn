@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://k3fjxxfrvjw"]
 
 [ext_resource type="PackedScene" uid="uid://by1cb6m3fiv80" path="res://models/glbs and textures/weapon parent.glb" id="1_t6gro"]
-[ext_resource type="Script" uid="uid://dv1kk0eu3mjpc" path="res://scripts/weaponload.gd" id="2_jpxyg"]
+[ext_resource type="Script" uid="uid://dv1kk0eu3mjpc" path="res://scripts/trivial/deprecated and archive/weaponload.gd" id="2_jpxyg"]
 
 [node name="weapon parent" instance=ExtResource("1_t6gro")]
 script = ExtResource("2_jpxyg")
