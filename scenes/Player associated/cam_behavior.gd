@@ -17,7 +17,7 @@ var tilt_amount : float = 0.0 # negative is to the left, positive is to the righ
 
 func _process(delta):
 	handleBob(delta)
-	handleTilt(delta)
+	handleTilt()#delta)
 
 func handleBob(delta):
 	# set values based on player stats
@@ -29,7 +29,8 @@ func handleBob(delta):
 	var bob_offset = bob_intensity * sin(bob_time)
 	position.y = bob_offset
 
-func handleTilt(delta):
+#delta was unused so I commented it out
+func handleTilt(): #delta):
 	# set values based on player stats
 	var sideways_vel = player.playerVelocity.dot(player.playerCam.basis.x)  # get sideways velocity
 	

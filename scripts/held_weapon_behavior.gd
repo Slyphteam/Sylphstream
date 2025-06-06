@@ -3,27 +3,33 @@
 
 extends Node3D
 
-@export var WEP_TYPE: Wep
+@export var Starting_Wep: WEAPON_PARENT
 @onready var weapon_mesh: MeshInstance3D = $weapModel
 @onready var our_reticle: CenterContainer = $"../../../../Control/Reticle"
 @onready var gunshotPlayer: AudioStreamPlayer3D = $gunshotPlayer
 @onready var reloadPlayer: AudioStreamPlayer3D = $reloadPlayer
+var damage
+var isFirearm 
 
 #Resource loading code:
 func _ready() -> void:
-	load_weapon()
-	init_stats()
-
-
-
-func load_weapon():
-	print("Loading weapon mesh: ", WEP_TYPE.mesh)
-	weapon_mesh.mesh = WEP_TYPE.mesh
+	load_weapon(Starting_Wep)
 	
-	position = WEP_TYPE.position
-	rotation_degrees = WEP_TYPE.rotation
-	scale = WEP_TYPE.scale
+
+
+
+func load_weapon(weaponToLoad:WEAPON_PARENT):
+	print("Loading weapon mesh: ", weaponToLoad.mesh)
+	weapon_mesh.mesh = weaponToLoad.mesh
 	
+	position = weaponToLoad.position
+	rotation_degrees = weaponToLoad.rotation
+	scale = weaponToLoad.scale
+	damage = weaponToLoad.damage
+	isFirearm = weaponToLoad.isFirearm
+	
+	if(isFirearm):
+		init_Firearm_Stats(weaponToLoad)
 
 
 #weapon behavior code
@@ -45,7 +51,6 @@ var totalMinRecoil
 var recoveryAmount
 var recoilAmount
 var aimbonus
-var damage 
 
 var debtCutoff = 10 ##at what point do we just apply the recoil debt flat out?
 var recoveryCutoff ##at what point do we increase our recoil recovery?
@@ -53,20 +58,19 @@ var recoveryDivisor ##Used in recoil recovery computation
 var kickAmount: int ##Used in randomly generating recoil viewpunch
 var aimKickBonus ##Used because we don't like integer division around these parts
 
-func init_stats():
+func init_Firearm_Stats(weaponToLoad):
 	#grab all our variables
-	maxCapacity = WEP_TYPE.maxCapacity
-	chambering = WEP_TYPE.chambering
-	totalMinRecoil = WEP_TYPE.minRecoil
-	totalMaxRecoil = WEP_TYPE.maxRecoil
-	recoveryAmount = WEP_TYPE.recoverAmount
-	recoilAmount = WEP_TYPE.recoilAmount
-	reloadtimer.wait_time = WEP_TYPE.reloadtime
-	aimbonus = WEP_TYPE.aimBonus
-	damage = WEP_TYPE.damage
+	maxCapacity = weaponToLoad.maxCapacity
+	chambering = weaponToLoad.chambering
+	totalMinRecoil = weaponToLoad.minRecoil
+	totalMaxRecoil = weaponToLoad.maxRecoil
+	recoveryAmount = weaponToLoad.recoverAmount
+	recoilAmount = weaponToLoad.recoilAmount
+	reloadtimer.wait_time = weaponToLoad.reloadtime
+	aimbonus = weaponToLoad.aimBonus
 	
-	gunshotPlayer.stream = WEP_TYPE.gunshot
-	reloadPlayer.stream = WEP_TYPE.reload
+	gunshotPlayer.stream = weaponToLoad.gunshot
+	reloadPlayer.stream = weaponToLoad.reload
 	
 	
 	#initialize stats
@@ -80,7 +84,7 @@ func init_stats():
 	#include aimbonus and recovery speed in calculating. Essentially, the "ergonomics"
 	#recoil amount (reduced)              #negative penalty for low recovery
 	kickAmount = (recoilAmount / 4) + ((5 / ((10 * recoveryAmount))+1) ) - 3
-	aimKickBonus = (kickAmount / 2)
+	@warning_ignore("integer_division") aimKickBonus = (kickAmount / 2) 
 	
 	if(kickAmount <=0):
 		kickAmount = 1
@@ -141,7 +145,6 @@ func doHitDecal(pos):
 	var decalInstance = hitdecalscene.instantiate()
 	get_tree().root.add_child(decalInstance)
 	decalInstance.global_position = pos
-	var silly = manager.get_Rotation()
 	decalInstance.rotation = manager.get_Rotation()
 	
 	decalInstance.rotation.z = randi_range(-2, 2)
@@ -181,11 +184,12 @@ func _on_reload_timer_timeout() -> void:
 	Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 5)
 
 
-func _process(delta: float): 
+func _process(_delta: float): 
 	
-	Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
-	Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!
-	calcRecoil() 
+	if(isFirearm):
+		Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
+		Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!
+		calcRecoil() 
 	
 ##Apply any recoil "debt" accumulated and calculate recovery
 func calcRecoil():
