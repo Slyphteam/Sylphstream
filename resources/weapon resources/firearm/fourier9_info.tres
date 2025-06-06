@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Wep" load_steps=5 format=3 uid="uid://sy0ndq1n1a7f"]
+[gd_resource type="Resource" script_class="Gun" load_steps=5 format=3 uid="uid://sy0ndq1n1a7f"]
 
 [ext_resource type="AudioStream" uid="uid://c7xne0xmb6kea" path="res://sounds/gunshots/22 lr.mp3" id="1_gdvhu"]
 [ext_resource type="ArrayMesh" uid="uid://byeqp13am71ae" path="res://models/mesh models/fourier9 mesh.res" id="2_gdvhu"]
@@ -7,17 +7,9 @@
 
 [resource]
 script = ExtResource("3_g5w25")
-wepName = &"Fourier 9"
-wepDesc = &"A cheap, not entirely robust carbine that places an emphasis on the importance of transmissions."
-selection = 1
-mesh = ExtResource("2_gdvhu")
 gunshot = ExtResource("1_gdvhu")
 reload = ExtResource("3_pq2j2")
-position = Vector3(0.5, -0.3, -0.3)
-rotation = Vector3(90, 90, 0)
-scale = Vector3(0.3, 0.3, 0.3)
 chambering = 1
-damage = 24
 maxCapacity = 17
 reloadtime = 2.0
 aimBonus = 5.0
@@ -25,4 +17,13 @@ maxRecoil = 50.0
 minRecoil = 10.0
 recoilAmount = 15.0
 recoverAmount = 0.5
+wepName = &"Fourier 9"
+wepDesc = &"A cheap, not entirely robust carbine that places an emphasis on the importance of transmissions."
+isFirearm = true
+mesh = ExtResource("2_gdvhu")
+damage = 24
+selection = 1
+position = Vector3(0.5, -0.3, -0.3)
+rotation = Vector3(90, 90, 0)
+scale = Vector3(0.3, 0.3, 0.3)
 metadata/_custom_type_script = "uid://b24hqmuxy0hut"

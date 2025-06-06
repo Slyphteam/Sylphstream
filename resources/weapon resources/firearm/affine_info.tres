@@ -1,23 +1,15 @@
-[gd_resource type="Resource" script_class="Wep" load_steps=5 format=3 uid="uid://bhtixavevlm6g"]
+[gd_resource type="Resource" script_class="Gun" load_steps=5 format=3 uid="uid://bhtixavevlm6g"]
 
 [ext_resource type="AudioStream" uid="uid://c3sljf55bxm0a" path="res://sounds/gunshots/heavyrifle.mp3" id="1_y4yrn"]
 [ext_resource type="ArrayMesh" uid="uid://0nhfjsnbpesa" path="res://models/mesh models/affine mesh.res" id="2_0t0sa"]
 [ext_resource type="AudioStream" uid="uid://c8h4dh1gf7jql" path="res://sounds/reloads/fullreloadrifle.mp3" id="3_rofvq"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/firearm_resource.gd" id="4_e656k"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/firearm_resource.gd" id="4_y4yrn"]
 
 [resource]
-script = ExtResource("4_e656k")
-wepName = &"Affine"
-wepDesc = &"A 10-round rifle in semi auto. The potent, low-recoil cartridge more than makes up for capacity."
-selection = 1
-mesh = ExtResource("2_0t0sa")
+script = ExtResource("4_y4yrn")
 gunshot = ExtResource("1_y4yrn")
 reload = ExtResource("3_rofvq")
-position = Vector3(1.2, -0.7, -0.5)
-rotation = Vector3(90, 90, 0)
-scale = Vector3(1.852, 0.094, 0.351)
 chambering = 2
-damage = 37
 maxCapacity = 10
 reloadtime = 2.0
 aimBonus = 5.0
@@ -25,4 +17,13 @@ maxRecoil = 40.0
 minRecoil = 5.0
 recoilAmount = 20.0
 recoverAmount = 0.7
+wepName = &"Affine"
+wepDesc = &"A 10-round rifle in semi auto. The potent, low-recoil cartridge more than makes up for capacity."
+isFirearm = true
+mesh = ExtResource("2_0t0sa")
+damage = 40
+selection = 4
+position = Vector3(1.2, -0.7, -0.5)
+rotation = Vector3(90, 90, 0)
+scale = Vector3(1.852, 0.094, 0.351)
 metadata/_custom_type_script = "uid://b24hqmuxy0hut"

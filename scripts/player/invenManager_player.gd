@@ -10,8 +10,10 @@ func _ready():
 	heldAmmunition.ammoBlank = 100
 	heldAmmunition.ammoPistol = 51
 	heldAmmunition.ammoRifle = 30
-
+	
 	getRefs()
+	
+	holdingFirearm = heldItem.isFirearm
 
 func getRefs():
 	heldItem = get_node("weaponHolder")
@@ -19,26 +21,23 @@ func getRefs():
 
 #functions going down the hierarchy
 func doShoot():
-	heldItem.tryShoot()
+	if(holdingFirearm):
+		heldItem.tryShoot()
+	else:
+		print("Swing!")
 
 func startReload():
-	heldItem.startReload()
-
-func toggleSights():
-	heldItem.toggleADS()
-	#if(aimdownsights):
-		#print("Obliterating accuracy")
-		#heldItem.adjustAcuracy(50)
-		#aimdownsights = false
-		#return
-	#else:
-	#print("Aiming")
-	#heldItem.adjustAcuracy(-10)
+	if(holdingFirearm):
+		heldItem.startReload()
+	else:
+		print("How do you reload a sword?")
 	
-#
-#func update_aim():
-	#pass
-
+func toggleSights():
+	if(holdingFirearm):
+		heldItem.toggleADS()
+	else:
+		print("Parry!")
+	
 #Functions going up the hierarchy
 ##Apply viewpunch to the player, in degrees. Requires a connected user object.
 func applyViewpunch(lift, drift):
