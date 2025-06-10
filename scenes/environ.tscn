@@ -97,7 +97,7 @@ size = Vector3(8, 4, 3)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2yn2u"]
 points = PackedVector3Array(4.06349, -1.93592, -1.56318, -3.93621, 2.12698, 1.6108, -3.93621, 2.12698, -1.56318, -3.90172, -1.98008, -1.5, 4.06349, -1.93592, 1.6108, -3.77979, -1.91721, 1.5, -4.06349, 2.12698, 1.6108, 3.93621, -1.80877, 1.6108, -4.06349, 2.12698, -1.56318, 3.93621, -1.80877, -1.56318, 3.90172, -1.98008, -1.5, 2.66657, -1.1738, -1.56318)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" groups=["does_hit_decals"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_noarx")

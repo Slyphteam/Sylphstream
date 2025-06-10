@@ -133,9 +133,12 @@ func doShoot():
 		var castResult = space.intersect_ray(raycheck)
 		
 		if(castResult):
+			
 			var hitObject = castResult.get("collider")
+			print(hitObject)
 			if(hitObject.is_in_group("damage_interactible")):
 				doBulletInteract(hitObject)
+			if(hitObject.is_in_group("does_hit_decals")):
 				doHitDecal(castResult.get("position"))
 				
 
