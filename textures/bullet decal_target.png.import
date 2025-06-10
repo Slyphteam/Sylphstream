@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db6s26imkpqns"
-path.s3tc="res://.godot/imported/fourier9_fourier9.png-bb16314e64a3db474656805c92024e4a.s3tc.ctex"
+uid="uid://cg4f0xkgc8nq3"
+path.s3tc="res://.godot/imported/bullet decal_target.png-06c4bab9a95fe1b5152a171fadbc16a8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "ed2e7588dfbcc22b7ddbc999af51ffdd"
+"md5": "5284dc4a33da38a6cd91b7a357ac7bb3"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/fourier9_fourier9.png"
-dest_files=["res://.godot/imported/fourier9_fourier9.png-bb16314e64a3db474656805c92024e4a.s3tc.ctex"]
+source_file="res://textures/bullet decal_target.png"
+dest_files=["res://.godot/imported/bullet decal_target.png-06c4bab9a95fe1b5152a171fadbc16a8.s3tc.ctex"]
 
 [params]
 
