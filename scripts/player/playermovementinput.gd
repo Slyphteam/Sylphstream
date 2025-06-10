@@ -60,7 +60,7 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 
 @onready var playerCam = $camCage/came
 @onready var playerShape = $playermodel
-@onready var playerCollider = $playercollider
+@onready var playerCollider = $playercollidercapsule
 #@onready var invenManager = $"inventory manager" #invenmanager moved to weapon rig
 @onready var invenManager = $camCage/came/weapon_rig
 
@@ -96,11 +96,11 @@ func _input(event):
 	
 	if Input.is_action_pressed("ui_crouch"):
 		if(!crouching): #if we weren't already crouching, update camera
-			transition_Crouch(true) ## having this here...
+			transition_Crouch(true) # having this here...
 			crouching = true
 	if Input.is_action_just_released("ui_crouch"):
 		if(crouching): #if we're leaving crouching, alsp update camera
-			transition_Crouch(false) ##and having this here feels like bad code
+			transition_Crouch(false) #and having this here feels like bad code
 			crouching = false
 	
 	if event.is_action_pressed("ui_reload"):
@@ -176,32 +176,20 @@ func _physics_process(delta: float) -> void:
 
 ##Updates the player camera as they enter or leave a crouching state.
 func transition_Crouch(entering):
-	#playerShape.scale.y > 1 || playerShape.scale.y < 0.2 ||
-	if( playerCollider.scale.y > 1 || playerCollider.scale.y < 0.2 ):
-		return
 	
 	if(entering): #we are entering crouch
 	#	playerShape.scale.y -= 0.8 #it's jank so we are no longer changing the playermodel's size
-		playerCollider.scale.y -= 0.4
+		playerCollider.scale.y -= 0.8
 
 	else: #we are exiting crouch
 		#TODO: add a check to see if the player has enough room TO stand
-		#checkRay()
-		#return if they don't
-	#	playerShape.scale.y += 0.8
-		playerCollider.scale.y += 0.4
-	
-	#in theory this code should never do anything since we have an early return but I've left it JIC
-	#playerShape.scale.y = clamp(playerShape.scale.y, 0.2, 1)
-	playerCollider.scale.y = clamp(playerCollider.scale.y, 0.2, 1)
+		playerCollider.scale.y += 0.8
 	
 #func checkRay():
 	#print("are we colliding?")
 	#if(checkerRay.get_collider() ):
 		#print("yep")
 
-	
-	
 ##Function that toggles mouse sensitivity. Speed is handled elsewhere. Maybe make dependent on weapons stat????
 func toggle_ADS_Stats():
 	if(aiming): # we want to un-aim
@@ -255,13 +243,10 @@ func handle_Floor_Sourcelike(delta):
 	# it might seem weird that both of these are the playercam's y rotation
 	# but that's because it corresponds to yaw. We don't want pitch and roll.
 	
-	
-	
-	
 	#calculate a vector based of our inputs and angles
 	var desiredVec = (leftright * sideAngle) + (forback * forwAngle)
 	
-	var desiredDir = desiredVec.normalized()
+	var desiredDir: Vector3 = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
 
 	
@@ -270,7 +255,7 @@ func handle_Floor_Sourcelike(delta):
 	
 	#Apply conditional modifiers to our max speed
 	curMax = walkSpeed;
-		
+	
 	if(aiming):
 		if(crouching):
 			curMax -=1
@@ -286,8 +271,6 @@ func handle_Floor_Sourcelike(delta):
 			print("crouchsliding! speed:", playerSpeed)
 	elif(sprinting): curMax += sprintSpeed; 
 	
-	
-	
 	#print("desired speed: ", desiredSpeed)
 	#player is not moving if speed is less than 3.5
 	if desiredSpeed !=0.0 and desiredSpeed > curMax:
@@ -298,6 +281,7 @@ func handle_Floor_Sourcelike(delta):
 	
 	
 	desiredVec.y = 0; #zero out the y
+	
 	do_Source_Accelerate(desiredDir, desiredSpeed, delta)
 	
 		#deal with friction
@@ -317,7 +301,7 @@ func do_Crouch_Slide(delta):
 	handle_Friction(delta, crouchSlideFric) #crouchslidefric is a static variable = 0.15
 
 ##Function that calculates and updates player's velocity
-func do_Source_Accelerate(desiredDir, desiredSpeed, delta):
+func do_Source_Accelerate(desiredDir: Vector3, desiredSpeed, delta):
 	
 	var currentspeed = playerVelocity.dot(desiredDir) # are we changing direction?
 	var addedspeed = desiredSpeed - currentspeed # reduce by amount
@@ -329,8 +313,20 @@ func do_Source_Accelerate(desiredDir, desiredSpeed, delta):
 	
 	playerVelocity.y -= gravAmount * delta
 	
-	for i in range(3): #the comment says adjust velocity but i truly have no idea what this does
+	
+	#var newVec = Vector3(acelspeed * desiredDir.x, acelspeed * desiredDir.y,acelspeed * desiredDir.z)
+	#playerVelocity += newVec
+	#playerVelocity += acelspeed * desiredDir
+	
+	# i don't FULLY understand what this does
+	# but all sourcelike movement scripts rely on more or less this exact code
+	# and I can't seem to get alternative approaches to work
+	#TODO: figure out an alternative that functions
+	for i in range(3): 
 		playerVelocity+= acelspeed * desiredDir
+		
+		
+
 	
 	playerSpeed = playerVelocity.length() # update playerspeed
 

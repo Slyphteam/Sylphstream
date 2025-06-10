@@ -22,6 +22,7 @@ extends Node
 
 
 #NEEDS DOING (in presumed order of precedence):
+# Step up/down movement code
 #get better pistol gunshot
 #footstep sounds
 #ADS makes the camesa zoom in
