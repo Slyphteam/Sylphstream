@@ -1,6 +1,15 @@
+6/10:
+Imports Sylph models
+Creates Sylph scene, adds first API
+6/6:
+Refactors all weapon/inventory management code:
+-Adds support for weapon switching
+-Adds support for non-gun weapon behavior
+-Adds support for non-player inventory management API
 6/4:
 Weapon class now has damage that is sent to hit object on valid hit
 Imports gunshots and reload sounds
 All implemented guns now have audio
 6/3:
+Adds changelog
 Shooting now raycasts and, on collision with a valid target object, creates a decal

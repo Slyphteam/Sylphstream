@@ -5,20 +5,21 @@ extends Node3D
 
 @export var Starting_Wep: WEAPON_PARENT
 @onready var weapon_mesh: MeshInstance3D = $weapModel
-@onready var our_reticle: CenterContainer = $"../../../../Control/Reticle"
+@onready var our_reticle: CenterContainer 
 @onready var gunshotPlayer: AudioStreamPlayer3D = $gunshotPlayer
 @onready var reloadPlayer: AudioStreamPlayer3D = $reloadPlayer
 var damage
 var isFirearm 
+var doreticle = false
 
 #Resource loading code:
-func _ready() -> void:
-	load_weapon(Starting_Wep)
+#func _ready() -> void:
 	
+	#
 
 
 
-func load_weapon(weaponToLoad:WEAPON_PARENT):
+func load_weapon(weaponToLoad:WEAPON_PARENT, reticle):
 	print("Loading weapon mesh: ", weaponToLoad.mesh)
 	weapon_mesh.mesh = weaponToLoad.mesh
 	
@@ -27,6 +28,10 @@ func load_weapon(weaponToLoad:WEAPON_PARENT):
 	scale = weaponToLoad.scale
 	damage = weaponToLoad.damage
 	isFirearm = weaponToLoad.isFirearm
+	
+	if(reticle):
+		doreticle = reticle
+		our_reticle = $"../../../../Control/Reticle"
 	
 	if(isFirearm):
 		init_Firearm_Stats(weaponToLoad)
@@ -90,8 +95,8 @@ func init_Firearm_Stats(weaponToLoad):
 		kickAmount = 1
 		aimKickBonus = 0
 	
-	
-	our_reticle.adjust_spread(minRecoil)
+	if(doreticle):
+		our_reticle.adjust_spread(minRecoil)
 
 
 func tryShoot():
@@ -135,7 +140,6 @@ func doShoot():
 		if(castResult):
 			
 			var hitObject = castResult.get("collider")
-			print(hitObject)
 			if(hitObject.is_in_group("damage_interactible")):
 				doBulletInteract(hitObject)
 			if(hitObject.is_in_group("does_hit_decals")):
@@ -226,7 +230,8 @@ func calcRecoil():
 			currentRecoil-= amnt
 	
 	#update the UI
-	our_reticle.adjust_spread(currentRecoil)
+	if(doreticle):
+		our_reticle.adjust_spread(currentRecoil)
 
 
 var aimdownsights = false

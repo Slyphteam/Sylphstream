@@ -13,6 +13,8 @@ func _ready():
 	
 	getRefs()
 	
+	heldItem.load_weapon(heldItem.Starting_Wep, true)
+	
 	holdingFirearm = heldItem.isFirearm
 
 func getRefs():
