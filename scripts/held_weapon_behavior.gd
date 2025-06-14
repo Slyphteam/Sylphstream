@@ -188,12 +188,13 @@ func _on_reload_timer_timeout() -> void:
 	
 	capacity += newCap
 	print("Finished reload! Rounds: ", capacity)
-	Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 5)
+	if(doreticle):
+		Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 5)
 
 
 func _process(_delta: float): 
 	
-	if(isFirearm):
+	if(isFirearm && doreticle):
 		Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
 		Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!
 		calcRecoil() 

@@ -202,8 +202,8 @@ func toggle_ADS_Stats():
 ##This is the MAIN function that determines where and how the player will move
 func handle_Move(delta):
 	
+	#i should really really REALLY REALLY R E A L L Y refactor this section
 	if (is_on_floor()):
-		
 		if(crouchSliding):
 			do_Crouch_Slide(delta)
 		
@@ -214,8 +214,7 @@ func handle_Move(delta):
 				if(not Input.is_action_pressed("ui_jump") ): 
 					canjump = true
 			
-			handle_Floor_Sourcelike(delta)
-			
+			handle_Floor_Sourcelike(delta)	
 	else: 
 		handle_Sourcelike_Air(delta)
 	
@@ -237,7 +236,7 @@ func handle_Floor_Sourcelike(delta):
 		#TODO: ADD A TIMER 
 		#what did I mean by add a timer???? huh??
 	
-	#alter the forward movement by camera's azimuth rotation. shouldnt do anything yet.
+	#grab vectors using. this. i guess. yeah sure whatever man.
 	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
 	# it might seem weird that both of these are the playercam's y rotation
