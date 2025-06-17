@@ -1,9 +1,13 @@
-##One of two special raycast nodes. READ COMMENTS IN CLASS FILE FOR MORE INFO.
-class_name bullet_reactive extends Node3D
+##One of two special raycast. READ COMMENTS IN CLASS FILE FOR MORE INFO.
+class_name raycast_reactive extends Node3D
 
-func hit_By_Bullet(dam, damtype, dir, origin):
+func hit_By_Bullet(dam, _damtype, _dir, _origin):
 	print("Target hit! ", dam)
 
+#putting this here, not because it's a necessary implementation, but as documentation for player interaction.
+func interact_By_Player(player):
+	pass
+	
 #So: How the Heck Frick does Sylphstream handle collisions and also why is my code so bad?
 #TL;DR I use groups and not everything extends this class.
 

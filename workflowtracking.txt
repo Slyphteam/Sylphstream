@@ -35,6 +35,7 @@ inaccuracy with the dynamic recoil system (integrate with the get_end function) 
 quake-like movement pass
 
 FUNCTIONAL:
+Change shooting input to be per-frame, add trigger logic to held weapon class.
 Change bullets to have damage falloff ++++&&
 Clean up infopanel code, move weapon stat tracking to invenmanager's job
 crosshair changes with speed **

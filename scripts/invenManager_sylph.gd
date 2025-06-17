@@ -6,7 +6,7 @@ class_name SYLPHINVENMANAGER extends INVENMANAGER
 #
 func _ready():
 	pass
-	#
+	#no need to actually do anything on ready, yet.
 	#print("Hello and welcome to Sylphstream!")
 	#heldAmmunition.ammoBlank = 10000
 	#heldAmmunition.ammoPistol = 51

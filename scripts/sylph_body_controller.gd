@@ -7,6 +7,9 @@ func hit_By_Bullet(dam, damtype, dir, origin):
 	#print("ow!")
 	move_Head_Exact(Vector2(0,10))
 
+func interact_By_Player():
+	print("Hi bestie!!")
+	move_Head_Exact(Vector2(0,-10))
 
 func move_Head(desired: Vector2):
 	#TODO: in the future add inaccuracy with higher speeds

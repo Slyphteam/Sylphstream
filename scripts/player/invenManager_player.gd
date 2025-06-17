@@ -4,6 +4,7 @@
 
 class_name PLAYERINVENMANAGER extends INVENMANAGER
 
+
 func _ready():
 	
 	print("Hello and welcome to Sylphstream!")

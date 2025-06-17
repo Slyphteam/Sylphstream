@@ -64,6 +64,8 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 #func _init():
 	#invenManager.Assign_User_And_Wep(self, $camCage/came/weapon_rig/weaponHolder)
 
+##Handles player input. You may notice that there are checks on both Input and event.
+##event will only apply the first frame, but event will happen for every frame the key is held.
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		input_Mouse(event)
@@ -73,7 +75,7 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
-	if event.is_action_pressed("ui_click"):
+	if event.is_action_pressed("ui_click"): #TODO: change to Input and add shooting logic to held weapon behavior.
 		# are we in mouse mode?
 		if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
 			invenManager.doShoot() #if so, shoot our current weapon
@@ -84,10 +86,8 @@ func _input(event):
 	#this might seem odd, but without these checks in this way,
 	# the player only sprints for 5-6 ticks before stopping.
 	# TODO: ensure this is_action_held doesn't actually work for this
-	if (event.is_action_pressed("ui_sprint")):
+	if Input.is_action_pressed("ui_sprint"):
 		sprinting = true
-	if event.is_action_released("ui_sprint"):
-		sprinting = false
 	
 	
 	if Input.is_action_pressed("ui_crouch"):
@@ -106,29 +106,28 @@ func _input(event):
 		invenManager.toggleSights()
 		toggle_ADS_Stats()
 	
-	if Input.is_action_pressed("ui_interact"):
+	if (event.is_action_pressed("ui_interact") && !event.is_echo()):
+		
 		do_Interact_Raycast()
 
 ##Cleanliness function that just makes a short-ranged raycast
 func do_Interact_Raycast():
 		var space = invenManager.get_space_state()
 		var orig:Vector3 = playerCam.project_ray_origin(get_viewport().size / 2)
-		var end:Vector3 = orig + playerCam.project_ray_normal(get_viewport().size / 2) * 1000
+		var end:Vector3 = orig + playerCam.project_ray_normal(get_viewport().size / 2) * 100
 		
-		
-		print("wahoo!")
 		var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
 		raycheck.collide_with_bodies = true
 		var castResult = space.intersect_ray(raycheck)
 		
 		if(castResult):
-			print("yippie!")
+			print(castResult)
 			var hitObject = castResult.get("collider")
 			if(hitObject.is_in_group("player_interactible")): #check if we even CAN interact before anything else
 				var castLocation = castResult.get("position")
 				var dist = (orig - castLocation).length()
 				if(dist <= 2.5):
-					print("horray! :)")
+					hitObject.interact_By_Player(self)
 
 func input_Mouse(event):
 	xlook += -event.relative.y * mousesensitivity

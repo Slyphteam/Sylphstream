@@ -1,11 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=38 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/turret.tscn" id="1_20ccn"]
-[ext_resource type="PackedScene" uid="uid://cxqoq8el0tj0a" path="res://models/glbs and textures/affine.glb" id="2_l4465"]
-[ext_resource type="PackedScene" uid="uid://cvknlaho2280u" path="res://models/glbs and textures/fourier9.glb" id="3_l4465"]
+[ext_resource type="PackedScene" uid="uid://dw6u8j6bfnycd" path="res://scenes/trivial/bergther.tscn" id="3_aggi3"]
+[ext_resource type="PackedScene" uid="uid://dl0emtfqlrkh2" path="res://scenes/trivial/fourier_9.tscn" id="3_d6ln1"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/Player associated/player.tscn" id="4_2yn2u"]
 [ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="4_m2myf"]
 [ext_resource type="Material" uid="uid://0awlgsjd4q27" path="res://resources/testingbluecolor.tres" id="6_m2myf"]
+[ext_resource type="PackedScene" uid="uid://de617ancwmeky" path="res://scenes/trivial/affine.tscn" id="7_aggi3"]
 [ext_resource type="PackedScene" uid="uid://bfyduw5qytyby" path="res://scenes/sylphscene.tscn" id="7_d6ln1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
@@ -74,6 +75,9 @@ size = Vector3(1, 1.5, 8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ycbjd"]
 size = Vector3(1, 1.5, 16)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aggi3"]
+points = PackedVector3Array(0.579253, 0.83714, 4.06349, -0.56338, -0.81333, -4.06349, 0.579253, -0.81333, -4.06349, -0.56338, -0.81333, 4.06349, -0.56338, 0.83714, -4.06349, 0.579253, 0.83714, -4.06349, 0.579253, -0.81333, 4.06349, -0.56338, 0.83714, 4.06349)
 
 [sub_resource type="BoxMesh" id="BoxMesh_drpe3"]
 size = Vector3(6, 4, 6)
@@ -211,11 +215,11 @@ skeleton = NodePath("../../..")
 [node name="slyphstream turret" parent="Environment/Range" instance=ExtResource("1_20ccn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.79718, -0.505132, -6.19015)
 
-[node name="affine" parent="Environment/Range" instance=ExtResource("2_l4465")]
-transform = Transform3D(0.785986, 2.70243e-08, -0.618244, 0.618244, -3.43566e-08, 0.785986, 0, -1, -4.37114e-08, -0.424908, 0.848665, -4.28248)
+[node name="affine" parent="Environment/Range" instance=ExtResource("7_aggi3")]
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 0.00527954, 0.848665, -0.445808)
 
-[node name="fourier9" parent="Environment/Range" instance=ExtResource("3_l4465")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125801, 0.98, -2.8753)
+[node name="fourier9" parent="Environment/Range" instance=ExtResource("3_d6ln1")]
+transform = Transform3D(0.222263, 0, -0.974987, 0, 1, 0, 0.974987, 0, 0.222263, 0.0794182, 0.851828, -2.9652)
 
 [node name="target" parent="Environment/Range" instance=ExtResource("4_m2myf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.48683, 0.648801, -1.71955)
@@ -228,6 +232,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.4432
 
 [node name="target4" parent="Environment/Range" instance=ExtResource("4_m2myf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.632, 0.648801, 1.85266)
+
+[node name="range table" type="StaticBody3D" parent="Environment/Range"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Range/range table"]
+shape = SubResource("ConvexPolygonShape3D_aggi3")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.1564, 1.13379, -21.4827)
@@ -311,3 +320,6 @@ shape = SubResource("ConvexPolygonShape3D_2yn2u")
 
 [node name="sylph body" parent="." instance=ExtResource("7_d6ln1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287848, 0.799304, -5.32817)
+
+[node name="bergther 2" parent="." instance=ExtResource("3_aggi3")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 42.7253, 1.87422, 23.6748)
