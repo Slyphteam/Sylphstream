@@ -90,7 +90,7 @@ func get_Origin()-> Vector3:
 	print("Attempted to get origin on invenmanager parent! Bad!")
 	return Vector3(0,0,0)
 
-##Endpoint of where bullets are coming from. Lift and Drift are from inaccuracy calculations.
+##Endpoint of where bullets are coming from. Lift and Drift are for inaccuracy calculations.
 func get_End(orig:Vector3, lift:float, drift:float)->Vector3:
 	print("Attempted to get origin on invenmanager parent! Bad!")
 	return orig + Vector3(drift,lift,0)

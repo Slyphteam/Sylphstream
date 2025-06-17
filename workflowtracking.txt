@@ -25,16 +25,28 @@ KEY:
 	*: Important (to current course of dev plans)
 	&: Unimportant
 
-inaccuracy with the dynamic recoil system (integrate with the get_end function) -*
+Change target interaction to use composition instead of inheritance.
 
+CURRENT DEV CYCLE:
 player interact raycase (important for ammo pickups, sylph testing, yada yada big importance) -*
-from above: ammo pickups ++++
-footstep sounds +++
-Step up/down movement code ----- * (will have to do it at some point)
-get better pistol gunshot &++
-ADS makes the camera zoom in & ??
-crosshair changes with speed **
-context-sensitive leaning --&
 
+NEXT DEVCYCLE:
+inaccuracy with the dynamic recoil system (integrate with the get_end function) -*
+quake-like movement pass
+
+FUNCTIONAL:
+Change bullets to have damage falloff ++++&&
+Clean up infopanel code, move weapon stat tracking to invenmanager's job
+crosshair changes with speed **
+from above: ammo pickups ++++
+
+Step up/down movement code ----- * (will have to do it at some point)
+
+EXPERIENTIAL:
+
+get better pistol gunshot &++
+footstep sounds +++
+context-sensitive leaning --&
+ADS makes the camera zoom in & ??
 fix weapon clipping ++++++++ &
 KICKING!!!

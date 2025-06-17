@@ -138,7 +138,7 @@ func doShoot():
 		var castResult = space.intersect_ray(raycheck)
 		
 		if(castResult):
-			
+			print(castResult)
 			var hitObject = castResult.get("collider")
 			if(hitObject.is_in_group("damage_interactible")):
 				doBulletInteract(hitObject)

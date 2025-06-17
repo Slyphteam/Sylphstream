@@ -11,10 +11,6 @@ const gravAmount = 60
 var ylook : float
 var xlook : float
 var mousesensitivity = 0.25
-var ply_maxlookangle_down = -90
-var ply_maxlookangle_up = 90
-var ply_ylookspeed = 0.3
-var ply_xlookspeed = 0.3
 
 #player input/movement variables
 const maxIn = 4096 #boundaries for the most "walking" we want to be doing
@@ -110,6 +106,30 @@ func _input(event):
 		invenManager.toggleSights()
 		toggle_ADS_Stats()
 	
+	if Input.is_action_pressed("ui_interact"):
+		do_Interact_Raycast()
+
+##Cleanliness function that just makes a short-ranged raycast
+func do_Interact_Raycast():
+		var space = invenManager.get_space_state()
+		var orig:Vector3 = playerCam.project_ray_origin(get_viewport().size / 2)
+		var end:Vector3 = orig + playerCam.project_ray_normal(get_viewport().size / 2) * 1000
+		
+		
+		print("wahoo!")
+		var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
+		raycheck.collide_with_bodies = true
+		var castResult = space.intersect_ray(raycheck)
+		
+		if(castResult):
+			print("yippie!")
+			var hitObject = castResult.get("collider")
+			if(hitObject.is_in_group("player_interactible")): #check if we even CAN interact before anything else
+				var castLocation = castResult.get("position")
+				var dist = (orig - castLocation).length()
+				if(dist <= 2.5):
+					print("horray! :)")
+
 func input_Mouse(event):
 	xlook += -event.relative.y * mousesensitivity
 	ylook += -event.relative.x * mousesensitivity
@@ -184,11 +204,6 @@ func transition_Crouch(entering):
 	else: #we are exiting crouch
 		#TODO: add a check to see if the player has enough room TO stand
 		playerCollider.scale.y += 0.8
-	
-#func checkRay():
-	#print("are we colliding?")
-	#if(checkerRay.get_collider() ):
-		#print("yep")
 
 ##Function that toggles mouse sensitivity. Speed is handled elsewhere. Maybe make dependent on weapons stat????
 func toggle_ADS_Stats():

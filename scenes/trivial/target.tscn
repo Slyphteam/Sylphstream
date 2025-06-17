@@ -8,7 +8,7 @@ points = PackedVector3Array(-0.108269, -0.1577, -1.15395, -0.252454, -0.1577, -1
 
 [node name="target" instance=ExtResource("1_b37e2")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Target" index="0" groups=["damage_interactible", "does_hit_decals"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="Target" index="0" groups=["damage_interactible", "does_hit_decals", "player_interactible"]]
 script = ExtResource("2_jtk42")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Target/StaticBody3D" index="0"]

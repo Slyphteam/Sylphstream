@@ -51,8 +51,10 @@ func get_space_state():
 func get_Origin():
 	return user.playerCam.project_ray_origin(get_viewport().size / 2)
 	
+##Endpoint of where bullets are coming from. Lift and Drift are for inaccuracy calculations.
 func get_End(orig, lift, drift):
-	#return orig + player.playerCam.project_ray_normal(get_viewport().size / 2) * 1000
+	
+	#the important part of this code is project ray normal
 	var end:Vector3 = orig + user.playerCam.project_ray_normal(get_viewport().size / 2) * 1000
 	var upAxis = Vector3(0, user.playerCam.rotation.y, 0) #get an axis of rotation for up/down from camera
 	var sideAxis = Vector3(user.playerCam.rotation.x, 0, 0) #ditto for azimuth
