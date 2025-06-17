@@ -25,5 +25,5 @@ damage = 40
 selection = 4
 position = Vector3(1.2, -0.7, -0.5)
 rotation = Vector3(90, 90, 0)
-scale = Vector3(1.852, 0.094, 0.351)
+scale = Vector3(0.9, 0.047, 0.17)
 metadata/_custom_type_script = "uid://b24hqmuxy0hut"
