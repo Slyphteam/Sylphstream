@@ -1,11 +1,8 @@
-
-this is an ENTIRELY NONFUNCTIONAL script
-
-DIRECTORY OF WHERE SHIT IS:
+DIRECTORY OF WHERE THINGS ARE:
 
  the MOST important scripts are as follow:
  --scripts/player/held_weapon_behavior: acts as a data instance for the held weapon
- -- scripts/player/invenManager (NOT invnetorymanager): Tracking ammunition and communicating 
+ -- scripts/player/invenManager (NOT inveNtorymanager): Tracking ammunition and communicating 
 	with the player/held item
  --scripts/player/playermovementinput: Kinematic controller for the player, input/output
 
@@ -18,18 +15,26 @@ Other places are as follow:
 --KNOWN PROBLEMS:
 -- it's REALLY hard to jump up on a platform (is it?)
 -- players can't "step" up a ledge, no matter how small
--- weapons jitter while player is holding movement keys on floor
+-- weapons jitter while player is holding movement keys on floor (caused by move and slide, presumably)
 
 
-NEEDS DOING (in presumed order of precedence):
- Step up/down movement code
-get better pistol gunshot
-footstep sounds
-ADS makes the camesa zoom in
-inaccuracy with the dynamic recoil system
-crosshair changes with speed
-context-sensitive leaning
-ammo pickups
-weapon switching
-fix weapon clipping (but do i really care that much ?)
+NEEDS DOING:
+KEY:
+	+: Easy
+	-: Hard
+	*: Important (to current course of dev plans)
+	&: Unimportant
+
+inaccuracy with the dynamic recoil system (integrate with the get_end function) -*
+
+player interact raycase (important for ammo pickups, sylph testing, yada yada big importance) -*
+from above: ammo pickups ++++
+footstep sounds +++
+Step up/down movement code ----- * (will have to do it at some point)
+get better pistol gunshot &++
+ADS makes the camera zoom in & ??
+crosshair changes with speed **
+context-sensitive leaning --&
+
+fix weapon clipping ++++++++ &
 KICKING!!!

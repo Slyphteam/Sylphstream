@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bqltcy1i67nbx" path="res://models/glbs and textures/sylph body.glb" id="2_1bk0r"]
 [ext_resource type="PackedScene" uid="uid://koxqr8emoydd" path="res://models/glbs and textures/sylph head.glb" id="2_7h0qy"]
 [ext_resource type="Script" uid="uid://bf3xq6wkexy62" path="res://scenes/invenManager_sylph.gd" id="4_qr4n3"]
-[ext_resource type="Resource" uid="uid://dml6uaueraa87" path="res://resources/weapon resources/firearm/bergther_info.tres" id="5_avlhl"]
+[ext_resource type="Resource" uid="uid://bhtixavevlm6g" path="res://resources/weapon resources/firearm/affine_info.tres" id="5_avlhl"]
 [ext_resource type="PackedScene" uid="uid://ce220mf2ujope" path="res://scenes/weapon_holder.tscn" id="5_trdry"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d4ra6"]
