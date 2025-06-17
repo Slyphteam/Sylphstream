@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://de617ancwmeky"]
 
 [ext_resource type="PackedScene" uid="uid://cxqoq8el0tj0a" path="res://models/glbs and textures/affine.glb" id="1_0yccn"]
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/trivial/affine_world_script.gd" id="2_g8djj"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/trivial/pickups/affine_world_script.gd" id="2_g8djj"]
 [ext_resource type="Resource" uid="uid://bhtixavevlm6g" path="res://resources/weapon resources/firearm/affine_info.tres" id="3_p84cr"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0yccn"]

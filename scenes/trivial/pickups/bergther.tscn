@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dw6u8j6bfnycd"]
 
 [ext_resource type="PackedScene" uid="uid://b2xnle2gfobbu" path="res://models/glbs and textures/bergther 2.glb" id="1_wc8co"]
-[ext_resource type="Script" uid="uid://7ynlwc8bvxks" path="res://scripts/trivial/bergther_world_script.gd" id="2_gxw1a"]
+[ext_resource type="Script" uid="uid://7ynlwc8bvxks" path="res://scripts/trivial/pickups/bergther_world_script.gd" id="2_gxw1a"]
 [ext_resource type="Resource" uid="uid://dml6uaueraa87" path="res://resources/weapon resources/firearm/bergther_info.tres" id="3_10k3l"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_10k3l"]

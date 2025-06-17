@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dl0emtfqlrkh2"]
 
 [ext_resource type="PackedScene" uid="uid://cvknlaho2280u" path="res://models/glbs and textures/fourier9.glb" id="1_d6at6"]
-[ext_resource type="Script" uid="uid://dtwp75ydrp4r8" path="res://scripts/trivial/fourier_world_script.gd" id="2_66tu4"]
+[ext_resource type="Script" uid="uid://dtwp75ydrp4r8" path="res://scripts/trivial/pickups/fourier_world_script.gd" id="2_66tu4"]
 [ext_resource type="Resource" uid="uid://sy0ndq1n1a7f" path="res://resources/weapon resources/firearm/fourier9_info.tres" id="3_1eblc"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d6at6"]

@@ -14,6 +14,17 @@ func getRefs():
 	pass
 
 #--------- ALL OF THESE FUNCTIONS EXIST INTERNALLY WITH THE INVENMANAGER
+func giveAmmo(amTyp: int, amount: int):
+	if (amTyp == 1):
+		heldAmmunition.ammoPistol += amount
+		return heldAmmunition.ammoPistol
+	elif (amTyp == 2):
+		heldAmmunition.ammoRifle += amount
+		return heldAmmunition.ammoRifle
+	else:
+		print("Attemted to withdraw invalid chambering!")
+		return 1
+	
 
 ##Decrease ammo of desired type by desired amount
 func withdrawAmmo(amTyp: int, amount: int)-> int:
