@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8ckga88ij8ht"
-path.s3tc="res://.godot/imported/sylph head_sylphcolors.png-0c56ed50b3bd7f4be4cac012f206c324.s3tc.ctex"
+uid="uid://bgiasufux7dmi"
+path.s3tc="res://.godot/imported/rifle_ammobox_ammotextures.png-11f755d6e12b660bc37c473c87f10baa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "6c61bb6eaf037ffc970b054ac19a1aa8"
+"md5": "fe750eeff1650b139ef3577e0090f0ed"
 }
 
 [deps]
 
-source_file="res://textures/sylph head_sylphcolors.png"
-dest_files=["res://.godot/imported/sylph head_sylphcolors.png-0c56ed50b3bd7f4be4cac012f206c324.s3tc.ctex"]
+source_file="res://textures/rifle_ammobox_ammotextures.png"
+dest_files=["res://.godot/imported/rifle_ammobox_ammotextures.png-11f755d6e12b660bc37c473c87f10baa.s3tc.ctex"]
 
 [params]
 

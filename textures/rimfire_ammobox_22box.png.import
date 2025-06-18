@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d25nfni12w42p"
-path.s3tc="res://.godot/imported/buraq_kilji small.png-74a1b992bee0891f0a4d400daa0bd22e.s3tc.ctex"
+uid="uid://bh4cmo5i4j282"
+path.s3tc="res://.godot/imported/rimfire_ammobox_22box.png-b7d9b8a4e55d419d97fddb28072e6d80.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "94f76df484e45451d8be51ef7b171474"
+"md5": "c26da759753b2ca6d9bc0317b2bed064"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/buraq_kilji small.png"
-dest_files=["res://.godot/imported/buraq_kilji small.png-74a1b992bee0891f0a4d400daa0bd22e.s3tc.ctex"]
+source_file="res://textures/rimfire_ammobox_22box.png"
+dest_files=["res://.godot/imported/rimfire_ammobox_22box.png-b7d9b8a4e55d419d97fddb28072e6d80.s3tc.ctex"]
 
 [params]
 

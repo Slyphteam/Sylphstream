@@ -1,14 +1,16 @@
-[gd_scene load_steps=39 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=41 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/turret.tscn" id="1_20ccn"]
 [ext_resource type="PackedScene" uid="uid://dw6u8j6bfnycd" path="res://scenes/trivial/pickups/bergther.tscn" id="3_aggi3"]
 [ext_resource type="PackedScene" uid="uid://dl0emtfqlrkh2" path="res://scenes/trivial/pickups/fourier_9.tscn" id="3_d6ln1"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/Player associated/player.tscn" id="4_2yn2u"]
 [ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="4_m2myf"]
-[ext_resource type="PackedScene" uid="uid://c4xof0ncli7gu" path="res://scenes/trivial/9_mm_ammobox.tscn" id="6_btmrn"]
+[ext_resource type="PackedScene" uid="uid://c4xof0ncli7gu" path="res://scenes/trivial/pickups/9_mm_ammobox.tscn" id="6_btmrn"]
 [ext_resource type="Material" uid="uid://0awlgsjd4q27" path="res://resources/testingbluecolor.tres" id="6_m2myf"]
 [ext_resource type="PackedScene" uid="uid://de617ancwmeky" path="res://scenes/trivial/pickups/affine.tscn" id="7_aggi3"]
 [ext_resource type="PackedScene" uid="uid://bfyduw5qytyby" path="res://scenes/sylphscene.tscn" id="7_d6ln1"]
+[ext_resource type="PackedScene" uid="uid://b0ggseuf34obn" path="res://scenes/trivial/pickups/rifle_ammobox.tscn" id="10_n8uj3"]
+[ext_resource type="PackedScene" uid="uid://mivmmni3ef2p" path="res://models/glbs and textures/rimfire_ammobox.glb" id="11_ugmq3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -243,7 +245,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.632
 shape = SubResource("ConvexPolygonShape3D_aggi3")
 
 [node name="9mm ammobox" parent="Environment/Range" instance=ExtResource("6_btmrn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112389, 0.825831, 3.43094)
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 0.28241, 0.844684, 3.84771)
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.1564, 1.13379, -21.4827)
@@ -327,3 +329,15 @@ shape = SubResource("ConvexPolygonShape3D_2yn2u")
 
 [node name="sylph body" parent="." instance=ExtResource("7_d6ln1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287848, 0.799304, -5.32817)
+
+[node name="rifle_ammobox" parent="." instance=ExtResource("10_n8uj3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.805, 1.87234, 24.6741)
+
+[node name="rimfire_ammobox" parent="." instance=ExtResource("11_ugmq3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42.4949, 1.86564, 25.25)
+
+[node name="rifle_ammobox2" parent="." instance=ExtResource("10_n8uj3")]
+transform = Transform3D(0.428289, 0, -0.903642, 0, 1, 0, 0.903642, 0, 0.428289, 42.5631, 1.8105, 24.6569)
+
+[node name="rifle_ammobox3" parent="." instance=ExtResource("10_n8uj3")]
+transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 0, -4.37114e-08, 42.2741, 1.82931, 24.9071)

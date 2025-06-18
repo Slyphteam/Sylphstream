@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dk4llosih2fw0"
-path.s3tc="res://.godot/imported/sylph body_sylphcolors.png-62da77aee100f76e9486d4aba9e43780.s3tc.ctex"
+path.s3tc="res://.godot/imported/sylph body_sylphcolors.png-2101886bd62d1537cd16c603a4dabffd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/glbs and textures/sylph body_sylphcolors.png"
-dest_files=["res://.godot/imported/sylph body_sylphcolors.png-62da77aee100f76e9486d4aba9e43780.s3tc.ctex"]
+source_file="res://textures/sylph body_sylphcolors.png"
+dest_files=["res://.godot/imported/sylph body_sylphcolors.png-2101886bd62d1537cd16c603a4dabffd.s3tc.ctex"]
 
 [params]
 

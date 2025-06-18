@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0ggseuf34obn"]
+
+[ext_resource type="PackedScene" uid="uid://clyqj16lwdolw" path="res://models/glbs and textures/rifle_ammobox.glb" id="1_80ktm"]
+[ext_resource type="Script" uid="uid://r4sd2o60hlwr" path="res://scripts/trivial/pickups/rifle_ammobox_worldscript.gd" id="2_k48e6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_82a5o"]
+points = PackedVector3Array(-13.2869, -1.64223, 2.52982, 13.2477, 2.50364, 2.11522, 13.2477, 2.50364, -0.372401, 13.2477, -2.4716, -0.372401, -13.2869, 2.50364, -0.372401, -13.2869, -2.4716, -0.372401, 13.2477, -2.4716, 2.11522, -12.0428, 2.08871, 2.52982, 13.2477, -0.398423, 2.94442, -13.2869, -2.4716, 2.11522, -13.2869, 0.430458, 2.94442, -13.2869, 2.50364, 2.11522, 12.4165, 2.08871, 2.52982, 12.4165, -2.05667, 2.52982, -13.2869, -0.398423, 2.94442, 13.2477, 0.430458, 2.94442, -12.0428, -2.05667, 2.52982, -13.2869, 1.67427, 2.52982, 13.2477, 1.67427, 2.52982, 13.2477, -1.64223, 2.52982)
+
+[node name="rifle_ammobox" instance=ExtResource("1_80ktm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rifle box" index="0" groups=["player_interactible"]]
+script = ExtResource("2_k48e6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rifle box/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_82a5o")
