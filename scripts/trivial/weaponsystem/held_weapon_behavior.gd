@@ -10,7 +10,7 @@ extends Node3D
 @onready var reloadPlayer: AudioStreamPlayer3D = $reloadPlayer
 var damage
 var isFirearm 
-var doreticle = false
+var affectUI = false
 
 #Resource loading code:
 #func _ready() -> void:
@@ -30,7 +30,7 @@ func load_weapon(weaponToLoad:WEAPON_PARENT, reticle):
 	isFirearm = weaponToLoad.isFirearm
 	
 	if(reticle):
-		doreticle = reticle
+		affectUI = reticle
 		our_reticle = $"../../../../Control/Reticle"
 	
 	if(isFirearm):
@@ -78,6 +78,7 @@ func init_Firearm_Stats(weaponToLoad):
 	reloadPlayer.stream = weaponToLoad.reload
 	
 	
+	
 	#initialize stats
 	capacity = maxCapacity
 	reloading = false
@@ -95,8 +96,10 @@ func init_Firearm_Stats(weaponToLoad):
 		kickAmount = 1
 		aimKickBonus = 0
 	
-	if(doreticle):
+	if(affectUI):
 		our_reticle.adjust_spread(minRecoil)
+		
+	
 
 
 func tryShoot():
@@ -188,15 +191,16 @@ func _on_reload_timer_timeout() -> void:
 	
 	capacity += newCap
 	print("Finished reload! Rounds: ", capacity)
-	if(doreticle):
+	if(affectUI):
 		Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 5)
 
 
 func _process(_delta: float): 
 	
-	if(isFirearm && doreticle):
+	if(isFirearm && affectUI):
 		Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
 		Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!
+		Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 5)
 		calcRecoil() 
 	
 ##Apply any recoil "debt" accumulated and calculate recovery
@@ -231,7 +235,7 @@ func calcRecoil():
 			currentRecoil-= amnt
 	
 	#update the UI
-	if(doreticle):
+	if(affectUI):
 		our_reticle.adjust_spread(currentRecoil)
 
 

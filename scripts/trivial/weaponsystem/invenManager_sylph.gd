@@ -20,7 +20,7 @@ func _ready():
 
 func getRefs():
 	heldItem = $weaponHolder
-	user = $"../../.."
+	#user = $"../../.."
 
 ##functions going down the hierarchy
 func doShoot():
@@ -69,4 +69,4 @@ func get_End(orig, lift, drift):
 	#return end 
 	#
 func get_Rotation():
-	user.sylphHead.rotation
+	return user.sylphHead.rotation

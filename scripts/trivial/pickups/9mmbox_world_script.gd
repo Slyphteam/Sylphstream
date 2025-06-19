@@ -7,3 +7,5 @@ func interact_By_Player(player):
 	
 	var boxOrigin = $"../.."
 	boxOrigin.queue_free() #delete not only self, but also the full ammobox scene tree
+	
+	return true

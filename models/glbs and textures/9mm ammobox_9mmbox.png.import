@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be5k62m2ahl05"
-path.s3tc="res://.godot/imported/9mm ammobox_9mmbox.png-e5fd3cb34f0b0aff6090c12b23b687cf.s3tc.ctex"
+uid="uid://drc88ypc8ujk6"
+path.s3tc="res://.godot/imported/9mm ammobox_9mmbox.png-ed1e5a6fa404e908aea381b9c5516941.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://textures/9mm ammobox_9mmbox.png"
-dest_files=["res://.godot/imported/9mm ammobox_9mmbox.png-e5fd3cb34f0b0aff6090c12b23b687cf.s3tc.ctex"]
+source_file="res://models/glbs and textures/9mm ammobox_9mmbox.png"
+dest_files=["res://.godot/imported/9mm ammobox_9mmbox.png-ed1e5a6fa404e908aea381b9c5516941.s3tc.ctex"]
 
 [params]
 

@@ -3,13 +3,14 @@ extends CharacterBody3D
 @onready var collider = $sylphcollider
 
 
-func hit_By_Bullet(dam, damtype, dir, origin):
+func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#print("ow!")
 	move_Head_Exact(Vector2(0,10))
 
-func interact_By_Player():
+func interact_By_Player(playerRef)->bool:
 	print("Hi bestie!!")
 	move_Head_Exact(Vector2(0,-10))
+	return false
 
 func move_Head(desired: Vector2):
 	#TODO: in the future add inaccuracy with higher speeds

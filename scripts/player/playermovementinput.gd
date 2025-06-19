@@ -127,7 +127,9 @@ func do_Interact_Raycast():
 				var castLocation = castResult.get("position")
 				var dist = (orig - castLocation).length()
 				if(dist <= 2.5):
-					hitObject.interact_By_Player(self)
+					var interactResult = hitObject.interact_By_Player(self)
+					if(interactResult):
+						print("K-chk!")
 
 func input_Mouse(event):
 	xlook += -event.relative.y * mousesensitivity
