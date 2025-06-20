@@ -101,10 +101,10 @@ func get_Origin()-> Vector3:
 	print("Attempted to get origin on invenmanager parent! Bad!")
 	return Vector3(0,0,0)
 
-##Endpoint of where bullets are coming from. Lift and Drift are for inaccuracy calculations.
-func get_End(orig:Vector3, lift:float, drift:float)->Vector3:
+##Endpoint of where bullets are coming from. Azimuth is offset, in degrees, and roll is how far around a circle
+func get_End(orig:Vector3, azimuth:float, roll:float):
 	print("Attempted to get origin on invenmanager parent! Bad!")
-	return orig + Vector3(drift,lift,0)
+	return orig + Vector3(azimuth,roll,0)
 	
 func get_Rotation()-> Vector3:
 	print("Attempted to get rotation on invenmanager parent! Bad!")

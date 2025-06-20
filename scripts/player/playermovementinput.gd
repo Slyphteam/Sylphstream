@@ -58,7 +58,7 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 @onready var playerShape = $playermodel
 @onready var playerCollider = $playercollidercapsule
 #@onready var invenManager = $"inventory manager" #invenmanager moved to weapon rig
-@onready var invenManager = $camCage/came/weapon_rig
+@onready var invenManager: INVENMANAGER = $camCage/came/weapon_rig
 
 #@onready var checkerRay = $playercollider/checkerRayCast
 #func _init():

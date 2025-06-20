@@ -39,7 +39,7 @@ func load_weapon(weaponToLoad:WEAPON_PARENT, reticle):
 
 #weapon behavior code
 @onready var reloadtimer = $reloadTimer
-@onready var manager = $".."
+@onready var manager: INVENMANAGER = $".."
 #Variables we calculate with
 var capacity
 var reloading 
@@ -56,12 +56,16 @@ var totalMinRecoil
 var recoveryAmount
 var recoilAmount
 var aimbonus
+var maxAzimuth: float #recoil units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
 
 var debtCutoff = 10 ##at what point do we just apply the recoil debt flat out?
 var recoveryCutoff ##at what point do we increase our recoil recovery?
 var recoveryDivisor ##Used in recoil recovery computation
 var kickAmount: int ##Used in randomly generating recoil viewpunch
 var aimKickBonus ##Used because we don't like integer division around these parts
+
+
+
 
 func init_Firearm_Stats(weaponToLoad):
 	#grab all our variables
@@ -71,6 +75,7 @@ func init_Firearm_Stats(weaponToLoad):
 	totalMaxRecoil = weaponToLoad.maxRecoil
 	recoveryAmount = weaponToLoad.recoverAmount
 	recoilAmount = weaponToLoad.recoilAmount
+	maxAzimuth = currentRecoil / 7
 	reloadtimer.wait_time = weaponToLoad.reloadtime
 	aimbonus = weaponToLoad.aimBonus
 	
@@ -135,10 +140,12 @@ func doShoot():
 		var orig = manager.get_Origin()
 		
 		
-		#So: How are we going to apply inaccuracy?
+		maxAzimuth = currentRecoil / 7
+		var randAzimuth = randf_range(0 - maxAzimuth, maxAzimuth)
+		var randRoll = randi_range(0, 360)
 		
-		var end:Vector3 = manager.get_End(orig, 20, 00)
-		#end.
+		var end:Vector3 = manager.get_End(orig, randAzimuth, randRoll)
+		
 		
 		var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
 		raycheck.collide_with_bodies = true

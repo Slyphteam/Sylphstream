@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Gun" load_steps=5 format=3 uid="uid://d0r7hvlt81jkh"]
+
+[ext_resource type="AudioStream" uid="uid://b6313qn0yic35" path="res://sounds/gunshots/shotgun.mp3" id="1_04j37"]
+[ext_resource type="ArrayMesh" uid="uid://crtk8p0p6eefb" path="res://models/mesh models/debug weapon mesh.res" id="2_rkid4"]
+[ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="3_c46cm"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/trivial/weaponsystem/firearm_resource.gd" id="4_gybuq"]
+
+[resource]
+script = ExtResource("4_gybuq")
+gunshot = ExtResource("1_04j37")
+reload = ExtResource("3_c46cm")
+chambering = 1
+maxCapacity = 40
+reloadtime = 1.0
+aimBonus = 5.0
+maxRecoil = 100.0
+minRecoil = 50.0
+recoilAmount = 15.0
+recoverAmount = 0.1
+wepName = &"Degubby!"
+wepDesc = &"A very special weapon for very special purposes"
+isFirearm = true
+mesh = ExtResource("2_rkid4")
+damage = 1
+selection = 1
+position = Vector3(0.5, -0.15, -0.4)
+rotation = Vector3(90, 90, 0)
+scale = Vector3(0.2, 0.2, 0.2)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"

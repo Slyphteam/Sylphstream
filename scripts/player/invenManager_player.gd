@@ -52,50 +52,47 @@ func get_space_state():
 func get_Origin():
 	return user.playerCam.project_ray_origin(get_viewport().size / 2)
 	
-##Endpoint of where bullets are coming from. Lift and Drift are for inaccuracy calculations.
-func get_End(orig, drift, lift):
+##Endpoint of where bullets are coming from. Azimuth is offset, in degrees, and roll is how far around a circle
+func get_End(orig:Vector3, azimuth:float, roll:float):
 	
+	var end:Vector3 = orig + user.playerCam.project_ray_normal(get_viewport().size / 2) * 100
 	
-	# TODO: just fucking use trig, man.
-	#subtract end and origin to get 2 right triangles. 
+	#so, now we have the vector that is the raycast we're making.
+	var spatialVec = Vector3(orig.x - end.x, orig.y - end.y, orig.z - end.z)
+	#How do we rotate it?
+	#We can use vec3.up and left to rotate WRT the world's basis vectors,
+	#but falls apart the closer we get to looking in the direction of said basis vector.
+	#while we can trig things out, we can also just find our own basis vectors that rotate 
+	#W.R.T/ the player's view. In other words, the orthonormal vectors of our spatial raycast.
 	
-	#the important part of this code is project ray normal
-	var end:Vector3 = orig + user.playerCam.project_ray_normal(get_viewport().size / 2) * 1000
+	#great! how the frick heck can one actually generate an orthogonal vector?
+	#first of all. normalize it. no icky yucky lengths
+	var newBasis1 = spatialVec.normalized()
+	#second of all. rotate it by 90 degrees. I'm doing up but it can be literally 
+	#anything because we're just finding a basis
+	var newBasis2 = newBasis1.rotated(Vector3.UP, deg_to_rad(90))
+	#now, ordinarily, we'd fine a second basis vector by rotating the first
+	#var newBasis3 = newBasis2.rotated(Vector3.BACK, deg_to_rad(90))
 	
-	#Why are we using up and forwards here?
-	#Because they're our axes of rotation. 
-	var upAxis = Vector3.UP 
-	var sideAxis = Vector3.FORWARD
-	#in these cases the player's rotation is either -1.5 or 1.5.
+	#but we don't actually need to do any of that! we have everything we need to
+	#displace our bullet if, rather than x offset and y offset, we
+	#instead use radius (calculated using basis2 as an axis)
+	#and radians, or how far AROUND a circle we are (using basis 1 as an axis)
 	
+	#this also lets us avoid the issue of the offsets flipping if we turn 180,
+	#(I.e. a 20degree offset going from left to right if we face from west to east)
+	#since all parameters are DIRECTLY tied to screenspace.
+		
+	spatialVec = spatialVec.rotated(newBasis2.normalized(), deg_to_rad(azimuth)) #how far from center?
+	spatialVec = spatialVec.rotated(newBasis1.normalized(), deg_to_rad(roll)) #and what angle is that farness?
 	
-	#TODO: is it worth using the raycast object for this and rotating it the user friendly way?
-	#this works BUT spread is now global.
-	#player up rotation stays between 1.5 and -1.5
-	upAxis = Vector3(0, user.playerCam.rotation.x / 1.5, 0) #x is the up/down rotation of the playercam
+	#print(orig)
+	#print(end)
+	#print(newEnd)
 	
-	var actualYRotationRadians = ((int(user.playerCam.rotation.y / 1.5) * 1.5)/6 ) #dunno why we need to divide a six out of here but we in fact do.
-	print(actualYRotationRadians)
-	actualYRotationRadians = user.playerCam.rotation.y - (actualYRotationRadians * 1.5)
-	print(actualYRotationRadians)
-	
-	
-	#print(user.playerCam.rotation.x)
-	#sideAxis = Vector3(0, 0, user.playerCam.rotation.x / 1.5)
-	
-	#upAxis.rotated(Vector3.LEFT, user.playerCam.rotation.y)
-	
-	#solution idea 1: rotate the axis by the player's up/down axis, thus making it "constant"
-	#WRT player's angle.
-	
-	#var upAxis = Vector3(0, user.playerCam.rotation.y, 0) #get an axis of rotation for up/down from camera
-	#var sideAxis = Vector3(user.playerCam.rotation.x, 0, 0) #ditto for azimuth
-	##end = end.rotated(, deg_to_rad(lift)) #rotate
-	
-	#This works UNTIL the player is lookin
-	end = end.rotated(upAxis.normalized(), deg_to_rad(drift)) 
-	
-	return end 
+	#re-construct the altered endpoint of our raycast
+	var newEnd = Vector3(orig.x - spatialVec.x, orig.y - spatialVec.y, orig.z - spatialVec.z)
+	return newEnd 
 	
 func get_Rotation():
 	return user.playerCam.rotation
