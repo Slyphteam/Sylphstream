@@ -123,6 +123,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_41a6k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Floor/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_41a6k")
+debug_color = Color(0.611765, 0.360784, 1, 1)
 
 [node name="ramp" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21.2692, 2.13339, -6.75602)

@@ -133,7 +133,11 @@ func makeGunshot():
 func doShoot():
 		var space = manager.get_space_state()
 		var orig = manager.get_Origin()
-		var end:Vector3 = manager.get_End(orig, 0, 0)
+		
+		
+		#So: How are we going to apply inaccuracy?
+		
+		var end:Vector3 = manager.get_End(orig, 20, 00)
 		#end.
 		
 		var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
@@ -141,12 +145,11 @@ func doShoot():
 		var castResult = space.intersect_ray(raycheck)
 		
 		if(castResult):
-			print(castResult)
 			var hitObject = castResult.get("collider")
 			if(hitObject.is_in_group("damage_interactible")):
 				doBulletInteract(hitObject)
-			if(hitObject.is_in_group("does_hit_decals")):
-				doHitDecal(castResult.get("position"))
+			#if(hitObject.is_in_group("does_hit_decals")):
+			doHitDecal(castResult.get("position"))
 				
 
 #var decals = 0

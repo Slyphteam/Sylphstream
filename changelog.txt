@@ -1,3 +1,8 @@
+6/17:
+Adds player interaction code, pickups, weapon switching. All of these piggyback off HELLA
+internal changes and reworking.
+6/16:
+Rescales all firearms, firstperson view should remain unaffected.
 6/10:
 Imports Sylph models
 Creates Sylph scene, adds first API

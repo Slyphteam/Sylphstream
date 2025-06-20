@@ -509,8 +509,6 @@ func get_delta_time() -> float:
 ##Jolt camera, by degrees x and y
 func apply_Viewpunch(azimuth: float, zenith: float):
 	
-	
-	
 	ylook += azimuth
 	xlook += zenith
 	
