@@ -29,10 +29,6 @@ KEY:
 	&: Unimportant
 
 CURRENT DEV CYCLE:
-player interact raycase (important for ammo pickups, sylph testing, yada yada big importance) -*
-
-NEXT DEVCYCLE:
-inaccuracy with the dynamic recoil system (integrate with the get_end function) -*
 quake-like movement pass
 
 FUNCTIONAL:

@@ -146,7 +146,6 @@ func doShoot():
 		
 		var end:Vector3 = manager.get_End(orig, randAzimuth, randRoll)
 		
-		
 		var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
 		raycheck.collide_with_bodies = true
 		var castResult = space.intersect_ray(raycheck)

@@ -4,7 +4,8 @@
 
 extends CharacterBody3D
 
-const sourcelike = true
+#deprecated variable from back when i used template movement, keeping for sentimental purposes
+#const sourcelike = true 
 const gravAmount = 60
 
 #player camera variables
@@ -13,8 +14,6 @@ var xlook : float
 var mousesensitivity = 0.25
 
 #player input/movement variables
-const maxIn = 4096 #boundaries for the most "walking" we want to be doing
-const minIn = -4096
 var leftright : float #variables for how "walking" we are in either cardinal direction
 var forback : float
 var playerVelocity: Vector3 = Vector3.ZERO # player's calculated velocity
@@ -35,8 +34,6 @@ const crouchSlideStart = 17 #start speed
 const crouchSlideEnd = 4 #end speed
 const crouchSlideFric = 0.15 #reductive multiplier on friction
 
-# these are all VERY important variables
-const debugging = false #except this one it just decides debug text
 #How long it takes the player to get up to full steam
 const sprintMod = 3 #it takes time to get up to a sprint though
 const walkMod = 3 # walking players have a lot of control
@@ -57,12 +54,8 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 @onready var playerCam = $camCage/came
 @onready var playerShape = $playermodel
 @onready var playerCollider = $playercollidercapsule
-#@onready var invenManager = $"inventory manager" #invenmanager moved to weapon rig
 @onready var invenManager: INVENMANAGER = $camCage/came/weapon_rig
 
-#@onready var checkerRay = $playercollider/checkerRayCast
-#func _init():
-	#invenManager.Assign_User_And_Wep(self, $camCage/came/weapon_rig/weaponHolder)
 
 ##Handles player input. You may notice that there are checks on both Input and event.
 ##event will only apply the first frame, but event will happen for every frame the key is held.
@@ -72,6 +65,7 @@ func _input(event):
 	
 	
 	#TODO: look into adding a better way to check inputs because surely this is not optimal
+	#TODO: update this to the sprinting paradigm because you now know a better way
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
@@ -82,12 +76,12 @@ func _input(event):
 		
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
-	#this might seem odd, but without these checks in this way,
-	# the player only sprints for 5-6 ticks before stopping.
-	# TODO: ensure this is_action_held doesn't actually work for this
+
+
 	if Input.is_action_pressed("ui_sprint"):
 		sprinting = true
+	else:
+		sprinting = false
 	
 	
 	if Input.is_action_pressed("ui_crouch"):
@@ -189,9 +183,7 @@ func _physics_process(delta: float) -> void:
 	
 	Globalscript.datapanel.add_Property("Current speed", int(playerSpeed), 1)
 	
-	#CAMERA CODE BELOW
-	#CrouchCamera()
-	#Adjust FOV. 87 feels the best; 85 too low and 90 too high
+	#viewtilt and headbob are in the camera script
 	playerCam.fov = clamp(87 + sqrt(playerSpeed), 90, 180) 
 	
 
@@ -240,17 +232,9 @@ func handle_Move(delta):
 			canjump = false
 			do_Jump()
 	
-	#this was moved to checkVelocityandmove
-	#if playerVelocity.length() > maxvelocity:
-		#print("MAX VELOCITY HIT!")
-		##playerVelocity = maxvelocity playervelocity is a VECTOR. what???
-		##return # this still doesn't reduce the player velocity by a serious amount
-		#playerVelocity *= 0.5 #this seems to work!
 
 ##this is the PRIMARY function that handles floor logic.
 func handle_Floor_Sourcelike(delta):
-		#TODO: ADD A TIMER 
-		#what did I mean by add a timer???? huh??
 	
 	#grab vectors using. this. i guess. yeah sure whatever man.
 	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
@@ -263,7 +247,6 @@ func handle_Floor_Sourcelike(delta):
 	
 	var desiredDir: Vector3 = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
-
 	
 	#a really funny bug to have happen was zeroing out the desiredvec.y here instead of lower
 	#which meant you could just phase through the floor by trying hard enough. and also fly.
@@ -294,15 +277,12 @@ func handle_Floor_Sourcelike(delta):
 		desiredSpeed = curMax # clamp it
 		#print("limited speed: ", desiredSpeed)
 	
-	
 	desiredVec.y = 0; #zero out the y
 	
 	do_Source_Accelerate(desiredDir, desiredSpeed, delta)
-	
+
 		#deal with friction
 	handle_Friction(delta, 1) #normal friction
-	
-
 
 ##Supercedes normal floor movement. Ignore keyboard/mouse directional inputs and just coast.
 func do_Crouch_Slide(delta):
@@ -428,15 +408,12 @@ func do_Source_AirAccelerate(desiredDir, desiredSpeed, delta):
 ##this is the function that ACTUALLY causes the player to move
 func checkVelocityAndMove():
 	if playerSpeed > maxvelocity:
-		if(debugging): print("MAX VELOCITY HIT!")
-		#playerVelocity = maxvelocity playervelocity is a VECTOR. what???
-		#return # this still doesn't reduce the player velocity by a serious amount
+		print("MAX VELOCITY HIT!")
 		playerVelocity *= 0.5 #this seems to work!
 		playerSpeed = playerVelocity.length()
 	
-	if(debugging):
-		if(playerSpeed > 0):
-			print("Velocity:", playerSpeed)
+	#if(playerSpeed > 0):
+		#print("Velocity:", playerSpeed)
 		
 	velocity = playerVelocity
 	move_and_slide()
@@ -464,9 +441,6 @@ func handle_Friction(delta, fricMod):
 		playerVelocity *= newspeed
 		playerSpeed = playerVelocity.length()
 	
-		#if(debugging):
-		#	print("Old/hampered velocity:", speedcheck, " : ", playerVelocity.length())
-
 
 func move_and_slide_sourcelike()->bool:
 	var collided := false
