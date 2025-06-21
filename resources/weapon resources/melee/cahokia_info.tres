@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Mel" load_steps=2 format=3 uid="uid://cj1jy07fri56m"]
 
-[ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/trivial/weaponsystem/melee_resource.gd" id="1_uba1r"]
+[ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/weaponsystem/melee_resource.gd" id="1_uba1r"]
 
 [resource]
 script = ExtResource("1_uba1r")

@@ -69,7 +69,7 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
-	if event.is_action_pressed("ui_click"): #TODO: change to Input and add shooting logic to held weapon behavior.
+	if Input.is_action_pressed("ui_click"):
 		# are we in mouse mode?
 		if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
 			invenManager.doShoot() #if so, shoot our current weapon
@@ -309,14 +309,14 @@ func do_Source_Accelerate(desiredDir: Vector3, desiredSpeed, delta):
 	playerVelocity.y -= gravAmount * delta
 	
 	
-	#var newVec = Vector3(acelspeed * desiredDir.x, acelspeed * desiredDir.y,acelspeed * desiredDir.z)
-	#playerVelocity += newVec
-	#playerVelocity += acelspeed * desiredDir
+	#var newPlayerVel = Vector3(playerVelocity.x + (desiredDir.x * acelspeed), 
+							   #playerVelocity.y + (desiredDir.y * acelspeed), 
+							   #playerVelocity.z + (desiredDir.z * acelspeed))
+	#playerVelocity = newPlayerVel
 	
-	# i don't FULLY understand what this does
-	# but all sourcelike movement scripts rely on more or less this exact code
-	# and I can't seem to get alternative approaches to work
-	#TODO: figure out an alternative that functions
+	#I sort of get what this section does but for whatever infernal reason
+	#literally none of my attempts at recreating it have worked.
+	#it genuinely is an enigma why.
 	for i in range(3): 
 		playerVelocity+= acelspeed * desiredDir
 		

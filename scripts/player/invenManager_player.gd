@@ -25,7 +25,7 @@ func getRefs():
 #functions going down the hierarchy
 func doShoot():
 	if(holdingFirearm):
-		heldItem.tryShoot()
+		heldItem.shooting = true
 	else:
 		print("Swing!")
 

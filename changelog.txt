@@ -1,3 +1,5 @@
+6/20:
+Added random spread based off crosshair size
 6/17:
 Adds player interaction code, pickups, weapon switching. All of these piggyback off HELLA
 internal changes and reworking.

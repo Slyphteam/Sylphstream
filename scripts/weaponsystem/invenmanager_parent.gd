@@ -9,6 +9,7 @@ var activeItem: WEAPON_PARENT
 var user : Node3D
 var holdingFirearm: bool = false
 
+
 ##Get references to helditem and user. should be called in ready; here because it's not optional
 func getRefs():
 	pass

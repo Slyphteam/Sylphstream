@@ -11,6 +11,7 @@ extends Node3D
 var damage
 var isFirearm 
 var affectUI = false
+var shooting = false
 
 #Resource loading code:
 #func _ready() -> void:
@@ -64,7 +65,7 @@ var recoveryDivisor ##Used in recoil recovery computation
 var kickAmount: int ##Used in randomly generating recoil viewpunch
 var aimKickBonus ##Used because we don't like integer division around these parts
 
-
+var canShoot = true
 
 
 func init_Firearm_Stats(weaponToLoad):
@@ -205,6 +206,9 @@ func _on_reload_timer_timeout() -> void:
 
 
 func _process(_delta: float): 
+	
+	if(shooting):
+		tryShoot()
 	
 	if(isFirearm && affectUI):
 		Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
