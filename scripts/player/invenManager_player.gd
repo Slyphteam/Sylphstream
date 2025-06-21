@@ -23,12 +23,6 @@ func getRefs():
 	user = get_node("../../..")
 
 #functions going down the hierarchy
-func doShoot():
-	if(holdingFirearm):
-		heldItem.shooting = true
-	else:
-		print("Swing!")
-
 func startReload():
 	if(holdingFirearm):
 		heldItem.startReload()

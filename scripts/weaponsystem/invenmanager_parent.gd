@@ -70,11 +70,15 @@ func getAmmoAmt(amTyp:int ) -> int:
 
 #--------- ALL OF THESE FUNCTIONS INTERACT WITH THE HELD ITEM (going DOWN the scene tree)
 
-#TODO: GET THIS TO WORK WITH A CUSTOM HELDITEM CLASS
-##Pass the "shoot" command to the held object
+
 func doShoot():
-	print("Attempted to call empty shoot function!")
-	#heldItem.tryShoot()
+	if(holdingFirearm):
+		heldItem.triggerDepressed = true
+	else:
+		print("Swing!")
+
+func unShoot():
+	heldItem.triggerDepressed = false
 	
 func startReload():
 	print("Attempted to call empty reload function!")

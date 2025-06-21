@@ -21,6 +21,10 @@ Other places are as follow:
 -- weapons jitter while player is holding movement keys on floor (caused by move and slide, presumably)
 
 
+
+CURRENT DEV CYCLE:
+File I/O
+
 NEEDS DOING:
 KEY:
 	+: Easy
@@ -28,11 +32,9 @@ KEY:
 	*: Important (to current course of dev plans)
 	&: Unimportant
 
-CURRENT DEV CYCLE:
-Change shooting input to be per-frame, add trigger logic to held weapon class.
-quake-like movement pass
 
 FUNCTIONAL:
+quake-like movement pass
 Change bullets to have damage falloff ++++&&
 Clean up infopanel code, move weapon stat tracking to invenmanager's job
 crosshair changes with speed **

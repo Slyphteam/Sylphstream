@@ -9,6 +9,11 @@
 script = ExtResource("4_gybuq")
 gunshot = ExtResource("1_04j37")
 reload = ExtResource("3_c46cm")
+shotCooldown = 10
+modeSemi = true
+modeBurst = false
+modeFull = false
+multiShot = false
 chambering = 1
 maxCapacity = 40
 reloadtime = 1.0

@@ -69,6 +69,7 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
+	
 	if Input.is_action_pressed("ui_click"):
 		# are we in mouse mode?
 		if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
@@ -76,6 +77,12 @@ func _input(event):
 		
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+	if Input.is_action_just_released("ui_click", false):
+		#though strange, this code is necessary as the player can be holding mouse and no other inputs
+		#which
+		invenManager.unShoot() 
+		
 
 
 	if Input.is_action_pressed("ui_sprint"):

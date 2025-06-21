@@ -8,10 +8,9 @@ extends Node3D
 @onready var our_reticle: CenterContainer 
 @onready var gunshotPlayer: AudioStreamPlayer3D = $gunshotPlayer
 @onready var reloadPlayer: AudioStreamPlayer3D = $reloadPlayer
-var damage
-var isFirearm 
-var affectUI = false
-var shooting = false
+
+
+
 
 #Resource loading code:
 #func _ready() -> void:
@@ -42,16 +41,27 @@ func load_weapon(weaponToLoad:WEAPON_PARENT, reticle):
 @onready var reloadtimer = $reloadTimer
 @onready var manager: INVENMANAGER = $".."
 #Variables we calculate with
-var capacity
-var reloading 
+
+
+var damage : int
+var currentCooldown : int = 0
+var isFirearm : bool
+var affectUI = false
+var canShoot = true
+var triggerDepressed = false
+
+
+var capacity : int
+var reloading : bool
 var currentRecoil: float = 0
 var minRecoil
 var maxRecoil
 var recoilDebt = 0
 
 #variables inferred from the resource
-var chambering 
-var maxCapacity 
+var shotCooldown: int = 0
+var chambering : int
+var maxCapacity : int
 var totalMaxRecoil
 var totalMinRecoil
 var recoveryAmount
@@ -59,17 +69,22 @@ var recoilAmount
 var aimbonus
 var maxAzimuth: float #recoil units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
 
+var modeSemi
+
+
 var debtCutoff = 10 ##at what point do we just apply the recoil debt flat out?
 var recoveryCutoff ##at what point do we increase our recoil recovery?
 var recoveryDivisor ##Used in recoil recovery computation
 var kickAmount: int ##Used in randomly generating recoil viewpunch
 var aimKickBonus ##Used because we don't like integer division around these parts
 
-var canShoot = true
+
 
 
 func init_Firearm_Stats(weaponToLoad):
 	#grab all our variables
+	shotCooldown = weaponToLoad.shotCooldown
+	
 	maxCapacity = weaponToLoad.maxCapacity
 	chambering = weaponToLoad.chambering
 	totalMinRecoil = weaponToLoad.minRecoil
@@ -82,6 +97,8 @@ func init_Firearm_Stats(weaponToLoad):
 	
 	gunshotPlayer.stream = weaponToLoad.gunshot
 	reloadPlayer.stream = weaponToLoad.reload
+	
+	modeSemi = weaponToLoad.modeSemi
 	
 	
 	
@@ -155,8 +172,8 @@ func doShoot():
 			var hitObject = castResult.get("collider")
 			if(hitObject.is_in_group("damage_interactible")):
 				doBulletInteract(hitObject)
-			#if(hitObject.is_in_group("does_hit_decals")):
-			doHitDecal(castResult.get("position"))
+			if(hitObject.is_in_group("does_hit_decals")):
+				doHitDecal(castResult.get("position"))
 				
 
 #var decals = 0
@@ -206,9 +223,17 @@ func _on_reload_timer_timeout() -> void:
 
 
 func _process(_delta: float): 
-	
-	if(shooting):
-		tryShoot()
+	if(canShoot): #we CAN shoot
+		if(triggerDepressed): #and we ARE shooting
+			tryShoot() #take the shot.
+			canShoot = false
+			currentCooldown = shotCooldown
+	else: #we CAN'T shoot. Do other things!
+		if(currentCooldown > 0):
+			currentCooldown -=1
+		else: 
+			canShoot = true
+			currentCooldown = shotCooldown
 	
 	if(isFirearm && affectUI):
 		Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
@@ -216,6 +241,7 @@ func _process(_delta: float):
 		Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 5)
 		calcRecoil() 
 	
+
 ##Apply any recoil "debt" accumulated and calculate recovery
 func calcRecoil():
 	if(recoilDebt == 0 && currentRecoil <= minRecoil): #don't bother
