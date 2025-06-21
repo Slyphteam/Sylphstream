@@ -13,40 +13,43 @@ https://docs.google.com/document/d/118_IEV_9k2dqLq8unO5gw8Gx04xngHV5QysfVkentBs/
 
 ### Features in active development:
 
-Player UI
+Implementation of core weapons
 
-Ballistic system
+File I/O
+
+First neural network enemy
+
+Melee system
+
+### Completed features:
 
 Dynamic spread
-
-Dynamic player body and player animations
-
-Decal/casing system
-
-Kicking
-
-
-### Planned features:
 
 Dynamic viewbob and viewtilt with player velocity
 
 Weapon switching
 
-Implementation of all core weapons
+Neural network/entity API
+
+### Planned features:
+
+Player UI
+
+Dynamic player body and player animations
+
+Casing system
+
+Implementation of grenade, fragmentation, and explosive systems
+
+Kicking
+
+Implementation of all planned weapons
 
 First finite state enemy
-
-First neural network enemy
-
-Neural network/entity API
 
 Neural network training on aiming
 
 Neural network training on reloading, recoil control, and aiming down sights
-
-Implementation of grenade, fragmentation, and explosive systems
-
-Implementation of all planned weapons
 
 Neural network training on simple movement
 
