@@ -13,16 +13,15 @@ Other places are as follow:
  Scenes/environ for the test environment I have the player in
 
 --KNOWN PROBLEMS:
---Players are autosprinting >:(
 --Cant switch to firearm if starting from melee
-	
--- it's REALLY hard to jump up on a platform (is it?)
 -- players can't "step" up a ledge, no matter how small
 -- weapons jitter while player is holding movement keys on floor (caused by move and slide, presumably)
 
 
 
 CURRENT DEV CYCLE:
+	
+quake-like movement pass
 File I/O
 
 NEEDS DOING:
@@ -34,7 +33,6 @@ KEY:
 
 
 FUNCTIONAL:
-quake-like movement pass
 Change bullets to have damage falloff ++++&&
 Clean up infopanel code, move weapon stat tracking to invenmanager's job
 crosshair changes with speed **

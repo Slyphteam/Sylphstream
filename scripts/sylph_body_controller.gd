@@ -1,5 +1,5 @@
 extends CharacterBody3D
-@onready var sylphHead = $"headholder/sylph head"
+@onready var sylphHead = $"sylph head v2"
 @onready var collider = $sylphcollider
 
 

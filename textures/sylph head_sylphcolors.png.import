@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drc88ypc8ujk6"
-path.s3tc="res://.godot/imported/9mm ammobox_9mmbox.png-ed1e5a6fa404e908aea381b9c5516941.s3tc.ctex"
+uid="uid://d1pfwp0py8n2p"
+path.s3tc="res://.godot/imported/sylph head_sylphcolors.png-0c56ed50b3bd7f4be4cac012f206c324.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b6ece8b557291f9397b2fe29c65ac5e1"
+"md5": "6c61bb6eaf037ffc970b054ac19a1aa8"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/9mm ammobox_9mmbox.png"
-dest_files=["res://.godot/imported/9mm ammobox_9mmbox.png-ed1e5a6fa404e908aea381b9c5516941.s3tc.ctex"]
+source_file="res://textures/sylph head_sylphcolors.png"
+dest_files=["res://.godot/imported/sylph head_sylphcolors.png-0c56ed50b3bd7f4be4cac012f206c324.s3tc.ctex"]
 
 [params]
 
