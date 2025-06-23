@@ -120,6 +120,7 @@ mesh = SubResource("BoxMesh_366xt")
 surface_material_override/0 = SubResource("StandardMaterial3D_41a6k")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00808, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Floor/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_41a6k")
@@ -277,8 +278,6 @@ shape = SubResource("ConvexPolygonShape3D_36h38")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0u4ar")
 
-[node name="Player" parent="Environment" instance=ExtResource("4_2yn2u")]
-
 [node name="Testing zone" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.6961, 2, 5.5732e-06)
 mesh = SubResource("BoxMesh_ldjjd")
@@ -329,7 +328,7 @@ surface_material_override/0 = ExtResource("6_m2myf")
 shape = SubResource("ConvexPolygonShape3D_2yn2u")
 
 [node name="sylph body" parent="." instance=ExtResource("7_d6ln1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287848, 0.799304, -5.32817)
+transform = Transform3D(-0.500559, 0, -0.865702, 0, 1, 0, 0.865702, 0, -0.500559, 41.1306, 0.799304, 29.1318)
 
 [node name="rifle_ammobox" parent="." instance=ExtResource("10_n8uj3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.805, 1.87234, 24.6741)
@@ -342,3 +341,6 @@ transform = Transform3D(0.428289, 0, -0.903642, 0, 1, 0, 0.903642, 0, 0.428289, 
 
 [node name="rifle_ammobox3" parent="." instance=ExtResource("10_n8uj3")]
 transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -1, -1, 0, -4.37114e-08, 42.2741, 1.82931, 24.9071)
+
+[node name="Player" parent="." instance=ExtResource("4_2yn2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187381, 1.86011, 3.46502)

@@ -9,8 +9,8 @@ extends CharacterBody3D
 const gravAmount = 60
 
 #player camera variables
-var ylook : float
-var xlook : float
+var ylook : float = 0
+var xlook : float = 0
 var mousesensitivity = 0.25
 
 #player input/movement variables
@@ -113,6 +113,7 @@ func _input(event):
 
 ##Cleanliness function that just makes a short-ranged raycast
 func do_Interact_Raycast():
+		print(playerCollider.scale.y)
 		var space = invenManager.get_space_state()
 		var orig:Vector3 = playerCam.project_ray_origin(get_viewport().size / 2)
 		var end:Vector3 = orig + playerCam.project_ray_normal(get_viewport().size / 2) * 100
@@ -122,7 +123,7 @@ func do_Interact_Raycast():
 		var castResult = space.intersect_ray(raycheck)
 		
 		if(castResult):
-			print(castResult)
+			#print(castResult)
 			var hitObject = castResult.get("collider")
 			if(hitObject.is_in_group("player_interactible")): #check if we even CAN interact before anything else
 				var castLocation = castResult.get("position")
@@ -141,7 +142,7 @@ func input_Mouse(event):
 func view_Angles():
 	playerCam.rotation_degrees.x = xlook
 	playerCam.rotation_degrees.y = ylook
-	playerShape.rotation_degrees.y = ylook #ensure the playermodel stays behind the camera
+	playerShape.rotation_degrees.y = ylook - 180 #ensure the playermodel stays relative to camera
 
 ##Will listen to keypresses and update the movement variables above. Will NOT update mouse (handled by _input)
 func getInputs():
@@ -199,11 +200,11 @@ func transition_Crouch(entering):
 	
 	if(entering): #we are entering crouch
 	#	playerShape.scale.y -= 0.8 #it's jank so we are no longer changing the playermodel's size
-		playerCollider.scale.y -= 0.8
+		playerCollider.scale.y -= 1
 
 	else: #we are exiting crouch
 		#TODO: add a check to see if the player has enough room TO stand
-		playerCollider.scale.y += 0.8
+		playerCollider.scale.y += 1
 
 ##Function that toggles mouse sensitivity. Speed is handled elsewhere. Maybe make dependent on weapons stat????
 func toggle_ADS_Stats():
@@ -347,7 +348,7 @@ func do_Jump():
 		flMul = sqrt(2 * gravAmount * jumpheight) + ((1./60.) * gravAmount)
 		
 	else:
-		move_and_collide(Vector3(0, 2-playerShape.scale.y, 0))		
+		move_and_collide(Vector3(0, 2-playerShape.scale.y, 0)) #TODO: make sure playershape here doesnt cause issues
 		flMul = sqrt(2 * gravAmount * jumpheight)
 	var jumpvel =  flGroundFactor * flMul  + max(0, playerVelocity.y)
 	playerVelocity.y = max(jumpvel, jumpvel + playerVelocity.y)

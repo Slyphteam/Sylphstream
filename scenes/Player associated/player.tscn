@@ -17,10 +17,9 @@ points = PackedVector3Array(-0.0642076, -0.420824, -0.485202, 0.0347339, 0.44652
 script = ExtResource("1_qlg0r")
 
 [node name="camCage" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59654, 0)
 
 [node name="came" type="Camera3D" parent="camCage" node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72968, 0.0272837)
 fov = 100.0
 far = 500.0
 script = ExtResource("2_f4klr")
@@ -33,11 +32,12 @@ script = ExtResource("5_tuyoq")
 Starting_Wep = ExtResource("5_f4klr")
 
 [node name="playercollidercapsule" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964655, 0)
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 1.25093, 0)
 shape = SubResource("ConvexPolygonShape3D_iy7ap")
+debug_color = Color(1, 0, 0, 1)
 
 [node name="playermodel" parent="." instance=ExtResource("6_tgbf5")]
-transform = Transform3D(-1, 0, -8.74228e-08, 1.89307e-08, 0.976273, -0.216542, 8.53485e-08, -0.216542, -0.976273, 0, 0.214829, -0.00661127)
+transform = Transform3D(-1.5, 1.14291e-08, -1.30635e-07, 0, 1.49429, 0.130734, 1.31134e-07, 0.130734, -1.49429, 0, 0.236791, 0)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
