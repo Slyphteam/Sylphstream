@@ -20,8 +20,6 @@ Other places are as follow:
 
 
 CURRENT DEV CYCLE:
-	
-quake-like movement pass
 File I/O
 
 NEEDS DOING:

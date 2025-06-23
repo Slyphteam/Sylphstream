@@ -8,6 +8,8 @@ extends CharacterBody3D
 #const sourcelike = true 
 const gravAmount = 60
 
+@export var quakelike: bool = false
+
 #player camera variables
 var ylook : float = 0
 var xlook : float = 0
@@ -375,9 +377,11 @@ func handle_Sourcelike_Air(delta):
 	# Zero out y value
 	wishvel.y = 0
 	
+	if(quakelike):
+		do_Qke_AirAccelerate(wishvel, delta) #let the airaccelerate function do its work
+		return
+	
 	var wishdir = wishvel.normalized()
-	# VectorNormalize in the original source code doesn't actually return the length of the normalized vector
-	# It returns the length of the vector before it was normalized
 	var wishspeed = wishvel.length()
 	
 	# TODO: UPDATE THIS
@@ -389,7 +393,42 @@ func handle_Sourcelike_Air(delta):
 	do_Source_AirAccelerate(wishdir, wishspeed, delta) #let the airaccelerate function do its work
 
 
+func do_Qke_AirAccelerate(desiredVel, delta):
+	
+	#quakelike movement
+	
+	#originally i was just going to rewrite do_Source_AirAccelerate
+	#which is why all these variable names are weird and short
+	#but then i realized that was stupid so now they just have odd names in their own function
+	var wspd = desiredVel.length()
+	var vvel = desiredVel.normalized()
+	
+	if(wspd > 30):
+		wspd = 30
+	
+	var qkecurspd = playerVelocity.dot(vvel)
+	
+	
+	var qkespd = wspd - playerSpeed #aka add_speed
+	if(qkespd <=0):
+		return
+	
+	var qkespdlmt = desiredVel.length() * accelerate * delta #aka accel_speed
+	if(qkespdlmt > qkespd):
+		qkespdlmt = qkespd
+	
+	for i in range(3):
+		playerVelocity += qkespdlmt * desiredVel
+		
+	#playerVelocity.x += qkespdlmt * desiredDir.x
+	#playerVelocity.y += qkespdlmt * desiredDir.y
+	#playerVelocity.z += qkespdlmt * desiredDir.z
+	
+	playerSpeed = playerVelocity.length()
+	
+
 func do_Source_AirAccelerate(desiredDir, desiredSpeed, delta):
+	
 	var accel = 20 #global airaccelerate 
 	desiredSpeed = min(desiredSpeed, 15) # global airspeed cap 
 	# See if we are changing direction a bit

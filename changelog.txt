@@ -1,3 +1,5 @@
+6/23:
+Adds the archon as a debug entity!
 6/21:
 Weapon shooting is now a per-frame check, allowing for automatic firing. 
 All guns can now fire reasonably slowly with mouse held.
