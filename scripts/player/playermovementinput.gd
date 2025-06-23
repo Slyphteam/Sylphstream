@@ -113,7 +113,6 @@ func _input(event):
 
 ##Cleanliness function that just makes a short-ranged raycast
 func do_Interact_Raycast():
-		print(playerCollider.scale.y)
 		var space = invenManager.get_space_state()
 		var orig:Vector3 = playerCam.project_ray_origin(get_viewport().size / 2)
 		var end:Vector3 = orig + playerCam.project_ray_normal(get_viewport().size / 2) * 100

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://oh4304fixaus"]
+
+[ext_resource type="Script" uid="uid://bfrnx1hclxgs0" path="res://scripts/archonstript.gd" id="2_6b0bf"]
+[ext_resource type="ArrayMesh" uid="uid://6uiken6837gs" path="res://models/mesh models/archon mesh.res" id="2_ppbv2"]
+[ext_resource type="Script" uid="uid://kmds5kp6phyn" path="res://scripts/trivial/archon_raycast_script.gd" id="3_ppbv2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6b0bf"]
+points = PackedVector3Array(-1.80056, -2.43453, -1.65326, 2.50131, 2.96927, -0.952813, 2.8016, 2.46877, -0.952813, -0.600024, 0.966685, 0.348097, -2.70143, 2.56818, -1.75344, 2.50131, -2.93504, -0.952813, 2.8016, 2.36821, -1.75344, -2.50082, -2.93504, -0.952813, -2.50082, 2.96927, -0.952813, 0.900177, 0.066243, 0.247916, 1.80042, -2.43453, -1.65326, -3.20234, 1.46719, -1.35312, 2.8016, -2.43453, -0.952813, -0.899688, 0.066243, 0.247916, -0.400665, -1.23356, -0.152601, 3.10189, 1.56717, -1.65326, 0.556849, 1.17754, 0.272721, -2.80111, -2.43453, -0.952813, -2.80111, 2.46877, -0.952813, -3.1014, 1.56717, -1.65326, 2.7013, 2.56818, -1.75344, 3.2022, 1.66773, -1.35312, -2.80111, 2.16766, -1.75344, 0.599886, 0.966685, 0.348097, 0.399901, -1.23356, -0.152601, -2.65746, -2.3088, -1.12988, 2.65756, -2.30848, -1.12962, -3.20234, 1.76772, -1.4531, 2.8016, 2.16766, -1.75344, -0.556917, 1.1774, 0.2726, 3.2022, 1.76772, -1.4531, -1.53772, 0.401121, -0.147168)
+
+[node name="archonRoot" type="Node3D"]
+script = ExtResource("2_6b0bf")
+
+[node name="ArchonMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 2.07665, 0)
+mesh = ExtResource("2_ppbv2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ArchonMesh" groups=["player_interactible"]]
+script = ExtResource("3_ppbv2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ArchonMesh/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6b0bf")

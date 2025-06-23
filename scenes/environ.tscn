@@ -1,6 +1,5 @@
-[gd_scene load_steps=42 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=41 format=3 uid="uid://bh3powm0a35or"]
 
-[ext_resource type="PackedScene" uid="uid://bglxhrjkl00gg" path="res://scenes/turret.tscn" id="1_20ccn"]
 [ext_resource type="PackedScene" uid="uid://dw6u8j6bfnycd" path="res://scenes/trivial/pickups/bergther.tscn" id="3_aggi3"]
 [ext_resource type="PackedScene" uid="uid://dl0emtfqlrkh2" path="res://scenes/trivial/pickups/fourier_9.tscn" id="3_d6ln1"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/Player associated/player.tscn" id="4_2yn2u"]
@@ -11,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bfyduw5qytyby" path="res://scenes/sylphscene.tscn" id="7_d6ln1"]
 [ext_resource type="PackedScene" uid="uid://b0ggseuf34obn" path="res://scenes/trivial/pickups/rifle_ammobox.tscn" id="10_n8uj3"]
 [ext_resource type="PackedScene" uid="uid://mivmmni3ef2p" path="res://models/glbs and textures/rimfire_ammobox.glb" id="11_ugmq3"]
-[ext_resource type="PackedScene" uid="uid://7u3fambuprg2" path="res://models/glbs and textures/archon.glb" id="12_c4nfh"]
+[ext_resource type="PackedScene" uid="uid://oh4304fixaus" path="res://scenes/archonscene.tscn" id="12_c4nfh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -218,9 +217,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1936, 0, 0)
 mesh = SubResource("BoxMesh_ycbjd")
 skeleton = NodePath("../../..")
 
-[node name="slyphstream turret" parent="Environment/Range" instance=ExtResource("1_20ccn")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.79718, -0.505132, -6.19015)
-
 [node name="affine" parent="Environment/Range" instance=ExtResource("7_aggi3")]
 transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 0.00527954, 0.848665, -0.445808)
 
@@ -346,5 +342,5 @@ transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08,
 [node name="Player" parent="." instance=ExtResource("4_2yn2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187381, 1.86011, 3.46502)
 
-[node name="archon" parent="." instance=ExtResource("12_c4nfh")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 39.1421, 2.53661, 31.2593)
+[node name="archonRoot" parent="." instance=ExtResource("12_c4nfh")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.764568, 0.52378, 22.6654)
