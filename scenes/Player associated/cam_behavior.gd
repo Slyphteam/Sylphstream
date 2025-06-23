@@ -5,7 +5,7 @@ extends Camera3D
 # external variables
 @export var bob_speed_target : float = 0.0
 @export var tilt_amount_target : float = 0.0
-@export var bob_intensity : float = 1.0
+@export var bob_intensity : float = 3.0
 @export var lerp_val : float = 0.1
 
 @export var player : CharacterBody3D
@@ -26,6 +26,7 @@ func handleBob(delta):
 	
 	bob_speed = lerp(bob_speed, bob_speed_target, lerp_val)
 	bob_time += delta * bob_speed
+	#bob_time = Globalscript.timer * bob_speed
 	var bob_offset = bob_intensity * sin(bob_time)
 	position.y = bob_offset
 
