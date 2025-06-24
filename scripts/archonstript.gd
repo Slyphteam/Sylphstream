@@ -1,4 +1,4 @@
-class_name ARCHONHELPER extends Node3D
+extends Node3D
 
 func _process(delta):
 	do_Archon_Gaylittlefloat(delta)

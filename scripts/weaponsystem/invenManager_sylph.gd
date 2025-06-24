@@ -58,7 +58,7 @@ func get_Origin():
 	#return user.playerCam.project_ray_origin(get_viewport().size / 2)
 	#
 ##Endpoint of where bullets are coming from. Azimuth is offset, in degrees, and roll is how far around a circle
-func get_End(orig:Vector3, azimuth:float, roll:float):
+func get_End(_orig:Vector3, _azimuth:float, _roll:float):
 	pass
 	##return orig + player.playerCam.project_ray_normal(get_viewport().size / 2) * 1000
 	#var end:Vector3 = orig + user.playerCam.project_ray_normal(get_viewport().size / 2) * 1000
