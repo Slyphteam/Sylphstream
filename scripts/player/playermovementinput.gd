@@ -307,6 +307,8 @@ func do_Crouch_Slide(delta):
 ##Function that calculates and updates player's velocity
 func do_Source_Accelerate(desiredDir: Vector3, desiredSpeed, delta):
 	
+	#TODO: introduce some airstrafing leniency
+	
 	var currentspeed = playerVelocity.dot(desiredDir) # are we changing direction?
 	var addedspeed = desiredSpeed - currentspeed # reduce by amount
 	
@@ -403,7 +405,7 @@ func do_Qke_AirAccelerate(desiredVel, delta):
 	var wspd = desiredVel.length()
 	var vvel = desiredVel.normalized()
 	
-	if(wspd > 30):
+	if(wspd > 30): #30 units is in quake units, convert this >:(
 		wspd = 30
 	
 	var qkecurspd = playerVelocity.dot(vvel)

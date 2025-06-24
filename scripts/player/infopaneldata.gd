@@ -9,7 +9,7 @@ func _ready():
 func add_Property (title: String, value, order):
 	var propCheck = propertyContainer.find_child(title,true,false)
 	if(not propCheck):
-		print("Adding new property!")
+		#print("Adding new property!")
 		propCheck = Label.new()
 		propertyContainer.add_child(propCheck)
 		propCheck.name = title
