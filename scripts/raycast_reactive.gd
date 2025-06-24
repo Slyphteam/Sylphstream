@@ -1,4 +1,4 @@
-class_name raycast_reactive extends Node3D
+class_name raycast_reactive extends PhysicsBody3D
 ##One of two special raycast. READ COMMENTS IN CLASS FILE FOR MORE INFO.
 func hit_By_Bullet(dam, _damtype, _dir, _origin):
 	print("Target hit! ", dam)
