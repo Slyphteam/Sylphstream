@@ -1,3 +1,123 @@
+Type 0: Intro 
+
+Button that summons DA ARCHON when pressed: 
+Ough,.,, press me..
+Button that summons DA ARCHON when pressed:
+I really wish someone with BIG and STRONG and DEXTEROUS fingers would push me down right about now~...
+Button that summons DA ARCHON when pressed:
+It's been SO long since I've last been pressed... auhugh, I'm getting excited just thinking about it
+Button that summons DA ARCHON when pressed:
+Press me... slowly. Please. *Please*~
+
+
+Button that summons DA ARCHON when pressed:
+oh YEES!!
+Button that summons DA ARCHON when pressed:
+Please hold :)
+
+DA ARCHON:
+(in small text) hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhheeeeeeeeee
+
+
+Button that summons DA ARCHON when pressed:
+Wait for it...
+
+DA ARCHON:
+eeeeeeeeeeeeeeeeeeeeeeeeellllllllllll
+
+Button that summons DA ARCHON when pressed:
+Waaaaaait fooor it...
+
+
+DA ARCHON:
+llllLLLLLLOOOOO MILLIAN~!
+
+
+Button that summons DA ARCHON when pressed:
+Okay! There's the archon! I'm going to go embrace metempsychosis now, bye!
+
+
+PLAYER OPTIONS:
+1: Hello, loyal Archon! (skip tutorial)
+2: Gwuh?
+2: Who are you?
+
+-2: It's me, buddy! The Archo- I mean- DA ARCHON! 
+3: Okay, but who *are* you?
+4: baugwuhh?
+
+-4: We- h- are you okay there, Millian?
+5: Yeah sorry I think I had a stroke for a second or something dunno what that was about
+6: gwehh khhhuh?
+
+-6: Oh, jeez, looks like your Antahkarana got absolutely scrambled. uh. heck. that's no good.
+5: wait I think I'm better now I just forgot how to talk for a second.
+7: blllgthghphtuhthhhhh.. gh. bhuhhhgh.,,.,,..
+
+7: Okay. fuck. uh. I think I'm just going to start over with a clean slate.
+Hey! pspsps! Over here! I'm going to make a bright light and I want you to stand SUPER still and look 
+at the pretty colors, okay? (archon fucking vaporizes the player)
+
+-3: I'm The Ar- tripped up again, dangit- DA ARCHON! I'm a servant of the Demiurge, the false god and creator of this 
+world. -> 10: Any other questions?
+
+-5: Must've really hit your head hard on the firmament back there, but that's a relief
+Okay then. How many fingers am I holding up?
+(The archon does not do anything with its fingers because it has no hands from which any fingers might sprout)
+8: Negative pi.
+8: Eleventeen?
+8: No less than two thousand but no more than eight million.
+8: I can't count sorry man :(
+9: Like fou- Wait a second! This is a trick question! You don't have hands!
+
+8: That's... not actually correct. But don't worry! We're all winners here!
+9: Hey listen I know we have a lot of laughs and gaffs here but saying that was actually super insensitive 
+and my feelings are genuinely hurt. Please don't bring that up again.
+(both transition to 10)
+
+10: Any questions?
+
+11: Okay, who am I?
+3: Who are you?
+13: Where am I?
+14: As The Archon, what do you actually do?
+4: Whagh you hevar have a dreag that you- that- thhh- gh- heggh- jthhbhlth.
+16: What is a sylph?
+15: I think that's all the bases covered. 
+
+-11: You're Millian! The protagonist! The main character! The experiential locus! The Diegetic aperture through which
+a fleeting glimpse into the world of Sylphstream is afforded! You also were crafted in the image of the Yaldabaoth, but
+you aren't actually them. Unless you ARE, in which case: hail.
+12: Sooo that means I DON'T get god powers, right?
+-12: Not unless you COUGH COUGH HACK CONTRIBUTE TO THE REPOSITORY AT https://github.com/Slyphteam/Sylphstream HACK COUGH
+HACK wow I have no idea what just came over me but no! You just bear the namesake.
+10: Right.
+
+13: You're in Sylphstream. A semi-raqiaq, panstygiotopic instantiation Alam where you (that's right! You!) can
+have me instantiate, test, import, export, and even pit you against numeroneuro-aetheric beings we call Sylphs.
+
+-14: I'm actually DA ARCHON- rookie mistake there- and you can think of me as your helper, who can be summoned by
+pressing f1, but, like, in your mind. I can take you places, summon weapons and ammuniton, initialize and halt tests, 
+and several other utility functions that the devs are too lazy to try fitting into a single dialogue node on 
+our interaction tree.
+10: Coolio!
+
+16: A Sylph is actually two things: The Umlaut, an omniscient, entirely utilitarian construct designed to gather and
+then logically restrict information about the world around it, and a numeroneurological matrix made from nodes
+originating with filtered sensory inputs, and terminating with liklihoods of certain actions being taken.
+
+Or, in layman's terms, a Neural Network.
+
+-15: Sweet! Is there anything I can do for you right now? (open archon interaction tree)
+
+Player shoots:
+Ow!
+Stopit!
+Cut that out!
+I know I'm supposed to be do your bidding, but keep it up and I will just vaporize you.
+Okay. Final warning.
+(archon once again fucking annihilates player)
+
 Type 1:
 Wrought by Torrid Morning at daybreak.
 Life is a multiorthonormal panstigyiotopic conflux metaframework.
