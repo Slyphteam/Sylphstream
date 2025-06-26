@@ -31,6 +31,14 @@ KEY:
 
 
 FUNCTIONAL:
+REDO CODING BECAUSE YOU ONLY NEED ONE OUTPUT FOR LEFT/RIGHT!!!!
+
+
+Write code for first 10-second network behavioral trial
+
+Write copy_layer and copy_network functions
+Write add_node_to_layer function
+Write file saving/loading functions
 Reimport sylph head but make sure it's actually centered this time, doofus.
 Change ALL ui stuff in heldweapon to be from a single function, not spread out
 Change bullets to have damage falloff ++++&&

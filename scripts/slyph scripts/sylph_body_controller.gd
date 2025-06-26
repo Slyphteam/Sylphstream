@@ -1,4 +1,5 @@
 extends CharacterBody3D
+##Controller code for the Sylph. Relies on sylph_mind for inputs.
 @onready var sylphHead = $"sylph head v2"
 @onready var collider = $sylphcollider
 @onready var mind = $"slyph mind"
@@ -11,14 +12,22 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 
 func interact_By_Player(playerRef)->bool:
 	
-	manager.doShoot()
+	mind.init_Neurons()
+	mind.single_Thought_Test()
+	
+	#mind.mindEnabled = true
+	#mind.actionsEnabled = true
+	
+	
+	#manager.doShoot()
 	
 	#mind.do_Target_Test()
 	
 	
 	return false
 
-
+func shoot_Wep():
+	manager.doShoot()
 
 func move_Head(desired: Vector2):
 	#TODO: in the future add inaccuracy with higher speeds
