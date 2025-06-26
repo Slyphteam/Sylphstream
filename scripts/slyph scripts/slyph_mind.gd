@@ -4,6 +4,12 @@ extends Node
 @onready var visionR: Area3D = $"../sylph head v2/triangleR"
 @onready var visionL: Area3D = $"../sylph head v2/triangleL"
 
+var mindEnabled = false
+
+func _process(delta):
+	pass
+	#if(mindEnabled):
+		
 
 func do_Target_Test():
 	if(visionR.has_overlapping_bodies()):

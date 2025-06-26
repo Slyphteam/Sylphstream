@@ -1,9 +1,8 @@
-##this is THE script that keeps tabs on player ammunition, tells weapons how much they can
-## reload by, and conveys commands from the player to the held weapon.
-##it answers directly to the player script and commands the held_weapon_behavior script
-#
 class_name SYLPHINVENMANAGER extends INVENMANAGER
-#
+##This is the Sylph's invenmanager script. Similar, but slightly different to player invenmanager script.
+
+@onready var sylphHead = $".."
+
 func _ready():
 	pass
 	#no need to actually do anything on ready, yet.
@@ -20,15 +19,14 @@ func _ready():
 
 func getRefs():
 	heldItem = $weaponHolder
-	#user = $"../../.."
+	user = $"../.."
 
 ##functions going down the hierarchy
 func doShoot():
-	pass
-	#if(holdingFirearm):
-		#heldItem.tryShoot()
-	#else:
-		#print("Swing!")
+	if(holdingFirearm):
+		heldItem.tryShoot()
+	else:
+		print("Swing!")
 #
 func startReload():
 	pass
@@ -53,21 +51,24 @@ func applyViewpunch(lift, drift):
 func get_space_state():
 	return user.sylphHead.get_world_3d().direct_space_state 
 	
-func get_Origin():
-	pass
-	#return user.playerCam.project_ray_origin(get_viewport().size / 2)
-	#
+func get_Origin(): #tested and seems to work.
+
+	var orig = sylphHead.global_position 
+	#heldItem.doHitDecal(orig)
+	return orig
+	
 ##Endpoint of where bullets are coming from. Azimuth is offset, in degrees, and roll is how far around a circle
-func get_End(_orig:Vector3, _azimuth:float, _roll:float):
-	pass
-	##return orig + player.playerCam.project_ray_normal(get_viewport().size / 2) * 1000
-	#var end:Vector3 = orig + user.playerCam.project_ray_normal(get_viewport().size / 2) * 1000
-	#var upAxis = Vector3(0, user.playerCam.rotation.y, 0) #get an axis of rotation for up/down from camera
-	#var sideAxis = Vector3(user.playerCam.rotation.x, 0, 0) #ditto for azimuth
-	#end = end.rotated(upAxis.normalized(), deg_to_rad(lift)) #rotate
-	#end = end.rotated(sideAxis.normalized(), deg_to_rad(drift))
-	#
-	#return end 
-	#
+func get_End(orig:Vector3, _azimuth:float, _roll:float):
+	var pathVec = Vector3(0, 0, 2)
+	
+	pathVec = pathVec.rotated(Vector3.UP, sylphHead.rotation.y)
+	pathVec = pathVec.rotated(Vector3.RIGHT, sylphHead.rotation.x)
+	
+	#no need to do Z since we know we aren't rolling
+	pathVec += orig #add the rotated vector to wherever it's coming from
+	
+	heldItem.doHitDecal(pathVec)
+	print(pathVec)
+	
 func get_Rotation():
 	return user.sylphHead.rotation

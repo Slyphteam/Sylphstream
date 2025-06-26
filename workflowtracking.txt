@@ -31,6 +31,7 @@ KEY:
 
 
 FUNCTIONAL:
+Reimport sylph head but make sure it's actually centered this time, doofus.
 Change ALL ui stuff in heldweapon to be from a single function, not spread out
 Change bullets to have damage falloff ++++&&
 Clean up infopanel code, move weapon stat tracking to invenmanager's job

@@ -44,7 +44,12 @@ func get_space_state():
 	return user.playerCam.get_world_3d().direct_space_state 
 	 
 func get_Origin():
-	return user.playerCam.project_ray_origin(get_viewport().size / 2)
+	var orig = user.playerCam.project_ray_origin(get_viewport().size / 2)
+	#heldItem.doHitDecal(orig)
+	var orig2 = user.playerCam.global_position#head position?
+	heldItem.doHitDecal(orig2)
+	return orig
+
 	
 ##Endpoint of where bullets are coming from. Azimuth is offset, in degrees, and roll is how far around a circle
 func get_End(orig:Vector3, azimuth:float, roll:float):

@@ -20,7 +20,7 @@ extends Node3D
 
 
 func load_weapon(weaponToLoad:WEAPON_PARENT, reticle):
-	print("Loading weapon mesh: ", weaponToLoad.mesh)
+	#print("Loading weapon mesh: ", weaponToLoad.mesh)
 	weapon_mesh.mesh = weaponToLoad.mesh
 	
 	position = weaponToLoad.position
@@ -176,6 +176,7 @@ func doShoot():
 				doHitDecal(castResult.get("position"))
 				
 
+@export var decalTimer: int = 10
 #var decals = 0
 var hitdecalscene = preload("res://scenes/trivial/bullet_decal.tscn")
 func doHitDecal(pos):
