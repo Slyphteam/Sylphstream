@@ -154,7 +154,7 @@ func makeGunshot():
 
 ##This function will always fire a bullet from the center of the screen
 func doShoot():
-		var space = manager.get_space_state()
+		var space:PhysicsDirectSpaceState3D = manager.get_space_state()
 		var orig = manager.get_Origin()
 		
 		

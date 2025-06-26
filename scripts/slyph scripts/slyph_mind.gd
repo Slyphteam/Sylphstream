@@ -22,3 +22,17 @@ func do_Target_Test():
 				print(items[x])
 			
 			x+=1
+
+func do_Neural_Test():
+	var networkTest = NNETWORK.new()
+	networkTest.initializeNetwork([2,3,2])
+	var outs = networkTest.calcOutputs([1.1,2.2])
+	print("outs",outs)
+	
+
+	#neural layer test
+	#var layertest = LAYER.new()
+	#layertest.initialize_Layer(3, 2) #3 in, 
+	#var inputArray: Array[float] = [1.1,2.2,3.3]
+	#var outs = layertest.calc_Outputs(inputArray)
+	#print(outs)
