@@ -48,6 +48,7 @@ crosshair changes with speed **
 Step up/down movement code ----- * (will have to do it at some point)
 
 EXPERIENTIAL:
+Scaling gunshot with ammo left
 "button-like dialogue trees"
 Scrolling chat
 get better pistol gunshot &++

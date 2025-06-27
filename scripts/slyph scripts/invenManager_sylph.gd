@@ -71,7 +71,7 @@ func get_End(orig:Vector3, _azimuth:float, _roll:float):
 	
 	
 	heldItem.doHitDecal(pathVec)
-	print(pathVec)
+	#print(pathVec)
 	return pathVec
 	
 func get_Rotation():

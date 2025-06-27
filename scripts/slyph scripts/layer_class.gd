@@ -23,7 +23,12 @@ func create_Empty_Grid(width, height):
 			grid[i].append(0.5) # Set a starter value for each position
 	return grid
 
+#runtime seems to be associated with inputs being an empty array.
+#how does this happen?
 func calc_Outputs(inputs: Array[float])-> Array[float]:
+	if(!inputs):
+		print("NO INPUT DATA!! UH OH!!!!!")
+	
 	var computedInputs : Array[float]
 	computedInputs.resize(nodesOut)
 	
@@ -35,7 +40,7 @@ func calc_Outputs(inputs: Array[float])-> Array[float]:
 		var curIn = 0
 		while(curIn < nodesIn):
 			currentArray = weights[curIn]
-			weightedIn+= inputs[curIn] * currentArray[curOut]
+			weightedIn+= inputs[curIn] * currentArray[curOut] #RARE RUNTIME HERE?
 			curIn+=1
 		computedInputs[curOut] = weightedIn
 		curOut+=1

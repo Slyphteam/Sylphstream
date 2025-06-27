@@ -342,5 +342,6 @@ transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08,
 [node name="Player" parent="." instance=ExtResource("4_2yn2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187381, 1.86011, 3.46502)
 
-[node name="archonRoot" parent="." instance=ExtResource("12_c4nfh")]
-transform = Transform3D(-0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, -14.5957, 0.52378, 14.2509)
+[node name="archonRoot" parent="." node_paths=PackedStringArray("theSylph") instance=ExtResource("12_c4nfh")]
+transform = Transform3D(-1, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, -1, 15.7842, 0.52378, 14.2509)
+theSylph = NodePath("../sylph body")

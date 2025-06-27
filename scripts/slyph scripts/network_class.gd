@@ -12,7 +12,7 @@ func initialize_Network(layerSizes: Array[int]):
 		i+=1
 
 ##run inputs through the neural network
-func calc_Outputs(inputData:Array[float])->Array[float]:
+func calc_Outputs_Network(inputData:Array[float])->Array[float]:
 	var x = 0
 	var curLayer: LAYER
 	while(x< (ourLayers.size()-1)):
@@ -118,4 +118,5 @@ func copy_values_from_network(otherGuy:NNETWORK):
 
 #func load_network_from_file
 
-#func save_network_to_file
+func save_Network_To_File():
+	pass

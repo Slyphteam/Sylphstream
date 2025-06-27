@@ -1,4 +1,5 @@
 extends Node3D
+@export var theSylph:CharacterBody3D
 
 func _process(delta):
 	do_Archon_Gaylittlefloat(delta)
@@ -15,7 +16,8 @@ func do_Archon_Gaylittlefloat(delta):
 func get_Talked_To(player:Node3D):
 	#print("Hi Millian! What can I do for you today?")
 	look_At_Player(player)
-	file_Load_Test()
+	
+	#file_Load_Test()
 	
 
 func look_At_Player(player:Node3D):
