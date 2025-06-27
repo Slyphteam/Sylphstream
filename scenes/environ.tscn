@@ -229,9 +229,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0872993, 0.85422, 2.2288)
 [node name="target" parent="Environment/Range" instance=ExtResource("4_m2myf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.48683, 0.648801, -1.71955)
 
-[node name="target2" parent="Environment/Range" instance=ExtResource("4_m2myf")]
-transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -21.9452, 0.931869, -40.6603)
-
 [node name="target3" parent="Environment/Range" instance=ExtResource("4_m2myf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.44322, 0.648801, -0.467051)
 
@@ -275,57 +272,76 @@ shape = SubResource("ConvexPolygonShape3D_36h38")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0u4ar")
 
-[node name="Testing zone" type="MeshInstance3D" parent="Environment"]
+[node name="archonRoot" parent="Environment" node_paths=PackedStringArray("Sylph1", "Sylph2", "targ1", "targ2") instance=ExtResource("12_c4nfh")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -41.116, 4.23567, -0.225213)
+Sylph1 = NodePath("../Testing zone/Sylph 1")
+Sylph2 = NodePath("../Testing zone/Sylph 2")
+targ1 = NodePath("../Testing zone/Testing target 1")
+targ2 = NodePath("../Testing zone/Testing target 2")
+
+[node name="Testing zone" type="Node3D" parent="Environment"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.6961, 2, 5.5732e-06)
+
+[node name="Testing target 1" parent="Environment/Testing zone" instance=ExtResource("4_m2myf")]
+transform = Transform3D(0.965926, 0, 0.25882, 0, 1, 0, -0.25882, 0, 0.965926, 13.5709, 0.52378, -23.228)
+
+[node name="Sylph 1" parent="Environment/Testing zone" instance=ExtResource("7_d6ln1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6517, -1.2007, -14.6374)
+
+[node name="Testing target 2" parent="Environment/Testing zone" instance=ExtResource("4_m2myf")]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 15.9391, -0.048131, -10.3013)
+
+[node name="Sylph 2" parent="Environment/Testing zone" instance=ExtResource("7_d6ln1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.958, -1.2007, -14.6374)
+
+[node name="Testing wall" type="MeshInstance3D" parent="Environment/Testing zone"]
 mesh = SubResource("BoxMesh_ldjjd")
+skeleton = NodePath("../..")
 
-[node name="wall collider" type="StaticBody3D" parent="Environment/Testing zone"]
+[node name="wall collider" type="StaticBody3D" parent="Environment/Testing zone/Testing wall"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/wall collider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/wall collider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5865e-08, -0.228106, -0.820496)
 shape = SubResource("ConvexPolygonShape3D_drpe3")
 
-[node name="Divider wall" type="MeshInstance3D" parent="Environment/Testing zone"]
+[node name="Divider wall" type="MeshInstance3D" parent="Environment/Testing zone/Testing wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02869e-06, 0, -46.4111)
 mesh = SubResource("BoxMesh_2yn2u")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Divider wall"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall/Divider wall"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Divider wall/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/Divider wall/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_m2myf")
 
-[node name="mainramp" type="MeshInstance3D" parent="Environment/Testing zone"]
+[node name="mainramp" type="MeshInstance3D" parent="Environment/Testing zone/Testing wall"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.0445449, 4.5)
 mesh = SubResource("PrismMesh_d6ln1")
 surface_material_override/0 = ExtResource("6_m2myf")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/mainramp"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall/mainramp"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/mainramp/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/mainramp/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_2yn2u")
 
-[node name="half 1 ramp" type="MeshInstance3D" parent="Environment/Testing zone"]
+[node name="half 1 ramp" type="MeshInstance3D" parent="Environment/Testing zone/Testing wall"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 4.5, 0, -2)
 mesh = SubResource("PrismMesh_d6ln1")
 surface_material_override/0 = ExtResource("6_m2myf")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/half 1 ramp"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall/half 1 ramp"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/half 1 ramp/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/half 1 ramp/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_2yn2u")
 
-[node name="half 1 ramp2" type="MeshInstance3D" parent="Environment/Testing zone"]
+[node name="half 1 ramp2" type="MeshInstance3D" parent="Environment/Testing zone/Testing wall"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.51701, 0, -2)
 mesh = SubResource("PrismMesh_d6ln1")
 surface_material_override/0 = ExtResource("6_m2myf")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/half 1 ramp2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall/half 1 ramp2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/half 1 ramp2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/half 1 ramp2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_2yn2u")
-
-[node name="sylph body" parent="." instance=ExtResource("7_d6ln1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.3567, 0.799304, -19.2332)
 
 [node name="rifle_ammobox" parent="." instance=ExtResource("10_n8uj3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.805, 1.87234, 24.6741)
@@ -341,7 +357,3 @@ transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08,
 
 [node name="Player" parent="." instance=ExtResource("4_2yn2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187381, 1.86011, 3.46502)
-
-[node name="archonRoot" parent="." node_paths=PackedStringArray("theSylph") instance=ExtResource("12_c4nfh")]
-transform = Transform3D(0.965926, 0, 0.25882, 0, 1, 0, -0.25882, 0, 0.965926, 13.5709, 0.52378, -23.228)
-theSylph = NodePath("../sylph body")

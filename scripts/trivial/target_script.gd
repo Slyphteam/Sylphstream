@@ -8,3 +8,4 @@ func hit_By_Bullet(dam, damtype, dir, origin):
 	var move:float = randi_range(-5, 5)
 	var distance: float = move / 10
 	root.global_position.z += distance
+	root.totalhits +=1
