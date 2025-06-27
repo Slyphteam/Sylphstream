@@ -17,6 +17,8 @@ func get_Talked_To(player:Node3D):
 	#print("Hi Millian! What can I do for you today?")
 	look_At_Player(player)
 	
+	
+	#theSylph.mind.load_From_File("res://resources/txt files/sylphExportTest.txt")
 	theSylph.mind.save_To_File("res://resources/txt files/sylphExportTest.txt")
 	print("File save complete!")
 	#file_Load_Test()

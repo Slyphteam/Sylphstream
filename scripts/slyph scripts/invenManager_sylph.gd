@@ -45,7 +45,7 @@ func toggleSights():
 ##Functions going up the hierarchy
 ###Apply viewpunch to the player, in degrees. Requires a connected user object.
 func applyViewpunch(lift, drift):
-	print("Sylph is ignoring upwards recoil of ", lift)
+	#print("Sylph is ignoring upwards recoil of ", lift)
 	user.move_Head_Exact([0, drift]) 
 
 func get_space_state():

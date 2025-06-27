@@ -142,7 +142,7 @@ func tryShoot():
 		var drift = randi_range((0 - aimKickBonus), aimKickBonus)
 		manager.applyViewpunch(drift, lift)
 		
-		print("Pew! Recoil: ", int(currentRecoil), " Kick: ", lift, ";", drift)
+		#print("Pew! Recoil: ", int(currentRecoil), " Kick: ", lift, ";", drift)
 		
 	else:
 		print("click!")

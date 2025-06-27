@@ -24,12 +24,17 @@ func init_Neurons():
 
 func save_To_File(fileString):
 	ourNetwork.save_Network_To_File(fileString)
+	
+func load_From_File(fileString):
+	ourNetwork.load_Network_From_File(fileString)
 
 func single_Thought_Test():
 	#sensory input, for now, is 3 values:
 	#target to left, target to right,and a random noise value.
 	sensoryInput = do_Vision()
 	sensoryInput.append(randf_range(-1, 1))
+	print("Sensory inputs: ", sensoryInput)
+	
 	if(!sensoryInput):
 		print("we CAN'T SEE!")
 	var desiredActions = ourNetwork.calc_Outputs_Network(sensoryInput)
@@ -41,7 +46,7 @@ var desiredActions:Array
 
 func process_Actions(desiredActions:Array[float]):
 	#for the current test, 1 is left/right, 2 is shoot
-	#print("Desired actions:", desiredActions)
+	print("Desired actions:", desiredActions)
 	var leftRight = desiredActions[0] * 3 * aimSensitivity #max per-frame movement is 3 degrees
 	
 	if(leftRight > -0.1 && leftRight < 0.2): #ignore obnoxiously small inputs

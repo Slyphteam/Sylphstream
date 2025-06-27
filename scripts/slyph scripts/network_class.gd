@@ -123,8 +123,44 @@ func mutate_Network(mutateBy: float):
 
 func load_Network_From_File(fileString):
 	var ourFile: FileAccess = FileAccess.open(fileString, FileAccess.READ)
-	#So: how many lines do
-	#var line1 : String = ourFile.get_line()
+	var lineGrabber : String =  ourFile.get_line()
+	var currentArray : Array
+	var currentLayer: LAYER
+	
+	if(lineGrabber != layerSizes): #check and ensure both networks are the same "size"
+		print("Load failed! Networks are different sizes!")
+		ourFile.close()
+		return
+	
+	
+	
+	var z:int = 0
+	var x:int = 0
+	
+	
+	
+	
+	while(z< 1):#ourLayers.size() - 1): #per layer
+		currentLayer = get_Layer(z)
+		
+		lineGrabber = ourFile.get_line() #layer header
+		lineGrabber = ourFile.get_line() #biases
+		currentArray = str_to_var(lineGrabber)
+		currentLayer.biases = currentArray.duplicate()
+		
+		
+		
+		lineGrabber = ourFile.get_line() #weights header
+		
+		x = 0
+		while(x < currentLayer.nodesIn): #process the weights
+			lineGrabber = ourFile.get_line()
+			currentArray = str_to_var(lineGrabber)
+			currentLayer.weights[x] = currentArray.duplicate()
+			
+			x+=1
+		z+=1
+	
 	ourFile.close()
 
 ##Saves network to file. See function comments for more details.
@@ -137,16 +173,17 @@ func save_Network_To_File(fileString):
 	var currentLayer: LAYER
 	var currentArray
 	
-	
+	constructedString = layerSizes + "\n"
+	ourFile.store_string(constructedString) #store nodal data
+		
 	while(z<ourLayers.size() - 1):
-		constructedString = layerSizes + "\n"
-		ourFile.store_string(constructedString) #store nodal data
+		
 		
 		constructedString = "-----LAYER " + str(z) + "----- \n"
 		ourFile.store_string(constructedString) #store headers
 		
 		currentLayer = get_Layer(z)
-		constructedString = str(currentLayer.biases) + "\n"
+		constructedString = var_to_str(currentLayer.biases) + "\n"
 		ourFile.store_string(constructedString) #store layer biases
 		
 		constructedString = "--WEIGHTS-- \n"
@@ -154,8 +191,7 @@ func save_Network_To_File(fileString):
 		x = 0
 		while(x < currentLayer.nodesIn):
 			currentArray = currentLayer.weights[x]
-			constructedString = str(currentArray) + "\n"
-			constructedString
+			constructedString = var_to_str(currentArray) + "\n"
 			ourFile.store_string(constructedString)
 			x+=1
 		
