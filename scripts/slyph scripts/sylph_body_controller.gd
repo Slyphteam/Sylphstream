@@ -5,9 +5,7 @@ extends CharacterBody3D
 @onready var mind = $"slyph mind"
 @onready var manager : INVENMANAGER = $"sylph head v2/sylphinventory"
 
-func _ready():
-	mind.init_Neurons()
-	pass
+
 
 func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#print("ow!")
@@ -15,12 +13,12 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 
 func interact_By_Player(playerRef)->bool:
 	
-	#mind.init_Neurons()
-	mind.single_Thought_Test()
 	
-	#mind.mindEnabled = true
-	#mind.actionsEnabled = true
+	#mind.single_Thought_Test()
 	
+	mind.initialize_Rand_Network()
+	#mind.load_From_File("res://resources/txt files/promising slyph.txt")
+	mind.begin_Test()
 	
 	#manager.doShoot()
 	
@@ -31,6 +29,9 @@ func interact_By_Player(playerRef)->bool:
 
 func shoot_Wep():
 	manager.doShoot()
+
+func unshoot_Wep():
+	manager.unShoot() 
 
 func move_Head(desired: Array):
 	#TODO: in the future add inaccuracy with higher speeds

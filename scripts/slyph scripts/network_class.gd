@@ -138,9 +138,7 @@ func load_Network_From_File(fileString):
 	var x:int = 0
 	
 	
-	
-	
-	while(z< 1):#ourLayers.size() - 1): #per layer
+	while(z< ourLayers.size() - 1): #per layer
 		currentLayer = get_Layer(z)
 		
 		lineGrabber = ourFile.get_line() #layer header

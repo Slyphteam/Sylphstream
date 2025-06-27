@@ -1,3 +1,7 @@
+6/27:
+Saving, loading, and utility functions added to neural networks.
+6/26:
+Neural networks are now implemented
 6/24:
 File loading IO
 6/23:

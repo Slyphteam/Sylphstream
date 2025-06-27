@@ -22,12 +22,7 @@ func getRefs():
 	user = $"../.."
 
 ##functions going down the hierarchy
-func doShoot():
-	if(holdingFirearm):
-		heldItem.tryShoot()
-	else:
-		print("Swing!")
-#
+
 func startReload():
 	pass
 	#if(holdingFirearm):
