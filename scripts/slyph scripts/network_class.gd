@@ -1,14 +1,19 @@
+##A class representing a neural network made from arrays. Includes several utilities.
 class_name NNETWORK extends Node
+
 var ourLayers: Array[LAYER]
+var layerSizes:String
 
 ##Create an empty neural network with layer sizes specified in array
-func initialize_Network(layerSizes: Array[int]):
-	var numLayers = layerSizes.size()
+func initialize_Network(layerSizeArr: Array[int]):
+	layerSizes = str(layerSizeArr)
+	
+	var numLayers = layerSizeArr.size()
 	ourLayers.resize(numLayers)
 	var i = 0
 	while(i<(numLayers-1)):
 		ourLayers[i] = LAYER.new()
-		ourLayers[i].initialize_Layer(layerSizes[i], layerSizes[i+1])
+		ourLayers[i].initialize_Layer(layerSizeArr[i], layerSizeArr[i+1])
 		i+=1
 
 ##run inputs through the neural network
@@ -116,7 +121,11 @@ func mutate_Network(mutateBy: float):
 #func copy_values_from_network(otherGuy:NNETWORK):
 	#pass
 
-#func load_network_from_file
+func load_Network_From_File(fileString):
+	var ourFile: FileAccess = FileAccess.open(fileString, FileAccess.READ)
+	#So: how many lines do
+	#var line1 : String = ourFile.get_line()
+	ourFile.close()
 
 ##Saves network to file. See function comments for more details.
 func save_Network_To_File(fileString):
@@ -127,7 +136,12 @@ func save_Network_To_File(fileString):
 	var constructedString:String
 	var currentLayer: LAYER
 	var currentArray
+	
+	
 	while(z<ourLayers.size() - 1):
+		constructedString = layerSizes + "\n"
+		ourFile.store_string(constructedString) #store nodal data
+		
 		constructedString = "-----LAYER " + str(z) + "----- \n"
 		ourFile.store_string(constructedString) #store headers
 		

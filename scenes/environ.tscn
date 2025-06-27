@@ -230,7 +230,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0872993, 0.85422, 2.2288)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.48683, 0.648801, -1.71955)
 
 [node name="target2" parent="Environment/Range" instance=ExtResource("4_m2myf")]
-transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -24.6793, 0.931869, -13.4835)
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -21.9452, 0.931869, -40.6603)
 
 [node name="target3" parent="Environment/Range" instance=ExtResource("4_m2myf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.44322, 0.648801, -0.467051)
@@ -325,7 +325,7 @@ surface_material_override/0 = ExtResource("6_m2myf")
 shape = SubResource("ConvexPolygonShape3D_2yn2u")
 
 [node name="sylph body" parent="." instance=ExtResource("7_d6ln1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.3567, 0.799304, 7.94361)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.3567, 0.799304, -19.2332)
 
 [node name="rifle_ammobox" parent="." instance=ExtResource("10_n8uj3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.805, 1.87234, 24.6741)
@@ -343,5 +343,5 @@ transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187381, 1.86011, 3.46502)
 
 [node name="archonRoot" parent="." node_paths=PackedStringArray("theSylph") instance=ExtResource("12_c4nfh")]
-transform = Transform3D(-1, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, -1, 15.7842, 0.52378, 14.2509)
+transform = Transform3D(-1, 0, -2.98023e-07, 0, 1, 0, 2.98023e-07, 0, -1, 13.5709, 0.52378, -23.228)
 theSylph = NodePath("../sylph body")

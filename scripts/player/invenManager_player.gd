@@ -55,7 +55,6 @@ func get_Origin():
 func get_End(orig:Vector3, azimuth:float, roll:float):
 	
 	var end:Vector3 = orig + user.playerCam.project_ray_normal(get_viewport().size / 2) * 100
-	print("player pathvec: ", end)
 	
 	#so, now we have the vector that is the raycast we're making.
 	var spatialVec = Vector3(orig.x - end.x, orig.y - end.y, orig.z - end.z)

@@ -11,7 +11,7 @@ func _ready():
 
 func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#print("ow!")
-	move_Head_Exact(Vector2(5,5))
+	move_Head_Exact([5,5])
 
 func interact_By_Player(playerRef)->bool:
 	
@@ -32,14 +32,14 @@ func interact_By_Player(playerRef)->bool:
 func shoot_Wep():
 	manager.doShoot()
 
-func move_Head(desired: Vector2):
+func move_Head(desired: Array):
 	#TODO: in the future add inaccuracy with higher speeds
 	move_Head_Exact(desired)
 
 ##Moves the Sylph's head with a vector containing the degrees of rotation in vertical, horizontal
-func move_Head_Exact(desired: Vector2):
-	var lift = desired.x #not necessary to do this, but for legibility I am anyway
-	var drift = desired.y
+func move_Head_Exact(desired: Array):
+	var lift = desired[0] #not necessary to do this, but for legibility I am anyway
+	var drift = desired[1]
 	sylphHead.rotation_degrees.x += lift
 	sylphHead.rotation_degrees.y += drift
 	

@@ -2,6 +2,7 @@ extends Node
 
 @onready var body = $".."
 
+var aimSensitivity:float = 1 ##fractional multiplier
 var ourNetwork:NNETWORK
 var mindEnabled = false
 var actionsEnabled = false
@@ -40,12 +41,12 @@ var desiredActions:Array
 
 func process_Actions(desiredActions:Array[float]):
 	#for the current test, 1 is left/right, 2 is shoot
-	print("Desired actions:", desiredActions)
-	var leftRight = desiredActions[0] * 3 #max per-frame movement is 3 degrees
+	#print("Desired actions:", desiredActions)
+	var leftRight = desiredActions[0] * 3 * aimSensitivity #max per-frame movement is 3 degrees
 	
 	if(leftRight > -0.1 && leftRight < 0.2): #ignore obnoxiously small inputs
 		leftRight = 0
-	body.move_Head_Exact(Vector2(0,leftRight))
+	body.move_Head_Exact([0,leftRight])
 	
 	var shootOrNah = desiredActions[1]
 	

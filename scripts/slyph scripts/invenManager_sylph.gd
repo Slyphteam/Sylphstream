@@ -45,8 +45,8 @@ func toggleSights():
 ##Functions going up the hierarchy
 ###Apply viewpunch to the player, in degrees. Requires a connected user object.
 func applyViewpunch(lift, drift):
-	print("Sylph is ignoring recoil of ", lift, drift)
-	#user.move_Head_Exact(Vector2(lift, drift)) 
+	print("Sylph is ignoring upwards recoil of ", lift)
+	user.move_Head_Exact([0, drift]) 
 
 func get_space_state():
 	return user.sylphHead.get_world_3d().direct_space_state 
@@ -59,7 +59,7 @@ func get_Origin(): #tested and seems to work.
 	
 ##Endpoint of where bullets are coming from. Azimuth is offset, in degrees, and roll is how far around a circle
 func get_End(orig:Vector3, _azimuth:float, _roll:float):
-	var pathVec = Vector3(5, 0, 0)
+	var pathVec = Vector3(20, 0, 0)
 	var desired = sylphHead.rotation
 	
 	pathVec = pathVec.rotated(Vector3.FORWARD, desired.x) #vertical
@@ -69,8 +69,6 @@ func get_End(orig:Vector3, _azimuth:float, _roll:float):
 	#no need to do Z since we know we aren't rolling
 	pathVec += orig #add the rotated vector to wherever it's coming from
 	
-	
-	heldItem.doHitDecal(pathVec)
 	#print(pathVec)
 	return pathVec
 	

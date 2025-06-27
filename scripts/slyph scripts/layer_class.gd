@@ -1,5 +1,6 @@
+##A layer of a neural network. Based in part on Sebastian Lague's open source neural network code
 class_name LAYER extends Node
-##based in part on Sebastian Lague's open source neural network code
+
 var nodesIn: int
 var nodesOut: int
 var weights ##Weights for incoming connections; 2D; nodesIn arrays of size nodesOut
