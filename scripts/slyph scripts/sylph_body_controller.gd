@@ -7,6 +7,7 @@ extends CharacterBody3D
 
 func _ready():
 	mind.init_Neurons()
+	pass
 
 func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#print("ow!")
@@ -14,7 +15,7 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 
 func interact_By_Player(playerRef)->bool:
 	
-	
+	mind.init_Neurons()
 	mind.single_Thought_Test()
 	
 	#mind.mindEnabled = true

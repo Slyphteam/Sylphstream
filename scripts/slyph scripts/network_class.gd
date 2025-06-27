@@ -113,10 +113,39 @@ func mutate_Network(mutateBy: float):
 		mutate_Layer(z, mutateBy)
 		z+=1
 
-func copy_values_from_network(otherGuy:NNETWORK):
-	pass
+#func copy_values_from_network(otherGuy:NNETWORK):
+	#pass
 
 #func load_network_from_file
 
-func save_Network_To_File():
-	pass
+##Saves network to file. See function comments for more details.
+func save_Network_To_File(fileString):
+	var ourFile: FileAccess = FileAccess.open(fileString, FileAccess.WRITE)
+	
+	var z:int = 0
+	var x:int = 0
+	var constructedString:String
+	var currentLayer: LAYER
+	var currentArray
+	while(z<ourLayers.size() - 1):
+		constructedString = "-----LAYER " + str(z) + "----- \n"
+		ourFile.store_string(constructedString) #store headers
+		
+		currentLayer = get_Layer(z)
+		constructedString = str(currentLayer.biases) + "\n"
+		ourFile.store_string(constructedString) #store layer biases
+		
+		constructedString = "--WEIGHTS-- \n"
+		ourFile.store_string(constructedString)
+		x = 0
+		while(x < currentLayer.nodesIn):
+			currentArray = currentLayer.weights[x]
+			constructedString = str(currentArray) + "\n"
+			constructedString
+			ourFile.store_string(constructedString)
+			x+=1
+		
+		
+		z+=1
+	
+	ourFile.close()

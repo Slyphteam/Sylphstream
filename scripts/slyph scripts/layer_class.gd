@@ -2,7 +2,7 @@ class_name LAYER extends Node
 ##based in part on Sebastian Lague's open source neural network code
 var nodesIn: int
 var nodesOut: int
-var weights ##Weights for incoming connections; 2D; INCOMING arrays of size OUTGOING
+var weights ##Weights for incoming connections; 2D; nodesIn arrays of size nodesOut
 #another way to think about weights is the following:
 #for each node in the current layer, what modifiers do we have for each node in the next layer?
 var biases: Array[float] ##Chance to activate each node in the next layer

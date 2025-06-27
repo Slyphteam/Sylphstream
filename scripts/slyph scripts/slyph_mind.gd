@@ -20,7 +20,9 @@ func init_Neurons():
 	ourNetwork.initialize_Network([3,3,2])
 	ourNetwork.populate_Network_Rand()
 	print("Sylph neural network sucessfully instantiated!")
-	
+
+func save_To_File(fileString):
+	ourNetwork.save_Network_To_File(fileString)
 
 func single_Thought_Test():
 	#sensory input, for now, is 3 values:
