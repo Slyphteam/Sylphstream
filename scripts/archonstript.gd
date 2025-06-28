@@ -40,10 +40,8 @@ func _process(delta):
 ##Initializes two random Sylphs and starts testing them
 func begin_Sylph_Test():
 
-
-	
-	Sylph1.mind.initialize_Rand_Network()
-	Sylph2.mind.initialize_Rand_Network()
+	Sylph2.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
+	Sylph1.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -60,10 +58,12 @@ func score_Sylphs():
 	var score1 = targ1.totalHits
 	var score2 = targ2.totalHits
 	
-	#score1-= Sylph1.mind.microPenalty / 50
-	#score2-= Sylph2.mind.microPenalty / 50
+	print("Raw scores: ", score1, " , ", score2)
 	
-	print("Vestigial movement penalties: ", Sylph1.mind.microPenalty / 50, Sylph2.mind.microPenalty / 50)
+	#score1-= Sylph1.mind.microPenalty / 25
+	#score2-= Sylph2.mind.microPenalty / 25
+	
+	print("Vestigial movement penalties: ", Sylph1.mind.microPenalty, Sylph2.mind.microPenalty)
 	
 	var penalty1 = Sylph1.mind.body.manager.penalty
 	var penalty2 = Sylph2.mind.body.manager.penalty
@@ -71,32 +71,34 @@ func score_Sylphs():
 	print("Empty penalties: ", penalty1, ":", penalty2)
 	
 	
-#penalize excessive shooting
-	#if(penalty1 <= 5):
-		#score1 +=1
-	#else:
-		#score1 -= penalty1 / 4
-		#
-	#if(penalty2 <= 0):
-		#score2 +=1
-	#else:
-		#score2 -= penalty2 / 4
+	#penalize excessive shooting
+	if(penalty1 == 0):
+		score1 +=1
+	else:
+		score1 -= penalty1
+		
+	if(penalty2 == 0):
+		score2 +=1
+	else:
+		score2 -= penalty2
 	
-	if(score1 >= 5):
+	print("Adjusted scores: ", score1, " , ", score2)
+	
+	if(score1 >= 13):
 		Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		print("Did okay!")
-	elif(score2 >= 5):
+	elif(score2 >= 13):
 		Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		print("Did okay!")
 	
-	if(score2 >= 10):
+	if(score2 >= 15):
 		Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		Sylph2.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
-		print("Perfection acheived!")
-	if(score1 >= 10):
+		print("Perfection acheived! ", score1, ": ", score2)
+	if(score1 >= 15):
 		Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		Sylph1.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
-		print("Perfection acheived!")
+		print("Perfection acheived! ", score1, ": ", score2)
 
 
 	if((score1 <4 -3) && (score2 <= -4)): #both were REALLY bad, start from our GOAT
