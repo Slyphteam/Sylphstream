@@ -7,6 +7,7 @@ var ourNetwork:NNETWORK
 var mindEnabled = false
 var actionsEnabled = false
 var activeTime:int = 100 #about 10 seconds
+var penaltyCounter = 0
 
 func _ready():
 	ourNetwork = NNETWORK.new()

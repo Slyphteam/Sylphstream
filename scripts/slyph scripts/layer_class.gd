@@ -41,11 +41,21 @@ func calc_Outputs(inputs: Array[float])-> Array[float]:
 		var curIn = 0
 		while(curIn < nodesIn):
 			currentArray = weights[curIn]
-			weightedIn+= inputs[curIn] * currentArray[curOut] #RARE RUNTIME HERE?
+			weightedIn+= inputs[curIn] * currentArray[curOut] 
 			curIn+=1
-		computedInputs[curOut] = weightedIn
+		computedInputs[curOut] = apply_Activation_Threshhold(weightedIn) #apply_Activation_Threshhold(weightedIn)
 		curOut+=1
 	return computedInputs
+
+func apply_Activation_Threshhold(incoming:float)->float:
+	if(incoming > 0.1 && incoming < -0.1):
+		return 0
+	elif(incoming > 0.7):
+		return 1
+	elif(incoming < -0.7):
+		return -1
+	else:
+		return incoming
 
 func add_Node_To_Layer():
 	print("THIS FUNCTION DOESN'T DO ANYTHING!")

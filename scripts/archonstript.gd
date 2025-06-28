@@ -18,6 +18,7 @@ func get_Talked_To(player:Node3D):
 		restart_Sylph_Test()
 	else:
 		begin_Sylph_Test()
+		testing = true
 	
 
 func do_Archon_Gaylittlefloat(delta):
@@ -38,9 +39,9 @@ func _process(delta):
 func begin_Sylph_Test():
 	
 	Sylph1.mind.initialize_Rand_Network()
-	Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
+	Sylph1.mind.load_From_File("res://resources/txt files/very promising sylph.txt")
 	Sylph2.mind.initialize_Rand_Network()
-	Sylph2.mind.load_From_File("res://resources/txt files/promising slyph.txt")
+	Sylph2.mind.load_From_File("res://resources/txt files/very promising sylph.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -52,32 +53,62 @@ func restart_Sylph_Test():
 
 func score_Sylphs():
 	
+	Sylph1.mind.body.manager.startReload()
+	Sylph2.mind.body.manager.startReload()
+	
+	var penalty1 = Sylph1.mind.body.manager.penalty
+	var penalty2 = Sylph2.mind.body.manager.penalty
+	
+	print("penalties: ", penalty1, ":", penalty2)
 	
 	var score1 = targ1.totalHits
 	var score2 = targ2.totalHits
 	
-	if((score1 == score2) and (score1 == 0)):
+	#var penalty1 = 
+
+#penalize excessive ammo consumption
+	if(penalty1 > 5):
+		score1 -=2
+	if(penalty2 > 5):
+		score2-=2
+	if(penalty1> 12):
+		score1-=5
+	if(penalty2> 12):
+		score1-=5
+	
+	if(score1 >= 12 || score2 >= 12):
+		print("NEW RECORD!")
+	
+
+	if((score1 <= 3) && (score2 <= 3)): #both were REALLY bad, start from our GOAT
 		print("Both sucked!")
-	elif(score1 == score2):
+		Sylph1.mind.load_From_File("res://resources/txt files/very promising sylph.txt")
+		Sylph2.mind.load_From_File("res://resources/txt files/very promising sylph.txt")
+	elif(score1 == score2): #mutate them both a sizable amount
 		print("Both tied! ", score1, ", ", score2)
+		Sylph1.mind.ourNetwork.mutate_Network(0.2)
+		Sylph2.mind.ourNetwork.mutate_Network(0.2)
+
+#replace the lower (sylph 2) with a mutated version of the winner
+#if the previous loser does better, they'll supercede the old winner, otherwise, the mutation will be discarded
 	elif(score1 > score2):
 		print("Sylph 1 was better! ", score1, ": ", score2)
 		
+
 		Sylph1.mind.save_To_File("res://resources/txt files/promising slyph.txt")
 		Sylph2.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		Sylph2.mind.ourNetwork.mutate_Network(0.1)
+		Sylph2.mind.ourNetwork.mutate_Network(0.01)
 	else:
 		print("Sylph 2 was better! ", score1, ": ", score2)
 		
 		Sylph2.mind.save_To_File("res://resources/txt files/promising slyph.txt")
 		Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		Sylph1.mind.ourNetwork.mutate_Network(0.1)
+		Sylph1.mind.ourNetwork.mutate_Network(0.01)
 	
 	
 	targ1.totalHits = 0
 	targ2.totalHits = 0
-	Sylph1.mind.body.manager.startReload()
-	Sylph2.mind.body.manager.startReload()
+
 	
 
 func look_At_Player(player:Node3D):

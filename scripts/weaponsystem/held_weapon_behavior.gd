@@ -146,6 +146,9 @@ func tryShoot():
 		
 	else:
 		print("click!")
+		penalty+=1
+
+var penalty = 0
 
 func makeGunshot():
 	gunshotPlayer.pitch_scale = 1 + randf_range(-0.05, 0.05)
@@ -210,6 +213,7 @@ func startReload():
 
 func _on_reload_timer_timeout() -> void:
 	reloading = false
+	penalty=0
 	var takenAmount = (maxCapacity - capacity)
 	
 	if(capacity > 0):

@@ -81,6 +81,7 @@ func unShoot():
 	heldItem.triggerDepressed = false
 	
 func startReload():
+	#penalty
 	if(holdingFirearm):
 		heldItem.startReload()
 	else:

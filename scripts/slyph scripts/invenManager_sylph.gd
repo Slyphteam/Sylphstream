@@ -2,6 +2,7 @@ class_name SYLPHINVENMANAGER extends INVENMANAGER
 ##This is the Sylph's invenmanager script. Similar, but slightly different to player invenmanager script.
 
 @onready var sylphHead = $".."
+@onready var sylphMind = $"../../slyph mind"
 
 func _ready():
 	pass
@@ -22,7 +23,14 @@ func getRefs():
 	user = $"../.."
 
 ##functions going down the hierarchy
+var penalty = 0
 
+func startReload():
+	if(holdingFirearm):
+		heldItem.startReload()
+		penalty = heldItem.penalty
+	else:
+		print("How do you reload a sword?")
 
 func toggleSights():
 	pass
