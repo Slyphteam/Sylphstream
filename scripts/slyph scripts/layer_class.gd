@@ -5,8 +5,8 @@ var nodesIn: int
 var nodesOut: int
 var weights ##Weights for incoming connections; 2D; nodesIn arrays of size nodesOut
 #another way to think about weights is the following:
-#for each node in the current layer, what modifiers do we have for each node in the next layer?
-var biases: Array[float] ##Chance to activate each node in the next layer
+#for each node in the current layer, what modifiers do we have for all incoming nodes?
+var biases: Array[float] ##for outgoings
 
 
 func initialize_Layer(incoming, outgoing):
@@ -60,7 +60,5 @@ func apply_Activation_Threshhold(incoming:float)->float:
 func add_Node_To_Layer():
 	print("THIS FUNCTION DOESN'T DO ANYTHING!")
 	pass
-	#for each array in weights, add a new slot.
-	#for the next layer:
-	#add a new bias?
-	#add a new subarray in weights
+	#add an incoming weights array
+	#is that really it?
