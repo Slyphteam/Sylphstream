@@ -56,11 +56,13 @@ func _process(_delta):
 			body.sylphHead.rotation.y = 0
 			
 
-
+var microPenalty = 0
 func do_Single_Thought():
 	#sensory input, for now, is 3 values:
 	#target to left, target to right,and a random noise value.
 	sensoryInput = do_Vision()
+	if(sensoryInput[0] == 0 && sensoryInput [1] == 0):
+		microPenalty +=1
 	sensoryInput.append(randf_range(-1, 1))
 	#print("Sensory inputs: ", sensoryInput)
 	

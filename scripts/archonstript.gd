@@ -31,8 +31,8 @@ func _process(delta):
 	if(testTime > 0):
 		testTime -=1
 		if(testTime <=1):
-			testTime = 0
-		if(testTime == 50):
+			restart_Sylph_Test()
+		if(testTime == 300):
 			score_Sylphs()
 		
 
@@ -53,7 +53,7 @@ func restart_Sylph_Test():
 	print("Beginning new test!")
 	Sylph1.mind.begin_Test()
 	Sylph2.mind.begin_Test()
-	testTime = 450
+	testTime = 700
 
 func score_Sylphs():
 	
@@ -81,9 +81,22 @@ func score_Sylphs():
 	else:
 		score2 -= penalty2 / 3
 	
-	if(score1 >= 14 || score2 >= 14):
-		print("NEW RECORD!")
+	if(score1 >= 12):
+		Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
+		print("Did okay!")
+	elif(score2 >= 12):
+		Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
+		print("Did okay!")
 	
+	if(score2 == 15):
+		Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
+		Sylph2.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
+		print("Perfection acheived!")
+	if(score1 == 15):
+		Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
+		Sylph1.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
+		print("Perfection acheived!")
+
 
 	if((score1 <= 5) && (score2 <= 5)): #both were REALLY bad, start from our GOAT
 		print("Both sucked!")
@@ -113,8 +126,9 @@ func score_Sylphs():
 	
 	targ1.totalHits = 0
 	targ2.totalHits = 0
+	Sylph1.mind.microPenalty = 0
+	Sylph2.mind.microPenalty = 0
 	
-	restart_Sylph_Test()
 
 func look_At_Player(player:Node3D):
 		#use trig to calculate the angle our archon should rotate to
