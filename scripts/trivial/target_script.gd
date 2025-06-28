@@ -1,6 +1,6 @@
 ##Deprecated script, since I moved the generic "target hit" statement to the bullet reactive parent.
 class_name testing_target extends raycast_reactive
-@onready var root:Node3D = $"../.."
+@onready var root:SCOREDTARGET = $"../.."
 
 func hit_By_Bullet(dam, damtype, dir, origin):
 
@@ -8,4 +8,4 @@ func hit_By_Bullet(dam, damtype, dir, origin):
 	var move:float = randi_range(-5, 5)
 	var distance: float = move / 10
 	root.global_position.z += distance
-	root.totalhits +=1
+	root.totalHits +=1

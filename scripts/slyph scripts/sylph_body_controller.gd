@@ -16,7 +16,7 @@ func interact_By_Player(playerRef)->bool:
 	
 	#mind.single_Thought_Test()
 	
-	mind.initialize_Rand_Network()
+	#mind.initialize_Rand_Network()
 	#mind.load_From_File("res://resources/txt files/promising slyph.txt")
 	mind.begin_Test()
 	
@@ -32,6 +32,9 @@ func shoot_Wep():
 
 func unshoot_Wep():
 	manager.unShoot() 
+
+func do_Reload():
+	manager.startReload()
 
 func move_Head(desired: Array):
 	#TODO: in the future add inaccuracy with higher speeds

@@ -8,7 +8,7 @@ func _ready():
 	#no need to actually do anything on ready, yet.
 	#print("Hello and welcome to Sylphstream!")
 	#heldAmmunition.ammoBlank = 10000
-	#heldAmmunition.ammoPistol = 51
+	heldAmmunition.ammoPistol = 10000
 	#heldAmmunition.ammoRifle = 30
 	
 	getRefs()
@@ -23,13 +23,7 @@ func getRefs():
 
 ##functions going down the hierarchy
 
-func startReload():
-	pass
-	#if(holdingFirearm):
-		#heldItem.startReload()
-	#else:
-		#print("How do you reload a sword?")
-	#
+
 func toggleSights():
 	pass
 	#if(holdingFirearm):

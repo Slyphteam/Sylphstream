@@ -204,7 +204,7 @@ func startReload():
 	
 	
 	reloadPlayer.play()
-	print("Starting reload!")
+	#print("Starting reload!")
 	reloading = true
 	reloadtimer.start();
 
@@ -218,7 +218,7 @@ func _on_reload_timer_timeout() -> void:
 	var newCap = manager.withdrawAmmo(chambering, takenAmount)
 	
 	capacity += newCap
-	print("Finished reload! Rounds: ", capacity)
+	#print("Finished reload! Rounds: ", capacity)
 	if(affectUI):
 		Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 5)
 

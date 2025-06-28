@@ -29,11 +29,11 @@ func giveAmmo(amTyp: int, amount: int):
 
 ##Decrease ammo of desired type by desired amount
 func withdrawAmmo(amTyp: int, amount: int)-> int:
-	print("Selected type ", amTyp)
+	#print("Selected type ", amTyp)
 	if (amTyp == 1):
-		print("Taking ", amount, " from pool of ", heldAmmunition.ammoPistol)
+		#print("Taking ", amount, " from pool of ", heldAmmunition.ammoPistol)
 		if(amount >= heldAmmunition.ammoPistol):
-			print("making do with ", heldAmmunition.ammoPistol)
+			#print("making do with ", heldAmmunition.ammoPistol)
 			var leftover = heldAmmunition.ammoPistol
 			heldAmmunition.ammoPistol = 0
 			return leftover
@@ -81,8 +81,10 @@ func unShoot():
 	heldItem.triggerDepressed = false
 	
 func startReload():
-	print("Attempted to call empty reload function!")
-	#heldItem.startReload()
+	if(holdingFirearm):
+		heldItem.startReload()
+	else:
+		print("How do you reload a sword?")
 
 func toggleSights():
 	#heldItem.toggleADS()
