@@ -5,7 +5,7 @@ class_name testing_target extends raycast_reactive
 func hit_By_Bullet(dam, damtype, dir, origin):
 
 	print("Target hit! ", dam)
-	var move:float = randi_range(-5, 5)
+	var move:float = randi_range(-7, 7)
 	var distance: float = move / 10
 	root.global_position.z += distance
 	root.totalHits +=1

@@ -30,18 +30,22 @@ func _process(delta):
 	do_Archon_Gaylittlefloat(delta)
 	if(testTime > 0):
 		testTime -=1
-		if(testTime == 1):
+		if(testTime <=1):
 			testTime = 0
+		if(testTime == 50):
 			score_Sylphs()
+		
 
 
 ##Initializes two random Sylphs and starts testing them
 func begin_Sylph_Test():
+
+
 	
 	Sylph1.mind.initialize_Rand_Network()
-	Sylph1.mind.load_From_File("res://resources/txt files/very promising sylph.txt")
+	Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
 	Sylph2.mind.initialize_Rand_Network()
-	Sylph2.mind.load_From_File("res://resources/txt files/very promising sylph.txt")
+	Sylph2.mind.load_From_File("res://resources/txt files/promising slyph.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -49,7 +53,7 @@ func restart_Sylph_Test():
 	print("Beginning new test!")
 	Sylph1.mind.begin_Test()
 	Sylph2.mind.begin_Test()
-	testTime = 410
+	testTime = 450
 
 func score_Sylphs():
 	
@@ -66,50 +70,51 @@ func score_Sylphs():
 	
 	#var penalty1 = 
 
-#penalize excessive ammo consumption
-	if(penalty1 > 5):
-		score1 -=2
-	if(penalty2 > 5):
-		score2-=2
-	if(penalty1> 12):
-		score1-=5
-	if(penalty2> 12):
-		score1-=5
+#penalize excessive shooting
+	if(penalty1 == 0):
+		score1 +=1
+	else:
+		score1 -= penalty1 / 3
+		
+	if(penalty2 == 0):
+		score2 +=1
+	else:
+		score2 -= penalty2 / 3
 	
-	if(score1 >= 12 || score2 >= 12):
+	if(score1 >= 14 || score2 >= 14):
 		print("NEW RECORD!")
 	
 
-	if((score1 <= 3) && (score2 <= 3)): #both were REALLY bad, start from our GOAT
+	if((score1 <= 5) && (score2 <= 5)): #both were REALLY bad, start from our GOAT
 		print("Both sucked!")
-		Sylph1.mind.load_From_File("res://resources/txt files/very promising sylph.txt")
-		Sylph2.mind.load_From_File("res://resources/txt files/very promising sylph.txt")
+		Sylph1.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
+		Sylph2.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
 	elif(score1 == score2): #mutate them both a sizable amount
 		print("Both tied! ", score1, ", ", score2)
-		Sylph1.mind.ourNetwork.mutate_Network(0.2)
-		Sylph2.mind.ourNetwork.mutate_Network(0.2)
-
-#replace the lower (sylph 2) with a mutated version of the winner
-#if the previous loser does better, they'll supercede the old winner, otherwise, the mutation will be discarded
+		Sylph1.mind.ourNetwork.mutate_Network(0.05)
+		Sylph2.mind.ourNetwork.mutate_Network(0.05)
+	
+	#replace the lower (sylph 2) with a mutated version of the winner
+	#if the previous loser does better, they'll supercede the old winner, otherwise, the mutation will be discarded
 	elif(score1 > score2):
 		print("Sylph 1 was better! ", score1, ": ", score2)
 		
 
 		Sylph1.mind.save_To_File("res://resources/txt files/promising slyph.txt")
 		Sylph2.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		Sylph2.mind.ourNetwork.mutate_Network(0.01)
+		Sylph2.mind.ourNetwork.mutate_Network(0.005)
 	else:
 		print("Sylph 2 was better! ", score1, ": ", score2)
 		
 		Sylph2.mind.save_To_File("res://resources/txt files/promising slyph.txt")
 		Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		Sylph1.mind.ourNetwork.mutate_Network(0.01)
+		Sylph1.mind.ourNetwork.mutate_Network(0.005)
 	
 	
 	targ1.totalHits = 0
 	targ2.totalHits = 0
-
 	
+	restart_Sylph_Test()
 
 func look_At_Player(player:Node3D):
 		#use trig to calculate the angle our archon should rotate to
