@@ -56,8 +56,8 @@ func score_Sylphs():
 	Sylph1.mind.body.manager.startReload()
 	Sylph2.mind.body.manager.startReload()
 	
-	var score1 = targ1.totalHits * 2
-	var score2 = targ2.totalHits * 2
+	var score1 = targ1.totalHits 
+	var score2 = targ2.totalHits 
 	
 	print("Raw scores: ", score1, " , ", score2)
 	
@@ -80,12 +80,12 @@ func score_Sylphs():
 	
 	
 	#penalize excessive shooting (easy)
-	if(penalty1 ==0 ):
+	if(penalty1 < 3 ):
 		score1 +=1
 	else:
 		score1 -= penalty1/4
 		
-	if(penalty2 ==0 ):
+	if(penalty2 < 3 ):
 		score2 +=1
 	else:
 		score2 -= penalty2/4
@@ -103,18 +103,18 @@ func score_Sylphs():
 	
 	print("Adjusted scores: ", score1, " , ", score2)
 	
-	if(score1 >= 7):
+	if(score1 >= 10):
 		Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		print("Did okay!")
-	elif(score2 >= 7):
+	elif(score2 >= 10):
 		Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		print("Did okay!")
 	
-	if(score2 >= 27):
+	if(score2 >= 15):
 		Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		Sylph2.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
 		print("Perfection acheived! ", score1, ": ", score2)
-	if(score1 >= 27):
+	if(score1 >= 15):
 		Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		Sylph1.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
 		print("Perfection acheived! ", score1, ": ", score2)
@@ -138,13 +138,13 @@ func score_Sylphs():
 
 		Sylph1.mind.save_To_File("res://resources/txt files/promising slyph.txt")
 		Sylph2.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		Sylph2.mind.ourNetwork.mutate_Network(0.05)
+		Sylph2.mind.ourNetwork.mutate_Network(0.01)
 	else:
 		print("Sylph 2 was better! ", score1, ": ", score2)
 		
 		Sylph2.mind.save_To_File("res://resources/txt files/promising slyph.txt")
 		Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		Sylph1.mind.ourNetwork.mutate_Network(0.05)
+		Sylph1.mind.ourNetwork.mutate_Network(0.01)
 	
 	
 	targ1.totalHits = 0
