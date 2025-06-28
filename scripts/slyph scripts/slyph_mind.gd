@@ -1,7 +1,7 @@
 extends Node
 
 @onready var body = $".."
-
+@onready var manager: SYLPHINVENMANAGER = $"../sylph head v2/sylphinventory"
 var aimSensitivity:float = 1 ##fractional multiplier
 var ourNetwork:NNETWORK
 var mindEnabled = false
@@ -11,7 +11,7 @@ var penaltyCounter = 0
 
 func _ready():
 	ourNetwork = NNETWORK.new()
-	ourNetwork.initialize_Network([3,3,2])
+	ourNetwork.initialize_Network([4,3,2])
 
 
 ##Creates a new network and fully randomizes it
@@ -20,7 +20,7 @@ func initialize_Rand_Network():
 	#2 inputs: target in left and target in right
 	#3 nodes in the hidden layer because idk
 	#3 nodes in the output layer: move left, move right, shoot
-	ourNetwork.initialize_Network([3,3,2])
+	ourNetwork.initialize_Network([4,3,2])
 	ourNetwork.populate_Network_Rand()
 	print("Sylph neural network sucessfully instantiated from random!")
 
@@ -61,9 +61,15 @@ func do_Single_Thought():
 	#sensory input, for now, is 3 values:
 	#target to left, target to right,and a random noise value.
 	sensoryInput = do_Vision()
-	if(sensoryInput[0] == 0 && sensoryInput [1] == 0):
+	
+	if((sensoryInput[0] == 0 )&& (sensoryInput [1] == 0)):
 		microPenalty +=1
+	
 	sensoryInput.append(randf_range(-1, 1))
+	#print(manager.get_Ammo_Left())
+	sensoryInput.append(manager.get_Ammo_Left())
+
+	#manager.get_Ammo_Left())
 	#print("Sensory inputs: ", sensoryInput)
 	
 	if(!sensoryInput):
@@ -74,9 +80,11 @@ func do_Single_Thought():
 func process_Actions(desiredActions:Array[float]):
 	#for the current test, 1 is left/right, 2 is shoot
 	#print("Desired actions:", desiredActions)
+	#microPenalty += desiredActions[0]
 	var leftRight = desiredActions[0] * 3 * aimSensitivity #max per-frame movement is 3 degrees
 	
-	if(leftRight > -0.1 && leftRight < 0.2): #ignore obnoxiously small inputs
+	
+	if(leftRight > -0.2 && leftRight < 0.2): #ignore obnoxiously small inputs
 		leftRight = 0
 	body.move_Head_Exact([0,leftRight])
 	
@@ -94,6 +102,7 @@ func process_Actions(desiredActions:Array[float]):
 @onready var visionR: Area3D = $"../sylph head v2/triangleR"
 @onready var visionL: Area3D = $"../sylph head v2/triangleL"
 func do_Vision()->Array[float]:
+
 	#var vision:Array[float] = [0,0]
 	#vision[0] = do_Eye_See(visionR)
 	#[do_Eye_See(visionR), do_Eye_See(visionL)]

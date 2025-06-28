@@ -11,6 +11,6 @@ func hit_By_Bullet(dam, damtype, dir, origin):
 		move = randi_range(-15, 15)
 	var distance: float = move / 10
 	
-	root.global_position.z = clamp(targetOrig - 2.5, root.global_position.z + distance, targetOrig + 2.5 )
+	root.global_position.z = clamp(targetOrig - 2, root.global_position.z + distance, targetOrig + 2 )
 	
 	root.totalHits +=1

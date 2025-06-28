@@ -18,6 +18,16 @@ func _ready():
 	
 	holdingFirearm = heldItem.isFirearm
 
+func get_Ammo_Left():
+	var ratio:float = 1
+	var cur:float = heldItem.capacity
+	var ma:float = heldItem.maxCapacity
+	if(heldItem.capacity != heldItem.maxCapacity):
+		ratio = cur / ma #value from 0-1
+	ratio *=2 #value from 0-2
+	ratio -=1 #value from -1 - 1
+	return ratio
+
 func getRefs():
 	heldItem = $weaponHolder
 	user = $"../.."

@@ -39,9 +39,10 @@ func _process(delta):
 
 ##Initializes two random Sylphs and starts testing them
 func begin_Sylph_Test():
-
+	#Sylph1.mind.initialize_Rand_Network()
+	#Sylph2.mind.initialize_Rand_Network()
 	Sylph2.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
-	Sylph1.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
+	Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -55,15 +56,22 @@ func score_Sylphs():
 	Sylph1.mind.body.manager.startReload()
 	Sylph2.mind.body.manager.startReload()
 	
-	var score1 = targ1.totalHits
-	var score2 = targ2.totalHits
+	var score1 = targ1.totalHits * 2
+	var score2 = targ2.totalHits * 2
 	
 	print("Raw scores: ", score1, " , ", score2)
 	
-	#score1-= Sylph1.mind.microPenalty / 25
-	#score2-= Sylph2.mind.microPenalty / 25
+	#no matter what, if neither get points, it doesnt matter
+	if((score1 == 0) && (score2 == 0)): 
+		print("Both sucked!")
+		Sylph2.mind.ourNetwork.mutate_Network(0.8)
+		Sylph1.mind.ourNetwork.mutate_Network(0.8)
 	
-	print("Vestigial movement penalties: ", Sylph1.mind.microPenalty, Sylph2.mind.microPenalty)
+	
+	score1-= int(Sylph1.mind.microPenalty / 10)
+	score2-= int(Sylph2.mind.microPenalty / 10)
+	
+	print("Movement penalties: ", Sylph1.mind.microPenalty/10, " ", Sylph2.mind.microPenalty/10)
 	
 	var penalty1 = Sylph1.mind.body.manager.penalty
 	var penalty2 = Sylph2.mind.body.manager.penalty
@@ -71,42 +79,52 @@ func score_Sylphs():
 	print("Empty penalties: ", penalty1, ":", penalty2)
 	
 	
-	#penalize excessive shooting
-	if(penalty1 == 0):
+	#penalize excessive shooting (easy)
+	if(penalty1 ==0 ):
 		score1 +=1
 	else:
-		score1 -= penalty1
+		score1 -= penalty1/4
 		
-	if(penalty2 == 0):
+	if(penalty2 ==0 ):
 		score2 +=1
 	else:
-		score2 -= penalty2
+		score2 -= penalty2/4
+	
+	##penalize excessive shooting
+	#if(penalty1 == 0):
+		#score1 +=1
+	#else:
+		#score1 -= penalty1
+		#
+	#if(penalty2 == 0):
+		#score2 +=1
+	#else:
+		#score2 -= penalty2
 	
 	print("Adjusted scores: ", score1, " , ", score2)
 	
-	if(score1 >= 13):
+	if(score1 >= 7):
 		Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		print("Did okay!")
-	elif(score2 >= 13):
+	elif(score2 >= 7):
 		Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		print("Did okay!")
 	
-	if(score2 >= 15):
+	if(score2 >= 27):
 		Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		Sylph2.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
 		print("Perfection acheived! ", score1, ": ", score2)
-	if(score1 >= 15):
+	if(score1 >= 27):
 		Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		Sylph1.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
 		print("Perfection acheived! ", score1, ": ", score2)
 
 
-	if((score1 <4 -3) && (score2 <= -4)): #both were REALLY bad, start from our GOAT
+	if((score1 <= -170) && (score2 <= -170)): #both were REALLY bad, start from our GOAT
 		print("Both sucked!")
-		Sylph1.mind.initialize_Rand_Network()
-		Sylph2.mind.initialize_Rand_Network()
-		#Sylph1.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
-		#Sylph2.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
+		Sylph2.mind.ourNetwork.mutate_Network(0.8)
+		Sylph1.mind.ourNetwork.mutate_Network(0.8)
+		
 	elif(score1 == score2): #mutate them both a sizable amount
 		print("Both tied! ", score1, ", ", score2)
 		Sylph1.mind.ourNetwork.mutate_Network(0.1)
