@@ -56,8 +56,8 @@ func score_Sylphs():
 	Sylph1.mind.body.manager.startReload()
 	Sylph2.mind.body.manager.startReload()
 	
-	var score1 = targ1.totalHits 
-	var score2 = targ2.totalHits 
+	var score1 = targ1.totalHits * 2
+	var score2 = targ2.totalHits * 2
 	
 	print("Raw scores: ", score1, " , ", score2)
 	
