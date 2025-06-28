@@ -43,9 +43,7 @@ func begin_Sylph_Test():
 
 	
 	Sylph1.mind.initialize_Rand_Network()
-	Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
 	Sylph2.mind.initialize_Rand_Network()
-	Sylph2.mind.load_From_File("res://resources/txt files/promising slyph.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -56,56 +54,61 @@ func restart_Sylph_Test():
 	testTime = 700
 
 func score_Sylphs():
-	
 	Sylph1.mind.body.manager.startReload()
 	Sylph2.mind.body.manager.startReload()
-	
-	var penalty1 = Sylph1.mind.body.manager.penalty
-	var penalty2 = Sylph2.mind.body.manager.penalty
-	
-	print("penalties: ", penalty1, ":", penalty2)
 	
 	var score1 = targ1.totalHits
 	var score2 = targ2.totalHits
 	
-	#var penalty1 = 
-
-#penalize excessive shooting
-	if(penalty1 == 0):
-		score1 +=1
-	else:
-		score1 -= penalty1 / 3
-		
-	if(penalty2 == 0):
-		score2 +=1
-	else:
-		score2 -= penalty2 / 3
+	#score1-= Sylph1.mind.microPenalty / 50
+	#score2-= Sylph2.mind.microPenalty / 50
 	
-	if(score1 >= 12):
+	print("Vestigial movement penalties: ", Sylph1.mind.microPenalty / 50, Sylph2.mind.microPenalty / 50)
+	
+	var penalty1 = Sylph1.mind.body.manager.penalty
+	var penalty2 = Sylph2.mind.body.manager.penalty
+	
+	print("Empty penalties: ", penalty1, ":", penalty2)
+	
+	
+#penalize excessive shooting
+	#if(penalty1 <= 5):
+		#score1 +=1
+	#else:
+		#score1 -= penalty1 / 4
+		#
+	#if(penalty2 <= 0):
+		#score2 +=1
+	#else:
+		#score2 -= penalty2 / 4
+	
+	if(score1 >= 5):
 		Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		print("Did okay!")
-	elif(score2 >= 12):
+	elif(score2 >= 5):
 		Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		print("Did okay!")
 	
-	if(score2 == 15):
+	if(score2 >= 10):
 		Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		Sylph2.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
 		print("Perfection acheived!")
-	if(score1 == 15):
+	if(score1 >= 10):
 		Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
 		Sylph1.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
 		print("Perfection acheived!")
 
 
-	if((score1 <= 5) && (score2 <= 5)): #both were REALLY bad, start from our GOAT
+	if((score1 <4 -3) && (score2 <= -4)): #both were REALLY bad, start from our GOAT
 		print("Both sucked!")
-		Sylph1.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
-		Sylph2.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
+		Sylph1.mind.initialize_Rand_Network()
+		Sylph2.mind.initialize_Rand_Network()
+		#Sylph1.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
+		#Sylph2.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
 	elif(score1 == score2): #mutate them both a sizable amount
 		print("Both tied! ", score1, ", ", score2)
-		Sylph1.mind.ourNetwork.mutate_Network(0.05)
-		Sylph2.mind.ourNetwork.mutate_Network(0.05)
+		Sylph1.mind.ourNetwork.mutate_Network(0.1)
+		Sylph2.mind.ourNetwork.mutate_Network(0.1)
 	
 	#replace the lower (sylph 2) with a mutated version of the winner
 	#if the previous loser does better, they'll supercede the old winner, otherwise, the mutation will be discarded
@@ -115,13 +118,13 @@ func score_Sylphs():
 
 		Sylph1.mind.save_To_File("res://resources/txt files/promising slyph.txt")
 		Sylph2.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		Sylph2.mind.ourNetwork.mutate_Network(0.005)
+		Sylph2.mind.ourNetwork.mutate_Network(0.05)
 	else:
 		print("Sylph 2 was better! ", score1, ": ", score2)
 		
 		Sylph2.mind.save_To_File("res://resources/txt files/promising slyph.txt")
 		Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		Sylph1.mind.ourNetwork.mutate_Network(0.005)
+		Sylph1.mind.ourNetwork.mutate_Network(0.05)
 	
 	
 	targ1.totalHits = 0
