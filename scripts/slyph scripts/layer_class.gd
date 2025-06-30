@@ -47,6 +47,8 @@ func calc_Outputs(inputs: Array[float])-> Array[float]:
 		curOut+=1
 	return computedInputs
 
+#TODO: GET RID OF THIS AND REWRITE IT WITH A PROBABILSTIC FIRING
+#Let the sylph decide what their activation threshhold is!
 func apply_Activation_Threshhold(incoming:float)->float:
 	if(incoming > 0.1 && incoming < -0.1):
 		return 0

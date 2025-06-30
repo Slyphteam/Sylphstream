@@ -16,12 +16,19 @@ var bob_speed : float = 0.0
 var tilt_amount : float = 0.0 # negative is to the left, positive is to the right
 
 func _process(delta):
+#	pass
 	handleBob(delta)
-	handleTilt()#delta)
+	handleTilt()
 
 func handleBob(delta):
 	# set values based on player stats
-	bob_speed_target = max(player.playerSpeed / 2.0, 1.0)
+	
+	
+#	
+#		print(int(player.playerSpeed / 5))
+	
+	#clamp bobspeed between 1(slow) and 3(fast)
+	bob_speed_target = clampf(player.playerSpeed / 5.0, 1.0, 4)
 	bob_intensity = max(player.playerSpeed / 500.0, 0.01)
 	
 	bob_speed = lerp(bob_speed, bob_speed_target, lerp_val)

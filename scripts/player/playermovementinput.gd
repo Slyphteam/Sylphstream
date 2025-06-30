@@ -201,11 +201,11 @@ func transition_Crouch(entering):
 	
 	if(entering): #we are entering crouch
 	#	playerShape.scale.y -= 0.8 #it's jank so we are no longer changing the playermodel's size
-		playerCollider.scale.y -= 1
+		playerCollider.scale.y -= 0.8
 
 	else: #we are exiting crouch
 		#TODO: add a check to see if the player has enough room TO stand
-		playerCollider.scale.y += 1
+		playerCollider.scale.y += 0.8
 
 ##Function that toggles mouse sensitivity. Speed is handled elsewhere. Maybe make dependent on weapons stat????
 func toggle_ADS_Stats():

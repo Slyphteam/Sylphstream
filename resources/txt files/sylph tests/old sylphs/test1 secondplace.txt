@@ -11,3 +11,4 @@ Array[float]([0.436791, -0.216427])
 [0.1871, -0.503779]
 [0.985842, -0.411634]
 [0.9015, 0.268951]
+Old 3 3 2 sylph, does fairly well. I think has a spinning issue?

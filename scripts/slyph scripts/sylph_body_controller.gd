@@ -13,28 +13,9 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 
 func interact_By_Player(playerRef)->bool:
 	
-	
-	#mind.single_Thought_Test()
-	
-	#mind.initialize_Rand_Network()
-	#mind.load_From_File("res://resources/txt files/promising slyph.txt")
-	mind.begin_Test()
-	
-	#manager.doShoot()
-	
-	#mind.do_Target_Test()
-	
-	
+	mind.do_Vision()
+
 	return false
-
-func shoot_Wep():
-	manager.doShoot()
-
-func unshoot_Wep():
-	manager.unShoot() 
-
-func do_Reload():
-	manager.startReload()
 
 func move_Head(desired: Array):
 	#TODO: in the future add inaccuracy with higher speeds

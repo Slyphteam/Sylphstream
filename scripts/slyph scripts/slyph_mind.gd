@@ -1,7 +1,8 @@
 extends Node
-
+#
 @onready var body = $".."
 @onready var manager: SYLPHINVENMANAGER = $"../sylph head v2/sylphinventory"
+
 var aimSensitivity:float = 1 ##fractional multiplier
 var ourNetwork:NNETWORK
 var mindEnabled = false
@@ -91,33 +92,84 @@ func process_Actions(desiredActions:Array[float]):
 	var shootOrNah = desiredActions[1]
 	
 	if(shootOrNah > 0.5):
-		body.shoot_Wep()
+		manager.doShoot()
 	else:
-		body.unshoot_Wep()
+		manager.unShoot()
 	
-	
-	pass
+func do_Reload():
+		manager.startReload()
 
+@onready var visionR: Area3D = $"../sylph head v2/senses/vision/triangleR"
+@onready var visionL: Area3D = $"../sylph head v2/senses/vision/triangleL"
+@onready var visionU: Area3D = $"../sylph head v2/senses/vision/triangleU"
+@onready var visionD: Area3D = $"../sylph head v2/senses/vision/triangleD"
 
-@onready var visionR: Area3D = $"../sylph head v2/triangleR"
-@onready var visionL: Area3D = $"../sylph head v2/triangleL"
 func do_Vision()->Array[float]:
+	
+	print("starting vision")
+	
+	var res:Array[float]
+	#var left = 0
 
-	#var vision:Array[float] = [0,0]
-	#vision[0] = do_Eye_See(visionR)
-	#[do_Eye_See(visionR), do_Eye_See(visionL)]
-	return [do_Eye_See(visionR), do_Eye_See(visionL)]
 
-##Tests to see if there's a target in the eye FOV. Returns 0 or 1 FOR NOW.
-func do_Eye_See(eye:Area3D)->float:
-	if(eye.has_overlapping_bodies()):
-		var items: Array = eye.get_overlapping_bodies()
+	var targetTrue:Node3D
+	var targetL = get_Vision_Targets(visionL)
+	if(targetL):
+		targetTrue = targetL
+		res.append(1.0)
+	else:
+		res.append(0.0)
+	
+	var targetR = get_Vision_Targets(visionR)
+	if(targetR):
+		targetTrue = targetR
+		res.append(1.0)
+	else:
+		res.append(0.0)
+	
+	var targetU = get_Vision_Targets(visionU)
+	if(targetU):
+		targetTrue = targetU
+		res.append(1.0)
+	else:
+		res.append(0.0)
+	
+	var targetD = get_Vision_Targets(visionD)
+	if(targetD):
+		targetTrue = targetD
+		res.append(1.0)
+	else:
+		res.append(0.0)
+	
+	#next, do the "extrema"
+	if(!targetTrue): #we do not have a target anywhere in sight, you get no awareness, bwomp bwomp
+		res.append(0.0)
+		res.append(0.0)
+	else:
+		var connectingVec = targetTrue.global_position - body.global_position
+		print(connectingVec)
+		#since the sylph probably won't care about the exact degrees and what the basis/origin is,
+		#I'm not going to be bothering with being too fancy about it.
+		var theta = atan(connectingVec.x/connectingVec.y)
+		print(theta)
+		
+		#I'm too lazy to do the azimuth extrema and i dont think it matters too much. soooo.
+		res.append(0.0)
+
+	
+	return res
+
+#returns the target in a visionblock, or boolean of false.
+func get_Vision_Targets(visionBlock:Area3D):
+	if(visionBlock.has_overlapping_bodies()):
+		var items = visionBlock.get_overlapping_bodies()
 		var x:int = 0
 		while(x < items.size()):
 			if(items[x] is testing_target): #only targets for now
-				return 1 
+				return items[x]
 			x+=1
-	return 0
+	return false
+
 
 func mutation_Test(val:float):
 	
@@ -132,3 +184,50 @@ func mutation_Test(val:float):
 	print(ourNetwork.get_Layer(1).weights[0])
 	print(ourNetwork.get_Layer(1).weights[1])
 	print(ourNetwork.get_Layer(1).weights[2])
+
+#I'm thinking a 13/13/30/20/15/11 is what we want.
+#Why do I think this?
+#1: second layer of 14s lets there be some sensory interplay
+#2: jump up to 30 is where the meat of the interaction comes from
+#3: jump down to for more interaction, but not as beefy as a 30/30 interface would be
+#4: jump down to 15 for a tapering effect
+
+
+#Senses:
+#Vision L, R, U, D (4)
+#Random noise + “heartbeat” (2)
+#Ammo left, Target distance, Crosshair size, aimspeed: 4
+#Aim azimuth 1
+#Aim extremity (L/R), (U/D) : 2
+#Total: 4+2+4+1+2 = 13
+
+#Vision directions: up, down, left, right, center.
+#Will give the bulk of the input, important for aiming.
+#random noise + "heartbeat": gives sylph ability to do some repetitive/random actions.
+#aim azimuth: horizontal aiming is very important and I want the sylph to not get lost
+#if it aims too high or too low. This will hopefully let it correct
+#aim extremity: sort of just the angle of difference, will hopefully let it aim slower
+#if things are closer to the center
+
+
+#Exosenses:
+#Targets present
+#Mode A, B, C, D
+#Health
+#Total: 6
+
+#Targets present: acts like a "global" threat input. 
+#Modes: allows for feedback.
+#health: who knows, might just allow for different behavior if the sylph is injured
+
+
+#no real commentary needed on outputs
+#Total inputs: 17
+#
+#Outputs:
+#Shoot, L/R, U/D, reload, ADS (4)
+#Crouch, jump, sprint (3)
+#Mode A, B, C, D (4)
+#
+#Total outputs: 
+#11?
