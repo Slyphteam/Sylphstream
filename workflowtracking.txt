@@ -41,6 +41,8 @@ expansion on this: have a "highscore" sylph and 2 "current" sylph that each load
 Highscore only updates if a sylph beats said score
 current updates from whichever of the "current" sylphs does best
 Only one "current" sylph will mutate, with the other remaining the same. (old vs new vs legacy)
+ALSO ALSO ALSO: session highscore vs all time highscore.
+
 
 Partial randomization:
 In each mutation cycle, rather than mutating EVERY node, have a random chance to mutate each node.

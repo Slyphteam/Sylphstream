@@ -9,7 +9,7 @@ extends CharacterBody3D
 
 func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#print("ow!")
-	move_Head_Exact([5,5])
+	move_Head_Exact(Vector2(5,5))
 
 func interact_By_Player(playerRef)->bool:
 	
@@ -17,16 +17,14 @@ func interact_By_Player(playerRef)->bool:
 
 	return false
 
-func move_Head(desired: Array):
+func move_Head(desired: Vector2):
 	#TODO: in the future add inaccuracy with higher speeds
 	move_Head_Exact(desired)
 
 ##Moves the Sylph's head with a vector containing the degrees of rotation in vertical, horizontal
-func move_Head_Exact(desired: Array):
-	var lift = desired[0] #not necessary to do this, but for legibility I am anyway
-	var drift = desired[1]
-	sylphHead.rotation_degrees.x += lift
-	sylphHead.rotation_degrees.y += drift
+func move_Head_Exact(desired: Vector2):
+	sylphHead.rotation_degrees.x += desired.x
+	sylphHead.rotation_degrees.y += desired.y
 	
 	#This code would update the body's rotation, which looked cool, but isn't something I want to deal with yet
 	#var newangle = sylphHead.rotation_degrees.y

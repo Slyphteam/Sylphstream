@@ -41,8 +41,7 @@ func begin_Test():
 	mindEnabled = true
 	activeTime = 400
 
-var sensoryInput:Array
-var desiredActions:Array
+
 
 func _process(_delta):
 	if(mindEnabled):
@@ -58,51 +57,115 @@ func _process(_delta):
 			
 
 var microPenalty = 0
+var sensoryInput:Array
+var desiredActions:Array
 func do_Single_Thought():
-	#sensory input, for now, is 3 values:
-	#target to left, target to right,and a random noise value.
-	sensoryInput = do_Vision()
 	
-	if((sensoryInput[0] == 0 )&& (sensoryInput [1] == 0)):
-		microPenalty +=1
+	sensoryInput = do_Senses() #gather information
+	desiredActions = ourNetwork.calc_Outputs_Network(sensoryInput) #process information
+	process_Actions(desiredActions) #execute actions
+
+var aimingSights: bool = false
+var modeData: Array[float] = [0.0,0.0,0.0,0.0]
+
+func process_Actions(desiredActions:Array[float]):
 	
-	sensoryInput.append(randf_range(-1, 1))
-	#print(manager.get_Ammo_Left())
-	sensoryInput.append(manager.get_Ammo_Left())
+	#print("Desired actions:", desiredActions)
+	
+	#INDEX 0,1: LEFT/RIGHT, UP/DOWN
+	
+	var leftRight = desiredActions[0] * 3 * aimSensitivity ##max per-frame movement is 3 degrees
+	var upDown = desiredActions[1] * 3 * aimSensitivity ##Max per-frame movement is 3 degrees
+	
+
+	if(upDown > -0.2 && upDown < 0.2): #ignore obnoxiously small inputs
+		upDown = 0
+	if(leftRight > -0.2 && leftRight < 0.2):
+		leftRight = 0
+	
+	var magnitudePenalty = Vector2(leftRight, upDown).length()
+	#microPenalty += magnitudePenalty
+	
+	body.move_Head(Vector2(upDown,leftRight), magnitudePenalty)
+	
+	#INDEX 2: SHOOT OR NOT (formerly belonged to index 1)
+	
+	if(desiredActions[2] > 0.5):
+		manager.doShoot()
+	else:
+		manager.unShoot()
+	
+	#INDEX 3: RELOAD
+	if(desiredActions[3] > 0.5):
+		manager.startReload()
+	
+	#INDEX 4: ADS
+	if(desiredActions[4] > 0.5):
+		if(aimingSights):
+			manager.toggleSights()
+			aimingSights = false
+			aimSensitivity = 1 
+			
+		else:
+			manager.toggleSights()
+			aimingSights = true
+			aimSensitivity = 0.6 #calculated from the player's ADS ratio of 15/25
+	
+	#INDEX 5, 6 ,7, 8: W,A,S,D
+	
+	#INDEX 9,10,11, CROUCH, JUMP, SPRINT
+	#also not worried about this yet
+	
+	#INDEX 12,13,14,15 MODAL DATA
+	#we don't actually do anything for modal data output/input. 
+	#that's for the sylphs :)
+	
+	#INDEX 16,17: EXTRAS
+	#we also dont do anything with this.
+	#total: 18
+
+@onready var visionR: Area3D = $"../sylph head v2/senses/vision/triangleR"
+@onready var visionL: Area3D = $"../sylph head v2/senses/vision/triangleL"
+@onready var visionU: Area3D = $"../sylph head v2/senses/vision/triangleU"
+@onready var visionD: Area3D = $"../sylph head v2/senses/vision/triangleD"
+var targetsPresent = 1 #assume there's a target.
+
+func do_Senses()->Array[float]:
+	
+	#INDEX 0,1,2,3 AND 4,5: VISION SENSES
+	return do_Vision()
+	
+	#INDEX 6: AIM AZIMUTH
+	
+	#INDEX 7: AMMO LEFT
+	
+	#INDEX 8: CROSSHAIR SIZE
+	
+	#INDEX 9: AIMSPEED
+	
+	#INDEX 10: TARGETS PRESENT
+	
+	#INDEX 11: HEARTBEAT, RANDOM NOISE
+	
+	#INDEX 12: HEALTH
+	
+	#INDEX 13,14,15,16: MODAL INPUTS
+	
+	#INDEX 17,18,19: EXTRAS
+	#TOTAL: 20
+	
+	#if((sensoryInput[0] == 0 )&& (sensoryInput [1] == 0)):
+		
+	
+	#sensoryInput.append(randf_range(-1, 1))
+	##print(manager.get_Ammo_Left())
+	#sensoryInput.append(manager.get_Ammo_Left())
 
 	#manager.get_Ammo_Left())
 	#print("Sensory inputs: ", sensoryInput)
 	
 	if(!sensoryInput):
 		print("we CAN'T SEE!")
-	var desiredActions = ourNetwork.calc_Outputs_Network(sensoryInput)
-	process_Actions(desiredActions)
-
-func process_Actions(desiredActions:Array[float]):
-	#for the current test, 1 is left/right, 2 is shoot
-	#print("Desired actions:", desiredActions)
-	#microPenalty += desiredActions[0]
-	var leftRight = desiredActions[0] * 3 * aimSensitivity #max per-frame movement is 3 degrees
-	
-	
-	if(leftRight > -0.2 && leftRight < 0.2): #ignore obnoxiously small inputs
-		leftRight = 0
-	body.move_Head_Exact([0,leftRight])
-	
-	var shootOrNah = desiredActions[1]
-	
-	if(shootOrNah > 0.5):
-		manager.doShoot()
-	else:
-		manager.unShoot()
-	
-func do_Reload():
-		manager.startReload()
-
-@onready var visionR: Area3D = $"../sylph head v2/senses/vision/triangleR"
-@onready var visionL: Area3D = $"../sylph head v2/senses/vision/triangleL"
-@onready var visionU: Area3D = $"../sylph head v2/senses/vision/triangleU"
-@onready var visionD: Area3D = $"../sylph head v2/senses/vision/triangleD"
 
 func do_Vision()->Array[float]:
 	
@@ -145,6 +208,11 @@ func do_Vision()->Array[float]:
 	if(!targetTrue): #we do not have a target anywhere in sight, you get no awareness, bwomp bwomp
 		res.append(0.0)
 		res.append(0.0)
+		
+		#in fact, Im going to penalize you for not being able to see a target
+		if(targetsPresent != 0):
+			microPenalty +=1 
+		
 	else:
 		var connectingVec = targetTrue.global_position - body.global_position
 		print(connectingVec)
@@ -159,7 +227,7 @@ func do_Vision()->Array[float]:
 	
 	return res
 
-#returns the target in a visionblock, or boolean of false.
+#returns the target, if any exist in a visionblock, or false.
 func get_Vision_Targets(visionBlock:Area3D):
 	if(visionBlock.has_overlapping_bodies()):
 		var items = visionBlock.get_overlapping_bodies()
@@ -185,12 +253,16 @@ func mutation_Test(val:float):
 	print(ourNetwork.get_Layer(1).weights[1])
 	print(ourNetwork.get_Layer(1).weights[2])
 
-#I'm thinking a 13/13/30/20/15/11 is what we want.
+#Total inputs: 17, with 3 extra nodes
+#Total outputs: 16, with 2 extra nodes
+#Network architecture:
+#I'm thinking a 20/20/40/30/20/18 is what we want.
+
 #Why do I think this?
-#1: second layer of 14s lets there be some sensory interplay
-#2: jump up to 30 is where the meat of the interaction comes from
-#3: jump down to for more interaction, but not as beefy as a 30/30 interface would be
-#4: jump down to 15 for a tapering effect
+#1: second layer of input size lets there be some sensory interplay
+#2: jump up to 40 is where the meat of the interaction comes from
+#3: jump down to for more interaction, but not as beefy as a 40/40 interface would be
+#4: jump down to 20 for a tapering effect
 
 
 #Senses:
@@ -219,15 +291,16 @@ func mutation_Test(val:float):
 #Targets present: acts like a "global" threat input. 
 #Modes: allows for feedback.
 #health: who knows, might just allow for different behavior if the sylph is injured
-
+#Total inputs: 17?
 
 #no real commentary needed on outputs
-#Total inputs: 17
+
 #
 #Outputs:
-#Shoot, L/R, U/D, reload, ADS (4)
-#Crouch, jump, sprint (3)
+#Shoot, L/R, U/D, reload, ADS (5)
 #Mode A, B, C, D (4)
-#
+#Crouch, jump, sprint (3)
+#WASD: (4)
+
 #Total outputs: 
-#11?
+#16?
