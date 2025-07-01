@@ -6,16 +6,18 @@ extends Node
 var aimSensitivity:float = 1 ##fractional multiplier
 var ourNetwork:NNETWORK
 var mindEnabled = false
-var actionsEnabled = false
-var activeTime:int = 100 #about 10 seconds
+var activeTime:int = 0 ##about 400
+var heartBeat = 100 
 
 var microPenalty = 0 ##Vision-based penalty
 
-var sensoryInput:Array ##Array of all senses
-var desiredActions:Array ##Array of all desired actions
+
+var sensoryInput:Array[float] ##Array of all senses
+var desiredActions:Array[float] ##Array of all desired actions
 
 func _ready():
-	initialize_Basic_Network()
+	#initialize_Basic_Network()
+	initialize_Rand_Network()
 	sensoryInput.resize(20)
 	sensoryInput.fill(0)
 	
@@ -30,15 +32,10 @@ func initialize_Basic_Network():
 
 ##Creates a new network and fully randomizes it
 func initialize_Rand_Network():
-	#pass
-	#ourNetwork = NNETWORK.new()
-	#2 inputs: target in left and target in right
-	#3 nodes in the hidden layer because idk
-	#3 nodes in the output layer: move left, move right, shoot
-	#ourNetwork.initialize_Network([2,4,2])
-	#ourNetwork.populate_Network_Rand()
-	print("NETWORK RANDOMIZATION DOESNT WORK YET")
-	#print("Sylph neural network sucessfully instantiated from random!")
+	ourNetwork = NNETWORK.new()
+	ourNetwork.initialize_Network([20,20,18])
+	ourNetwork.populate_Network_Rand()
+	print("Created random 20-20-18 network!")
 
 ##Saves to specified file
 func save_To_File(fileString):
@@ -59,16 +56,19 @@ func begin_Test():
 ##Calculates score from target based on total hits, penalty for weird movement, and penalty for firing when empty.
 func score_Performance(ourTarget, hitMultiplier, missDivisor, 
 					  missAllowance, goodhitsReward, visionDivisor)-> Array[int]:
+	
+	
+	
 	var totalHits = ourTarget.totalHits #grab the total shots taken
 	
 	manager.startReload() #reload the gun (this will also grab the total shots)
 	var totalShots = manager.totalShots #collect the shots taken
-	manager.refreshShots() #clear it
+	
 	
 	var score = totalHits * hitMultiplier
 	
 	
-	print("HEY DOOFUS MAKE SURE IT MISSES + TRACKS SHOTS MADE", totalShots) 
+	#print("HEY DOOFUS MAKE SURE IT MISSES + TRACKS SHOTS MADE", totalShots) 
 	
 	var totalMiss = totalShots - totalHits 
 	
@@ -83,67 +83,76 @@ func score_Performance(ourTarget, hitMultiplier, missDivisor,
 	if(visionDivisor > 0): #if we're doing penalties for not looking at target
 		score-= int(microPenalty / visionDivisor)
 	
+	refresh_Stats() #refresh stats
+	ourTarget.totalHits = 0 #and the target
 	
-	ourTarget.totalHits = 0
-	microPenalty = 0
 	return [totalHits, score]
 
-
+##refreshes stats after a test
+func refresh_Stats():
+	manager.unShoot()
+	heartBeat = 100
+	microPenalty = 0
+	body.sylphHead.rotation.y = 0
+	body.sylphHead.rotation.x = 0
+	manager.refreshShots() #clear it
 
 func _process(_delta):
 	if(mindEnabled):
 		do_Single_Thought()
 		activeTime-=1
+		heartBeat-=1
+		
+		if(heartBeat == 0):
+			heartBeat = 100
+		
 		if(activeTime <=0):
 			mindEnabled = false
-			print("All done!")
-			
-			#reset
-			body.unshoot_Wep()
-			body.sylphHead.rotation.y = 0
-			
-
- 
+			#refresh_Stats()
+			#var scoresArr = score_Performance()
+			#print("All done!")
 
 func do_Single_Thought():
-	
-	sensoryInput = do_Senses() #gather information
+	do_Senses() #gather information
 	desiredActions = ourNetwork.calc_Outputs_Network(sensoryInput) #process information
-	process_Actions(desiredActions) #execute actions
+	process_Actions() #execute actions
 
 var aimingSights: bool = false
 var modeData: Array[float] = [0.0,0.0,0.0,0.0]
 
-func process_Actions(desiredActions:Array[float]):
+func process_Actions():
 	
 	#print("Desired actions:", desiredActions)
 	
 	#INDEX 0,1: LEFT/RIGHT, UP/DOWN
 	
+	#what are the bounds of outputs? they seem to be in the teens. 
+	
 	var leftRight = desiredActions[0] * 3 * aimSensitivity ##max per-frame movement is 3 degrees
 	var upDown = desiredActions[1] * 3 * aimSensitivity ##Max per-frame movement is 3 degrees
 	
-
+	
+	
 	if(upDown > -0.2 && upDown < 0.2): #ignore obnoxiously small inputs
 		upDown = 0
 	if(leftRight > -0.2 && leftRight < 0.2):
 		leftRight = 0
 	
 	var magnitudePenalty = Vector2(leftRight, upDown).length()
-	#microPenalty += magnitudePenalty
+	microPenalty += magnitudePenalty
 	
 	body.move_Head(Vector2(upDown,leftRight), magnitudePenalty)
 	
 	#INDEX 2: SHOOT OR NOT (formerly belonged to index 1)
-	
 	if(desiredActions[2] > 0.5):
 		manager.doShoot()
 	else:
 		manager.unShoot()
 	
 	#INDEX 3: RELOAD
-	if(desiredActions[3] > 0.5):
-		manager.startReload()
+	#but we aren't doing this yet
+	#if(desiredActions[3] > 0.5):
+		#manager.startReload()
 	
 	#INDEX 4: ADS
 	if(desiredActions[4] > 0.5):
@@ -196,35 +205,43 @@ func do_Senses():
 	
 	#INDEX 8: CROSSHAIR SIZE
 	sensoryInput[8] = manager.get_Crosshair_Inaccuracy()
-	print(sensoryInput[8])
+	if(sensoryInput[8] <= -0.984):
+		print("Crosshair size:", sensoryInput[8])
 
 	#INDEX 9: AIMSPEED
+	#not doing this yet because I haven't programmed aim inertia
+	sensoryInput[9] = 0
 	
 	#INDEX 10: TARGETS PRESENT
+	#not currently doing anything with this
+	sensoryInput[10] = targetsPresent
 	
-	#INDEX 11: HEARTBEAT, RANDOM NOISE
+	#INDEX 11: HEARTBEAT,
+	var heartCur = (heartBeat/50) - 1 #ranges from 0-100
+	sensoryInput[11] = heartCur
 	
 	#INDEX 12: HEALTH
+	#not doing tyis yet
+	sensoryInput[12] = 0
 	
 	#INDEX 13,14,15,16: MODAL INPUTS
+	sensoryInput[13] = desiredActions[12]
+	sensoryInput[14]=desiredActions[13]
+	sensoryInput[15]=desiredActions[14]
+	sensoryInput[16]=desiredActions[15]
 	
-	#INDEX 17,18,19: EXTRAS
+	#INDEX 17, RANDOM NOISE
+	sensoryInput[17] = randf_range(-1, 1)
+	
+	#18,19: EXTRAS
+	sensoryInput[18] = 0
+	sensoryInput[19] = 0
 	#TOTAL: 20
 	
-	#if((sensoryInput[0] == 0 )&& (sensoryInput [1] == 0)):
-		
-	
-	#sensoryInput.append(randf_range(-1, 1))
-	##print(manager.get_Ammo_Left())
-	#sensoryInput.append(manager.get_Ammo_Left())
-
-	#manager.get_Ammo_Left())
-	#print("Sensory inputs: ", sensoryInput)
-
 ##Gathers vision info and updates the first 6 elements of sensoryInput
 func do_Vision():
 	
-	print("starting vision")
+	#print("starting vision")
 	
 	#var res:Array[float]
 	#var left = 0

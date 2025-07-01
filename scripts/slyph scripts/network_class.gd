@@ -27,6 +27,10 @@ func calc_Outputs_Network(inputData:Array[float])->Array[float]:
 		curLayer = ourLayers[x]
 		inputData = curLayer.calc_Outputs(inputData)
 		x+=1
+	
+	#for y in inputData:
+		#clampf(inputData[y], -1,1)
+	
 	return inputData
 
 

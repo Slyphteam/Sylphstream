@@ -29,9 +29,6 @@ func create_Empty_Grid(width, height):
 #runtime seems to be associated with inputs being an empty array.
 #how does this happen?
 func calc_Outputs(inputs: Array[float])-> Array[float]:
-	if(!inputs):
-		print("NO INPUT DATA!! UH OH!!!!!")
-	
 	var computedInputs : Array[float]
 	computedInputs.resize(nodesOut)
 	
@@ -49,13 +46,13 @@ func calc_Outputs(inputs: Array[float])-> Array[float]:
 		curOut+=1
 	return computedInputs
 
-#TODO: GET RID OF THIS AND REWRITE IT WITH A PROBABILSTIC FIRING
-#Let the sylph decide what their activation threshhold is!
+
 ##Given a weighted input and the node's activation chance, see if it fires.
 func apply_Activation_Chance(incoming:float, chance)->float:
+	incoming = clampf(incoming, -1, 1)
 	
 	if(weighted_Prob(chance)):
-		return incoming
+		return incoming #THIS SHOULD ACTUALLY BE A SIGMOID!!!!!
 	else:
 		return 0
 	

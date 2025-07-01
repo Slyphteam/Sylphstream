@@ -30,10 +30,12 @@ func get_Ammo_Left():
 
 #Assumes that recoil will never get worse than 120
 func get_Crosshair_Inaccuracy():
-	var ratio = heldItem.currentRecoil / 120 #value between 0 and 1
+	var ratio = heldItem.currentRecoil
+	
+	ratio /= 120 #value between 0 and 1
 	ratio *=2 #value between 0 and 2
 	ratio -=1 #value between -1 and 1
-	return ratio
+	return 1
 
 func getRefs():
 	heldItem = $weaponHolder
@@ -63,8 +65,7 @@ func toggleSights():
 ##Functions going up the hierarchy
 ###Apply viewpunch to the player, in degrees. Requires a connected user object.
 func applyViewpunch(lift, drift):
-	#print("Sylph is ignoring upwards recoil of ", lift)
-	user.move_Head_Exact([0, drift]) 
+	user.move_Head_Exact(Vector2(lift, drift)) 
 
 func get_space_state():
 	return user.sylphHead.get_world_3d().direct_space_state 

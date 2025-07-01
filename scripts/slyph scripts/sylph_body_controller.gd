@@ -14,7 +14,8 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 func interact_By_Player(playerRef)->bool:
 	
 #	#do_Single_Thought
-	mind.do_Senses()
+	mind.mindEnabled = true
+	mind.activeTime = 400
 	
 	#mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/loadingtest.txt")
 	#mind.ourNetwork.mutate_Network(0.5, 0.01)

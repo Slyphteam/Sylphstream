@@ -148,8 +148,7 @@ func tryShoot():
 		print("click!")
 		totalShots+=1
 
-
-
+##Function that literally just makes the gunshot sound
 func makeGunshot():
 	gunshotPlayer.pitch_scale = 1 + randf_range(-0.05, 0.05)
 	gunshotPlayer.play()
@@ -239,10 +238,11 @@ func _process(_delta: float):
 			canShoot = true
 			currentCooldown = shotCooldown
 	
-	if(isFirearm && affectUI):
+	if(affectUI):
 		Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
 		Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!
 		Globalscript.datapanel.add_Property("Reserve ", manager.getAmmoAmt(chambering), 5)
+	if(isFirearm):
 		calcRecoil() 
 	
 
