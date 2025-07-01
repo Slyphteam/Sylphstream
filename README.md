@@ -12,16 +12,18 @@ All content (as it stands) is listed under CC BY-NC-SA 3.0
 https://docs.google.com/document/d/118_IEV_9k2dqLq8unO5gw8Gx04xngHV5QysfVkentBs/edit?tab=t.0
 
 ### Features in active development:
+Neural network system V2
 
-Implementation of core weapons
-
-File I/O
-
-First neural network enemy
-
-Melee system
+Kinematic controllers for neural networks.
 
 ### Completed features:
+First fully trained neural networks.
+
+Neural network training and support code.
+
+Neural network system V1
+
+File I/O
 
 Dynamic spread
 
