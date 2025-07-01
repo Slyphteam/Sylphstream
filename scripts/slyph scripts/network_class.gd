@@ -15,6 +15,8 @@ func initialize_Network(layerSizeArr: Array[int]):
 		ourLayers[i] = LAYER.new()
 		ourLayers[i].initialize_Layer(layerSizeArr[i], layerSizeArr[i+1])
 		i+=1
+	
+	ourLayers[0].activations.fill(1) #ensure the first layer always activates.
 
 ##run inputs through the neural network
 func calc_Outputs_Network(inputData:Array[float])->Array[float]:
@@ -50,6 +52,12 @@ func populate_Layer_Rand(desiredLayer: int):
 		selectedLay.biases[x] = randf_range(-1, 1)
 		x+=1
 	
+	#activations
+	x=0
+	while (x<numBiases):
+		selectedLay.activations[x] = randf_range(0.85, 1)
+		x+=1
+	
 	#weights
 	x = 0
 	var y:int
@@ -61,9 +69,11 @@ func populate_Layer_Rand(desiredLayer: int):
 			curArray[x] = randf_range(-1, 1)
 			y+=1
 		x+=1
+	
+	
 
-##Mutates a selected layer of by random values clamped by 0+-(mutationAmount)
-func mutate_Layer(desiredLayer: int, mutationAmount: float):
+##Mutates a selected layer of by random values clamped by 0+-(mutationAmount). Seperate value for activations.
+func mutate_Layer(desiredLayer: int, mutationAmount: float, activationMut:float):
 	var selectedLay = ourLayers[desiredLayer]
 	var newVal:float
 	
@@ -73,6 +83,13 @@ func mutate_Layer(desiredLayer: int, mutationAmount: float):
 	while (x<numBiases):
 		newVal = clampf(selectedLay.biases[x] + randf_range(0-mutationAmount, mutationAmount), -1, 1)
 		selectedLay.biases[x] = newVal
+		x+=1
+	
+	#activations
+	x=0
+	while (x<numBiases): #same number of activations as biases
+		newVal = clampf(selectedLay.activations[x] + randf_range(0-activationMut, activationMut), -1, 1)
+		selectedLay.activations[x] = newVal
 		x+=1
 	
 	#weights
@@ -109,14 +126,18 @@ func populate_Network_Rand():
 		populate_Layer_Rand(z)
 		z+=1
 	
+	ourLayers[0].activations.fill(1) #ensure the first layer always activates.
 	
-##Mutates the entire network by random values clamped to 0+-(mutationAmount)
-func mutate_Network(mutateBy: float):
+	
+##Mutates the entire network by random values clamped to 0+-(mutationAmount). Seperate value for mutations.
+func mutate_Network(mutateBy: float, activationMut: float):
 	var z:int =0
 	
 	while(z<ourLayers.size() - 1):
-		mutate_Layer(z, mutateBy)
+		mutate_Layer(z, mutateBy, activationMut)
 		z+=1
+	
+	ourLayers[0].activations.fill(1) #ensure the first layer always activates.
 
 #func copy_values_from_network(otherGuy:NNETWORK):
 	#pass
@@ -142,13 +163,19 @@ func load_Network_From_File(fileString):
 		currentLayer = get_Layer(z)
 		
 		lineGrabber = ourFile.get_line() #layer header
+		lineGrabber = ourFile.get_line() #biases header
 		lineGrabber = ourFile.get_line() #biases
 		currentArray = str_to_var(lineGrabber)
 		currentLayer.biases = currentArray.duplicate()
 		
-		
+		lineGrabber = ourFile.get_line() #activations header
+		lineGrabber = ourFile.get_line() #activations
+		currentArray = str_to_var(lineGrabber)
+		currentLayer.activations = currentArray.duplicate()
 		
 		lineGrabber = ourFile.get_line() #weights header
+		
+		
 		
 		x = 0
 		while(x < currentLayer.nodesIn): #process the weights
@@ -181,11 +208,19 @@ func save_Network_To_File(fileString):
 		ourFile.store_string(constructedString) #store headers
 		
 		currentLayer = get_Layer(z)
+		constructedString = "--BIASES-- \n"
+		ourFile.store_string(constructedString)
 		constructedString = var_to_str(currentLayer.biases) + "\n"
 		ourFile.store_string(constructedString) #store layer biases
 		
+		constructedString = "--ACTIVATION CHANCES-- \n"
+		ourFile.store_string(constructedString)
+		constructedString = var_to_str(currentLayer.activations) + "\n"
+		ourFile.store_string(constructedString)
+		
 		constructedString = "--WEIGHTS-- \n"
 		ourFile.store_string(constructedString)
+
 		x = 0
 		while(x < currentLayer.nodesIn):
 			currentArray = currentLayer.weights[x]

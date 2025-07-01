@@ -2,12 +2,12 @@
 class_name LAYER extends Node
 
 var nodesIn: int
-var nodesOut: int
+var nodesOut: int ##also the number of nodes in a layer.
 var weights ##Weights for incoming connections; 2D; nodesIn arrays of size nodesOut
 #another way to think about weights is the following:
 #for each node in the current layer, what modifiers do we have for all incoming nodes?
-var biases: Array[float] ##for outgoings
-
+var biases: Array[float] ##The value of each node when it fires
+var activations: Array[float] ##the chance for each node to fire
 
 func initialize_Layer(incoming, outgoing):
 	nodesIn = incoming
@@ -15,6 +15,8 @@ func initialize_Layer(incoming, outgoing):
 	weights = create_Empty_Grid(nodesIn, nodesOut)
 	biases.resize(outgoing)
 	biases.fill(0.5)
+	activations.resize(outgoing)
+	activations.fill(0.95) #more likely to fire than not
 
 func create_Empty_Grid(width, height):
 	var grid = []
@@ -43,21 +45,31 @@ func calc_Outputs(inputs: Array[float])-> Array[float]:
 			currentArray = weights[curIn]
 			weightedIn+= inputs[curIn] * currentArray[curOut] 
 			curIn+=1
-		computedInputs[curOut] = apply_Activation_Threshhold(weightedIn) #apply_Activation_Threshhold(weightedIn)
+		computedInputs[curOut] = apply_Activation_Chance(weightedIn, activations[curOut]) #apply_Activation_Threshhold(weightedIn)
 		curOut+=1
 	return computedInputs
 
 #TODO: GET RID OF THIS AND REWRITE IT WITH A PROBABILSTIC FIRING
 #Let the sylph decide what their activation threshhold is!
-func apply_Activation_Threshhold(incoming:float)->float:
-	if(incoming > 0.1 && incoming < -0.1):
-		return 0
-	elif(incoming > 0.7):
-		return 1
-	elif(incoming < -0.7):
-		return -1
-	else:
+##Given a weighted input and the node's activation chance, see if it fires.
+func apply_Activation_Chance(incoming:float, chance)->float:
+	
+	if(weighted_Prob(chance)):
 		return incoming
+	else:
+		return 0
+	
+##given a float from -1 - 0 - 1, makes weighted 1-99% roll for that chance. Somewhat complicated, see code for details.
+func weighted_Prob(chance)->bool:
+	chance = absf(chance) #Can take negative inputs
+	#Rather than going from 0-100% on 0-1, instead fo from 1-99. Therefore, the range is
+	#actually 0-98 + 1
+	var val = int(chance * 98) + 1
+	var targ = randi_range(0, 100)
+	if(val >= targ):
+		return true
+	
+	return false
 
 func add_Node_To_Layer():
 	print("THIS FUNCTION DOESN'T DO ANYTHING!")

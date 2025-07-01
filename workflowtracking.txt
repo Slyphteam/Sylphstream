@@ -20,9 +20,11 @@ Other places are as follow:
 
 
 CURRENT DEV CYCLE:
-Neural network class
+Continuing to work on the added inputs and outputs in the neural network class
 
 NEEDS DOING:
+
+ADD AN ABSOLUTE MAXIMUM MAXACCURACY OF 120
 KEY:
 	+: Easy
 	-: Hard

@@ -273,7 +273,7 @@ shape = SubResource("ConvexPolygonShape3D_36h38")
 shape = SubResource("ConvexPolygonShape3D_0u4ar")
 
 [node name="archonRoot" parent="Environment" node_paths=PackedStringArray("Sylph1", "Sylph2", "targ1", "targ2") instance=ExtResource("12_c4nfh")]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -42.6555, 13.557, -4.70589)
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -42.6555, 3.70594, -0.182655)
 Sylph1 = NodePath("../Testing zone/Sylph 1")
 Sylph2 = NodePath("../Testing zone/Sylph 2")
 targ1 = NodePath("../Testing zone/Testing target 1")
@@ -289,7 +289,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -1.201, -15)
 
 [node name="Testing target 2" parent="Environment/Testing zone" instance=ExtResource("4_m2myf")]
-transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 13.3332, 0, -8.74453)
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 15, 0, -8.745)
 
 [node name="Sylph 2" parent="Environment/Testing zone" instance=ExtResource("7_d6ln1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1.201, -15)

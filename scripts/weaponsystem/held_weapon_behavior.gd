@@ -49,14 +49,14 @@ var isFirearm : bool
 var affectUI = false
 var canShoot = true
 var triggerDepressed = false
-
+var totalShots = 0 ##TOTAL number of shots taken in lifetime
 
 var capacity : int
 var reloading : bool
-var currentRecoil: float = 0
+var currentRecoil: float = 0 ##The current "amount" of recoil, in abstract units
 var minRecoil
 var maxRecoil
-var recoilDebt = 0
+var recoilDebt = 0 ##lets very heavy recoil be applied across multiple frames
 
 #variables inferred from the resource
 var shotCooldown: int = 0
@@ -107,7 +107,7 @@ func init_Firearm_Stats(weaponToLoad):
 	reloading = false
 	maxRecoil = totalMaxRecoil
 	minRecoil = totalMinRecoil
-	currentRecoil = minRecoil
+	currentRecoil = minRecoil 
 	recoveryCutoff = maxRecoil / 3
 	recoveryDivisor = maxRecoil * 2 * (1+recoveryAmount)
 	#include aimbonus and recovery speed in calculating. Essentially, the "ergonomics"
@@ -146,9 +146,9 @@ func tryShoot():
 		
 	else:
 		print("click!")
-		penalty+=1
+		totalShots+=1
 
-var penalty = 0
+
 
 func makeGunshot():
 	gunshotPlayer.pitch_scale = 1 + randf_range(-0.05, 0.05)
@@ -213,7 +213,6 @@ func startReload():
 
 func _on_reload_timer_timeout() -> void:
 	reloading = false
-	penalty=0
 	var takenAmount = (maxCapacity - capacity)
 	
 	if(capacity > 0):

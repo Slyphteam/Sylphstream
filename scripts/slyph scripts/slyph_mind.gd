@@ -8,22 +8,37 @@ var ourNetwork:NNETWORK
 var mindEnabled = false
 var actionsEnabled = false
 var activeTime:int = 100 #about 10 seconds
-var penaltyCounter = 0
+
+var microPenalty = 0 ##Vision-based penalty
+
+var sensoryInput:Array ##Array of all senses
+var desiredActions:Array ##Array of all desired actions
 
 func _ready():
-	ourNetwork = NNETWORK.new()
-	ourNetwork.initialize_Network([4,3,2])
+	initialize_Basic_Network()
+	sensoryInput.resize(20)
+	sensoryInput.fill(0)
+	
+	desiredActions.resize(18)
+	desiredActions.fill(0)
 
+
+func initialize_Basic_Network():
+	ourNetwork = NNETWORK.new()
+	print("Created basic 20-20-18 network!")
+	ourNetwork.initialize_Network([20,20,18])
 
 ##Creates a new network and fully randomizes it
 func initialize_Rand_Network():
-	ourNetwork = NNETWORK.new()
+	#pass
+	#ourNetwork = NNETWORK.new()
 	#2 inputs: target in left and target in right
 	#3 nodes in the hidden layer because idk
 	#3 nodes in the output layer: move left, move right, shoot
-	ourNetwork.initialize_Network([4,3,2])
-	ourNetwork.populate_Network_Rand()
-	print("Sylph neural network sucessfully instantiated from random!")
+	#ourNetwork.initialize_Network([2,4,2])
+	#ourNetwork.populate_Network_Rand()
+	print("NETWORK RANDOMIZATION DOESNT WORK YET")
+	#print("Sylph neural network sucessfully instantiated from random!")
 
 ##Saves to specified file
 func save_To_File(fileString):
@@ -41,6 +56,38 @@ func begin_Test():
 	mindEnabled = true
 	activeTime = 400
 
+##Calculates score from target based on total hits, penalty for weird movement, and penalty for firing when empty.
+func score_Performance(ourTarget, hitMultiplier, missDivisor, 
+					  missAllowance, goodhitsReward, visionDivisor)-> Array[int]:
+	var totalHits = ourTarget.totalHits #grab the total shots taken
+	
+	manager.startReload() #reload the gun (this will also grab the total shots)
+	var totalShots = manager.totalShots #collect the shots taken
+	manager.refreshShots() #clear it
+	
+	var score = totalHits * hitMultiplier
+	
+	
+	print("HEY DOOFUS MAKE SURE IT MISSES + TRACKS SHOTS MADE", totalShots) 
+	
+	var totalMiss = totalShots - totalHits 
+	
+	if(totalMiss <= missAllowance): #if we're in acceptable misses, give a reward
+		score += goodhitsReward
+			
+	if(totalMiss > 0 && missDivisor > 0): #don't bother calculating unless there actually were misses
+		score -= totalMiss / missDivisor
+		pass
+	
+	
+	if(visionDivisor > 0): #if we're doing penalties for not looking at target
+		score-= int(microPenalty / visionDivisor)
+	
+	
+	ourTarget.totalHits = 0
+	microPenalty = 0
+	return [totalHits, score]
+
 
 
 func _process(_delta):
@@ -56,9 +103,8 @@ func _process(_delta):
 			body.sylphHead.rotation.y = 0
 			
 
-var microPenalty = 0
-var sensoryInput:Array
-var desiredActions:Array
+ 
+
 func do_Single_Thought():
 	
 	sensoryInput = do_Senses() #gather information
@@ -111,6 +157,7 @@ func process_Actions(desiredActions:Array[float]):
 			aimingSights = true
 			aimSensitivity = 0.6 #calculated from the player's ADS ratio of 15/25
 	
+	
 	#INDEX 5, 6 ,7, 8: W,A,S,D
 	
 	#INDEX 9,10,11, CROUCH, JUMP, SPRINT
@@ -130,17 +177,27 @@ func process_Actions(desiredActions:Array[float]):
 @onready var visionD: Area3D = $"../sylph head v2/senses/vision/triangleD"
 var targetsPresent = 1 #assume there's a target.
 
-func do_Senses()->Array[float]:
+#gathers sensory info and updates the sensoryInput array
+func do_Senses():
 	
+
 	#INDEX 0,1,2,3 AND 4,5: VISION SENSES
-	return do_Vision()
-	
+	do_Vision()
+	#keep in mind 4-5 work are trained on both sylph and target having same root.
+	#if this doesnt happen things will be BAD
+
 	#INDEX 6: AIM AZIMUTH
+	#between 90 and -90
+	var head = $"../sylph head v2"
+	sensoryInput[6] = head.rotation_degrees.x / 90
 	
 	#INDEX 7: AMMO LEFT
+	sensoryInput[7] = manager.get_Ammo_Left()
 	
 	#INDEX 8: CROSSHAIR SIZE
-	
+	sensoryInput[8] = manager.get_Crosshair_Inaccuracy()
+	print(sensoryInput[8])
+
 	#INDEX 9: AIMSPEED
 	
 	#INDEX 10: TARGETS PRESENT
@@ -163,69 +220,100 @@ func do_Senses()->Array[float]:
 
 	#manager.get_Ammo_Left())
 	#print("Sensory inputs: ", sensoryInput)
-	
-	if(!sensoryInput):
-		print("we CAN'T SEE!")
 
-func do_Vision()->Array[float]:
+##Gathers vision info and updates the first 6 elements of sensoryInput
+func do_Vision():
 	
 	print("starting vision")
 	
-	var res:Array[float]
+	#var res:Array[float]
 	#var left = 0
-
 
 	var targetTrue:Node3D
 	var targetL = get_Vision_Targets(visionL)
 	if(targetL):
 		targetTrue = targetL
-		res.append(1.0)
+		sensoryInput[0] = 1.0
 	else:
-		res.append(0.0)
+		sensoryInput[0] = 0
 	
 	var targetR = get_Vision_Targets(visionR)
 	if(targetR):
 		targetTrue = targetR
-		res.append(1.0)
+		sensoryInput[1] = 1.0
 	else:
-		res.append(0.0)
+		sensoryInput[1] = 0
 	
 	var targetU = get_Vision_Targets(visionU)
 	if(targetU):
 		targetTrue = targetU
-		res.append(1.0)
+		sensoryInput[2] = 1.0
 	else:
-		res.append(0.0)
+		sensoryInput[2] = 0.0
 	
 	var targetD = get_Vision_Targets(visionD)
 	if(targetD):
 		targetTrue = targetD
-		res.append(1.0)
+		sensoryInput[3] = 1.0
 	else:
-		res.append(0.0)
+		sensoryInput[3] = 0.0
 	
 	#next, do the "extrema"
 	if(!targetTrue): #we do not have a target anywhere in sight, you get no awareness, bwomp bwomp
-		res.append(0.0)
-		res.append(0.0)
+		sensoryInput[4] = 0
+		sensoryInput[5] = 0
 		
 		#in fact, Im going to penalize you for not being able to see a target
 		if(targetsPresent != 0):
 			microPenalty +=1 
 		
 	else:
+		
+		#issue: targetTrue is the staticbody that gets detected, and has a transform of 0.
+		#solution: just use globals?
 		var connectingVec = targetTrue.global_position - body.global_position
-		print(connectingVec)
+		var pos1 = targetTrue.global_position
+		var pos2 = body.global_position
+		#print("connecting vec: ",connectingVec)
 		#since the sylph probably won't care about the exact degrees and what the basis/origin is,
 		#I'm not going to be bothering with being too fancy about it.
-		var theta = atan(connectingVec.x/connectingVec.y)
-		print(theta)
+		if(absf(connectingVec.z)<0.01):
+			connectingVec.z = 0
+		
+		var theta = atan(connectingVec.x/connectingVec.z)
+		#print("target's theta:", theta)
+		
+		#So, what does theta actually mean?
+		#it's the radians of rotation relative to a global basis that isn't actually important, since
+		#it's consistent, again, globally. I REALLY hope.
+		#exactly head on is 1.5 to the left and -1.5 to the right
+		#then it goes down to about 1.08 at most on either side.
+		#we'll be generous and say it has a range of about 0.45
+		#I also don't entirely trust the sylphs to deal with the cup shape AND the negative flip
+		#and they're already being told which way the target is, I don't think it's useful.
+		#therefore, I am only going to use this as a way to tell them the EXTREMA of the angle
+		
+		#print("raw theta:", theta)
+		theta = absf(theta)
+		
+		theta = 1.05-theta
+		
+		#theta now is between -0.08 and -0.5
+		#add 0.05 to mostly nullify out the offset
+		theta += 0.05
+		#multiply it by 4 to make it between 0ish and 2ish
+		theta *=4
+		#make it absolute
+		theta = absf(theta)
+		#subtract 1 to make it between mostly -1 and 1
+		theta -=1
+		
+		#is -1 and 1 better or worse than 0-1? absolutely no idea lmao.
+		sensoryInput[4] = theta
 		
 		#I'm too lazy to do the azimuth extrema and i dont think it matters too much. soooo.
-		res.append(0.0)
+		sensoryInput[5] = 0
 
-	
-	return res
 
 #returns the target, if any exist in a visionblock, or false.
 func get_Vision_Targets(visionBlock:Area3D):
@@ -246,7 +334,7 @@ func mutation_Test(val:float):
 	print(ourNetwork.get_Layer(1).weights[1])
 	print(ourNetwork.get_Layer(1).weights[2])
 	
-	ourNetwork.mutate_Network(10)
+	ourNetwork.mutate_Network(10, 0)
 	#UHOH!!!! DIDNT DO THEM ALL!!!
 	print("After mutation:")
 	print(ourNetwork.get_Layer(1).weights[0])

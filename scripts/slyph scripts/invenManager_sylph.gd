@@ -28,19 +28,30 @@ func get_Ammo_Left():
 	ratio -=1 #value from -1 - 1
 	return ratio
 
+#Assumes that recoil will never get worse than 120
+func get_Crosshair_Inaccuracy():
+	var ratio = heldItem.currentRecoil / 120 #value between 0 and 1
+	ratio *=2 #value between 0 and 2
+	ratio -=1 #value between -1 and 1
+	return ratio
+
 func getRefs():
 	heldItem = $weaponHolder
 	user = $"../.."
 
 ##functions going down the hierarchy
-var penalty = 0
+var totalShots = 0
 
 func startReload():
 	if(holdingFirearm):
 		heldItem.startReload()
-		penalty = heldItem.penalty
+		totalShots = heldItem.totalShots
 	else:
 		print("How do you reload a sword?")
+
+
+func refreshShots():
+	heldItem.totalShots = 0
 
 func toggleSights():
 	pass

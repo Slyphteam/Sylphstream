@@ -13,11 +13,18 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 
 func interact_By_Player(playerRef)->bool:
 	
-	mind.do_Vision()
+#	#do_Single_Thought
+	mind.do_Senses()
+	
+	#mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/loadingtest.txt")
+	#mind.ourNetwork.mutate_Network(0.5, 0.01)
+	#mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/loadingtest.txt")
+	#print("saved!")
+	
 
 	return false
 
-func move_Head(desired: Vector2):
+func move_Head(desired: Vector2, moveSpeed):
 	#TODO: in the future add inaccuracy with higher speeds
 	move_Head_Exact(desired)
 
@@ -25,6 +32,8 @@ func move_Head(desired: Vector2):
 func move_Head_Exact(desired: Vector2):
 	sylphHead.rotation_degrees.x += desired.x
 	sylphHead.rotation_degrees.y += desired.y
+	
+	clampf(sylphHead.rotation_degrees.x, -90, 90)
 	
 	#This code would update the body's rotation, which looked cool, but isn't something I want to deal with yet
 	#var newangle = sylphHead.rotation_degrees.y
