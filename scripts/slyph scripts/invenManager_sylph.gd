@@ -9,7 +9,7 @@ func _ready():
 	#no need to actually do anything on ready, yet.
 	#print("Hello and welcome to Sylphstream!")
 	#heldAmmunition.ammoBlank = 10000
-	heldAmmunition.ammoPistol = 10000
+	heldAmmunition.ammoPistol = 100000
 	#heldAmmunition.ammoRifle = 30
 	
 	getRefs()
@@ -45,6 +45,7 @@ func getRefs():
 var totalShots = 0
 
 func startReload():
+	heldAmmunition.ammoPistol +=15 #COMMENT THIS OUT ;ATER ON
 	if(holdingFirearm):
 		heldItem.startReload()
 		totalShots = heldItem.totalShots

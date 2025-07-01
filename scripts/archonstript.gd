@@ -82,7 +82,7 @@ func restart_Sylph_Test():
 
 #	score_Sylphs()
 
-var highscore: int = 1
+var highscore: int = 2
 
 @export var Sylph1:CharacterBody3D
 @export var Sylph2:CharacterBody3D
@@ -109,13 +109,15 @@ func score_Sylphs():
 	if(arr2[0]>highscore):
 		highscore = arr2[0]
 	
-	if(arr1[0]>0 && arr2[0]>0):
+	if(arr1[0]>0 || arr2[0]>0):
 		if(arr1[0]>arr2[0]):
 			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")	
-			print("Sylph1 did better! score: ", highscore)
+			print("Sylph1 did better! score: ", arr1[0])
 		else:
 			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
-			print("Sylph2 did better! score: ", highscore)
+			print("Sylph2 did better! score: ", arr2[0])
+	else:
+		print("both sucked!")
 
 #https://docs.godotengine.org/en/stable/classes/class_fileaccess.html#class-fileaccess
 #https://docs.godotengine.org/en/stable/tutorials/io/runtime_file_loading_and_saving.html
