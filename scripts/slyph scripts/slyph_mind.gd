@@ -351,7 +351,7 @@ func mutation_Test(val:float):
 	print(ourNetwork.get_Layer(1).weights[1])
 	print(ourNetwork.get_Layer(1).weights[2])
 	
-	ourNetwork.mutate_Network(10, 0)
+	ourNetwork.mutate_Network(10, 0, 50)
 	#UHOH!!!! DIDNT DO THEM ALL!!!
 	print("After mutation:")
 	print(ourNetwork.get_Layer(1).weights[0])

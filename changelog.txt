@@ -1,5 +1,5 @@
 6/27:
-Saving, loading, and utility functions added to neural networks.
+Saving, loading, and utility functions added to neural networks.c
 6/26:
 Neural networks are now implemented
 6/24:

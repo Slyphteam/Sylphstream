@@ -48,8 +48,8 @@ func _process(delta):
 	do_Archon_Gaylittlefloat(delta)
 	if(testTime > 0):
 		testTime -=1
-		#if(testTime <=1):
-		#	restart_Sylph_Test()
+		if(testTime <=1):
+			restart_Sylph_Test()
 		if(testTime == 250): #we've waited 450 frames, score it now
 			score_Sylphs()
 		
@@ -70,11 +70,11 @@ func begin_Sylph_Test():
 #unweighted is just out of 15
 func restart_Sylph_Test():
 	print("Beginning new test!")
-	#Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
-	#Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
+	Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
+	Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
 	
-	Sylph1.mind.ourNetwork.mutate_Network(0.5, 0)
-	Sylph2.mind.ourNetwork.mutate_Network(0.5, 0)
+	Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 25)
+	Sylph2.mind.ourNetwork.mutate_Network(0.1, 0, 25)
 	
 	Sylph1.mind.begin_Test()
 	Sylph2.mind.begin_Test()
@@ -82,7 +82,7 @@ func restart_Sylph_Test():
 
 #	score_Sylphs()
 
-var highscore: int = 0
+var highscore: int = 1
 
 @export var Sylph1:CharacterBody3D
 @export var Sylph2:CharacterBody3D
@@ -108,13 +108,14 @@ func score_Sylphs():
 		highscore = arr1[0]
 	if(arr2[0]>highscore):
 		highscore = arr2[0]
-		
-	if(arr1[0]>arr2[0]):
-		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")	
-		print("Sylph1 did better! score: ", highscore)
-	else:
-		Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
-		print("Sylph2 did better! score: ", highscore)
+	
+	if(arr1[0]>0 && arr2[0]>0):
+		if(arr1[0]>arr2[0]):
+			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")	
+			print("Sylph1 did better! score: ", highscore)
+		else:
+			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
+			print("Sylph2 did better! score: ", highscore)
 
 #https://docs.godotengine.org/en/stable/classes/class_fileaccess.html#class-fileaccess
 #https://docs.godotengine.org/en/stable/tutorials/io/runtime_file_loading_and_saving.html

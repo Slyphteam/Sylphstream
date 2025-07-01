@@ -77,7 +77,7 @@ func populate_Layer_Rand(desiredLayer: int):
 	
 
 ##Mutates a selected layer of by random values clamped by 0+-(mutationAmount). Seperate value for activations.
-func mutate_Layer(desiredLayer: int, mutationAmount: float, activationMut:float):
+func mutate_Layer(desiredLayer: int, mutationAmount: float, activationMut:float, mutationChance: int):
 	var selectedLay = ourLayers[desiredLayer]
 	var newVal:float
 	
@@ -85,15 +85,17 @@ func mutate_Layer(desiredLayer: int, mutationAmount: float, activationMut:float)
 	var x:int = 0
 	var numBiases = selectedLay.biases.size()
 	while (x<numBiases):
-		newVal = clampf(selectedLay.biases[x] + randf_range(0-mutationAmount, mutationAmount), -1, 1)
-		selectedLay.biases[x] = newVal
+		if(prob(mutationChance)):
+			newVal = clampf(selectedLay.biases[x] + randf_range(0-mutationAmount, mutationAmount), -1, 1)
+			selectedLay.biases[x] = newVal
 		x+=1
 	
 	#activations
 	x=0
 	while (x<numBiases): #same number of activations as biases
-		newVal = clampf(selectedLay.activations[x] + randf_range(0-activationMut, activationMut), -1, 1)
-		selectedLay.activations[x] = newVal
+		if(prob(mutationChance)):
+			newVal = clampf(selectedLay.activations[x] + randf_range(0-activationMut, activationMut), -1, 1)
+			selectedLay.activations[x] = newVal
 		x+=1
 	
 	#weights
@@ -104,9 +106,10 @@ func mutate_Layer(desiredLayer: int, mutationAmount: float, activationMut:float)
 		y=0
 		while(y<selectedLay.nodesIn):
 			curArray = selectedLay.weights[y]
-			curArray[x]
-			newVal = clampf(curArray[x] + randf_range(0-mutationAmount, mutationAmount), -1, 1)
-			curArray[x] = newVal
+			#curArray[x]#why was this here?
+			if(prob(mutationChance)):
+				newVal = clampf(curArray[x] + randf_range(0-mutationAmount, mutationAmount), -1, 1)
+				curArray[x] = newVal
 			y+=1
 		x+=1
 
@@ -134,11 +137,11 @@ func populate_Network_Rand():
 	
 	
 ##Mutates the entire network by random values clamped to 0+-(mutationAmount). Seperate value for mutations.
-func mutate_Network(mutateBy: float, activationMut: float):
+func mutate_Network(mutateBy: float, activationMut: float, mutationChance: int):
 	var z:int =0
 	
 	while(z<ourLayers.size() - 1):
-		mutate_Layer(z, mutateBy, activationMut)
+		mutate_Layer(z, mutateBy, activationMut, mutationChance)
 		z+=1
 	
 	ourLayers[0].activations.fill(1) #ensure the first layer always activates.
@@ -236,3 +239,11 @@ func save_Network_To_File(fileString):
 		z+=1
 	
 	ourFile.close()
+
+
+func prob(chance:int)->bool:
+	var targ = randi_range(0, 100)
+	if(chance >= targ):
+		return true
+	
+	return false
