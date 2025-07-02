@@ -12,11 +12,21 @@ All content (as it stands) is listed under CC BY-NC-SA 3.0
 https://docs.google.com/document/d/118_IEV_9k2dqLq8unO5gw8Gx04xngHV5QysfVkentBs/edit?tab=t.0
 
 ### Features in active development:
-Neural network system V2
 
-Kinematic controllers for neural networks.
+Expansion of weapon system
+
+Stochastic Gradient Descent
+
+Neural network training on complex use of weapon systems
+
+Kinematic controllers for neural networks
 
 ### Completed features:
+
+Neural network training on aiming, recoil control, and moving targets
+
+Neural network system V2
+
 First fully trained neural networks.
 
 Neural network training and support code.
@@ -48,10 +58,6 @@ Kicking
 Implementation of all planned weapons
 
 First finite state enemy
-
-Neural network training on aiming
-
-Neural network training on reloading, recoil control, and aiming down sights
 
 Neural network training on simple movement
 
