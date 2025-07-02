@@ -141,7 +141,7 @@ func process_Actions():
 		leftRight = 0
 	
 	var magnitudePenalty = Vector2(leftRight, upDown).length()
-	microPenalty += magnitudePenalty
+	#microPenalty += magnitudePenalty
 	
 	body.move_Head(Vector2(upDown,leftRight), magnitudePenalty)
 	
