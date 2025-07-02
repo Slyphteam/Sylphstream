@@ -51,10 +51,10 @@ func calc_Outputs(inputs: Array[float])-> Array[float]:
 func apply_Activation_Chance(incoming:float, chance)->float:
 	incoming = clampf(incoming, -1, 1)
 	
-	if(weighted_Prob(chance)):
-		return incoming #THIS SHOULD ACTUALLY BE A SIGMOID!!!!!
-	else:
-		return 0
+	#if(weighted_Prob(chance)):
+	return incoming
+	#else:
+	#	return 0
 	
 ##given a float from -1 - 0 - 1, makes weighted 1-99% roll for that chance. Somewhat complicated, see code for details.
 func weighted_Prob(chance)->bool:

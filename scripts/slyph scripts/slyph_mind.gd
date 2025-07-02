@@ -74,10 +74,12 @@ func score_Performance(ourTarget, hitMultiplier, missDivisor,
 	
 	if(totalMiss <= missAllowance): #if we're in acceptable misses, give a reward
 		score += goodhitsReward
-			
-	if(totalMiss > 0 && missDivisor > 0): #don't bother calculating unless there actually were misses
-		score -= totalMiss / missDivisor
-		pass
+	else:
+		score -=1 #delete this branch later
+	
+	#if(totalMiss > 0 && missDivisor > 0): #don't bother calculating unless there actually were misses
+		#score -= totalMiss / missDivisor
+		#pass
 	
 	
 	if(visionDivisor > 0): #if we're doing penalties for not looking at target
@@ -128,8 +130,8 @@ func process_Actions():
 	
 	#what are the bounds of outputs? they seem to be in the teens. 
 	
-	var leftRight = desiredActions[0] * 3 * aimSensitivity ##max per-frame movement is 3 degrees
-	var upDown = desiredActions[1] * 3 * aimSensitivity ##Max per-frame movement is 3 degrees
+	var leftRight = desiredActions[0] * 1 * aimSensitivity ##max per-frame movement is 3 degrees
+	var upDown = desiredActions[1] * 1 * aimSensitivity ##Max per-frame movement is 3 degrees
 	
 	
 	
@@ -217,8 +219,8 @@ func do_Senses():
 	sensoryInput[10] = targetsPresent
 	
 	#INDEX 11: HEARTBEAT,
-	var heartCur = (heartBeat/50) - 1 #ranges from 0-100
-	sensoryInput[11] = heartCur
+	#var heartCur = (heartBeat/50) - 1 #ranges from 0-100
+	sensoryInput[11] = 0#heartCur
 	
 	#INDEX 12: HEALTH
 	#not doing tyis yet
@@ -231,7 +233,7 @@ func do_Senses():
 	sensoryInput[16]=desiredActions[15]
 	
 	#INDEX 17, RANDOM NOISE
-	sensoryInput[17] = randf_range(-1, 1)
+	sensoryInput[17] =0#= randf_range(-1, 1)
 	
 	#18,19: EXTRAS
 	sensoryInput[18] = 0
@@ -282,7 +284,10 @@ func do_Vision():
 		
 		#in fact, Im going to penalize you for not being able to see a target
 		if(targetsPresent != 0):
-			microPenalty +=1 
+			if(!(targetL || targetR)):
+				microPenalty +=2
+			if(!(targetU || targetD)):
+				microPenalty +=2
 		
 	else:
 		
