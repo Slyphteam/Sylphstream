@@ -57,10 +57,10 @@ func _process(delta):
 
 ##Initializes two random Sylphs and starts testing them
 func begin_Sylph_Test():
-	Sylph1.mind.initialize_Rand_Network()
-	Sylph2.mind.initialize_Rand_Network()
-	#Sylph2.mind.load_From_File("res://resources/txt files/backup promising sylph.txt")
-	#Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
+	#Sylph1.mind.initialize_Rand_Network()
+	#Sylph2.mind.initialize_Rand_Network()
+	Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
+	Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -111,13 +111,13 @@ func score_Sylphs():
 		if(arr1[0]>=(highscore-1)):
 			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")	
 		Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
-		Sylph2.mind.ourNetwork.mutate_Network(0.2, 0, 75)
+		Sylph2.mind.ourNetwork.mutate_Network(0.1, 0, 50)
 	elif(arr1[1]<arr2[1]):
 		print("Sylph2 did better! score: ", arr2[1])
 		if(arr2[0]>= (highscore-1)):
 			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
 		Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
-		Sylph1.mind.ourNetwork.mutate_Network(0.2, 0, 75)
+		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 50)
 	else:
 		print("both tied!")
 		Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/primitivesylph.txt")
