@@ -35,33 +35,17 @@ KEY:
 FUNCTIONAL:
 	
 FRAMERATE COUNTER!!!!!!!!!!!!!!!!!!!!!
-	
-	
-Change to scoring/ partial randomization mutations 
-(dont update unless beats score, only some nodes mtuate)
-expansion on this: have a "highscore" sylph and 2 "current" sylph that each loads and mutates from
-Highscore only updates if a sylph beats said score
-current updates from whichever of the "current" sylphs does best
-Only one "current" sylph will mutate, with the other remaining the same. (old vs new vs legacy)
-ALSO ALSO ALSO: session highscore vs all time highscore.
+
+Change heldweapons to instantiate a script class
+Sylph and playermodel bodies v2, but test with the millian prior
+On the topic of Millian, make a blender file that is literally just backups of all the different variations
+
+Later: Add aim inertia to sylphs, up the amount they can rotate, add speed penalty, let them bake
+for a bit to get used to it.
+Get rid of empty shooting penalty and movement penalty, allow for reloading (will have to update
+some invenmanager scripts to accomodate this because it's slightly scuffed right now)
 
 
-Partial randomization:
-In each mutation cycle, rather than mutating EVERY node, have a random chance to mutate each node.
-
-Partial firing:
-Get rid of activation function because it's lame
-Actually don't get rid of it but instead rewrite it:
-Rather than ALWAYS firing, nodes will sometimes fire based off their value.
-For example, a node with 0 will only fire, idunno, 2% of the time, and a node with 1 will fire 98
-First layer nodes shouldn't do this.
-Seperate firestrength and firerate variables?????? (yess maybe?)
-
-Add and test expansion code
-Compartmentalize test code
-Make testing local to Sylph
-Change ALL ui stuff in heldweapon to be from a single function, not spread out
-Reorder sylph txts and add info about 'em
 Archon intro ditty
 
 
