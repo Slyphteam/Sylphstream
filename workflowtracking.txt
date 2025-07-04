@@ -1,10 +1,32 @@
-DIRECTORY OF WHERE THINGS ARE:
+-----------\
+=======+=======> DIRECTORY OF WHERE THINGS ARE:
+-----------/
 
- the MOST important scripts are as follow:
- --scripts/player/held_weapon_behavior: acts as a data instance for the held weapon
- -- scripts/player/invenManager (NOT inveNtorymanager): Tracking ammunition and communicating 
-	with the player/held item
- --scripts/player/playermovementinput: Kinematic controller for the player, input/output
+====+====> MISC:
+--Scripts/weaponsystem/invenmanager_parent: the common parent class between the sylph
+	invenmanager and the player invenmanager. Has a good chunk of code in it, so
+	read through it if you're doing anything that touches those classes
+	Note that the player and sylph versions are in the associated folders.
+
+====+====> PLAYER ASSOCIATED
+--Scripts/player: basically everything in here is used a lot, but most importantly are:
+--Scripts/player/invenmanager_player: Acts as an in-between for the player and weapon instances.
+--Scripts/player/playermovementinput: Almost everything related to movement and IO is handled here
+
+====+====> WEAPON SYSTEM:
+--Scripts/weaponsystem/gun_basic_instance: all the functionality of firearms is in here
+--Resources/weaponresources: All of the datasheets for all weapons are in here
+--Scripts/weaponsystem/ weapon_parent and wep_instance_parent: boilerplate classes that weapon
+	datasheets and weapon instances inherit from. Extend if you're making your own functionality.
+
+====+====> SYLPH/NEURAL NETWORKS:
+--Scripts/archonscript: The "archon" is the manager for sylph training. Walk up to it and press e
+	if you want to start a training cycle. Will also score sylphs and decide which one gets mutated
+--Scripts/sylph scripts/sylph_mind: A manager for the neural network. Processes input and handles output.
+	A similar script is sylph_body_controller, which has much less functionality.
+--scripts/sylph scripts/ layer_class and network_class: Contain the actual classes used for neural nets.
+	Network_class has all the utility functions in it. 
+--Resources/txt files / sylph tests: Folder where all of the saved sylphs go. 
 
 Other places are as follow:
  resources/weaponresources contains all the templates for implemented weapons
@@ -12,37 +34,41 @@ Other places are as follow:
  Scenes/player associated/player for the actual player scene
  Scenes/environ for the test environment I have the player in
 
---KNOWN PROBLEMS:
---Cant switch to firearm if starting from melee
--- players can't "step" up a ledge, no matter how small
--- weapons jitter while player is holding movement keys on floor (caused by move and slide, presumably)
+-----------\
+=======+=======> CURRENT DEV CYCLE:
+-----------/
+
+Finish expansion of weapon system and import shotgun, burst rifle, smg
+
+-----------\
+=======+=======> FUTURE PLANS:
+-----------/
 
 
 
-CURRENT DEV CYCLE:
-Continuing to work on the added inputs and outputs in the neural network class
-
-NEEDS DOING:
-
-ADD AN ABSOLUTE MAXIMUM MAXACCURACY OF 120
-KEY:
+====+====> KEY:
 	+: Easy
 	-: Hard
 	*: Important (to current course of dev plans)
 	&: Unimportant
 
 
-FUNCTIONAL:
-	
+====+====> FUNCTIONAL:
+ADD AN ABSOLUTE MAXIMUM MAXACCURACY OF 120
+Consolidate ALL checks for shooting eligibility into one place, not spread out between
+manual process and try_shoot
+One function to check shooting eligibility, then one function to handle all the code
+if(eligibileToShoot()):
+	takeShot()
+Add pitch increase when ammo gets low
+Ensure reloading and aiming work with sylphs
+Clean up infopanel code, move weapon stat tracking to invenmanager's job
+
 FRAMERATE COUNTER!!!!!!!!!!!!!!!!!!!!!
 
-Change heldweapons to instantiate a script class
-Process isn't auto-called on simple node objects.
-Try doing it manually from the weaponholder?
-
-
-
 Sylph and playermodel bodies v2, but test with the millian prior
+
+Reimport sylph head but make sure it's actually centered this time, doofus.
 On the topic of Millian, make a blender file that is literally just backups of all the different variations
 
 Later: Add aim inertia to sylphs, up the amount they can rotate, add speed penalty, let them bake
@@ -51,19 +77,17 @@ Get rid of empty shooting penalty and movement penalty, allow for reloading (wil
 some invenmanager scripts to accomodate this because it's slightly scuffed right now)
 
 
+
 Archon intro ditty
 
 
 Write add_node_to_layer function
-Reimport sylph head but make sure it's actually centered this time, doofus.
 Change bullets to have damage falloff ++++&&
-Clean up infopanel code, move weapon stat tracking to invenmanager's job
-crosshair changes with speed **
+crosshair changes with move speed **
 
 Step up/down movement code ----- * (will have to do it at some point)
 
-EXPERIENTIAL:
-Scaling gunshot with ammo left
+====+====> EXPERIENTIAL:
 "button-like dialogue trees"
 Scrolling chat
 get better pistol gunshot &++

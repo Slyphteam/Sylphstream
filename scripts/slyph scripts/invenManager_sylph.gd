@@ -12,17 +12,26 @@ func _ready():
 	heldAmmunition.ammoPistol = 100000
 	#heldAmmunition.ammoRifle = 30
 	
-	getRefs()
-	
-	heldItem.load_weapon(heldItem.Starting_Wep, false)
-	
-	holdingFirearm = heldItem.isFirearm
+	user = $"../.."
+	if(starterWeapon is FIREARM_INFO):
+		activeItem = GUNBASICINSTANCE.new()
+		activeItem.invManager = self
+		activeItem.load_Weapon(starterWeapon, false, null)
+		weapType = 1 ##basic gun
+	else:
+		print("Unsupported script override!")
+	#heldItem.load_weapon(heldItem.Starting_Wep, false)
+	#
+	#holdingFirearm = heldItem.isFirearm
+
+func _process(_delta):
+	activeItem.manualProcess()
 
 func get_Ammo_Left():
 	var ratio:float = 1
-	var cur:float = heldItem.capacity
-	var ma:float = heldItem.maxCapacity
-	if(heldItem.capacity != heldItem.maxCapacity):
+	var cur:float = activeItem.capacity
+	var ma:float = activeItem.maxCapacity
+	if(activeItem.capacity != activeItem.maxCapacity):
 		ratio = cur / ma #value from 0-1
 	ratio *=2 #value from 0-2
 	ratio -=1 #value from -1 - 1
@@ -30,31 +39,31 @@ func get_Ammo_Left():
 
 #Assumes that recoil will never get worse than 120
 func get_Crosshair_Inaccuracy():
-	var ratio = heldItem.currentRecoil
+	var ratio = activeItem.currentRecoil
 	
 	ratio /= 120 #value between 0 and 1
 	ratio *=2 #value between 0 and 2
 	ratio -=1 #value between -1 and 1
 	return 1
 
-func getRefs():
-	heldItem = $weaponHolder
-	user = $"../.."
+#func getRefs():
+	#heldItem = $weaponHolder
+	#user = $"../.."
 
 ##functions going down the hierarchy
 var totalShots = 0
 
 func startReload():
 	heldAmmunition.ammoPistol +=15 #COMMENT THIS OUT ;ATER ON
-	if(holdingFirearm):
-		heldItem.startReload()
-		totalShots = heldItem.totalShots
-	else:
-		print("How do you reload a sword?")
+	
+	activeItem.startReload()
+	totalShots = activeItem.totalShots
+	#else:
+		#print("How do you reload a sword?")
 
 
 func refreshShots():
-	heldItem.totalShots = 0
+	activeItem.totalShots = 0
 
 func toggleSights():
 	pass

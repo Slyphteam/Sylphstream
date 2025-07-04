@@ -1,16 +1,17 @@
+#This was the script associated with the weapon_holder scene.
+#Since I changed invenmanagers to create a new script depending on behaviors, 
+#this script is now deprecated
+#99% of the functionality now belongs to gun_basic_instance
+
 # this is THE script that drives weapon behavior and loads weapon models/stats
 #into a game instance. It answers directly to the invenmanager script.
 
 extends Node3D
-
 @export var Starting_Wep: WEAP_INFO
 @onready var weapon_mesh: MeshInstance3D = $weapModel
 @onready var our_reticle: CenterContainer 
 @onready var gunshotPlayer: AudioStreamPlayer3D = $gunshotPlayer
 @onready var reloadPlayer: AudioStreamPlayer3D = $reloadPlayer
-
-
-
 
 #Resource loading code:
 #func _ready() -> void:
@@ -69,8 +70,6 @@ var recoilAmount
 var aimbonus
 var maxAzimuth: float #recoil units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
 
-var modeSemi
-
 
 var debtCutoff = 10 ##at what point do we just apply the recoil debt flat out?
 var recoveryCutoff ##at what point do we increase our recoil recovery?
@@ -97,10 +96,7 @@ func init_Firearm_Stats(weaponToLoad):
 	
 	gunshotPlayer.stream = weaponToLoad.gunshot
 	reloadPlayer.stream = weaponToLoad.reload
-	
-	modeSemi = weaponToLoad.modeSemi
-	
-	
+
 	
 	#initialize stats
 	capacity = maxCapacity
@@ -133,7 +129,10 @@ func tryShoot():
 		
 		#apply aimcone recoil. Calculations are elsewhere
 		recoilDebt += recoilAmount 
-		makeGunshot()
+		
+		#TODO: pitch incraese when ammo gets low
+		gunshotPlayer.pitch_scale = 1 + randf_range(-0.05, 0.05)
+		gunshotPlayer.play()
 		
 		doShoot() #actually shoot the bullet
 		
@@ -148,10 +147,7 @@ func tryShoot():
 		print("click!")
 		totalShots+=1
 
-##Function that literally just makes the gunshot sound
-func makeGunshot():
-	gunshotPlayer.pitch_scale = 1 + randf_range(-0.05, 0.05)
-	gunshotPlayer.play()
+
 
 
 ##This function will always fire a bullet from the center of the screen

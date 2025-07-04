@@ -15,8 +15,9 @@ func _ready():
 	user = get_node("../../..")
 	if(starterWeapon is FIREARM_INFO):
 		activeItem = GUNBASICINSTANCE.new()
+		activeItem.invManager = self
 		activeItem.load_Weapon(starterWeapon, true, $"../../../Control/Reticle")
-		weapType = 1
+		weapType = 1 ##basic gun
 	else:
 		print("Unsupported script override!")
 	
