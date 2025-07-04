@@ -12,22 +12,27 @@ func _ready():
 	heldAmmunition.ammoPistol = 51
 	heldAmmunition.ammoRifle = 30
 	
-	getRefs()
-	
-	heldItem.load_weapon(heldItem.Starting_Wep, true)
-	
-	holdingFirearm = heldItem.isFirearm
-
-func getRefs():
-	heldItem = get_node("weaponHolder")
 	user = get_node("../../..")
+	if(starterWeapon is FIREARM_INFO):
+		activeItem = GUNBASICINSTANCE.new()
+		activeItem.load_Weapon(starterWeapon, true, $"../../../Control/Reticle")
+		weapType = 1
+	else:
+		print("Unsupported script override!")
+	
+	#heldItem.load_weapon(heldItem.Starting_Wep, true)
+	
+	#holdingFirearm = heldItem.isFirearm
+
+func _process(_delta):
+	activeItem.manualProcess()
+
 
 #functions going down the hierarchy
 
-	
 func toggleSights():
-	if(holdingFirearm):
-		heldItem.toggleADS()
+	if(weapType == 1):
+		activeItem.toggleADS()
 	else:
 		print("Parry!")
 	

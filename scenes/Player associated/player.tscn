@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=10 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/player/cam_behavior.gd" id="2_f4klr"]
-[ext_resource type="PackedScene" uid="uid://ce220mf2ujope" path="res://scenes/weapon_holder.tscn" id="4_l4qvo"]
 [ext_resource type="Resource" uid="uid://d0r7hvlt81jkh" path="res://resources/weapon resources/firearm/degubby.tres" id="5_f4klr"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/player/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/player/invenManager_player.gd" id="5_tuyoq"]
@@ -27,9 +26,7 @@ player = NodePath("../..")
 
 [node name="weapon_rig" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
-
-[node name="weaponHolder" parent="camCage/came/weapon_rig" instance=ExtResource("4_l4qvo")]
-Starting_Wep = ExtResource("5_f4klr")
+starterWeapon = ExtResource("5_f4klr")
 
 [node name="playercollidercapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26282, 0)

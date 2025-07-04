@@ -1,14 +1,18 @@
 #This is the boilerplate code for all invenmanager objects.
 class_name INVENMANAGER extends Node3D
 
+@export var starterWeapon: WEAP_INFO
 enum Ammotypes {ammoBlank, ammoPistol, ammoRifle}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
-var heldItem: Node3D #TODO: MAKE GENERIC ITEM TYPE
-var activeItem: WEAPON_PARENT
+#var heldItem: Node3D #old name for activeItem prior to the WEPINSTANCE refactor
+var activeItem: WEPINSTANCE
+var weapType: int ##1 for basic firearm, 2 for melee...
 var user : Node3D
-var holdingFirearm: bool = false
+#var holdingFirearm: bool = false
 
+#func _ready():
+	#
 
 ##Get references to helditem and user. should be called in ready; here because it's not optional
 func getRefs():
@@ -72,18 +76,19 @@ func getAmmoAmt(amTyp:int ) -> int:
 
 
 func doShoot():
-	if(holdingFirearm):
-		heldItem.triggerDepressed = true
+	if(weapType == 1):
+		activeItem.triggerDepressed = true
 	else:
 		print("Swing!")
 
 func unShoot():
-	heldItem.triggerDepressed = false
+	if(weapType == 1):
+		activeItem.triggerDepressed = false
 	
 func startReload():
 	#penalty
-	if(holdingFirearm):
-		heldItem.startReload()
+	if(weapType == 1):
+		activeItem.startReload()
 	else:
 		print("How do you reload a sword?")
 

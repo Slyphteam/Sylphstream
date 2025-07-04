@@ -1,8 +1,9 @@
-class_name WEAPON_PARENT extends Resource
-@export_category("Weapon Information")
+##The parent resource object for all weapons. Do NOT use this; use one of the child classes instead.
+class_name WEAP_INFO extends Resource
+@export_category("Weapon Info")
 @export var wepName  : StringName = "Weapon parent name!"
 @export var wepDesc  : StringName = "Uh oh! You shouldn't see this! Please dial 1-800-imcoder!"
-@export var isFirearm: bool = false ##determines behavior patterns
+@export_category("Basic Instance Data")
 @export var mesh: Mesh ##Primary model of the weapon
 @export var secondMesh: Mesh ##Secondary model. Sheathe or magazine.
 @export var damage: int = 1 

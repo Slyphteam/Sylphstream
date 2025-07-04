@@ -3,7 +3,7 @@
 
 extends Node3D
 
-@export var Starting_Wep: WEAPON_PARENT
+@export var Starting_Wep: WEAP_INFO
 @onready var weapon_mesh: MeshInstance3D = $weapModel
 @onready var our_reticle: CenterContainer 
 @onready var gunshotPlayer: AudioStreamPlayer3D = $gunshotPlayer
@@ -19,7 +19,7 @@ extends Node3D
 
 
 
-func load_weapon(weaponToLoad:WEAPON_PARENT, reticle):
+func load_weapon(weaponToLoad:WEAP_INFO, reticle):
 	#print("Loading weapon mesh: ", weaponToLoad.mesh)
 	weapon_mesh.mesh = weaponToLoad.mesh
 	

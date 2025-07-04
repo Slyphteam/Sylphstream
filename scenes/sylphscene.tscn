@@ -1,12 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfyduw5qytyby"]
+[gd_scene load_steps=11 format=3 uid="uid://bfyduw5qytyby"]
 
 [ext_resource type="Script" uid="uid://buu3b8gxsbyw3" path="res://scripts/slyph scripts/sylph_body_controller.gd" id="1_6bxm0"]
 [ext_resource type="PackedScene" uid="uid://bqltcy1i67nbx" path="res://models/glbs and textures/sylph body.glb" id="2_1bk0r"]
 [ext_resource type="Script" uid="uid://bal520oxbxwh0" path="res://scripts/slyph scripts/slyph_mind.gd" id="2_a3el2"]
 [ext_resource type="PackedScene" uid="uid://x2dv4kxfm3w7" path="res://models/glbs and textures/sylph head v2.glb" id="2_avlhl"]
 [ext_resource type="Script" uid="uid://bf3xq6wkexy62" path="res://scripts/slyph scripts/invenManager_sylph.gd" id="4_qr4n3"]
-[ext_resource type="PackedScene" uid="uid://ce220mf2ujope" path="res://scenes/weapon_holder.tscn" id="5_trdry"]
-[ext_resource type="Resource" uid="uid://d0r7hvlt81jkh" path="res://resources/weapon resources/firearm/degubby.tres" id="6_a3el2"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a3el2"]
 points = PackedVector3Array(4.33349, 1, 6.48339, 4.33349, -1, 6.48339, 6.14673e-08, -0.000195742, -2, 6.14673e-08, 1, 6.48339, 6.14673e-08, -1, 6.48339)
@@ -72,9 +70,6 @@ shape = SubResource("ConvexPolygonShape3D_b8xb5")
 [node name="sylphinventory" type="Node3D" parent="sylph head v2"]
 transform = Transform3D(-1.11111, 0, 1.67773e-07, 0, 1.11111, 0, -1.67773e-07, 0, -1.11111, 0, -0.0343037, -0.486493)
 script = ExtResource("4_qr4n3")
-
-[node name="weaponHolder" parent="sylph head v2/sylphinventory" instance=ExtResource("5_trdry")]
-Starting_Wep = ExtResource("6_a3el2")
 
 [node name="sylphcollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16596, 0)

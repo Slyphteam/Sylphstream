@@ -1,4 +1,4 @@
-class_name Gun extends WEAPON_PARENT
+class_name FIREARM_INFO extends WEAP_INFO
 #This is the template class used for firearms.
 @export_category("Weapon Information")
 #@export var wepName = "Default firearm!"
@@ -8,10 +8,6 @@ class_name Gun extends WEAPON_PARENT
 
 @export_category("Behavioral variables")
 @export var shotCooldown: int = 10 ##in frames, determine firerate
-@export var modeSemi = true ## does the gun have a semi-auto mode? 
-@export var modeBurst = false ##does the gun have a three-round burst?
-@export var modeFull = false ##does the gun have full auto?
-@export var multiShot = false ##when the gun shoots, is it a volley?
 @export var chambering : int = 1 ## 1- Pistol; 2- Light rifle (5.56); 3- Heavy rifle (30 caliber); 4- Shotgun; 5- Plinking (.22 lr); 6- Magnum
 @export var maxCapacity : int = 5
 @export var reloadtime : float = 1 ##In seconds

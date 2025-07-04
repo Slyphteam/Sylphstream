@@ -37,6 +37,11 @@ FUNCTIONAL:
 FRAMERATE COUNTER!!!!!!!!!!!!!!!!!!!!!
 
 Change heldweapons to instantiate a script class
+Process isn't auto-called on simple node objects.
+Try doing it manually from the weaponholder?
+
+
+
 Sylph and playermodel bodies v2, but test with the millian prior
 On the topic of Millian, make a blender file that is literally just backups of all the different variations
 

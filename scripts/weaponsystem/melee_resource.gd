@@ -1,4 +1,4 @@
-class_name Mel extends WEAPON_PARENT
+class_name MELEE_INFO extends WEAP_INFO
 @export_category("Variables")
 @export var variance: float = 0.2 ##Fractional representation of how much damage can vary
 @export var reach : float = 1 ##In meters, from center of player
