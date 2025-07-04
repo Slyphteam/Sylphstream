@@ -3,8 +3,8 @@ class_name WEAP_INFO extends Resource
 @export_category("Weapon Info")
 @export var wepName  : StringName = "Weapon parent name!"
 @export var wepDesc  : StringName = "Uh oh! You shouldn't see this! Please dial 1-800-imcoder!"
-@export_category("Basic Instance Data")
 @export var mesh: Mesh ##Primary model of the weapon
+@export_category("Basic Instance Data")
 @export var secondMesh: Mesh ##Secondary model. Sheathe or magazine. Currently does nothing
 @export var damage: int = 1 
 @export var selection : int = 4 ##Currently unused, will be for switching

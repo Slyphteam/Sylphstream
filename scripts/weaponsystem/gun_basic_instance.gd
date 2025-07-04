@@ -39,6 +39,7 @@ var totalMaxRecoil
 var totalMinRecoil
 var recoveryAmount ##How quickly do we get a hold of the gun?
 var recoilAmount ##Applied per shot
+var punchMult ##Multiplier to viewpunch 
 var aimbonus ##Bonus to ADS accuracy/handling
 var maxAzimuth: float ##abstract units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
 var reloadTime: float
@@ -95,6 +96,7 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 	maxRecoil = wepToLoad.maxRecoil
 	recoveryAmount = wepToLoad.recoverAmount
 	recoilAmount = wepToLoad.recoilAmount
+	punchMult = wepToLoad.viewpunchMult
 	maxAzimuth = currentRecoil / 7
 	reloadTime = wepToLoad.reloadtime
 	aimbonus = wepToLoad.aimBonus
@@ -163,8 +165,8 @@ func try_Shoot():
 		do_Shoot() #actually shoot the bullet
 		
 		#afterwards, apply camera recoil. Aimkickbonus is always half of kick amount.
-		var lift = randi_range((aimKickBonus/2)+1, kickAmount)
-		var drift = randi_range((0 - aimKickBonus), aimKickBonus)
+		var lift = randi_range((aimKickBonus/2)+1, kickAmount) * punchMult
+		var drift = randi_range((0 - aimKickBonus), aimKickBonus) * punchMult
 		invManager.applyViewpunch(drift, lift)
 		
 		#print("Pew! Recoil: ", int(currentRecoil), " Kick: ", lift, ";", drift)

@@ -54,6 +54,10 @@ Finish expansion of weapon system and import shotgun, burst rifle, smg
 
 
 ====+====> FUNCTIONAL:
+do DA BIG REORGANIZE at some point
+do DA BIG FIREARM REIMPORT at some point
+Change sylph eyes to reflect new vision
+	
 ADD AN ABSOLUTE MAXIMUM MAXACCURACY OF 120
 Consolidate ALL checks for shooting eligibility into one place, not spread out between
 manual process and try_shoot
