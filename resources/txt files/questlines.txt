@@ -8,13 +8,37 @@ One or two easy sylphs should be guarding the springtails.
 Hollow and stray:
 One or two depricate can be found around the springtail nest, one should drop the Relata.
 -> "There were a few glitchy figures not far from the springtail nest. Were they supposed to be there?"
-Archon inserts itself into the world and asks the player to go get rid of a few extra. 
+Archon self inserts into the world and asks the player to go get rid of a few extra. Is weird about it.
+-> "The archon's directly tasking me with getting rid of some old code fragments that wormed their way into the Sylphstream.
+Something's off about the whole thing, but it's a job."
+At the end, two corpus soldiers join fight. Will turn hostile if player engages but otherwise only attack depricated
+
+Corpus Dei:
+When player gets back, prince asks them to check out the corpus.
+-> "The prince is asking me to check out some armored weirdos who set up shop in the town square. I think I met a few earlier."
+Twelfth arbiter of the hundred and third holy regiment of the nintieth wing of the fifth expeditionary fleet of the seekers of the Corpus Dei
+will say hi to player. Offers Corpus equipment at high prices. ("We have received... troubling reports about a strange recess far
+from the Hieriophant's guiding light.")
 
 Children of the abyss:
-Crunko exchange
+Crunko exchange, right before main depricate.
 -> "I found a poorly literate... something? that seemed totally unaccustomed to navigating 3D space. Weird."
-Later: Gupsnu exchange
+Later: Gupsnoo exchange
 -> "Yet another confused figure. Where are these helpless entities coming from? Why can't they spell?"
 Even later: Wrellib exchange
 -> "It seems like some kind of evil scorcer is summoning void beings into 3-dimensional space for sick laughs.
 The Hornsongmogomflibongle beast MUST be stopped."
+
+Creative outsourcing:
+Early sidequest. Greg wants player to get him a turretgun.
+
+HOLY RADIANCE EXCISED:
+Sidequest earned from talking to the Trustworthy Greg (gives mammon 22)
+-> "Greg told me about some kind of corporate egrigore that slithered his way into the Sylphstream. I feel like I should probably do something
+about it before unskippable autoplaying ads get added to the game."
+
+A mirror to stare into:
+Sidequest from talking to the chimera for sawfly blades. ("Hm, you player types like your rewards, don't you? How about some of my premium product?")
+
+Friends forever:
+Prince asks player to look into "Weird freak who keeps saying I'm their friend" (bestie). Gives Ghostbird in return.

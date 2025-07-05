@@ -38,7 +38,7 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Finish texturing shotgun
+Relata and ghostbird pickups, shotgun box, heavy rifle box
 Millian porcelaindoll variant
 Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
 Update sylph eyes

@@ -93,6 +93,22 @@ Hestrella:
 These goobers should only be enemies in certain occasions, and I want them to feel like the souped up combine AI in combat.
 Quite a few should offer quests.
 
-Commander bossfight focusing on cover and timing.
+Commander bossfight focusing on cover and timing phase two is they fucking chuck their SMG at you and rush with handblades
 
-Hieriophant bossfight that turns into a visual novel dating sim halfwy through
+Hieriophant bossfight that turns into a dating sim halfwy through
+
+
+
+Void wildlife:
+
+"Despite their appearances, the denizens of the void are about as feirce as puppies and only slightly better read.
+The fauna that dwells the endless dark, however, is an entirely different story."
+
+2d "drifters" that charge and fire lasers. Player has to stay moving. Occasionally will teleport? Bites if too close.
+
+
+Drifters:
+
+Another untitled ship game ripoff, chargers have been upgraded with 2-and-a-half-D directional sprites. Will phase through
+walls on their quest for a hug from the player. Other than not spinning and also being slightly less aggressive, act the same as
+their untitled ship game counterparts 
