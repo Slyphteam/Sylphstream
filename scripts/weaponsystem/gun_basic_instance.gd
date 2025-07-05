@@ -43,6 +43,7 @@ var punchMult ##Multiplier to viewpunch
 var aimbonus ##Bonus to ADS accuracy/handling
 var maxAzimuth: float ##abstract units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
 var reloadTime: float
+var doVolley: bool
 
 #Misc variables
 @export var decalTimer: int = 10 ##Lifetime length, in seconds, of hitdecals
@@ -100,9 +101,11 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 	maxAzimuth = currentRecoil / 7
 	reloadTime = wepToLoad.reloadtime
 	aimbonus = wepToLoad.aimBonus
+	doVolley = wepToLoad.volleyfire
 	
 	gunshotPlayer.stream = wepToLoad.gunshot
 	reloadPlayer.stream = wepToLoad.reload
+	
 
 	
 	#initialize stats
@@ -163,6 +166,10 @@ func try_Shoot():
 		gunshotPlayer.play()
 		
 		do_Shoot() #actually shoot the bullet
+		
+		if(doVolley): #and a few more for good measure
+			for x in range(11):
+				do_Shoot()
 		
 		#afterwards, apply camera recoil. Aimkickbonus is always half of kick amount.
 		var lift = randi_range((aimKickBonus/2)+1, kickAmount) * punchMult

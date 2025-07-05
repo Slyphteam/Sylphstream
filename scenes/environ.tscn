@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=43 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://dw6u8j6bfnycd" path="res://scenes/trivial/pickups/bergther.tscn" id="3_aggi3"]
 [ext_resource type="PackedScene" uid="uid://dl0emtfqlrkh2" path="res://scenes/trivial/pickups/fourier_9.tscn" id="3_d6ln1"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b0ggseuf34obn" path="res://scenes/trivial/pickups/rifle_ammobox.tscn" id="10_n8uj3"]
 [ext_resource type="PackedScene" uid="uid://mivmmni3ef2p" path="res://models/glbs and textures/rimfire_ammobox.glb" id="11_ugmq3"]
 [ext_resource type="PackedScene" uid="uid://oh4304fixaus" path="res://scenes/archonscene.tscn" id="12_c4nfh"]
+[ext_resource type="PackedScene" uid="uid://bxrx8ll63qdvk" path="res://models/glbs and textures/relata.glb" id="12_c727u"]
 [ext_resource type="PackedScene" uid="uid://b42l0nhhc0hb" path="res://models/glbs and textures/ghostbird model.glb" id="12_kv8j4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
@@ -219,7 +220,7 @@ mesh = SubResource("BoxMesh_ycbjd")
 skeleton = NodePath("../../..")
 
 [node name="affine" parent="Environment/Range" instance=ExtResource("7_aggi3")]
-transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 0.00527954, 0.848665, -0.445808)
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 1.17587, 0.848665, -7.99377)
 
 [node name="fourier9" parent="Environment/Range" instance=ExtResource("3_d6ln1")]
 transform = Transform3D(0.222263, 0, -0.974987, 0, 1, 0, 0.974987, 0, 0.222263, 0.0794182, 0.851828, -2.9652)
@@ -359,5 +360,8 @@ transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08,
 [node name="Player" parent="." instance=ExtResource("4_2yn2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187381, 1.86011, 3.46502)
 
+[node name="relata" parent="." instance=ExtResource("12_c727u")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 42.1355, 2.3705, 16.8289)
+
 [node name="ghostbird model" parent="." instance=ExtResource("12_kv8j4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9545, 2.50739, 16.9799)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8107, 2.35094, 17.2125)

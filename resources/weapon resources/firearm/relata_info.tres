@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://vmo1b3o1awtj"]
+
+[ext_resource type="AudioStream" uid="uid://b6313qn0yic35" path="res://sounds/gunshots/shotgun.mp3" id="1_l1t8h"]
+[ext_resource type="ArrayMesh" uid="uid://cttmpiun4yffe" path="res://models/mesh models/relata mesh.res" id="2_bmc76"]
+[ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="2_kq0qm"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponsystem/firearm_resource.gd" id="3_bmc76"]
+
+[resource]
+script = ExtResource("3_bmc76")
+gunshot = ExtResource("1_l1t8h")
+reload = ExtResource("2_kq0qm")
+shotCooldown = 40
+chambering = 4
+maxCapacity = 8
+reloadtime = 1.0
+aimBonus = 0.0
+maxRecoil = 40.0
+minRecoil = 20.0
+recoilAmount = 10.0
+viewpunchMult = 4.0
+recoverAmount = 0.4
+volleyfire = true
+wepName = &"Relata"
+wepDesc = &"This entirely handcrafted steel abomination smells faintly of benadryl and weegees."
+mesh = ExtResource("2_bmc76")
+damage = 7
+selection = 4
+position = Vector3(0.5, -0.25, -0.5)
+rotation = Vector3(90, 90, 0)
+scale = Vector3(1, 1, 1)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"

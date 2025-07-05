@@ -11,6 +11,8 @@ func _ready():
 	heldAmmunition.ammoBlank = 100
 	heldAmmunition.ammoPistol = 51
 	heldAmmunition.ammoRifle = 30
+	heldAmmunition.ammoShotgun = 20
+	
 	
 	user = get_node("../../..")
 	if(starterWeapon is FIREARM_INFO):

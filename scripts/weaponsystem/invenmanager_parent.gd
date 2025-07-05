@@ -2,7 +2,7 @@
 class_name INVENMANAGER extends Node3D
 
 @export var starterWeapon: WEAP_INFO
-enum Ammotypes {ammoBlank, ammoPistol, ammoRifle}
+enum Ammotypes {ammoBlank, ammoPistol, ammoRifle, ammoThirtycal, ammoShotgun}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
 #var heldItem: Node3D #old name for activeItem prior to the WEPINSTANCE refactor
@@ -56,6 +56,17 @@ func withdrawAmmo(amTyp: int, amount: int)-> int:
 			
 		heldAmmunition.ammoRifle -= amount;
 		return amount
+	
+	elif (amTyp == 4): 
+		print("Taking ", amount, " from pool of ", heldAmmunition.ammoShotgun)
+		if(amount >= heldAmmunition.ammoShotgun):
+			print("making do with ", heldAmmunition.ammoShotgun)
+			var leftover = heldAmmunition.ammoShotgun
+			heldAmmunition.ammoShotgun = 0
+			return leftover
+			
+		heldAmmunition.ammoShotgun -= amount;
+		return amount
 	else:
 		print("Attemted to withdraw invalid chambering!")
 		return 1
@@ -67,6 +78,8 @@ func getAmmoAmt(amTyp:int ) -> int:
 		return heldAmmunition.ammoPistol
 	elif(amTyp == 2):
 		return heldAmmunition.ammoRifle
+	elif(amTyp == 4):
+		return heldAmmunition.ammoShotgun
 	else:
 		print("Attempted to check invalid chambering!")
 		return 0;
