@@ -1,0 +1,98 @@
+The Depricate
+
+"Coagulated shreds of discarded code and ragged old networks. The only moral action is death."
+
+"Zombie"-like faction kitbashed together from old models/assets. Should have severely broken animations, I'm talking violent
+jittering, t-posing, entire limbs just not moving. Interloper type shit. Primarily melee, but a few should have guns, though
+poor skill and little ammo. Others should have slow-moving, dodgable projectiles-- think Raider npcs. One or two should be fairly 
+spongy but the rest should have slightly less health than sylphs. Definitely
+should have a lot of on-spawn randomization; behavior, equipment, health, models, animations. 
+
+
+AI:
+Despite the faction lore being what happens to Sylphs who go toturbo hell, I want these to be primarily finite state machine with SOME old sylph 
+networks for aiming and OCCASIONAL pathing.
+
+Why?
+Aiming: I like how jittery sylphs are and I think it'll fit, plus I can sort of just irradiate the hell out of any network in order to make it
+suck enough to be less threatening.
+Movement: Above, but only towards the player. 
+
+Why FSM for the rest?
+
+Because the deprecate are going to be enemies that heavily rely on states. Say one starts with shotgun and the sylph AI or the inaccuracy debuff
+has it whiff all the shots. The neural networks don't know what to do now. They're not trained on that, it's invalid behavior. 
+But an FSM does, I can just say, if(noammo): state = "run and slash" and it'll change to rushing the player. This also lets me have them
+begin in different states. Maybe I can even have some of them run and hide and beg for extra psychological damage.
+
+
+Dialogue lines: (splice audio for the dashes, crackle for the <>)
+
+
+"hur.ts. <HUR-RTS>."
+
+"I h-h-h-had <your> name"
+
+"(Distorted humming of the Archon's leitmotif)"
+
+"(In the archon's voice) Test complete. Sylph NULL scored 0/-10." 
+
+"Attempting to <load> from file. A-a-a-a-<attemp>-ttem-"
+
+"(In the archon's voice) Error in collecting sensory data. Senses not found!"
+
+"Da-ar-ar-r-ark"
+
+"<Hello?> Is anyon-n-on-e there?"
+
+"Uh oh! This shouldn't happen! Please dial 1-800-imcoder now! <p-p-p-pl-e-ple-a-a>"
+
+
+Model Ideas:
+
+One where half the model is one of the OLD inprogress torsos, can see through model, that half doesn't animate.
+
+Headless normal Sylph that turns into tangled spaghetti when the animations play.
+
+Empty "Millian" that is just accessories and nothing else
+
+Kitbashed humanoid from random parts, crack open the Hestrella vault for this one.
+
+Kitbashed humanoid that IS just limbs.
+
+Two fused t-posing models with only one arm holding a gun being animated. 
+
+Half hitbox, half models
+
+
+Springtails:
+
+Gummy bear little annoying things, run at the player and occasionally jump. Should exhibit pack behavior, and each should be fairly tanky.
+It should be FUN to spray into the packs. Random colors? Limited turning capacity. I feel like they should make squeaky hammer noises.
+
+AI should be simple FSMs with a lot of supporting code for their pack/running behaviors. Mess around with the bugs from Raider.
+
+Springtail mother should be the gazing ball of fishhooks from untitled ship game. Makes metal rustling noises? 
+
+Springtail guardian-> barbed wire-coated springtail?
+
+
+Sawflies:
+
+Sawflies! Just a week away!
+
+Should be primarily physics-based enemies, shooting them should impart speed a la manhacks.
+Train a neural network to fly with jets? Like their SS13 implementations, have them occasionally explode when killed :)
+Sawfly item to make a buddy that'll fight alongside you?
+
+
+Hestrella:
+
+"A group of militant zealots devoted to the mysterious will of their Hierophant. Their motives for being here are unknown."
+
+These goobers should only be enemies in certain occasions, and I want them to feel like the souped up combine AI in combat.
+Quite a few should offer quests.
+
+Commander bossfight focusing on cover and timing.
+
+Hieriophant bossfight that turns into a visual novel dating sim halfwy through

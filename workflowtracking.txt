@@ -38,7 +38,10 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Finish expansion of weapon system and import shotgun, burst rifle, smg
+Finish texturing shotgun
+Millian porcelaindoll variant
+Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
+Update sylph eyes
 
 -----------\
 =======+=======> FUTURE PLANS:
@@ -54,10 +57,12 @@ Finish expansion of weapon system and import shotgun, burst rifle, smg
 
 
 ====+====> FUNCTIONAL:
+
+	
+	
 do DA BIG REORGANIZE at some point
 do DA BIG FIREARM REIMPORT at some point
-Change sylph eyes to reflect new vision
-	
+
 ADD AN ABSOLUTE MAXIMUM MAXACCURACY OF 120
 Consolidate ALL checks for shooting eligibility into one place, not spread out between
 manual process and try_shoot
@@ -99,4 +104,7 @@ footstep sounds +++
 context-sensitive leaning --&
 ADS makes the camera zoom in & ??
 fix weapon clipping ++++++++ &
+
+Eventually:
+Shoothouse
 KICKING!!!
