@@ -19,6 +19,7 @@ minRecoil = 10.0
 recoilAmount = 15.0
 viewpunchMult = 1.0
 recoverAmount = 0.5
+volleyfire = false
 wepName = &"Fourier 9"
 wepDesc = &"A cheap, not entirely robust carbine that places an emphasis on the importance of transmissions."
 mesh = ExtResource("2_gdvhu")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=48 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://dw6u8j6bfnycd" path="res://scenes/trivial/pickups/bergther.tscn" id="3_aggi3"]
 [ext_resource type="PackedScene" uid="uid://dl0emtfqlrkh2" path="res://scenes/trivial/pickups/fourier_9.tscn" id="3_d6ln1"]
@@ -13,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://oh4304fixaus" path="res://scenes/archonscene.tscn" id="12_c4nfh"]
 [ext_resource type="PackedScene" uid="uid://bxrx8ll63qdvk" path="res://models/glbs and textures/relata.glb" id="12_c727u"]
 [ext_resource type="PackedScene" uid="uid://b42l0nhhc0hb" path="res://models/glbs and textures/ghostbird model.glb" id="12_kv8j4"]
+[ext_resource type="PackedScene" uid="uid://c5m0b6abxw6de" path="res://models/new models and meshes/fourier N.glb" id="14_c727u"]
+[ext_resource type="PackedScene" uid="uid://cppumgcrqjb2k" path="res://models/new models and meshes/affine N.glb" id="15_ydxer"]
+[ext_resource type="PackedScene" uid="uid://fba5x7u8qfhj" path="res://models/new models and meshes/bergther N.glb" id="16_5kovb"]
+[ext_resource type="PackedScene" uid="uid://bc1mf2egbgx10" path="res://models/new models and meshes/degubby N.glb" id="16_8f4e3"]
+[ext_resource type="PackedScene" uid="uid://bf3p0b5crwc2g" path="res://models/new models and meshes/relata N.glb" id="17_os2cn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -223,10 +228,10 @@ skeleton = NodePath("../../..")
 transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 1.17587, 0.848665, -7.99377)
 
 [node name="fourier9" parent="Environment/Range" instance=ExtResource("3_d6ln1")]
-transform = Transform3D(0.222263, 0, -0.974987, 0, 1, 0, 0.974987, 0, 0.222263, 0.0794182, 0.851828, -2.9652)
+transform = Transform3D(0.222263, 0, -0.974987, 0, 1, 0, 0.974987, 0, 0.222263, 0.0794182, 0.851828, -7.51402)
 
 [node name="bergther 2" parent="Environment/Range" instance=ExtResource("3_aggi3")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0872993, 0.85422, 2.2288)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0872993, 0.85422, -6.19303)
 
 [node name="target" parent="Environment/Range" instance=ExtResource("4_m2myf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.48683, 0.648801, -1.71955)
@@ -361,7 +366,22 @@ transform = Transform3D(1.91069e-15, 1, -4.37114e-08, 4.37114e-08, -4.37114e-08,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187381, 1.86011, 3.46502)
 
 [node name="relata" parent="." instance=ExtResource("12_c727u")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 42.1355, 2.3705, 16.8289)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 42.1355, 2.3705, 15.6913)
 
 [node name="ghostbird model" parent="." instance=ExtResource("12_kv8j4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8107, 2.35094, 17.2125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.8128, 2.35094, 12.8849)
+
+[node name="affine N" parent="." instance=ExtResource("15_ydxer")]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, 42.9003, 1.85412, 19.2996)
+
+[node name="degubby N" parent="." instance=ExtResource("16_8f4e3")]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, 42.4546, 1.89876, 18.2395)
+
+[node name="bergther N" parent="." instance=ExtResource("16_5kovb")]
+transform = Transform3D(4.37114e-08, 1, -3.82137e-15, 1, -4.37114e-08, -8.74228e-08, -8.74228e-08, 0, -1, 42.669, 1.83792, 19.8026)
+
+[node name="relata N" parent="." instance=ExtResource("17_os2cn")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 42.5023, 1.82492, 21.35)
+
+[node name="fourier N" parent="." instance=ExtResource("14_c727u")]
+transform = Transform3D(-4.37114e-08, 1, 0, 1, 4.37114e-08, 8.74228e-08, 8.74228e-08, 3.82137e-15, -1, 42.3748, 1.87654, 19.7338)
