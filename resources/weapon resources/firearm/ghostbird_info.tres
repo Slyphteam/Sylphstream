@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponsystem/firearm_resource.gd" id="1_7copu"]
 [ext_resource type="AudioStream" uid="uid://c7xne0xmb6kea" path="res://sounds/gunshots/22 lr.mp3" id="1_7d70s"]
-[ext_resource type="ArrayMesh" uid="uid://wqa3lrjgvk3j" path="res://models/mesh models/ghostbird mesh.res" id="1_os3fj"]
+[ext_resource type="ArrayMesh" uid="uid://bdlvykvo3phn6" path="res://models/new models and meshes/ghostbird N mesh.res" id="2_h6xou"]
 [ext_resource type="AudioStream" uid="uid://8rtx1mf3r3ma" path="res://sounds/reloads/ghostbird reload.mp3" id="3_h6xou"]
 
 [resource]
@@ -19,9 +19,10 @@ minRecoil = 10.0
 recoilAmount = 10.0
 viewpunchMult = 3.0
 recoverAmount = 0.5
+volleyfire = false
 wepName = &"Ghostbird"
 wepDesc = &"An ingenious bullpup SMG of Brazilian design. Video game logic trades damage for cyclic rate."
-mesh = ExtResource("1_os3fj")
+mesh = ExtResource("2_h6xou")
 damage = 17
 selection = 3
 position = Vector3(0.3, -0.15, -0.2)

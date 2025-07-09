@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Gun" load_steps=5 format=3 uid="uid://d0r7hvlt81jkh"]
+[gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://d0r7hvlt81jkh"]
 
 [ext_resource type="AudioStream" uid="uid://b6313qn0yic35" path="res://sounds/gunshots/shotgun.mp3" id="1_04j37"]
-[ext_resource type="ArrayMesh" uid="uid://crtk8p0p6eefb" path="res://models/mesh models/debug weapon mesh.res" id="2_rkid4"]
+[ext_resource type="ArrayMesh" uid="uid://vw6edrkqrxou" path="res://models/new models and meshes/degubby N mesh.res" id="2_04j37"]
 [ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="3_c46cm"]
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponsystem/firearm_resource.gd" id="4_gybuq"]
 
@@ -10,10 +10,6 @@ script = ExtResource("4_gybuq")
 gunshot = ExtResource("1_04j37")
 reload = ExtResource("3_c46cm")
 shotCooldown = 10
-modeSemi = true
-modeBurst = false
-modeFull = false
-multiShot = false
 chambering = 1
 maxCapacity = 15
 reloadtime = 1.0
@@ -21,11 +17,12 @@ aimBonus = 30.0
 maxRecoil = 40.0
 minRecoil = 1.0
 recoilAmount = 15.0
+viewpunchMult = 1.0
 recoverAmount = 0.3
+volleyfire = false
 wepName = &"Degubby!"
 wepDesc = &"A very special weapon for very special purposes"
-isFirearm = true
-mesh = ExtResource("2_rkid4")
+mesh = ExtResource("2_04j37")
 damage = 1
 selection = 1
 position = Vector3(0.5, -0.15, -0.4)

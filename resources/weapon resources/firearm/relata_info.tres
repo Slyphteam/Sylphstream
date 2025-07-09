@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://vmo1b3o1awtj"]
 
 [ext_resource type="AudioStream" uid="uid://b6313qn0yic35" path="res://sounds/gunshots/shotgun.mp3" id="1_l1t8h"]
-[ext_resource type="ArrayMesh" uid="uid://cttmpiun4yffe" path="res://models/mesh models/relata mesh.res" id="2_bmc76"]
+[ext_resource type="ArrayMesh" uid="uid://hj16uuuo3d2j" path="res://models/new models and meshes/relata N mesh.res" id="2_bmc76"]
 [ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="2_kq0qm"]
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponsystem/firearm_resource.gd" id="3_bmc76"]
 

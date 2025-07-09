@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Gun" load_steps=5 format=3 uid="uid://dml6uaueraa87"]
+[gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://dml6uaueraa87"]
 
 [ext_resource type="AudioStream" uid="uid://b172helr4d31a" path="res://sounds/gunshots/pistol2.mp3" id="1_s0hm1"]
-[ext_resource type="ArrayMesh" uid="uid://b6o5gbnl7uilv" path="res://models/mesh models/bergther.res" id="2_1tmam"]
+[ext_resource type="ArrayMesh" uid="uid://dvepunob6blsv" path="res://models/new models and meshes/bergther N mesh.res" id="2_kbr7q"]
 [ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="3_1tmam"]
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponsystem/firearm_resource.gd" id="3_as8nn"]
 
@@ -9,6 +9,7 @@
 script = ExtResource("3_as8nn")
 gunshot = ExtResource("1_s0hm1")
 reload = ExtResource("3_1tmam")
+shotCooldown = 10
 chambering = 1
 maxCapacity = 12
 reloadtime = 1.8
@@ -16,11 +17,12 @@ aimBonus = 10.0
 maxRecoil = 50.0
 minRecoil = 20.0
 recoilAmount = 10.0
+viewpunchMult = 1.0
 recoverAmount = 0.3
+volleyfire = false
 wepName = &"Bergther G5P"
 wepDesc = &"A fairly unremarkable, though chimeric pistol chambered in 7.822 Longman"
-isFirearm = true
-mesh = ExtResource("2_1tmam")
+mesh = ExtResource("2_kbr7q")
 damage = 22
 selection = 1
 position = Vector3(0.6, -0.2, -0.6)
