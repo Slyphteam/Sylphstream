@@ -1,3 +1,11 @@
+7/9:
+Reimports all models to have consistent scale, updates all pickups to use new models,
+deletes all old models and textures, pickups now use a single generic script
+7/5: 
+Implements Relata, the shotgun
+7/4: 
+Massive refractor, all weapons and invenmanagers now use a wep_instance object that is loaded at runtime
+Implements Ghostbird, the SMG
 6/27:
 Saving, loading, and utility functions added to neural networks.c
 6/26:
