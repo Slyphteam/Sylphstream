@@ -38,18 +38,34 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Relata and ghostbird pickups, shotgun box, heavy rifle box
-Millian porcelaindoll variant
-Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
-Update sylph eyes
+Weapon system cleanup
+
+Change Relata to have its own custom shotgun instance and filetype
+ADD AN ABSOLUTE MAXIMUM MAXACCURACY OF 120
+Consolidate ALL checks for shooting eligibility into one place, not spread out between
+manual process and try_shoot
+One function to check shooting eligibility, then one function to handle all the code
+if(eligibileToShoot()):
+	takeShot()
+Add pitch increase when ammo gets low
 Refactor raycast_reactive to NOT return true/false at end of interaction, that's really dumb
 for JUST the possibility of playing pickup sounds for ammoboxes.
-
+Shotgun box (at least do the model)
 
 -----------\
 =======+=======> FUTURE PLANS:
 -----------/
 
+Sylph maintenance
+
+Bring sylph invenmanager up to date with current systems
+Add aim inertia to sylphs, up the amount they can rotate, add speed penalty, let them bake
+for a bit to get used to it.
+Ensure reloading and aiming work with sylphs
+Clean up infopanel code, move weapon stat tracking to invenmanager's job
+Get rid of empty shooting penalty and movement penalty, allow for reloading (will have to update
+some invenmanager scripts to accomodate this because it's slightly scuffed right now)
+Reimport sylph head but make sure it's actually centered this time, doofus.
 
 
 ====+====> KEY:
@@ -61,33 +77,23 @@ for JUST the possibility of playing pickup sounds for ammoboxes.
 
 ====+====> FUNCTIONAL:
 
-	
-	
-do DA BIG REORGANIZE at some point
-do DA BIG FIREARM REIMPORT at some point
 
-ADD AN ABSOLUTE MAXIMUM MAXACCURACY OF 120
-Consolidate ALL checks for shooting eligibility into one place, not spread out between
-manual process and try_shoot
-One function to check shooting eligibility, then one function to handle all the code
-if(eligibileToShoot()):
-	takeShot()
-Add pitch increase when ammo gets low
-Ensure reloading and aiming work with sylphs
-Clean up infopanel code, move weapon stat tracking to invenmanager's job
+
+do DA BIG REORGANIZE at some point
+
+
 
 FRAMERATE COUNTER!!!!!!!!!!!!!!!!!!!!!
 
 Sylph and playermodel bodies v2, but test with the millian prior
 
-Reimport sylph head but make sure it's actually centered this time, doofus.
-On the topic of Millian, make a blender file that is literally just backups of all the different variations
 
-Later: Add aim inertia to sylphs, up the amount they can rotate, add speed penalty, let them bake
-for a bit to get used to it.
-Get rid of empty shooting penalty and movement penalty, allow for reloading (will have to update
-some invenmanager scripts to accomodate this because it's slightly scuffed right now)
 
+
+
+
+Millian porcelaindoll variant
+Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
 
 
 Archon intro ditty
