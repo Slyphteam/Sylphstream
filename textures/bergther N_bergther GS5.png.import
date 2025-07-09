@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du7em4ukfnsqu"
-path.s3tc="res://.godot/imported/relata N_relata png shitty.png-1b08516074f55c181ad4030434b12356.s3tc.ctex"
+uid="uid://7dt2l67a8tco"
+path.s3tc="res://.godot/imported/bergther N_bergther GS5.png-ae1c52c2da21358acbf05d7563fa4ed5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "ddfe12a784883e9fb9c61f7f60d5475d"
+"md5": "7614c8ddfe57dea3dab09e10f94368bb"
 }
 
 [deps]
 
-source_file="res://models/new models and meshes/relata N_relata png shitty.png"
-dest_files=["res://.godot/imported/relata N_relata png shitty.png-1b08516074f55c181ad4030434b12356.s3tc.ctex"]
+source_file="res://textures/bergther N_bergther GS5.png"
+dest_files=["res://.godot/imported/bergther N_bergther GS5.png-ae1c52c2da21358acbf05d7563fa4ed5.s3tc.ctex"]
 
 [params]
 

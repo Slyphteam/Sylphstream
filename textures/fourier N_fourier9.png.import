@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g3q2cqhrkis8"
-path.s3tc="res://.godot/imported/ghostbird N_ghostbird.png-9fb4870b8a9426f5909987c3fb0e67f7.s3tc.ctex"
+uid="uid://b0nmlre56f8ia"
+path.s3tc="res://.godot/imported/fourier N_fourier9.png-50c9543f6f0a0a1e5c8cb6122935ac5e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "013ad75e2627c534e7a72da30b51667b"
+"md5": "ed2e7588dfbcc22b7ddbc999af51ffdd"
 }
 
 [deps]
 
-source_file="res://models/new models and meshes/ghostbird N_ghostbird.png"
-dest_files=["res://.godot/imported/ghostbird N_ghostbird.png-9fb4870b8a9426f5909987c3fb0e67f7.s3tc.ctex"]
+source_file="res://textures/fourier N_fourier9.png"
+dest_files=["res://.godot/imported/fourier N_fourier9.png-50c9543f6f0a0a1e5c8cb6122935ac5e.s3tc.ctex"]
 
 [params]
 

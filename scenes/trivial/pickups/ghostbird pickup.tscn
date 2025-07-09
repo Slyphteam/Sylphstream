@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://c104tyo0foh0a"]
+
+[ext_resource type="PackedScene" uid="uid://c32rdlbbc6i86" path="res://models/new models and meshes/ghostbird N.glb" id="1_xxhfl"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/trivial/pickups/weapon_pickup_script.gd" id="2_t41yx"]
+[ext_resource type="Resource" uid="uid://up52p06xonfc" path="res://resources/weapon resources/firearm/ghostbird_info.tres" id="3_itlfj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xxhfl"]
+points = PackedVector3Array(-0.967372, -0.557503, -0.877926, 0.59446, 0.483563, 1.12866, -0.0992558, 1.55378, -0.499443, 1.55147, -0.67955, -0.256775, -0.0506385, -0.776889, 1.8307, -1.02198, 1.01963, 0.568066, -0.681908, -1.55378, -0.256485, 1.55147, 0.67955, -0.256775, 0.916507, -0.539431, -0.924246, -1.02198, -1.01963, 0.568066, -0.997207, 1, -0.766987, 0.916507, 0.539431, -0.924246, -0.0992558, -1.55378, -0.499443, -0.681908, 1.55378, -0.256485, -0.0506385, 0.776585, 1.83099, 0.968562, -1.01963, 0.0348912, 0.968562, 1.01963, 0.0346012, -0.997207, -1, -0.766987, -0.206504, -0.718066, 1.81598, 0.596072, -0.220951, 1.17633, -0.0992558, 1.55378, -0.256485, -0.0992558, -1.55378, -0.256485, 0.933937, 0.923191, -0.77595, 0.933937, -0.922903, -0.775952, -0.967372, 0.557503, -0.877926, 1.55147, 0.533845, -0.159649, -0.206504, 0.718066, 1.81598, 1.55147, -0.533845, -0.159649, 0.600467, -0.626758, 1.09615, 0.596086, 0.220684, 1.17636, 1.47875, 0.412125, -0.354313, -0.638144, -1.48195, -0.455681)
+
+[node name="ghostbird N" instance=ExtResource("1_xxhfl")]
+
+[node name="Ghostbird shape" type="StaticBody3D" parent="Ghostbird" index="0" groups=["player_interactible"]]
+script = ExtResource("2_t41yx")
+weptoGive = ExtResource("3_itlfj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ghostbird/Ghostbird shape" index="0"]
+shape = SubResource("ConvexPolygonShape3D_xxhfl")

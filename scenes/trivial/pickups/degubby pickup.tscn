@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdgwi6tjdsj5u"]
+
+[ext_resource type="PackedScene" uid="uid://bc1mf2egbgx10" path="res://models/new models and meshes/degubby N.glb" id="1_ki2ub"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/trivial/pickups/weapon_pickup_script.gd" id="2_ybqhr"]
+[ext_resource type="Resource" uid="uid://d0r7hvlt81jkh" path="res://resources/weapon resources/firearm/degubby.tres" id="3_cbxty"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ki2ub"]
+points = PackedVector3Array(-0.265071, 0.0845674, 1.34461, 0.127373, -0.0727216, -0.858949, 0.127373, 0.0845674, -0.858949, -2.54825, -0.151435, -0.386574, 1.54382, -0.230149, 0.00685659, 2.48845, 0.0845674, -0.0718727, -2.54825, 0.163281, -0.386574, -2.38999, -0.151435, 0.636043, 1.54382, 0.242041, 0.00685659, -2.38999, 0.163281, 0.636043, -0.265071, -0.151435, 1.26588, 2.48845, -0.0727216, 0.0855858, 0.756961, -0.151435, -0.78022, 0.756961, 0.163281, -0.78022, -0.658994, -0.230149, -0.30806, -0.265071, 0.163281, 1.26588, -0.658994, 0.242041, -0.30806, 1.6227, -0.151435, -0.544032, 2.48845, 0.0845674, 0.0855858, 1.85886, 0.163281, -0.465303, -0.658994, 0.163281, 1.26588, -0.658994, -0.230149, -0.0718727, -0.265071, -0.0727216, 1.34461, 1.54382, -0.230149, -0.229331, 1.54382, 0.242041, -0.229331, 1.93725, -0.151435, 0.242829, -2.54825, 0.163281, 0.0855858, -0.658994, 0.242041, -0.150602, 1.85886, 0.163281, 0.242829, 0.127373, 0.163281, -0.78022, 0.127373, -0.151435, -0.78022, 2.48845, -0.0727216, -0.0718727)
+
+[node name="degubby N" instance=ExtResource("1_ki2ub")]
+
+[node name="Degubby shape" type="StaticBody3D" parent="gun parent" index="0" groups=["player_interactible"]]
+script = ExtResource("2_ybqhr")
+weptoGive = ExtResource("3_cbxty")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gun parent/Degubby shape" index="0"]
+shape = SubResource("ConvexPolygonShape3D_ki2ub")

@@ -491,6 +491,28 @@ PLAYER OPTIONS:
 3; I suppose I'll pretend I didn't hear that last portion.
 
 
+CHAT OPTIONS:
+1) Any work for me? (begins a lake to stare into quest)
+2) How do you make these auto-injectors, anyway?
+
+2: Alchemy.
+1) Alchemy??
+1: What, do you think I scienced them up in a lab somewhere? 
+1) Yes?
+2) No.
+Well, I didn't/Of course not! 
+I'm quite the accomplished biothaumaturge. How else do you suppose I've attained my gorgeous figure?
+
+I guess that makes sense. Can you do that to me?
+-> I'm afraid you're not an ensouled form of life, Millian
+Huh, checks out (end dialogue)
+
+I am not a combative NPC. I don't even have a health variable. You can shoot me all you'd like and it will simply do nothing.
+
+
+
+
+
 Type Millian (complex dialogue test):
 Hi, it's me, Millian!
 

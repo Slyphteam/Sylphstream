@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj582sdrcynd7"
-path.s3tc="res://.godot/imported/degubby N_parent.png-637a5c869f950541cde11d6f5e016354.s3tc.ctex"
+uid="uid://b02y0eh3g2q1i"
+path.s3tc="res://.godot/imported/ghostbird N_ghostbird.png-ec744d697ab0a4f3d3f6b1ca7f7e8cf8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "a34d7719214572e9da45f9cb4a5eab2e"
+"md5": "013ad75e2627c534e7a72da30b51667b"
 }
 
 [deps]
 
-source_file="res://models/new models and meshes/degubby N_parent.png"
-dest_files=["res://.godot/imported/degubby N_parent.png-637a5c869f950541cde11d6f5e016354.s3tc.ctex"]
+source_file="res://textures/ghostbird N_ghostbird.png"
+dest_files=["res://.godot/imported/ghostbird N_ghostbird.png-ec744d697ab0a4f3d3f6b1ca7f7e8cf8.s3tc.ctex"]
 
 [params]
 

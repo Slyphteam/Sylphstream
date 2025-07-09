@@ -15,17 +15,27 @@ func _ready():
 	
 	
 	user = get_node("../../..")
-	if(starterWeapon is FIREARM_INFO):
-		activeItem = GUNBASICINSTANCE.new()
-		activeItem.invManager = self
-		activeItem.load_Weapon(starterWeapon, true, $"../../../Control/Reticle")
-		weapType = 1 ##basic gun
-	else:
-		print("Unsupported script override!")
+	load_Wep(starterWeapon)
 	
 	#heldItem.load_weapon(heldItem.Starting_Wep, true)
 	
 	#holdingFirearm = heldItem.isFirearm
+
+func load_Wep(wep2Load):
+	
+	if(activeItem): #unload old item
+		activeItem.unload()
+		activeItem.queue_free()
+		activeItem = null
+	
+	if(wep2Load is FIREARM_INFO):
+		activeItem = GUNBASICINSTANCE.new()
+		activeItem.invManager = self
+		activeItem.load_Weapon(wep2Load, true, $"../../../Control/Reticle")
+		weapType = 1 ##basic gun
+	else:
+		print("Unsupported script override!")
+
 
 func _process(_delta):
 	activeItem.manualProcess()

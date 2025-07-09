@@ -42,6 +42,9 @@ Relata and ghostbird pickups, shotgun box, heavy rifle box
 Millian porcelaindoll variant
 Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
 Update sylph eyes
+Refactor raycast_reactive to NOT return true/false at end of interaction, that's really dumb
+for JUST the possibility of playing pickup sounds for ammoboxes.
+
 
 -----------\
 =======+=======> FUTURE PLANS:
