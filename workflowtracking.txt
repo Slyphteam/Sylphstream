@@ -64,7 +64,7 @@ Reimport sylph head but make sure it's actually centered this time, doofus.
 
 
 ====+====> FUNCTIONAL:
-
+Change shotguninstances to inherit from guninstances and clear out any reused functions
 
 
 do DA BIG REORGANIZE at some point

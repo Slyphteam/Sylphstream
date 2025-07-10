@@ -129,8 +129,8 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 	
 	if(capacity < 2):
 		pitchWarningAmount = -1 #don't bother
-	elif(capacity < 4):
-		pitchWarningAmount = 2 #do bother but only on half
+	elif(capacity <= 10):
+		@warning_ignore("integer_division") pitchWarningAmount = maxCapacity / 2 #do bother but only on half
 	else:
 		@warning_ignore("integer_division") pitchWarningAmount = maxCapacity / 3
 	
@@ -154,7 +154,6 @@ func manualProcess(delta):
 	if(offCooldown): #we CAN shoot
 		if(triggerDepressed): #and we ARE shooting
 			if(reloading):
-				print("Pulled trigger")
 				reloading = false #stop reloading
 				triggerDepressed = false
 			else:
@@ -330,7 +329,7 @@ func startReload():
 	
 	#doing per-shell reloading here
 	#var curReloadTime = reloadTime * (maxCapacity - capacity) #Scale reload time with how many new shells
-	reloadPlayer.play()
+	#moved gunshot player elsewhere so it plays AS the shell is inserted
 	reloading = true
 	await invManager.get_tree().create_timer(reloadTime).timeout
 	reload_Complete()
@@ -349,10 +348,9 @@ func reload_Complete() -> void:
 	var shell = invManager.withdrawAmmo(chambering, 1)
 	
 	capacity += shell
+	reloadPlayer.play()
 	#print("Finished reload! Rounds: ", capacity)
-	print(capacity, " ", maxCapacity)
 	if(capacity <= maxCapacity):
-		print("still more!")
 		startReload()
 
 ##Updates UI. Called every frame so there's no need to call it anywhere else.

@@ -54,8 +54,11 @@ func giveAmmo(amTyp: int, amount: int):
 	elif (amTyp == 2):
 		heldAmmunition.ammoRifle += amount
 		return heldAmmunition.ammoRifle
+	elif (amTyp == 4): 
+		heldAmmunition.ammoShotgun += amount
+		return heldAmmunition.ammoShotgun
 	else:
-		print("Attemted to withdraw invalid chambering!")
+		print("Attemted to give invalid chambering!")
 		return 1
 	
 

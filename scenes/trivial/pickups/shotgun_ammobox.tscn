@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cahf1scobnpcq"]
+
+[ext_resource type="PackedScene" uid="uid://bvldan4260164" path="res://models/glbs and textures/shotgunbundle.glb" id="1_t8u5d"]
+[ext_resource type="Script" uid="uid://bj8vi2jtp28xr" path="res://scripts/trivial/pickups/ammo_pickup_script.gd" id="2_glvft"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t8u5d"]
+points = PackedVector3Array(-0.111393, -2.82503, -0.398535, 3.3701, -1.08461, 0.0108103, -2.74919, -0.416596, 0.6527, -2.85423, -0.24349, -0.6548, 2.56537, 0.801352, -0.6548, 2.47727, 0.866178, 0.6527, -0.00875084, -2.72303, 0.727621, -0.823592, 2.79178, 0.6527, -2.47358, 1.65736, -0.6548, 0.853947, -2.81092, -0.6548, -3.08096, -1.39189, 0.317995, 2.29344, -1.88377, 0.6527, 1.21975, -3.2356, 0.317995, -2.60462, 1.71511, 0.289889, -0.762758, 2.89342, -0.6548, 2.47006, -1.76489, -0.6548, -3.1836, -1.08461, -0.398535, 0.297893, 3.01017, -0.0913508, -1.85182, 2.70353, -0.398535, 2.14096, 1.57639, 0.317995, -2.38211, 1.59977, 0.6527, 3.3701, -0.879322, 0.317995, 0.297893, 3.01017, -0.398535, 0.0932498, 2.60852, 0.6527, -0.775261, 3.03117, 0.300219, -2.56889, -1.00419, -0.6548, 1.21975, -3.2356, 0.0108103, 2.75539, -1.28893, -0.6548, -1.23725, -2.3131, -0.398535, -1.85182, 2.70353, -0.0913508, -2.60462, 1.71511, -0.361083, 2.66052, -1.24152, 0.6527)
+
+[node name="shotgunbundle" instance=ExtResource("1_t8u5d")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Shotgun bundle" index="0" groups=["player_interactible"]]
+script = ExtResource("2_glvft")
+typeToGive = 4
+amtToGive = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shotgun bundle/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_t8u5d")
