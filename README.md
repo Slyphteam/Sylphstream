@@ -13,8 +13,6 @@ https://docs.google.com/document/d/118_IEV_9k2dqLq8unO5gw8Gx04xngHV5QysfVkentBs/
 
 ### Features in active development:
 
-Expansion of weapon system
-
 Stochastic Gradient Descent
 
 Neural network training on complex use of weapon systems
@@ -22,6 +20,8 @@ Neural network training on complex use of weapon systems
 Kinematic controllers for neural networks
 
 ### Completed features:
+
+Expansion of weapon system
 
 Neural network training on aiming, recoil control, and moving targets
 
@@ -47,6 +47,16 @@ Neural network/entity API
 
 Player UI
 
+Quickstim system
+
+Cast abilities (stutter, augur, freeze, surge)
+
+Inventory system
+
+NPC dialogue system
+
+Objective system
+
 Dynamic player body and player animations
 
 Casing system
@@ -55,7 +65,7 @@ Implementation of grenade, fragmentation, and explosive systems
 
 Kicking
 
-Implementation of all planned weapons
+Implementation of all planned weapons (5/16)
 
 First finite state enemy
 
