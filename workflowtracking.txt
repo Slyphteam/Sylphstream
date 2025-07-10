@@ -38,13 +38,17 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Shotgun box (at least do the model)
-
------------\
-=======+=======> FUTURE PLANS:
------------/
-
 Sylph maintenance:
+
+Check actions of sylphs:
+	reloading
+	ads
+	shooting
+
+CHECK EXTREMA ANGLES TO MAKE SURE THEY WORK IN A GLOBAL CONTEXT!!!!!!
+
+Add high-aimspeed inaccuracy
+
 
 Bring sylph invenmanager up to date with current systems
 Add aim inertia to sylphs, up the amount they can rotate, add speed penalty, let them bake
@@ -53,6 +57,11 @@ Ensure reloading and aiming work with sylphs
 Get rid of empty shooting penalty and movement penalty, allow for reloading (will have to update
 some invenmanager scripts to accomodate this because it's slightly scuffed right now)
 Reimport sylph head but make sure it's actually centered this time, doofus.
+
+
+-----------\
+=======+=======> FUTURE PLANS:
+-----------/
 
 
 ====+====> KEY:

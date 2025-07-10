@@ -61,8 +61,11 @@ func score_Performance(ourTarget, hitMultiplier, missDivisor,
 	
 	var totalHits = ourTarget.totalHits #grab the total shots taken
 	
-	manager.startReload() #reload the gun (this will also grab the total shots)
+	manager.grabShots()
 	var totalShots = manager.totalShots #collect the shots taken
+	manager.refreshShots() #clean the shots taken
+	manager.startReload() #reload the gun (this will also grab the total shots)
+	
 	
 	
 	var score = totalHits * hitMultiplier
@@ -119,6 +122,8 @@ func do_Single_Thought():
 	desiredActions = ourNetwork.calc_Outputs_Network(sensoryInput) #process information
 	process_Actions() #execute actions
 
+var aimVector: Vector2
+
 var aimingSights: bool = false
 var modeData: Array[float] = [0.0,0.0,0.0,0.0]
 
@@ -135,15 +140,28 @@ func process_Actions():
 	
 	
 	
-	if(upDown > -0.2 && upDown < 0.2): #ignore obnoxiously small inputs
+	if(upDown > -0.1 && upDown < 0.1): #ignore obnoxiously small inputs
 		upDown = 0
-	if(leftRight > -0.2 && leftRight < 0.2):
+	if(leftRight > -0.1 && leftRight < 0.1):
 		leftRight = 0
 	
-	var magnitudePenalty = Vector2(leftRight, upDown).length()
+	
+	var oldVec = aimVector
+	aimVector = Vector2(leftRight, upDown)
+	
+	var magnitudePenalty = aimVector.length()
+	
+	#Preserve a small amount of the previous frame's "mouse" input 
+	#to simulate inertia of dragging mouse around a screen
+	aimVector += oldVec / 100
+	
+	#ensure, even with intertia, aimvector never exceedes what it's meant to
+	aimVector.x = clampf(aimVector.x, -1, 1)
+	aimVector.y = clampf(aimVector.y, -1, 1)
+	
 	#microPenalty += magnitudePenalty
 	
-	body.move_Head(Vector2(upDown,leftRight), magnitudePenalty)
+	body.move_Head(aimVector, magnitudePenalty)
 	
 	#INDEX 2: SHOOT OR NOT (formerly belonged to index 1)
 	if(desiredActions[2] > 0.5):
@@ -158,12 +176,12 @@ func process_Actions():
 	
 	#INDEX 4: ADS
 	if(desiredActions[4] > 0.5):
-		if(aimingSights):
+		if(aimingSights): #STOP aiming
 			manager.toggleSights()
 			aimingSights = false
 			aimSensitivity = 1 
 			
-		else:
+		else: #start aiming
 			manager.toggleSights()
 			aimingSights = true
 			aimSensitivity = 0.6 #calculated from the player's ADS ratio of 15/25
@@ -218,12 +236,12 @@ func do_Senses():
 	#not currently doing anything with this
 	sensoryInput[10] = targetsPresent
 	
-	#INDEX 11: HEARTBEAT,
+	#INDEX 11: HEARTBEAT
 	#var heartCur = (heartBeat/50) - 1 #ranges from 0-100
 	sensoryInput[11] = 0#heartCur
 	
 	#INDEX 12: HEALTH
-	#not doing tyis yet
+	#not doing this yet
 	sensoryInput[12] = 0
 	
 	#INDEX 13,14,15,16: MODAL INPUTS
@@ -235,8 +253,10 @@ func do_Senses():
 	#INDEX 17, RANDOM NOISE
 	sensoryInput[17] =0#= randf_range(-1, 1)
 	
-	#18,19: EXTRAS
-	sensoryInput[18] = 0
+	#18: DISTANCE (put this in vision function since it sort of is vision
+	#sensoryInput[18] = 0
+
+	#19: TOTAL DAMAGE DEALT
 	sensoryInput[19] = 0
 	#TOTAL: 20
 	
@@ -288,19 +308,32 @@ func do_Vision():
 				microPenalty +=2
 			if(!(targetU || targetD)):
 				microPenalty +=2
+				
+		sensoryInput[18] = 1
 		
 	else:
+
 		
 		#issue: targetTrue is the staticbody that gets detected, and has a transform of 0.
 		#solution: just use globals?
 		var connectingVec = targetTrue.global_position - body.global_position
 		var pos1 = targetTrue.global_position
 		var pos2 = body.global_position
+		
+		
 		#print("connecting vec: ",connectingVec)
 		#since the sylph probably won't care about the exact degrees and what the basis/origin is,
 		#I'm not going to be bothering with being too fancy about it.
 		if(absf(connectingVec.z)<0.01):
 			connectingVec.z = 0
+			
+		#18: DISTANCE
+		#Sylph's max vision range is currently 23, so we'll use that as our basis
+		#We'll go from -1 to .90 to better differentiate it from max dist
+		# therefore, our range will be 1.9 offset by 1
+		#connectingvec / 23 is between 0 and 1
+		var dist = (connectingVec.length() / 12.5) -1 #value between 0 and 2
+		sensoryInput[18] = (connectingVec.length() / 12.5) -1 
 		
 		var theta = atan(connectingVec.x/connectingVec.z)
 		#print("target's theta:", theta)

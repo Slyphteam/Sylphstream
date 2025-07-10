@@ -15,6 +15,7 @@ func _ready():
 	user = $"../.."
 	load_Wep(starterWeapon)
 	
+	#moved to parent
 	#if(starterWeapon is FIREARM_INFO):
 		#activeItem = GUNBASICINSTANCE.new()
 		#activeItem.invManager = self
@@ -53,24 +54,27 @@ func get_Crosshair_Inaccuracy():
 	#user = $"../.."
 
 ##functions going down the hierarchy
-var totalShots = 0
+var totalShots = 0 ##Used in sylph scoring
 
 func startReload():
-	heldAmmunition.ammoPistol +=15 #COMMENT THIS OUT ;ATER ON
 	
 	activeItem.startReload()
-	totalShots = activeItem.totalShots
+	#totalShots = activeItem.totalShots
 	#else:
 		#print("How do you reload a sword?")
 
+func grabShots():
+	totalShots = activeItem.totalShots
 
+##Refresh totalshots counter, replenish ammo consumed
 func refreshShots():
+	giveAmmo(activeItem.chambering, totalShots)
 	activeItem.totalShots = 0
+	totalShots = 0
 
 func toggleSights():
-	pass
-	#if(holdingFirearm):
-		#heldItem.toggleADS()
+	if(weapType == 1):
+		activeItem.toggleADS()
 	#else:
 		#print("Parry!")
 	#
