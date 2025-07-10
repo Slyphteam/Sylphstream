@@ -6,7 +6,7 @@ var weaponMesh: MeshInstance3D
 var ourReticle: CenterContainer 
 var gunshotPlayer: AudioStreamPlayer3D 
 var reloadPlayer: AudioStreamPlayer3D
-var reloadTimer: Timer
+var reloadTimer: Timer ##Deprecated reference from when a timer was used, does nothing
 var invManager: INVENMANAGER ##Assigned by the actual manager prior to weapon resource loading
 
 #State variables
@@ -49,7 +49,6 @@ var reloadTime: float
 var doVolley: bool
 var pellets: int
 
-
 #Misc variables
 @export var decalTimer: int = 10 ##Lifetime length, in seconds, of hitdecals
 
@@ -74,7 +73,7 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 	reloadPlayer = AudioStreamPlayer3D.new()
 	invManager.add_child(reloadPlayer)
 	
-	#For now just adds a new timer to the scene tree rather than reusing one
+	#For now just, add a new timer each time to the scene tree rather than reusing one
 	#reloadTimer = Timer.new()
 	#reloadTimer.one_shot = true
 	#reloadTimer.autostart = false
@@ -131,7 +130,7 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 	if(capacity < 2):
 		pitchWarningAmount = -1 #don't bother
 	elif(capacity < 4):
-		pitchWarningAmount = 2 #
+		pitchWarningAmount = 2 #do bother but only on half
 	else:
 		@warning_ignore("integer_division") pitchWarningAmount = maxCapacity / 3
 	
@@ -154,7 +153,12 @@ func manualProcess(delta):
 	#old logical block
 	if(offCooldown): #we CAN shoot
 		if(triggerDepressed): #and we ARE shooting
-			try_Shoot() #take the shot.
+			if(reloading):
+				print("Pulled trigger")
+				reloading = false #stop reloading
+				triggerDepressed = false
+			else:
+				try_Shoot() #take the shot.
 			
 	else: #we CAN'T shoot. Do other things!
 		if(currentCooldown >= 1):
@@ -175,13 +179,8 @@ func try_Shoot():
 		
 		#apply aimcone recoil. Calculations are done in calc_Recoil, called by manualProcess
 		recoilDebt += recoilAmount 
-		do_Shoot() #actually shoot the bullet
+		do_Shoot() #actually shoot the bullet, vollleyfire is handled in function
 		
-		if(doVolley): #and a few more for good measure
-			for x in range(11):
-				do_Shoot()
-		
-		#print("Pew! Recoil: ", int(currentRecoil), " Kick: ", lift, ";", drift)
 		
 	else:
 		print("click!")
@@ -207,29 +206,30 @@ func do_Shoot():
 	#Consume bullet
 	capacity-=1 
 	
-	
-	var space:PhysicsDirectSpaceState3D = invManager.get_space_state()
-	var orig = invManager.get_Origin()
-	
-	maxAzimuth = currentRecoil / 7
-	var randAzimuth = randf_range(0 - maxAzimuth, maxAzimuth)
-	var randRoll = randi_range(0, 360)
-	
-	var end:Vector3 = invManager.get_End(orig, randAzimuth, randRoll)
-	
-	var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
-	raycheck.collide_with_bodies = true
-	var castResult = space.intersect_ray(raycheck)
-	
-	if(castResult):
-		var hitObject = castResult.get("collider")
-		if(hitObject.is_in_group("damage_interactible")):
-			var alteredDamage = damage
-			alteredDamage += randi_range(-3, 3)
-			hitObject.hit_By_Bullet(alteredDamage,2,3,4)
-		if(hitObject.is_in_group("does_hit_decals")):
-			do_Hit_Decal(castResult.get("position"))
-	
+	#Actually make the raycasts and such
+	for x in range(pellets):
+		var space:PhysicsDirectSpaceState3D = invManager.get_space_state()
+		var orig = invManager.get_Origin()
+		
+		maxAzimuth = currentRecoil / 7
+		var randAzimuth = randf_range(0 - maxAzimuth, maxAzimuth)
+		var randRoll = randi_range(0, 360)
+		
+		var end:Vector3 = invManager.get_End(orig, randAzimuth, randRoll)
+		
+		var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
+		raycheck.collide_with_bodies = true
+		var castResult = space.intersect_ray(raycheck)
+		
+		if(castResult):
+			var hitObject = castResult.get("collider")
+			if(hitObject.is_in_group("damage_interactible")):
+				var alteredDamage = damage
+				alteredDamage += randi_range(-3, 3)
+				hitObject.hit_By_Bullet(alteredDamage,2,3,4)
+			if(hitObject.is_in_group("does_hit_decals")):
+				do_Hit_Decal(castResult.get("position"))
+		
 	
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.
 	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * punchMult
@@ -319,35 +319,41 @@ func calc_Recoil(delta):
 
 ##Starts reload timer
 func startReload():
+	#print("Starting new cycle!")
+	reloading = true
 	
-	if(reloading || (capacity >= maxCapacity + 1)): #No reason to reload
+	#Should we have capacity being >= max here? Double check at some point
+	if(triggerDepressed || capacity > maxCapacity+1 || invManager.getAmmoAmt(chambering)<1): #No reason to reload
+		#print("exiting")
+		reloading = false
 		return
 	
-	
+	#doing per-shell reloading here
+	#var curReloadTime = reloadTime * (maxCapacity - capacity) #Scale reload time with how many new shells
 	reloadPlayer.play()
-	#print("Starting reload!")
 	reloading = true
-	#reloadTimer.start();
-	
-	#In theory, this is bad code, but in case I ever want to revert back to
-	#using the reloadtimer rather than making a new one, I'm leaving it in.
 	await invManager.get_tree().create_timer(reloadTime).timeout
 	reload_Complete()
 	
 
 func reload_Complete() -> void:
-	reloading = false
-	var takenAmount = (maxCapacity - capacity)
+	if(!reloading):
+		return
 	
-	if(capacity > 0):
-		takenAmount+=1 #we have 1 in the chamber, so add a bonus round
+	#print("Cycle finished")
+	#var takenAmount = (maxCapacity - capacity)
+	#always attempt to +1 the shotgun, so skip on this logic
+	#if(capacity > 0):
+		#takenAmount+=1 #we have 1 in the chamber, so add a bonus round
 
-	var newCap = invManager.withdrawAmmo(chambering, takenAmount)
+	var shell = invManager.withdrawAmmo(chambering, 1)
 	
-	capacity += newCap
+	capacity += shell
 	#print("Finished reload! Rounds: ", capacity)
-	#if(affectUI):
-		#update_UI()
+	print(capacity, " ", maxCapacity)
+	if(capacity <= maxCapacity):
+		print("still more!")
+		startReload()
 
 ##Updates UI. Called every frame so there's no need to call it anywhere else.
 func update_UI():

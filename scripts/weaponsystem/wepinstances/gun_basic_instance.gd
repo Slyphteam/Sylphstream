@@ -126,7 +126,7 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 	if(capacity < 2):
 		pitchWarningAmount = -1 #don't bother
 	elif(capacity < 4):
-		pitchWarningAmount = 2 #
+		pitchWarningAmount = 2 #do bother but only on half
 	else:
 		@warning_ignore("integer_division") pitchWarningAmount = maxCapacity / 3
 	

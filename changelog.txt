@@ -1,3 +1,5 @@
+7/10:
+Relata now uses an entirely custom script type, being the first weapon to do so
 7/9:
 Reimports all models to have consistent scale, updates all pickups to use new models,
 deletes all old models and textures, pickups now use a single generic script.

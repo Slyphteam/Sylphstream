@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://vmo1b3o1awtj"]
 
-[ext_resource type="AudioStream" uid="uid://b6313qn0yic35" path="res://sounds/gunshots/shotgun.mp3" id="1_l1t8h"]
+[ext_resource type="AudioStream" uid="uid://jmjas3ug865v" path="res://sounds/gunshots/shotgunAndPump.mp3" id="1_kq0qm"]
 [ext_resource type="ArrayMesh" uid="uid://hj16uuuo3d2j" path="res://models/new models and meshes/relata N mesh.res" id="2_bmc76"]
-[ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="2_kq0qm"]
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponsystem/firearm_resource.gd" id="3_bmc76"]
+[ext_resource type="AudioStream" uid="uid://boahsq60oy1gj" path="res://sounds/reloads/shellinsert.mp3" id="3_kq0qm"]
 
 [resource]
 script = ExtResource("3_bmc76")
-gunshot = ExtResource("1_l1t8h")
-reload = ExtResource("2_kq0qm")
-shotCooldown = 40
+gunshot = ExtResource("1_kq0qm")
+reload = ExtResource("3_kq0qm")
+shotCooldown = 50
 chambering = 4
 maxCapacity = 8
-reloadtime = 1.0
+reloadtime = 0.5
 aimBonus = 0.0
 maxRecoil = 40.0
 minRecoil = 20.0
@@ -20,7 +20,7 @@ recoilAmount = 10.0
 viewpunchMult = 4.0
 recoverAmount = 0.4
 shotgunMode = true
-volleryfireAMT = 12
+pelletAMT = 12
 wepName = &"Relata"
 wepDesc = &"This entirely handcrafted steel abomination smells faintly of benadryl and weegees."
 mesh = ExtResource("2_bmc76")
