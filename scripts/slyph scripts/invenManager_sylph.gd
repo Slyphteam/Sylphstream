@@ -24,8 +24,8 @@ func _ready():
 	#
 	#holdingFirearm = heldItem.isFirearm
 
-func _process(_delta):
-	activeItem.manualProcess()
+func _process(delta):
+	activeItem.manualProcess(delta)
 
 func get_Ammo_Left():
 	var ratio:float = 1

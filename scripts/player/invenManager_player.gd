@@ -37,8 +37,9 @@ func load_Wep(wep2Load):
 		print("Unsupported script override!")
 
 
-func _process(_delta):
-	activeItem.manualProcess()
+func _process(delta):
+	if(activeItem):
+		activeItem.manualProcess(delta)
 
 
 #functions going down the hierarchy

@@ -40,14 +40,8 @@ Other places are as follow:
 
 Weapon system cleanup
 
+
 Change Relata to have its own custom shotgun instance and filetype
-ADD AN ABSOLUTE MAXIMUM MAXACCURACY OF 120
-Consolidate ALL checks for shooting eligibility into one place, not spread out between
-manual process and try_shoot
-One function to check shooting eligibility, then one function to handle all the code
-if(eligibileToShoot()):
-	takeShot()
-Add pitch increase when ammo gets low
 Refactor raycast_reactive to NOT return true/false at end of interaction, that's really dumb
 for JUST the possibility of playing pickup sounds for ammoboxes.
 Shotgun box (at least do the model)

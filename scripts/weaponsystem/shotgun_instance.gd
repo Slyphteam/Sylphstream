@@ -1,5 +1,5 @@
 ##The corresponding weapon script class for the FIREARM_INFO data resource
-class_name GUNBASICINSTANCE extends WEPINSTANCE
+class_name SHOTGUNINSTANCE extends WEPINSTANCE
 
 #References
 var weaponMesh: MeshInstance3D
@@ -10,7 +10,7 @@ var reloadTimer: Timer
 var invManager: INVENMANAGER ##Assigned by the actual manager prior to weapon resource loading
 
 #State variables
-var currentCooldown : float = 0
+var currentCooldown : int = 0
 var affectUI = false ##Should only be true for the player's current weapon instance
 var offCooldown = true ##Used to track whether or not the gun is on COOLDOWN, nothing else 
 var triggerDepressed = false
@@ -28,7 +28,6 @@ var recoveryCutoff ##at what point do we increase our recoil recovery?
 var recoveryDivisor ##Used in recoil recovery computation
 var kickAmount: int ##Used in randomly generating recoil viewpunch
 var aimKickBonus ##Used because we don't like integer division around these parts
-var pitchWarningAmount ##used to determine when the pitch change starts and how many increments there are
 
 #Variables inferred from the resource
 var minRecoil 
@@ -123,14 +122,6 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 	kickAmount = (recoilAmount / 4) + ((5 / ((10 * recoveryAmount))+1) ) - 3
 	@warning_ignore("integer_division") aimKickBonus = (kickAmount / 2) 
 	
-	if(capacity < 2):
-		pitchWarningAmount = -1 #don't bother
-	elif(capacity < 4):
-		pitchWarningAmount = 2 #
-	else:
-		@warning_ignore("integer_division") pitchWarningAmount = maxCapacity / 3
-	
-	
 	if(kickAmount <=0):
 		kickAmount = 1
 		aimKickBonus = 0
@@ -140,8 +131,7 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 
 
 ##Run state checks per frame and update the UI
-func manualProcess(delta):
-	delta *= 60 #scale delta to be approx 1 frame
+func manualProcess():
 	#if(offCooldown):
 		#if(check_Shoot_Conditions()):
 			#pass
@@ -152,13 +142,13 @@ func manualProcess(delta):
 			try_Shoot() #take the shot.
 			
 	else: #we CAN'T shoot. Do other things!
-		if(currentCooldown >= 1):
-			currentCooldown -= delta
+		if(currentCooldown > 0):
+			currentCooldown -=1
 		else: 
 			offCooldown = true
 			currentCooldown = shotCooldown
 	
-	calc_Recoil(delta) #Do per-frame recoil calculations
+	calc_Recoil() #Do per-frame recoil calculations
 	
 	if(affectUI):
 		update_UI()
@@ -170,6 +160,9 @@ func try_Shoot():
 		
 		#apply aimcone recoil. Calculations are done in calc_Recoil, called by manualProcess
 		recoilDebt += recoilAmount 
+		
+		
+		
 		do_Shoot() #actually shoot the bullet
 		
 		if(doVolley): #and a few more for good measure
@@ -181,27 +174,21 @@ func try_Shoot():
 	else:
 		print("click!")
 	
-	#no matter what, counts as a "shot"
 	totalShots+=1
-	
-	#reset cooldown here since we run try_shoot if the trigger is depressed on a cooldown timer
-	offCooldown = false 
-	currentCooldown = shotCooldown
 
 func do_Shoot():
 	
-	
-	if(capacity <= pitchWarningAmount): #if we're low, apply a pitchwarning
-		var pitchStep = 0.3 - ((0.3 / pitchWarningAmount) * capacity) + 0.05
-		gunshotPlayer.pitch_scale = 1 - pitchStep
-	else:
-		gunshotPlayer.pitch_scale = 1 + randf_range(-0.05, 0.05) #otherwise, just enough variance to not be annoying
-	
+	#Make gunshot noise.
+	#TODO: pitch increase when ammo gets low
+	gunshotPlayer.pitch_scale = 1 + randf_range(-0.05, 0.05)
 	gunshotPlayer.play()
 	
 	#Consume bullet
 	capacity-=1 
 	
+	#reset cooldown
+	offCooldown = false 
+	currentCooldown = shotCooldown
 	
 	var space:PhysicsDirectSpaceState3D = invManager.get_space_state()
 	var orig = invManager.get_Origin()
@@ -278,20 +265,18 @@ func adjustAcuracy(amnt):
 
 
 ##Apply any recoil "debt" accumulated and calculate recovery, DOES NOT UPDATE UI
-func calc_Recoil(delta):
-	#print(delta)
+func calc_Recoil():
 	if(recoilDebt == 0 && currentRecoil <= minRecoil): #don't bother
 		return
 	
 	#apply recoil debt. Ensures that guns with high recoil don't feel unpleasantly snappy
 	if(recoilDebt > 0):
 		if(recoilDebt < debtCutoff): #debtcutoff is a constant equal to 10
-			currentRecoil += (recoilDebt * delta) #add ALL the rest of the debt and set to 0
+			currentRecoil += recoilDebt #add ALL the rest of the debt and set to 0
 			recoilDebt = 0
 		else:
-			var exchange = 0.5 * recoilDebt * delta
-			currentRecoil += exchange
-			recoilDebt -= exchange
+			currentRecoil += (0.5 * recoilDebt)
+			recoilDebt -= (0.5 * recoilDebt)
 		
 		#still don't exceed the maximum
 		if(currentRecoil > maxRecoil):
@@ -301,16 +286,18 @@ func calc_Recoil(delta):
 	#recoverycutoff is the point at which we switch from linear to square root recovery amount
 	#recoverydivisor is calculated above and slightly complex but behaves like a constant
 	if(currentRecoil > minRecoil):
+		#we SHOULD be using delta here buuuuuut I don't trust float imprecision
 		if(currentRecoil <= recoveryCutoff): #1/4th of maxrecoil
-			currentRecoil -= recoveryAmount * delta
+			currentRecoil -= recoveryAmount 
 			if(currentRecoil < minRecoil):
 				currentRecoil = minRecoil
 		else:
 			var amnt = sqrt(currentRecoil / recoveryDivisor) 
-			currentRecoil-= amnt * delta
+			currentRecoil-= amnt
 	
-	if(currentRecoil > 120): #provide a hard maximum ceiling for recoil that is ridiculously high.
-		currentRecoil = 120
+	#update the UI (
+	#if(affectUI):
+		#ourReticle.adjust_spread(currentRecoil)
 
 ##Starts reload timer
 func startReload():
