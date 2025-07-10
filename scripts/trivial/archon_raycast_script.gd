@@ -1,6 +1,5 @@
-extends raycast_reactive
+extends RAYCASTREACTIVE
 
-func interact_By_Player(player)->bool:
+func interact_By_Player(player):
 	var root = $"../.."
 	root.get_Talked_To(player)
-	return false

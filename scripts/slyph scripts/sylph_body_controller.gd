@@ -11,7 +11,7 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#print("ow!")
 	move_Head_Exact(Vector2(5,5))
 
-func interact_By_Player(playerRef)->bool:
+func interact_By_Player(playerRef):
 	
 #	#do_Single_Thought
 	mind.mindEnabled = true
@@ -22,8 +22,6 @@ func interact_By_Player(playerRef)->bool:
 	#mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/loadingtest.txt")
 	#print("saved!")
 	
-
-	return false
 
 func move_Head(desired: Vector2, moveSpeed):
 	#TODO: in the future add inaccuracy with higher speeds

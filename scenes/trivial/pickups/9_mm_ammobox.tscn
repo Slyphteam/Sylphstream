@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4xof0ncli7gu"]
 
 [ext_resource type="PackedScene" uid="uid://blfxm53hgy6mb" path="res://models/glbs and textures/9mm ammobox.glb" id="1_wqcbf"]
-[ext_resource type="Script" uid="uid://da5xiwyadyfwg" path="res://scripts/trivial/pickups/9mmbox_world_script.gd" id="2_o5oda"]
+[ext_resource type="Script" uid="uid://bj8vi2jtp28xr" path="res://scripts/trivial/pickups/ammo_pickup_script.gd" id="2_hluod"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_te1gv"]
 points = PackedVector3Array(3.80175, 9.64088, 1.333, -3.75481, 0.158132, -1.3335, 3.69329, 0.158132, -1.3335, -3.86327, 0.0220236, 1.333, -3.75481, 9.50477, -1.3335, 3.80175, 0.0220236, 1.333, -3.86327, 9.64088, 1.333, 3.69329, 9.50477, -1.3335)
@@ -9,7 +9,9 @@ points = PackedVector3Array(3.80175, 9.64088, 1.333, -3.75481, 0.158132, -1.3335
 [node name="9mm ammobox" instance=ExtResource("1_wqcbf")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pistol box" index="0" groups=["player_interactible"]]
-script = ExtResource("2_o5oda")
+script = ExtResource("2_hluod")
+typeToGive = 1
+amtToGive = 50
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pistol box/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_te1gv")

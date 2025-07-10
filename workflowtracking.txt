@@ -37,10 +37,6 @@ Other places are as follow:
 -----------\
 =======+=======> CURRENT DEV CYCLE:
 -----------/
-Weapon system cleanup:
-
-Refactor raycast_reactive to NOT return true/false at end of interaction, that's really dumb
-for JUST the possibility of playing pickup sounds for ammoboxes.
 
 Shotgun box (at least do the model)
 
@@ -65,11 +61,7 @@ Reimport sylph head but make sure it's actually centered this time, doofus.
 	*: Important (to current course of dev plans)
 	&: Unimportant
 
-Quickstim system
-Cast abilities (stutter, augur, freeze, surge)
-Inventory system
-NPC dialogue system
-Quest system
+
 
 ====+====> FUNCTIONAL:
 

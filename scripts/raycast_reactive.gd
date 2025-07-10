@@ -1,4 +1,4 @@
-class_name raycast_reactive extends PhysicsBody3D
+class_name RAYCASTREACTIVE extends PhysicsBody3D
 ##One of two special raycast. READ COMMENTS IN CLASS FILE FOR MORE INFO.
 func hit_By_Bullet(dam, _damtype, _dir, _origin):
 	print("Target hit! ", dam)
@@ -6,8 +6,8 @@ func hit_By_Bullet(dam, _damtype, _dir, _origin):
 
 
 #putting this here, not because it's a necessary implementation, but as documentation for player interaction.
-func interact_By_Player(player)->bool:
-	return false #return true if the player is selecting a pickup
+func interact_By_Player(player):
+	pass
 	
 	
 #So: How the Heck Frick does Sylphstream handle collisions and also why is my code so bad?

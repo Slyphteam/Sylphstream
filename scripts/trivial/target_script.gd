@@ -1,5 +1,5 @@
 ##Deprecated script, since I moved the generic "target hit" statement to the bullet reactive parent.
-class_name testing_target extends raycast_reactive
+class_name testing_target extends RAYCASTREACTIVE
 @onready var root:SCOREDTARGET = $"../.."
 @onready var targetOrig = root.global_position.z 
 
