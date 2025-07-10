@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/player/cam_behavior.gd" id="2_f4klr"]
-[ext_resource type="Resource" uid="uid://up52p06xonfc" path="res://resources/weapon resources/firearm/ghostbird_info.tres" id="4_l4qvo"]
+[ext_resource type="Resource" uid="uid://vmo1b3o1awtj" path="res://resources/weapon resources/firearm/relata_info.tres" id="4_l4qvo"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/player/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/player/invenManager_player.gd" id="5_tuyoq"]
 [ext_resource type="Script" uid="uid://dk8huytauryvd" path="res://scripts/player/infopaneldata.gd" id="6_hn4sd"]

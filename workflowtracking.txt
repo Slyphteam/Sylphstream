@@ -38,8 +38,7 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Weapon system cleanup
-
+Weapon system cleanup:
 
 Change Relata to have its own custom shotgun instance and filetype
 Refactor raycast_reactive to NOT return true/false at end of interaction, that's really dumb
@@ -50,13 +49,12 @@ Shotgun box (at least do the model)
 =======+=======> FUTURE PLANS:
 -----------/
 
-Sylph maintenance
+Sylph maintenance:
 
 Bring sylph invenmanager up to date with current systems
 Add aim inertia to sylphs, up the amount they can rotate, add speed penalty, let them bake
 for a bit to get used to it.
 Ensure reloading and aiming work with sylphs
-Clean up infopanel code, move weapon stat tracking to invenmanager's job
 Get rid of empty shooting penalty and movement penalty, allow for reloading (will have to update
 some invenmanager scripts to accomodate this because it's slightly scuffed right now)
 Reimport sylph head but make sure it's actually centered this time, doofus.
@@ -75,10 +73,10 @@ Reimport sylph head but make sure it's actually centered this time, doofus.
 
 do DA BIG REORGANIZE at some point
 
-
+Clean up infopanel code, move weapon stat tracking to invenmanager's job 
+Better yet: add an actual UI.
 
 FRAMERATE COUNTER!!!!!!!!!!!!!!!!!!!!!
-
 Sylph and playermodel bodies v2, but test with the millian prior
 
 

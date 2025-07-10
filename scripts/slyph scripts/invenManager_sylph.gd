@@ -13,13 +13,15 @@ func _ready():
 	#heldAmmunition.ammoRifle = 30
 	
 	user = $"../.."
-	if(starterWeapon is FIREARM_INFO):
-		activeItem = GUNBASICINSTANCE.new()
-		activeItem.invManager = self
-		activeItem.load_Weapon(starterWeapon, false, null)
-		weapType = 1 ##basic gun
-	else:
-		print("Unsupported script override!")
+	load_Wep(starterWeapon)
+	
+	#if(starterWeapon is FIREARM_INFO):
+		#activeItem = GUNBASICINSTANCE.new()
+		#activeItem.invManager = self
+		#activeItem.load_Weapon(starterWeapon, false, null)
+		#weapType = 1 ##basic gun
+	#else:
+		#print("Unsupported script override!")
 	#heldItem.load_weapon(heldItem.Starting_Wep, false)
 	#
 	#holdingFirearm = heldItem.isFirearm

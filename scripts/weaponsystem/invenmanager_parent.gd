@@ -9,6 +9,10 @@ var reloading = false
 var activeItem: WEPINSTANCE
 var weapType: int ##1 for basic firearm, 2 for melee...
 var user : Node3D
+
+
+var isPlayer: bool = false
+var theReticle = null
 #var holdingFirearm: bool = false
 
 #func _ready():
@@ -17,6 +21,30 @@ var user : Node3D
 ##Get references to helditem and user. should be called in ready; here because it's not optional
 func getRefs():
 	pass
+
+##Loads a WEPINSTANCE using universal logic.
+func load_Wep(wep2Load):
+	
+	if(activeItem): #unload old item
+		activeItem.unload()
+		activeItem.queue_free()
+		activeItem = null
+	
+	
+	if(wep2Load is FIREARM_INFO):
+		if(wep2Load.shotgunMode):
+			activeItem = SHOTGUNINSTANCE.new()
+			activeItem.invManager = self
+			activeItem.load_Weapon(wep2Load, isPlayer, theReticle)
+			weapType = 1 #still use the firearm control schema
+		else:
+			activeItem = GUNBASICINSTANCE.new()
+			activeItem.invManager = self
+			activeItem.load_Weapon(wep2Load, isPlayer, theReticle)
+			weapType = 1 #basic gun
+	else:
+		print("Unsupported script override!")
+
 
 #--------- ALL OF THESE FUNCTIONS EXIST INTERNALLY WITH THE INVENMANAGER
 func giveAmmo(amTyp: int, amount: int):

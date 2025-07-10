@@ -102,7 +102,7 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 	maxAzimuth = currentRecoil / 7
 	reloadTime = wepToLoad.reloadtime
 	aimbonus = wepToLoad.aimBonus
-	doVolley = wepToLoad.volleyfire
+	
 	
 	gunshotPlayer.stream = wepToLoad.gunshot
 	reloadPlayer.stream = wepToLoad.reload

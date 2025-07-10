@@ -17,4 +17,6 @@ class_name FIREARM_INFO extends WEAP_INFO
 @export var recoilAmount: float = 10 ##pixels of recoil per shot. Also affects camera offset. 10 is barely any
 @export var viewpunchMult: float = 1 ##Multiplier on viewpunch
 @export var recoverAmount: float = 0.5 ##In pixels per frame. Feels best between 1 and 0.25
-@export var volleyfire: bool
+@export_category("Script override")
+@export var shotgunMode: bool = false ##Override script to use SHOTGUNINSTANCE
+@export var pelletAMT: int = 12 ##How many pellets in a volley?
