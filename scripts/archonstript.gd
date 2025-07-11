@@ -36,7 +36,7 @@ func get_Talked_To(player:Node3D):
 		restart_Sylph_Test()
 	else:
 		begin_Sylph_Test()
-		testing = true
+		testing = true 
 	
 
 func do_Archon_Gaylittlefloat(delta):
@@ -88,7 +88,7 @@ var hitMult: int = 1 ##Multiplicative reward for hits
 var missDiv: int = 2 ##Divide penalty for misses by this amount
 var missAllow: int = 5 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 25 ##What will we divide the per-frame penalty by for not seeing target?
+var visionDiv: int = 50 ##What will we divide the per-frame penalty by for not seeing target?
 
 var highscore: int = 0
 
@@ -107,26 +107,26 @@ func score_Sylphs():
 	
 	if(arr1[0]<highscore && arr2[0]<highscore):
 		print("both sucked!")
-		Sylph1.mind.ourNetwork.mutate_Network(0.2, 0, 50)
-		Sylph2.mind.ourNetwork.mutate_Network(0.2, 0, 50)
+		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 30)
+		Sylph2.mind.ourNetwork.mutate_Network(0.1, 0, 30)
 	elif(arr1[1]>arr2[1]):
 		print("Sylph1 did better! score: ", arr1[1])
 		if(arr1[0]>=(highscore-1)):
 			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")	
 		Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		Sylph2.mind.ourNetwork.mutate_Network(0.2, 0, 50)
+		Sylph2.mind.ourNetwork.mutate_Network(0.07, 0, 20)
 	elif(arr1[1]<arr2[1]):
 		print("Sylph2 did better! score: ", arr2[1])
 		if(arr2[0]>= (highscore-1)):
 			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
 		Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		Sylph1.mind.ourNetwork.mutate_Network(0.2, 0, 50)
+		Sylph1.mind.ourNetwork.mutate_Network(0.07, 0, 20)
 	else:
 		print("both tied!")
 		Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 80)
+		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 20)
 		Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		Sylph2.mind.ourNetwork.mutate_Network(0.1, 0, 80)
+		Sylph2.mind.ourNetwork.mutate_Network(0.1, 0, 20)
 	#else:
 	
 		
