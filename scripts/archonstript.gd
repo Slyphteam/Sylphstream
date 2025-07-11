@@ -60,7 +60,7 @@ func begin_Sylph_Test():
 	#Sylph1.mind.initialize_Rand_Network()
 	#Sylph2.mind.initialize_Rand_Network()
 	Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-	Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/simple aimer.txt")
+	Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/decent aiming sylph.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -84,10 +84,12 @@ func restart_Sylph_Test():
 @export var targ1 : SCOREDTARGET
 @export var targ2 : SCOREDTARGET
 
+
+#start with vision training, then penalize misses
 var hitMult: int = 2 ##Multiplicative reward for hits
 var missDiv: int = 2 ##Divide penalty for misses by this amount
-var missAllow: int = 3 ##How many misses will we tolerate before punishing?
-var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
+var missAllow: int = 4 ##How many misses will we tolerate before punishing?
+var accuracyRew: int = 3 ##If we're in the tolerance, what reward is given?
 var visionDiv: int = 20 ##What will we divide the per-frame penalty by for not seeing target?
 
 var highscore: int = 0
@@ -103,35 +105,31 @@ func score_Sylphs():
 	print(arr1)
 	print(arr2)
 	
-	if(arr1[1]>bestPoint):
-		bestPoint = arr1[1]
-	if(arr2[1]>bestPoint):
-		bestPoint = arr2[1]
-	
-	
 
-	if(arr1[1]<=bestPoint - 20 && arr2[1]<= bestPoint - 20):
-		#both sucked. Whichever did worse, though, we'll replace
-		if(arr1[1]>arr2[1]):
-			if(arr2[1]< 0-40):
-				Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		else:
-			if(arr1[1]< 0-40):
-				Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/simple aimer.txt")
-		#print("both sucked! best: ", bestPoint) #mutate the bejeezus out of one, load the other
+	
+	if(bestPoint > -40):
+		if(arr1[1]<=bestPoint && arr2[1]<= bestPoint):
+			#both sucked. Whichever did worse, though, we'll replace
+			print("both sucked")
+			if(arr1[1]>arr2[1]):
+				if(arr2[1]< 0-40):
+					Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/decent aiming sylph.txt")
+			else:
+				if(arr1[1]< 0-40):
+					Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/decent aiming sylph.txt")
+			#print("both sucked! best: ", bestPoint) #mutate the bejeezus out of one, load the other
 	elif(arr1[1]>arr2[1]):
-		
 		print("Sylph1 did better! score: ", arr1[1])
 		#if(arr1[0]>=(highscore-1)):
 		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")	
 		Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		Sylph2.mind.ourNetwork.mutate_Network(0.1, 0, 20)
-	elif(arr1[1]<arr2[1]):
+		Sylph2.mind.ourNetwork.mutate_Network(0.03, 0, 20)
+	elif(arr2[1]>arr1[1]):
 		print("Sylph2 did better! score: ", arr2[1])
 		#if(arr2[0]>= (highscore-1)):
 		Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
 		Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 20)
+		Sylph1.mind.ourNetwork.mutate_Network(0.03, 0, 20)
 	else:
 		print("both tied!")
 		Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
@@ -140,15 +138,24 @@ func score_Sylphs():
 		Sylph2.mind.ourNetwork.mutate_Network(0.05, 0, 20)
 	#else: 
  	
-	#if(arr1[0]>=4):
-		#Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/simple aimer.txt")
-	#if(arr2[0]>=4):
-		#Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/simple aimer.txt")
-
+	if(arr1[0]>=4):
+		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/fivehittermaybe.txt")
+	if(arr2[0]>=4):
+		Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/fivehittermaybe.txt")
+	
+	if(arr1[1]>=-30|| arr2[1]>=-30):
+		print("sub thirty!")
+	
 	if(arr1[0]>highscore):
 		highscore = arr1[0]
 	if(arr2[0]>highscore):
 		highscore = arr2[0]
+		
+	if(arr1[1]>bestPoint):
+		bestPoint = arr1[1]
+	if(arr2[1]>bestPoint):
+		bestPoint = arr2[1]
+	
 
 #https://docs.godotengine.org/en/stable/classes/class_fileaccess.html#class-fileaccess
 #https://docs.godotengine.org/en/stable/tutorials/io/runtime_file_loading_and_saving.html

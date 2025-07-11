@@ -172,7 +172,7 @@ func process_Actions():
 	
 	#INDEX 3: RELOAD
 	#but we aren't doing this yet
-	#if(desiredActions[3] > 0.5):
+	#if(desiredActions[3] > 0.7):
 		#manager.startReload()
 	
 	#INDEX 4: ADS
