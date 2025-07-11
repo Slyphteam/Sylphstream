@@ -27,15 +27,15 @@ func _ready():
 
 func initialize_Basic_Network():
 	ourNetwork = NNETWORK.new()
-	print("Created basic 20-20-18 network!")
-	ourNetwork.initialize_Network([20,20,18])
+	print("Created basic 20-20-40-30-18 network!")
+	ourNetwork.initialize_Network([20,20,40,30,18])
 
 ##Creates a new network and fully randomizes it
 func initialize_Rand_Network():
 	ourNetwork = NNETWORK.new()
-	ourNetwork.initialize_Network([20,20,18])
+	ourNetwork.initialize_Network([20,20,40,30,18])
 	ourNetwork.populate_Network_Rand()
-	print("Created random 20-20-18 network!")
+	print("Created random 20-20-40-30-18 network!")
 
 ##Saves to specified file
 func save_To_File(fileString):
@@ -159,7 +159,7 @@ func process_Actions():
 	aimVector.x = clampf(aimVector.x, -1, 1)
 	aimVector.y = clampf(aimVector.y, -1, 1)
 	
-	#microPenalty += magnitudePenalty
+	microPenalty += magnitudePenalty
 	
 	body.move_Head(aimVector, magnitudePenalty)
 	

@@ -249,12 +249,12 @@ func toggleADS():
 		kickAmount += aimKickBonus
 		adjustAcuracy(aimbonus)
 		aimDownsight = false
-		print("unaiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
+		#print("unaiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
 	else:
 		kickAmount -= aimKickBonus
 		adjustAcuracy(0 - aimbonus)
 		aimDownsight = true
-		print("aiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
+		#print("aiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
 
 ##Updates the max/min aimcone by a given value. Can be negative.
 func adjustAcuracy(amnt):
