@@ -178,8 +178,8 @@ func try_Shoot():
 		
 		#print("Pew! Recoil: ", int(currentRecoil), " Kick: ", lift, ";", drift)
 		
-	else:
-		print("click!")
+#	else:
+#		print("click!")
 	
 	#no matter what, counts as a "shot"
 	totalShots+=1

@@ -88,7 +88,8 @@ func score_Performance(ourTarget, hitMultiplier, missDivisor,
 		score-= int(microPenalty / visionDivisor)
 	
 	refresh_Stats() #refresh stats
-	ourTarget.totalHits = 0 #and the target
+	#ourTarget.totalHits = 0 #and the target
+	ourTarget.reset()
 	
 	return [totalHits, score]
 

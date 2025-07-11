@@ -4,7 +4,7 @@ class_name testing_target extends RAYCASTREACTIVE
 @onready var targetOrig = root.global_position.z 
 
 func hit_By_Bullet(dam, damtype, dir, origin):
-
+	#print(root.global_position.z)
 	print("Target hit! ", dam)
 	var move:float = randi_range(-10, 10)
 	#if(move < 5 && move > -5): #don't move the target a small amount.
