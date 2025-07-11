@@ -84,7 +84,7 @@ func restart_Sylph_Test():
 @export var targ1 : SCOREDTARGET
 @export var targ2 : SCOREDTARGET
 
-var hitMult: int = 3 ##Multiplicative reward for hits
+var hitMult: int = 1 ##Multiplicative reward for hits
 var missDiv: int = 2 ##Divide penalty for misses by this amount
 var missAllow: int = 3 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
@@ -109,7 +109,7 @@ func score_Sylphs():
 		bestPoint = arr2[1]
 	
 	
-	if(arr1[1]<=bestPoint -1 && arr2[1]<= bestPoint - 1):
+	if(arr1[1]<=bestPoint -20 && arr2[1]<= bestPoint - 20):
 		#both sucked. Whichever did worse, though, we'll replace
 		if(arr1[1]>arr2[1]):
 			Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")

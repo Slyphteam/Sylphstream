@@ -49,6 +49,7 @@ CHECK EXTREMA ANGLES TO MAKE SURE THEY WORK IN A GLOBAL CONTEXT!!!!!!
 
 Add high-aimspeed inaccuracy
 
+SYLPHS DON'T SEEM TO BE SAVING????????????
 
 Bring sylph invenmanager up to date with current systems
 Add aim inertia to sylphs, up the amount they can rotate, add speed penalty, let them bake
