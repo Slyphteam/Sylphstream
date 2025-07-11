@@ -56,11 +56,11 @@ func populate_Layer_Rand(desiredLayer: int):
 		selectedLay.biases[x] = randf_range(-1, 1)
 		x+=1
 	
-	#activations
-	x=0
-	while (x<numBiases):
-		selectedLay.activations[x] = randf_range(0.85, 1)
-		x+=1
+	##activations
+	#x=0
+	#while (x<numBiases):
+		#selectedLay.activations[x] = randf_range(0.85, 1)
+		#x+=1
 	
 	#weights
 	x = 0
@@ -90,13 +90,13 @@ func mutate_Layer(desiredLayer: int, mutationAmount: float, activationMut:float,
 			selectedLay.biases[x] = newVal
 		x+=1
 	
-	#activations
-	x=0
-	while (x<numBiases): #same number of activations as biases
-		if(prob(mutationChance)):
-			newVal = clampf(selectedLay.activations[x] + randf_range(0-activationMut, activationMut), -1, 1)
-			selectedLay.activations[x] = newVal
-		x+=1
+	##activations
+	#x=0
+	#while (x<numBiases): #same number of activations as biases
+		#if(prob(mutationChance)):
+			#newVal = clampf(selectedLay.activations[x] + randf_range(0-activationMut, activationMut), -1, 1)
+			#selectedLay.activations[x] = newVal
+		#x+=1
 	
 	#weights
 	x = 0
@@ -119,10 +119,19 @@ func populate_Layer_Custom(layer: int, biases: Array[float], weights: Array):
 	selectedLay.biases = biases
 	selectedLay.weights = weights
 
-func copy_Layer_From_Other(otherlayer:LAYER):
+##Copies layer from another layer. BOTH HAVE TO BE THE SAME DIMENSIONS
+func copy_Layer_From_Other(ourLayer:LAYER, theirLayer:LAYER):
+	#I coouuuuuld do size sanitity checks. buut nahhhhhhhhhh
 	
-	pass
+	#biases
+	ourLayer.biases = theirLayer.biases.duplicate(true)
 
+	#weights
+	var x:int = 0
+	var curArray:Array
+	while(x<theirLayer.nodesIn): #ordinarily y is used for nodesIn but there is only one loop here
+		ourLayer.weights[x] = theirLayer.weights[x].duplicate(true) #if this doesnt work im gonna cry
+		x+=1
 
 #below are all network functions
 ##Populates a network with random values. WILL OVERWRITE VALUES
@@ -240,6 +249,17 @@ func save_Network_To_File(fileString):
 	
 	ourFile.close()
 
+func copy_From_Other(other:NNETWORK):
+	
+	var z:int =0
+	var thisLay: LAYER
+	var theirLay: LAYER
+	
+	while(z<ourLayers.size() - 1):
+		thisLay = get_Layer(z)
+		theirLay = other.get_Layer(z)
+		copy_Layer_From_Other(thisLay, theirLay)
+		z+=1
 
 func prob(chance:int)->bool:
 	var targ = randi_range(0, 100)

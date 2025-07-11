@@ -47,6 +47,10 @@ func load_From_File(fileString):
 	ourNetwork.load_Network_From_File(fileString)
 	print("Load from file complete!")
 
+##Copies neural network from other sylphbody
+func copy_From_Other(otherSylph):
+	ourNetwork.copy_From_Other(otherSylph.mind.ourNetwork)
+
 ##Sets the Sylph up to activate for a period of time
 func begin_Test():
 	print("Starting test!")
@@ -172,8 +176,8 @@ func process_Actions():
 	
 	#INDEX 3: RELOAD
 	#but we aren't doing this yet
-	#if(desiredActions[3] > 0.7):
-		#manager.startReload()
+	if(desiredActions[3] > 0.7):
+		manager.startReload()
 	
 	#INDEX 4: ADS
 	if(desiredActions[4] > 0.5):

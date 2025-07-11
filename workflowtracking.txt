@@ -38,6 +38,16 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+
+Change shotguninstances to inherit from guninstances and clear out any reused functions
+
+Fix obnoxiously slow aiming on affine from gun_basic_instance logic
+
+Change sylphs to use an average instead of a highscore, add 20 point tolerances,
+then ALSO change to copy from other sylph. If thjis doesn't fix evolution, cry.
+
+Thoroughly test current everything implementation with as simple a sylph as you can get.
+
 Sylph maintenance:
 
 Check actions of sylphs:
@@ -49,14 +59,12 @@ CHECK EXTREMA ANGLES TO MAKE SURE THEY WORK IN A GLOBAL CONTEXT!!!!!!
 
 Add high-aimspeed inaccuracy
 
-SYLPHS DON'T SEEM TO BE SAVING????????????
+Add average-based highscore saving/reversion:
+	allows sylph to revert some, but not too much
 
-Bring sylph invenmanager up to date with current systems
-Add aim inertia to sylphs, up the amount they can rotate, add speed penalty, let them bake
-for a bit to get used to it.
-Ensure reloading and aiming work with sylphs
-Get rid of empty shooting penalty and movement penalty, allow for reloading (will have to update
-some invenmanager scripts to accomodate this because it's slightly scuffed right now)
+Sort and clear out saved sylphs
+Start again from random?
+S.G.D. scoring. at least look into it.
 Reimport sylph head but make sure it's actually centered this time, doofus.
 
 
@@ -74,8 +82,6 @@ Reimport sylph head but make sure it's actually centered this time, doofus.
 
 
 ====+====> FUNCTIONAL:
-Change shotguninstances to inherit from guninstances and clear out any reused functions
-
 
 do DA BIG REORGANIZE at some point
 
@@ -85,17 +91,12 @@ Better yet: add an actual UI.
 FRAMERATE COUNTER!!!!!!!!!!!!!!!!!!!!!
 Sylph and playermodel bodies v2, but test with the millian prior
 
-
-
-
-
-
 Millian porcelaindoll variant
 Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
 
-
-Archon intro ditty
-
+Archon intro ditty:
+low high bitlower medium - - - - - - high low
+low high bitlower - - + verlow high lowwww
 
 Write add_node_to_layer function
 Change bullets to have damage falloff ++++&&
