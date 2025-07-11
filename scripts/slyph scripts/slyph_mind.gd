@@ -63,10 +63,9 @@ func score_Performance(ourTarget, hitMultiplier, missDivisor,
 	
 	manager.grabShots()
 	var totalShots = manager.totalShots #collect the shots taken
-	manager.refreshShots() #clean the shots taken
-	manager.startReload() #reload the gun (this will also grab the total shots)
+	manager.startReload() #reload the gun 
 	
-	
+	print(totalHits, " micro ", microPenalty, " shots ", totalShots)
 	
 	var score = totalHits * hitMultiplier
 	
@@ -80,9 +79,9 @@ func score_Performance(ourTarget, hitMultiplier, missDivisor,
 	else:
 		score -=1 #delete this branch later
 	
-	#if(totalMiss > 0 && missDivisor > 0): #don't bother calculating unless there actually were misses
-		#score -= totalMiss / missDivisor
-		#pass
+	if(totalMiss > 0 && missDivisor > 0): #don't bother calculating unless there actually were misses
+		score -= totalMiss / missDivisor
+		pass
 	
 	
 	if(visionDivisor > 0): #if we're doing penalties for not looking at target

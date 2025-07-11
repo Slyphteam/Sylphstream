@@ -105,22 +105,22 @@ func score_Sylphs():
 
 	
 	
-	if(arr1[0]<highscore && arr2[0]<highscore):
+	if(arr1[0]<=highscore && arr2[0]<=highscore):
 		print("both sucked!") #mutate the bejeezus out of one, load the other
 		Sylph1.mind.ourNetwork.mutate_Network(0.05, 0, 50) 
-		Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
+		Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/twohitter.txt")
 	elif(arr1[1]>arr2[1]):
 		print("Sylph1 did better! score: ", arr1[1])
 		if(arr1[0]>=(highscore-1)):
 			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")	
 		Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		Sylph2.mind.ourNetwork.mutate_Network(0.01, 0, 20)
+		Sylph2.mind.ourNetwork.mutate_Network(0.05, 0, 20)
 	elif(arr1[1]<arr2[1]):
 		print("Sylph2 did better! score: ", arr2[1])
 		if(arr2[0]>= (highscore-1)):
 			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
 		Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		Sylph1.mind.ourNetwork.mutate_Network(0.01, 0, 20)
+		Sylph1.mind.ourNetwork.mutate_Network(0.05, 0, 20)
 	else:
 		print("both tied!")
 		Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
