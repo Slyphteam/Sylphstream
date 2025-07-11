@@ -150,6 +150,7 @@ func process_Actions():
 	aimVector = Vector2(leftRight, upDown)
 	
 	var magnitudePenalty = aimVector.length()
+	microPenalty += magnitudePenalty
 	
 	#Preserve a small amount of the previous frame's "mouse" input 
 	#to simulate inertia of dragging mouse around a screen
@@ -159,7 +160,7 @@ func process_Actions():
 	aimVector.x = clampf(aimVector.x, -1, 1)
 	aimVector.y = clampf(aimVector.y, -1, 1)
 	
-	microPenalty += magnitudePenalty
+	
 	
 	body.move_Head(aimVector, magnitudePenalty)
 	

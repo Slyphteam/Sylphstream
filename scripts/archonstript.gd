@@ -84,14 +84,14 @@ func restart_Sylph_Test():
 @export var targ1 : SCOREDTARGET
 @export var targ2 : SCOREDTARGET
 
-var hitMult: int = 1 ##Multiplicative reward for hits
+var hitMult: int = 2 ##Multiplicative reward for hits
 var missDiv: int = 2 ##Divide penalty for misses by this amount
 var missAllow: int = 3 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
 var visionDiv: int = 20 ##What will we divide the per-frame penalty by for not seeing target?
 
 var highscore: int = 0
-var bestPoint: int = -100
+var bestPoint: int = -200
 
 func score_Sylphs():
 	
@@ -109,24 +109,27 @@ func score_Sylphs():
 		bestPoint = arr2[1]
 	
 	
-	if(arr1[1]<=bestPoint -20 && arr2[1]<= bestPoint - 20):
+
+	if(arr1[1]<=bestPoint - 20 && arr2[1]<= bestPoint - 20):
 		#both sucked. Whichever did worse, though, we'll replace
 		if(arr1[1]>arr2[1]):
-			Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
+			if(arr2[1]< 0-40):
+				Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
 		else:
-			Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		print("both sucked!") #mutate the bejeezus out of one, load the other
+			if(arr1[1]< 0-40):
+				Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/simple aimer.txt")
+		#print("both sucked! best: ", bestPoint) #mutate the bejeezus out of one, load the other
 	elif(arr1[1]>arr2[1]):
 		
 		print("Sylph1 did better! score: ", arr1[1])
-		if(arr1[0]>=(highscore-1)):
-			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")	
+		#if(arr1[0]>=(highscore-1)):
+		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")	
 		Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
 		Sylph2.mind.ourNetwork.mutate_Network(0.1, 0, 20)
 	elif(arr1[1]<arr2[1]):
 		print("Sylph2 did better! score: ", arr2[1])
-		if(arr2[0]>= (highscore-1)):
-			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
+		#if(arr2[0]>= (highscore-1)):
+		Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
 		Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
 		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 20)
 	else:
@@ -137,10 +140,10 @@ func score_Sylphs():
 		Sylph2.mind.ourNetwork.mutate_Network(0.05, 0, 20)
 	#else: 
  	
-	if(arr1[0]>=4):
-		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/simple aimer.txt")
-	if(arr2[0]>=4):
-		Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/simple aimer.txt")
+	#if(arr1[0]>=4):
+		#Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/simple aimer.txt")
+	#if(arr2[0]>=4):
+		#Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/simple aimer.txt")
 
 	if(arr1[0]>highscore):
 		highscore = arr1[0]
