@@ -6,14 +6,22 @@ extends CharacterBody3D
 @onready var manager : INVENMANAGER = $"sylph head v2/sylphinventory"
 
 
-
+var shoot = false
 func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#print("ow!")
-	move_Head_Exact(Vector2(5,5))
+	if(shoot):
+		manager.unShoot()
+		shoot = false
+	else:
+		manager.doShoot()
+		shoot = true
+	
+	#move_Head_Exact(Vector2(5,5))
 
 func interact_By_Player(playerRef):
 	
-	mind.do_Single_Thought()
+	manager.startReload()
+	#mind.do_Single_Thought()
 	#mind.mindEnabled = true
 	#mind.activeTime = 400
 	
@@ -31,8 +39,8 @@ func move_Head(desired: Vector2, moveSpeed):
 
 ##Moves the Sylph's head with a vector containing the degrees of rotation in vertical, horizontal
 func move_Head_Exact(desired: Vector2):
-	sylphHead.rotation_degrees.x += desired.x
-	sylphHead.rotation_degrees.y += desired.y
+	sylphHead.rotation_degrees.x -= desired.y
+	sylphHead.rotation_degrees.y += desired.x
 	
 	clampf(sylphHead.rotation_degrees.x, -90, 90)
 	
