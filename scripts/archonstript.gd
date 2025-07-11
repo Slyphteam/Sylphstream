@@ -88,9 +88,10 @@ var hitMult: int = 3 ##Multiplicative reward for hits
 var missDiv: int = 2 ##Divide penalty for misses by this amount
 var missAllow: int = 3 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 30 ##What will we divide the per-frame penalty by for not seeing target?
+var visionDiv: int = 20 ##What will we divide the per-frame penalty by for not seeing target?
 
 var highscore: int = 0
+var bestPoint: int = -100
 
 func score_Sylphs():
 	
@@ -102,17 +103,21 @@ func score_Sylphs():
 	print(arr1)
 	print(arr2)
 	
-
+	if(arr1[1]>bestPoint):
+		bestPoint = arr1[1]
+	if(arr2[1]>bestPoint):
+		bestPoint = arr2[1]
 	
 	
-	#if(arr1[0]<=highscore -1 && arr2[0]<= highscore - 1):
-		##both sucked. Whichever did worse, though, we'll replace
-		#if(arr1[1]>arr2[1]):
-			#Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		#else:
-			#Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		#print("both sucked!") #mutate the bejeezus out of one, load the other
-	if(arr1[1]>arr2[1]):
+	if(arr1[1]<=bestPoint -1 && arr2[1]<= bestPoint - 1):
+		#both sucked. Whichever did worse, though, we'll replace
+		if(arr1[1]>arr2[1]):
+			Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
+		else:
+			Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
+		print("both sucked!") #mutate the bejeezus out of one, load the other
+	elif(arr1[1]>arr2[1]):
+		
 		print("Sylph1 did better! score: ", arr1[1])
 		if(arr1[0]>=(highscore-1)):
 			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")	
@@ -130,7 +135,7 @@ func score_Sylphs():
 		Sylph1.mind.ourNetwork.mutate_Network(0.05, 0, 20)
 		Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
 		Sylph2.mind.ourNetwork.mutate_Network(0.05, 0, 20)
-	#else:
+	#else: 
  	
 	if(arr1[0]>=4):
 		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/simple aimer.txt")
