@@ -139,6 +139,9 @@ func process_Actions():
 	
 	#what are the bounds of outputs? they seem to be in the teens. 
 	
+	for x in desiredActions.size():
+		desiredActions[x] /= 0.7
+	
 	var leftRight = desiredActions[0] * 1 * aimSensitivity ##max per-frame movement is 3 degrees
 	var upDown = desiredActions[1] * 1 * aimSensitivity ##Max per-frame movement is 3 degrees
 	

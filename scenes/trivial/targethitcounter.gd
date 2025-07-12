@@ -8,3 +8,4 @@ func _ready():
 func reset():
 	totalHits = 0
 	global_position.z = startPos
+	global_position.z += randf_range(-0.5, 0.5)

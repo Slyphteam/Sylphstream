@@ -59,6 +59,7 @@ var totalShots = 0 ##Used in sylph scoring
 func startReload():
 	
 	activeItem.startReload()
+	totalShots += 1 #count excessive reloads as firing as well
 	#totalShots = activeItem.totalShots
 	#else:
 		#print("How do you reload a sword?")

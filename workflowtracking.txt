@@ -48,6 +48,8 @@ then ALSO change to copy from other sylph. If thjis doesn't fix evolution, cry.
 
 Thoroughly test current everything implementation with as simple a sylph as you can get.
 
+Check misses logic, fire on empty logic, and reload penalty logic
+
 Sylph maintenance:
 
 Check actions of sylphs:

@@ -51,6 +51,8 @@ func calc_Outputs(inputs: Array[float])-> Array[float]:
 func apply_Activation_Chance(incoming:float, chance)->float:
 	incoming = clampf(incoming, -1, 1)
 	
+	incoming *= 0.7 #TOO MUCH ACTIVATION! turn that shit off!
+	
 	#if(weighted_Prob(chance)):
 	return incoming
 	#else:
