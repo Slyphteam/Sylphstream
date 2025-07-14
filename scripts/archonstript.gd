@@ -60,8 +60,8 @@ func _process(delta):
 func begin_Sylph_Test():
 	#Sylph1.mind.initialize_Rand_Network()
 	#Sylph2.mind.initialize_Rand_Network()
-	Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
-	Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
+	Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs attempt 2/slightly better.txt")
+	Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs attempt 2/foundations.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -87,16 +87,16 @@ func restart_Sylph_Test():
 
 
 #start with vision training, then penalize misses
-var hitMult: int = 3 ##Multiplicative reward for hits
-var missDiv: int = 1 ##Divide penalty for misses by this amount
-var missAllow: int = 6 ##How many misses will we tolerate before punishing?
+var hitMult: int = 1 ##Multiplicative reward for hits
+var missDiv: int =  0 ##Divide penalty for misses by this amount
+var missAllow: int = 50 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 60 ##What will we divide the per-frame penalty by for not seeing target?
+var visionDiv: int = 700 ##What will we divide the per-frame penalty by for not seeing target?
 
-var totalSum: int = -40
+var totalSum: int = -3
 var generation: int = 0
-var tolerance = 10
-var highScore = -60
+var tolerance = 2
+var highScore = -3
 
 func score_Sylphs():
 	
@@ -111,88 +111,59 @@ func score_Sylphs():
 	#update our generations. 
 	generation+=1
 	var keptScore = 0
-	var avgScore = totalSum / generation
+	var avgScore = float(totalSum) / float(generation)
 	
 	if(arr1[1] < avgScore && arr2[1] < avgScore):
-		print("Both sucked!") #only load 1 sylph for sake of testing
-		Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
+		if(highScore > 1):
+			generation-=1
+			print("Both sucked!") #only load 1 sylph for sake of testing
+			Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
+			
 	elif(arr1[1] > arr2[1]):
 		print("Sylph1 was better!")
 		totalSum += arr2[1]
-		if(arr1[1] > avgScore - tolerance):
-			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")  #only save if we're doing "good"
-		Sylph2.mind.copy_From_Other(Sylph2)
-		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 5)
+		
 		if(arr1[1] > highScore):
 			print("new best!")
 			highScore = arr1[1]
 			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
 		
+		if(arr1[1] > avgScore - tolerance):
+			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")  #only save if we're doing "good"
+		
+		Sylph2.mind.copy_From_Other(Sylph2)
+		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 40)
+		
+		
 	elif(arr1[1] < arr2[1]):
 		print("Sylph2 was better!")
 		totalSum +=  arr2[1]
-		if(arr2[1] > avgScore - tolerance): 
-			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
-		Sylph1.mind.copy_From_Other(Sylph2)
-		Sylph1.mind.ourNetwork.mutate_Network(0.07, 0, 7)
+		
 		if(arr2[1] > highScore):
 			print("new best!")
 			highScore = arr2[1]
 			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
+		
+		if(arr2[1] > avgScore - tolerance): 
+			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
+	
+		Sylph1.mind.copy_From_Other(Sylph2)
+		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 40)
+
+
+
 	else:
 		print("both tied!") #go again!
-		generation -=1 # dont update average, so decrement generations again
+		if(highScore < -2):
+			Sylph1.mind.initialize_Rand_Network()
+			Sylph2.mind.initialize_Rand_Network()
+		else:
+			Sylph1.mind.ourNetwork.mutate_Network(0.3, 0, 1)
+			generation -=1 # dont update average, so decrement generations again
 	
-	#if(bestPoint > -40):
-		#if(arr1[1]<=bestPoint && arr2[1]<= bestPoint):
-			##both sucked. Whichever did worse, though, we'll replace
-			#print("both sucked")
-			#if(arr1[1]>arr2[1]):
-				#if(arr2[1]< 0-40):
-					#Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/decent aiming sylph.txt")
-			#else:
-				#if(arr1[1]< 0-40):
-					#Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/decent aiming sylph.txt")
-			##print("both sucked! best: ", bestPoint) #mutate the bejeezus out of one, load the other
-	#elif(arr1[1]>arr2[1]):
-		#print("Sylph1 did better! score: ", arr1[1])
-		##if(arr1[0]>=(highscore-1)):
-		#Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")	
-		#Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		#Sylph2.mind.ourNetwork.mutate_Network(0.03, 0, 20)
-	#elif(arr2[1]>arr1[1]):
-		#print("Sylph2 did better! score: ", arr2[1])
-		##if(arr2[0]>= (highscore-1)):
-		#Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		#Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		#Sylph1.mind.ourNetwork.mutate_Network(0.03, 0, 20)
-	#else:
-		#print("both tied!")
-		#Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		#Sylph1.mind.ourNetwork.mutate_Network(0.05, 0, 20)
-		#Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs/primitiveFull.txt")
-		#Sylph2.mind.ourNetwork.mutate_Network(0.05, 0, 20)
-	##else: 
- 	#
-	#if(arr1[0]>=4):
-		#Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/fivehittermaybe.txt")
-	#if(arr2[0]>=4):
-		#Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs/fivehittermaybe.txt")
-	#
-	#if(arr1[1]>=-30|| arr2[1]>=-30):
-		#print("sub thirty!")
-	#
-	#if(arr1[0]>highscore):
-		#highscore = arr1[0]
-	#if(arr2[0]>highscore):
-		#highscore = arr2[0]
-		#
-	#if(arr1[1]>bestPoint):
-		#bestPoint = arr1[1]
-	#if(arr2[1]>bestPoint):
-		#bestPoint = arr2[1]
-	
-	
+	if(generation > 25 || arr2[0] >= 5 || arr1[0] >= 5):
+		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/current best.txt")
+		print("probably enough now!")
 
 #https://docs.godotengine.org/en/stable/classes/class_fileaccess.html#class-fileaccess
 #https://docs.godotengine.org/en/stable/tutorials/io/runtime_file_loading_and_saving.html

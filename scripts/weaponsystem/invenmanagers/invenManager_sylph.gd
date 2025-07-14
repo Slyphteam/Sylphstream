@@ -65,7 +65,7 @@ func startReload():
 		#print("How do you reload a sword?")
 
 func grabShots():
-	totalShots = activeItem.totalShots
+	totalShots += activeItem.totalShots
 
 ##Refresh totalshots counter, replenish ammo consumed
 func refreshShots():

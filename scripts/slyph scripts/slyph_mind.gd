@@ -106,9 +106,9 @@ func refresh_Stats():
 	body.sylphHead.rotation.x = 0
 	manager.refreshShots() #clear it
 
-func _process(_delta):
+func _process(delta):
 	if(mindEnabled):
-		do_Single_Thought()
+		do_Single_Thought(delta)
 		activeTime-=1
 		heartBeat-=1
 		
@@ -117,21 +117,23 @@ func _process(_delta):
 		
 		if(activeTime <=0):
 			mindEnabled = false
+			manager.unShoot() #prevent the sylph from ever turning off in a shoot mode, which would be unfair
 			#refresh_Stats()
 			#var scoresArr = score_Performance()
 			#print("All done!")
 
-func do_Single_Thought():
+func do_Single_Thought(delta):
 	do_Senses() #gather information
 	desiredActions = ourNetwork.calc_Outputs_Network(sensoryInput) #process information
-	process_Actions() #execute actions
+	process_Actions(delta) #execute actions
 
 var aimVector: Vector2
 
 var aimingSights: bool = false
 var modeData: Array[float] = [0.0,0.0,0.0,0.0]
+var gubby = false
 
-func process_Actions():
+func process_Actions(delta):
 	
 	#print("Desired actions:", desiredActions)
 	
@@ -142,34 +144,30 @@ func process_Actions():
 	for x in desiredActions.size():
 		desiredActions[x] /= 0.7
 	
-	var leftRight = desiredActions[0] * 1 * aimSensitivity ##max per-frame movement is 3 degrees
-	var upDown = desiredActions[1] * 1 * aimSensitivity ##Max per-frame movement is 3 degrees
+	var deltaScalar = 60 * delta
+	var leftRight = desiredActions[0] * aimSensitivity * deltaScalar ##max per-frame movement is 3 degrees
+	var upDown = desiredActions[1] * aimSensitivity * deltaScalar ##Max per-frame movement is 3 degrees
 	
+		#add friction
+	aimVector *= 0.7 #does this work?
+	aimVector += Vector2(leftRight, upDown) 
+	var speed = aimVector.length()
 	
+	microPenalty += Vector2(desiredActions[0], desiredActions[1]).length() / 3
 	
-	if(upDown > -0.1 && upDown < 0.1): #ignore obnoxiously small inputs
-		upDown = 0
-	if(leftRight > -0.1 && leftRight < 0.1):
-		leftRight = 0
+
 	
+	#inaccuracy currently disabled
+	#if(speed >= 2.2):
+		#var inaccuracy = Vector2(randf_range(-0.01, 0.01), randf_range(-0.01, 0.01)) * speed
+		#aimVector += inaccuracy
+	#starting out with 3 max rotation speed
+	var maxSpeed = 3 * deltaScalar
+	aimVector.x = clampf(aimVector.x, -maxSpeed, maxSpeed)
+	aimVector.y = clampf(aimVector.y, -maxSpeed, maxSpeed)
 	
-	var oldVec = aimVector
-	aimVector = Vector2(leftRight, upDown)
-	
-	var magnitudePenalty = aimVector.length()
-	microPenalty += magnitudePenalty
-	
-	#Preserve a small amount of the previous frame's "mouse" input 
-	#to simulate inertia of dragging mouse around a screen
-	aimVector += oldVec / 100
-	
-	#ensure, even with intertia, aimvector never exceedes what it's meant to
-	aimVector.x = clampf(aimVector.x, -1, 1)
-	aimVector.y = clampf(aimVector.y, -1, 1)
-	
-	
-	
-	body.move_Head(aimVector, magnitudePenalty)
+
+	body.move_Head_Exact(aimVector)
 	
 	#INDEX 2: SHOOT OR NOT (formerly belonged to index 1)
 	if(desiredActions[2] > 0.5):
@@ -178,8 +176,7 @@ func process_Actions():
 		manager.unShoot()
 	
 	#INDEX 3: RELOAD
-	#but we aren't doing this yet
-	if(desiredActions[3] > 0.7):
+	if(desiredActions[3] > 0.9):
 		manager.startReload()
 	
 	#INDEX 4: ADS
@@ -244,8 +241,8 @@ func do_Senses():
 	#not currently doing anything with this
 	sensoryInput[10] = targetsPresent
 	
-	#INDEX 11: HEARTBEAT
-	#var heartCur = (heartBeat/50) - 1 #ranges from 0-100
+	#INDEX 11: Empty!
+	
 	sensoryInput[11] = 0#heartCur
 	
 	#INDEX 12: HEALTH
@@ -254,12 +251,12 @@ func do_Senses():
 	
 	#INDEX 13,14,15,16: MODAL INPUTS
 	sensoryInput[13] = desiredActions[12]
-	sensoryInput[14]=desiredActions[13]
-	sensoryInput[15]=desiredActions[14]
-	sensoryInput[16]=desiredActions[15]
+	sensoryInput[14] = desiredActions[13]
+	sensoryInput[15] = desiredActions[14]
+	sensoryInput[16] = desiredActions[15]
 	
 	#INDEX 17, RANDOM NOISE
-	sensoryInput[17] =0#= randf_range(-1, 1)
+	sensoryInput[17] = randf_range(-0.05, 0.05)
 	
 	#18: DISTANCE (put this in vision function since it sort of is vision
 	#sensoryInput[18] = 0
@@ -283,6 +280,7 @@ func do_Vision():
 		sensoryInput[0] = 1.0
 	else:
 		sensoryInput[0] = 0
+		microPenalty +=1
 	
 	var targetR = get_Vision_Targets(visionR)
 	if(targetR):
@@ -290,6 +288,7 @@ func do_Vision():
 		sensoryInput[1] = 1.0
 	else:
 		sensoryInput[1] = 0
+		microPenalty +=1
 	
 	var targetU = get_Vision_Targets(visionU)
 	if(targetU):
@@ -297,6 +296,7 @@ func do_Vision():
 		sensoryInput[2] = 1.0
 	else:
 		sensoryInput[2] = 0.0
+		microPenalty +=1
 	
 	var targetD = get_Vision_Targets(visionD)
 	if(targetD):
@@ -304,23 +304,26 @@ func do_Vision():
 		sensoryInput[3] = 1.0
 	else:
 		sensoryInput[3] = 0.0
+		microPenalty +=1
 	
 	#next, do the "extrema"
 	if(!targetTrue): #we do not have a target anywhere in sight, you get no awareness, bwomp bwomp
 		sensoryInput[4] = 0
 		sensoryInput[5] = 0
 		
-		#in fact, Im going to penalize you for not being able to see a target
-		if(targetsPresent != 0):
-			if(!(targetL || targetR)):
-				microPenalty +=2
-			if(!(targetU || targetD)):
-				microPenalty +=2
-				
+		##in fact, Im going to penalize you for not being able to see a target (moved to per-block)
+		#if(targetsPresent != 0): 
+			#if(!(targetL || targetR)):
+				#microPenalty +=2
+			#if(!(targetU || targetD)):
+				#microPenalty +=2
+			
+
+		
 		sensoryInput[18] = 1
 		
 	else:
-
+		
 		
 		#issue: targetTrue is the staticbody that gets detected, and has a transform of 0.
 		#solution: just use globals?

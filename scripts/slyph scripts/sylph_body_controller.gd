@@ -19,8 +19,8 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#move_Head_Exact(Vector2(5,5))
 
 func interact_By_Player(playerRef):
-	
-	manager.startReload()
+	mind.gubby = true
+	#manager.startReload()
 	#mind.do_Single_Thought()
 	#mind.mindEnabled = true
 	#mind.activeTime = 400
@@ -33,9 +33,7 @@ func interact_By_Player(playerRef):
 	#print("saved!")
 	
 
-func move_Head(desired: Vector2, moveSpeed):
-	#TODO: in the future add inaccuracy with higher speeds
-	move_Head_Exact(desired)
+
 
 ##Moves the Sylph's head with a vector containing the degrees of rotation in vertical, horizontal
 func move_Head_Exact(desired: Vector2):
