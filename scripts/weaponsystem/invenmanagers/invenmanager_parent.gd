@@ -2,7 +2,7 @@
 class_name INVENMANAGER extends Node3D
 
 @export var starterWeapon: WEAP_INFO
-enum Ammotypes {ammoBlank, ammoPistol, ammoRifle, ammoThirtycal, ammoShotgun}
+enum Ammotypes {ammoRimfire, ammoPistol, ammoRifle, ammoThirtycal, ammoShotgun}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
 #var heldItem: Node3D #old name for activeItem prior to the WEPINSTANCE refactor
@@ -10,9 +10,6 @@ var activeItem: WEPINSTANCE
 var weapType: int ##1 for basic firearm, 2 for melee...
 var user : Node3D
 
-
-var isPlayer: bool = false
-var theReticle = null
 #var holdingFirearm: bool = false
 
 #func _ready():
@@ -35,12 +32,12 @@ func load_Wep(wep2Load):
 		if(wep2Load.shotgunMode):
 			activeItem = SHOTGUNINSTANCE.new()
 			activeItem.invManager = self
-			activeItem.load_Weapon(wep2Load, isPlayer, theReticle)
+			activeItem.load_Weapon(wep2Load)
 			weapType = 1 #still use the firearm control schema
 		else:
 			activeItem = GUNBASICINSTANCE.new()
 			activeItem.invManager = self
-			activeItem.load_Weapon(wep2Load, isPlayer, theReticle)
+			activeItem.load_Weapon(wep2Load)
 			weapType = 1 #basic gun
 	else:
 		print("Unsupported script override!")

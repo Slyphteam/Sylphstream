@@ -1,13 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=13 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/player/cam_behavior.gd" id="2_f4klr"]
 [ext_resource type="Resource" uid="uid://dml6uaueraa87" path="res://resources/weapon resources/firearm/bergther_info.tres" id="4_l4qvo"]
-[ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/player/reticle.gd" id="5_smehm"]
+[ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/weaponsystem/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
-[ext_resource type="Script" uid="uid://dk8huytauryvd" path="res://scripts/player/infopaneldata.gd" id="6_hn4sd"]
+[ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/player/ui associated/ui_Manager.gd" id="6_78t0m"]
+[ext_resource type="Script" uid="uid://dk8huytauryvd" path="res://scripts/player/ui associated/infopaneldata.gd" id="6_hn4sd"]
 [ext_resource type="Theme" uid="uid://dwx0gcw8npl2a" path="res://resources/debugtheme.tres" id="6_l4qvo"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/Player associated/playermodel.tscn" id="6_tgbf5"]
+[ext_resource type="Texture2D" uid="uid://5h5e2fdfww0f" path="res://uiholdertest.png" id="9_f4klr"]
+[ext_resource type="Script" uid="uid://bt86hsaoopo8b" path="res://scripts/player/ui associated/ammocounters.gd" id="9_iy7ap"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f4klr"]
 points = PackedVector3Array(0.330305, 0.920269, 0.0344127, -0.386635, -0.776089, -0.063091, -0.350895, -0.800871, -0.158618, 0.358755, -0.844057, 0.0990035, -0.0942994, 0.734913, 0.385134, -0.063091, 0.776089, -0.386635, 0.192083, -0.730015, -0.34763, -0.357384, 0.84832, -0.0963208, -0.0959277, -0.844914, 0.359117, 0.19096, 0.725711, 0.348745, 0.349979, 0.728291, -0.188458, -0.34763, 0.730015, 0.192083, -0.0653278, -1.07085, -0.132243, -0.18958, -0.73259, -0.348861, -0.0990502, 1.07326, 0.102225, 0.190957, -0.725702, 0.348741, -0.286494, -0.799943, 0.257634, 0.348741, 0.725702, 0.190957, 0.385134, -0.734913, -0.0942994, -0.312336, 0.690456, -0.249566, 0.101353, 1.03063, -0.197944, 0.19208, 0.730004, -0.347624, 0.135835, -1.07419, 0.0351098, -0.197944, -1.03063, 0.101353, 0.0662163, -0.775496, -0.386338, 0.198614, -0.984784, -0.195439, 0.101183, 1.02888, 0.200779, 0.384492, 0.733681, 0.0973134, -0.195805, 0.986616, -0.195805, -0.383887, -0.738606, 0.0979559, -0.384533, 0.739844, -0.0949428, 0.0973134, -0.733681, 0.384492)
@@ -35,7 +38,7 @@ shape = SubResource("ConvexPolygonShape3D_f4klr")
 [node name="playermodel" parent="." instance=ExtResource("6_tgbf5")]
 transform = Transform3D(-1.5, 1.14291e-08, -1.30635e-07, 0, 1.49429, 0.130734, 1.31134e-07, 0.130734, -1.49429, 0, 0.236791, 0)
 
-[node name="Control" type="Control" parent="."]
+[node name="Player UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,8 +46,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("6_78t0m")
 
-[node name="Reticle" type="CenterContainer" parent="Control" node_paths=PackedStringArray("crosshairs")]
+[node name="Reticle" type="CenterContainer" parent="Player UI" node_paths=PackedStringArray("crosshairs")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,48 +60,102 @@ grow_vertical = 2
 script = ExtResource("5_smehm")
 crosshairs = [NodePath("Top"), NodePath("Bot"), NodePath("Left"), NodePath("Right")]
 
-[node name="Top" type="Line2D" parent="Control/Reticle"]
+[node name="Top" type="Line2D" parent="Player UI/Reticle"]
 points = PackedVector2Array(0, -3, 0, -15)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Top_highlight" type="Line2D" parent="Control/Reticle/Top"]
+[node name="Top_highlight" type="Line2D" parent="Player UI/Reticle/Top"]
 points = PackedVector2Array(0, -4, 0, -14)
 width = 1.0
 
-[node name="Bot" type="Line2D" parent="Control/Reticle"]
+[node name="Bot" type="Line2D" parent="Player UI/Reticle"]
 points = PackedVector2Array(0, 5, 0, 25)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Bot_highlight" type="Line2D" parent="Control/Reticle/Bot"]
+[node name="Bot_highlight" type="Line2D" parent="Player UI/Reticle/Bot"]
 points = PackedVector2Array(0, 6, 0, 24)
 width = 1.0
 
-[node name="Left" type="Line2D" parent="Control/Reticle"]
+[node name="Left" type="Line2D" parent="Player UI/Reticle"]
 points = PackedVector2Array(-5, 0, -25, 0)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Left_highlight" type="Line2D" parent="Control/Reticle/Left"]
+[node name="Left_highlight" type="Line2D" parent="Player UI/Reticle/Left"]
 points = PackedVector2Array(-6, 0, -24, 0)
 width = 1.0
 
-[node name="Right" type="Line2D" parent="Control/Reticle"]
+[node name="Right" type="Line2D" parent="Player UI/Reticle"]
 points = PackedVector2Array(5, 0, 25, 0)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Right_highlight" type="Line2D" parent="Control/Reticle/Right"]
+[node name="Right_highlight" type="Line2D" parent="Player UI/Reticle/Right"]
 points = PackedVector2Array(6, 0, 24, 0)
 width = 1.0
 
-[node name="Infopanel" type="PanelContainer" parent="Control"]
+[node name="Infopanel" type="PanelContainer" parent="Player UI"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 offset_right = 200.0
 theme = ExtResource("6_l4qvo")
 script = ExtResource("6_hn4sd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Infopanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/Infopanel"]
 layout_mode = 2
+
+[node name="Ammo" type="Control" parent="Player UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("9_iy7ap")
+
+[node name="Currentmag" type="Label" parent="Player UI/Ammo"]
+layout_mode = 0
+offset_left = -141.0
+offset_top = -35.0
+offset_right = -48.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "123"
+horizontal_alignment = 1
+
+[node name="reserve" type="Label" parent="Player UI/Ammo"]
+layout_mode = 0
+offset_left = -66.0
+offset_top = 14.0
+offset_right = 27.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "50"
+horizontal_alignment = 2
+
+[node name="Uiholdertest" type="Sprite2D" parent="Player UI/Ammo"]
+z_index = -1
+position = Vector2(-70, -45)
+texture = ExtResource("9_f4klr")
+
+[node name="name" type="Label" parent="Player UI/Ammo"]
+layout_mode = 0
+offset_left = -150.0
+offset_top = 17.0
+offset_right = -28.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "poopoo butt gun"
+horizontal_alignment = 2

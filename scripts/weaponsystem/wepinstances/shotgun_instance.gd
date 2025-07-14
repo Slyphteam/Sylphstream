@@ -1,147 +1,17 @@
 ##The corresponding weapon script class for the FIREARM_INFO data resource
-class_name SHOTGUNINSTANCE extends WEPINSTANCE
+class_name SHOTGUNINSTANCE extends GUNBASICINSTANCE
 
-#References
-var weaponMesh: MeshInstance3D
-var ourReticle: CenterContainer 
-var gunshotPlayer: AudioStreamPlayer3D 
-var reloadPlayer: AudioStreamPlayer3D
-var reloadTimer: Timer ##Deprecated reference from when a timer was used, does nothing
-var invManager: INVENMANAGER ##Assigned by the actual manager prior to weapon resource loading
-
-#State variables
-var currentCooldown : float = 0
-var affectUI = false ##Should only be true for the player's current weapon instance
-var offCooldown = true ##Used to track whether or not the gun is on COOLDOWN, nothing else 
-var triggerDepressed = false
-var aimDownsight = false
-var totalShots = 0 ##TOTAL number of ATTEMPTED shots taken in lifetime
-var shotCooldown: int = 0
-
-#Variables we track and calculate with
-var capacity : int
-var reloading : bool
-var currentRecoil: float = 0 ##The current "amount" of recoil, in abstract units
-var recoilDebt = 0 ##lets recoil be applied across multiple frames
-var debtCutoff = 10 ##at what point do we just apply the recoil debt flat out?
-var recoveryCutoff ##at what point do we increase our recoil recovery?
-var recoveryDivisor ##Used in recoil recovery computation
-var kickAmount: int ##Used in randomly generating recoil viewpunch
-var aimKickBonus ##Used because we don't like integer division around these parts
-var pitchWarningAmount ##used to determine when the pitch change starts and how many increments there are
-
-#Variables inferred from the resource
-var minRecoil 
-var maxRecoil
-var damage : int
-var chambering : int
-var maxCapacity : int
-var totalMaxRecoil 
-var totalMinRecoil
-var recoveryAmount ##How quickly do we get a hold of the gun?
-var recoilAmount ##Applied per shot
-var punchMult ##Multiplier to viewpunch 
-var aimbonus ##Bonus to ADS accuracy/handling
-var maxAzimuth: float ##abstract units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
-var reloadTime: float
-
-#Shotgun specific variables
-var doVolley: bool
 var pellets: int
 
-#Misc variables
-@export var decalTimer: int = 10 ##Lifetime length, in seconds, of hitdecals
-
 ##
-func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer ):
-	if(!wepToLoad is FIREARM_INFO):
-		print("Tried to load non-firearm info resource as a firearm! Bad! USE THE RIGHT CLASS!")
-		return
+func load_Weapon(wepToLoad:WEAP_INFO):
+	super.load_Weapon(wepToLoad)
 	
-	
-	
-	#Instantiate other components we'll need to function
-	weaponMesh = MeshInstance3D.new()
-	invManager.add_child(weaponMesh)
-	weaponMesh.mesh = wepToLoad.mesh
-	weaponMesh.position = wepToLoad.position
-	weaponMesh.rotation_degrees = wepToLoad.rotation
-	weaponMesh.scale = wepToLoad.scale
-	
-	gunshotPlayer = AudioStreamPlayer3D.new()
-	invManager.add_child(gunshotPlayer)
-	reloadPlayer = AudioStreamPlayer3D.new()
-	invManager.add_child(reloadPlayer)
-	
-	#For now just, add a new timer each time to the scene tree rather than reusing one
-	#reloadTimer = Timer.new()
-	#reloadTimer.one_shot = true
-	#reloadTimer.autostart = false
-	#invManager.add_child(reloadTimer)
-	
-	
-	#var decalInstance = hitdecalscene.instantiate()
-	#get_tree().root.add_child(decalInstance)
-	#
-	#
-	
-	if(isPlayer):
-		affectUI = true
-		ourReticle = reticle
-		#ourReticle.adjust_spread(minRecoil)
-	
-	print("Loading shotgun of ", wepToLoad.wepName)
-	
-		#grab all our variables
-	shotCooldown = wepToLoad.shotCooldown
-	
-	maxCapacity = wepToLoad.maxCapacity
-	chambering = wepToLoad.chambering
-	minRecoil = wepToLoad.minRecoil
-	maxRecoil = wepToLoad.maxRecoil
-	recoveryAmount = wepToLoad.recoverAmount
-	recoilAmount = wepToLoad.recoilAmount
-	punchMult = wepToLoad.viewpunchMult
-	maxAzimuth = currentRecoil / 7
-	reloadTime = wepToLoad.reloadtime
-	aimbonus = wepToLoad.aimBonus
-	gunshotPlayer.stream = wepToLoad.gunshot
-	reloadPlayer.stream = wepToLoad.reload
-	
-	#Shotgun specific variables
+		#Shotgun specific variables
 	doVolley = wepToLoad.shotgunMode
 	pellets = wepToLoad.pelletAMT
 	
 	
-	#initialize stats
-	capacity = maxCapacity
-	reloading = false
-	totalMinRecoil = minRecoil
-	totalMaxRecoil = maxRecoil
-	
-	currentRecoil = minRecoil 
-	recoveryCutoff = maxRecoil / 3
-	recoveryDivisor = maxRecoil * 2 * (1+recoveryAmount)
-	#include aimbonus and recovery speed in calculating. Essentially, the "ergonomics"
-	#recoil amount (reduced)              #negative penalty for low recovery
-	kickAmount = (recoilAmount / 4) + ((5 / ((10 * recoveryAmount))+1) ) - 3
-	@warning_ignore("integer_division") aimKickBonus = (kickAmount / 2) 
-	
-	if(capacity < 2):
-		pitchWarningAmount = -1 #don't bother
-	elif(capacity <= 10):
-		@warning_ignore("integer_division") pitchWarningAmount = maxCapacity / 2 #do bother but only on half
-	else:
-		@warning_ignore("integer_division") pitchWarningAmount = maxCapacity / 3
-	
-	
-	if(kickAmount <=0):
-		kickAmount = 1
-		aimKickBonus = 0
-	
-	#if(affectUI):
-		#update_UI()
-
 
 ##Run state checks per frame and update the UI
 func manualProcess(delta):
@@ -247,74 +117,9 @@ func do_Hit_Decal(pos):
 	await managerTree.create_timer(10).timeout
 	decalInstance.queue_free()
 
-
+##ADS is disabled for shotguns. Is this super accurate? not really. but it  avoids jank.
 func toggleADS():
-	if(aimDownsight):
-		kickAmount += aimKickBonus
-		adjustAcuracy(aimbonus)
-		aimDownsight = false
-		print("unaiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
-	else:
-		kickAmount -= aimKickBonus
-		adjustAcuracy(0 - aimbonus)
-		aimDownsight = true
-		print("aiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
-
-##Updates the max/min aimcone by a given value. Can be negative.
-func adjustAcuracy(amnt):
-	
-	#I REALLY don't trust float imprecision here
-	recoveryAmount -= amnt / 10 #buff recovery speed by a fraction of the penalty amount
-	
-	if(amnt > 0): #if we're growing reticle, apply the debt. Otherwise let the reticle shrink.
-		recoilDebt+=amnt
-	
-	#somewhat misleading but the absolute smallest value that max can be and still preserve their delta
-	var absoluteMin = totalMaxRecoil - totalMinRecoil
-
-	minRecoil = clamp(minRecoil+amnt, 0, 200) 
-	maxRecoil = clamp(maxRecoil+amnt, absoluteMin, 200)
-	
-	recoveryDivisor = maxRecoil * 2 * (1 + recoveryAmount) #recalculate recoverydivisor
-	recoveryCutoff = maxRecoil / 3
-	
-	#calc_Recoil() already updating recoil on a per-frame basis.
-
-
-##Apply any recoil "debt" accumulated and calculate recovery, DOES NOT UPDATE UI
-func calc_Recoil(delta):
-	#print(delta)
-	if(recoilDebt == 0 && currentRecoil <= minRecoil): #don't bother
-		return
-	
-	#apply recoil debt. Ensures that guns with high recoil don't feel unpleasantly snappy
-	if(recoilDebt > 0):
-		if(recoilDebt < debtCutoff): #debtcutoff is a constant equal to 10
-			currentRecoil += (recoilDebt * delta) #add ALL the rest of the debt and set to 0
-			recoilDebt = 0
-		else:
-			var exchange = 0.5 * recoilDebt * delta
-			currentRecoil += exchange
-			recoilDebt -= exchange
-		
-		#still don't exceed the maximum
-		if(currentRecoil > maxRecoil):
-			currentRecoil = maxRecoil
-	
-	#calculate recovery
-	#recoverycutoff is the point at which we switch from linear to square root recovery amount
-	#recoverydivisor is calculated above and slightly complex but behaves like a constant
-	if(currentRecoil > minRecoil):
-		if(currentRecoil <= recoveryCutoff): #1/4th of maxrecoil
-			currentRecoil -= recoveryAmount * delta
-			if(currentRecoil < minRecoil):
-				currentRecoil = minRecoil
-		else:
-			var amnt = sqrt(currentRecoil / recoveryDivisor) 
-			currentRecoil-= amnt * delta
-	
-	if(currentRecoil > 120): #provide a hard maximum ceiling for recoil that is ridiculously high.
-		currentRecoil = 120
+	return
 
 ##Starts reload timer
 func startReload():
@@ -352,17 +157,3 @@ func reload_Complete() -> void:
 	#print("Finished reload! Rounds: ", capacity)
 	if(capacity <= maxCapacity):
 		startReload()
-
-##Updates UI. Called every frame so there's no need to call it anywhere else.
-func update_UI():
-	
-	ourReticle.adjust_spread(currentRecoil)
-	Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
-	Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!
-	Globalscript.datapanel.add_Property("Reserve ", invManager.getAmmoAmt(chambering), 5)
-
-func unload():
-	weaponMesh.queue_free()
-	gunshotPlayer.queue_free()
-	reloadPlayer.queue_free()
-	#reloadTimer.queue_free()

@@ -3,11 +3,12 @@ class_name GUNBASICINSTANCE extends WEPINSTANCE
 
 #References
 var weaponMesh: MeshInstance3D
-var ourReticle: CenterContainer 
+var uiInfo
 var gunshotPlayer: AudioStreamPlayer3D 
 var reloadPlayer: AudioStreamPlayer3D
 var reloadTimer: Timer
 var invManager: INVENMANAGER ##Assigned by the actual manager prior to weapon resource loading
+var wepName: String
 
 #State variables
 var currentCooldown : float = 0
@@ -50,7 +51,11 @@ var doVolley: bool
 @export var decalTimer: int = 10 ##Lifetime length, in seconds, of hitdecals
 
 ##
-func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer ):
+func load_Weapon(wepToLoad:WEAP_INFO):
+	
+	wepName = wepToLoad.wepName
+	
+	
 	if(!wepToLoad is FIREARM_INFO):
 		print("Tried to load non-firearm info resource as a firearm! Bad! USE THE RIGHT CLASS!")
 		return
@@ -82,12 +87,6 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 	#
 	#
 	
-	if(isPlayer):
-		affectUI = true
-		ourReticle = reticle
-		#ourReticle.adjust_spread(minRecoil)
-	
-	print("Loading ", wepToLoad.wepName)
 	
 		#grab all our variables
 	shotCooldown = wepToLoad.shotCooldown
@@ -137,6 +136,23 @@ func load_Weapon(wepToLoad:WEAP_INFO, isPlayer: bool, reticle: CenterContainer )
 	
 	#if(affectUI):
 		#update_UI()
+
+func give_Player_UI(newUiInfo):
+	
+	
+	
+	affectUI = true
+	uiInfo = newUiInfo
+	#newUiInfo.ammoCounter.updateMag(capacity)
+	#uiInfo.ammoCounter.updateCounters(capacity, invManager.getAmmoAmt(chambering))
+	
+		#ourReticle.adjust_spread(minRecoil)
+	
+	print("Loading ", wepName)
+	
+	#uiInfo.ammoCounter.updateReserve(invManager.getAmmoAmt(chambering))
+	return
+
 
 
 ##Run state checks per frame and update the UI
@@ -225,11 +241,15 @@ func do_Shoot():
 		if(hitObject.is_in_group("does_hit_decals")):
 			do_Hit_Decal(castResult.get("position"))
 	
+	#Update the current magazine capacity
+	uiInfo.ammoCounter.updateMag(capacity)
 	
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.
 	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * punchMult
 	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * punchMult
 	invManager.applyViewpunch(drift, lift)
+	
+	
 
 func do_Hit_Decal(pos):
 	var managerTree = invManager.get_tree()
@@ -340,6 +360,8 @@ func reload_Complete() -> void:
 	var newCap = invManager.withdrawAmmo(chambering, takenAmount)
 	
 	capacity += newCap
+	
+	uiInfo.ammoCounter.updateReserve(invManager.getAmmoAmt(chambering))
 	#print("Finished reload! Rounds: ", capacity)
 	#if(affectUI):
 		#update_UI()
@@ -347,10 +369,11 @@ func reload_Complete() -> void:
 ##Updates UI. Called every frame so there's no need to call it anywhere else.
 func update_UI():
 	
-	ourReticle.adjust_spread(currentRecoil)
-	Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
-	Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!
-	Globalscript.datapanel.add_Property("Reserve ", invManager.getAmmoAmt(chambering), 5)
+	uiInfo.theReticle.adjust_spread(currentRecoil)
+	
+	#Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
+	#Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!
+	#Globalscript.datapanel.add_Property("Reserve ", invManager.getAmmoAmt(chambering), 5)
 
 func unload():
 	weaponMesh.queue_free()

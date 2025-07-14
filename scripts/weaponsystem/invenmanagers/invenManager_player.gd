@@ -4,33 +4,69 @@
 
 class_name PLAYERINVENMANAGER extends INVENMANAGER
 
+var weight = 0 ##The current held ammo pool's "weight"
+var maxweight = 3000 ##A generous, but reasonable maximum amount of ammo that can be held
+@onready var uiInfo = $"../../../Player UI"
 
 func _ready():
 	
-
+	
 	print("Hello and welcome to Sylphstream!")
-	heldAmmunition.ammoBlank = 100
+	heldAmmunition.ammoRimfire = 100
 	heldAmmunition.ammoPistol = 51
 	heldAmmunition.ammoRifle = 30
 	heldAmmunition.ammoShotgun = 20
-	
+	recalcWeight()
 	
 	user = get_node("../../..")
 	
-	isPlayer = true #set player to be true, weapon loading belongs to parent
-	theReticle = $"../../../Control/Reticle"
 	load_Wep(starterWeapon)
 	
-	#heldItem.load_weapon(heldItem.Starting_Wep, true)
 	
-	#holdingFirearm = heldItem.isFirearm
 
+func load_Wep(wep2Load):
+	super(wep2Load)
+	activeItem.give_Player_UI(uiInfo)
+	
+	#nothing other than MANUALLY GRABBING THE DIRECT  REFERENCE works here >:(
+	var giveMeTheDamnMagazineReferenceSoHelpMeGod = $"../../../Player UI/Ammo/Currentmag"
+	giveMeTheDamnMagazineReferenceSoHelpMeGod.text = str(wep2Load.maxCapacity)
+	var reserve = $"../../../Player UI/Ammo/reserve"
+	reserve.text = str(getAmmoAmt(wep2Load.chambering))
+	var gunName = $"../../../Player UI/Ammo/name"
+	gunName.text = wep2Load.wepName
+	
 
+var weight22 = 1 ##Weight of 22 rimfire rounds
+var weightpistol = 3 ##weight of pistol rounds
+var weightrifle = 5 ##Weight of small rifle rounds
+var weight30cal = 7 ##weight of large rifle rounds
+var weightShotgun = 10 ##Weight of shotgun shells
+var weightRimmed = 4 ## Weight of magnum rounds
 
+func recalcWeight():
+	weight = 0
+	weight += weight22 * heldAmmunition.ammoRimfire
+	weight += weightpistol * heldAmmunition.ammoPistol
+	weight += weightrifle * heldAmmunition.ammoRifle
+	weight += weightShotgun * heldAmmunition.ammoShotgun
+	#print("Current ammo weight: ", weight)
 
 func _process(delta):
 	if(activeItem):
 		activeItem.manualProcess(delta)
+
+##Gives ammo to invenmanager and updates ammo weight
+func giveAmmo(amTyp: int, amount: int):
+	var result = super.giveAmmo(amTyp, amount)
+	recalcWeight()
+	return result
+
+##Withdraws ammo from invenmanager and updates weight
+func withdrawAmmo(amTyp: int, amount: int)-> int:
+	var result = super.withdrawAmmo(amTyp, amount)
+	recalcWeight()
+	return result
 
 
 #functions going down the hierarchy
