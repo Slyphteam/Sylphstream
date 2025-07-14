@@ -59,6 +59,7 @@ func _process(delta):
 ##Gives ammo to invenmanager and updates ammo weight
 func giveAmmo(amTyp: int, amount: int):
 	var result = super.giveAmmo(amTyp, amount)
+	uiInfo.ammoCounter.updateReserve(result)
 	recalcWeight()
 	return result
 
@@ -66,8 +67,9 @@ func giveAmmo(amTyp: int, amount: int):
 func withdrawAmmo(amTyp: int, amount: int)-> int:
 	var result = super.withdrawAmmo(amTyp, amount)
 	recalcWeight()
+	uiInfo.ammoCounter.updateReserve(getAmmoAmt(amTyp))
 	return result
-
+	
 
 #functions going down the hierarchy
 

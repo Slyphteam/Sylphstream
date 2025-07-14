@@ -3,7 +3,7 @@ class_name GUNBASICINSTANCE extends WEPINSTANCE
 
 #References
 var weaponMesh: MeshInstance3D
-var uiInfo
+var uiInfo ##Single node containing references for all the player's UI stuff, for ease of updating
 var gunshotPlayer: AudioStreamPlayer3D 
 var reloadPlayer: AudioStreamPlayer3D
 var reloadTimer: Timer
@@ -139,18 +139,10 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 
 func give_Player_UI(newUiInfo):
 	
-	
-	
 	affectUI = true
 	uiInfo = newUiInfo
-	#newUiInfo.ammoCounter.updateMag(capacity)
-	#uiInfo.ammoCounter.updateCounters(capacity, invManager.getAmmoAmt(chambering))
-	
-		#ourReticle.adjust_spread(minRecoil)
-	
 	print("Loading ", wepName)
 	
-	#uiInfo.ammoCounter.updateReserve(invManager.getAmmoAmt(chambering))
 	return
 
 
@@ -158,10 +150,6 @@ func give_Player_UI(newUiInfo):
 ##Run state checks per frame and update the UI
 func manualProcess(delta):
 	delta *= 60 #scale delta to be approx 1 frame
-	#if(offCooldown):
-		#if(check_Shoot_Conditions()):
-			#pass
-	
 	#old logical block
 	if(offCooldown): #we CAN shoot
 		if(triggerDepressed): #and we ARE shooting
@@ -191,11 +179,6 @@ func try_Shoot():
 		if(doVolley): #and a few more for good measure
 			for x in range(11):
 				do_Shoot()
-		
-		#print("Pew! Recoil: ", int(currentRecoil), " Kick: ", lift, ";", drift)
-		
-#	else:
-#		print("click!")
 	
 	#no matter what, counts as a "shot"
 	totalShots+=1
@@ -217,7 +200,6 @@ func do_Shoot():
 	
 	#Consume bullet
 	capacity-=1 
-	
 	
 	var space:PhysicsDirectSpaceState3D = invManager.get_space_state()
 	var orig = invManager.get_Origin()
@@ -242,7 +224,8 @@ func do_Shoot():
 			do_Hit_Decal(castResult.get("position"))
 	
 	#Update the current magazine capacity
-	uiInfo.ammoCounter.updateMag(capacity)
+	if(affectUI):
+		uiInfo.ammoCounter.updateMag(capacity)
 	
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.
 	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * punchMult
@@ -357,24 +340,21 @@ func reload_Complete() -> void:
 	if(capacity > 0):
 		takenAmount+=1 #we have 1 in the chamber, so add a bonus round
 
+	#Withdraw ammo. This will update the reserve counter on the UI automatically
 	var newCap = invManager.withdrawAmmo(chambering, takenAmount)
 	
 	capacity += newCap
 	
-	uiInfo.ammoCounter.updateReserve(invManager.getAmmoAmt(chambering))
+	#however, we'll still need to update the counter
+	if(affectUI):
+		uiInfo.ammoCounter.updateMag(capacity)
 	#print("Finished reload! Rounds: ", capacity)
-	#if(affectUI):
-		#update_UI()
+
 
 ##Updates UI. Called every frame so there's no need to call it anywhere else.
 func update_UI():
-	
 	uiInfo.theReticle.adjust_spread(currentRecoil)
 	
-	#Globalscript.datapanel.add_Property("Current capacity ", capacity, 3)
-	#Globalscript.datapanel.add_Property("Current aimcone ", int(currentRecoil), 4) #runtime here!!!
-	#Globalscript.datapanel.add_Property("Reserve ", invManager.getAmmoAmt(chambering), 5)
-
 func unload():
 	weaponMesh.queue_free()
 	gunshotPlayer.queue_free()

@@ -74,6 +74,8 @@ func do_Shoot():
 	
 	#Consume bullet
 	capacity-=1 
+	if(affectUI):
+		uiInfo.ammoCounter.updateMag(capacity)
 	
 	#Actually make the raycasts and such
 	for x in range(pellets):
@@ -153,7 +155,12 @@ func reload_Complete() -> void:
 	var shell = invManager.withdrawAmmo(chambering, 1)
 	
 	capacity += shell
-	reloadPlayer.play()
+	
+		#however, we'll still need to update the counter
+	if(affectUI):
+		uiInfo.ammoCounter.updateMag(capacity)
+	
+	reloadPlayer.play() #play AS we insert the round, not before
 	#print("Finished reload! Rounds: ", capacity)
 	if(capacity <= maxCapacity):
 		startReload()
