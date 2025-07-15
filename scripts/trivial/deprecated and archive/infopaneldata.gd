@@ -1,6 +1,9 @@
+##This is a DEPRECATED script that used to manage the player's datapanel. 
+#Since a UI now gives the player this info and this script was never not buggy, it's
+#now deprecated and in the deprecated bin.
 extends PanelContainer
 @onready var propertyContainer = $VBoxContainer
-
+ 
 func _ready():
 	Globalscript.datapanel = self
 	add_Property("testy","test", 0)

@@ -38,10 +38,15 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+
+Clean up deprecated infopanel code
+Change slots to use arrays when not on hands
+Add Ishim
+Archon option buttons
 Fix obnoxiously slow aiming on affine from gun_basic_instance logic
 HealthHolder and health UI element (re-enable player raycast decals)
 Effectholder, have archon poison player as test
-Clean up deprecated infopanel code
+Pause menu
 
 -----------\
 =======+=======> FUTURE PLANS:
