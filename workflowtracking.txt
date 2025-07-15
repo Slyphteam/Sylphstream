@@ -38,10 +38,10 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-
-Clean up deprecated infopanel code
-Change slots to use arrays when not on hands
 Add Ishim
+Test inter-slot swapping with index.
+
+Add *some* kind of logic for weapon pickups.
 Archon option buttons
 Fix obnoxiously slow aiming on affine from gun_basic_instance logic
 HealthHolder and health UI element (re-enable player raycast decals)

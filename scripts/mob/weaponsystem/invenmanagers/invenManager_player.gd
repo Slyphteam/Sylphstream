@@ -9,9 +9,12 @@ var maxweight = 3000 ##A generous, but reasonable maximum amount of ammo that ca
 @onready var uiInfo = $"../../../Player UI"
 @export var ourHands: WEAP_INFO
 
-var currentSlot: int = 1
-var slot1: INVWEP ##TODO: eventually replace these with slot arrays.
-var slot2: INVWEP
+
+var currentSlot: int = 1 ##Which of the 4 invslots are we on?
+var slotSelection: int = 0 ##Which index into said slot are we?
+var slot1: INVWEP ##Custom slot exclusively for the hands
+var slot2: Array[INVWEP] ##Holster slots.
+var slot2Max = 2 ##Max number of items in holster
 
 func _ready():
 	
@@ -28,10 +31,19 @@ func _ready():
 
 	#add hands and starter weapon to our inventory
 
-	add_To_Slot(ourHands, 1, null) #put empty hands into our inventory
+	#add_To_Slot(ourHands, 1, null) #put empty hands into our inventory
+	
+
+		
 	add_To_Slot(starterWeapon, 2, starterWeapon.maxCapacity)
 	
 	#load our hands and override weaptype
+	#Manually add our hands to slot1
+	slot1 = INVWEP.new()
+	slot1.slotUsed = ourHands.selection
+	slot1.theWeapon = ourHands
+	slot1.roundInside  = 0
+	
 	load_Wep(ourHands)
 	weapType = 0
 	await get_tree().create_timer(0.1).timeout #wait one tenth of a second because it takes a bit longer for ui to init
@@ -68,26 +80,49 @@ func recalcWeight():
 	weight += weightShotgun * heldAmmunition.ammoShotgun
 	#print("Current ammo weight: ", weight)
 
-#TODO: eventually use slot arrays
-##Puts a weapon into an inventory slot. DOES NOT UNLOAD THE WEAPON. JUST UPDATES SLOT INFO.
-func add_To_Slot(weapon: WEAP_INFO, slot: int, rounds):
+##Updates the information of a weapon stowed in a slot.
+func update_To_Slot(weapon: WEAP_INFO, slot: int, rounds):
 	if(slot == 1):
-		slot1 = INVWEP.new()
-		slot1.slotUsed = weapon.selection
-		slot1.theWeapon = weapon
-		if(rounds):
-			slot1.roundInside = rounds
-		else:
-			slot1.roundInside  = 0
+		return
 	if(slot == 2):
-		slot2 = INVWEP.new()
-		slot2.slotUsed = weapon.selection
-		slot2.theWeapon = weapon
-		if(rounds):
-			slot2.roundInside = rounds
-		else:
-			slot2.roundInside  = 0
+		if(weapType == 1):
+			slot2[slotSelection].roundInside = rounds
+	#nothing else to do...
 
+
+#TODO: eventually use slot arrays
+##Puts a new weapon into an inventory slot. DOES NOT UNLOAD THE WEAPON. Returns if it could fit.
+func add_To_Slot(weapon: WEAP_INFO, slot: int, rounds)->bool:
+	
+	print("size of slot2: ", slot2.size(), " current index: ", slotSelection, " current slot: ", currentSlot)
+	#TODO: CHECK AND ENSURE WE HAVE ENOUGH ROOM TO FIT ONE MORE ITEM INTO THE SLOT
+	
+	#commented this out because support for literally anything going into hand slots seems like a bad idea
+	#if(slot == 1):
+		#slot1 = INVWEP.new()
+		#slot1.slotUsed = weapon.selection
+		#slot1.theWeapon = weapon
+		#if(rounds):
+			#slot1.roundInside = rounds
+		#else:
+			#slot1.roundInside  = 0
+	if(slot == 2):
+		if(slot2.size() >= slot2Max): #cant fit anything else into a slot
+			return false
+		var newInvwep = INVWEP.new()
+		newInvwep.slotUsed = weapon.selection
+		newInvwep.theWeapon = weapon
+		if(rounds):
+			newInvwep.roundInside = rounds
+		else:
+			newInvwep.roundInside  = 0
+		slot2.resize(slot2.size() + 1)
+		slot2[slot2.size() - 1] = newInvwep
+		print("size of slot2: ", slot2.size(), " current index: ", slotSelection, " current slot: ", currentSlot)
+	
+	return true
+	
+	#it seems like going from pistol to hands doesnt update current slot.
 ##Unloads the current weapon and loads a weapon out of the given slot
 func change_To_Slot(newSlot: int):
 	
@@ -95,29 +130,45 @@ func change_To_Slot(newSlot: int):
 		user.toggle_ADS_Stats()
 	
 	#TODO: add stow and draw times
+	#TODO: ENTIRELY custom logic for hands that doesnt even get close to the other stuff
+	if(weapType == 0 && currentSlot == 1): #moving off hands
+		if(newSlot == 1):  #special return case, still on hands
+			currentSlot = newSlot
+			return
+		uiInfo.ammoCounter.showElementsAnything()
+	if(weapType == 0 && currentSlot != 1): #something is fucky
+		print("UHOH")
 	
-	if(currentSlot == newSlot): #if we aren't getting out a new weapon, don't bother
-		return #TODO: change this to cycle through the current slot when you add slotarrays
+	if(currentSlot == newSlot): #if we're staying in the same slot, index
+		if(slot2.size() == 1): # dont bother
+			currentSlot = newSlot
+			return
+		
+		slotSelection +=1
+		if(slotSelection <= slot2.size()):
+			slotSelection = 0 #loop back to start
 	else: 
-		#put the current weapon away (update our inventory)
-		if(weapType == 1):
-			add_To_Slot(activeItem.ourDataSheet, currentSlot, activeItem.capacity)
-		elif(weapType == 0): 
-			add_To_Slot(ourHands, currentSlot, null)
-			uiInfo.ammoCounter.showElementsAnything()
+		slotSelection = 0 #start at the top
 		
-		#since the load weapon script already deals with unloading stuff, we dont have to do too much
-		if(newSlot == 1): #special case for loading hands
-			load_Wep(slot1.theWeapon)
-			uiInfo.ammoCounter.hideElements() #hide UI
-		elif(newSlot == 2): #otherwise just load normally
-			load_Wep(slot2.theWeapon)
-			if(weapType == 1): #if we are loading a gun, dont assume we start with default ammo count
-				activeItem.capacity = slot2.roundInside
-				uiInfo.ammoCounter.updateMag(slot2.roundInside)
+	if(weapType == 1): #we have a gun, update to inventory before putting away
+		update_To_Slot(activeItem.ourDataSheet, currentSlot, activeItem.capacity)
+	
+	#since the load weapon script already deals with unloading stuff, we dont have to do too much
 		
-		#if we've gotten this far, update our active slot
-		currentSlot = newSlot
+		
+	if(newSlot == 1): #special case for loading hands, hide UI
+		load_Wep(slot1.theWeapon)
+		uiInfo.ammoCounter.hideElements() 
+	else: #otherwise act normal
+		var drawnWep = slot2[slotSelection]
+		load_Wep(drawnWep.theWeapon)
+		if(weapType == 1): #if we are loading a gun, dont assume we start with default ammo count
+			activeItem.capacity = drawnWep.roundInside
+			uiInfo.ammoCounter.updateMag(drawnWep.roundInside)
+		
+	#if we've gotten this far, update our active slot
+	currentSlot = newSlot
+	
 
 #everything below here is standard stuff, just with some overrides
 

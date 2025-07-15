@@ -212,22 +212,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.638, 1.02, 21.446)
 mesh = SubResource("BoxMesh_6wnxl")
 
 [node name="affine N" parent="Environment/Range" instance=ExtResource("14_os2cn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125801, 1.08282, -3.1395)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125801, 7.70812, -3.1395)
 
 [node name="bergther N" parent="Environment/Range" instance=ExtResource("15_by8b2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2374, 0.99824, -3.4557)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2374, 7.62354, -3.4557)
 
 [node name="degubby N" parent="Environment/Range" instance=ExtResource("16_eqt0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2467, 1.12747, -2.2158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2467, 7.75277, -2.2158)
 
 [node name="fourier N" parent="Environment/Range" instance=ExtResource("17_vnjd3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112301, 1.11783, -1.3509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112301, 7.74313, -1.3509)
 
 [node name="ghostbird N" parent="Environment/Range" instance=ExtResource("18_c2ovy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190102, 1.14689, -0.334398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190102, 7.77219, -0.334398)
 
 [node name="relata N" parent="Environment/Range" instance=ExtResource("19_xqkej")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.084301, 1.20513, 0.853701)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.084301, 7.83043, 0.853701)
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/Range"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.4957, 0.00011003, -4.5904)

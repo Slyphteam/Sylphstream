@@ -195,7 +195,6 @@ func _physics_process(delta: float) -> void:
 	handle_Move(delta)
 	checkVelocityAndMove() #now that we've calculated, actually apply the move
 	
-	Globalscript.datapanel.add_Property("Current speed", int(playerSpeed), 1)
 	
 	#viewtilt and headbob are in the camera script
 	playerCam.fov = clamp(87 + sqrt(playerSpeed), 90, 180) 
