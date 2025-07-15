@@ -6,7 +6,7 @@ enum Ammotypes {ammoRimfire, ammoPistol, ammoRifle, ammoThirtycal, ammoShotgun}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
 #var heldItem: Node3D #old name for activeItem prior to the WEPINSTANCE refactor
-var activeItem: WEPINSTANCE
+var activeItem: WEPINSTANCE ##The current instance of the actively being used weapon
 var weapType: int ##1 for basic firearm, 2 for melee...
 var user : Node3D
 
@@ -40,7 +40,7 @@ func load_Wep(wep2Load):
 			activeItem.load_Weapon(wep2Load)
 			weapType = 1 #basic gun
 	else:
-		print("Unsupported script override!")
+		weapType = 0 #Empty hands
 
 
 #--------- ALL OF THESE FUNCTIONS EXIST INTERNALLY WITH THE INVENMANAGER
@@ -59,7 +59,7 @@ func giveAmmo(amTyp: int, amount: int):
 		return 1
 	
 
-##Decrease ammo of desired type by desired amount
+##Decrease ammo of desired type by desired amount. Returns updated reserve.
 func withdrawAmmo(amTyp: int, amount: int)-> int:
 	#print("Selected type ", amTyp)
 	if (amTyp == 1):
@@ -100,7 +100,7 @@ func withdrawAmmo(amTyp: int, amount: int)-> int:
 		return 1
 
 ##Check how much ammunition is in the reserve
-func getAmmoAmt(amTyp:int ) -> int:
+func chkAmmoAmt(amTyp:int ) -> int:
 	#print("requested chambering: ", amTyp)
 	if(amTyp == 1):
 		return heldAmmunition.ammoPistol
@@ -120,18 +120,20 @@ func doShoot():
 	if(weapType == 1):
 		activeItem.triggerDepressed = true
 	else:
-		print("Swing!")
+		pass
 
 func unShoot():
 	if(weapType == 1):
 		activeItem.triggerDepressed = false
+	else:
+		pass
 	
 func startReload():
 	#penalty
 	if(weapType == 1):
 		activeItem.startReload()
 	else:
-		print("How do you reload a sword?")
+		pass
 
 func toggleSights():
 	#heldItem.toggleADS()

@@ -52,6 +52,8 @@ var doVolley: bool
 
 ##
 func load_Weapon(wepToLoad:WEAP_INFO):
+	super(wepToLoad)
+	
 	
 	wepName = wepToLoad.wepName
 	

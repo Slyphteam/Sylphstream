@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=14 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/player/cam_behavior.gd" id="2_f4klr"]
+[ext_resource type="Resource" uid="uid://1iyc2y86li4i" path="res://resources/weapon resources/hands.tres" id="4_kiyhm"]
 [ext_resource type="Resource" uid="uid://dml6uaueraa87" path="res://resources/weapon resources/firearm/bergther_info.tres" id="4_l4qvo"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/weaponsystem/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
@@ -29,6 +30,7 @@ player = NodePath("../..")
 
 [node name="weapon_rig" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
+ourHands = ExtResource("4_kiyhm")
 starterWeapon = ExtResource("4_l4qvo")
 
 [node name="playercollidercapsule" type="CollisionShape3D" parent="."]
@@ -140,7 +142,7 @@ offset_bottom = 69.0
 theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "50"
+text = "456"
 horizontal_alignment = 2
 
 [node name="Uiholdertest" type="Sprite2D" parent="Player UI/Ammo"]
@@ -157,5 +159,5 @@ offset_bottom = 72.0
 theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
-text = "poopoo butt gun"
+text = "Ipsum Lorem"
 horizontal_alignment = 2

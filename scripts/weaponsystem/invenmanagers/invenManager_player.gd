@@ -7,34 +7,48 @@ class_name PLAYERINVENMANAGER extends INVENMANAGER
 var weight = 0 ##The current held ammo pool's "weight"
 var maxweight = 3000 ##A generous, but reasonable maximum amount of ammo that can be held
 @onready var uiInfo = $"../../../Player UI"
+@export var ourHands: WEAP_INFO
+
+var currentSlot: int = 1
+var slot1: INVWEP ##TODO: eventually replace these with slot arrays.
+var slot2: INVWEP
 
 func _ready():
 	
-	
 	print("Hello and welcome to Sylphstream!")
+	
+	user = get_node("../../..")
+	
 	heldAmmunition.ammoRimfire = 100
 	heldAmmunition.ammoPistol = 51
 	heldAmmunition.ammoRifle = 30
 	heldAmmunition.ammoShotgun = 20
 	recalcWeight()
 	
-	user = get_node("../../..")
+	await get_tree().create_timer(0.1).timeout
+	#add hands and starter weapon to our inventory
+	uiInfo.ammoCounter.hideElements()
+	add_To_Slot(ourHands, 1, null) #put empty hands into our inventory
+	add_To_Slot(starterWeapon, 2, starterWeapon.maxCapacity)
 	
-	load_Wep(starterWeapon)
-	
-	
+	#load our hands and override weaptype
+	load_Wep(ourHands)
+	weapType = 0
+
 
 func load_Wep(wep2Load):
 	super(wep2Load)
-	activeItem.give_Player_UI(uiInfo)
 	
-	#nothing other than MANUALLY GRABBING THE DIRECT  REFERENCE works here >:(
-	var giveMeTheDamnMagazineReferenceSoHelpMeGod = $"../../../Player UI/Ammo/Currentmag"
-	giveMeTheDamnMagazineReferenceSoHelpMeGod.text = str(wep2Load.maxCapacity)
-	var reserve = $"../../../Player UI/Ammo/reserve"
-	reserve.text = str(getAmmoAmt(wep2Load.chambering))
-	var gunName = $"../../../Player UI/Ammo/name"
-	gunName.text = wep2Load.wepName
+	if(weapType == 1): #handle firearm UI
+		activeItem.give_Player_UI(uiInfo)
+		
+		#nothing other than MANUALLY GRABBING THE DIRECT  REFERENCE works here >:(
+		var giveMeTheDamnReferenceSoHelpMeGod = $"../../../Player UI/Ammo/Currentmag"
+		giveMeTheDamnReferenceSoHelpMeGod.text = str(wep2Load.maxCapacity)
+		var reserve = $"../../../Player UI/Ammo/reserve"
+		reserve.text = str(chkAmmoAmt(wep2Load.chambering))
+		var gunName = $"../../../Player UI/Ammo/name"
+		gunName.text = wep2Load.wepName
 	
 
 var weight22 = 1 ##Weight of 22 rimfire rounds
@@ -52,6 +66,53 @@ func recalcWeight():
 	weight += weightShotgun * heldAmmunition.ammoShotgun
 	#print("Current ammo weight: ", weight)
 
+#TODO: eventually use slot arrays
+##Puts a weapon into an inventory slot. DOES NOT UNLOAD THE WEAPON. JUST UPDATES SLOT INFO.
+func add_To_Slot(weapon: WEAP_INFO, slot: int, rounds):
+	if(slot == 1):
+		slot1 = INVWEP.new()
+		slot1.slotUsed = weapon.selection
+		slot1.theWeapon = weapon
+		if(rounds):
+			slot1.roundInside = rounds
+		else:
+			slot1.roundInside  = 0
+	if(slot == 2):
+		slot2 = INVWEP.new()
+		slot2.slotUsed = weapon.selection
+		slot2.theWeapon = weapon
+		if(rounds):
+			slot2.roundInside = rounds
+		else:
+			slot2.roundInside  = 0
+
+##Unloads the current weapon and loads a weapon out of the given slot
+func change_To_Slot(newSlot: int):
+	
+	#TODO: add stow and draw times
+	
+	if(currentSlot == newSlot): #if we aren't getting out a new weapon, don't bother
+		return #TODO: change this to cycle through the current slot when you add slotarrays
+	else: 
+		#put the current weapon away (update our inventory)
+		if(weapType == 1):
+			add_To_Slot(activeItem.ourDataSheet, currentSlot, activeItem.capacity)
+		elif(weapType == 0): 
+			add_To_Slot(activeItem.ourDataSheet, currentSlot, null)
+			#TODO: ENABLE UI because we are putting away hands
+		
+		#since the load weapon script already deals with unloading stuff, we dont have to do too much
+		if(newSlot == 1): #special case for loading hands
+			load_Wep(slot1.theWeapon)
+			#TODO: DISABLE UI
+		elif(newSlot == 2): #otherwise just load normally
+			load_Wep(slot2.theWeapon)
+			if(weapType == 1): #if we have a gun, dont assume we start with default ammo count
+				activeItem.capacity = slot2.roundInside
+			
+
+#everything below here is standard stuff, just with some overrides
+
 func _process(delta):
 	if(activeItem):
 		activeItem.manualProcess(delta)
@@ -67,17 +128,16 @@ func giveAmmo(amTyp: int, amount: int):
 func withdrawAmmo(amTyp: int, amount: int)-> int:
 	var result = super.withdrawAmmo(amTyp, amount)
 	recalcWeight()
-	uiInfo.ammoCounter.updateReserve(getAmmoAmt(amTyp))
+	uiInfo.ammoCounter.updateReserve(result)
 	return result
 	
 
 #functions going down the hierarchy
-
 func toggleSights():
 	if(weapType == 1):
 		activeItem.toggleADS()
 	else:
-		print("Parry!")
+		pass
 	
 #Functions going up the hierarchy
 ##Apply viewpunch to the player, in degrees. Requires a connected user object.

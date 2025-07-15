@@ -1,9 +1,11 @@
 ##Boilerplate class for instantiated weapon scripts
 class_name WEPINSTANCE extends Node
+var ourDataSheet: WEAP_INFO
 
 ##Boilerplate for loading a wepinstance. Needs an info resource, whether it's for the player, and if so, a reticle
 func load_Weapon(wepToLoad:WEAP_INFO):
-	pass
+	ourDataSheet = wepToLoad
+	return
 
 ##Version of _process() for nodes
 func manualProcess(manualProcess):
