@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://oh4304fixaus"]
 
-[ext_resource type="Script" uid="uid://bfrnx1hclxgs0" path="res://scripts/archonstript.gd" id="2_6b0bf"]
+[ext_resource type="Script" uid="uid://bfrnx1hclxgs0" path="res://scripts/mob/archonstript.gd" id="2_6b0bf"]
 [ext_resource type="ArrayMesh" uid="uid://6uiken6837gs" path="res://models/mesh models/archon mesh.res" id="2_ppbv2"]
 [ext_resource type="Script" uid="uid://kmds5kp6phyn" path="res://scripts/trivial/archon_raycast_script.gd" id="3_ppbv2"]
 

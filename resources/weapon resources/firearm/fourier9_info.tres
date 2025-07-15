@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://c7xne0xmb6kea" path="res://sounds/gunshots/22 lr.mp3" id="1_gdvhu"]
 [ext_resource type="ArrayMesh" uid="uid://bh7f6veis15pe" path="res://models/new models and meshes/fourier N mesh.res" id="2_gdvhu"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/weaponsystem/firearm_resource.gd" id="3_g5w25"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/mob/weaponsystem/firearm_resource.gd" id="3_g5w25"]
 [ext_resource type="AudioStream" uid="uid://3ip3kfhlj6tn" path="res://sounds/reloads/scrapereload.mp3" id="3_pq2j2"]
 
 [resource]
