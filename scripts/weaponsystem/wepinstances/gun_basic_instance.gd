@@ -362,3 +362,7 @@ func unload():
 	gunshotPlayer.queue_free()
 	reloadPlayer.queue_free()
 	#reloadTimer.queue_free()
+
+func set_Capacity(amount):
+	capacity = amount
+	print("okay!")

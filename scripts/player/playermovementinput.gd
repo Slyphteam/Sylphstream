@@ -56,7 +56,7 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 @onready var playerCam = $camCage/came
 @onready var playerShape = $playermodel
 @onready var playerCollider = $playercollidercapsule
-@onready var invenManager: INVENMANAGER = $camCage/came/weapon_rig
+@onready var invenManager: PLAYERINVENMANAGER = $camCage/came/weapon_rig
 
 
 ##Handles player input. You may notice that there are checks on both Input and event.
@@ -110,8 +110,13 @@ func _input(event):
 		toggle_ADS_Stats()
 	
 	if (event.is_action_pressed("ui_interact") && !event.is_echo()):
-		
 		do_Interact_Raycast()
+	
+	if event.is_action_pressed("ui_num1"):
+		invenManager.change_To_Slot(1)
+		
+	if event.is_action_pressed("ui_num2"):
+		invenManager.change_To_Slot(2)
 
 ##Cleanliness function that just makes a short-ranged raycast
 func do_Interact_Raycast():
@@ -207,7 +212,7 @@ func transition_Crouch(entering):
 		#TODO: add a check to see if the player has enough room TO stand
 		playerCollider.scale.y += 0.8
 
-##Function that toggles mouse sensitivity. Speed is handled elsewhere. Maybe make dependent on weapons stat????
+##Function that toggles mouse sensitivity. Speed is handled per-frame. Maybe make dependent on weapons stat????
 func toggle_ADS_Stats():
 	if(aiming): # we want to un-aim
 		mousesensitivity = 0.25

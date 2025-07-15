@@ -11,11 +11,16 @@ func hideElements():
 	reservAmt.text =  " "
 	wepName.text =  " "
 
-##Makes UI elements visible. Requires info to fill fields
+##Makes ammocounter visible with placeholder info
+func showElementsAnything():
+	showElements("Ipsum Lorem", 123, 456)
+
+##Makes ammocounter visible. Requires info to fill fields
 func showElements(newName, mag, reserve):
 	wepName.text = newName
 	magAmt.text = str(mag)
 	reservAmt.text = str(reserve)
+	background.visible = true
 	
 	
 ##Update only the counter for bullets in magazine

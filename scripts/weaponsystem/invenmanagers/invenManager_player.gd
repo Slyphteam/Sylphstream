@@ -25,15 +25,17 @@ func _ready():
 	heldAmmunition.ammoShotgun = 20
 	recalcWeight()
 	
-	await get_tree().create_timer(0.1).timeout
+
 	#add hands and starter weapon to our inventory
-	uiInfo.ammoCounter.hideElements()
+
 	add_To_Slot(ourHands, 1, null) #put empty hands into our inventory
 	add_To_Slot(starterWeapon, 2, starterWeapon.maxCapacity)
 	
 	#load our hands and override weaptype
 	load_Wep(ourHands)
 	weapType = 0
+	await get_tree().create_timer(0.1).timeout #wait one tenth of a second because it takes a bit longer for ui to init
+	uiInfo.ammoCounter.hideElements()
 
 
 func load_Wep(wep2Load):
@@ -89,6 +91,9 @@ func add_To_Slot(weapon: WEAP_INFO, slot: int, rounds):
 ##Unloads the current weapon and loads a weapon out of the given slot
 func change_To_Slot(newSlot: int):
 	
+	if(user.aiming): #unaim if we are ADS
+		user.toggle_ADS_Stats()
+	
 	#TODO: add stow and draw times
 	
 	if(currentSlot == newSlot): #if we aren't getting out a new weapon, don't bother
@@ -98,18 +103,21 @@ func change_To_Slot(newSlot: int):
 		if(weapType == 1):
 			add_To_Slot(activeItem.ourDataSheet, currentSlot, activeItem.capacity)
 		elif(weapType == 0): 
-			add_To_Slot(activeItem.ourDataSheet, currentSlot, null)
-			#TODO: ENABLE UI because we are putting away hands
+			add_To_Slot(ourHands, currentSlot, null)
+			uiInfo.ammoCounter.showElementsAnything()
 		
 		#since the load weapon script already deals with unloading stuff, we dont have to do too much
 		if(newSlot == 1): #special case for loading hands
 			load_Wep(slot1.theWeapon)
-			#TODO: DISABLE UI
+			uiInfo.ammoCounter.hideElements() #hide UI
 		elif(newSlot == 2): #otherwise just load normally
 			load_Wep(slot2.theWeapon)
-			if(weapType == 1): #if we have a gun, dont assume we start with default ammo count
+			if(weapType == 1): #if we are loading a gun, dont assume we start with default ammo count
 				activeItem.capacity = slot2.roundInside
-			
+				uiInfo.ammoCounter.updateMag(slot2.roundInside)
+		
+		#if we've gotten this far, update our active slot
+		currentSlot = newSlot
 
 #everything below here is standard stuff, just with some overrides
 
@@ -128,7 +136,7 @@ func giveAmmo(amTyp: int, amount: int):
 func withdrawAmmo(amTyp: int, amount: int)-> int:
 	var result = super.withdrawAmmo(amTyp, amount)
 	recalcWeight()
-	uiInfo.ammoCounter.updateReserve(result)
+	uiInfo.ammoCounter.updateReserve(chkAmmoAmt(amTyp))
 	return result
 	
 
