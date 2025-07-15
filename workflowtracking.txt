@@ -38,41 +38,22 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-
-Change shotguninstances to inherit from guninstances and clear out any reused functions
-
 Fix obnoxiously slow aiming on affine from gun_basic_instance logic
-
-Change sylphs to use an average instead of a highscore, add 20 point tolerances,
-then ALSO change to copy from other sylph. If thjis doesn't fix evolution, cry.
-
-Thoroughly test current everything implementation with as simple a sylph as you can get.
-
-Check misses logic, fire on empty logic, and reload penalty logic
-
-Sylph maintenance:
-
-Check actions of sylphs:
-	reloading
-	ads
-	shooting
-
-CHECK EXTREMA ANGLES TO MAKE SURE THEY WORK IN A GLOBAL CONTEXT!!!!!!
-
-Add high-aimspeed inaccuracy
-
-Add average-based highscore saving/reversion:
-	allows sylph to revert some, but not too much
-
-Sort and clear out saved sylphs
-Start again from random?
-S.G.D. scoring. at least look into it.
-Reimport sylph head but make sure it's actually centered this time, doofus.
-
+HealthHolder and health UI element (re-enable player raycast decals)
+Effectholder, have archon poison player as test
+Clean up deprecated infopanel code
 
 -----------\
 =======+=======> FUTURE PLANS:
 -----------/
+
+Sylph maintenance:
+
+CHECK EXTREMA ANGLES TO MAKE SURE THEY WORK IN A GLOBAL CONTEXT!!!!!!
+
+Add high-aimspeed inaccuracy
+S.G.D. scoring. at least look into it.
+Reimport sylph head but make sure it's actually centered this time, doofus.
 
 
 ====+====> KEY:
@@ -84,13 +65,8 @@ Reimport sylph head but make sure it's actually centered this time, doofus.
 
 
 ====+====> FUNCTIONAL:
+add an actual UI.
 
-do DA BIG REORGANIZE at some point
-
-Clean up infopanel code, move weapon stat tracking to invenmanager's job 
-Better yet: add an actual UI.
-
-FRAMERATE COUNTER!!!!!!!!!!!!!!!!!!!!!
 Sylph and playermodel bodies v2, but test with the millian prior
 
 Millian porcelaindoll variant
@@ -101,7 +77,6 @@ low high bitlower medium - - - - - - high low
 low high bitlower - - + verlow high lowwww
 
 Write add_node_to_layer function
-Change bullets to have damage falloff ++++&&
 crosshair changes with move speed **
 
 Step up/down movement code ----- * (will have to do it at some point)
@@ -113,7 +88,8 @@ get better pistol gunshot &++
 footstep sounds +++
 context-sensitive leaning --&
 ADS makes the camera zoom in & ??
-fix weapon clipping ++++++++ &
+ADS makes gun lerp into center of screen
+fix weapon clipping +++ &
 
 Eventually:
 Shoothouse

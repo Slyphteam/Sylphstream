@@ -1,3 +1,7 @@
+7/15:
+22lr pickup added
+7/14:
+Ammo and reserve counters have been added, player may now switch between hands and starterweapon with 1 and 2
 7/10:
 Relata now uses an entirely custom script type, being the first weapon to do so
 7/9:
