@@ -45,6 +45,9 @@ func load_Wep(wep2Load):
 
 #--------- ALL OF THESE FUNCTIONS EXIST INTERNALLY WITH THE INVENMANAGER
 func giveAmmo(amTyp: int, amount: int):
+	if (amTyp == 0):
+		heldAmmunition.ammoRimfire += amount
+		return heldAmmunition.ammoRimfire
 	if (amTyp == 1):
 		heldAmmunition.ammoPistol += amount
 		return heldAmmunition.ammoPistol
@@ -62,7 +65,18 @@ func giveAmmo(amTyp: int, amount: int):
 ##Decrease ammo of desired type by desired amount. Returns updated reserve.
 func withdrawAmmo(amTyp: int, amount: int)-> int:
 	#print("Selected type ", amTyp)
-	if (amTyp == 1):
+	if (amTyp == 0):
+		#print("Taking ", amount, " from pool of ", heldAmmunition.ammoPistol)
+		if(amount >= heldAmmunition.ammoRimfire):
+			#print("making do with ", heldAmmunition.ammoPistol)
+			var leftover = heldAmmunition.ammoRimfire
+			heldAmmunition.ammoRimfire = 0
+			return leftover
+			
+		heldAmmunition.ammoRimfire -= amount;
+		return amount	
+		#it might seem like there's a better way to do this, but I couldn't get a reference to work
+	elif (amTyp == 1):
 		#print("Taking ", amount, " from pool of ", heldAmmunition.ammoPistol)
 		if(amount >= heldAmmunition.ammoPistol):
 			#print("making do with ", heldAmmunition.ammoPistol)
@@ -102,7 +116,9 @@ func withdrawAmmo(amTyp: int, amount: int)-> int:
 ##Check how much ammunition is in the reserve
 func chkAmmoAmt(amTyp:int ) -> int:
 	#print("requested chambering: ", amTyp)
-	if(amTyp == 1):
+	if(amTyp == 0):
+		return heldAmmunition.ammoRimfire
+	elif(amTyp == 1):
 		return heldAmmunition.ammoPistol
 	elif(amTyp == 2):
 		return heldAmmunition.ammoRifle
@@ -111,7 +127,7 @@ func chkAmmoAmt(amTyp:int ) -> int:
 	else:
 		print("Attempted to check invalid chambering!")
 		return 0;
-	#return heldAmmunition.amTyp
+	#return heldAmmunition.amTyp  (mad that this doesnt work but whatever)
 
 #--------- ALL OF THESE FUNCTIONS INTERACT WITH THE HELD ITEM (going DOWN the scene tree)
 

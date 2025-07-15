@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c104tyo0foh0a"]
 
 [ext_resource type="PackedScene" uid="uid://c32rdlbbc6i86" path="res://models/new models and meshes/ghostbird N.glb" id="1_xxhfl"]
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/trivial/pickups/weapon_pickup_script.gd" id="2_t41yx"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/weapon_pickup_script.gd" id="2_t41yx"]
 [ext_resource type="Resource" uid="uid://up52p06xonfc" path="res://resources/weapon resources/firearm/ghostbird_info.tres" id="3_itlfj"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xxhfl"]

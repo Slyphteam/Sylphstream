@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwq2fy8mbnx5p"]
 
 [ext_resource type="PackedScene" uid="uid://bf3p0b5crwc2g" path="res://models/new models and meshes/relata N.glb" id="1_r3ypa"]
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/trivial/pickups/weapon_pickup_script.gd" id="2_eqwb4"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/weapon_pickup_script.gd" id="2_eqwb4"]
 [ext_resource type="Resource" uid="uid://vmo1b3o1awtj" path="res://resources/weapon resources/firearm/relata_info.tres" id="3_va5en"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r3ypa"]

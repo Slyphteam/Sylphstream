@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnr004t0lyqd1"]
+
+[ext_resource type="PackedScene" uid="uid://mivmmni3ef2p" path="res://models/glbs and textures/rimfire_ammobox.glb" id="1_0aof4"]
+[ext_resource type="Script" uid="uid://bj8vi2jtp28xr" path="res://scripts/pickups/ammo_pickup_script.gd" id="2_evklm"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xjbfk"]
+points = PackedVector3Array(1.13163, 1.7658, 0.998427, -1.15151, -0.1606, -0.999321, -1.13343, -0.145352, 1, 1.1515, -0.1606, -0.999321, -1.13164, 1.7658, -0.981935, 1.13343, -0.145352, 1, 1.13163, 1.7658, -0.981935, -1.13164, 1.7658, 0.998427)
+
+[node name="rimfire_ammobox" instance=ExtResource("1_0aof4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" index="0" groups=["player_interactible"]]
+script = ExtResource("2_evklm")
+amtToGive = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_xjbfk")
