@@ -55,11 +55,14 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Test inter-slot swapping with index.
+Go through all wepinstances and assign the selection slots. Have each only fit in one for now.
 
+Fix obnoxiously slow aiming on affine from gun_basic_instance logic
+
+Check and see if players can still shoot themselves.
+Do testing with some parented objects to get rid of that damn weapon jittering
 Add *some* kind of logic for weapon pickups.
 Archon option buttons
-Fix obnoxiously slow aiming on affine from gun_basic_instance logic
 HealthHolder and health UI element (re-enable player raycast decals)
 Effectholder, have archon poison player as test
 Pause menu

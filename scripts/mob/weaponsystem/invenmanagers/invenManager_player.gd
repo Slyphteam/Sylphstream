@@ -7,7 +7,7 @@ class_name PLAYERINVENMANAGER extends INVENMANAGER
 var weight = 0 ##The current held ammo pool's "weight"
 @onready var uiInfo = $"../../../Player UI"
 @export var ourHands: WEAP_INFO
-
+@export var secondStarter: WEAP_INFO 
 
 var maxweight = 1350 ##lets say 9 30-round mags of 5.56 (9*30*5) as a reasonable maximum amount of ammo weight
 var currentSlot: int = 1 ##Which of the 4 invslots are we on?
@@ -36,6 +36,7 @@ func _ready():
 
 		
 	add_To_Slot(starterWeapon, 2, starterWeapon.maxCapacity)
+	add_To_Slot(secondStarter, 2, secondStarter.maxCapacity)
 	
 	#load our hands and override weaptype
 	#Manually add our hands to slot1
@@ -139,19 +140,21 @@ func change_To_Slot(newSlot: int):
 	if(weapType == 0 && currentSlot != 1): #something is fucky
 		print("UHOH")
 	
+	if(weapType == 1): #we have a gun, update to inventory before putting away
+		update_To_Slot(activeItem.ourDataSheet, currentSlot, activeItem.capacity)
+	
 	if(currentSlot == newSlot): #if we're staying in the same slot, index
 		if(slot2.size() == 1): # dont bother
 			currentSlot = newSlot
 			return
 		
 		slotSelection +=1
-		if(slotSelection <= slot2.size()):
+		if(slotSelection >= slot2.size()):
 			slotSelection = 0 #loop back to start
 	else: 
-		slotSelection = 0 #start at the top
+		slotSelection = 0 #if we aren't, start at the top
 		
-	if(weapType == 1): #we have a gun, update to inventory before putting away
-		update_To_Slot(activeItem.ourDataSheet, currentSlot, activeItem.capacity)
+	
 	
 	#since the load weapon script already deals with unloading stuff, we dont have to do too much
 		

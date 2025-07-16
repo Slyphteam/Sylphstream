@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=14 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
 [ext_resource type="Resource" uid="uid://1iyc2y86li4i" path="res://resources/weapon resources/hands.tres" id="4_kiyhm"]
 [ext_resource type="Resource" uid="uid://cu2beecnqqpll" path="res://resources/weapon resources/firearm/ishim_info.tres" id="5_78t0m"]
+[ext_resource type="Resource" uid="uid://dml6uaueraa87" path="res://resources/weapon resources/firearm/bergther_info.tres" id="5_kiyhm"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/weaponsystem/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
@@ -30,6 +31,7 @@ player = NodePath("../..")
 [node name="weapon_rig" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
 ourHands = ExtResource("4_kiyhm")
+secondStarter = ExtResource("5_kiyhm")
 starterWeapon = ExtResource("5_78t0m")
 
 [node name="playercollidercapsule" type="CollisionShape3D" parent="."]
