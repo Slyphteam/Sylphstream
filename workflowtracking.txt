@@ -2,6 +2,23 @@
 =======+=======> DIRECTORY OF WHERE THINGS ARE:
 -----------/
 
+Importing new weapon model:
+	
+	1: import the glb
+	2: drag into scene (optional?)
+	3: re-import the mesh
+	4: wait a bit, for reasons. (how long?)
+	5: move the texture into the right folder
+	5: do NOT touch anything else
+
+Adding a new weapon:
+	1: import weapon model (see above)
+	2: import gunshot and reload sound, if necessary
+	3: in playerinvenmanager, set the starter weapon (NOT hands) to new firearm_info
+	4: fill out all the fields
+	6: test it out, will require several cycles to get the positioning right.
+
+
 ====+====> MISC:
 --Scripts/weaponsystem/invenmanager_parent: the common parent class between the sylph
 	invenmanager and the player invenmanager. Has a good chunk of code in it, so
@@ -38,7 +55,6 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Add Ishim
 Test inter-slot swapping with index.
 
 Add *some* kind of logic for weapon pickups.

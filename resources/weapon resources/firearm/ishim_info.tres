@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://cu2beecnqqpll"]
+
+[ext_resource type="AudioStream" uid="uid://c7xne0xmb6kea" path="res://sounds/gunshots/22 lr.mp3" id="1_5ip1r"]
+[ext_resource type="ArrayMesh" uid="uid://cnyll180q44c8" path="res://models/new models and meshes/ishim mesh.res" id="2_jlfan"]
+[ext_resource type="AudioStream" uid="uid://cdg5xrna7i6r8" path="res://sounds/reloads/ishimreload.mp3" id="3_3ln4l"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/mob/weaponsystem/firearm_resource.gd" id="4_cy20v"]
+
+[resource]
+script = ExtResource("4_cy20v")
+gunshot = ExtResource("1_5ip1r")
+reload = ExtResource("3_3ln4l")
+shotCooldown = 5
+chambering = 0
+maxCapacity = 40
+reloadtime = 0.35
+aimBonus = 5.0
+maxRecoil = 30.0
+minRecoil = 10.0
+recoilAmount = 5.0
+viewpunchMult = 1.0
+recoverAmount = 0.5
+shotgunMode = true
+pelletAMT = 1
+wepName = &"Ishim"
+wepDesc = &"A 22-caliber pistol with a unique rotary “halo” magazine."
+mesh = ExtResource("2_jlfan")
+damage = 17
+selection = 2
+position = Vector3(0.6, -0.2, -0.5)
+rotation = Vector3(90, 90, 0)
+scale = Vector3(1, 1, 1)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"

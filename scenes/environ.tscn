@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=46 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/Player associated/player.tscn" id="4_2yn2u"]
 [ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="4_m2myf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b0ggseuf34obn" path="res://scenes/trivial/pickups/rifle_ammobox.tscn" id="10_n8uj3"]
 [ext_resource type="PackedScene" uid="uid://dnr004t0lyqd1" path="res://scenes/trivial/pickups/rimfire_ammobox.tscn" id="11_ttle0"]
 [ext_resource type="PackedScene" uid="uid://oh4304fixaus" path="res://scenes/archonscene.tscn" id="12_c4nfh"]
+[ext_resource type="PackedScene" uid="uid://d1ygjo8v5olr8" path="res://scenes/trivial/pickups/ishim pickup.tscn" id="12_ydxer"]
 [ext_resource type="PackedScene" uid="uid://4g032mafbnwj" path="res://scenes/trivial/pickups/affine pickup.tscn" id="14_os2cn"]
 [ext_resource type="PackedScene" uid="uid://u5vg53ed723w" path="res://scenes/trivial/pickups/bergther pickup.tscn" id="15_by8b2"]
 [ext_resource type="PackedScene" uid="uid://bdgwi6tjdsj5u" path="res://scenes/trivial/pickups/degubby pickup.tscn" id="16_eqt0i"]
@@ -214,6 +215,9 @@ mesh = SubResource("BoxMesh_6wnxl")
 [node name="affine N" parent="Environment/Range" instance=ExtResource("14_os2cn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125801, 7.70812, -3.1395)
 
+[node name="IshimPickup" parent="Environment/Range" instance=ExtResource("12_ydxer")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.494568, 7.80696, -2.85568)
+
 [node name="bergther N" parent="Environment/Range" instance=ExtResource("15_by8b2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2374, 7.62354, -3.4557)
 
@@ -272,7 +276,7 @@ transform = Transform3D(0.195237, -0.973548, 0.118691, 0.485725, -0.00915404, -0
 transform = Transform3D(0.707107, -6.32203e-08, -0.707107, -8.9407e-08, -1, 0, -0.707107, 6.32203e-08, -0.707107, -0.0701027, 0.858371, 3.61394)
 
 [node name="rimfire_ammobox" parent="Environment/Range" instance=ExtResource("11_ttle0")]
-transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -0.0358887, 0.84564, 3.918)
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -0.0358887, 0.84564, 3.90211)
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.1564, 1.13379, -21.4827)

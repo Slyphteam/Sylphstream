@@ -119,9 +119,20 @@ func do_Hit_Decal(pos):
 	await managerTree.create_timer(10).timeout
 	decalInstance.queue_free()
 
-##ADS is disabled for shotguns. Is this super accurate? not really. but it  avoids jank.
+# keep the function, since we use "shotguns" to mean guns that load one at a time as well
 func toggleADS():
-	return
+	if(pellets > 1): #ADS is disabled for shotguns. Is this super accurate? not really. but it  avoids jank.
+		return
+	if(aimDownsight):
+		kickAmount += aimKickBonus
+		adjustAcuracy(aimbonus)
+		aimDownsight = false
+		#print("unaiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
+	else:
+		kickAmount -= aimKickBonus
+		adjustAcuracy(0 - aimbonus)
+		aimDownsight = true
+		#print("aiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
 
 ##Starts reload timer
 func startReload():
@@ -129,7 +140,7 @@ func startReload():
 	reloading = true
 	
 	#Should we have capacity being >= max here? Double check at some point
-	if(triggerDepressed || capacity > maxCapacity+1 || invManager.getAmmoAmt(chambering)<1): #No reason to reload
+	if(triggerDepressed || capacity > maxCapacity+1 || invManager.chkAmmoAmt(chambering)<1): #No reason to reload
 		#print("exiting")
 		reloading = false
 		return

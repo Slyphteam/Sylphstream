@@ -5,11 +5,11 @@
 class_name PLAYERINVENMANAGER extends INVENMANAGER
 
 var weight = 0 ##The current held ammo pool's "weight"
-var maxweight = 3000 ##A generous, but reasonable maximum amount of ammo that can be held
 @onready var uiInfo = $"../../../Player UI"
 @export var ourHands: WEAP_INFO
 
 
+var maxweight = 1350 ##lets say 9 30-round mags of 5.56 (9*30*5) as a reasonable maximum amount of ammo weight
 var currentSlot: int = 1 ##Which of the 4 invslots are we on?
 var slotSelection: int = 0 ##Which index into said slot are we?
 var slot1: INVWEP ##Custom slot exclusively for the hands
@@ -22,7 +22,7 @@ func _ready():
 	
 	user = get_node("../../..")
 	
-	heldAmmunition.ammoRimfire = 100
+	heldAmmunition.ammoRimfire = 0
 	heldAmmunition.ammoPistol = 51
 	heldAmmunition.ammoRifle = 30
 	heldAmmunition.ammoShotgun = 20

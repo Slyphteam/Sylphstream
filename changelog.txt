@@ -1,4 +1,7 @@
+7/16:
+Ishim added
 7/15:
+Weapon switching added
 22lr pickup added
 7/14:
 Ammo and reserve counters have been added, player may now switch between hands and starterweapon with 1 and 2
