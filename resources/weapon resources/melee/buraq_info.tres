@@ -14,6 +14,7 @@ effectiveParry = true
 wepName = &"Buraq"
 wepDesc = &"An antique Ottoman Kilij. The inscription reads, \"For the King of Sinai\""
 mesh = ExtResource("1_aat0g")
+drawTime = 1.0
 damage = 65
 selections = Array[int]([2, 4])
 position = Vector3(0.6, -0.4, -0.4)

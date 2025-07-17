@@ -24,6 +24,7 @@ pelletAMT = 1
 wepName = &"Ishim"
 wepDesc = &"A 22-caliber pistol with a unique rotary “halo” magazine."
 mesh = ExtResource("2_jlfan")
+drawTime = 1.0
 damage = 17
 selections = Array[int]([2])
 position = Vector3(0.6, -0.2, -0.5)

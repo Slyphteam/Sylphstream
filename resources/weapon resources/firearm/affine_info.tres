@@ -24,6 +24,7 @@ pelletAMT = 12
 wepName = &"Affine"
 wepDesc = &"A 10-round rifle in semi auto. The potent, low-recoil cartridge more than makes up for capacity."
 mesh = ExtResource("2_y4yrn")
+drawTime = 1.0
 damage = 40
 selections = Array[int]([4])
 position = Vector3(0.6, -0.3, -0.7)

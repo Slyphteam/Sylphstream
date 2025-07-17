@@ -24,6 +24,7 @@ pelletAMT = 12
 wepName = &"Relata"
 wepDesc = &"This entirely handcrafted steel abomination smells faintly of benadryl and weegees."
 mesh = ExtResource("2_bmc76")
+drawTime = 1.0
 damage = 7
 selections = Array[int]([4])
 position = Vector3(0.5, -0.25, -0.5)

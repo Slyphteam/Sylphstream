@@ -24,6 +24,7 @@ pelletAMT = 12
 wepName = &"Fourier 9"
 wepDesc = &"A cheap, not entirely robust carbine that places an emphasis on the importance of transmissions."
 mesh = ExtResource("2_gdvhu")
+drawTime = 1.0
 damage = 24
 selections = Array[int]([3, 2])
 position = Vector3(0.5, -0.15, -0.4)

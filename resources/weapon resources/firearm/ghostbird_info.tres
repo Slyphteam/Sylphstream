@@ -24,6 +24,7 @@ pelletAMT = 12
 wepName = &"Ghostbird"
 wepDesc = &"An ingenious bullpup SMG of Brazilian design. Video game logic trades damage for cyclic rate."
 mesh = ExtResource("2_h6xou")
+drawTime = 1.0
 damage = 17
 selections = Array[int]([3, 4])
 position = Vector3(0.3, -0.15, -0.2)

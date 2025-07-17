@@ -24,6 +24,7 @@ pelletAMT = 12
 wepName = &"Degubby!"
 wepDesc = &"A very special weapon for very special purposes"
 mesh = ExtResource("2_04j37")
+drawTime = 1.0
 damage = 1
 selections = Array[int]([3])
 position = Vector3(0.5, -0.15, -0.4)
