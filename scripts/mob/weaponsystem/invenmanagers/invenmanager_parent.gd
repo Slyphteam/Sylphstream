@@ -39,6 +39,11 @@ func load_Wep(wep2Load):
 			activeItem.invManager = self
 			activeItem.load_Weapon(wep2Load)
 			weapType = 1 #basic gun
+	elif(wep2Load is MELEE_INFO):
+		activeItem = MELEEINSTANCE.new()
+		activeItem.invManager = self
+		activeItem.load_Weapon(wep2Load)
+		weapType = 2 #Melee time
 	else:
 		weapType = 0 #Empty hands
 
@@ -135,6 +140,8 @@ func chkAmmoAmt(amTyp:int ) -> int:
 func doShoot():
 	if(weapType == 1):
 		activeItem.triggerDepressed = true
+	elif(weapType == 2):
+		activeItem.trySwing()
 	else:
 		pass
 
@@ -151,10 +158,14 @@ func startReload():
 	else:
 		pass
 
+#functions going down the hierarchy
 func toggleSights():
-	#heldItem.toggleADS()
-	print("Attempted to call empty aim function!")
-	
+	if(weapType == 1):
+		activeItem.toggleADS()
+	elif(weapType == 2):
+		activeItem.tryBlock()
+	else:
+		pass
 
 #--------- ALL OF THESE FUNCTIONS INTERACT WITH THE USER ITEM (going UP the scene tree)
 #You HAVE to implement these. Check their code in the player invenmanager for how to do so.

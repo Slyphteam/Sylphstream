@@ -2,17 +2,15 @@
 class_name GUNBASICINSTANCE extends WEPINSTANCE
 
 #References
-var weaponMesh: MeshInstance3D
-var uiInfo ##Single node containing references for all the player's UI stuff, for ease of updating
+
 var gunshotPlayer: AudioStreamPlayer3D 
 var reloadPlayer: AudioStreamPlayer3D
 var reloadTimer: Timer
-var invManager: INVENMANAGER ##Assigned by the actual manager prior to weapon resource loading
+
 var wepName: String
 
 #State variables
 var currentCooldown : float = 0
-var affectUI = false ##Should only be true for the player's current weapon instance
 var offCooldown = true ##Used to track whether or not the gun is on COOLDOWN, nothing else 
 var triggerDepressed = false
 var aimDownsight = false
@@ -139,13 +137,6 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	#if(affectUI):
 		#update_UI()
 
-func give_Player_UI(newUiInfo):
-	
-	affectUI = true
-	uiInfo = newUiInfo
-	print("Loading ", wepName)
-	
-	return
 
 
 

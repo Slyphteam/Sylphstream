@@ -24,6 +24,7 @@ pelletAMT = 12
 wepName = &"Bergther G5P"
 wepDesc = &"A fairly unremarkable, though chimeric pistol chambered in 7.822 Longman"
 mesh = ExtResource("2_kbr7q")
+drawTime = 1.0
 damage = 22
 selections = Array[int]([2])
 position = Vector3(0.6, -0.2, -0.6)

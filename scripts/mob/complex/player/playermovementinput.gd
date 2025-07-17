@@ -112,11 +112,18 @@ func _input(event):
 	if (event.is_action_pressed("ui_interact") && !event.is_echo()):
 		do_Interact_Raycast()
 	
+	#Presumably, there's a better way to do this. Presumably...
 	if event.is_action_pressed("ui_num1"):
 		invenManager.change_To_Slot(1)
 		
 	if event.is_action_pressed("ui_num2"):
 		invenManager.change_To_Slot(2)
+	if event.is_action_pressed("ui_num3"):
+		invenManager.change_To_Slot(3)
+	if event.is_action_pressed("ui_num4"):
+		invenManager.change_To_Slot(4)
+	#if event.is_action_pressed("ui_num5"):
+		#invenManager.change_To_Slot(5)
 
 ##Cleanliness function that just makes a short-ranged raycast
 func do_Interact_Raycast():

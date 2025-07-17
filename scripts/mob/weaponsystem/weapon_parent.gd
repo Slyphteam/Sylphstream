@@ -6,6 +6,8 @@ class_name WEAP_INFO extends Resource
 @export var mesh: Mesh ##Primary model of the weapon
 @export_category("Basic Instance Data")
 @export var secondMesh: Mesh ##Secondary model. Sheathe or magazine. Currently does nothing
+@export var drawTime: float = 1 ##Draw time, in seconds. Currently does nothing
+@export var drawSound: AudioStreamMP3 ##Draw sound. Currently also does nothing.
 @export var damage: int = 1 
 @export var selections : Array[int] = [3] ##Valid selection slots for the gun. the first will be the default.
 @export var position : Vector3 = Vector3(0, -0.3, -0.3) ##Offset from camera center in L/R, U/D, F/B

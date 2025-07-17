@@ -73,12 +73,7 @@ func refreshShots():
 	activeItem.totalShots = 0
 	totalShots = 0
 
-func toggleSights():
-	if(weapType == 1):
-		activeItem.toggleADS()
-	#else:
-		#print("Parry!")
-	#
+
 ##Functions going up the hierarchy
 ###Apply viewpunch to the player, in degrees. Requires a connected user object.
 func applyViewpunch(lift, drift):
