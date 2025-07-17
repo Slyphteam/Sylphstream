@@ -1,18 +1,20 @@
-[gd_resource type="Resource" script_class="Mel" load_steps=2 format=3 uid="uid://cl8pxhfyfdg81"]
+[gd_resource type="Resource" script_class="MELEE_INFO" load_steps=2 format=3 uid="uid://cl8pxhfyfdg81"]
 
 [ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/mob/weaponsystem/melee_resource.gd" id="1_mchgp"]
 
 [resource]
 script = ExtResource("1_mchgp")
-wepName = &"Frontiersman"
-wepDesc = &"A plastic-handled hunting knife. It\'s sharp, if nothing else."
-position = Vector3(0, -0.3, -0.3)
-rotation = Vector3(90, 90, 0)
-scale = Vector3(1, 1, 1)
-damage = 50
+variance = 0.2
 reach = 0.25
 speed = 60
 canThrust = false
 canParry = false
 effectiveParry = false
+wepName = &"Frontiersman"
+wepDesc = &"A plastic-handled hunting knife. It\'s sharp, if nothing else."
+damage = 50
+selections = Array[int]([5, 2])
+position = Vector3(0, -0.3, -0.3)
+rotation = Vector3(90, 90, 0)
+scale = Vector3(1, 1, 1)
 metadata/_custom_type_script = "uid://c3mmopjw0avmi"

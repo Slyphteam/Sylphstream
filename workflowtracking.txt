@@ -59,6 +59,8 @@ Go through all wepinstances and assign the selection slots. Have each only fit i
 
 Fix obnoxiously slow aiming on affine from gun_basic_instance logic
 
+Change weapon pickups to add to slots.
+
 Check and see if players can still shoot themselves.
 Do testing with some parented objects to get rid of that damn weapon jittering
 Add *some* kind of logic for weapon pickups.

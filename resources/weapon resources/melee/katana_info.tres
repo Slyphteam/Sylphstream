@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="MELEE_INFO" load_steps=2 format=3 uid="uid://cqy7lx5na071s"]
+
+[ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/mob/weaponsystem/melee_resource.gd" id="1_i2b2v"]
+
+[resource]
+script = ExtResource("1_i2b2v")
+variance = 0.2
+reach = 1.2
+speed = 100
+canThrust = false
+canParry = true
+effectiveParry = true
+wepName = &"Sugoi Hentai Seppuku Sakurai Miyamoto"
+wepDesc = &"A cold-pressed chunk of pot metal. Probably still made of finer iron than its historical brethren."
+damage = 1
+selections = Array[int]([3])
+position = Vector3(0, -0.3, -0.3)
+rotation = Vector3(90, 90, 0)
+scale = Vector3(1, 1, 1)
+metadata/_custom_type_script = "uid://c3mmopjw0avmi"

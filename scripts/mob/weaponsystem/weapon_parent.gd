@@ -7,7 +7,7 @@ class_name WEAP_INFO extends Resource
 @export_category("Basic Instance Data")
 @export var secondMesh: Mesh ##Secondary model. Sheathe or magazine. Currently does nothing
 @export var damage: int = 1 
-@export var selection : int = 4 ##Currently unused, will be for switching
+@export var selections : Array[int] = [3] ##Valid selection slots for the gun. the first will be the default.
 @export var position : Vector3 = Vector3(0, -0.3, -0.3) ##Offset from camera center in L/R, U/D, F/B
 @export var rotation : Vector3 = Vector3(90, 90, 0) 
 @export var scale : Vector3 = Vector3.ONE ##In case model is incorrectly sized

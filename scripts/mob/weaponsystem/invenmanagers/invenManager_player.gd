@@ -16,6 +16,17 @@ var slot1: INVWEP ##Custom slot exclusively for the hands
 var slot2: Array[INVWEP] ##Holster slots.
 var slot2Max = 2 ##Max number of items in holster
 
+#Okay, time to talk about selection slots.
+#Player inventory has 5 slots, 4 of which weapons can go into. Each weapon MUST have a default slot,
+# but weapons can have multiple valid slots. (E.X. a rifle can go on the chest and back).
+#They are as follow:
+#Slot 1: hands. Player should never ever not have hands slot. 
+#Slot 2: hips. Pistols, swords, knives, exceptionally small SMGs. Think scabbard/holster
+#Slot 3: Chest. Small rifles, smgs, some large pistols go here. Think single point sling,
+#Slot 4: Back. Medium and large rifles, large melee. Think slings.
+#Slot 5: Sheathe. Players should always be able to carry a small melee on them.
+
+
 func _ready():
 	
 	print("Hello and welcome to Sylphstream!")

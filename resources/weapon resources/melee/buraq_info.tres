@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Mel" load_steps=3 format=3 uid="uid://cdavx6lb5f7ya"]
+[gd_resource type="Resource" script_class="MELEE_INFO" load_steps=3 format=3 uid="uid://cdavx6lb5f7ya"]
 
 [ext_resource type="ArrayMesh" uid="uid://wtw7mui4bxax" path="res://models/mesh models/buraq mesh.res" id="1_aat0g"]
 [ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/mob/weaponsystem/melee_resource.gd" id="1_rioib"]
@@ -12,11 +12,10 @@ canThrust = true
 canParry = false
 effectiveParry = true
 wepName = &"Buraq"
-wepDesc = &"An Ottoman Kilij brought back from a foreign port. The inscription reads, \"For the King of Sinai\""
-isFirearm = false
+wepDesc = &"An antique Ottoman Kilij. The inscription reads, \"For the King of Sinai\""
 mesh = ExtResource("1_aat0g")
 damage = 65
-selection = 4
+selections = Array[int]([2, 4])
 position = Vector3(0.6, -0.4, -0.4)
 rotation = Vector3(160, 10, -5)
 scale = Vector3(1, 1, 1)
