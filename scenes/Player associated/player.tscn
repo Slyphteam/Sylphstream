@@ -145,7 +145,7 @@ horizontal_alignment = 2
 
 [node name="Uiholdertest" type="Sprite2D" parent="Player UI/Ammo"]
 z_index = -1
-position = Vector2(-70, -45)
+position = Vector2(-69, -45)
 texture = ExtResource("9_f4klr")
 
 [node name="name" type="Label" parent="Player UI/Ammo"]
