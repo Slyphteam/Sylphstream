@@ -112,6 +112,7 @@ func score_Sylphs():
 	generation+=1
 	var keptScore = 0
 	var avgScore = float(totalSum) / float(generation)
+	print("Test complete! new average ", avgScore, " Generation: ", generation)
 	
 	if(arr1[1] < avgScore && arr2[1] < avgScore):
 		if(highScore > 1):
