@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b8mcxeu7qh7hy"
+uid="uid://owa16bnlipwu"
 path="res://.godot/imported/buraq.glb-b341ef9d32a9b207794bc23d77dc2592.scn"
 
 [deps]
@@ -40,7 +40,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://models/mesh models/buraq mesh.res"
+"save_to_file/path": "res://models/mesh models/buraq mesh N.res"
 }
 }
 }
