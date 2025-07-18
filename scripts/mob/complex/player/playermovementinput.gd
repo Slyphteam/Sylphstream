@@ -204,7 +204,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	#viewtilt and headbob are in the camera script
-	playerCam.fov = clamp(87 + sqrt(playerSpeed), 90, 180) 
+	#playerCam.fov = clamp(87 + sqrt(playerSpeed), 90, 180) #caused jitteriness with weapons to be visible.
 	
 
 ##Updates the player camera as they enter or leave a crouching state.
