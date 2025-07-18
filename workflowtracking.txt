@@ -55,15 +55,9 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Go through all wepinstances and assign the selection slots. Have each only fit in one for now.
-
 Fix obnoxiously slow aiming on affine from gun_basic_instance logic
 
-Change weapon pickups to add to slots.
-
 Check and see if players can still shoot themselves.
-Do testing with some parented objects to get rid of that damn weapon jittering
-Add *some* kind of logic for weapon pickups.
 Archon option buttons
 HealthHolder and health UI element (re-enable player raycast decals)
 Effectholder, have archon poison player as test
@@ -73,13 +67,6 @@ Pause menu
 =======+=======> FUTURE PLANS:
 -----------/
 
-Sylph maintenance:
-
-
-Delta DOES NOT WORK if sylph is facing left. (sylph rotation > +-90)
-It looks like we're sabotaging ourselves with memory caching for weights and biases. 
-Consider swapping the traversal order to go row by row on all traversals
-Reimport sylph head but make sure it's actually centered this time, doofus.
 
 
 ====+====> KEY:
@@ -88,6 +75,11 @@ Reimport sylph head but make sure it's actually centered this time, doofus.
 	*: Important (to current course of dev plans)
 	&: Unimportant
 
+Sylph maintenance:
+Delta DOES NOT WORK if sylph is facing left. (sylph rotation > +-90)
+It looks like we're sabotaging ourselves with memory caching for weights and biases. 
+Consider swapping the traversal order to go row by row on all traversals
+Reimport sylph head but make sure it's actually centered this time, doofus.
 
 
 ====+====> FUNCTIONAL:
