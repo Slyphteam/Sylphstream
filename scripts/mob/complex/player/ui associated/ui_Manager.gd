@@ -2,3 +2,4 @@
 extends Node
 @onready var theReticle = $Reticle
 @onready var ammoCounter = $Ammo
+@onready var pauseMenu = $pauseContainer

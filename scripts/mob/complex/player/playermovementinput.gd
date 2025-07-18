@@ -57,6 +57,11 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 @onready var playerShape = $playermodel
 @onready var playerCollider = $playercollidercapsule
 @onready var invenManager: PLAYERINVENMANAGER = $camCage/came/weapon_rig
+@onready var uiInfo = $"Player UI"
+
+
+func _ready():
+	Globalscript.thePlayer = self
 
 
 ##Handles player input. You may notice that there are checks on both Input and event.
@@ -69,16 +74,17 @@ func _input(event):
 	#TODO: look into adding a better way to check inputs because surely this is not optimal
 	#TODO: update this to the sprinting paradigm because you now know a better way
 	if event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Globalscript.togglePaused()
+		
 		
 	
 	if Input.is_action_pressed("ui_click"):
 		# are we in mouse mode?
-		if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
+		if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED && Globalscript.isPlaying):
 			invenManager.doShoot() #if so, shoot our current weapon
 		
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	if Input.is_action_just_released("ui_click", false):
 		#though strange, this code is necessary as the player can be holding mouse and no other inputs

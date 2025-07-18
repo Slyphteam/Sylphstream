@@ -55,13 +55,17 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+Pause menu
+
 Fix obnoxiously slow aiming on affine from gun_basic_instance logic
+
+Watch inventory system video. Make simple shitty top bar for player inv
 
 Check and see if players can still shoot themselves.
 Archon option buttons
 HealthHolder and health UI element (re-enable player raycast decals)
 Effectholder, have archon poison player as test
-Pause menu
+
 
 -----------\
 =======+=======> FUTURE PLANS:

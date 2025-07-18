@@ -1,6 +1,8 @@
 extends Node
 var datapanel
 var timer : float ##Global timer.
+var isPlaying = false ##Is the game paused or running?
+var thePlayer
 
 func _process(delta):
 	timer += delta 
@@ -16,3 +18,13 @@ func weighted_Prob(chance)->bool:
 		return true
 	
 	return false
+
+func togglePaused():
+	if(Globalscript.isPlaying):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Globalscript.isPlaying = false
+		thePlayer.uiInfo.pauseMenu.visible = true
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Globalscript.isPlaying = true
+		thePlayer.uiInfo.pauseMenu.visible = false

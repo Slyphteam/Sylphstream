@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5h5e2fdfww0f"
-path="res://.godot/imported/uiholdertest.png-f7c4a6c66facc581d03747cbb62d8407.ctex"
+uid="uid://dxdc2ni5jtua0"
+path="res://.godot/imported/pre alpha splash.png-4b2be365ce796547d4d2975be3333c4f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/uiholdertest.png"
-dest_files=["res://.godot/imported/uiholdertest.png-f7c4a6c66facc581d03747cbb62d8407.ctex"]
+source_file="res://resources/image resources/pre alpha splash.png"
+dest_files=["res://.godot/imported/pre alpha splash.png-4b2be365ce796547d4d2975be3333c4f.ctex"]
 
 [params]
 
