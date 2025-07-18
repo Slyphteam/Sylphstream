@@ -343,7 +343,6 @@ func do_Vision():
 		#but we only care about the absolute.
 		change = absf(change)
 		change *= 2.2
-		print(change)
 		sensoryInput[5] = clampf(change, 0, 1)
 		
 		#I'm too lazy to do the azimuth extrema and i dont think it matters too much. soooo.

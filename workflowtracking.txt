@@ -77,10 +77,8 @@ Sylph maintenance:
 
 
 Delta DOES NOT WORK if sylph is facing left. (sylph rotation > +-90)
-
-
-
-S.G.D. scoring. at least look into it.
+It looks like we're sabotaging ourselves with memory caching for weights and biases. 
+Consider swapping the traversal order to go row by row on all traversals
 Reimport sylph head but make sure it's actually centered this time, doofus.
 
 

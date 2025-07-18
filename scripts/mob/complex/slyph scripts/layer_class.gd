@@ -7,16 +7,25 @@ var weights ##Weights for incoming connections; 2D; nodesIn arrays of size nodes
 #another way to think about weights is the following:
 #for each node in the current layer, what modifiers do we have for all incoming nodes?
 var biases: Array[float] ##The value of each node when it fires
-var activations: Array[float] ##the chance for each node to fire
+
+var gradientWeight
+var gradientBias: Array[float]
+
+var activations: Array[float] ##the chance for each node to fire (disabled)
 
 func initialize_Layer(incoming, outgoing):
 	nodesIn = incoming
 	nodesOut = outgoing
 	weights = create_Empty_Grid(nodesIn, nodesOut)
+	gradientWeight = create_Empty_Grid(nodesIn, nodesOut)
+	
+	
 	biases.resize(outgoing)
 	biases.fill(0.5)
+	gradientBias
+	
 	activations.resize(outgoing)
-	activations.fill(0.95) #more likely to fire than not
+	activations.fill(1)
 
 func create_Empty_Grid(width, height):
 	var grid = []
@@ -25,6 +34,25 @@ func create_Empty_Grid(width, height):
 		for j in height:
 			grid[i].append(0.5) # Set a starter value for each position
 	return grid
+#
+func apply_Gradients(learnRate):
+	var x:int = 0
+	var numBiases = biases.size()
+	while (x<numBiases):
+		biases[x] -= gradientBias[x] * learnRate
+		x+=1
+	#weights
+	x = 0
+	var y:int
+	var curArray = []
+	while(x<nodesOut):
+		y=0
+		while(y<nodesIn):
+			curArray = weights[y]
+			curArray[x] -= gradientWeight[x][y] * learnRate
+			y+=1
+		x+=1
+
 
 #runtime seems to be associated with inputs being an empty array.
 #how does this happen?
@@ -42,13 +70,13 @@ func calc_Outputs(inputs: Array[float])-> Array[float]:
 			currentArray = weights[curIn]
 			weightedIn+= inputs[curIn] * currentArray[curOut] 
 			curIn+=1
-		computedInputs[curOut] = apply_Activation_Chance(weightedIn, activations[curOut]) #apply_Activation_Threshhold(weightedIn)
+		computedInputs[curOut] = apply_Activation(weightedIn) #apply_Activation_Threshhold(weightedIn)
 		curOut+=1
 	return computedInputs
 
 
 ##Given a weighted input and the node's activation chance, see if it fires.
-func apply_Activation_Chance(incoming:float, chance)->float:
+func apply_Activation(incoming:float)->float:
 	incoming = clampf(incoming, -1, 1)
 	
 	if(absf(incoming) < 0.01): #activation threshhold
@@ -73,8 +101,8 @@ func weighted_Prob(chance)->bool:
 	
 	return false
 
-func add_Node_To_Layer():
-	print("THIS FUNCTION DOESN'T DO ANYTHING!")
-	pass
+#func add_Node_To_Layer():
+	#print("THIS FUNCTION DOESN'T DO ANYTHING!")
+	#pass
 	#add an incoming weights array
 	#is that really it?
