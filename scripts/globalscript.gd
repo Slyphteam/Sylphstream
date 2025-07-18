@@ -24,7 +24,16 @@ func togglePaused():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Globalscript.isPlaying = false
 		thePlayer.uiInfo.pauseMenu.visible = true
+		get_tree().paused = true
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Globalscript.isPlaying = true
 		thePlayer.uiInfo.pauseMenu.visible = false
+		get_tree().paused = false
+
+func _init():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		togglePaused()

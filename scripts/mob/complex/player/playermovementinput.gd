@@ -73,8 +73,7 @@ func _input(event):
 	
 	#TODO: look into adding a better way to check inputs because surely this is not optimal
 	#TODO: update this to the sprinting paradigm because you now know a better way
-	if event.is_action_pressed("ui_cancel"):
-		Globalscript.togglePaused()
+	
 		
 		
 	
