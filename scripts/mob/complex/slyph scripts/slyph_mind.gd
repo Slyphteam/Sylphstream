@@ -118,9 +118,6 @@ func _process(delta):
 		if(activeTime <=0):
 			mindEnabled = false
 			manager.unShoot() #prevent the sylph from ever turning off in a shoot mode, which would be unfair
-			#refresh_Stats()
-			#var scoresArr = score_Performance()
-			#print("All done!")
 
 func do_Single_Thought(delta):
 	do_Senses() #gather information
@@ -131,7 +128,6 @@ var aimVector: Vector2
 
 var aimingSights: bool = false
 var modeData: Array[float] = [0.0,0.0,0.0,0.0]
-var gubby = false
 
 func process_Actions(delta):
 	
@@ -218,7 +214,7 @@ func do_Senses():
 	#INDEX 0,1,2,3 AND 4,5: VISION SENSES
 	do_Vision()
 	#keep in mind 4-5 work are trained on both sylph and target having same root.
-	#if this doesnt happen things will be BAD
+	#if this doesnt happen things will be BAD (is this even true anymore? idk, check)
 
 	#INDEX 6: AIM AZIMUTH
 	#between 90 and -90
@@ -306,20 +302,9 @@ func do_Vision():
 		sensoryInput[3] = 0.0
 		microPenalty +=1
 	
-	#next, do the "extrema"
 	if(!targetTrue): #we do not have a target anywhere in sight, you get no awareness, bwomp bwomp
-		sensoryInput[4] = 0
-		sensoryInput[5] = 0
-		
-		##in fact, Im going to penalize you for not being able to see a target (moved to per-block)
-		#if(targetsPresent != 0): 
-			#if(!(targetL || targetR)):
-				#microPenalty +=2
-			#if(!(targetU || targetD)):
-				#microPenalty +=2
-			
-
-		
+		sensoryInput[4] = -1
+		sensoryInput[5] = -1
 		sensoryInput[18] = 1
 		
 	else:
@@ -327,9 +312,7 @@ func do_Vision():
 		
 		#issue: targetTrue is the staticbody that gets detected, and has a transform of 0.
 		#solution: just use globals?
-		var connectingVec = targetTrue.global_position - body.global_position
-		var pos1 = targetTrue.global_position
-		var pos2 = body.global_position
+		var connectingVec = body.global_position - targetTrue.global_position
 		
 		
 		#print("connecting vec: ",connectingVec)
@@ -346,36 +329,21 @@ func do_Vision():
 		var dist = (connectingVec.length() / 12.5) -1 #value between 0 and 2
 		sensoryInput[18] = (connectingVec.length() / 12.5) -1 
 		
-		var theta = atan(connectingVec.x/connectingVec.z)
+		#print(connectingVec.x, " ", connectingVec.z)
+		var theta : float = atan(connectingVec.z/connectingVec.x)
 		#print("target's theta:", theta)
 		
-		#So, what does theta actually mean?
-		#it's the radians of rotation relative to a global basis that isn't actually important, since
-		#it's consistent, again, globally. I REALLY hope.
-		#exactly head on is 1.5 to the left and -1.5 to the right
-		#then it goes down to about 1.08 at most on either side.
-		#we'll be generous and say it has a range of about 0.45
-		#I also don't entirely trust the sylphs to deal with the cup shape AND the negative flip
-		#and they're already being told which way the target is, I don't think it's useful.
-		#therefore, I am only going to use this as a way to tell them the EXTREMA of the angle
-		
-		#print("raw theta:", theta)
-		theta = absf(theta)
-		
-		theta = 1.05-theta
-		
-		#theta now is between -0.08 and -0.5
-		#add 0.05 to mostly nullify out the offset
-		theta += 0.05
-		#multiply it by 4 to make it between 0ish and 2ish
-		theta *=4
-		#make it absolute
-		theta = absf(theta)
-		#subtract 1 to make it between mostly -1 and 1
-		theta -=1
-		
-		#is -1 and 1 better or worse than 0-1? absolutely no idea lmao.
-		sensoryInput[4] = theta
+		var rotation = 0 - (body.sylphHead.rotation.y + body.rotation.y) #draw from both head and body rotation
+		if(rotation > 3.5):
+			print("rotation is too big! we havent handled this yet!")
+		#print("rotation ", rotation)
+		var change = theta - rotation
+		 #current implementation works when sylph is facing right, but not left.
+		#change is between +- 0.47
+		#but we only care about the absolute.
+		change = absf(change)
+		change *= 2.2
+		sensoryInput[5] = clampf(change, 0, 1)
 		
 		#I'm too lazy to do the azimuth extrema and i dont think it matters too much. soooo.
 		sensoryInput[5] = 0

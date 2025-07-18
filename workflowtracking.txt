@@ -75,10 +75,10 @@ Pause menu
 
 Sylph maintenance:
 
-CHECK EXTREMA ANGLES TO MAKE SURE THEY WORK IN A GLOBAL CONTEXT!!!!!!
 
-Add high-aimspeed inaccuracy
-S.G.D. scoring. at least look into it.
+Delta DOES NOT WORK if sylph is facing left. (sylph rotation > +-90)
+It looks like we're sabotaging ourselves with memory caching for weights and biases. 
+Consider swapping the traversal order to go row by row on all traversals
 Reimport sylph head but make sure it's actually centered this time, doofus.
 
 

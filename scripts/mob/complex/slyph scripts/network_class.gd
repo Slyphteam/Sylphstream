@@ -16,7 +16,7 @@ func initialize_Network(layerSizeArr: Array[int]):
 		ourLayers[i].initialize_Layer(layerSizeArr[i], layerSizeArr[i+1])
 		i+=1
 	
-	ourLayers[0].activations.fill(1) #ensure the first layer always activates.
+	#ourLayers[0].activations.fill(1) #ensure the first layer always activates.
 
 ##run inputs through the neural network
 func calc_Outputs_Network(inputData:Array[float])->Array[float]:
@@ -142,7 +142,7 @@ func populate_Network_Rand():
 		populate_Layer_Rand(z)
 		z+=1
 	
-	ourLayers[0].activations.fill(1) #ensure the first layer always activates.
+	#ourLayers[0].activations.fill(1) #ensure the first layer always activates.
 	
 	
 ##Mutates the entire network by random values clamped to 0+-(mutationAmount). Seperate value for mutations.
@@ -153,7 +153,25 @@ func mutate_Network(mutateBy: float, activationMut: float, mutationChance: int):
 		mutate_Layer(z, mutateBy, activationMut, mutationChance)
 		z+=1
 	
-	ourLayers[0].activations.fill(1) #ensure the first layer always activates.
+	#ourLayers[0].activations.fill(1) #ensure the first layer always activates.
+
+#func do_SGD_Learning()
+#How does SGD learning work?
+#from https://youtu.be/hfMk-kjRv4c&t=1236
+#In an "instant" neural network, like one that recognizes images, its the following:
+#goes through all weights, makes a tiny nudge, then measures the cost and logs it in the network's gradient list
+#divide change in cost by the nudge to measure sensitivity
+#does the same for biases. Afterwards, apply the gradients onto all the layers.
+#This works great if you can instantly get the "cost" of a neural network, but if I had to 
+#go through every single parameter in my networks and individually trial them, it'd take literal 
+#hours to make a single "step" in SGD.
+#Clearly a no-go, but there's gotta be a better way than random evolution.
+#Ideas:
+#Look up that guy who did the learning cube videos in unity(?) and see what he did
+#Scale up the number of sylphs. More "evolutions" per generation = better improvement
+#Think about a way to "record" the random mutation and then re-apply it (or re-apply something like it)
+#the reasoning being that, if one mutation makes a sylph improve slightly, that same mutation will
+#yield slightly more fitness again, so on and so forth until a different mutation produces a greater yield.
 
 #func copy_values_from_network(otherGuy:NNETWORK):
 	#pass
@@ -186,8 +204,8 @@ func load_Network_From_File(fileString):
 		
 		lineGrabber = ourFile.get_line() #activations header
 		lineGrabber = ourFile.get_line() #activations
-		currentArray = str_to_var(lineGrabber)
-		currentLayer.activations = currentArray.duplicate()
+		#currentArray = str_to_var(lineGrabber)
+		#currentLayer.activations = currentArray.duplicate()
 		
 		lineGrabber = ourFile.get_line() #weights header
 		
@@ -231,7 +249,7 @@ func save_Network_To_File(fileString):
 		
 		constructedString = "--ACTIVATION CHANCES-- \n"
 		ourFile.store_string(constructedString)
-		constructedString = var_to_str(currentLayer.activations) + "\n"
+		constructedString = "(we arent doing those) \n"
 		ourFile.store_string(constructedString)
 		
 		constructedString = "--WEIGHTS-- \n"
