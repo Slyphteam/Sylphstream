@@ -324,10 +324,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5462, -1.39584, -37.5982)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 40.546, 0, -33)
 
 [node name="Sylph 2" parent="Environment/Testing zone" instance=ExtResource("7_d6ln1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1.39584, -37.5982)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1.396, -37.597)
 
 [node name="Testing target 2" parent="Environment/Testing zone" instance=ExtResource("4_m2myf")]
-transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 15, 0, -33)
+transform = Transform3D(-0.999885, -4.57448e-07, -0.0151838, -4.84987e-07, 1, 1.81e-06, 0.0151838, 1.81715e-06, -0.999885, 15, 0, -24.144)
 
 [node name="Testing wall" type="MeshInstance3D" parent="Environment/Testing zone"]
 mesh = SubResource("BoxMesh_ldjjd")

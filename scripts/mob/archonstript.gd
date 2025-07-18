@@ -58,10 +58,10 @@ func _process(delta):
 
 ##Initializes two random Sylphs and starts testing them
 func begin_Sylph_Test():
-	#Sylph1.mind.initialize_Rand_Network()
-	#Sylph2.mind.initialize_Rand_Network()
-	Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs attempt 2/slightly better.txt")
-	Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs attempt 2/foundations.txt")
+	Sylph1.mind.initialize_Rand_Network()
+	Sylph2.mind.initialize_Rand_Network()
+	#Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
+	#Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -87,11 +87,11 @@ func restart_Sylph_Test():
 
 
 #start with vision training, then penalize misses
-var hitMult: int = 1 ##Multiplicative reward for hits
-var missDiv: int =  0 ##Divide penalty for misses by this amount
-var missAllow: int = 50 ##How many misses will we tolerate before punishing?
-var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 700 ##What will we divide the per-frame penalty by for not seeing target?
+var hitMult: int = 10 ##Multiplicative reward for hits
+var missDiv: int =  0.5 ##Divide penalty for misses by this amount
+var missAllow: int = 0 ##How many misses will we tolerate before punishing?
+var accuracyRew: int = 1 ##If we're in the tolerance, what reward is given?
+var visionDiv: int = 100 ##What will we divide the per-frame penalty by for not seeing target?
 
 var totalSum: int = -3
 var generation: int = 0
@@ -118,7 +118,7 @@ func score_Sylphs():
 		if(highScore > 1):
 			generation-=1
 			print("Both sucked!") #only load 1 sylph for sake of testing
-			Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
+			Sylph1.mind.load_From_File()
 			
 	elif(arr1[1] > arr2[1]):
 		print("Sylph1 was better!")
@@ -127,10 +127,10 @@ func score_Sylphs():
 		if(arr1[1] > highScore):
 			print("new best!")
 			highScore = arr1[1]
-			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
+			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
 		
 		if(arr1[1] > avgScore - tolerance):
-			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")  #only save if we're doing "good"
+			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")  #only save if we're doing "good"
 		
 		Sylph2.mind.copy_From_Other(Sylph2)
 		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 40)
@@ -143,10 +143,10 @@ func score_Sylphs():
 		if(arr2[1] > highScore):
 			print("new best!")
 			highScore = arr2[1]
-			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
+			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
 		
 		if(arr2[1] > avgScore - tolerance): 
-			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/primitive.txt")
+			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
 	
 		Sylph1.mind.copy_From_Other(Sylph2)
 		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 40)
@@ -163,7 +163,7 @@ func score_Sylphs():
 			generation -=1 # dont update average, so decrement generations again
 	
 	if(generation > 25 || arr2[0] >= 5 || arr1[0] >= 5):
-		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/full sylphs attempt 2/current best.txt")
+		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
 		print("probably enough now!")
 
 #https://docs.godotengine.org/en/stable/classes/class_fileaccess.html#class-fileaccess

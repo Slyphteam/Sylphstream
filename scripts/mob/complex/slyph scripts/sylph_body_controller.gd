@@ -19,12 +19,8 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#move_Head_Exact(Vector2(5,5))
 
 func interact_By_Player(playerRef):
-	mind.gubby = true
-	#manager.startReload()
-	#mind.do_Single_Thought()
-	#mind.mindEnabled = true
-	#mind.activeTime = 400
 	
+	mind.do_Vision()
 	
 	
 	#mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/loadingtest.txt")
