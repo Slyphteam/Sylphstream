@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=17 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://bt86hsaoopo8b" path="res://scripts/mob/complex/player/ui associated/ammocounters.gd" id="9_iy7ap"]
 [ext_resource type="StyleBox" uid="uid://c7v5hhr02av55" path="res://resources/button BG theme.tres" id="12_33423"]
 [ext_resource type="Texture2D" uid="uid://dxdc2ni5jtua0" path="res://resources/image resources/pre alpha splash.png" id="12_kiyhm"]
-[ext_resource type="Theme" uid="uid://c607xio7ni01t" path="res://resources/button theme.tres" id="13_33423"]
 [ext_resource type="Script" uid="uid://bkssejl7vp64a" path="res://scripts/mob/complex/player/ui associated/pausebuttons.gd" id="13_oajfq"]
 [ext_resource type="Script" uid="uid://cytij8tvgs1nb" path="res://scripts/mob/complex/player/ui associated/quitbutton.gd" id="14_gor7x"]
 
@@ -183,7 +182,6 @@ grow_vertical = 2
 z_index = 4
 custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
-theme = ExtResource("13_33423")
 theme_override_styles/panel = SubResource("StyleBoxFlat_kiyhm")
 
 [node name="MarginContainer" type="MarginContainer" parent="Player UI/pauseContainer/PanelContainer"]
@@ -215,7 +213,6 @@ script = ExtResource("13_oajfq")
 
 [node name="quitButton" type="Button" parent="Player UI/pauseContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("13_33423")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.682353, 0.901961, 0.788235, 1)
 theme_override_styles/normal = ExtResource("12_33423")

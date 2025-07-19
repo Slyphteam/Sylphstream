@@ -55,9 +55,18 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Pause menu
+Change pausebutton scripts to have one parent, meta ui
+Also have there be a single holder for game UI
 
 Fix obnoxiously slow aiming on affine from gun_basic_instance logic
+
+Change bullets create class instance, refactor all da stuff necessary
+Bullet refactor to own class.
+Class data: 
+Direction (vector3 of start - end)
+Damage
+User (invenmanager user)
+Bonus (empty slot)
 
 Watch inventory system video. Make simple shitty top bar for player inv
 
@@ -86,9 +95,6 @@ Consider swapping the traversal order to go row by row on all traversals
 Reimport sylph head but make sure it's actually centered this time, doofus.
 
 
-====+====> FUNCTIONAL:
-add an actual UI.
-
 Sylph and playermodel bodies v2, but test with the millian prior
 
 Millian porcelaindoll variant
@@ -98,12 +104,13 @@ Archon intro ditty:
 low high bitlower medium - - - - - - high low
 low high bitlower - - + verlow high lowwww
 
-Write add_node_to_layer function
-crosshair changes with move speed **
+====+====> FUNCTIONAL:
 
+crosshair changes with move speed **
 Step up/down movement code ----- * (will have to do it at some point)
 
 ====+====> EXPERIENTIAL:
+re-add FOV changing with speed, but make it steppy to prevent jitters
 "button-like dialogue trees"
 Scrolling chat
 get better pistol gunshot &++

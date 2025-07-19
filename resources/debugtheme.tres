@@ -1,10 +1,11 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dwx0gcw8npl2a"]
 
-[ext_resource type="StyleBox" uid="uid://3nj3gigivjs1" path="res://resources/debug stylebox.tres" id="1_q2pb1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow734"]
+bg_color = Color(0.3905, 0.55, 0.504808, 1)
 
 [resource]
 MarginContainer/constants/margin_bottom = 5
 MarginContainer/constants/margin_left = 5
 MarginContainer/constants/margin_right = 5
 MarginContainer/constants/margin_top = 5
-PanelContainer/styles/panel = ExtResource("1_q2pb1")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ow734")

@@ -1,3 +1,7 @@
+7/18:
+Added pause menu, pausing
+7/17:
+Inventory system groundwork, adds UI
 7/16:
 Ishim added
 7/15:
