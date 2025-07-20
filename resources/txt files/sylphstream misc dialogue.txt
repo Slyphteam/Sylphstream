@@ -566,3 +566,46 @@ Nuh uh
 
 *stick your tongue out and blow a raspberry at Millian*
 The exact same one is blown back at you
+
+
+Type 24: Keyfabe
+
+Diegesis, stemming from the ancient greek word for narration, refers to the point at which an invisible narrator provides
+a view into the interiority of a story. It is the window between the hypothetical reality of a tale and the medium
+through which it is represented. A transition in a film saying "two months later" can be considered part of the 
+diegetic framework, as can the text bubbles in a comic, the heads-up display in a video game, and, well, I'm
+narrating this line right now, aren't I? 
+
+So, here's something of a metatextual quandry for you: Where does the intra-diegetic boundary truly lie? Does the 
+audience, the author, or social convention dictate the point at which things stop being part of a portrayed world?
+Can you really break the fourth wall, or are you just able to push it back a little?
+
+Take the sylphs, for example. Their voice lines hint at being self-aware, but they're not. As of the time of recording,
+each uses a x x x y neural network. That's not much better than OpenWorm, which has 302 neurons, 95 muscle cells,
+and 562 other fully simulated cells. Since I've admitted that, should Sylphs be considered diegetically intelligent,
+or would the diegesis dictate that they're simple neural networks with voice lines hinting at intelligence?
+Is it just bad writing?
+
+Even this chat can't really be considered paratextual, since these are just recorded voice lines.
+It is possible to contact and actually chat-- my e-mail's at the end of a few of the devlogs and I pay close
+attention to my inbox-- but an exchange like that would exist wholly independent of any diegesis.
+
+And on the topic of me, where would the character you're talking to stand on the diegetic gradient?
+It's certainly not explicitly me, a college student whose name isn't really Millian and who eats ramen and goes 
+night mountainbiking and programs on the weekends, but it isn't not me, either. Is it just an interactive piece
+of dev commentary? What if I made it a shop, where you could trade Occles for debug commands? What if I made
+it an enemy that starts a soliloquy about metatextuality once you get it down past a certain health?
+What if I pushed the fourth wall a layer further and cursed out the cruel demiurge who imprisoned me here?
+
+First written down in 1988, Keyfabe is a wrestling term referring to the events to be considered portrayed as
+textually real. It's not just the beefy dudes in underwear whacking each other in the ring, but advertisements,
+the boos of the audience, wrestlers dying and being brought back to life, and method acting.
+
+Keyfabe isn't just the rise and fall of faces and heels, but how the audience believes and reacts to those tales.
+The ultimate point of storytelling is to project a narrative framework of information into the mind of the audience.
+Even telling things that really did happen, merely telling them doesn't make those events happen again. 
+
+Storytelling is just that-- storytelling. So is that it? Is keyfabe, diegesis, the metatextual narrative just
+a social contract between the speaker and listener?
+
+I'm not so sure. Have a boss fight.

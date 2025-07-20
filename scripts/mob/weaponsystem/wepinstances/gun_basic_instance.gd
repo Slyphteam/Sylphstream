@@ -116,7 +116,7 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	
 	currentRecoil = minRecoil 
 	recoveryCutoff = maxRecoil / 3
-	recoveryDivisor = maxRecoil * 2 * (1+recoveryAmount)
+	recoveryDivisor = maxRecoil * 2 * (1 + (1/recoveryAmount))
 	#include aimbonus and recovery speed in calculating. Essentially, the "ergonomics"
 	#recoil amount (reduced)              #negative penalty for low recovery
 	kickAmount = (recoilAmount / 4) + ((5 / ((10 * recoveryAmount))+1) ) - 3
@@ -256,7 +256,7 @@ func toggleADS():
 func adjustAcuracy(amnt):
 	
 	#I REALLY don't trust float imprecision here
-	recoveryAmount -= amnt / 10 #buff recovery speed by a fraction of the penalty amount
+	recoveryAmount -= amnt / 5 #buff recovery speed by a fraction of the penalty amount
 	
 	if(amnt > 0): #if we're growing reticle, apply the debt. Otherwise let the reticle shrink.
 		recoilDebt+=amnt
@@ -267,7 +267,8 @@ func adjustAcuracy(amnt):
 	minRecoil = clamp(minRecoil+amnt, 0, 200) 
 	maxRecoil = clamp(maxRecoil+amnt, absoluteMin, 200)
 	
-	recoveryDivisor = maxRecoil * 2 * (1 + recoveryAmount) #recalculate recoverydivisor
+
+	recoveryDivisor = maxRecoil * 2 * (1 + (1/recoveryAmount)) #recalculate recoverydivisor
 	recoveryCutoff = maxRecoil / 3
 	
 	#calc_Recoil() already updating recoil on a per-frame basis.
@@ -302,7 +303,7 @@ func calc_Recoil(delta):
 			if(currentRecoil < minRecoil):
 				currentRecoil = minRecoil
 		else:
-			var amnt = sqrt(currentRecoil / recoveryDivisor) 
+			var amnt = sqrt(currentRecoil / recoveryDivisor) + (delta / 10) #take sqrt, but keep some linearity
 			currentRecoil-= amnt * delta
 	
 	if(currentRecoil > 120): #provide a hard maximum ceiling for recoil that is ridiculously high.
