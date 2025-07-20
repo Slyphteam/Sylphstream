@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
 [ext_resource type="Resource" uid="uid://1iyc2y86li4i" path="res://resources/weapon resources/hands.tres" id="4_kiyhm"]
-[ext_resource type="Resource" uid="uid://cdavx6lb5f7ya" path="res://resources/weapon resources/melee/buraq_info.tres" id="5_kiyhm"]
+[ext_resource type="Resource" uid="uid://bhtixavevlm6g" path="res://resources/weapon resources/firearm/affine_info.tres" id="5_oajfq"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/weaponsystem/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
@@ -41,7 +41,7 @@ player = NodePath("../..")
 [node name="weapon_rig" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
 ourHands = ExtResource("4_kiyhm")
-starterWeapon = ExtResource("5_kiyhm")
+starterWeapon = ExtResource("5_oajfq")
 
 [node name="playercollidercapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26282, 0)

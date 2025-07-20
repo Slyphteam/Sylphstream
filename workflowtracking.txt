@@ -58,7 +58,6 @@ Other places are as follow:
 Change pausebutton scripts to have one parent, meta ui
 Also have there be a single holder for game UI
 
-Fix obnoxiously slow aiming on affine from gun_basic_instance logic
 
 Change bullets create class instance, refactor all da stuff necessary
 Bullet refactor to own class.
