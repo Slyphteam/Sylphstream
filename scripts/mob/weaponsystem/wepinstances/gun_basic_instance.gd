@@ -41,7 +41,7 @@ var recoveryAmount ##How quickly do we get a hold of the gun?
 var recoilAmount ##Applied per shot
 var punchMult ##Multiplier to viewpunch 
 var aimbonus ##Bonus to ADS accuracy/handling
-var maxAzimuth: float ##abstract units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
+
 var reloadTime: float
 var doVolley: bool
 
@@ -98,10 +98,9 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	recoveryAmount = wepToLoad.recoverAmount
 	recoilAmount = wepToLoad.recoilAmount
 	punchMult = wepToLoad.viewpunchMult
-	maxAzimuth = currentRecoil / 7
 	reloadTime = wepToLoad.reloadtime
 	aimbonus = wepToLoad.aimBonus
-	
+	damage = wepToLoad.damage
 	
 	gunshotPlayer.stream = wepToLoad.gunshot
 	reloadPlayer.stream = wepToLoad.reload
@@ -194,29 +193,20 @@ func do_Shoot():
 	#Consume bullet
 	capacity-=1 
 	
-	var space:PhysicsDirectSpaceState3D = invManager.get_space_state()
-	var orig = invManager.get_Origin()
 	
+	var maxAzimuth: float ##abstract units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
 	maxAzimuth = currentRecoil / 7
 	var randAzimuth = randf_range(0 - maxAzimuth, maxAzimuth)
 	var randRoll = randi_range(0, 360)
 	
+	var space:PhysicsDirectSpaceState3D = invManager.get_space_state()
+	var orig = invManager.get_Origin()
 	var end:Vector3 = invManager.get_End(orig, randAzimuth, randRoll)
 	
-	var player:RID = Globalscript.thePlayer
-	
-	var raycheck = PhysicsRayQueryParameters3D.create(orig, end, 3, [player]) #3 is 110etc, aka the bullet collision layer
-	raycheck.collide_with_bodies = true
-	var castResult = space.intersect_ray(raycheck)
-	
-	if(castResult):
-		var hitObject = castResult.get("collider")
-		if(hitObject.is_in_group("damage_interactible")):
-			var alteredDamage = damage
-			alteredDamage += randi_range(-3, 3)
-			hitObject.hit_By_Bullet(alteredDamage,2,3,4)
-		if(!hitObject.is_in_group("hit_decal_blacklist")):
-			do_Hit_Decal(castResult.get("position"))
+	#This function "actually shoots the bullet" but we only ACTUALLY "shoot" the bullet here.
+	var theShot = FIREDBULLET.new()
+	theShot.assign_Info(orig, end, space, affectUI, invManager, damage)
+	theShot.take_Shot()
 	
 	#Update the current magazine capacity
 	if(affectUI):
@@ -226,20 +216,6 @@ func do_Shoot():
 	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * punchMult
 	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * punchMult
 	invManager.applyViewpunch(drift, lift)
-	
-	
-
-func do_Hit_Decal(pos):
-	var managerTree = invManager.get_tree()
-	var hitdecalscene = preload("res://scenes/trivial/bullet_decal.tscn")
-	var decalInstance = hitdecalscene.instantiate()
-	managerTree.root.add_child(decalInstance)
-	decalInstance.global_position = pos
-	decalInstance.rotation = invManager.get_Rotation()
-	
-	decalInstance.rotation.z = randi_range(-2, 2)
-	await managerTree.create_timer(10).timeout
-	decalInstance.queue_free()
 
 
 func toggleADS():

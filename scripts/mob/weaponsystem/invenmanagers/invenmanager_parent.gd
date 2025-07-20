@@ -30,10 +30,11 @@ func load_Wep(wep2Load):
 	
 	if(wep2Load is FIREARM_INFO):
 		if(wep2Load.shotgunMode):
-			activeItem = SHOTGUNINSTANCE.new()
-			activeItem.invManager = self
-			activeItem.load_Weapon(wep2Load)
-			weapType = 1 #still use the firearm control schema
+			pass
+			#activeItem = SHOTGUNINSTANCE.new()
+			#activeItem.invManager = self
+			#activeItem.load_Weapon(wep2Load)
+			#weapType = 1 #still use the firearm control schema
 		else:
 			activeItem = GUNBASICINSTANCE.new()
 			activeItem.invManager = self
