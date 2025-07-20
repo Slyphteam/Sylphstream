@@ -43,7 +43,6 @@ var punchMult ##Multiplier to viewpunch
 var aimbonus ##Bonus to ADS accuracy/handling
 
 var reloadTime: float
-var doVolley: bool
 
 #Misc variables
 @export var decalTimer: int = 10 ##Lifetime length, in seconds, of hitdecals
@@ -163,18 +162,14 @@ func manualProcess(delta):
 ##Checks eligibility to shoot and takes the shot if eligible
 func try_Shoot():
 	if(capacity > 0 && not reloading):
-		
 		#apply aimcone recoil. Calculations are done in calc_Recoil, called by manualProcess
 		recoilDebt += recoilAmount 
-		do_Shoot() #actually shoot the bullet
-		
-		if(doVolley): #and a few more for good measure
-			for x in range(11):
-				do_Shoot()
+		do_Shoot() #actually shoot the bullet, vollleyfire is handled in function
+	else:
+		print("click!")
 	
 	#no matter what, counts as a "shot"
 	totalShots+=1
-	
 	#reset cooldown here since we run try_shoot if the trigger is depressed on a cooldown timer
 	offCooldown = false 
 	currentCooldown = shotCooldown
@@ -194,8 +189,7 @@ func do_Shoot():
 	capacity-=1 
 	
 	
-	var maxAzimuth: float ##abstract units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
-	maxAzimuth = currentRecoil / 7
+	var maxAzimuth: float = currentRecoil / 7  ##abstract units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
 	var randAzimuth = randf_range(0 - maxAzimuth, maxAzimuth)
 	var randRoll = randi_range(0, 360)
 	
