@@ -10,6 +10,8 @@ points = PackedVector3Array(0.977084, -0.284787, -0.858323, 0.977084, 0.307727, 
 [node name="affine N" instance=ExtResource("1_wpno3")]
 
 [node name="Affine shape" type="StaticBody3D" parent="Affine" index="0" groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_u0oi3")
 weptoGive = ExtResource("3_e2djt")
 

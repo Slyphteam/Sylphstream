@@ -9,6 +9,8 @@ points = PackedVector3Array(1.13163, 1.7658, 0.998427, -1.15151, -0.1606, -0.999
 [node name="rimfire_ammobox" instance=ExtResource("1_0aof4")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" index="0" groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_evklm")
 amtToGive = 50
 

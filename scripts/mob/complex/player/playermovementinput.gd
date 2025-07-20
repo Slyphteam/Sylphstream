@@ -136,7 +136,7 @@ func do_Interact_Raycast():
 		var orig:Vector3 = playerCam.project_ray_origin(get_viewport().size / 2)
 		var end:Vector3 = orig + playerCam.project_ray_normal(get_viewport().size / 2) * 100
 		
-		var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
+		var raycheck = PhysicsRayQueryParameters3D.create(orig, end, 4) #3 is 0xb 0010etc, or the player interaction layer
 		raycheck.collide_with_bodies = true
 		var castResult = space.intersect_ray(raycheck)
 		

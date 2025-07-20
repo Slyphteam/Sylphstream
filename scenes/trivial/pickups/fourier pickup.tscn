@@ -10,6 +10,8 @@ points = PackedVector3Array(1.93725, 0.163281, 0.164223, 0.127373, -0.0727216, -
 [node name="fourier N" instance=ExtResource("1_byd0r")]
 
 [node name="Fourier shape" type="StaticBody3D" parent="Fourier-9" index="0" groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_dakyp")
 weptoGive = ExtResource("3_chxjm")
 

@@ -10,6 +10,8 @@ points = PackedVector3Array(-0.969475, -0.0992765, 1.03391, 1.1217, 0.073961, -0
 [node name="bergther N" instance=ExtResource("1_sgsvv")]
 
 [node name="Bergther shape" type="StaticBody3D" parent="Bergther GS5" index="0" groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_juh54")
 weptoGive = ExtResource("3_jvlf8")
 

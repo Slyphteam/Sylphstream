@@ -203,7 +203,9 @@ func do_Shoot():
 	
 	var end:Vector3 = invManager.get_End(orig, randAzimuth, randRoll)
 	
-	var raycheck = PhysicsRayQueryParameters3D.create(orig, end)
+	var player:RID = Globalscript.thePlayer
+	
+	var raycheck = PhysicsRayQueryParameters3D.create(orig, end, 3, [player]) #3 is 110etc, aka the bullet collision layer
 	raycheck.collide_with_bodies = true
 	var castResult = space.intersect_ray(raycheck)
 	
@@ -213,7 +215,7 @@ func do_Shoot():
 			var alteredDamage = damage
 			alteredDamage += randi_range(-3, 3)
 			hitObject.hit_By_Bullet(alteredDamage,2,3,4)
-		if(hitObject.is_in_group("does_hit_decals")):
+		if(!hitObject.is_in_group("hit_decal_blacklist")):
 			do_Hit_Decal(castResult.get("position"))
 	
 	#Update the current magazine capacity

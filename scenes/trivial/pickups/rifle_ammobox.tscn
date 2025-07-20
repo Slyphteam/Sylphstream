@@ -9,6 +9,8 @@ points = PackedVector3Array(-13.2869, -1.64223, 2.52982, 13.2477, 2.50364, 2.115
 [node name="rifle_ammobox" instance=ExtResource("1_80ktm")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Rifle box" index="0" groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_k48e6")
 typeToGive = 2
 amtToGive = 20

@@ -14,6 +14,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = ExtResource("1_hnchp")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_vafmq")
 weptoGive = ExtResource("3_qjefn")
 

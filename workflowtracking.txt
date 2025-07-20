@@ -1,6 +1,9 @@
------------\
-=======+=======> DIRECTORY OF WHERE THINGS ARE:
------------/
+
+Collision mask information:
+1: Basic physics layer
+2: Bullet interact raycast layer
+3: Player interact raycast layer
+
 
 Importing new weapon model:
 	
@@ -18,6 +21,9 @@ Adding a new weapon:
 	4: fill out all the fields
 	6: test it out, will require several cycles to get the positioning right.
 
+-----------\
+=======+=======> DIRECTORY OF WHERE THINGS ARE:
+-----------/
 
 ====+====> MISC:
 --Scripts/weaponsystem/invenmanager_parent: the common parent class between the sylph
@@ -55,10 +61,6 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Change pausebutton scripts to have one parent, meta ui
-Also have there be a single holder for game UI
-
-
 Change bullets create class instance, refactor all da stuff necessary
 Bullet refactor to own class.
 Class data: 
@@ -69,7 +71,6 @@ Bonus (empty slot)
 
 Watch inventory system video. Make simple shitty top bar for player inv
 
-Check and see if players can still shoot themselves.
 Archon option buttons
 HealthHolder and health UI element (re-enable player raycast decals)
 Effectholder, have archon poison player as test
@@ -80,6 +81,8 @@ Effectholder, have archon poison player as test
 -----------/
 
 
+Change pausebutton scripts to have one parent, meta ui
+Also have there be a single holder for game UI
 
 ====+====> KEY:
 	+: Easy

@@ -10,6 +10,8 @@ points = PackedVector3Array(-0.265071, 0.0845674, 1.34461, 0.127373, -0.0727216,
 [node name="degubby N" instance=ExtResource("1_ki2ub")]
 
 [node name="Degubby shape" type="StaticBody3D" parent="gun parent" index="0" groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_ybqhr")
 weptoGive = ExtResource("3_cbxty")
 

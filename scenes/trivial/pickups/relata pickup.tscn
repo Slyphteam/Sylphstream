@@ -10,6 +10,8 @@ points = PackedVector3Array(-0.146664, 0.00785344, 0.178075, -0.144804, -0.00703
 [node name="relata N" instance=ExtResource("1_r3ypa")]
 
 [node name="Relata shape" type="StaticBody3D" parent="Relata" index="0" groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_eqwb4")
 weptoGive = ExtResource("3_va5en")
 

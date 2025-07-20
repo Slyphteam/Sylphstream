@@ -9,6 +9,8 @@ points = PackedVector3Array(-0.111393, -2.82503, -0.398535, 3.3701, -1.08461, 0.
 [node name="shotgunbundle" instance=ExtResource("1_t8u5d")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Shotgun bundle" index="0" groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_glvft")
 typeToGive = 4
 amtToGive = 10

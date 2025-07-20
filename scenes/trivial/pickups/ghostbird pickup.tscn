@@ -10,6 +10,8 @@ points = PackedVector3Array(-0.967372, -0.557503, -0.877926, 0.59446, 0.483563, 
 [node name="ghostbird N" instance=ExtResource("1_xxhfl")]
 
 [node name="Ghostbird shape" type="StaticBody3D" parent="Ghostbird" index="0" groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_t41yx")
 weptoGive = ExtResource("3_itlfj")
 
