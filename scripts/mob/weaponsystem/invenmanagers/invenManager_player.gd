@@ -218,9 +218,6 @@ func give_New_Weapon(weapon: WEAP_INFO, validSlots: Array[int])->bool:
 
 #everything below here is standard stuff, just with some overrides
 
-func _process(delta):
-	if(activeItem):
-		activeItem.manualProcess(delta)
 
 ##Gives ammo to invenmanager and updates ammo weight
 func giveAmmo(amTyp: int, amount: int):
@@ -237,8 +234,6 @@ func withdrawAmmo(amTyp: int, amount: int)-> int:
 	return result
 	
 
-
-	
 #Functions going up the hierarchy
 ##Apply viewpunch to the player, in degrees. Requires a connected user object.
 func applyViewpunch(lift, drift):

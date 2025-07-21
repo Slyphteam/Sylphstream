@@ -27,8 +27,6 @@ func _ready():
 	#
 	#holdingFirearm = heldItem.isFirearm
 
-func _process(delta):
-	activeItem.manualProcess(delta)
 
 func get_Ammo_Left():
 	var ratio:float = 1
@@ -48,10 +46,6 @@ func get_Crosshair_Inaccuracy():
 	ratio *=2 #value between 0 and 2
 	ratio -=1 #value between -1 and 1
 	return 1
-
-#func getRefs():
-	#heldItem = $weaponHolder
-	#user = $"../.."
 
 ##functions going down the hierarchy
 var totalShots = 0 ##Used in sylph scoring

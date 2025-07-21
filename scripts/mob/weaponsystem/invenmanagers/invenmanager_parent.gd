@@ -9,15 +9,23 @@ var reloading = false
 var activeItem: WEPINSTANCE ##The current instance of the actively being used weapon
 var weapType: int ##1 for basic firearm, 2 for melee...
 var user : Node3D
+var wepMesh: MeshInstance3D
 
-#var holdingFirearm: bool = false
+var inAimingTransition:bool ##State variable that tells _process if we're doing any aiming
+var notAimed:bool ##State variable that determines if we're ADS
+var backupOffset
 
-#func _ready():
-	#
+func _process(delta):
+	if(activeItem):
+		activeItem.manualProcess(delta)
+	
+	if(inAimingTransition):
+		inAimingTransition = false
+		if(notAimed): 
+			wepMesh.position.x = 0
+		else:
+			wepMesh.position.x = backupOffset
 
-##Get references to helditem and user. should be called in ready; here because it's not optional
-func getRefs():
-	pass
 
 ##Loads a WEPINSTANCE using universal logic.
 func load_Wep(wep2Load):
@@ -29,8 +37,8 @@ func load_Wep(wep2Load):
 	
 	
 	if(wep2Load is FIREARM_INFO):
+		backupOffset = wep2Load.position.x
 		if(wep2Load.shotgunMode):
-			pass
 			activeItem = SHOTGUNINSTANCE.new()
 			activeItem.invManager = self
 			activeItem.load_Weapon(wep2Load)
@@ -163,6 +171,9 @@ func startReload():
 func toggleSights():
 	if(weapType == 1):
 		activeItem.toggleADS()
+		wepMesh = activeItem.getGunMesh()
+		inAimingTransition = true
+		notAimed = activeItem.aimDownsight
 	elif(weapType == 2):
 		activeItem.tryBlock()
 	else:

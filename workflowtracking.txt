@@ -61,21 +61,17 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Update shotgun to current systems
-
-Watch inventory system video. Make simple shitty top bar for player inv
-
-Archon option buttons
-HealthHolder and health UI element (re-enable player raycast decals)
-Effectholder, have archon poison player as test
-
+ADS makes the camera zoom in & ??
+ADS makes gun lerp into center of screen
 
 -----------\
 =======+=======> FUTURE PLANS:
 -----------/
 
-Change pausebutton scripts to have one parent, meta ui
-Also have there be a single holder for game UI
+HealthHolder and health UI element 
+Destructible prop to test health
+effectholder that interfaces with healtholder
+Add a "healing spell" player can do to gain few seconds of regen. Will eventually become quickstim.
 
 ====+====> KEY:
 	+: Easy
@@ -88,16 +84,8 @@ Delta DOES NOT WORK if sylph is facing left. (sylph rotation > +-90)
 It looks like we're sabotaging ourselves with memory caching for weights and biases. 
 Consider swapping the traversal order to go row by row on all traversals
 Reimport sylph head but make sure it's actually centered this time, doofus.
+It's about time the "learning" got upscaled and seriously left to bake.
 
-
-Sylph and playermodel bodies v2, but test with the millian prior
-
-Millian porcelaindoll variant
-Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
-
-Archon intro ditty:
-low high bitlower medium - - - - - - high low
-low high bitlower - - + verlow high lowwww
 
 ====+====> FUNCTIONAL:
 
@@ -111,10 +99,23 @@ Scrolling chat
 get better pistol gunshot &++
 footstep sounds +++
 context-sensitive leaning --&
-ADS makes the camera zoom in & ??
-ADS makes gun lerp into center of screen
 fix weapon clipping +++ &
 
-Eventually:
-Shoothouse
-KICKING!!!
+
+Sylph and playermodel bodies v2, but test with the millian prior
+
+Millian porcelaindoll variant
+Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
+
+Archon intro ditty:
+low high bitlower medium - - - - - - high low
+low high bitlower - - + verlow high lowwww
+
+
+Change pausebutton scripts to have one parent, meta ui
+Also have there be a single holder for game UI
+
+Watch inventory system video. Make simple shitty top bar for player inv
+
+Archon option buttons
+Effectholder, have archon poison player as test

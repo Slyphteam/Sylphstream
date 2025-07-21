@@ -12,7 +12,7 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	return
 
 ##Version of _process() for nodes
-func manualProcess(manualProcess):
+func manualProcess(_delta):
 	pass
 
 ##Frees all nodes created by the wepinstance.

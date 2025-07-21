@@ -49,17 +49,13 @@ var reloadTime: float
 
 ##
 func load_Weapon(wepToLoad:WEAP_INFO):
-	super(wepToLoad)
-	
+	super(wepToLoad) #this just grabs the datasheet and nothing else
 	
 	wepName = wepToLoad.wepName
-	
 	
 	if(!wepToLoad is FIREARM_INFO):
 		print("Tried to load non-firearm info resource as a firearm! Bad! USE THE RIGHT CLASS!")
 		return
-	
-	
 	
 	#Instantiate other components we'll need to function
 	weaponMesh = MeshInstance3D.new()
@@ -132,11 +128,6 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 		kickAmount = 1
 		aimKickBonus = 0
 	
-	#if(affectUI):
-		#update_UI()
-
-
-
 
 ##Run state checks per frame and update the UI
 func manualProcess(delta):
@@ -327,6 +318,5 @@ func unload():
 	reloadPlayer.queue_free()
 	#reloadTimer.queue_free()
 
-func set_Capacity(amount):
-	capacity = amount
-	print("okay!")
+func getGunMesh():
+	return weaponMesh

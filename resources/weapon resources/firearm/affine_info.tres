@@ -9,7 +9,7 @@
 script = ExtResource("4_y4yrn")
 gunshot = ExtResource("1_y4yrn")
 reload = ExtResource("3_rofvq")
-shotCooldown = 10
+shotCooldown = 15
 chambering = 2
 maxCapacity = 10
 reloadtime = 2.0
