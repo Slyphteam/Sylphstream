@@ -1,5 +1,5 @@
 extends Node
-#
+
 @onready var body = $".."
 @onready var manager: SYLPHINVENMANAGER = $"../sylph head v2/sylphinventory"
 
@@ -15,14 +15,19 @@ var microPenalty = 0 ##Vision-based penalty
 var sensoryInput:Array[float] ##Array of all senses
 var desiredActions:Array[float] ##Array of all desired actions
 
+func init():
+	Globalscript.add_Sylph(self)
+
 func _ready():
-	#initialize_Basic_Network()
+	initialize_Basic_Network()
 	initialize_Rand_Network()
 	sensoryInput.resize(20)
 	sensoryInput.fill(0)
 	
 	desiredActions.resize(18)
 	desiredActions.fill(0)
+	
+	load_From_File("res://resources/txt files/sylph tests/multi evolution test/startingpoint.txt")
 
 
 func initialize_Basic_Network():

@@ -51,33 +51,67 @@ func _process(delta):
 		if(testTime <=1):
 			if(testing):
 				restart_Sylph_Test()
-		if(testTime == 250): #we've waited 450 frames, score it now
-			score_Sylphs()
+		if(testTime == 50): #we've waited 450 frames, score it now
+			score_Sylphs_All()
 		
 
 
 ##Initializes two random Sylphs and starts testing them
 func begin_Sylph_Test():
-	Sylph1.mind.initialize_Rand_Network()
-	Sylph2.mind.initialize_Rand_Network()
+	#Sylph1.mind.initialize_Rand_Network()
+	#Sylph2.mind.initialize_Rand_Network()
 	#Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
 	#Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
-
-#TODO: WEIGHTED VS UNWEIGHTED SCORES
-#for example, weighted score might be 200 because i have a 50x multiplier on targets
-#unweighted is just out of 15
 func restart_Sylph_Test():
-	print("Beginning new test!")
-
 	
 	Sylph1.mind.begin_Test()
 	Sylph2.mind.begin_Test()
-	testTime = 700
+	testTime = 450
 
-#	score_Sylphs()
+
+var allScores: Array
+
+func ready():
+	allScores.resize(Globalscript.allSylphs.size())
+
+var hitMult: int = 10 ##Multiplicative reward for hits
+var missDiv: int =  0.5 ##Divide penalty for misses by this amount
+var missAllow: int = 0 ##How many misses will we tolerate before punishing?
+var accuracyRew: int = 1 ##If we're in the tolerance, what reward is given?
+var visionDiv: int = 100 ##What will we divide the per-frame penalty by for not seeing target?
+
+##Function that scores all sylphs in the global allSylphs array
+func score_Sylphs_All():
+	var ind = 0
+	for curSylph in Globalscript.allSylphs:
+		allScores[ind] = curSylph.score_Performance(targ1, hitMult, missDiv, missAllow, accuracyRew, visionDiv)
+		ind+=1
+	
+	var bestScore = -2
+	var bestScoreInd = 0
+	var secondBestScore = -3
+	var secondScoreInd = 0
+	#var thirdBestScore = -3
+	#var thirdBestInd = 0
+	ind = 0
+	
+	for curScore in allScores:
+		if(curScore[1] > bestScore):
+			bestScore = curScore[1]
+			bestScoreInd = ind
+		elif(curScore[1] > secondBestScore):
+			secondBestScore = curScore[1]
+			secondScoreInd = ind
+		#elif(curScore[1] > thirdBestScore):
+			#thirdBestScore = curScore[1]
+			#thirdBestInd = ind
+		ind +=1
+		
+	print("Best score: ", bestScore, "Runner-up", secondBestScore)
+
 
 
 @export var Sylph1:CharacterBody3D
@@ -87,18 +121,14 @@ func restart_Sylph_Test():
 
 
 #start with vision training, then penalize misses
-var hitMult: int = 10 ##Multiplicative reward for hits
-var missDiv: int =  0.5 ##Divide penalty for misses by this amount
-var missAllow: int = 0 ##How many misses will we tolerate before punishing?
-var accuracyRew: int = 1 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 100 ##What will we divide the per-frame penalty by for not seeing target?
 
 var totalSum: int = -3
 var generation: int = 0
 var tolerance = 2
 var highScore = -3
 
-func score_Sylphs():
+##Function that scores two sylphs from export vars
+func score_Sylphs_Two():
 	
 	#vision, miss +4 vs -2
 	#score with
@@ -165,122 +195,3 @@ func score_Sylphs():
 	if(generation > 25 || arr2[0] >= 5 || arr1[0] >= 5):
 		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
 		print("probably enough now!")
-
-#https://docs.godotengine.org/en/stable/classes/class_fileaccess.html#class-fileaccess
-#https://docs.godotengine.org/en/stable/tutorials/io/runtime_file_loading_and_saving.html
-# https://kidscancode.org/godot_recipes/4.x/basics/file_io/index.html
-func file_Load_Test():
-	var ourFile: FileAccess = FileAccess.open("res://resources/txt files/examplefile.txt", FileAccess.READ)
-	var line1 : String = ourFile.get_line()
-	var line2 : String = ourFile.get_line()
-	print(line1)
-	print(line2)
-	ourFile.close()
-	
-
-
-
-
-#this code is DEPRECATED!
-#func score_Sylphs():
-	#Sylph1.mind.body.manager.startReload()
-	#Sylph2.mind.body.manager.startReload()
-	#
-	#var score1 = targ1.totalHits
-	#var score2 = targ2.totalHits
-	#
-	#print("Raw scores: ", score1, " , ", score2)
-	#
-	##no matter what, if neither get points, it doesnt matter
-	#if((score1 == 0) && (score2 == 0)): 
-		#print("Both sucked!")
-		#Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
-		#Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-	#
-	#
-	#score1-= int(Sylph1.mind.microPenalty / 10)
-	#score2-= int(Sylph2.mind.microPenalty / 10)
-	#
-	#print("Movement penalties: ", Sylph1.mind.microPenalty/10, " ", Sylph2.mind.microPenalty/10)
-	#
-	#var penalty1 = Sylph1.mind.body.manager.penalty
-	#var penalty2 = Sylph2.mind.body.manager.penalty
-	#
-	#print("Empty shots: ", penalty1, ":", penalty2)
-	#
-	#
-	##penalize excessive shooting (easy)
-	#if(penalty1 < 2 ):
-		#score1 +=1
-	#else:
-		#score1 -= penalty1/2
-		#
-	#if(penalty2 < 2 ):
-		#score2 +=1
-	#else:
-		#score2 -= penalty2/2
-	#
-	###penalize excessive shooting
-	##if(penalty1 == 0):
-		##score1 +=1
-	##else:
-		##score1 -= penalty1
-		##
-	##if(penalty2 == 0):
-		##score2 +=1
-	##else:
-		##score2 -= penalty2
-	#
-	#print("Adjusted scores: ", score1, " , ", score2)
-	#
-#
-#
-	#
-	#if(score2 >= 14):
-		#Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
-		#Sylph2.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
-		#print("Perfection acheived! ", score1, ": ", score2)
-	#elif(score2 >= 10):
-		#Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
-		#print("Did okay!")
-	#
-	#if(score1 >= 14):
-		#Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
-		#Sylph1.mind.save_To_File("res://resources/txt files/very promising sylph.txt")
-		#print("Perfection acheived! ", score1, ": ", score2)
-	#elif(score1 >= 10):
-		#Sylph1.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
-		#print("Did okay!")
-#
-	#if((score1 <= 2) && (score2 <= -2)): #both were REALLY bad, start from our GOAT
-		#print("Both sucked!")
-		#Sylph2.mind.save_To_File("res://resources/txt files/backup promising sylph.txt")
-		#Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		#
-	#elif(score1 == score2): #mutate them both a sizable amount
-		#print("Both tied! ", score1, ", ", score2)
-		#Sylph1.mind.ourNetwork.mutate_Network(0.1, 0)
-		#Sylph2.mind.ourNetwork.mutate_Network(0.1, 0)
-	#
-	##replace the lower (sylph 2) with a mutated version of the winner
-	##if the previous loser does better, they'll supercede the old winner, otherwise, the mutation will be discarded
-	#elif(score1 > score2):
-		#print("Sylph 1 was better! ", score1, ": ", score2)
-		#
-#
-		#Sylph1.mind.save_To_File("res://resources/txt files/promising slyph.txt")
-		#Sylph2.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		#Sylph2.mind.ourNetwork.mutate_Network(0.005, 0)
-	#else:
-		#print("Sylph 2 was better! ", score1, ": ", score2)
-		#
-		#Sylph2.mind.save_To_File("res://resources/txt files/promising slyph.txt")
-		#Sylph1.mind.load_From_File("res://resources/txt files/promising slyph.txt")
-		#Sylph1.mind.ourNetwork.mutate_Network(0.005, 0)
-	#
-	#
-	#targ1.totalHits = 0
-	#targ2.totalHits = 0
-	#Sylph1.mind.microPenalty = 0
-	#Sylph2.mind.microPenalty = 0
-	

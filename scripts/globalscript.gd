@@ -3,6 +3,7 @@ var datapanel
 var timer : float ##Global timer.
 var isPlaying = false ##Is the game paused or running?
 var thePlayer
+var allSylphs: Array
 
 func _process(delta):
 	timer += delta 
@@ -19,6 +20,19 @@ func weighted_Prob(chance)->bool:
 	
 	return false
 
+func add_Sylph(newSylph):
+	allSylphs.resize(allSylphs.size() + 1)
+	allSylphs[allSylphs.size() - 1] = newSylph
+
+
+#Handle Meta UI here
+func _init():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _input(event): 
+	if event.is_action_pressed("ui_cancel"):
+		togglePaused()
+
 func togglePaused():
 	if(Globalscript.isPlaying):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -30,10 +44,3 @@ func togglePaused():
 		Globalscript.isPlaying = true
 		thePlayer.uiInfo.pauseMenu.visible = false
 		get_tree().paused = false
-
-func _init():
-	process_mode = Node.PROCESS_MODE_ALWAYS
-
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		togglePaused()

@@ -61,8 +61,7 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-ADS makes the camera zoom in & ??
-ADS makes gun lerp into center of screen
+Tomorrow, it's time to actually pay the piper and fix the sylph theta angle. Godspeed, soldier
 
 -----------\
 =======+=======> FUTURE PLANS:
@@ -100,7 +99,7 @@ get better pistol gunshot &++
 footstep sounds +++
 context-sensitive leaning --&
 fix weapon clipping +++ &
-
+ADS makes the camera zoom in?
 
 Sylph and playermodel bodies v2, but test with the millian prior
 
