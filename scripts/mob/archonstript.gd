@@ -61,7 +61,7 @@ func begin_Sylph_Test():
 	print("Starting test!")
 	allScores.resize(Globalscript.allSylphs.size())
 	for curSylph in Globalscript.allSylphs:
-		curSylph.load_From_File("res://resources/txt files/sylph tests/multi evolution test/generationBest.txt")
+		curSylph.load_From_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -73,14 +73,14 @@ func restart_Sylph_Test():
 
 
 var allScores: Array
-var highScore = -100
+var highScore = -20
 
 var hitMult: int = 5 ##Multiplicative reward for hits
 var missDiv: int =  3 ##Divide penalty for misses by this amount
 var missAllow: int = 10 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 1 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 70 ##What will we divide the per-frame penalty by for not seeing target?
-var generation: int = 1
+var visionDiv: int = 60 ##What will we divide the per-frame penalty by for not seeing target?
+var generation: int = 40
 
 ##Function that scores all sylphs in the global allSylphs array
 func score_Sylphs_All():
@@ -114,14 +114,16 @@ func score_Sylphs_All():
 		
 		ind +=1
 	
+
+	print(allScores)
+	print("Best score: ", bestScore, " ", bestScoreInd, " Runner-up ", secondBestScore, " ", secondScoreInd)
+	
 	if(bestScore > highScore):
 		print("Highscore beat!")
 		highScore = bestScore
 		highScoreInd = bestScoreInd
 		Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
 	
-	print(allScores)
-	print("Best score: ", bestScore, " ", bestScoreInd, " Runner-up ", secondBestScore, " ", secondScoreInd)
 	
 	Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/generationBest.txt")
 	
@@ -133,8 +135,8 @@ func score_Sylphs_All():
 			#Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
 	
 	generation +=1
-	
-	if(generation > 10):
+	print("Generation: ", generation)
+	if(generation > 50):
 		print("Generational landmark hit!")
 	
 	ind = 0
@@ -153,7 +155,7 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
 		if(ind != bestScoreInd):
-			curSylph.ourNetwork.mutate_Network(0.05, 0, 30) #dont mutate best, second, or highscore
+			curSylph.ourNetwork.mutate_Network(0.05, 0, 5) #dont mutate best, second, or highscore
 			print("  Mutated!")
 		else:
 			print("  Didn't!")
