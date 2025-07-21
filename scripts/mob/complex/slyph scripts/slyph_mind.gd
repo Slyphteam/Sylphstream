@@ -60,7 +60,6 @@ func copy_From_Other(otherSylph):
 
 ##Sets the Sylph up to activate for a period of time
 func begin_Test():
-	print("Starting test!")
 	mindEnabled = true
 	activeTime = 400
 
@@ -76,12 +75,9 @@ func score_Performance(hitMultiplier, missDivisor,
 	var totalShots = manager.totalShots #collect the shots taken
 	manager.startReload() #reload the gun 
 	
-	print(totalHits, " micro ", microPenalty, " shots ", totalShots)
+	#print(totalHits, " micro ", microPenalty, " shots ", totalShots)
 	
 	var score = totalHits * hitMultiplier
-	
-	
-	#print("HEY DOOFUS MAKE SURE IT MISSES + TRACKS SHOTS MADE", totalShots) 
 	
 	var totalMiss = totalShots - totalHits 
 	

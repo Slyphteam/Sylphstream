@@ -58,6 +58,7 @@ func _process(delta):
 
 ##Initializes two random Sylphs and starts testing them
 func begin_Sylph_Test():
+	print("Starting test!")
 	allScores.resize(Globalscript.allSylphs.size())
 	for curSylph in Globalscript.allSylphs:
 		curSylph.load_From_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
@@ -72,13 +73,13 @@ func restart_Sylph_Test():
 
 
 var allScores: Array
-var highScore = -7
+var highScore = -15
 
-var hitMult: int = 10 ##Multiplicative reward for hits
-var missDiv: int =  0.5 ##Divide penalty for misses by this amount
+var hitMult: int = 2 ##Multiplicative reward for hits
+var missDiv: int =  1 ##Divide penalty for misses by this amount
 var missAllow: int = 0 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 1 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 100 ##What will we divide the per-frame penalty by for not seeing target?
+var visionDiv: int = 70 ##What will we divide the per-frame penalty by for not seeing target?
 var generation: int = 1
 
 ##Function that scores all sylphs in the global allSylphs array
@@ -88,12 +89,12 @@ func score_Sylphs_All():
 		allScores[ind] = curSylph.score_Performance(hitMult, missDiv, missAllow, accuracyRew, visionDiv)
 		ind+=1
 	
-	var bestScore = -9
-	var bestScoreInd = -1
-	var secondBestScore = -10
-	var secondScoreInd = -1
-	var thirdBestScore = -11
-	var thirdBestInd = -1
+	var bestScore = -20
+	var bestScoreInd 
+	var secondBestScore = -21
+	var secondScoreInd 
+	var thirdBestScore = -22
+	var thirdBestInd
 	
 	var newHigh
 	var highScoreInd = -1
@@ -114,38 +115,51 @@ func score_Sylphs_All():
 		ind +=1
 	
 	if(bestScore > highScore):
-		newHigh = bestScore
+		print("Highscore beat!")
+		highScore = bestScore
 		highScoreInd = bestScoreInd
+		Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
 	
+	print(allScores)
+	print("Best score: ", bestScore, " ", bestScoreInd, " Runner-up ", secondBestScore, " ", secondScoreInd)
 	
-	print("Best score: ", bestScore, " Runner-up ", secondBestScore)
-	
-	if(10 > bestScore):
-		print(allScores)
 	
 	
 	Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/generationBest.txt")
 	
 	Globalscript.allSylphs[secondScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/generationSecond.txt")
 	
-	if(newHigh):
-		if(newHigh > highScore):
-			newHigh = highScore
-			Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
+	#if(newHigh):
+		#if(newHigh > highScore):
+			#newHigh = highScore
+			#Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
 	
 	generation +=1
 	
 	if(generation > 5):
 		print("Generational landmark hit!")
 	
+	ind = 0
 	for curSylph in Globalscript.allSylphs:
-		if(Globalscript.prob(80)):
-			curSylph.copy_From_Other(Globalscript.allSylphs[bestScoreInd])
-		else:
-			curSylph.copy_From_Other(Globalscript.allSylphs[secondScoreInd])
+		
+		if(ind != bestScoreInd && ind != secondScoreInd):
+			if(Globalscript.prob(60)):
+				print("  Copied from best!")
+				curSylph.copy_From_Other(Globalscript.allSylphs[bestScoreInd])
+			else:
+				print("  Copied from second!")
+				curSylph.copy_From_Other(Globalscript.allSylphs[secondScoreInd])
+		
+		ind+=1
 	
+	ind = 0
 	for curSylph in Globalscript.allSylphs:
-		curSylph.ourNetwork.mutate_Network(0.1, 0, 40)
+		if(ind != bestScoreInd && ind != secondScoreInd):
+			curSylph.ourNetwork.mutate_Network(0.1, 0, 30) #dont mutate best, second, or highscore
+			print("  Mutated!")
+		else:
+			print("  Didn't!")
+		ind +=1
 	
 
 

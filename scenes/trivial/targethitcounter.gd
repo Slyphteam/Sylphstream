@@ -4,6 +4,9 @@ var startPos: Vector3
 
 func _ready():
 	startPos = global_position
+	var move:float = randi_range(-20, 20) #frick floats, do integer steppings
+	move /= 20
+	global_position.z = clamp(startPos.z - 3, global_position.z + move, startPos.z + 3 )
 
 func reset():
 	totalHits = 0
