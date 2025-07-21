@@ -73,7 +73,7 @@ func restart_Sylph_Test():
 
 
 var allScores: Array
-var highScore = -20
+var highScore = -25
 
 var hitMult: int = 5 ##Multiplicative reward for hits
 var missDiv: int =  3 ##Divide penalty for misses by this amount
@@ -124,7 +124,6 @@ func score_Sylphs_All():
 		highScoreInd = bestScoreInd
 		Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
 	
-	
 	Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/generationBest.txt")
 	
 	Globalscript.allSylphs[secondScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/generationSecond.txt")
@@ -155,7 +154,7 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
 		if(ind != bestScoreInd):
-			curSylph.ourNetwork.mutate_Network(0.05, 0, 5) #dont mutate best, second, or highscore
+			curSylph.ourNetwork.mutate_Network(0.01, 0, 5) #dont mutate best, second, or highscore
 			print("  Mutated!")
 		else:
 			print("  Didn't!")
