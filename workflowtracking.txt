@@ -79,7 +79,10 @@ Add a "healing spell" player can do to gain few seconds of regen. Will eventuall
 	&: Unimportant
 
 Sylph maintenance:
-Delta DOES NOT WORK if sylph is facing left. (sylph rotation > +-90)
+Randf function may have weird weights due to how floats work, look into it
+Look into mutating by "pulses"-- rather than shooting a shotgun into the network,
+take a random input, and for x of outputs, mutate those, than take 1-2 from the mutated and pulse again
+
 It looks like we're sabotaging ourselves with memory caching for weights and biases. 
 Consider swapping the traversal order to go row by row on all traversals
 Reimport sylph head but make sure it's actually centered this time, doofus.

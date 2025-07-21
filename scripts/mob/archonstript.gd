@@ -58,24 +58,21 @@ func _process(delta):
 
 ##Initializes two random Sylphs and starts testing them
 func begin_Sylph_Test():
-	#Sylph1.mind.initialize_Rand_Network()
-	#Sylph2.mind.initialize_Rand_Network()
-	#Sylph1.mind.load_From_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
-	#Sylph2.mind.load_From_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
+	allScores.resize(Globalscript.allSylphs.size())
+	#for curSylph in Globalscript.allSylphs:
+		#curSylph.load_From_File("res://resources/txt files/sylph tests/multi evolution test/startingpoint.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
 func restart_Sylph_Test():
 	
-	Sylph1.mind.begin_Test()
-	Sylph2.mind.begin_Test()
 	testTime = 450
+	for curSylph in Globalscript.allSylphs:
+		curSylph.begin_Test()
 
 
 var allScores: Array
 
-func ready():
-	allScores.resize(Globalscript.allSylphs.size())
 
 var hitMult: int = 10 ##Multiplicative reward for hits
 var missDiv: int =  0.5 ##Divide penalty for misses by this amount
@@ -109,7 +106,8 @@ func score_Sylphs_All():
 			#thirdBestScore = curScore[1]
 			#thirdBestInd = ind
 		ind +=1
-		
+	
+	
 	print("Best score: ", bestScore, "Runner-up", secondBestScore)
 
 

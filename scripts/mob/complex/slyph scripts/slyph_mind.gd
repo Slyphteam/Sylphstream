@@ -15,11 +15,10 @@ var microPenalty = 0 ##Vision-based penalty
 var sensoryInput:Array[float] ##Array of all senses
 var desiredActions:Array[float] ##Array of all desired actions
 
-func init():
-	Globalscript.add_Sylph(self)
+
 
 func _ready():
-	initialize_Basic_Network()
+	
 	initialize_Rand_Network()
 	sensoryInput.resize(20)
 	sensoryInput.fill(0)
@@ -27,7 +26,8 @@ func _ready():
 	desiredActions.resize(18)
 	desiredActions.fill(0)
 	
-	load_From_File("res://resources/txt files/sylph tests/multi evolution test/startingpoint.txt")
+	Globalscript.add_Sylph(self)
+	#load_From_File("res://resources/txt files/sylph tests/multi evolution test/startingpoint.txt")
 
 
 func initialize_Basic_Network():
@@ -314,11 +314,14 @@ func do_Vision():
 		
 	else:
 		
-		
+		# 4 AND 18: DISTANCE AND EXTREMA
 		#issue: targetTrue is the staticbody that gets detected, and has a transform of 0.
 		#solution: just use globals?
-		var connectingVec = body.global_position - targetTrue.global_position
-		
+		var bodpos = body.global_position
+		var tarpos = targetTrue.global_position
+		bodpos.y = 0 #ignore vertical differences. (no way this causes problems later, right?)
+		tarpos.y = 0 
+		var connectingVec = bodpos - tarpos
 		
 		#print("connecting vec: ",connectingVec)
 		#since the sylph probably won't care about the exact degrees and what the basis/origin is,
@@ -334,21 +337,56 @@ func do_Vision():
 		var dist = (connectingVec.length() / 12.5) -1 #value between 0 and 2
 		sensoryInput[18] = (connectingVec.length() / 12.5) -1 
 		
-		#print(connectingVec.x, " ", connectingVec.z)
-		var theta : float = atan(connectingVec.z/connectingVec.x)
-		#print("target's theta:", theta)
+		#4: EXTREMA
 		
-		var rotation = 0 - (body.sylphHead.rotation.y + body.rotation.y) #draw from both head and body rotation
-		if(rotation > 3.5):
-			print("rotation is too big! we havent handled this yet!")
-		#print("rotation ", rotation)
-		var change = theta - rotation
-		 #current implementation works when sylph is facing right, but not left.
-		#change is between +- 0.47
-		#but we only care about the absolute.
-		change = absf(change)
-		change *= 2.2
-		sensoryInput[5] = clampf(change, 0, 1)
+		#Novel idea: Instead of trying to use trig, what if wejust calculate the distance
+		#between a point extended (distance) out from the sylph's head, and rotated wherever they're facing?
+		var sylphVisCenter: Vector2 
+		sylphVisCenter = Vector2(connectingVec.length(), 0)
+		sylphVisCenter = sylphVisCenter.rotated(body.sylphHead.rotation.y)
+		sylphVisCenter += Vector2(bodpos.x, bodpos.z)
+		
+		var diff = sylphVisCenter - Vector2(tarpos.x, tarpos.z)
+		var offset = diff.length() #tentative max for offset is 12.3
+		
+		offset /= 6.15
+		
+		offset -=1
+		
+		#print(offset)
+		sensoryInput[4] = offset
+		#var theta : float 
+		#if(absf(connectingVec.x) > absf(connectingVec.z)):
+			#theta = atan(connectingVec.z/connectingVec.x)
+		#else:
+			#theta = atan(connectingVec.x/connectingVec.z)
+		#
+		#if(theta > 1.5706): #in this case we're rotated 90 degrees
+			#theta -= 1.5706
+		#elif(theta < -1.5706):
+			#theta += 1.5706
+		##Theta will be 0 if the sylph
+		#
+		##sylph bodies never actually rotate, even in motion. only use head rotation.
+		#var rotation = 0 - (body.sylphHead.rotation.y) 
+		#
+		##Sylphs can rotate greater than 360 degrees, and since godot is weird, this doesnt loop around 
+		##Since Arctan only outputs between +- 90, we need to calibrate for that range
+		#if(rotation > 1.5706):
+			#while(rotation > 1.5706):
+				#rotation -= 1.5706
+		#if(rotation < -1.5706):
+			#while(rotation < -1.5706):
+				#rotation += 1.5706
+		#
+		#var change = theta - rotation
+		#
+		#if(change > 0.48 || change < -0.48):
+			#print("Something's seriously up with the extrema! Did you rotate the bodies when you werent meant to?")
+		#
+		#change = absf(change) #we only care about the absolute.
+		#change *= 2.2 #Sylphs only have about 50 degrees of FOV, so our range of values is +- 0.47
+		#sensoryInput[4] = clampf(change, 0, 1) #shouldnt ever matter but be safe
 		
 		#I'm too lazy to do the azimuth extrema and i dont think it matters too much. soooo.
 		sensoryInput[5] = 0

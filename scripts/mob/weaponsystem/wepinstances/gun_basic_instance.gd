@@ -156,8 +156,8 @@ func try_Shoot():
 		#apply aimcone recoil. Calculations are done in calc_Recoil, called by manualProcess
 		recoilDebt += recoilAmount 
 		do_Shoot() #actually shoot the bullet, vollleyfire is handled in function
-	else:
-		print("click!")
+	#else:
+	#	print("click!")
 	
 	#no matter what, counts as a "shot"
 	totalShots+=1

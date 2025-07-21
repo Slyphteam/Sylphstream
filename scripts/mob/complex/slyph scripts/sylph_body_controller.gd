@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var collider = $sylphcollider
 @onready var mind = $"slyph mind"
 @onready var manager : INVENMANAGER = $"sylph head v2/sylphinventory"
-
+@export var ourTar: Node3D
 
 var shoot = false
 func hit_By_Bullet(_dam, _damtype, _dir, _origin):
@@ -19,13 +19,9 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#move_Head_Exact(Vector2(5,5))
 
 func interact_By_Player(playerRef):
-	print("hi there!")
 	
-	
-	#mind.load_From_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/loadingtest.txt")
-	#mind.ourNetwork.mutate_Network(0.5, 0.01)
-	#mind.save_To_File("res://resources/txt files/sylph tests/20 18 standstill shooting tests/loadingtest.txt")
-	#
+	mind.begin_Test()
+	#mind.do_Vision()
 	
 
 
