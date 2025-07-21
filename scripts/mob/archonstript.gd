@@ -73,14 +73,14 @@ func restart_Sylph_Test():
 
 
 var allScores: Array
-var highScore = -20
+var highScore = -25
 
 var hitMult: int = 5 ##Multiplicative reward for hits
 var missDiv: int =  3 ##Divide penalty for misses by this amount
 var missAllow: int = 10 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 1 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 60 ##What will we divide the per-frame penalty by for not seeing target?
-var generation: int = 57
+var visionDiv: int = 50 ##What will we divide the per-frame penalty by for not seeing target?
+var generation: int = 70
 var prevBest = -30
 
 ##Function that scores all sylphs in the global allSylphs array
@@ -133,7 +133,8 @@ func score_Sylphs_All():
 			generation +=1
 		return
 	else:
-		prevBest = bestScore
+		if(bestScore >prevBest):
+			prevBest = bestScore
 		
 	Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/generationBest.txt")
 	
@@ -146,7 +147,7 @@ func score_Sylphs_All():
 	
 	generation +=1
 	print("Generation: ", generation)
-	if(generation > 60):
+	if(generation > 80):
 		print("Generational landmark hit!")
 	
 	ind = 0
@@ -165,7 +166,7 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
 		if(ind != bestScoreInd):
-			curSylph.ourNetwork.mutate_Network(0.01, 0, 1) #dont mutate best, second, or highscore
+			curSylph.ourNetwork.mutate_Network(0.05, 0, 40) #dont mutate best, second, or highscore
 			print("  Mutated!")
 		else:
 			print("  Didn't!")
