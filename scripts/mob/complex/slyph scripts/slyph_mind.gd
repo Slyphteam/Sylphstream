@@ -5,6 +5,7 @@ extends Node
 
 var aimSensitivity:float = 1 ##fractional multiplier
 var ourNetwork:NNETWORK
+var ourTarget
 var mindEnabled = false
 var activeTime:int = 0 ##about 400
 var heartBeat = 100 
@@ -27,6 +28,7 @@ func _ready():
 	desiredActions.fill(0)
 	
 	Globalscript.add_Sylph(self)
+	ourTarget = body.ourTar
 	#load_From_File("res://resources/txt files/sylph tests/multi evolution test/startingpoint.txt")
 
 
@@ -54,7 +56,7 @@ func load_From_File(fileString):
 
 ##Copies neural network from other sylphbody
 func copy_From_Other(otherSylph):
-	ourNetwork.copy_From_Other(otherSylph.mind.ourNetwork)
+	ourNetwork.copy_From_Other(otherSylph.ourNetwork)
 
 ##Sets the Sylph up to activate for a period of time
 func begin_Test():
@@ -63,7 +65,7 @@ func begin_Test():
 	activeTime = 400
 
 ##Calculates score from target based on total hits, penalty for weird movement, and penalty for firing when empty.
-func score_Performance(ourTarget, hitMultiplier, missDivisor, 
+func score_Performance(hitMultiplier, missDivisor, 
 					  missAllowance, goodhitsReward, visionDivisor)-> Array[int]:
 	
 	

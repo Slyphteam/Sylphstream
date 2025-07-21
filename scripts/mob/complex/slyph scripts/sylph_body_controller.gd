@@ -19,8 +19,9 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#move_Head_Exact(Vector2(5,5))
 
 func interact_By_Player(playerRef):
-	
-	mind.begin_Test()
+
+	print("Hi!")
+	#mind.begin_Test()
 	#mind.do_Vision()
 	
 

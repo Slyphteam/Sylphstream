@@ -1,10 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=46 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/Player associated/player.tscn" id="4_2yn2u"]
 [ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="4_m2myf"]
 [ext_resource type="PackedScene" uid="uid://c4xof0ncli7gu" path="res://scenes/trivial/pickups/9_mm_ammobox.tscn" id="6_btmrn"]
 [ext_resource type="Material" uid="uid://0awlgsjd4q27" path="res://resources/testingbluecolor.tres" id="6_m2myf"]
-[ext_resource type="PackedScene" uid="uid://bfyduw5qytyby" path="res://scenes/sylphscene.tscn" id="7_d6ln1"]
 [ext_resource type="PackedScene" uid="uid://cahf1scobnpcq" path="res://scenes/trivial/pickups/shotgun_ammobox.tscn" id="9_ttle0"]
 [ext_resource type="PackedScene" uid="uid://b0ggseuf34obn" path="res://scenes/trivial/pickups/rifle_ammobox.tscn" id="10_n8uj3"]
 [ext_resource type="PackedScene" uid="uid://dnr004t0lyqd1" path="res://scenes/trivial/pickups/rimfire_ammobox.tscn" id="11_ttle0"]
@@ -308,27 +307,11 @@ shape = SubResource("ConvexPolygonShape3D_36h38")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_0u4ar")
 
-[node name="archonRoot" parent="Environment" node_paths=PackedStringArray("Sylph1", "Sylph2", "targ1", "targ2") instance=ExtResource("12_c4nfh")]
+[node name="archonRoot" parent="Environment" instance=ExtResource("12_c4nfh")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -42.6555, 3.70594, -0.182655)
-Sylph1 = NodePath("../Testing zone/Sylph 1")
-Sylph2 = NodePath("../Testing zone/Sylph 2")
-targ1 = NodePath("../Testing zone/Testing target 1")
-targ2 = NodePath("../Testing zone/Testing target 2")
 
 [node name="Testing zone" type="Node3D" parent="Environment"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.6961, 2, 5.5732e-06)
-
-[node name="Sylph 1" parent="Environment/Testing zone" instance=ExtResource("7_d6ln1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5462, -1.39584, -37.5982)
-
-[node name="Testing target 1" parent="Environment/Testing zone" instance=ExtResource("4_m2myf")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 40.546, 0, -33)
-
-[node name="Sylph 2" parent="Environment/Testing zone" instance=ExtResource("7_d6ln1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1.396, -37.597)
-
-[node name="Testing target 2" parent="Environment/Testing zone" instance=ExtResource("4_m2myf")]
-transform = Transform3D(-0.999885, -4.57448e-07, -0.0151838, -4.84987e-07, 1, 1.81e-06, 0.0151838, 1.81715e-06, -0.999885, 15, 0, -24.144)
 
 [node name="Testing wall" type="MeshInstance3D" parent="Environment/Testing zone"]
 mesh = SubResource("BoxMesh_ldjjd")
@@ -379,11 +362,20 @@ surface_material_override/0 = ExtResource("6_m2myf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/half 1 ramp2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_2yn2u")
 
+[node name="Node3D" parent="Environment/Testing zone" instance=ExtResource("17_8f4e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3991, -1.4886, -24.6417)
+
+[node name="Node3D2" parent="Environment/Testing zone" instance=ExtResource("17_8f4e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.67, -1.4886, -24.6417)
+
+[node name="Node3D3" parent="Environment/Testing zone" instance=ExtResource("17_8f4e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4457, -1.4886, -24.6417)
+
+[node name="Node3D4" parent="Environment/Testing zone" instance=ExtResource("17_8f4e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.6247, -1.4886, -24.6417)
+
+[node name="Node3D5" parent="Environment/Testing zone" instance=ExtResource("17_8f4e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.646, -1.4886, -24.6417)
+
 [node name="Player" parent="." instance=ExtResource("4_2yn2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187381, 1.86011, 3.46502)
-
-[node name="Node3D" parent="." instance=ExtResource("17_8f4e3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -60.8887, 0.526262, -91.7517)
-
-[node name="Node3D2" parent="." instance=ExtResource("17_8f4e3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -59.9316, 0.526269, -63.9324)
