@@ -9,4 +9,4 @@
 ourTar = NodePath("../target")
 
 [node name="target" parent="." instance=ExtResource("2_8vb3w")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.25465, 2.25287)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.25465, 0.968991)

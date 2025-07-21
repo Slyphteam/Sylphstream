@@ -75,7 +75,7 @@ func restart_Sylph_Test():
 var allScores: Array
 var highScore = -25
 
-var hitMult: int = 5 ##Multiplicative reward for hits
+var hitMult: int = 10 ##Multiplicative reward for hits
 var missDiv: int =  3 ##Divide penalty for misses by this amount
 var missAllow: int = 10 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 1 ##If we're in the tolerance, what reward is given?
@@ -126,15 +126,15 @@ func score_Sylphs_All():
 		highScoreInd = bestScoreInd
 		Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
 	
-	if(bestScore < (prevBest - 3)):
-		print("reverting")
-		for curSylph in Globalscript.allSylphs:
-			curSylph.load_From_File("res://resources/txt files/sylph tests/multi evolution test/generationBest.txt")
-			generation +=1
-		return
-	else:
-		if(bestScore >prevBest):
-			prevBest = bestScore
+	#if(bestScore < (prevBest - 3)):
+		#print("reverting")
+		#for curSylph in Globalscript.allSylphs:
+			#curSylph.load_From_File("res://resources/txt files/sylph tests/multi evolution test/generationBest.txt")
+			#generation +=1
+		#return
+	#else:
+		#if(bestScore >prevBest):
+			#prevBest = bestScore
 		
 	Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/generationBest.txt")
 	
@@ -166,7 +166,7 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
 		if(ind != bestScoreInd):
-			curSylph.ourNetwork.mutate_Network(0.05, 0, 40) #dont mutate best, second, or highscore
+			curSylph.ourNetwork.mutate_Network(0.3, 0, 40) #dont mutate best, second, or highscore
 			print("  Mutated!")
 		else:
 			print("  Didn't!")
