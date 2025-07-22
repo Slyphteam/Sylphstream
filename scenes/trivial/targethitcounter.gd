@@ -1,6 +1,6 @@
 class_name SCOREDTARGET extends Node3D
 var totalHits:int = 0
-var startPos: Vector3 
+var startPos: Vector3  
 
 func _ready():
 	startPos = global_position

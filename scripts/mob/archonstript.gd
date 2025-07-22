@@ -86,7 +86,7 @@ var revertcount = 0
 var mutAmount = 0.09
 var mutPercent = 1
 
-var generation: int = 39
+var generation: int = 50
 var highScore = -30
 
 ##Function that scores all sylphs in the global allSylphs array
@@ -133,10 +133,9 @@ func score_Sylphs_All():
 			if(ind > 2):
 				curSylph.ourNetwork.mutate_Network(mutAmount, 0, 50) 
 			ind +=1
-		# generation -=1
 		revertcount +=1
 		
-		if(revertcount > 5):
+		if(revertcount > 20):
 			print("too much revertion!")
 		
 		prevBest -= 1
@@ -161,29 +160,23 @@ func score_Sylphs_All():
 	
 
 	generation +=1
-	print("Generation: ", generation)
-	if(generation == 1):
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen1.txt")
-	elif(generation == 5):
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen5.txt")
-		mutAmount = 0.1
-	if(generation == 10):
 	
-		mutPercent = 20
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen10.txt")
-	elif(generation == 20):
-		mutPercent = 15
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen20.txt")
-	elif(generation == 30):
+	if(generation > 100):
+		print("thats enough!")
+	
+	print("Generation: ", generation)
 
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen30.txt")
-	elif(generation == 40):
-		
-		mutAmount = 0.03
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen40.txt")
-	elif(generation == 50):
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen50.txt")
-		print("Generational landmark hit!")
+	if(generation == 60):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen60.txt")
+	elif(generation == 70):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen70.txt")
+	elif(generation == 80):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen800.txt")
+	elif(generation == 90):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen90.txt")
+	elif(generation == 100):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen100.txt")
+
 	
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
@@ -201,7 +194,13 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
 		if(ind != bestScoreInd):
-			curSylph.ourNetwork.mutate_Network(mutAmount, 0, 10) #dont mutate best, second, or highscore
+			if(Globalscript.prob(80)):
+				curSylph.ourNetwork.mutate_Network(0.01, 0, 5) #dont mutate best, second, or highscore
+			else:
+				if(Globalscript.prob(50)):
+					curSylph.ourNetwork.mutate_Network(0.3, 0, 1)
+				else:
+					curSylph.ourNetwork.mutate_Network(0.01, 0, 40)
 			#print("  Mutated!")
 		#else:
 			#print("  Didn't!")
