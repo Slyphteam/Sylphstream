@@ -51,6 +51,7 @@ const friction = 100 ##This is a force applied to the player each time. It is ap
 # used as a constant in dosourcelikeaccelerate
 const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 
+@onready var camCage = $camCage
 @onready var playerCam = $camCage/came
 @onready var playerShape = $playermodel
 @onready var playerCollider = $playercollidercapsule
@@ -148,9 +149,8 @@ func input_Mouse(event):
 
 ##Apply camera and body rotation based on xlook and ylook variables
 func view_Angles():
-	playerCam.rotation_degrees.x = xlook
-	playerCam.rotation_degrees.y = ylook
-	playerShape.rotation_degrees.y = ylook - 180 #ensure the playermodel stays relative to camera
+	camCage.rotation_degrees.x = xlook #move the camcage up/down
+	rotation_degrees.y = ylook #move our whole self left/right
 
 ##Handles proprietary input logic for specifically WASD movement
 func check_Directional_Movement():
@@ -246,11 +246,9 @@ func handle_Move(delta):
 ##this is the PRIMARY function that handles floor logic.
 func handle_Floor_Sourcelike(delta):
 	
-	#grab vectors using. this. i guess. yeah sure whatever man.
-	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.rotation.y).normalized()
-	var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.rotation.y).normalized()
-	# it might seem weird that both of these are the playercam's y rotation
-	# but that's because it corresponds to yaw. We don't want pitch and roll.
+	# split our horizontal rotation into x and y compontents (technically x and z but i digress)
+	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.global_rotation.y).normalized()
+	var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.global_rotation.y).normalized()
 	
 	#calculate a vector based of our inputs and angles
 	var desiredVec = (leftright * sideAngle) + (forback * forwAngle)
@@ -356,8 +354,9 @@ func do_Jump():
 ##Very similar to floor movement, but no multipliers on crouch/sprinting and less control
 func handle_Sourcelike_Air(delta):
 	 
-	var forward =  Vector3.FORWARD.rotated(Vector3.UP, playerCam.rotation.y).normalized()
-	var side = Vector3.LEFT.rotated(Vector3.UP, playerCam.rotation.y).normalized()
+	#again, split horizontal direction into x and y compontents 
+	var forward =  Vector3.FORWARD.rotated(Vector3.UP, playerCam.global_rotation.y).normalized()
+	var side = Vector3.LEFT.rotated(Vector3.UP, playerCam.global_rotation.y).normalized()
 	
 	playerVelocity.y -= gravAmount * delta
 	playerSpeed = playerVelocity.length() #update speed

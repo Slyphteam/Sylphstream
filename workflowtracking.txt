@@ -90,6 +90,9 @@ Also have there be a single holder for game UI
 
 
 Sylph maintenance:
+Change shooting code to ensure they cant shoot themselves. not just the player, nothing
+should have a shooting raycast hit the originator.
+
 Randf function may have weird weights due to how floats work, look into it
 Look into mutating by "pulses"-- rather than shooting a shotgun into the network,
 take a random input, and for x of outputs, mutate those, than take 1-2 from the mutated and pulse again

@@ -40,7 +40,7 @@ func handleBob(delta):
 #delta was unused so I commented it out
 func handleTilt(): #delta):
 	# set values based on player stats
-	var sideways_vel = player.playerVelocity.dot(player.playerCam.basis.x)  # get sideways velocity
+	var sideways_vel = player.playerVelocity.dot(player.basis.x)  # get sideways velocity
 	
 	# normal sideways movement
 	tilt_amount_target = sideways_vel / 5.0
