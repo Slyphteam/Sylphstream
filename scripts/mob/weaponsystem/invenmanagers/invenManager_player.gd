@@ -293,4 +293,4 @@ func get_End(orig:Vector3, azimuth:float, roll:float):
 	return newEnd 
 	
 func get_Rotation():
-	return user.playerCam.rotation
+	return user.playerCam.global_rotation

@@ -190,7 +190,7 @@ func do_Shoot():
 	
 	#This function "actually shoots the bullet" but we only ACTUALLY "shoot" the bullet here.
 	var theShot = FIREDBULLET.new()
-	theShot.assign_Info(orig, end, space, affectUI, invManager, damage)
+	theShot.assign_Info(orig, end, space, invManager, damage)
 	theShot.take_Shot()
 	
 	#Update the current magazine capacity

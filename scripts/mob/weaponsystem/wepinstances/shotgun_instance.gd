@@ -67,7 +67,7 @@ func do_Shoot():
 		var end:Vector3 = invManager.get_End(orig, randAzimuth, randRoll)
 		
 		var theShot = FIREDBULLET.new()
-		theShot.assign_Info(orig, end, space, affectUI, invManager, damage)
+		theShot.assign_Info(orig, end, space, invManager, damage)
 		theShot.take_Shot()
 		
 	

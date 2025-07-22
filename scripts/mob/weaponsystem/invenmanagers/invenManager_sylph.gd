@@ -98,4 +98,4 @@ func get_End(orig:Vector3, _azimuth:float, _roll:float):
 	return pathVec
 	
 func get_Rotation():
-	return user.sylphHead.rotation
+	return user.sylphHead.global_rotation

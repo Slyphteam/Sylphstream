@@ -3,15 +3,13 @@ class_name FIREDBULLET extends Node
 var orig: Vector3
 var end: Vector3
 var spaceState:PhysicsDirectSpaceState3D
-var ignorePlayer: bool
 var invManager
 var dam : int
 
-func assign_Info(origIC: Vector3, endIC: Vector3, spaceStateIC:PhysicsDirectSpaceState3D, ignorePlayerIC: bool, manager, damIC):
+func assign_Info(origIC: Vector3, endIC: Vector3, spaceStateIC:PhysicsDirectSpaceState3D, manager, damIC):
 	orig = origIC
 	end = endIC
 	spaceState = spaceStateIC
-	ignorePlayer = ignorePlayerIC
 	invManager = manager
 	dam = damIC
 	
@@ -19,12 +17,11 @@ func take_Shot():
 	var ignore: Array[RID]
 	var raycheck:PhysicsRayQueryParameters3D
 	
-	if(ignorePlayer):
-		var player:RID = Globalscript.thePlayer
-		raycheck = PhysicsRayQueryParameters3D.create(orig, end, 3, [player]) #3 is 110etc, aka the bullet collision layer
-	else:
-		raycheck = PhysicsRayQueryParameters3D.create(orig, end, 3) #3 is 110etc, aka the bullet collision layer
-	
+
+	var player:RID = Globalscript.thePlayer
+	#3 is 110etc, aka the bullet collision layer
+	#also, always exclude the weapon's origin/user from getting hit
+	raycheck = PhysicsRayQueryParameters3D.create(orig, end, 3, [invManager.user]) 
 	raycheck.collide_with_bodies = true
 	var castResult = spaceState.intersect_ray(raycheck)
 	
