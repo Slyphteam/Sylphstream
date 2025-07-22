@@ -100,6 +100,9 @@ Reimport sylph head but make sure it's actually centered this time, doofus.
 
 crosshair changes with move speed **
 "button-like dialogue trees"
+Tweak the friction values to allow for some airstrafing, change the wishspeed allowance to not
+be too absurdly lenient, though.
+
 
 ====+====> EXPERIENTIAL:
 re-add FOV changing with speed, but make it steppy to prevent jitters

@@ -8,7 +8,7 @@ extends CharacterBody3D
 #const sourcelike = true 
 const gravAmount = 60
 
-@export var quakelike: bool = false
+@export var quakelike: bool = false ##Whether or not we use the (nearly identical) quakelike function
 
 #player camera variables
 var ylook : float = 0
@@ -16,15 +16,13 @@ var xlook : float = 0
 var mousesensitivity = 0.25
 
 #player input/movement variables
-var leftright : float #variables for how "walking" we are in either cardinal direction
+var leftright : float ##variables for how "walking" we are in either cardinal direction
 var forback : float
 var playerVelocity: Vector3 = Vector3.ZERO # player's calculated velocity
-var playerSpeed = 0 # speed of player to prevent too many playerVelocity.length calls
-var onFloor = false
-const maxvelocity = 100; #this might not seem insane but keep in mind 20 is walking speed
+var playerSpeed = 0 ## speed of player to prevent too many playerVelocity.length calls
+const maxvelocity = 100; ##this might not seem insane but keep in mind 20 is walking speed
 
 #crouching/jumping/sprinting (modified movement) variables
-var touchingFloor = true
 var canjump = true
 var jumpheight = 2
 var sprinting = false
@@ -32,24 +30,24 @@ var crouching = false
 var aiming = false
 
 var crouchSliding = false
-const crouchSlideStart = 17 #start speed
-const crouchSlideEnd = 4 #end speed
-const crouchSlideFric = 0.15 #reductive multiplier on friction
+const crouchSlideStart = 17 ##start speed
+const crouchSlideEnd = 4 ##end speed
+const crouchSlideFric = 0.15 ##reductive multiplier on friction
 
-#How long it takes the player to get up to full steam
-const sprintMod = 3 #it takes time to get up to a sprint though
-const walkMod = 3 # walking players have a lot of control
-const crouchMod = 5 # crouching players have a LOT of control
+#How long it takes the player to get up to full steam, based on speed bonuses
+const sprintMod = 3 ##it takes time to get up to a sprint though
+const walkMod = 3 ## walking players have a lot of control
+const crouchMod = 5 ## crouching players have a LOT of control
 
-# used to limit speed. Affected by crouch and sprint bonus
-var curMax = 13
+
+var curMax = 13 ## used to limit speed. Affected by crouch and sprint bonus
 const walkSpeed = 13 
-const crouchSpeed = -5.5 # negative "bonus" of 6 to player speed
-const sprintSpeed = 5 # positive bonus of 5
-const aimSpeed = -4 #mouse sensitivity is handled in toggle_ADS_Stats
+const crouchSpeed = -5.5 ## negative "bonus" of 6 to player speed
+const sprintSpeed = 5 ## positive bonus of 5
+const aimSpeed = -4 ##mouse sensitivity is handled in toggle_ADS_Stats
 
-#This is a force applied to the player each time. It is applied AFTER acceleration is calculated
-const friction = 100
+
+const friction = 100 ##This is a force applied to the player each time. It is applied AFTER acceleration is calculated
 # used as a constant in dosourcelikeaccelerate
 const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 
@@ -58,7 +56,6 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 @onready var playerCollider = $playercollidercapsule
 @onready var invenManager: PLAYERINVENMANAGER = $camCage/came/weapon_rig
 @onready var uiInfo = $"Player UI"
-
 
 func _ready():
 	Globalscript.thePlayer = self
@@ -70,12 +67,7 @@ func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		input_Mouse(event)
 	
-	
-	#TODO: look into adding a better way to check inputs because surely this is not optimal
 	#TODO: update this to the sprinting paradigm because you now know a better way
-	
-		
-		
 	
 	if Input.is_action_pressed("ui_click"):
 		# are we in mouse mode?
@@ -89,14 +81,11 @@ func _input(event):
 		#though strange, this code is necessary as the player can be holding mouse and no other inputs
 		#which
 		invenManager.unShoot() 
-		
-
-
+	
 	if Input.is_action_pressed("ui_sprint"):
 		sprinting = true
 	else:
 		sprinting = false
-	
 	
 	if Input.is_action_pressed("ui_crouch"):
 		if(!crouching): #if we weren't already crouching, update camera
@@ -132,24 +121,25 @@ func _input(event):
 
 ##Cleanliness function that just makes a short-ranged raycast
 func do_Interact_Raycast():
-		var space = invenManager.get_space_state()
-		var orig:Vector3 = playerCam.project_ray_origin(get_viewport().size / 2)
-		var end:Vector3 = orig + playerCam.project_ray_normal(get_viewport().size / 2) * 100
+	
+	var space = invenManager.get_space_state()
+	var orig:Vector3 = playerCam.project_ray_origin(get_viewport().size / 2)
+	var end:Vector3 = orig + playerCam.project_ray_normal(get_viewport().size / 2) * 100
 		
-		var raycheck = PhysicsRayQueryParameters3D.create(orig, end, 4) #3 is 0xb 0010etc, or the player interaction layer
-		raycheck.collide_with_bodies = true
-		var castResult = space.intersect_ray(raycheck)
+	var raycheck = PhysicsRayQueryParameters3D.create(orig, end, 4) #3 is 0xb 0010etc, or the player interaction layer
+	raycheck.collide_with_bodies = true
+	var castResult = space.intersect_ray(raycheck)
 		
-		if(castResult):
-			#print(castResult)
-			var hitObject = castResult.get("collider")
-			if(hitObject.is_in_group("player_interactible")): #check if we even CAN interact before anything else
-				var castLocation = castResult.get("position")
-				var dist = (orig - castLocation).length()
-				if(dist <= 2.5):
-					var interactResult = hitObject.interact_By_Player(self)
-					if(interactResult):
-						print("K-chk!")
+	if(castResult):
+		#print(castResult)
+		var hitObject = castResult.get("collider")
+		if(hitObject.is_in_group("player_interactible")): #check if we even CAN interact before anything else
+			var castLocation = castResult.get("position")
+			var dist = (orig - castLocation).length()
+			if(dist <= 2.5):
+				var interactResult = hitObject.interact_By_Player(self)
+				if(interactResult):
+					print("K-chk!")
 
 func input_Mouse(event):
 	xlook += -event.relative.y * mousesensitivity
@@ -162,9 +152,8 @@ func view_Angles():
 	playerCam.rotation_degrees.y = ylook
 	playerShape.rotation_degrees.y = ylook - 180 #ensure the playermodel stays relative to camera
 
-##Will listen to keypresses and update the movement variables above. Will NOT update mouse (handled by _input)
-func getInputs():
-	
+##Handles proprietary input logic for specifically WASD movement
+func check_Directional_Movement():
 	#update the movement bonus based on our current mode
 	var bonus = walkMod 
 	var limit = walkSpeed
@@ -191,14 +180,12 @@ func getInputs():
 		forback = 0
 	else:
 		forback = clamp(forback, (0-limit), limit)
-	
-# these need to be moved once I fix viewbobbing
-var prevBob = 0;
-var bobOffset = 0;
+
+
 func _physics_process(delta: float) -> void:
 	
-	#Deal with inputs
-	getInputs()
+	#Deal with WASD movements the proprietary way
+	check_Directional_Movement()
 		
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		view_Angles()
@@ -207,14 +194,12 @@ func _physics_process(delta: float) -> void:
 	handle_Move(delta)
 	checkVelocityAndMove() #now that we've calculated, actually apply the move
 	
-	
-	#viewtilt and headbob are in the camera script
+	#viewtilt and headbob are in the camera script 
 	#playerCam.fov = clamp(87 + sqrt(playerSpeed), 90, 180) #caused jitteriness with weapons to be visible.
-	
+
 
 ##Updates the player camera as they enter or leave a crouching state.
 func transition_Crouch(entering):
-	
 	if(entering): #we are entering crouch
 	#	playerShape.scale.y -= 0.8 #it's jank so we are no longer changing the playermodel's size
 		playerCollider.scale.y -= 0.8
@@ -237,12 +222,13 @@ func handle_Move(delta):
 	
 	#i should really really REALLY REALLY R E A L L Y refactor this section
 	if (is_on_floor()):
-		if(crouchSliding):
+		if(crouchSliding): #Crouchsliding doesn't factor in WASD keypresses. 
+			#(does that mean you can "build" keypress speed when sliding and then immediately gain from it when you exit?)
 			do_Crouch_Slide(delta)
 		
 		else:
-			#this does a SHOCKINGLY good job at emulating source bunnyhopping
-			#this code can be modified for auto-bunnyhopping but that's super busted
+			#Does a fairly good job emulating source jumping allowance logic
+			#can be modified for auto-bunnyhopping but that's super busted
 			if (not canjump):
 				if(not Input.is_action_pressed("ui_jump") ): 
 					canjump = true
@@ -253,7 +239,6 @@ func handle_Move(delta):
 	
 	if Input.is_action_pressed("ui_jump") && canjump:
 		if not crouching:
-			touchingFloor = false
 			canjump = false
 			do_Jump()
 	
@@ -276,26 +261,25 @@ func handle_Floor_Sourcelike(delta):
 	#a really funny bug to have happen was zeroing out the desiredvec.y here instead of lower
 	#which meant you could just phase through the floor by trying hard enough. and also fly.
 	
-	#Apply conditional modifiers to our max speed
+	
 	curMax = walkSpeed;
 	
+	#Apply conditional modifiers to our max speed
 	if(aiming):
-		if(crouching):
-			curMax -=1
+		if(crouching): #aiming and crouching gets ridiculously slow if we apply crouchSpeed penalty also
+			curMax -=1 
 		else:
-			curMax += aimSpeed
+			curMax += aimSpeed 
 			
-		#if(crouching):
-			#curMax =1 # ensure we can actually MOVE while crouching ADS
-	if(crouching): # Enter into a crouchslide!
+
+	if(crouching): 
 		curMax += crouchSpeed; #only apply crouch movement bonus
-		if(playerSpeed > crouchSlideStart):
-			crouchSliding = true
-			print("crouchsliding! speed:", playerSpeed)
+		if(playerSpeed > crouchSlideStart): 
+			crouchSliding = true # Enter into a crouchslide! (will only apply effects next frame)
+			#print("crouchsliding! speed:", playerSpeed)
 	elif(sprinting): curMax += sprintSpeed; 
 	
-	#print("desired speed: ", desiredSpeed)
-	#player is not moving if speed is less than 3.5
+	#player is not moving if speed is less than 3.5, huh?
 	if desiredSpeed !=0.0 and desiredSpeed > curMax:
 		
 		desiredVec *= curMax / desiredSpeed # update our vector to not be too silly
@@ -306,12 +290,11 @@ func handle_Floor_Sourcelike(delta):
 	
 	do_Source_Accelerate(desiredDir, desiredSpeed, delta)
 
-		#deal with friction
-	handle_Friction(delta, 1) #normal friction
+	#deal with friction
+	handle_Friction(delta, 1)
 
 ##Supercedes normal floor movement. Ignore keyboard/mouse directional inputs and just coast.
 func do_Crouch_Slide(delta):
-	
 	#Crouchsliding will continue as long as the player is fast enough or still crouching
 	if(!(crouching) || (playerSpeed < crouchSlideEnd)):
 		print("No longer crouchsliding! speed:", playerSpeed)
@@ -323,8 +306,6 @@ func do_Crouch_Slide(delta):
 ##Function that calculates and updates player's velocity
 func do_Source_Accelerate(desiredDir: Vector3, desiredSpeed, delta):
 	
-	#TODO: introduce some airstrafing leniency
-	
 	var currentspeed = playerVelocity.dot(desiredDir) # are we changing direction?
 	var addedspeed = desiredSpeed - currentspeed # reduce by amount
 	
@@ -335,21 +316,16 @@ func do_Source_Accelerate(desiredDir: Vector3, desiredSpeed, delta):
 	
 	playerVelocity.y -= gravAmount * delta
 	
-	
 	#var newPlayerVel = Vector3(playerVelocity.x + (desiredDir.x * acelspeed), 
 							   #playerVelocity.y + (desiredDir.y * acelspeed), 
 							   #playerVelocity.z + (desiredDir.z * acelspeed))
 	#playerVelocity = newPlayerVel
 	
-	#I sort of get what this section does but for whatever infernal reason
-	#literally none of my attempts at recreating it have worked.
-	#it genuinely is an enigma why.
+	#There's some weird syntax going on here that I can't get to work any other way.
+	#which really annoys me. I've done debugging. I just can't recreate the logic, for SOME reason
 	for i in range(3): 
 		playerVelocity+= acelspeed * desiredDir
 		
-		
-
-	
 	playerSpeed = playerVelocity.length() # update playerspeed
 
 ##################################AIR MOVEMENT
@@ -377,7 +353,6 @@ func do_Jump():
 # this differs from sourcelike floor in a few ways:
 # 1: no multipliers on crouching/spring
 # 2: a LOT less control
-#TODO: Go through this with a FINE tooth comb to see if our weird air speed is from here
 ##Very similar to floor movement, but no multipliers on crouch/sprinting and less control
 func handle_Sourcelike_Air(delta):
 	 
@@ -410,7 +385,11 @@ func handle_Sourcelike_Air(delta):
 	
 	do_Source_AirAccelerate(wishdir, wishspeed, delta) #let the airaccelerate function do its work
 
-
+##Functionally, almost identical to do_source_airaccelerate, I just made this for 2 reasons
+#1) to get a better understanding of the physics
+#2) To see whats up with bunnyhopping
+#I currently have friction tuned too high for airstrafing to work, though.
+#also, the checkspeed should NOT be thirty. it should be 1/10th of our speed max.
 func do_Qke_AirAccelerate(desiredVel, delta):
 	
 	#quakelike movement
@@ -421,7 +400,7 @@ func do_Qke_AirAccelerate(desiredVel, delta):
 	var wspd = desiredVel.length()
 	var vvel = desiredVel.normalized()
 	
-	if(wspd > 30): #30 units is in quake units, convert this >:(
+	if(wspd > 30): #30 units is in QUAKE units, convert this >:(
 		wspd = 30
 	
 	var qkecurspd = playerVelocity.dot(vvel)
@@ -437,7 +416,8 @@ func do_Qke_AirAccelerate(desiredVel, delta):
 	
 	for i in range(3):
 		playerVelocity += qkespdlmt * desiredVel
-		
+	
+	#here I am. trying to avoid the for loop again.
 	#playerVelocity.x += qkespdlmt * desiredDir.x
 	#playerVelocity.y += qkespdlmt * desiredDir.y
 	#playerVelocity.z += qkespdlmt * desiredDir.z
@@ -473,16 +453,19 @@ func do_Source_AirAccelerate(desiredDir, desiredSpeed, delta):
 func checkVelocityAndMove():
 	if playerSpeed > maxvelocity:
 		print("MAX VELOCITY HIT!")
-		playerVelocity *= 0.5 #this seems to work!
+		playerVelocity *= 0.5 #
 		playerSpeed = playerVelocity.length()
 	
-	#if(playerSpeed > 0):
-		#print("Velocity:", playerSpeed)
 		
 	velocity = playerVelocity
 	move_and_slide()
 	playerVelocity = velocity
 	playerSpeed = playerVelocity.length()
+	do_Floorsnap_Check()
+
+##Does a test to see if the player has a "ground" beneath them they can snap to.
+func do_Floorsnap_Check():
+	return
 
 ##updates the playerVelocity variable based on friction variables
 func handle_Friction(delta, fricMod):
@@ -505,22 +488,20 @@ func handle_Friction(delta, fricMod):
 		playerVelocity *= newspeed
 		playerSpeed = playerVelocity.length()
 	
-
-func move_and_slide_sourcelike()->bool:
+##Unused. Presumably went in place of move_and_slide in checkVelocityAndMove
+func move_and_slide_sourcelike()->bool: 
 	var collided := false
-	# Reset previously detected floor
-	touchingFloor  = false
 
 	#check floor
 	var checkMotion := velocity * (1/60.)
 	checkMotion.y  -= gravAmount * (1/360.)
 		
-	var testcol := move_and_collide(checkMotion, true)
+	var testcol := move_and_collide(checkMotion, true) #Test physics collision for going down
 
-	if testcol:
-		var testNormal = testcol.get_normal()
-		if testNormal.angle_to(up_direction) < deg_to_rad(45) :
-			touchingFloor = true
+	#if testcol: #Do some testing with this in the future. for now, disabled.
+		#var testNormal = testcol.get_normal()
+		#if testNormal.angle_to(up_direction) < deg_to_rad(45) :
+			#touchingFloor = true #I got rid of touchingfloor as it's just a worse version of is_on_floor() and unchecked
 
 	# Loop performing the move
 	var motion := velocity * get_delta_time()
@@ -544,9 +525,10 @@ func get_delta_time() -> float:
 		return get_physics_process_delta_time()
 	return get_process_delta_time()
 
-##Jolt camera, by degrees x and y
+##Jolt camera, by degrees x and y. Must be manually fixed by user
 func apply_Viewpunch(azimuth: float, zenith: float):
 	
 	ylook += azimuth
 	xlook += zenith
-	
+
+#func apply_Autorecover_Viewpunch() #implement this when you finish the camcage modularity pass
