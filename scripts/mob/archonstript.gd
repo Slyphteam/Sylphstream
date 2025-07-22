@@ -61,7 +61,7 @@ func begin_Sylph_Test():
 	print("Starting test!")
 	allScores.resize(Globalscript.allSylphs.size())
 	for curSylph in Globalscript.allSylphs:
-		curSylph.load_From_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
+		curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -73,14 +73,14 @@ func restart_Sylph_Test():
 
 
 var allScores: Array
-var highScore = -10
+var highScore = -20
 
-var hitMult: int = 10 ##Multiplicative reward for hits
-var missDiv: int =  0 ##Divide penalty for misses by this amount
-var missAllow: int = 10 ##How many misses will we tolerate before punishing?
-var accuracyRew: int = 1 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 50 ##What will we divide the per-frame penalty by for not seeing target?
-var generation: int = 80
+var hitMult: int = 5 ##Multiplicative reward for hits
+var missDiv: int =  4 ##Divide penalty for misses by this amount
+var missAllow: int = 8 ##How many misses will we tolerate before punishing?
+var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
+var visionDiv: int = 100 ##What will we divide the per-frame penalty by for not seeing target?
+var generation: int = 1
 var prevBest = -30
 
 ##Function that scores all sylphs in the global allSylphs array
@@ -112,7 +112,6 @@ func score_Sylphs_All():
 		elif(curScore[1] > thirdBestScore):
 			thirdBestScore = curScore[1]
 			thirdBestInd = ind
-		
 		ind +=1
 	
 	
@@ -124,30 +123,39 @@ func score_Sylphs_All():
 		print("Highscore beat!")
 		highScore = bestScore
 		highScoreInd = bestScoreInd
-		Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
+		Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
 	
-	#if(bestScore < (prevBest - 3)):
-		#print("reverting")
-		#for curSylph in Globalscript.allSylphs:
-			#curSylph.load_From_File("res://resources/txt files/sylph tests/multi evolution test/generationBest.txt")
-			#generation +=1
-		#return
-	#else:
-		#if(bestScore >prevBest):
-			#prevBest = bestScore
+	if(bestScore < (prevBest - 3)):
+		print("reverting")
+		for curSylph in Globalscript.allSylphs:
+			curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
+			curSylph.ourNetwork.mutate_Network(0.1, 0, 1) 
+		generation -=1
+		return
+	else:
+		if(bestScore >prevBest):
+			prevBest = bestScore
 		
-	Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/generationBest.txt")
+	Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/currentBest.txt")
+	Globalscript.allSylphs[secondScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/currentSecond.txt")
 	
-	Globalscript.allSylphs[secondScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/generationSecond.txt")
-	
-	#if(newHigh):
-		#if(newHigh > highScore):
-			#newHigh = highScore
-			#Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/multi evolution test/highscore beater.txt")
-	
+
 	generation +=1
 	print("Generation: ", generation)
-	if(generation > 95):
+	if(generation == 1):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen1.txt")
+	elif(generation == 5):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen5.txt")
+	elif(generation == 10):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen10.txt")
+	elif(generation == 20):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen20.txt")
+	elif(generation == 30):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen30.txt")
+	elif(generation == 40):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen40.txt")
+	elif(generation == 50):
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen50.txt")
 		print("Generational landmark hit!")
 	
 	ind = 0
@@ -166,13 +174,12 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
 		if(ind != bestScoreInd):
-			curSylph.ourNetwork.mutate_Network(0.3, 0, 1) #dont mutate best, second, or highscore
+			curSylph.ourNetwork.mutate_Network(0.05, 0, 10) #dont mutate best, second, or highscore
 			print("  Mutated!")
 		else:
 			print("  Didn't!")
 		ind +=1
 	
-
 
 
 @export var Sylph1:CharacterBody3D

@@ -40,9 +40,10 @@ func initialize_Basic_Network():
 ##Creates a new network and fully randomizes it
 func initialize_Rand_Network():
 	ourNetwork = NNETWORK.new()
-	ourNetwork.initialize_Network([20,20,40,30,18])
+	#ourNetwork.initialize_Network([20,20,40,30,18])
+	ourNetwork.initialize_Network([20,40,20,18])
 	ourNetwork.populate_Network_Rand()
-	print("Created random 20-20-40-30-18 network!")
+	#print("Created random 20-20-40-30-18 network!")
 
 ##Saves to specified file
 func save_To_File(fileString):

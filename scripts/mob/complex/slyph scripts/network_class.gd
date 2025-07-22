@@ -144,7 +144,17 @@ func populate_Network_Rand():
 	
 	#ourLayers[0].activations.fill(1) #ensure the first layer always activates.
 	
-	
+
+#experimental function that mutates in "pulses" through a network.
+#selects a random node, mutates it, selects a random node from the outgoing, mutates
+#func mutate_Pulse(mutateBy, mutateChance, pulseChance, maxPulse):
+	#return
+	#
+#
+#func get_Pulse_Neurons()->Array:
+	#
+
+
 ##Mutates the entire network by random values clamped to 0+-(mutationAmount). Seperate value for mutations.
 func mutate_Network(mutateBy: float, activationMut: float, mutationChance: int):
 	var z:int =0
