@@ -73,18 +73,21 @@ func restart_Sylph_Test():
 
 
 var allScores: Array
-var highScore = -30
+
 
 var hitMult: int = 6 ##Multiplicative reward for hits
 var missDiv: int =  0 ##Divide penalty for misses by this amount
 var missAllow: int = 10 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
 var visionDiv: int = 60 ##What will we divide the per-frame penalty by for not seeing target?
-var generation: int = 0
+
 var prevBest = -30
 var revertcount = 0
 var mutAmount = 0.25
 var mutPercent = 30
+
+var generation: int = 19
+var highScore = -15
 
 ##Function that scores all sylphs in the global allSylphs array
 func score_Sylphs_All():
@@ -123,7 +126,7 @@ func score_Sylphs_All():
 	print("Best score: ", bestScore, " ", bestScoreInd, " Runner-up ", secondBestScore, " ", secondScoreInd)
 	
 	ind = 0
-	if(bestScore < (prevBest - 3) && generation > 50):
+	if(bestScore < (prevBest - 3)):
 		print("reverting. count: ", revertcount)
 		for curSylph in Globalscript.allSylphs:
 			curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
