@@ -61,7 +61,6 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Step up/down movement code ----- * 
 collision object with a seperationray works, but doesn't rotate with player. (and must be parented to said player)
 Could refactor, but theres other ways. I do slightly like the jank tho.
 

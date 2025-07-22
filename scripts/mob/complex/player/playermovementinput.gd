@@ -148,7 +148,7 @@ func input_Mouse(event):
 	xlook = clamp(xlook, -90, 90)
 
 ##Apply camera and body rotation based on xlook and ylook variables
-func view_Angles():
+func update_Viewangles():
 	camCage.rotation_degrees.x = xlook #move the camcage up/down
 	rotation_degrees.y = ylook #move our whole self left/right
 
@@ -188,7 +188,7 @@ func _physics_process(delta: float) -> void:
 	check_Directional_Movement()
 		
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		view_Angles()
+		update_Viewangles()
 	
 	#start our decision tree for movement
 	handle_Move(delta)
