@@ -126,13 +126,13 @@ func score_Sylphs_All():
 	print("Best score: ", bestScore, " ", bestScoreInd, " Runner-up ", secondBestScore, " ", secondScoreInd)
 	
 	ind = 0
-	if(bestScore < (prevBest - 3)):
+	if(bestScore < (prevBest - 5)):
 		print("reverting. count: ", revertcount)
-		for curSylph in Globalscript.allSylphs:
-			curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
-			if(ind > 2):
-				curSylph.ourNetwork.mutate_Network(mutAmount, 0, 50) 
-			ind +=1
+		#for curSylph in Globalscript.allSylphs:
+			#curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
+			#if(ind > 2):
+				#curSylph.ourNetwork.mutate_Network(mutAmount, 0, 50) 
+			#ind +=1
 		revertcount +=1
 		
 		if(revertcount > 20):
@@ -194,7 +194,7 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
 		if(ind != bestScoreInd):
-			if(Globalscript.prob(80)):
+			if(Globalscript.prob(90)):
 				curSylph.ourNetwork.mutate_Network(0.01, 0, 5) #dont mutate best, second, or highscore
 			else:
 				if(Globalscript.prob(50)):
