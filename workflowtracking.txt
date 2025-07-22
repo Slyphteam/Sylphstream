@@ -61,16 +61,22 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Tomorrow, it's time to actually pay the piper and fix the sylph theta angle. Godspeed, soldier
+Step up/down movement code ----- * 
 
 -----------\
 =======+=======> FUTURE PLANS:
 -----------/
 
+Change all playermovementinput refs to use the camcage, so we can add recoverable viewpunch+ads lean
+^^ can hijack player interact raycheck for ads lean length
+
 HealthHolder and health UI element 
 Destructible prop to test health
 effectholder that interfaces with healtholder
 Add a "healing spell" player can do to gain few seconds of regen. Will eventually become quickstim.
+
+Change pausebutton scripts to have one parent, meta ui
+Also have there be a single holder for game UI
 
 ====+====> KEY:
 	+: Easy
@@ -78,31 +84,31 @@ Add a "healing spell" player can do to gain few seconds of regen. Will eventuall
 	*: Important (to current course of dev plans)
 	&: Unimportant
 
+
 Sylph maintenance:
 Randf function may have weird weights due to how floats work, look into it
 Look into mutating by "pulses"-- rather than shooting a shotgun into the network,
 take a random input, and for x of outputs, mutate those, than take 1-2 from the mutated and pulse again
 
+
 It looks like we're sabotaging ourselves with memory caching for weights and biases. 
 Consider swapping the traversal order to go row by row on all traversals
 Reimport sylph head but make sure it's actually centered this time, doofus.
-It's about time the "learning" got upscaled and seriously left to bake.
 
 
 ====+====> FUNCTIONAL:
 
 crosshair changes with move speed **
-Step up/down movement code ----- * (will have to do it at some point)
+"button-like dialogue trees"
 
 ====+====> EXPERIENTIAL:
 re-add FOV changing with speed, but make it steppy to prevent jitters
-"button-like dialogue trees"
-Scrolling chat
-get better pistol gunshot &++
+
 footstep sounds +++
 context-sensitive leaning --&
 fix weapon clipping +++ &
-ADS makes the camera zoom in?
+ADS makes the camera zoom in
+Scrolling chat
 
 Sylph and playermodel bodies v2, but test with the millian prior
 
@@ -112,10 +118,6 @@ Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
 Archon intro ditty:
 low high bitlower medium - - - - - - high low
 low high bitlower - - + verlow high lowwww
-
-
-Change pausebutton scripts to have one parent, meta ui
-Also have there be a single holder for game UI
 
 Watch inventory system video. Make simple shitty top bar for player inv
 
