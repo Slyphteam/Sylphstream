@@ -461,11 +461,27 @@ func checkVelocityAndMove():
 	move_and_slide()
 	playerVelocity = velocity
 	playerSpeed = playerVelocity.length()
-	do_Floorsnap_Check()
+	justSnapped = do_Floorsnap_Check()
+	
+	onfloorPrev = is_on_floor()
 
+var onfloorPrev ##Were we just on the floor last frame?
+var justSnapped
 ##Does a test to see if the player has a "ground" beneath them they can snap to.
 func do_Floorsnap_Check():
-	return
+	if(! is_on_floor() && playerVelocity.y == 0 && (onfloorPrev || justSnapped)): #TODO: use demorgans and have this return if we dont wanna do things
+		var moveCheckRes = PhysicsTestMotionResult3D.new()
+		var checkParameters = PhysicsTestMotionParameters3D.new()
+		checkParameters.from = global_transform #Our worldspace
+		checkParameters.motion = Vector3(0, -0.26, 0) #down -0.26
+		
+		if(PhysicsServer3D.body_test_motion(self.get_rid(), checkParameters, moveCheckRes)):
+			var neededMove = moveCheckRes.get_travel().y ##How far we need to go to be about to collide
+			position.y += neededMove #wow. this should be better code.
+			apply_floor_snap() #supposedly prevents bouncing. IDRC enough to test it, tbh
+			return true
+			
+	return false
 
 ##updates the playerVelocity variable based on friction variables
 func handle_Friction(delta, fricMod):
