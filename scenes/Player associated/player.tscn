@@ -44,6 +44,10 @@ shape = SubResource("SeparationRayShape3D_oajfq")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.672591, -0.516099)
 shape = SubResource("SeparationRayShape3D_oajfq")
 
+[node name="StepperB" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.673, 0.516)
+shape = SubResource("SeparationRayShape3D_oajfq")
+
 [node name="camCage" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59654, 0)
 
