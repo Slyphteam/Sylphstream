@@ -76,18 +76,18 @@ var allScores: Array
 
 
 var hitMult: int = 6 ##Multiplicative reward for hits
-var missDiv: int =  0 ##Divide penalty for misses by this amount
+var missDiv: int =  10 ##Divide penalty for misses by this amount
 var missAllow: int = 10 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 60 ##What will we divide the per-frame penalty by for not seeing target?
+var visionDiv: int = 50 ##What will we divide the per-frame penalty by for not seeing target?
 
 var prevBest = -30
 var revertcount = 0
-var mutAmount = 0.25
-var mutPercent = 30
+var mutAmount = 0.05
+var mutPercent = 10
 
-var generation: int = 19
-var highScore = -15
+var generation: int = 32
+var highScore = -30
 
 ##Function that scores all sylphs in the global allSylphs array
 func score_Sylphs_All():
@@ -131,13 +131,19 @@ func score_Sylphs_All():
 		for curSylph in Globalscript.allSylphs:
 			curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
 			if(ind > 2):
-				curSylph.ourNetwork.mutate_Network(0.1, 0, 50) 
+				curSylph.ourNetwork.mutate_Network(mutAmount, 0, 50) 
 			ind +=1
-		generation -=1
+		# generation -=1
 		revertcount +=1
+		
+		if(revertcount > 5):
+			print("too much revertion!")
+		
+		prevBest -= 1
 		return
 	else:
 		revertcount = 0
+		
 		if(bestScore >prevBest):
 			prevBest = bestScore
 	
@@ -152,8 +158,7 @@ func score_Sylphs_All():
 	Globalscript.allSylphs[secondScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/currentSecond.txt")
 	
 	
-	if(revertcount > 5):
-		print("too much revertion!")
+	
 
 	generation +=1
 	print("Generation: ", generation)
@@ -163,14 +168,14 @@ func score_Sylphs_All():
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen5.txt")
 		mutAmount = 0.1
 	if(generation == 10):
-		mutAmount = 0.07
+	
 		mutPercent = 20
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen10.txt")
 	elif(generation == 20):
 		mutPercent = 15
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen20.txt")
 	elif(generation == 30):
-		mutPercent = 10
+
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen30.txt")
 	elif(generation == 40):
 		
