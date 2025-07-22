@@ -11,8 +11,8 @@ func hit_By_Bullet(dam, damtype, dir, origin):
 	
 	var move:float = randi_range(-20, 20) #frick floats, do integer steppings
 	move /= 20
-	#if(move < 5 && move > -5): #don't move the target a small amount.
-		#move = randi_range(-20, 20)
+	if(move < 5 && move > -5): #don't move the target a small amount.
+		move = randi_range(-20, 20)
 	
 	#side side
 	root.global_position.z = clamp(targetOrig - 3, root.global_position.z + move, targetOrig + 3 )

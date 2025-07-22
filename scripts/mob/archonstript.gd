@@ -75,7 +75,7 @@ func restart_Sylph_Test():
 var allScores: Array
 
 
-var hitMult: int = 6 ##Multiplicative reward for hits
+var hitMult: int = 7 ##Multiplicative reward for hits
 var missDiv: int =  10 ##Divide penalty for misses by this amount
 var missAllow: int = 10 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
@@ -83,10 +83,10 @@ var visionDiv: int = 50 ##What will we divide the per-frame penalty by for not s
 
 var prevBest = -30
 var revertcount = 0
-var mutAmount = 0.05
-var mutPercent = 10
+var mutAmount = 0.09
+var mutPercent = 1
 
-var generation: int = 32
+var generation: int = 39
 var highScore = -30
 
 ##Function that scores all sylphs in the global allSylphs array
