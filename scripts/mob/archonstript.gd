@@ -73,15 +73,18 @@ func restart_Sylph_Test():
 
 
 var allScores: Array
-var highScore = -20
+var highScore = -30
 
-var hitMult: int = 5 ##Multiplicative reward for hits
-var missDiv: int =  4 ##Divide penalty for misses by this amount
-var missAllow: int = 8 ##How many misses will we tolerate before punishing?
+var hitMult: int = 6 ##Multiplicative reward for hits
+var missDiv: int =  0 ##Divide penalty for misses by this amount
+var missAllow: int = 10 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 100 ##What will we divide the per-frame penalty by for not seeing target?
-var generation: int = 1
+var visionDiv: int = 60 ##What will we divide the per-frame penalty by for not seeing target?
+var generation: int = 0
 var prevBest = -30
+var revertcount = 0
+var mutAmount = 0.25
+var mutPercent = 30
 
 ##Function that scores all sylphs in the global allSylphs array
 func score_Sylphs_All():
@@ -119,26 +122,35 @@ func score_Sylphs_All():
 	print(allScores)
 	print("Best score: ", bestScore, " ", bestScoreInd, " Runner-up ", secondBestScore, " ", secondScoreInd)
 	
+	ind = 0
+	if(bestScore < (prevBest - 3) && generation > 50):
+		print("reverting. count: ", revertcount)
+		for curSylph in Globalscript.allSylphs:
+			curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
+			if(ind > 2):
+				curSylph.ourNetwork.mutate_Network(0.1, 0, 50) 
+			ind +=1
+		generation -=1
+		revertcount +=1
+		return
+	else:
+		revertcount = 0
+		if(bestScore >prevBest):
+			prevBest = bestScore
+	
+	
 	if(bestScore > highScore):
 		print("Highscore beat!")
 		highScore = bestScore
 		highScoreInd = bestScoreInd
 		Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
 	
-	if(bestScore < (prevBest - 3)):
-		print("reverting")
-		for curSylph in Globalscript.allSylphs:
-			curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
-			curSylph.ourNetwork.mutate_Network(0.1, 0, 1) 
-		generation -=1
-		return
-	else:
-		if(bestScore >prevBest):
-			prevBest = bestScore
-		
 	Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/currentBest.txt")
 	Globalscript.allSylphs[secondScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/currentSecond.txt")
 	
+	
+	if(revertcount > 5):
+		print("too much revertion!")
 
 	generation +=1
 	print("Generation: ", generation)
@@ -146,13 +158,20 @@ func score_Sylphs_All():
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen1.txt")
 	elif(generation == 5):
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen5.txt")
-	elif(generation == 10):
+		mutAmount = 0.1
+	if(generation == 10):
+		mutAmount = 0.07
+		mutPercent = 20
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen10.txt")
 	elif(generation == 20):
+		mutPercent = 15
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen20.txt")
 	elif(generation == 30):
+		mutPercent = 10
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen30.txt")
 	elif(generation == 40):
+		
+		mutAmount = 0.03
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen40.txt")
 	elif(generation == 50):
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen50.txt")
@@ -163,10 +182,10 @@ func score_Sylphs_All():
 		
 		if(ind != bestScoreInd && ind != secondScoreInd):
 			if(Globalscript.prob(60)):
-				print("  Copied from best!")
+				#print("  Copied from best!")
 				curSylph.copy_From_Other(Globalscript.allSylphs[bestScoreInd])
 			else:
-				print("  Copied from second!")
+				#print("  Copied from second!")
 				curSylph.copy_From_Other(Globalscript.allSylphs[secondScoreInd])
 		
 		ind+=1
@@ -174,10 +193,10 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
 		if(ind != bestScoreInd):
-			curSylph.ourNetwork.mutate_Network(0.05, 0, 10) #dont mutate best, second, or highscore
-			print("  Mutated!")
-		else:
-			print("  Didn't!")
+			curSylph.ourNetwork.mutate_Network(mutAmount, 0, 10) #dont mutate best, second, or highscore
+			#print("  Mutated!")
+		#else:
+			#print("  Didn't!")
 		ind +=1
 	
 
