@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci3jdwb1gi2gg"]
+
+[ext_resource type="PackedScene" uid="uid://dlf8k3s3rc5d" path="res://models/glbs and textures/sporting clay.glb" id="1_f4aq7"]
+
+[node name="sporting clay" instance=ExtResource("1_f4aq7")]
