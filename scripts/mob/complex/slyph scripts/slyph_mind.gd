@@ -62,7 +62,7 @@ func copy_From_Other(otherSylph):
 ##Sets the Sylph up to activate for a period of time
 func begin_Test():
 	mindEnabled = true
-	activeTime = 900
+	activeTime = 1200
 
 ##Calculates score from target based on total hits, penalty for weird movement, and penalty for firing when empty.
 func score_Performance(hitMultiplier, missDivisor, 
@@ -144,16 +144,25 @@ func process_Actions(delta):
 	for x in desiredActions.size():
 		desiredActions[x] /= 0.7
 	
+	
+	
 	var deltaScalar = 60 * delta
 	var leftRight = desiredActions[0] * aimSensitivity * deltaScalar ##max per-frame movement is 3 degrees
 	var upDown = desiredActions[1] * aimSensitivity * deltaScalar ##Max per-frame movement is 3 degrees
 	
-	
-	
+	#Index 16: stop movement
+	var mouseStop = desiredActions[16]
+	if(mouseStop > 0.8):
+		leftRight *=  1 - mouseStop + 0.4
+		upDown *= 1 - mouseStop + 0.4
+
 	
 		#add friction
 	aimVector *= 0.7 #does this work?
 	aimVector += Vector2(leftRight, upDown) 
+	
+
+	
 	var speed = aimVector.length()
 	
 	#microPenalty += Vector2(desiredActions[0], desiredActions[1]).length() / 3
@@ -168,7 +177,8 @@ func process_Actions(delta):
 	var maxSpeed = 3 * deltaScalar
 	aimVector.x = clampf(aimVector.x, -maxSpeed, maxSpeed)
 	aimVector.y = clampf(aimVector.y, -maxSpeed, maxSpeed)
-	
+
+
 
 	body.move_Head_Exact(aimVector)
 	
@@ -204,7 +214,7 @@ func process_Actions(delta):
 	#we don't actually do anything for modal data output/input. 
 	#that's for the sylphs :)
 	
-	#INDEX 16,17: EXTRAS
+	#INDEX 17: EXTRAS
 	#we also dont do anything with this.
 	#total: 18
 
