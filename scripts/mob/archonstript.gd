@@ -75,19 +75,19 @@ func restart_Sylph_Test():
 var allScores: Array
 
 
-var hitMult: int = 5 ##Multiplicative reward for hits
+var hitMult: int = 10 ##Multiplicative reward for hits
 var missDiv: int =  0 ##Divide penalty for misses by this amount
 var missAllow: int = 10 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
 var visionDiv: int = 30 ##What will we divide the per-frame penalty by for not seeing target?
 
-var prevBest = -30
+var prevBest = -80
 var revertcount = 0
 var mutAmount = 0.09
 var mutPercent = 1
 
-var generation: int = 89
-var highScore = -19
+var generation: int = 108
+var highScore = -26
 
 ##Function that scores all sylphs in the global allSylphs array
 func score_Sylphs_All():
@@ -96,7 +96,7 @@ func score_Sylphs_All():
 		allScores[ind] = curSylph.score_Performance(hitMult, missDiv, missAllow, accuracyRew, visionDiv)
 		ind+=1
 	
-	var bestScore = -100
+	var bestScore = -150
 	var bestScoreInd 
 	var secondBestScore = -200
 	var secondScoreInd 
@@ -123,10 +123,10 @@ func score_Sylphs_All():
 	
 	
 	print(allScores)
-	print("Best score: ", bestScore, " ", bestScoreInd, " Runner-up ", secondBestScore, " ", secondScoreInd)
+	print("Best score: ", bestScore, " [", bestScoreInd, "] Runner-up ", secondBestScore, " []", secondScoreInd)
 	
 	ind = 0
-	if(bestScore < (prevBest - 5)):
+	if(bestScore < (prevBest - 10)):
 		print("reverting. count: ", revertcount)
 		#for curSylph in Globalscript.allSylphs:
 			#curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
@@ -138,7 +138,7 @@ func score_Sylphs_All():
 		if(revertcount > 7):
 			print("too much revertion!")
 		
-		prevBest -= 1
+		prevBest -= 2
 		return
 	else:
 		revertcount = 0
@@ -161,23 +161,25 @@ func score_Sylphs_All():
 
 	generation +=1
 	
-	if(generation > 100):
+	if(generation > 120):
 		print("thats enough!")
 	
-	print("Generation: ", generation)
-
-	if(generation == 60):
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen60.txt")
-	elif(generation == 70):
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen70.txt")
-	elif(generation == 80):
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen80.txt")
-	elif(generation == 90):
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen90.txt")
-	elif(generation == 100):
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen100.txt")
-
-	
+	#print("Generation: ", generation)
+#
+	#if(generation == 60):
+		#Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen60.txt")
+	#elif(generation == 70):
+		#Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen70.txt")
+	#elif(generation == 80):
+		#Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen80.txt")
+	#elif(generation == 90):
+		#Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen90.txt")
+	#elif(generation == 100):
+		#Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen100.txt")
+	#elif(generation <= 110):
+		#Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen110.txt")
+#
+	#
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
 		
@@ -194,13 +196,13 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.allSylphs:
 		if(ind != bestScoreInd):
-			if(Globalscript.prob(90)):
+			if(Globalscript.prob(80)):
 				curSylph.ourNetwork.mutate_Network(0.01, 0, 5) #dont mutate best, second, or highscore
 			else:
 				if(Globalscript.prob(50)):
 					curSylph.ourNetwork.mutate_Network(0.3, 0, 1)
 				else:
-					curSylph.ourNetwork.mutate_Network(0.01, 0, 40)
+					curSylph.ourNetwork.mutate_Network(0.1, 0, 50)
 			#print("  Mutated!")
 		#else:
 			#print("  Didn't!")

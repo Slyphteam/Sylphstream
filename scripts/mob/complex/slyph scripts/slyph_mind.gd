@@ -148,12 +148,15 @@ func process_Actions(delta):
 	var leftRight = desiredActions[0] * aimSensitivity * deltaScalar ##max per-frame movement is 3 degrees
 	var upDown = desiredActions[1] * aimSensitivity * deltaScalar ##Max per-frame movement is 3 degrees
 	
+	
+	
+	
 		#add friction
 	aimVector *= 0.7 #does this work?
 	aimVector += Vector2(leftRight, upDown) 
 	var speed = aimVector.length()
 	
-	microPenalty += Vector2(desiredActions[0], desiredActions[1]).length() / 3
+	#microPenalty += Vector2(desiredActions[0], desiredActions[1]).length() / 3
 	
 
 	
