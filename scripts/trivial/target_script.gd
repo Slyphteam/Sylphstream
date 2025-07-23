@@ -1,4 +1,4 @@
-##Deprecated script, since I moved the generic "target hit" statement to the bullet reactive parent.
+##Special script for the sylph testing targets. They're fun to shoot for players as well.
 class_name testing_target extends RAYCASTREACTIVE
 @onready var root:SCOREDTARGET = $"../.."
 @onready var targetOrig = root.global_position
