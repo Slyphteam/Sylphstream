@@ -398,7 +398,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.4432
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.632, 0.648801, 1.85266)
 
 [node name="sporting clay" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.59629, 1.57643, -3.38325)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.87644, 2.82441, 2.62155)
 
 [node name="range table" type="StaticBody3D" parent="Environment/Range"]
 
@@ -425,6 +425,18 @@ transform = Transform3D(0.707107, -6.32203e-08, -0.707107, -8.9407e-08, -1, 0, -
 
 [node name="rimfire_ammobox" parent="Environment/Range" instance=ExtResource("11_ttle0")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -0.0358887, 0.84564, 3.90211)
+
+[node name="sporting clay2" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.38655, 3.00265, -2.00308)
+
+[node name="sporting clay3" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.48756, 3.50473, 0.193213)
+
+[node name="sporting clay4" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.59629, 1.57643, -3.38325)
+
+[node name="sporting clay5" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.65326, 1.32227, 2.23695)
 
 [node name="Testing zone" type="Node3D" parent="Environment"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.6961, 2, 5.5732e-06)

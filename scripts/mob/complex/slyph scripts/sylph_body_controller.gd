@@ -21,7 +21,7 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 func interact_By_Player(playerRef):
 
 	print("Hi!")
-	#mind.begin_Test()
+	mind.begin_Test()
 	#mind.do_Vision()
 	
 

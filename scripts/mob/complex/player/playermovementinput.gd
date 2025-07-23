@@ -57,6 +57,8 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 @onready var playerCollider = $playercollidercapsule
 @onready var invenManager: PLAYERINVENMANAGER = $camCage/came/weapon_rig
 @onready var uiInfo = $"Player UI"
+@onready var healthHolder = $HEALTHHOLDER
+
 
 func _ready():
 	Globalscript.thePlayer = self
@@ -547,3 +549,16 @@ func apply_Viewpunch(azimuth: float, zenith: float):
 	xlook += zenith
 
 #func apply_Autorecover_Viewpunch() #implement this when you finish the camcage modularity pass
+
+
+
+func hit_By_Bullet(dam, _damtype, _dir, _origin):
+	
+	##Make getting shot more noticable. Chance this to autorecover viewpunch when you make that function.
+	var punch1 = randi_range(-5, 5)
+	var punch2 = randi_range(-10, 10)
+	invenManager.applyViewpunch(punch1, punch2)
+	
+	var newHP = healthHolder.take_Dam(dam)
+	
+	print("You just got shot!! ", dam, " Your hp: ", newHP)

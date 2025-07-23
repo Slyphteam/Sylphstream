@@ -13,7 +13,7 @@ func take_Dam(incomingDam)->int:
 		doDie()
 	return newHealth
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(takenDamage != 0):
 		curHealth -= takenDamage
 		takenDamage = 0
