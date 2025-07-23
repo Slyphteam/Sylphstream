@@ -75,18 +75,18 @@ func restart_Sylph_Test():
 var allScores: Array
 
 
-var hitMult: int = 7 ##Multiplicative reward for hits
-var missDiv: int =  10 ##Divide penalty for misses by this amount
+var hitMult: int = 5 ##Multiplicative reward for hits
+var missDiv: int =  0 ##Divide penalty for misses by this amount
 var missAllow: int = 10 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
-var visionDiv: int = 50 ##What will we divide the per-frame penalty by for not seeing target?
+var visionDiv: int = 30 ##What will we divide the per-frame penalty by for not seeing target?
 
 var prevBest = -30
 var revertcount = 0
 var mutAmount = 0.09
 var mutPercent = 1
 
-var generation: int = 50
+var generation: int = 81
 var highScore = -30
 
 ##Function that scores all sylphs in the global allSylphs array
@@ -135,7 +135,7 @@ func score_Sylphs_All():
 			#ind +=1
 		revertcount +=1
 		
-		if(revertcount > 20):
+		if(revertcount > 7):
 			print("too much revertion!")
 		
 		prevBest -= 1
@@ -171,7 +171,7 @@ func score_Sylphs_All():
 	elif(generation == 70):
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen70.txt")
 	elif(generation == 80):
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen800.txt")
+		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen80.txt")
 	elif(generation == 90):
 		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen90.txt")
 	elif(generation == 100):
