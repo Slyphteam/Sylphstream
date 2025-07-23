@@ -62,7 +62,7 @@ func copy_From_Other(otherSylph):
 ##Sets the Sylph up to activate for a period of time
 func begin_Test():
 	mindEnabled = true
-	activeTime = 400
+	activeTime = 900
 
 ##Calculates score from target based on total hits, penalty for weird movement, and penalty for firing when empty.
 func score_Performance(hitMultiplier, missDivisor, 

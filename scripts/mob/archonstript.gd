@@ -67,7 +67,7 @@ func begin_Sylph_Test():
 ##Does a new cycle of testing
 func restart_Sylph_Test():
 	
-	testTime = 450
+	testTime = 950
 	for curSylph in Globalscript.allSylphs:
 		curSylph.begin_Test()
 
@@ -86,8 +86,8 @@ var revertcount = 0
 var mutAmount = 0.09
 var mutPercent = 1
 
-var generation: int = 81
-var highScore = -30
+var generation: int = 89
+var highScore = -19
 
 ##Function that scores all sylphs in the global allSylphs array
 func score_Sylphs_All():
