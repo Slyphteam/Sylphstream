@@ -66,8 +66,6 @@ Other places are as follow:
 =======+=======> FUTURE PLANS:
 -----------/
 
-Change all playermovementinput refs to use the camcage, so we can add recoverable viewpunch+ads lean
-^^ can hijack player interact raycheck for ads lean length
 
 HealthHolder and health UI element 
 Destructible prop to test health
