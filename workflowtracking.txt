@@ -61,19 +61,25 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+Turret sketch
+Turret and button models
+Copy over the player healthholder to a Complexhealthholder (for entities, different from
+simple which is for static objects)
+Turret shoots player when button is pressed
+#mysmee as a healing item
+#mysmee as an item that gives healing effect when held
+
 
 -----------\
 =======+=======> FUTURE PLANS:
 -----------/
 
 
-HealthHolder and health UI element 
-Destructible prop to test health
+
 effectholder that interfaces with healtholder
 Add a "healing spell" player can do to gain few seconds of regen. Will eventually become quickstim.
 
-Change pausebutton scripts to have one parent, meta ui
-Also have there be a single holder for game UI
+Refactor UI to be FULLY dependent on the singular ui manager. No other scripts, thats messy.
 
 ====+====> KEY:
 	+: Easy
@@ -102,6 +108,8 @@ be too absurdly lenient, though.
 
 
 ====+====> EXPERIENTIAL:
+Change degubby reload and fire sounds to be distinctly not gunshots
+
 re-add FOV changing with speed, but make it steppy to prevent jitters
 
 footstep sounds +++
