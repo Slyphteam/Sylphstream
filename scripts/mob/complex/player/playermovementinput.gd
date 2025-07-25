@@ -57,7 +57,7 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 @onready var playerCollider = $playercollidercapsule
 @onready var invenManager: PLAYERINVENMANAGER = $camCage/came/weapon_rig
 @onready var uiInfo = $"Player UI"
-@onready var healthHolder = $HEALTHHOLDER
+@onready var healthHolder = $"Player Health"
 
 
 func _ready():

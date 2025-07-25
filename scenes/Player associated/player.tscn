@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/weaponsystem/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
-[ext_resource type="Script" uid="uid://1w773btoqbqs" path="res://scripts/mob/damsystem/health_holder.gd" id="6_ddril"]
+[ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scenes/Player associated/player_healthholder.gd" id="6_ddril"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/Player associated/playermodel.tscn" id="6_tgbf5"]
 [ext_resource type="Texture2D" uid="uid://5h5e2fdfww0f" path="res://resources/image resources/uiholdertest.png" id="9_f4klr"]
 [ext_resource type="Script" uid="uid://bt86hsaoopo8b" path="res://scripts/mob/complex/player/ui associated/ammocounters.gd" id="9_iy7ap"]
@@ -65,9 +65,8 @@ script = ExtResource("5_tuyoq")
 ourHands = ExtResource("4_kiyhm")
 starterWeapon = ExtResource("5_gor7x")
 
-[node name="HEALTHHOLDER" type="Node" parent="."]
+[node name="Player Health" type="Node" parent="."]
 script = ExtResource("6_ddril")
-metadata/_custom_type_script = "uid://1w773btoqbqs"
 
 [node name="playercollidercapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26282, 0)
@@ -157,6 +156,7 @@ position = Vector2(157, -22)
 texture = ExtResource("10_ddril")
 
 [node name="Health" type="Label" parent="Player UI/Health"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = -35.0
 offset_right = 113.0
@@ -168,6 +168,7 @@ text = "100"
 horizontal_alignment = 1
 
 [node name="Aura" type="Label" parent="Player UI/Health"]
+layout_mode = 0
 offset_left = 173.0
 offset_top = -35.0
 offset_right = 266.0
