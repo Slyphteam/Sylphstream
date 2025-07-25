@@ -3,14 +3,14 @@ class_name testing_target extends RAYCASTREACTIVE
 @onready var root:SCOREDTARGET = $"../.."
 @onready var targetOrig = root.global_position
 
-func hit_By_Bullet(dam, damtype, dir, origin):
+func hit_By_Bullet(dam, _damtype, _dir, _entity):
 	#print(root.global_position.z)
 	print("Target hit! ", dam)
 	
 	
 	
 	var move:float = randi_range(-10, 10) #frick floats, do integer steppings
-	move /= 10
+	@warning_ignore("integer_division") move /= 10
 	#if(move < 5 && move > -5): #don't move the target a small amount.
 		#move = randi_range(-20, 20)
 	 
@@ -18,7 +18,7 @@ func hit_By_Bullet(dam, damtype, dir, origin):
 	root.global_position.z += move
 	root.global_position.z = clamp(root.global_position.z + move, targetOrig.z - 3,  targetOrig.z + 3 )
 	#forward back
-	move= randi_range(-20, 20) / 10
+	@warning_ignore("integer_division") move= randi_range(-20, 20) / 10
 	root.global_position.x += move
 	root.global_position.x = clamp(root.global_position.x + move, targetOrig.x - 3, targetOrig.x + 3 )
 	

@@ -14,11 +14,8 @@ func assign_Info(origIC: Vector3, endIC: Vector3, spaceStateIC:PhysicsDirectSpac
 	dam = damIC
 	
 func take_Shot():
-	var ignore: Array[RID]
 	var raycheck:PhysicsRayQueryParameters3D
 	
-
-	var player:RID = Globalscript.thePlayer
 	#3 is 110etc, aka the bullet collision layer
 	#also, always exclude the weapon's origin/user from getting hit
 	raycheck = PhysicsRayQueryParameters3D.create(orig, end, 3, [invManager.user]) 

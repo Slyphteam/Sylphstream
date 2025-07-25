@@ -161,10 +161,6 @@ func process_Actions(delta):
 	aimVector *= 0.7 #does this work?
 	aimVector += Vector2(leftRight, upDown) 
 	
-
-	
-	var speed = aimVector.length()
-	
 	#microPenalty += Vector2(desiredActions[0], desiredActions[1]).length() / 3
 	
 
@@ -346,7 +342,7 @@ func do_Vision():
 		#We'll go from -1 to .90 to better differentiate it from max dist
 		# therefore, our range will be 1.9 offset by 1
 		#connectingvec / 23 is between 0 and 1
-		var dist = (connectingVec.length() / 12.5) -1 #value between 0 and 2
+		#var dist = (connectingVec.length() / 12.5) -1 #value between 0 and 2
 		sensoryInput[18] = (connectingVec.length() / 12.5) -1 
 		
 		#4: EXTREMA
@@ -416,19 +412,19 @@ func get_Vision_Targets(visionBlock:Area3D):
 	return false
 
 
-func mutation_Test(val:float):
-	
-	print("Before mutation:")
-	print(ourNetwork.get_Layer(1).weights[0])
-	print(ourNetwork.get_Layer(1).weights[1])
-	print(ourNetwork.get_Layer(1).weights[2])
-	
-	ourNetwork.mutate_Network(10, 0, 50)
-	#UHOH!!!! DIDNT DO THEM ALL!!!
-	print("After mutation:")
-	print(ourNetwork.get_Layer(1).weights[0])
-	print(ourNetwork.get_Layer(1).weights[1])
-	print(ourNetwork.get_Layer(1).weights[2])
+#func mutation_Test(val:float):
+	#
+	#print("Before mutation:")
+	#print(ourNetwork.get_Layer(1).weights[0])
+	#print(ourNetwork.get_Layer(1).weights[1])
+	#print(ourNetwork.get_Layer(1).weights[2])
+	#
+	#ourNetwork.mutate_Network(10, 0, 50)
+	##UHOH!!!! DIDNT DO THEM ALL!!!
+	#print("After mutation:")
+	#print(ourNetwork.get_Layer(1).weights[0])
+	#print(ourNetwork.get_Layer(1).weights[1])
+	#print(ourNetwork.get_Layer(1).weights[2])
 
 #Total inputs: 17, with 3 extra nodes
 #Total outputs: 16, with 2 extra nodes

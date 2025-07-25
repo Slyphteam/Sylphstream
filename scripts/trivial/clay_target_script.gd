@@ -1,6 +1,6 @@
 extends RAYCASTREACTIVE
 
-func hit_By_Bullet(dam, damtype, dir, origin):
+func hit_By_Bullet(dam, _damtype, _dir, _originator):
 	#print(root.global_position.z)
 	
 	var newHP = healthholder.take_Dam(dam)

@@ -12,8 +12,8 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	weaponMesh.scale = wepToLoad.scale
 
 ##Version of _process() for nodes
-func manualProcess(manualProcess):
-	pass
+#func manualProcess(manualProcess):
+	#pass
 
 ##Frees all nodes created by the wepinstance.
 func unload():

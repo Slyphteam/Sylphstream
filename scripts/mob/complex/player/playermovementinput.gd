@@ -404,8 +404,7 @@ func do_Qke_AirAccelerate(desiredVel, delta):
 	if(wspd > 30): #30 units is in QUAKE units, convert this >:(
 		wspd = 30
 	
-	var qkecurspd = playerVelocity.dot(vvel)
-	
+	var qkecurspd = playerVelocity.dot(vvel) #this should be used, iirc.
 	
 	var qkespd = wspd - playerSpeed #aka add_speed
 	if(qkespd <=0):

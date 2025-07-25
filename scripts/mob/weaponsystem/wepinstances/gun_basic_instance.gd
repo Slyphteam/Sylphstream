@@ -226,9 +226,10 @@ func adjustAcuracy(amnt):
 	
 	#somewhat misleading but the absolute smallest value that max can be and still preserve their delta
 	var absoluteMin = totalMaxRecoil - totalMinRecoil
-
-	minRecoil = clamp(minRecoil+amnt, 0, 200) 
-	maxRecoil = clamp(maxRecoil+amnt, absoluteMin, 200)
+	
+	#never EVER go above 11 degrees of recoil (an absurd amount)
+	minRecoil = clamp(minRecoil+amnt, 0, 80) 
+	maxRecoil = clamp(maxRecoil+amnt, absoluteMin, 80)
 	
 
 	recoveryDivisor = maxRecoil * 2 * (1 + (1/recoveryAmount)) #recalculate recoverydivisor

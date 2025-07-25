@@ -77,7 +77,7 @@ func populate_Layer_Rand(desiredLayer: int):
 	
 
 ##Mutates a selected layer of by random values clamped by 0+-(mutationAmount). Seperate value for activations.
-func mutate_Layer(desiredLayer: int, mutationAmount: float, activationMut:float, mutationChance: int):
+func mutate_Layer(desiredLayer: int, mutationAmount: float, _activationMut:float, mutationChance: int):
 	var selectedLay = ourLayers[desiredLayer]
 	var newVal:float
 	
@@ -128,7 +128,6 @@ func copy_Layer_From_Other(ourLayer:LAYER, theirLayer:LAYER):
 
 	#weights
 	var x:int = 0
-	var curArray:Array
 	while(x<theirLayer.nodesIn): #ordinarily y is used for nodesIn but there is only one loop here
 		ourLayer.weights[x] = theirLayer.weights[x].duplicate(true) #if this doesnt work im gonna cry
 		x+=1

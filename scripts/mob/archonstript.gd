@@ -100,10 +100,9 @@ func score_Sylphs_All():
 	var bestScoreInd 
 	var secondBestScore = -200
 	var secondScoreInd 
-	var thirdBestScore = -300
-	var thirdBestInd
+	#var thirdBestScore = -300
+	#var thirdBestInd
 	
-	var newHigh
 	var highScoreInd = -1
 	
 	ind = 0
@@ -115,9 +114,9 @@ func score_Sylphs_All():
 		elif(curScore[0] > secondBestScore):
 			secondBestScore = curScore[0]
 			secondScoreInd = ind
-		elif(curScore[0] > thirdBestScore):
-			thirdBestScore = curScore[0]
-			thirdBestInd = ind
+		#elif(curScore[0] > thirdBestScore):
+			#thirdBestScore = curScore[0]
+			#thirdBestInd = ind
 		ind +=1
 	
 	
@@ -222,7 +221,7 @@ func score_Sylphs_Two():
 	
 	#update our generations. 
 	generation+=1
-	var keptScore = 0
+	#var keptScore = 0
 	var avgScore = float(totalSum) / float(generation)
 	print("Test complete! new average ", avgScore, " Generation: ", generation)
 	

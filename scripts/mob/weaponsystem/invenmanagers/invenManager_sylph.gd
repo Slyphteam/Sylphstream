@@ -42,10 +42,10 @@ func get_Ammo_Left():
 func get_Crosshair_Inaccuracy():
 	var ratio = activeItem.currentRecoil
 	
-	ratio /= 120 #value between 0 and 1
+	ratio /= 80 #value between 0 and 1
 	ratio *=2 #value between 0 and 2
 	ratio -=1 #value between -1 and 1
-	return 1
+	return ratio
 
 ##functions going down the hierarchy
 var totalShots = 0 ##Used in sylph scoring

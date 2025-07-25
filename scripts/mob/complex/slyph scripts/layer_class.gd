@@ -8,8 +8,8 @@ var weights ##Weights for incoming connections; 2D; nodesIn arrays of size nodes
 #for each node in the current layer, what modifiers do we have for all incoming nodes?
 var biases: Array[float] ##The value of each node when it fires
 
-var gradientWeight
-var gradientBias: Array[float]
+#var gradientWeight
+#var gradientBias: Array[float]
 
 var activations: Array[float] ##the chance for each node to fire (disabled)
 
@@ -17,12 +17,13 @@ func initialize_Layer(incoming, outgoing):
 	nodesIn = incoming
 	nodesOut = outgoing
 	weights = create_Empty_Grid(nodesIn, nodesOut)
-	gradientWeight = create_Empty_Grid(nodesIn, nodesOut)
+	#gradientWeight = create_Empty_Grid(nodesIn, nodesOut)
 	
 	
 	biases.resize(outgoing)
 	biases.fill(0.5)
-	gradientBias
+	
+	#gradientBias
 	
 	activations.resize(outgoing)
 	activations.fill(1)
@@ -35,23 +36,23 @@ func create_Empty_Grid(width, height):
 			grid[i].append(0.5) # Set a starter value for each position
 	return grid
 #
-func apply_Gradients(learnRate):
-	var x:int = 0
-	var numBiases = biases.size()
-	while (x<numBiases):
-		biases[x] -= gradientBias[x] * learnRate
-		x+=1
-	#weights
-	x = 0
-	var y:int
-	var curArray = []
-	while(x<nodesOut):
-		y=0
-		while(y<nodesIn):
-			curArray = weights[y]
-			curArray[x] -= gradientWeight[x][y] * learnRate
-			y+=1
-		x+=1
+#func apply_Gradients(learnRate):
+	#var x:int = 0
+	#var numBiases = biases.size()
+	#while (x<numBiases):
+		#biases[x] -= gradientBias[x] * learnRate
+		#x+=1
+	##weights
+	#x = 0
+	#var y:int
+	#var curArray = []
+	#while(x<nodesOut):
+		#y=0
+		#while(y<nodesIn):
+			#curArray = weights[y]
+			#curArray[x] -= gradientWeight[x][y] * learnRate
+			#y+=1
+		#x+=1
 
 
 #runtime seems to be associated with inputs being an empty array.
