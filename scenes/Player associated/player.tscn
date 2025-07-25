@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=20 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
 [ext_resource type="Resource" uid="uid://1iyc2y86li4i" path="res://resources/weapon resources/hands.tres" id="4_kiyhm"]
-[ext_resource type="Resource" uid="uid://dml6uaueraa87" path="res://resources/weapon resources/firearm/bergther_info.tres" id="5_oajfq"]
+[ext_resource type="Resource" uid="uid://cdavx6lb5f7ya" path="res://resources/weapon resources/melee/buraq_info.tres" id="5_gor7x"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/weaponsystem/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/Player associated/playermodel.tscn" id="6_tgbf5"]
 [ext_resource type="Texture2D" uid="uid://5h5e2fdfww0f" path="res://resources/image resources/uiholdertest.png" id="9_f4klr"]
 [ext_resource type="Script" uid="uid://bt86hsaoopo8b" path="res://scripts/mob/complex/player/ui associated/ammocounters.gd" id="9_iy7ap"]
+[ext_resource type="Texture2D" uid="uid://dvtr0683clxu2" path="res://resources/image resources/healthholderUI.png" id="10_ddril"]
 [ext_resource type="StyleBox" uid="uid://c7v5hhr02av55" path="res://resources/button BG theme.tres" id="12_33423"]
 [ext_resource type="Texture2D" uid="uid://dxdc2ni5jtua0" path="res://resources/image resources/pre alpha splash.png" id="12_kiyhm"]
 [ext_resource type="Script" uid="uid://bkssejl7vp64a" path="res://scripts/mob/complex/player/ui associated/pausebuttons.gd" id="13_oajfq"]
@@ -62,7 +63,7 @@ player = NodePath("../..")
 [node name="weapon_rig" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
 ourHands = ExtResource("4_kiyhm")
-starterWeapon = ExtResource("5_oajfq")
+starterWeapon = ExtResource("5_gor7x")
 
 [node name="HEALTHHOLDER" type="Node" parent="."]
 script = ExtResource("6_ddril")
@@ -140,6 +141,43 @@ offset_right = 200.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Player UI/Infopanel"]
 layout_mode = 2
+
+[node name="Health" type="Control" parent="Player UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="HealthholderUi" type="Sprite2D" parent="Player UI/Health"]
+z_index = -1
+position = Vector2(157, -22)
+texture = ExtResource("10_ddril")
+
+[node name="Health" type="Label" parent="Player UI/Health"]
+offset_left = 20.0
+offset_top = -35.0
+offset_right = 113.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "100"
+horizontal_alignment = 1
+
+[node name="Aura" type="Label" parent="Player UI/Health"]
+offset_left = 173.0
+offset_top = -35.0
+offset_right = 266.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "50
+"
+horizontal_alignment = 1
 
 [node name="Ammo" type="Control" parent="Player UI"]
 layout_mode = 1

@@ -1,3 +1,16 @@
+7/24:
+Added Health and Aura UI elements
+7/23:
+Players can now GET SHOT.
+Added clay targets that can be destroyed
+7/22:
+Players now auto step up and down small inclines. (FINALLY)
+7/20:
+Shooting now does its own modular raycast, code is much cleaner
+The first (square root) phase of recoil recovery has been significantly buffed, now
+goes faster instead of slower when player aims down sights
+7/19:
+Weapons now no longer jitter while player moves
 7/18:
 Added pause menu, pausing
 7/17:
