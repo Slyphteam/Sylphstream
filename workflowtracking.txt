@@ -60,9 +60,7 @@ Other places are as follow:
 -----------\
 =======+=======> CURRENT DEV CYCLE:
 -----------/
-
-Turret sketch
-Turret and button models
+ 
 Copy over the player healthholder to a Complexhealthholder (for entities, different from
 simple which is for static objects)
 Turret shoots player when button is pressed

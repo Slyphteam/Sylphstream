@@ -249,7 +249,7 @@ func do_Senses():
 	#equal to the hypotenuse of a iscoceles right triangle (with friction applied)
 	var highestPossibleSpeed = sqrt(4 * maxSpeed * maxSpeed) * 0.7
 	var adjustedSpeed = speed / highestPossibleSpeed
-	print(speed, " ", highestPossibleSpeed)
+	#print(speed, " ", highestPossibleSpeed)
 	sensoryInput[9] = 0
 	
 	#INDEX 10: TARGETS PRESENT
