@@ -22,7 +22,7 @@ func interact_By_Player(_playerRef):
 
 	print("Hi!")
 	#mind.do_Single_Thought(1/60)
-	#mind.begin_Test()
+	mind.begin_Test()
 	#mind.do_Vision()
 	
 

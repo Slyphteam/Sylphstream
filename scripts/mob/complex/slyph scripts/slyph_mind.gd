@@ -132,6 +132,7 @@ var aimVector: Vector2
 
 var aimingSights: bool = false
 var modeData: Array[float] = [0.0,0.0,0.0,0.0]
+var maxSpeed = 3 
 
 func process_Actions(delta):
 	
@@ -170,7 +171,7 @@ func process_Actions(delta):
 		#var inaccuracy = Vector2(randf_range(-0.01, 0.01), randf_range(-0.01, 0.01)) * speed
 		#aimVector += inaccuracy
 	#starting out with 3 max rotation speed
-	var maxSpeed = 3 * deltaScalar
+	maxSpeed = 3 * deltaScalar
 	aimVector.x = clampf(aimVector.x, -maxSpeed, maxSpeed)
 	aimVector.y = clampf(aimVector.y, -maxSpeed, maxSpeed)
 
@@ -239,19 +240,23 @@ func do_Senses():
 	
 	#INDEX 8: CROSSHAIR SIZE
 	sensoryInput[8] = manager.get_Crosshair_Inaccuracy()
-	if(sensoryInput[8] <= -0.984):
-		print("Crosshair size:", sensoryInput[8])
+	#if(sensoryInput[8] >= -0.74):
+		#print("Crosshair size:", sensoryInput[8])
 
 	#INDEX 9: AIMSPEED
-	#not doing this yet because I haven't programmed aim inertia
+	
+	var speed = aimVector.length()
+	#equal to the hypotenuse of a iscoceles right triangle (with friction applied)
+	var highestPossibleSpeed = sqrt(4 * maxSpeed * maxSpeed) * 0.7
+	var adjustedSpeed = speed / highestPossibleSpeed
+	print(speed, " ", highestPossibleSpeed)
 	sensoryInput[9] = 0
 	
 	#INDEX 10: TARGETS PRESENT
 	#not currently doing anything with this
 	sensoryInput[10] = targetsPresent
 	
-	#INDEX 11: Empty!
-	
+	#INDEX 11: Empty! formerly heartcur
 	sensoryInput[11] = 0#heartCur
 	
 	#INDEX 12: HEALTH
