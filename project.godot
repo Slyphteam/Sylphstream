@@ -36,6 +36,7 @@ version_control/autoload_on_startup=true
 damage_interactible="Objects that have special effects when hit by an item. NEEDS COLLISION MASK 2 AND RAYCAST_REACTIVE. KNOW WHAT YOU ARE DOING."
 player_interactible="Flag for player raycasts. CHECK RAYCAST_REACTIVE CLASS AND KNOW WHAT YOU ARE DOING."
 hit_decal_blacklist="Objects that specifically ARENT meant to have hit decals"
+has_manager="This entity has an Invenmanager and an implemented get_invenm class"
 
 [input]
 

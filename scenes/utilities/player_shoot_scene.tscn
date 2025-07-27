@@ -15,11 +15,12 @@ mesh = ExtResource("1_i11ae")
 
 [node name="BulletMesh" type="MeshInstance3D" parent="ButtonMesh"]
 transform = Transform3D(108.108, 0, 0, 0, 3.2448e-05, -100, 0, 37.0333, 4.32683e-06, 0, -0.000574267, -10.4835)
-visible = false
 mesh = ExtResource("2_guoto")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="ButtonMesh/BulletMesh"]
+[node name="StaticBody3D" type="StaticBody3D" parent="ButtonMesh/BulletMesh" groups=["hit_decal_blacklist", "player_interactible"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("3_ns380")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonMesh/BulletMesh/StaticBody3D"]

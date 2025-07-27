@@ -41,3 +41,6 @@ func move_Head_Exact(desired: Vector2):
 	#var diff = newangle - collider.rotation_degrees.y
 	#if(abs(diff) > 40):
 		#collider.rotation_degrees.y = (newangle + collider.rotation_degrees.y) / 2
+
+func get_invenm():
+	return manager

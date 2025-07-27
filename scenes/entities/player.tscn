@@ -31,7 +31,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
-[node name="Player" type="CharacterBody3D" groups=["damage_interactible"]]
+[node name="Player" type="CharacterBody3D" groups=["damage_interactible", "has_manager"]]
 collision_layer = 3
 script = ExtResource("1_qlg0r")
 

@@ -575,3 +575,6 @@ func hit_By_Bullet(dam, _damtype, _dir, _origin):
 	var newHP = healthHolder.take_Dam(dam)
 	
 	print("You just got shot!! ", dam, " Your hp: ", newHP)
+	
+func get_invenm():
+	return invenManager
