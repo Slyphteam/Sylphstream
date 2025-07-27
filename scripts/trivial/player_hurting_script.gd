@@ -5,7 +5,7 @@ extends StaticBody3D
 func interact_By_Player(player):
 	var space:PhysicsDirectSpaceState3D = get_world_3d().direct_space_state 
 	var end = player.global_position
-	var orig = end + Vector3(0, 0, 50) #from DA SKY!
+	var orig = end + Vector3(0, 10, 0) #from DA SKY!
 	var theShot = FIREDBULLET.new()
 	theShot.assign_Info(orig, end, space, null, damAmount)
 	theShot.take_Shot()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=21 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cdavx6lb5f7ya" path="res://resources/weapon resources/melee/buraq_info.tres" id="5_gor7x"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
+[ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/mob/damsystem/player_healthholder.gd" id="6_1yk18"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/entities/playermodel.tscn" id="6_tgbf5"]
 [ext_resource type="Script" uid="uid://3nauamnfq70c" path="res://scripts/mob/complex/player/ui associated/healthinfo.gd" id="9_ddril"]
@@ -66,6 +67,7 @@ ourHands = ExtResource("4_kiyhm")
 starterWeapon = ExtResource("5_gor7x")
 
 [node name="Player Health" type="Node" parent="."]
+script = ExtResource("6_1yk18")
 
 [node name="playercollidercapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26282, 0)

@@ -6,7 +6,7 @@ func _init():
 	process_mode = PROCESS_MODE_PAUSABLE
 
 var health: int = 100
-var takenDamage: int = 0
+var takenDamage: int = 0 ##What's the damage we're applying to health for the frame?
 
 func take_Dam(incomingDam)->int:
 	takenDamage += incomingDam

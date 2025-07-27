@@ -62,10 +62,9 @@ Other places are as follow:
 -----------\
 =======+=======> CURRENT DEV CYCLE:
 -----------/
- 
-Copy over the player healthholder to a Complexhealthholder (for entities, different from
-simple which is for static objects)
-Turret shoots player when button is pressed
+
+Bugtest player damage and health UI updates
+
 #mysmee as a healing item
 #mysmee as an item that gives healing effect when held
 

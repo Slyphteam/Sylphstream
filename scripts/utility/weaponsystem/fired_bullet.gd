@@ -26,7 +26,6 @@ func take_Shot():
 	var castResult = spaceState.intersect_ray(raycheck)
 	
 	if(castResult):
-		print(castResult)
 		var hitObject = castResult.get("collider")
 		if(hitObject.is_in_group("damage_interactible")):
 			hitObject.hit_By_Bullet(dam,2,3,4)

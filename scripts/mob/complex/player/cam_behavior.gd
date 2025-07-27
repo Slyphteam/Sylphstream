@@ -2,6 +2,7 @@
 # Manages bobbing, tilt, minor camera adjustments
 extends Camera3D
 
+
 # external variables
 @export var bob_speed_target : float = 0.0
 @export var tilt_amount_target : float = 0.0

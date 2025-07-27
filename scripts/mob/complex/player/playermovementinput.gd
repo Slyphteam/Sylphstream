@@ -14,11 +14,13 @@ const gravAmount = 60
 var ylook : float = 0
 var xlook : float = 0
 var mousesensitivity = 0.25
+var viewpunchRecoverSpeed = 0.5 ##LERP amount of the recovery. Should be lower with more damage.
+var currentlyRecovering: bool = false ## Are we in the midst of an auto-recovering viewpunch?
 
 #player input/movement variables
 var leftright : float ##variables for how "walking" we are in either cardinal direction
-var forback : float
-var playerVelocity: Vector3 = Vector3.ZERO # player's calculated velocity
+var forback : float ##How "walking" the player is in the forward/back direction
+var playerVelocity: Vector3 = Vector3.ZERO ## player's calculated velocity, as a vector
 var playerSpeed = 0 ## speed of player to prevent too many playerVelocity.length calls
 const maxvelocity = 100; ##this might not seem insane but keep in mind 20 is walking speed
 
@@ -185,6 +187,16 @@ func check_Directional_Movement():
 
 
 func _physics_process(delta: float) -> void:
+	
+	#handle auto-recovery from a viewpunch.
+	if(currentlyRecovering):
+		var theRot = playerCam.rotation
+		playerCam.rotation_degrees.x = lerpf(playerCam.rotation_degrees.x, 0, 0.5)
+		playerCam.rotation_degrees.y = lerpf(playerCam.rotation_degrees.y, 0, 0.5)
+		
+		
+		if(playerCam.rotation_degrees.x == 0 && playerCam.rotation_degrees.y == 0):
+			currentlyRecovering = false
 	
 	#Deal with WASD movements the proprietary way
 	check_Directional_Movement()
@@ -561,20 +573,34 @@ func apply_Viewpunch(azimuth: float, zenith: float):
 	ylook += azimuth
 	xlook += zenith
 
-#func apply_Autorecover_Viewpunch() #implement this when you finish the camcage modularity pass
+##Applies a viewpunch that the player's camera will automatically rectify from. Use for "animations"
+func apply_Autorecover_Viewpunch(lift, drift, punchSpeed):
+	currentlyRecovering = true
+	playerCam.rotation_degrees.x += drift
+	playerCam.rotation_degrees.y += lift
+	viewpunchRecoverSpeed = punchSpeed
 
 
 
 func hit_By_Bullet(dam, _damtype, _dir, _origin):
 	
-	##Make getting shot more noticable. Chance this to autorecover viewpunch when you make that function.
-	var punch1 = randi_range(-5, 5)
+	#It'll be fun to play with these values as polish, have them scale with damage taken,
+	#but for now, keep things simple, stupid.
+	
+	var punch1 = randi_range(-10, 10)
 	var punch2 = randi_range(-10, 10)
-	invenManager.applyViewpunch(punch1, punch2)
 	
-	var newHP = healthHolder.take_Dam(dam)
+	#var damSeverity = dam * 0.005
+	#damSeverity = (0.405 - damSeverity)
+	#damSeverity = clampf(damSeverity, 0.005, 0.4)
 	
-	print("You just got shot!! ", dam, " Your hp: ", newHP)
+	var damSeverity = 0.005
+	
+	
+	apply_Autorecover_Viewpunch(punch1, punch2, 0.5)
+	#invenManager.applyViewpunch(punch1, punch2)
+	healthHolder.take_Dam(dam)
+	
 	
 func get_invenm():
 	return invenManager
