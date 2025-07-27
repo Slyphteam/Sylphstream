@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MELEE_INFO" load_steps=2 format=3 uid="uid://brrkty0ka3yoq"]
 
-[ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/mob/weaponsystem/melee_resource.gd" id="1_6upt1"]
+[ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/utility/weaponsystem/melee_resource.gd" id="1_6upt1"]
 
 [resource]
 script = ExtResource("1_6upt1")

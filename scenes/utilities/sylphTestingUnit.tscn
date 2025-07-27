@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckdcn8ikpxnnw"]
 
-[ext_resource type="PackedScene" uid="uid://bfyduw5qytyby" path="res://scenes/sylphscene.tscn" id="1_ojdi1"]
+[ext_resource type="PackedScene" uid="uid://bfyduw5qytyby" path="res://scenes/entities/sylphscene.tscn" id="1_ojdi1"]
 [ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="2_8vb3w"]
 
 [node name="Node3D" type="Node3D"]

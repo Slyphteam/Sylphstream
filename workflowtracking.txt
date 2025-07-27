@@ -2,7 +2,9 @@
 Collision mask information:
 1: Basic physics layer
 2: Bullet interact raycast layer
-3: Player interact raycast layer
+3: Player interact raycast layer (npcs, pickups)
+4: Literally JUST the player
+5: Environment only
 
 
 Importing new weapon model:
@@ -67,12 +69,9 @@ Turret shoots player when button is pressed
 #mysmee as a healing item
 #mysmee as an item that gives healing effect when held
 
-
 -----------\
 =======+=======> FUTURE PLANS:
 -----------/
-
-
 
 effectholder that interfaces with healtholder
 Add a "healing spell" player can do to gain few seconds of regen. Will eventually become quickstim.
@@ -103,6 +102,7 @@ crosshair changes with move speed **
 "button-like dialogue trees"
 Tweak the friction values to allow for some airstrafing, change the wishspeed allowance to not
 be too absurdly lenient, though.
+Change the player step code to be the better, suggested version. Steppers work badly.
 
 
 ====+====> EXPERIENTIAL:

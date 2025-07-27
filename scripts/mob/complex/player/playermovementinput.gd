@@ -202,13 +202,27 @@ func _physics_process(delta: float) -> void:
 
 ##Updates the player camera as they enter or leave a crouching state.
 func transition_Crouch(entering):
+	var stepR = $StepperR
+	var stepL = $StepperL
+	var stepF = $StepperF
+	var stepB = $StepperB
+	
 	if(entering): #we are entering crouch
 	#	playerShape.scale.y -= 0.8 #it's jank so we are no longer changing the playermodel's size
 		playerCollider.scale.y -= 0.8
+		stepR.position.y += 0.9
+		stepL.position.y += 0.9
+		stepF.position.y += 0.9
+		stepB.position.y += 0.9
+		
 
 	else: #we are exiting crouch
 		#TODO: add a check to see if the player has enough room TO stand
 		playerCollider.scale.y += 0.8
+		stepR.position.y -= 0.9
+		stepL.position.y -= 0.9
+		stepF.position.y -= 0.9
+		stepB.position.y -= 0.9
 
 ##Function that toggles mouse sensitivity. Speed is handled per-frame. Maybe make dependent on weapons stat????
 func toggle_ADS_Stats():

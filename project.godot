@@ -18,7 +18,7 @@ config/windows_native_icon="res://resources/sylphcroppedcellshade.ico"
 
 [autoload]
 
-Globalscript="*res://scripts/globalscript.gd"
+Globalscript="*res://scripts/utility/globalscript.gd"
 
 [display]
 
@@ -135,3 +135,5 @@ ui_num5={
 
 3d_physics/layer_2="Bullet raycast"
 3d_physics/layer_3="Player interact raycast"
+3d_physics/layer_4="Exclusively player"
+3d_physics/layer_5="Exclusively terrain"
