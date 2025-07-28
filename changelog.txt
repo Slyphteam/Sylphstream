@@ -1,3 +1,7 @@
+7/27:
+Players can now take damage. If applicable, 3/4ths of damage will be diverted to aura.
+Added status effects framework. Statuses use a doubly linked list and have application,
+over times, and expiration effects. Implemented functionality pending.
 7/24:
 Added Health and Aura UI elements
 7/23:

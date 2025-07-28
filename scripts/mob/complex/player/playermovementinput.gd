@@ -1,6 +1,6 @@
 #this script is the PRIMARY driver for kinematic player behavior and input/output.
 #This script also communicates with the invenManager script for reloading, shooting,
-#and general interactions with the held object
+#and general interactions with the held object, and also handles incoming damage. It's a lot.
 
 extends CharacterBody3D
 

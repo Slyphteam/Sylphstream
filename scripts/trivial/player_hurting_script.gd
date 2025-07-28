@@ -1,3 +1,4 @@
+##Simple script that harms the player by shooting them when a button is pressed.
 extends StaticBody3D
 @export var damAmount: int = 1
 
