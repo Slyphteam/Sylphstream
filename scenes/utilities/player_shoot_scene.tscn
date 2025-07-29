@@ -22,6 +22,7 @@ skeleton = NodePath("../..")
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_ns380")
+damAmount = 13
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonMesh/BulletMesh/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_ma53t")

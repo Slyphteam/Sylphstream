@@ -5,6 +5,7 @@ class_name HEALTHHOLDER extends Node
 func _init():
 	process_mode = PROCESS_MODE_PAUSABLE
 
+var maxHP = 100
 var health: int = 100
 var takenDamage: int = 0 ##What's the damage we're applying to health for the frame?
 

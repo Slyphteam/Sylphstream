@@ -68,6 +68,7 @@ starterWeapon = ExtResource("5_gor7x")
 
 [node name="Player Health" type="Node" parent="."]
 script = ExtResource("6_1yk18")
+startingAura = 50
 
 [node name="playercollidercapsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26282, 0)

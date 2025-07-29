@@ -63,17 +63,13 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Bugtest player damage and health UI updates
-
-#mysmee as a healing item
-#mysmee as an item that gives healing effect when held
+more guns brutherrrr
 
 -----------\
 =======+=======> FUTURE PLANS:
 -----------/
 
-effectholder that interfaces with healtholder
-Add a "healing spell" player can do to gain few seconds of regen. Will eventually become quickstim.
+
 
 Refactor UI to be FULLY dependent on the singular ui manager. No other scripts, thats messy.
 
@@ -85,6 +81,9 @@ Refactor UI to be FULLY dependent on the singular ui manager. No other scripts, 
 
 
 Sylph maintenance:
+
+Before you do ANYTHING with the sylphs again, write a function that takes a node and sets its
+immediate weights/biases to be completely neutral. otherwise you're going to undo everything.
 
 Randf function may have weird weights due to how floats work, look into it
 Look into mutating by "pulses"-- rather than shooting a shotgun into the network,

@@ -475,43 +475,6 @@ I'M ASTRALLY REFRACTING 5G CANCER RAYS INTO YOUR HOUSE. RRRAAAAUUUUGHHH I HATE Y
 4; (as you retreat, you realize this woman wasn't ever talking to you in the first place)
 
 
-Type 22:
-After many years of hard work I have become a beautiful chimera. 
-My scales are smooth and glossy and shine under the light of the sun.
-My teeth are pearlescent and their tapering points are astutely-rounded and sharp.
-My stinger-tail is deft; it swishes and sways however I so wish it to.
-My fur is soft and gossamer and without tangle or speck.
-My claws are manicured and click and clack whenever I walk.
-I think I look quite stunning. Wouldn't you agree~?
-
-PLAYER OPTIONS:
-1: I would. You're beautiful.
-2: I don't necessarily think so but I can see why you'd hold yourself in that regard.
-3: You are very beautiful. For a chimera.
-4: I don't think I could agree.
-
-1; (The chimera hides a flattered, toothy smile with one of its forepaws)
-2;4 Hmm. To each their own.
-3; I suppose I'll pretend I didn't hear that last portion.
-
-
-CHAT OPTIONS:
-1) Any work for me? (begins a lake to stare into quest)
-2) How do you make these auto-injectors, anyway?
-
-2: Alchemy.
-1) Alchemy??
-1: What, do you think I scienced them up in a lab somewhere? 
-1) Yes?
-2) No.
-Well, I didn't/Of course not! 
-I'm quite the accomplished biothaumaturge. How else do you suppose I've attained my gorgeous figure?
-
-I guess that makes sense. Can you do that to me?
--> I'm afraid you're not an ensouled form of life, Millian
-Huh, checks out (end dialogue)
-
-I am not a combative NPC. I don't even have a health variable. You can shoot me all you'd like and it will simply do nothing.
 
 
 

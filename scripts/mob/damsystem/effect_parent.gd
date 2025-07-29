@@ -2,13 +2,13 @@
 #to cleanly handle the possibility of frequent additions and removals.
 class_name STATUSEFFECT extends Node
 
-var duration: float ##In delta-adjusted frames
+
 var ourHealthHolder: COMPLEXHEALTHHOLDER
 var nextEffect: STATUSEFFECT = null
 var prevEffect: STATUSEFFECT = null
 
-
-@export var applyWindow: float = 60 ##What's the cooldown between each application?
+var duration: float  = 1 ##In delta-adjusted frames. Modify during beginEffect.
+var applyWindow: float = 60 ##What's the cooldown between each application? Modify during beginEffect.
 var applyCountdown: float = applyWindow ##Counter until we apply our effect next. set to 1 to apply every frame
 
 ##Process an effect for 1 frame. Returns true if the effect expires.
@@ -27,15 +27,33 @@ func processEffect(delta):
 	
 	if(duration <= 0):
 		
-		prevEffect.nextEffect = nextEffect
-		nextEffect.prevEffect = prevEffect
-		
+		 
 		if(!prevEffect && !nextEffect): #special case, we were the final effect in the list.
 			ourHealthHolder.effectStarter = null
+			print("effect is only")
+		elif(!prevEffect && nextEffect): #special case. we are first in list, but there are more
+			ourHealthHolder.effectStarter = nextEffect
+			nextEffect.prevEffect = null
+			print("effect is first")
+		elif(prevEffect && !nextEffect): #special case. last in list.
+			prevEffect.nextEffect = null
+			print("effect is last")
+		else: #Otherwise, cut from list normally
+			print("effect is intermediate")
+			nextEffect.prevEffect = prevEffect
+			prevEffect.nextEffect = nextEffect
+		
 		expireEffect() #apply any expiration effects
 		queue_free()
 	
-	
+
+##passes a status effect until it hits the tail of the DLL
+func add_To_Tail(newEffect: STATUSEFFECT):
+	if(nextEffect):
+		nextEffect.add_To_Tail(newEffect)
+	else:
+		newEffect.prevEffect = self
+		nextEffect = newEffect
 
 #called when an effect begins
 func beginEffect():

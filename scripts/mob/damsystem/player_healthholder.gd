@@ -13,3 +13,12 @@ func update_True_Vals():
 
 func doDie():
 	print("you are fusksings dead. game oval.")
+
+
+func give_Health(amount:int):
+	super.give_Health(amount)
+	healthInfo.updateHealth(health)
+
+func give_Health_Overmax(amount:int, newMax: int):
+	super.give_Health_Overmax(amount, newMax)
+	healthInfo.updateHealth(health)

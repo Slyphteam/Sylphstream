@@ -6,8 +6,10 @@ class_name PLAYERINVENMANAGER extends INVENMANAGER
 
 var weight = 0 ##The current held ammo pool's "weight"
 @onready var uiInfo = $"../../../Player UI"
+@onready var healthHolder = $"../../../Player Health"
 @export var ourHands: WEAP_INFO
 @export var secondStarter: WEAP_INFO 
+
 
 var maxweight = 1350 ##lets say 9 30-round mags of 5.56 (9*30*5) as a reasonable maximum amount of ammo weight
 
@@ -75,6 +77,7 @@ func _ready():
 	await get_tree().create_timer(0.1).timeout #wait one tenth of a second because it takes a bit longer for ui to init
 	uiInfo.ammoCounter.hideElements()
 
+#----------------Inventory management functions
 
 func load_Wep(wep2Load):
 	super(wep2Load)
@@ -234,7 +237,20 @@ func withdrawAmmo(amTyp: int, amount: int)-> int:
 	return result
 	
 
-#Functions going up the hierarchy
+
+#----------------Autostim functions
+##Tells the player healthholder to add an effect. Called when the player selects an autostim
+func take_Autostim(stimNum: int):
+	var theEffect: STATUSEFFECT
+	if(stimNum == 1):# useless if statement for when we have more stims
+		theEffect = STATUSPLACEBO.new()
+	
+	#add the status effect to the healthholder
+	healthHolder.addEffect(theEffect)	
+		
+
+#----------------Weapon handling functions
+
 ##Apply viewpunch to the player, in degrees. Requires a connected user object.
 func applyViewpunch(lift, drift):
 	user.apply_Viewpunch(lift, drift)

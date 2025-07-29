@@ -58,3 +58,27 @@ func doDie():
 func handleEffects(_delta):
 	if(effectStarter):
 		effectStarter.processEffect(_delta)
+
+##Adds a new effect to the linked list of effects being processed
+func addEffect(effectToAdd: STATUSEFFECT):
+	effectToAdd.ourHealthHolder = self #link the effect to this healthholder
+	effectToAdd.beginEffect() #apply on-start logic
+	
+	if (!effectStarter):
+		effectStarter = effectToAdd
+	else:
+		effectStarter.add_To_Tail(effectToAdd)
+
+#TODO: consider using takenDamage to have this apply on a per-frame loop?
+
+##Gives health without any regard for the preset maximum hp. Includes a custom maximum
+func give_Health_Overmax(amount:int, newMax: int):
+	health += amount
+	if(health >= newMax):
+		health = newMax
+
+##Gives health. Will never exceed the preset maximum hp, use give_Health_Overmax instead.
+func give_Health(amount:int):
+	health += amount
+	if(health >= maxHP):
+		health = maxHP

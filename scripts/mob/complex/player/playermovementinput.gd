@@ -84,7 +84,7 @@ func _input(event):
 
 	if Input.is_action_just_released("ui_click", false):
 		#though strange, this code is necessary as the player can be holding mouse and no other inputs
-		#which
+		#which won't refresh properly in that case. It's a godot thing.
 		invenManager.unShoot() 
 	
 	if Input.is_action_pressed("ui_sprint"):
@@ -101,6 +101,8 @@ func _input(event):
 			transition_Crouch(false) #and having this here feels like bad code
 			crouching = false
 	
+	#Presumably, there's a better way to do this. Presumably...
+	
 	if event.is_action_pressed("ui_reload"):
 		invenManager.startReload()
 		
@@ -111,7 +113,10 @@ func _input(event):
 	if (event.is_action_pressed("ui_interact") && !event.is_echo()):
 		do_Interact_Raycast()
 	
-	#Presumably, there's a better way to do this. Presumably...
+	if (event.is_action_pressed("ui_stimMenu") && !event.is_echo()):
+		invenManager.take_Autostim(1)
+	
+
 	if event.is_action_pressed("ui_num1"):
 		invenManager.change_To_Slot(1)
 		
