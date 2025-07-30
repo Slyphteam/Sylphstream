@@ -20,3 +20,5 @@ class_name FIREARM_INFO extends WEAP_INFO
 @export_category("Script override")
 @export var shotgunMode: bool = false ##Override script to use SHOTGUNINSTANCE
 @export var pelletAMT: int = 12 ##How many pellets in a volley?
+@export var burstMode: bool = false ##Do we fire in bursts, requiring a trigger reset after each?
+@export var burstAMT: int = 3

@@ -35,11 +35,16 @@ func load_Wep(wep2Load):
 		activeItem.queue_free()
 		activeItem = null
 	
-	
+	#Decide what script is going to handle the weapon behavior
 	if(wep2Load is FIREARM_INFO):
 		backupOffset = wep2Load.position.x
 		if(wep2Load.shotgunMode):
 			activeItem = SHOTGUNINSTANCE.new()
+			activeItem.invManager = self
+			activeItem.load_Weapon(wep2Load)
+			weapType = 1 #still use the firearm control schema
+		elif(wep2Load.burstMode):
+			activeItem = BURSTFIREINSTANCE.new()
 			activeItem.invManager = self
 			activeItem.load_Weapon(wep2Load)
 			weapType = 1 #still use the firearm control schema
