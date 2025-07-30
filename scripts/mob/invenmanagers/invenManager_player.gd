@@ -246,7 +246,7 @@ func take_Autostim(stimNum: int):
 		theEffect = STATUSPLACEBO.new()
 	
 	#add the status effect to the healthholder
-	healthHolder.addEffect(theEffect)	
+	healthHolder.add_Effect(theEffect)	
 		
 
 #----------------Weapon handling functions

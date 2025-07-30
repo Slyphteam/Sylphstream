@@ -9,7 +9,7 @@ over times, and expiration effects. Implemented functionality pending.
 7/24:
 Added Health and Aura UI elements
 7/23:
-Players can now GET SHOT.
+Players can now GET SHOT. Doesn't do much yet.
 Added clay targets that can be destroyed
 7/22:
 Players now auto step up and down small inclines. (FINALLY)

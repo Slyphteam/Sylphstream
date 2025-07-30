@@ -35,7 +35,7 @@ func take_Dam(incomingDam)->int:
 	return newHealth
 
 func _process(_delta: float) -> void:
-	handleEffects(_delta)
+	handle_Effects(_delta)
 	
 	if(takenDamage != 0 || takenAura != 0):
 		update_True_Vals()
@@ -55,14 +55,14 @@ func doDie():
 
 #Since status effects use a doubly linked list, all we have to do is call process on the first one,
 #and it'll go down the chain and handle things. Clean and efficient!
-func handleEffects(_delta):
+func handle_Effects(_delta):
 	if(effectStarter):
-		effectStarter.processEffect(_delta)
+		effectStarter.process_Effect(_delta)
 
 ##Adds a new effect to the linked list of effects being processed
-func addEffect(effectToAdd: STATUSEFFECT):
+func add_Effect(effectToAdd: STATUSEFFECT):
 	effectToAdd.ourHealthHolder = self #link the effect to this healthholder
-	effectToAdd.beginEffect() #apply on-start logic
+	effectToAdd.begin_Effect() #apply on-start logic
 	
 	if (!effectStarter):
 		effectStarter = effectToAdd

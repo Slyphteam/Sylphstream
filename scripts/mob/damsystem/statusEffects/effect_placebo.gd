@@ -1,16 +1,17 @@
 class_name STATUSPLACEBO extends STATUSEFFECT
 
 
-func processEffect(delta):
-	super.processEffect(delta)
+func process_Effect(delta):
+	super.process_Effect(delta)
 #	print(applyCountdown)
 
-func applyEffect():
+func apply_Effect():
 	#print("applying effect!")
 	ourHealthHolder.give_Health(1)
 
-func beginEffect():
-	print("beginning!")
-	duration = randi_range(30, 200)
-	applyWindow = 50
+func begin_Effect():
+	effectName = "Placebo"
+	effectDesc = "It might not do nothing?"
+	duration = randi_range(30, 300)
+	applyWindow = 100
 	applyCountdown = applyWindow

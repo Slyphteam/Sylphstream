@@ -69,9 +69,10 @@ more guns brutherrrr
 =======+=======> FUTURE PLANS:
 -----------/
 
-
-
 Refactor UI to be FULLY dependent on the singular ui manager. No other scripts, thats messy.
+Autolean when ADS + ADS makes the camera zoom in
+Change degubby reload and fire sounds to be distinctly not gunshots. cmon. no excuses.
+Watch inventory system video. Make simple shitty top bar for player inv and one for stims
 
 ====+====> KEY:
 	+: Easy
@@ -97,21 +98,17 @@ Reimport sylph head but make sure it's actually centered this time, doofus.
 ====+====> FUNCTIONAL:
 
 crosshair changes with move speed **
-"button-like dialogue trees"
+"button-like" dialogue trees
 Tweak the friction values to allow for some airstrafing, change the wishspeed allowance to not
 be too absurdly lenient, though.
 Change the player step code to be the better, suggested version. Steppers work badly.
 
 
 ====+====> EXPERIENTIAL:
-Change degubby reload and fire sounds to be distinctly not gunshots
 
 re-add FOV changing with speed, but make it steppy to prevent jitters
-
 footstep sounds +++
-context-sensitive leaning --&
 fix weapon clipping +++ &
-ADS makes the camera zoom in
 Scrolling chat
 
 Sylph and playermodel bodies v2, but test with the millian prior
@@ -122,8 +119,4 @@ Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
 Archon intro ditty:
 low high bitlower medium - - - - - - high low
 low high bitlower - - + verlow high lowwww
-
-Watch inventory system video. Make simple shitty top bar for player inv
-
 Archon option buttons
-Effectholder, have archon poison player as test

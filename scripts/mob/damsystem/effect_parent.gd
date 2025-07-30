@@ -1,7 +1,10 @@
-##The parent class for status effects. Uses a doubly linked list
-#to cleanly handle the possibility of frequent additions and removals.
+##The parent class for status effects. Uses a doubly linked list to cleanly handle the possibility of frequent additions and removals.
+#does NOT use resources, as each stim has its own custom script.
+#Instead, change variables in the beginEffect function
 class_name STATUSEFFECT extends Node
 
+var effectName:String
+var effectDesc:String
 
 var ourHealthHolder: COMPLEXHEALTHHOLDER
 var nextEffect: STATUSEFFECT = null
@@ -12,38 +15,34 @@ var applyWindow: float = 60 ##What's the cooldown between each application? Modi
 var applyCountdown: float = applyWindow ##Counter until we apply our effect next. set to 1 to apply every frame
 
 ##Process an effect for 1 frame. Returns true if the effect expires.
-func processEffect(delta):
+func process_Effect(delta):
 	var frameComp = delta * 60 #should be approx equal to 1
 	
 	applyCountdown -= frameComp
 	if(applyCountdown <=0):
 		applyCountdown = applyWindow #reset the countdown
-		applyEffect()
+		apply_Effect()
 	
 	duration -= frameComp
 	
 	if(nextEffect):
-		nextEffect.processEffect(delta)
+		nextEffect.process_Effect(delta)
 	
 	if(duration <= 0):
 		
 		 
 		if(!prevEffect && !nextEffect): #special case, we were the final effect in the list.
 			ourHealthHolder.effectStarter = null
-			print("effect is only")
 		elif(!prevEffect && nextEffect): #special case. we are first in list, but there are more
 			ourHealthHolder.effectStarter = nextEffect
 			nextEffect.prevEffect = null
-			print("effect is first")
 		elif(prevEffect && !nextEffect): #special case. last in list.
 			prevEffect.nextEffect = null
-			print("effect is last")
 		else: #Otherwise, cut from list normally
-			print("effect is intermediate")
 			nextEffect.prevEffect = prevEffect
 			prevEffect.nextEffect = nextEffect
 		
-		expireEffect() #apply any expiration effects
+		expire_Effect() #apply any expiration effects
 		queue_free()
 	
 
@@ -56,13 +55,13 @@ func add_To_Tail(newEffect: STATUSEFFECT):
 		nextEffect = newEffect
 
 #called when an effect begins
-func beginEffect():
+func begin_Effect():
 	return
 
 #called each applyWindow.
-func applyEffect():
+func apply_Effect():
 	return
 
 #called when an effect expires
-func expireEffect():
+func expire_Effect():
 	return
