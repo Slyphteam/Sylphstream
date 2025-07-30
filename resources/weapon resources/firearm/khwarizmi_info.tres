@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://bgnabya18i1vd"]
+
+[ext_resource type="AudioStream" uid="uid://dyjvx3kxjfi07" path="res://sounds/gunshots/khwarizmi2.mp3" id="1_mxfyw"]
+[ext_resource type="ArrayMesh" uid="uid://b1wdec5u8ttw8" path="res://models/mesh models/khwarizmi mesh.res" id="2_vraje"]
+[ext_resource type="AudioStream" uid="uid://c8h4dh1gf7jql" path="res://sounds/reloads/fullreloadrifle.mp3" id="3_gby16"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearm_resource.gd" id="4_sksln"]
+
+[resource]
+script = ExtResource("4_sksln")
+gunshot = ExtResource("1_mxfyw")
+reload = ExtResource("3_gby16")
+shotCooldown = 10
+chambering = 2
+maxCapacity = 20
+reloadtime = 1.0
+aimBonus = 8.0
+maxRecoil = 50.0
+minRecoil = 10.0
+recoilAmount = 8.0
+viewpunchMult = 1.0
+recoverAmount = 0.8
+shotgunMode = false
+pelletAMT = 12
+wepName = &"Khwarizmi"
+wepDesc = &"A Persian rifle featuring a 3-round burst."
+mesh = ExtResource("2_vraje")
+drawTime = 1.0
+damage = 24
+selections = Array[int]([3, 4])
+position = Vector3(0.8, -0.2, -0.6)
+rotation = Vector3(0, 0, -90)
+scale = Vector3(1, 1, 1)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"

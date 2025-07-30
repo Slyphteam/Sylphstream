@@ -1,14 +1,17 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=25 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
 [ext_resource type="Resource" uid="uid://1iyc2y86li4i" path="res://resources/weapon resources/hands.tres" id="4_kiyhm"]
-[ext_resource type="Resource" uid="uid://cdavx6lb5f7ya" path="res://resources/weapon resources/melee/buraq_info.tres" id="5_gor7x"]
+[ext_resource type="AudioStream" uid="uid://dyjvx3kxjfi07" path="res://sounds/gunshots/khwarizmi2.mp3" id="5_2ngu4"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
 [ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/mob/damsystem/player_healthholder.gd" id="6_1yk18"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
+[ext_resource type="ArrayMesh" uid="uid://b1wdec5u8ttw8" path="res://models/mesh models/khwarizmi mesh.res" id="6_jv5ih"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/entities/playermodel.tscn" id="6_tgbf5"]
+[ext_resource type="AudioStream" uid="uid://c8h4dh1gf7jql" path="res://sounds/reloads/fullreloadrifle.mp3" id="7_n36er"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearm_resource.gd" id="8_d745t"]
 [ext_resource type="Script" uid="uid://3nauamnfq70c" path="res://scripts/mob/complex/player/ui associated/healthinfo.gd" id="9_ddril"]
 [ext_resource type="Texture2D" uid="uid://5h5e2fdfww0f" path="res://resources/image resources/uiholdertest.png" id="9_f4klr"]
 [ext_resource type="Script" uid="uid://bt86hsaoopo8b" path="res://scripts/mob/complex/player/ui associated/ammocounters.gd" id="9_iy7ap"]
@@ -20,6 +23,33 @@
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_oajfq"]
 length = 0.5
+
+[sub_resource type="Resource" id="Resource_qc1tv"]
+script = ExtResource("8_d745t")
+gunshot = ExtResource("5_2ngu4")
+reload = ExtResource("7_n36er")
+shotCooldown = 10
+chambering = 2
+maxCapacity = 20
+reloadtime = 1.0
+aimBonus = 8.0
+maxRecoil = 50.0
+minRecoil = 10.0
+recoilAmount = 8.0
+viewpunchMult = 1.0
+recoverAmount = 0.8
+shotgunMode = false
+pelletAMT = 12
+wepName = &"Khwarizmi"
+wepDesc = &"A Persian rifle featuring a 3-round burst."
+mesh = ExtResource("6_jv5ih")
+drawTime = 1.0
+damage = 24
+selections = Array[int]([3, 4])
+position = Vector3(0.8, -0.2, -0.6)
+rotation = Vector3(0, 0, -90)
+scale = Vector3(1, 1, 1)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f4klr"]
 points = PackedVector3Array(0.330305, 0.920269, 0.0344127, -0.386635, -0.776089, -0.063091, -0.350895, -0.800871, -0.158618, 0.358755, -0.844057, 0.0990035, -0.0942994, 0.734913, 0.385134, -0.063091, 0.776089, -0.386635, 0.192083, -0.730015, -0.34763, -0.357384, 0.84832, -0.0963208, -0.0959277, -0.844914, 0.359117, 0.19096, 0.725711, 0.348745, 0.349979, 0.728291, -0.188458, -0.34763, 0.730015, 0.192083, -0.0653278, -1.07085, -0.132243, -0.18958, -0.73259, -0.348861, -0.0990502, 1.07326, 0.102225, 0.190957, -0.725702, 0.348741, -0.286494, -0.799943, 0.257634, 0.348741, 0.725702, 0.190957, 0.385134, -0.734913, -0.0942994, -0.312336, 0.690456, -0.249566, 0.101353, 1.03063, -0.197944, 0.19208, 0.730004, -0.347624, 0.135835, -1.07419, 0.0351098, -0.197944, -1.03063, 0.101353, 0.0662163, -0.775496, -0.386338, 0.198614, -0.984784, -0.195439, 0.101183, 1.02888, 0.200779, 0.384492, 0.733681, 0.0973134, -0.195805, 0.986616, -0.195805, -0.383887, -0.738606, 0.0979559, -0.384533, 0.739844, -0.0949428, 0.0973134, -0.733681, 0.384492)
@@ -64,7 +94,7 @@ player = NodePath("../..")
 [node name="weapon_rig" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
 ourHands = ExtResource("4_kiyhm")
-starterWeapon = ExtResource("5_gor7x")
+starterWeapon = SubResource("Resource_qc1tv")
 
 [node name="Player Health" type="Node" parent="."]
 script = ExtResource("6_1yk18")
