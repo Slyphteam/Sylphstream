@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=20 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
 [ext_resource type="Resource" uid="uid://1iyc2y86li4i" path="res://resources/weapon resources/hands.tres" id="4_kiyhm"]
-[ext_resource type="Resource" uid="uid://bgnabya18i1vd" path="res://resources/weapon resources/firearm/khwarizmi_info.tres" id="5_1yk18"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
 [ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/mob/damsystem/player_healthholder.gd" id="6_1yk18"]
@@ -64,7 +63,6 @@ player = NodePath("../..")
 [node name="weapon_rig" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
 ourHands = ExtResource("4_kiyhm")
-starterWeapon = ExtResource("5_1yk18")
 
 [node name="Player Health" type="Node" parent="."]
 script = ExtResource("6_1yk18")

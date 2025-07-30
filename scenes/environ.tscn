@@ -1,5 +1,6 @@
-[gd_scene load_steps=55 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=56 format=3 uid="uid://bh3powm0a35or"]
 
+[ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="1_os2cn"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="4_2yn2u"]
 [ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="4_m2myf"]
 [ext_resource type="PackedScene" uid="uid://c4xof0ncli7gu" path="res://scenes/trivial/pickups/9_mm_ammobox.tscn" id="6_btmrn"]
@@ -354,6 +355,9 @@ skeleton = NodePath("../wall1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Boundaries/wall4/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_6wnxl")
 
+[node name="khwarizmi" parent="Environment/Boundaries" instance=ExtResource("1_os2cn")]
+transform = Transform3D(-4.25716e-08, 0.973925, -0.226872, -1, -4.37114e-08, 0, -9.9169e-09, 0.226872, 0.973925, 42.5553, 1.84605, 21.3048)
+
 [node name="Range" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.638, 1.02, 21.446)
 mesh = SubResource("BoxMesh_6wnxl")
@@ -374,7 +378,7 @@ transform = Transform3D(-3.09086e-08, 0.707107, -0.707107, -1, -4.37114e-08, 0, 
 transform = Transform3D(-3.09086e-08, 0.707107, -0.707107, -1, -4.37114e-08, 0, -3.09086e-08, 0.707107, 0.707107, 0.155277, 0.820649, -2.95815)
 
 [node name="ghostbird N" parent="Environment/Range" instance=ExtResource("18_c2ovy")]
-transform = Transform3D(-1.31134e-07, 1, 1.85125e-29, 1, 1.31134e-07, -4.23516e-22, -3.55271e-15, -9.25625e-30, -1, -0.0711403, 0.831287, 0.119911)
+transform = Transform3D(-8.59625e-08, 0.655532, -0.755167, 1, 1.31134e-07, -3.38813e-21, 9.90281e-08, -0.755167, -0.655532, 0.0503998, 0.831287, 2.69031)
 
 [node name="relata N" parent="Environment/Range" instance=ExtResource("19_xqkej")]
 transform = Transform3D(0.881732, -2.06209e-08, -0.471751, -0.469389, 0.0999449, -0.877317, 0.0471491, 0.994993, 0.0881246, -0.725754, 0.306163, 3.66494)
@@ -415,11 +419,11 @@ transform = Transform3D(0.0525629, 0, -0.998618, 0, 1, 0, 0.998618, 0, 0.0525629
 [node name="rifle_ammobox3" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
 transform = Transform3D(-0.732757, 0.680491, -6.1775e-08, 4.37114e-08, -4.37114e-08, -1, -0.680491, -0.732757, 2.28462e-09, -0.334549, 0.80931, -4.19209)
 
-[node name="9mm ammobox" parent="Environment/Range" instance=ExtResource("6_btmrn")]
-transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -0.188751, 0.745666, 1.05955)
+[node name="9mm ammobox2" parent="Environment/Range" instance=ExtResource("6_btmrn")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0153618, 0.757752, -3.56738)
 
-[node name="9mm ammobox" parent="Environment/Range/9mm ammobox" instance=ExtResource("6_btmrn")]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -4.5221, 0.0120858, 1.00038)
+[node name="9mm ammobox" parent="Environment/Range" instance=ExtResource("6_btmrn")]
+transform = Transform3D(-0.642667, 0, -0.766145, 0, 1, 0, 0.766145, 0, -0.642667, -0.0103569, 0.745666, 3.06318)
 
 [node name="shotgunbundle" parent="Environment/Range" instance=ExtResource("9_ttle0")]
 transform = Transform3D(0.195237, -0.973548, 0.118691, 0.485725, -0.00915404, -0.874064, 0.852029, 0.228301, 0.471089, -0.34584, 0.828797, 3.22716)
@@ -441,6 +445,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5962
 
 [node name="sporting clay5" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.65326, 1.32227, 2.23695)
+
+[node name="rifle_ammobox4" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
+transform = Transform3D(-0.0161607, 0, -0.99987, 0, 1, 0, 0.99987, 0, -0.0161607, 0.313858, 0.768282, -0.206093)
+
+[node name="rifle_ammobox5" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
+transform = Transform3D(0.5, 0.866025, -3.78552e-08, 0, -4.37114e-08, -1, -0.866026, 0.5, -2.18557e-08, 0.0618935, 0.778513, 0.321911)
+
+[node name="rifle_ammobox6" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
+transform = Transform3D(-0.843373, -0.537329, 2.34874e-08, 0, -4.37114e-08, -1, 0.537329, -0.843373, 3.6865e-08, 0.24942, 0.890736, 0.51405)
 
 [node name="Testing zone" type="Node3D" parent="Environment"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.6961, 2, 5.5732e-06)
