@@ -494,6 +494,46 @@ So.. uhm... let's see what this does. This is a little program I wrote in COBOL,
 be... as good as I could in cubic time complexity
 
 
+Type 24: Pipebomb andy
+
+Hello, it is I, pipe bomb andy.
+I offer you a heartfelt gift.
+(Pipe bomb andy offers you a suspiciously heavy backpack. Do you accept?)
+Yes (accept)
+Dude. (decline)
+
+(later)
+
+Hi, it's me again, pipebomb andy. 
+Look, I know we got off on the wrong foot here and I just wanted to say I'm sorry. 
+You don't have to, but I wanted to give you something to make up for our differences.
+PLAYER OPTIONS:
+1) Is it a pipe bomb?
+2) It better not be another pipe bomb andy.
+I SWEAR it's not a pipe bomb.
+
+
+(Even later)
+
+It was really fucked up of me to give you a pipe bomb. and then apologize and give you another pipe bomb.
+And then even later when I had a pipe bomb on me and I was going to apologize and then that goblin took it and blew the pipebomb up
+Actually I have no real association with that goblin they were totally unrelated 
+I have no association with that goblin so it wasn't actually me that did that come to think of it. So two out of three really isn't that bad.
+but anyway yeah it was really fucked up and manipulative of me to try and give you a pipe bomb twice in a row.
+and I just wanted to say I'm sorry and I've grown and changed as a person. 
+and I really mean it. I've realized the error of my ways turned a new leaf. 
+and I know you probably won't accept it, and I have nobody to blame but myself,
+but I wanted to offer you an olive branch, if you're in the right state of mind and you wanted to forgive me.
+
+andy. andy I want you to be level with me. 100% truthful. is there a pipe bomb in that box.
+
+(pipe bomb andy seems suddenly and remarkably uncomfortable) u-uh. w-weeell. 
+
+well?
+
+y-nnooooo. No there is not. (andy puts the gift behind his back and seems to do something else)
+
+
 Type Millian (complex dialogue test):
 Hi, it's me, Millian!
 

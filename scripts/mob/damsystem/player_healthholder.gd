@@ -1,6 +1,6 @@
 #Variant of a complex healthholder that updates the UI.
 class_name PLAYERHEALTHHOLDER extends COMPLEXHEALTHHOLDER
-@onready var healthInfo = $"../Player UI/Health"
+@onready var playerUI = $"../Player UI"
 @export var startingAura: int = 10
 
 func _ready():
@@ -8,7 +8,7 @@ func _ready():
 
 func update_True_Vals(): 
 	super.update_True_Vals()
-	healthInfo.updateBoth(aura, health)
+	playerUI.updateHealthAura(aura, health)
 	
 
 func doDie():
@@ -17,8 +17,8 @@ func doDie():
 
 func give_Health(amount:int):
 	super.give_Health(amount)
-	healthInfo.updateHealth(health)
+	playerUI.updateHealth(health)
 
 func give_Health_Overmax(amount:int, newMax: int):
 	super.give_Health_Overmax(amount, newMax)
-	healthInfo.updateHealth(health)
+	playerUI.updateHealth(health)

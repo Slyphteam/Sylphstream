@@ -75,7 +75,7 @@ func _ready():
 	
 	load_Wep(ourHands)
 	await get_tree().create_timer(0.1).timeout #wait one tenth of a second because it takes a bit longer for ui to init
-	uiInfo.ammoCounter.hideElements()
+	uiInfo.hide_Ammo_Elements()
 
 #----------------Inventory management functions
 
@@ -177,7 +177,7 @@ func change_To_Slot(newSlot: int):
 		if(newSlot == 1):  #special return case, still on hands
 			currentSlot = newSlot
 			return
-		uiInfo.ammoCounter.showElementsAnything()
+		uiInfo.show_Ammo_Anything()
 	if(weapType == 0 && currentSlot != 1): #something is fucky
 		print("UHOH")
 	
@@ -201,13 +201,13 @@ func change_To_Slot(newSlot: int):
 	#since the load weapon script already deals with unloading stuff, we dont have to do too much
 	if(newSlot == 1): #special case for loading hands, hide UI
 		load_Wep(slot1[0].theWeapon) #it's kind of bad practice to be directly accessing slot1 but its such a special case
-		uiInfo.ammoCounter.hideElements() 
+		uiInfo.hide_Ammo_Elements() 
 	else: #otherwise act normal
 		var drawnWep = newSlotArr[slotSelection]
 		load_Wep(drawnWep.theWeapon)
 		if(weapType == 1): #if we are loading a gun, dont assume we start with default ammo count
 			activeItem.capacity = drawnWep.roundInside
-			uiInfo.ammoCounter.updateMag(drawnWep.roundInside)
+			uiInfo.updateMag(drawnWep.roundInside)
 		
 	#if we've gotten this far, update our active slot
 	currentSlot = newSlot
@@ -225,7 +225,7 @@ func give_New_Weapon(weapon: WEAP_INFO, validSlots: Array[int])->bool:
 ##Gives ammo to invenmanager and updates ammo weight
 func giveAmmo(amTyp: int, amount: int):
 	var result = super.giveAmmo(amTyp, amount)
-	uiInfo.ammoCounter.updateReserve(result)
+	uiInfo.updateReserve(result)
 	recalcWeight()
 	return result
 
@@ -233,7 +233,7 @@ func giveAmmo(amTyp: int, amount: int):
 func withdrawAmmo(amTyp: int, amount: int)-> int:
 	var result = super.withdrawAmmo(amTyp, amount)
 	recalcWeight()
-	uiInfo.ammoCounter.updateReserve(chkAmmoAmt(amTyp))
+	uiInfo.updateReserve(chkAmmoAmt(amTyp))
 	return result
 	
 

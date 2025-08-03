@@ -69,10 +69,9 @@ more guns brutherrrr
 =======+=======> FUTURE PLANS:
 -----------/
 
-Refactor UI to be FULLY dependent on the singular ui manager. No other scripts, thats messy.
 Autolean when ADS + ADS makes the camera zoom in
 Change degubby reload and fire sounds to be distinctly not gunshots. cmon. no excuses.
-Watch inventory system video. Make simple shitty top bar for player inv and one for stims
+Watch inventory system video. Make simple shitty top bar for player inv and placeholder one for stims
 
 ====+====> KEY:
 	+: Easy

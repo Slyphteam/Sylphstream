@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=18 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
@@ -8,9 +8,7 @@
 [ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/mob/damsystem/player_healthholder.gd" id="6_1yk18"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/entities/playermodel.tscn" id="6_tgbf5"]
-[ext_resource type="Script" uid="uid://3nauamnfq70c" path="res://scripts/mob/complex/player/ui associated/healthinfo.gd" id="9_ddril"]
 [ext_resource type="Texture2D" uid="uid://5h5e2fdfww0f" path="res://resources/image resources/uiholdertest.png" id="9_f4klr"]
-[ext_resource type="Script" uid="uid://bt86hsaoopo8b" path="res://scripts/mob/complex/player/ui associated/ammocounters.gd" id="9_iy7ap"]
 [ext_resource type="Texture2D" uid="uid://dvtr0683clxu2" path="res://resources/image resources/healthholderUI.png" id="10_ddril"]
 [ext_resource type="StyleBox" uid="uid://c7v5hhr02av55" path="res://resources/button BG theme.tres" id="12_33423"]
 [ext_resource type="Texture2D" uid="uid://dxdc2ni5jtua0" path="res://resources/image resources/pre alpha splash.png" id="12_kiyhm"]
@@ -75,7 +73,7 @@ shape = SubResource("ConvexPolygonShape3D_f4klr")
 [node name="playermodel" parent="." instance=ExtResource("6_tgbf5")]
 transform = Transform3D(-1.5, 1.14291e-08, -1.30635e-07, 0, 1.49429, 0.130734, 1.31134e-07, 0.130734, -1.49429, 0, 0.236791, 0)
 
-[node name="Player UI" type="Control" parent="."]
+[node name="Player UI" type="Control" parent="." node_paths=PackedStringArray("crosshairs")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,8 +82,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("6_78t0m")
+crosshairs = [NodePath("Reticle/Top"), NodePath("Reticle/Bot"), NodePath("Reticle/Left"), NodePath("Reticle/Right")]
 
-[node name="Reticle" type="CenterContainer" parent="Player UI" node_paths=PackedStringArray("crosshairs")]
+[node name="Reticle" type="CenterContainer" parent="Player UI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -95,7 +94,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_smehm")
-crosshairs = [NodePath("Top"), NodePath("Bot"), NodePath("Left"), NodePath("Right")]
 
 [node name="Top" type="Line2D" parent="Player UI/Reticle"]
 points = PackedVector2Array(0, -3, 0, -15)
@@ -149,7 +147,6 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
-script = ExtResource("9_ddril")
 
 [node name="HealthholderUi" type="Sprite2D" parent="Player UI/Health"]
 z_index = -1
@@ -192,7 +189,6 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-script = ExtResource("9_iy7ap")
 
 [node name="Currentmag" type="Label" parent="Player UI/Ammo"]
 layout_mode = 0
@@ -218,7 +214,7 @@ theme_override_font_sizes/font_size = 20
 text = "456"
 horizontal_alignment = 2
 
-[node name="Uiholdertest" type="Sprite2D" parent="Player UI/Ammo"]
+[node name="AmmocounterUi" type="Sprite2D" parent="Player UI/Ammo"]
 z_index = -1
 position = Vector2(-69, -45)
 texture = ExtResource("9_f4klr")

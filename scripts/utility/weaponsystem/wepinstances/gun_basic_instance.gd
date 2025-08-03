@@ -195,7 +195,7 @@ func do_Shoot():
 	
 	#Update the current magazine capacity
 	if(affectUI):
-		uiInfo.ammoCounter.updateMag(capacity)
+		uiInfo.updateMag(capacity)
 	
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.
 	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * punchMult
@@ -305,13 +305,13 @@ func reload_Complete() -> void:
 	
 	#however, we'll still need to update the counter
 	if(affectUI):
-		uiInfo.ammoCounter.updateMag(capacity)
+		uiInfo.updateMag(capacity)
 	#print("Finished reload! Rounds: ", capacity)
 
 
 ##Updates UI. Called every frame so there's no need to call it anywhere else.
 func update_UI():
-	uiInfo.theReticle.adjust_spread(currentRecoil)
+	uiInfo.adjust_spread(currentRecoil)
 	
 func unload():
 	weaponMesh.queue_free()

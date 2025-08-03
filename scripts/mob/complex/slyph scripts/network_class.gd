@@ -196,8 +196,7 @@ func load_Network_From_File(fileString):
 		ourFile.close()
 		return
 	
-	
-	
+
 	var z:int = 0
 	var x:int = 0
 	
