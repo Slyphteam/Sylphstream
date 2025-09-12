@@ -12,6 +12,7 @@ canParry = false
 effectiveParry = false
 wepName = &"Limiter"
 wepDesc = &"A 3-foot section of galvanized steel chain. Deft and pocket-sized, though lacking."
+drawTime = 1.0
 damage = 20
 selections = Array[int]([2, 3, 5])
 position = Vector3(0, -0.3, -0.3)

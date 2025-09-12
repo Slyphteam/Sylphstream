@@ -23,6 +23,7 @@ We made out in a back alley once. Don't ask how. You don't want to know.
 ====+====> the beautiful chimera
 
 ======>Initial introduction:
+(A six-limbed beast stands on an intricate dais. As you approach, it regards you with little in the way of intent.)
 After many years of hard work I have become a beautiful chimera. 
 My scales are smooth and glossy and shine under the light of the sun.
 My teeth are pearlescent and their tapering points are astutely-rounded and sharp.
@@ -33,17 +34,27 @@ I think I look quite stunning. Wouldn't you agree~?
 
 PLAYER OPTIONS:
 1: I would. You're beautiful.
-2: I don't necessarily think so but I can see why you'd hold yourself in that regard.
+2: I don't think so but I can see why you'd hold yourself in that regard.
 3: You are very beautiful. For a chimera.
 4: I don't think I could agree.
 
 1; (The chimera hides a flattered, toothy smile with one of its forepaws)
-2;4 Hmm. To each their own.
+2;4 Hmm. To each their own, I suppose.
 3; I suppose I'll pretend I didn't hear that last portion.
 
+- Do you do anything here?
+
+I sell autoinjectors! I'm sure you've seen some color-coded syringes around; I'm the one who makes their contents.
+
 ======>Quest lines:
+Any odd jobs?
+
 (Hollistic medicine): There's a sunburnt woman around who seems to be trying to break into my market. 
-			See if she's a threat, will you?
+			See if she's any competition, will you?
+
+-I spoke to that woman you mentioned and she said my aura sucked and I should kill myself. 
+Oh, my. I'm sure you already know this but that's never the answer to life's quarrels. Here, it's on the house. (Your aura is replenished)
+
 (A mirror to stare into): Mmhmmm, you know what makes for a perfect makeup mirror?
 			The mirror-sheen, hypercomposite blade of a sawfly. Extravagant, I know, but I'll
 			make it worth your while. You player types like your rewards, don't you? How about
@@ -54,10 +65,10 @@ PLAYER OPTIONS:
 
 What do you think of greg?
 -She reeks and I have no idea where she gets all those firearms from. I've never seen anything enter or come out of
-that cardboard box of hers. It is honestly distressing. (unlocks greg's stupid question)
+that cardboard box of hers. It is honestly distressing to think about. (unlocks greg's stupid question)
 What do you think of the corpus dei?
--Hhmmhh, for a group of ardent zealots they don't appear to be very theologically read. I suppose that's par
-for the course, though.
+-Hhmmhh. For a group of zealots they don't appear to be very theologically versed.
+I suppose that is par for the course, though.
 
 ======> Small talk:
 (begin)
@@ -65,27 +76,27 @@ This might be a stupid question, but how do you make your autoinjectors?
 
 Why that's simple! I just use psychokenises and alchemy!
 0) Psychokinesis??
-0l; The Magic Power of picking them up with my Mind.
+0; The magical power of Picking Shit Up With My Mind. 
 1) Alchemy??
-1: What, do you think I scienced them up in a lab somewhere? 
+1: What, did you suppose I scienced them up in a lab somewhere? 
 1) Yes?
-2) No.
+2) No?
 Well, I didn't/Of course not! ->
 I'm quite the accomplished biothaumaturge. How else do you suppose I've attained my gorgeous figure? (end)
 
 (begin) Can a chimera be made without heartbreak?
-Of course not. My consummation was absolutely suffering, dear.
+Of course not. My consummation entailed almost entirely suffering, dear.
 Then why'd you do it?
-Mmhmm, is it possible to live a life without pain?
-1) I guess not
+Mmhmm, is it possible to experience joy without pain?
+1) I guess not.
 2) No...
 3) yea brah it totally is brah trust me brah
-1;2: Then you, and everyone around you have already past that step in the process, haven't you?
-3: Well, if you insist. (ends)
+1;2: Then you, and everyone around you have already completed that prerequisite, haven't you?
+3: If you insist. (ends)
 1) I guess that makes sense. (ends)
-2) Can you make me a chiemra, then?
--> I'm afraid you're not actually a vivaciously ensouled form of life, Millian
-Huh, checks out (end dialogue)
+2) Checks out. Can you make me a chiemra, then?
+-> I would, but I'm afraid you're not a vivaciously ensouled form of life, Angion.
+Oh... (end dialogue)
 
 I am not a combative NPC. I don't even have a healthholder. You can shoot me all you'd like and it will simply do nothing.
 
@@ -93,71 +104,76 @@ I am not a combative NPC. I don't even have a healthholder. You can shoot me all
 
 
 ====+====> Trustworthy greg's
-
-
-Fuck. Fuck fuck fuck. Things haven't been this bad since my bitch ex-wife asked for alimony the moment after I booked
-that flight to malibu.
-Things haven't been this bad since I forgot to drink half a bottle before showing up to coach my little league team.
-Hell, things haven't been this bad since my trailer home rolled into that open-air sewer.
+(As you walk up to the cardboard storefront, you can hear a rhaspy, somehow audibly short voice echoing from the store's back room)
+Ohhhhhh no. 
+Oooohhhhh shit. Shit shit shit shit shit. This is bad. 
+This is as bad as the weekend I forgot to drink a bottle before coaching my little league team.
 Things haven't been this fucking bad since I ran out of ciggies for ten minutes.
-oh- (hack)- jesus christ- there's so many guns- things haven't been this bad since I accidentally made eye 
-contact with my mother-in-law.
+Oh- (hack)- great archons- there's so many guns- things haven't been this bad since I accidentally made eye contact with my mother-in-law.
+(Clattering, grunting, and an odd, magical droning can be heard.)
+Fuck. Fuck fuck fuck. This is as bad as that one time my bitch ex-wife asked for alimony after I already booked that flight to malibu.
+Hell, things haven't been this bad since my trailer home rolled backwards into that open-air sewer.
 
 1) Is everything okay?
+2) Hello? 
+3) Anyone working here?
 
-Is that a customer? Oh shi-(the crashes of of 40-50 beer bottles, an obscene amount of soda cans,
-and a small mountain of guns collapsing can be heard from within the box.)
-God dammit. Coming!
-(The air quality markedly deteriorates as something obscured by shadow makes its way to the front of the store.)
-(The scent is of piss, cigarette smoke, late-stage liver failure, and child support payments that wouldn't actually 
-be all that crushing to someone if they had a sense of financial responsibility)
+Is that a customer? Oh shi-(the distinct, cacophonous sound of a collapsing mountain of firearms, beer cans, and takeout containers echoes
+from the store's rear. It stops after a moment)
+Oh, god dammit. Gimmie a sec, I'm coming, I'm coming.
+(Slow, plodding footsteps augur the rapid deterioration of air quality as a bipedal figure makes their way to the front of the store)
+(The overwhelming scent is of cigarette smoke, piss, maladaptive alcoholism, and child support payments that wouldn't actually 
+be all too crushing to someone if they had any sense of financial responsibility)
 
-w-ack-cough cough- w-he-he-hell, hey kid. Ain't you a new face around here. 
+W-ack-cough- w-he-he-hell, hey kid. Not often I see a new face around here.
 Welcome to Trustworthy greg's! The MOST reputable arms dealer in all of sylphstream!
 
-1) but you're the only arms dealer in all of sylphstream....
-1; Hey. Listen, pally. (Greg's voice gets about 200% graver) You see any other greasy old bastards
-around these parts selling firearms out of cardboard boxes, you're free to take your business to them.
-Until then, I'm the Most. Reputable. Arms dealer. In. Sylphstream. Yhear?
-3) Pleasure's mine. I'm already caught up on how business works around here. (Skip liscence tutorial)
+1) Aren't you the only arms dealer in all of sylphstream?
+1; Hey. Listen, pally. Listen, champ. (Greg's voice gets about 200% graver) You see any other greasy old bastards
+selling firearms out of cardboard boxes, you're free to take your business to them. 
+Until that happens, I am THE most. Reputable. Arms dealer. In sylphstream. Kapiche?
 2) (Drop a handful of Occles on the counter) I'd like your finest bullet dispensing apparatus, please.
-2: Hey, now slow down a minute there, lightning. See, that's now how things work around these parts. 
-If you want to buy a gun-- one that isn't shit, anyway-- you're going to have to buy a liscence for it.
-Guns're cheap-- I have so fuckin' many of them, it's absurd-- but actually being able to sell them to people's
-where the bottleneck really is.
+2: Hey, hey, slow down a minute there, lightning. See, I'm afraid that's not how things work around these parts. 
+If you want to buy a gun- one that isn't shit, anyway- you're going to have to buy a liscence for it.
+Guns're cheap- I have so fuckin' many of them, it's absurd- but I can't just hand them out all willy nilly, so that's the bottleneck.
+You need liscences for the better hwardware.
 1) How can I get a liscence?
-You get them from the prince of communications, the cylinder head looking gomer over there.
+You get them from the prince of communications, the cylinder head looking gomer over there. He'll walk you through things.
 2) Seriously? A liscence?
-2: Archon's orders. It's to make a "gameplay loop" or something stupid like that, Idunno, I don't make the rules.
+2: Archon's orders. It's so there's a """gameplay loop""" or something stupid like that. Idunno, I don't make the rules.
+3) Do you sell anything else?
+3; A few odds n' ends. The vendors cover a lotta the other shit you'll find yourself needing.
+
+4) Pleasure's mine. I'm already caught up on how business works around here. (Skip dialogue tree)
+
 
 
 ======> Small talk:
 
 (begin)
 This might be a stupid question, but where do you get all those guns from?
-It is a stupid question, kid, because the answer's pretty goddamn simple: I get them from the gun dimension.
+Yeah, that is a stupid question, kid, because the answer's pretty goddamn simple: I get them from the gun dimension.
 -the... gun dimension?
-The gun dimension, Einstein. The dimension of guns. There's a portal in my back room.
+The gun dimension, Einstein. The dimension of guns. I've got a portal in my back room.
 Can you teach me how to make a portal to the gun dimension?
 - Is my wife ever going to come back?
-yes...?
-no...?
-You and I both'll have to keep dreaming, then.
+....... yyeess?
+..... nnno?
+Heh. You and I both'll have to keep dreaming, kid.
 Bingo. Now, d'you wanna buy something or not?
 
 
 (begin) The prince referred to you with feminine pronouns.
 Eeeeeyup. (greg spends a solid ten seconds hacking up a ball of phlegm) that's true.
 1) You're a WOMAN???
-1; What, did you think women weren't allowed to be tawdry sleazy old disgusting unwashed divorced men?
+1; What, did you think women can't be tawdry sleazy old disgusting unwashed divorced misanthropes?
 2) Please marry me.
 2; yeah, I'll DEFINITELY do that as soon as you sign all your money off on life insurance. dumbass.
 3) I thought you said you had a wife?
-3; I did. And then that bitch hag took the kids, the house the car, the dog and even the fucking 
-silverware in the divorce. Un-goddamn-believable. That's the last time I'm hiring a laywer from the back of a 
-cereal box.
-4) In that case, is your name actually greg?
-Duh. It's short for Greganthana, you phillistine.
+3; I did. And then that bitch hag took the kids, the house the car, the dog, the cat, the goddamn gerbil and even the fucking 
+cockroaches in the divorce. Un-goddamn-believable. That's the last time I'm hiring a laywer off the back of a cereal box.
+4) In that case, is your name really greg?
+Duh. It's short for Greganthana. You phillistine.
 
 What do you think of the prince of information?
 -You didn't hear it from me, but he's a primo ipad baby. As in, you REALLY didn't hear it from me.
@@ -165,8 +181,8 @@ What do you think of the corpus dei?
 -They buy a lotta trinkets.
 What do you think of the chimera?
 It's a looker, but I have no goddamn idea how it actually makes those medicine syringes. 
-I mean, what the hell? It's nothing but paws all the way down and I really hope there's no chimera spit
-getting up in the injectors. (unlocks chimera stupid question)
+I mean, what the hell? There's nothing but paws all the way down and I really hope it doesn't use its mouth and get 
+chimera spit up in the injectors. (unlocks chimera stupid question)
 
 
 ====+====> The Twelph arbiter
@@ -183,10 +199,10 @@ getting up in the injectors. (unlocks chimera stupid question)
 
 ====+====> Sunburnt white woman
 
-Have you been selling bioalchemical 
-Bio-what now? Sweetie, I'm going to let that slide, because you clearly have no fucking clue who you're talking to,
-but everything *I* sell is 100% vegan AND non-GMO AND made exclusively by single women of color in developing nations.
-Don't you fucking forget it.
+Have you been selling bioalchemical actitives?
+Bio-what now? Sweetie, I'm going to let that slide, because you clearly have no fucking clue who you're talking to. 
+Everything *I* sell is 100% vegan AND non-GMO AND made exclusively by single women of color in developing nations.
+Don't. You. Fucking. Forget. It.
 
 ====+====> The Investor
 

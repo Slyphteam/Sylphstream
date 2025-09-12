@@ -137,6 +137,7 @@ PLAYER OPTIONS:
 5; If you insist.
 
 Type 2:
+(You walk up to some kind of sludge pile that seems to be holding a selfie stick)
 I have over twelve billion followers on Bleebo, the only social media network that legally owns the user.
 There's a new trend going around called Limpetmaxxing. It's where you're bound up with chains and cast 
 deep into the endless sea for decades at a time. I can hook you up if you want.
@@ -172,6 +173,7 @@ Player options:
 
 
 Type 4: 
+(A gently swaying figure stands before you. A ring of pseudopods dance around a cowrie shell-like mouth, from whithin echoes an excited voice)
 my bestie! helloo! :3
 my bestie in christ HAIIII!!!! hiii! helloooo!! bestie!!!!!
 hi!! :33 bestieeee! haaiiii~~!!!!
@@ -188,6 +190,7 @@ PLAYER OPTIONS:
 2; Bestie why would you say something like that :(
 
 Type 5 (crunko):
+(A void being hovers in the din. Its body is two dimensional, and it talks with a stinted, nascent accent)
 im jutse a poor little meow meow. i thinke? smoebody called me that once.
 do yuo know wher the nearist void portal is?
 its brighte in here :(
@@ -251,6 +254,7 @@ It is happening, and it is the only thing that makes you alive.
 What are you truly doing here?
 
 Type 10:
+(A plush, faceless bunny stands tall in front of you. With perfect rhythm, it projects a loud series of increasingly garbled mantras.)
 THE GLASS BIRD SITS UPON THE FRIGID MARBLE LAKE.
 TGE HLASS BIRD SITS UOPN THE FRIIGD MARBLE LAKE.
 TGE HLASS BIRS DITS UOPN THF ERIIGD MARBLL EAKE.
@@ -274,6 +278,7 @@ from your fissured caricature:
 empassioned warmth and tenderness.
 
 Type 12:
+(You approach a repulsive businessman in a suit. A sqirming egrigore of greed hovers over his shoulders.)
 2 day plan. Adopt an epsilon male mindset. Bleed and be bled.
 I'm a new kind of enteropollent dynamic stipend emperor. The shareholders love the title.
 I'm a god wrapped in a three-piece suit.
@@ -337,6 +342,7 @@ Lord, have mercy in the field of dreams
 Better make believe. Better make believe.
 
 Type 14:
+(The figure you approach is tall and clad in strange armor. They seem familiar, somehow.)
 Okay. We need to talk about the npc dialogue.
 Whats up with it?
 It doesn't make sense. Like, all of it. It's all just phrases and words.
@@ -356,6 +362,7 @@ PLAYER OPTIONS:
 1;Including the snippets.
 
 Type 15:
+(You feel like you could crush your enemies just standing close to GODSBLOOD. It vibrates.)
 A trickle of holiness; inexorable, divine ichor, races through your veins. 
 You are the divine product of millions of years of brutal evolution. 
 Inexhaustible, unbeatable, unassailable. 
@@ -370,6 +377,7 @@ Beat.
 GODSBLOOD.
 
 Type 16:
+(You feel like you have a plan for every possible outcome just standing close to FORECALCULUS. It hovers resolutely)
 You know what you're going to do before you do it. 
 You know how you're going to do it before you do it. 
 You can picture with perfect clarity in your mind, each and every step, in perfect absoluteness.
@@ -378,6 +386,7 @@ Failure only exists as a modality of improper planning.
 FORECALCULUS.
 
 Type 17:
+(You feel like you're missing something vital just standing close to TINY SQUIRRELDRAGON. It twitches erratically.)
 Something bad is going to happen. 
 Something bad has happened.
 It hasn't reached you yet, but it's on the way. 
@@ -389,6 +398,7 @@ You need to pile everything you've ever owned and curl up beneath it and only th
 TINY SQUIRRELDRAGON.
 
 Type 18:
+(You feel a longing to experience more just standing close to WORLD-DRINKER. It bobs and sways.)
 You see all that you see. 
 You smell all that you smell.
 You hear all that you hear.
@@ -402,6 +412,7 @@ Don't you at least want to give it a college try?
 WORLD-DRINKER.
 
 Type 19:
+(You feel a cool collection just standing close to SVELTE CARAPACE. It seems stoic and unaffected.)
 There is a shell that covers you and it is smooth. 
 It is without crack or crevice. 
 It is without kink or flaw.
@@ -415,6 +426,7 @@ Be it.
 SVELTE CARAPACE.
 
 Type 20:
+(You feel a melancholy sense of relief just standing close to RATIONIO-CYNICYSM. It veers jadedly.)
 Things aren't perfect. 
 Things will never be perfect. 
 You'd be a liar if you said they were. 
@@ -425,12 +437,24 @@ Isn't this so much better than the alternative?
 RATIONIO-CYNICYSM.
 
 Type 21:
-I just snorted a line of ivermectin and my yonic chakra is SO aligned right now. 
-I could bear a fucking archangel into the world right now if I so chose.
+(You repress a gag as the intense, oversweet scent of the ponytailed woman's perfume threatens your constitution. Her upper lip is peeled back
+in a permanent threat display)
 
+
+(If you took the Chimera sidequest): 
 Wow. You have NO Orgone reverberations + your aura is absolutely decrepit. 
 It's EMBARRASING that you'd go out in public like this. 
 If something like that happened to me I'd KILL MYSELF. Love and light.
+(Unlocks going back to the chimera and getting Aura)
+
+
+
+Heyyyyy girl I just wanted to say you look like DIVINE and your vibrations are VIVACIOUS.
+Btw are you interested in selling crystals or essential oils with me? 
+It's a new kind of feminist and socially aware business hierarchy.
+
+I just snorted a line of ivermectin and my yonic chakra is SO aligned right now. 
+I could bear a fucking archangel into the world right now if I so chose.
 
 With enough essential oils you can actually become a holistic deep Aeon projection. 
 I'm on 272 right now and there's at least five leylines running through me. I'm thrumming.
@@ -444,33 +468,29 @@ If you mix Peyote with Salvia, Mandrake, and Belladonna you can actually levitat
 karmic strings. My Hitachi magic wand told me this last night when I was 18 strata deep
 into manifesting my reincarnation as a lotus flower. 
 
-Hey I just wanted to say you look like divine and your vibrations are quite vivacious. 
-Btw are you interested in selling crystals or essential oils with me? 
-It's a new kind of feminist and socially aware business hierarchy.
-
 Um compulsory tribadism is actually a SCIENTIFICALLY DOCUMENTED SIDE EFFECT of a few too many
 buzzballs at the PTA afterparty. I remain heterosexual. 
 I REMAIN HETEROSEXUAL. 
 
 My yonic divine feminine moon attunement means I actually can't do anything wrong. 
-I could kill your children in front of you and my ancestral goddess would stop
-my karma from shifting. Love and light.
+I could do anything. I could hurt anyone. 
+My ancestral goddess would just stop my karma from shifting. Love and light.
 
 Aaaaa lot of people don't actually know this but vaccines are only necessary if you don't have
 a good Mother Gaia connection. I've never gotten the jab but my vaxxed mother in law is ALWAYS 
 getting sick even though I keep telling her to go on a Pondwater cleanse! LOL!!
 
 PLAYER OPTIONS:
-1: Isn't peyote, salvia, mandrake, and basically the entire nightshade family VIOLENTLY poisonous? 
-And also castor and queen anne's lace? Have you been poisoning yourself and other people under the guise
+1: Hang on, isn't castor and queen anne's lace violently poisonous? And also peyote, salvia, mandrake, 
+and basically the entire nightshade family? Have you been poisoning yourself and other people under the guise
 of spiritual herbalism??
-2: I think you're a horrible person who needs to do some serious and critical introspection.
+2: I think you're a horrible person who needs to do some seriously critical introspection.
 3: You are going to be reincarnated as a dung beetle and there is NOTHING you can do about it.
 4: (say nothing and leave)
 
 1;2;3: FUCK YOU. FUCK YOU. FUCK YOU. I WROTE YOUR NAME ON A MOUSE AND LET IT STARVE.
 I'M IMBUING YOUR BLOODLINE WITH A CURSE. I'M ACTIVATING MY PSYCHIC WARDS TO SHRED YOUR AURA.
-I'M SABOTAGING YOUR SHUNGITE RESERVES. I'M DOXXING YOU ON KIWIFARMS. 
+I'M SABOTAGING YOUR SHUNGITE RESERVES. I'M DOXXING YOU ON PARROTFARMS.
 I'M ASTRALLY REFRACTING 5G CANCER RAYS INTO YOUR HOUSE. RRRAAAAUUUUGHHH I HATE YOU SO FUCKING MUCH.
 4; (as you retreat, you realize this woman wasn't ever talking to you in the first place)
 
@@ -478,27 +498,38 @@ I'M ASTRALLY REFRACTING 5G CANCER RAYS INTO YOUR HOUSE. RRRAAAAUUUUGHHH I HATE Y
 
 
 
-
-
 Type 23: old programmer
 
-Are you my grandson? I... I don't know. I don't know.
-I like elephants. One of these days I'll buy several and have them run around my backyard and look out the window and say to Ms. davis,
-look, honey, there's the elephants, they're playing again. I like to think God likes elephants. I hope so. I hope God has enough love for all of us.
-Who needs 24-bit color when you... when it's done with vector interpolation... with... with sixteen simpson colors... 
-They had us to a lot of network stuff back in the seventies. We'd use the punch cards... polycubic sun-mid time arrays... the great stacks of cards with holes... 
-We found the ring-0 Seventh trumpet source code... God's covenant... the sparrow's goldswept wings cubic 4-day time square... um, anyway...
+(You approach a decrepit, overgrown environmental suit. Periodically, a dim light in the visor struggles and flickers,
+shining brightly for just a moment before the darkness returns.)
+(You stand before something once far, far greater than yourself. Mind that you carry yourself accordingly.)
+
+I... I like circus peanuts. I like to call them baby feet, since they're little, and, um, soft... like the feet of a baby... 
+heh, you know, that's what I like to call circus peanuts.
+Do I know you? I... I don't know. I'm sorry... I don't know.
+You know, I used to play the piano... d flat and f, b flat... It's how I'd solder... I'd hook the speaker up to my mutimeter and tell by the pitch... 
+I- the songs are gone... I can't anymore... They're gone. 
+One of these days I'll buy a few elephants and have them run around my backyard and look out the window and say to her:
+look, honey, there's the elephants, they're playing again. Her smile made the sun shine. You never met who she used to be.
+Who needs 24-bit color when you... when it's done with vector interpolation... with... with sixteen simpson colors... the HAM networks were a lot larger back then...
+They had us do a lot of network stuff back in the seventies. We'd use the punch cards... polycubic sun-mid time arrays... big stacks of cards with holes... 
+You know, computers weren't always touchscreen... they had mice and keyboards... 
+You know, I met her in the American Association... there were these little cakes you could buy, back then, moon cakes... I.... Where is she? Is she in the other room?
+We did a lot of work for the the ring-0 Seventh trumpet source code... God's covenant... the goldswept wings cubic 4-day time square... um, anyway...
 I'm sorry if I don't always make sense. It's- I'm sorry. I'm sorry.
 The- the API- the four-bit operating system... it's feeding into a 96 hour sun-up- guess-w-hat- do you remember the old HGR... HLIN compiler... shift the origin...
 So.. uhm... let's see what this does. This is a little program I wrote in COBOL, back- uh- back when we did that- so now if I click... I... wanted to... 
-be... as good as I could in cubic time complexity
+be... as good as I could in cubic time complexity...
+I like to think God likes elephants. I hope so. I hope God has enough love in his heart for all of us.
 
+(Place an offering and leave) (moon pie, circus peanut, dark chocolate and a model elephant)
 
 Type 24: Pipebomb andy
 
+(A man in a skull mask(?) and captain's attire approaches you. He holds a suspiciously bulky backpack in two hands)
 Hello, it is I, pipe bomb andy.
 I offer you a heartfelt gift.
-(Pipe bomb andy offers you a suspiciously heavy backpack. Do you accept?)
+(Pipe bomb andy offers you the satchel. Do you accept?)
 Yes (accept)
 Dude. (decline)
 

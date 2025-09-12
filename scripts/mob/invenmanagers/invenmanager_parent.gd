@@ -1,4 +1,7 @@
-#This is the boilerplate code for all invenmanager objects.
+##This is the parent class for all invenmanager objects, containing boilerplate code
+#Do !!NOT!! use this directly. EVER. Extend a child and override the functions going
+#up the scene hierarchy, or else things won't work and also I'll come to your house
+#and genuinely kill you in roblox in minecraft in fortnite in real life
 class_name INVENMANAGER extends Node3D
 
 @export var starterWeapon: WEAP_INFO

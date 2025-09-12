@@ -400,7 +400,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.4868
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.44322, 0.648801, -0.467051)
 
 [node name="target 3" parent="Environment/Range" instance=ExtResource("4_m2myf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.632, 0.648801, 1.85266)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 48.8067, 0.648809, 66.5657)
 
 [node name="sporting clay" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.87644, 2.82441, 2.62155)

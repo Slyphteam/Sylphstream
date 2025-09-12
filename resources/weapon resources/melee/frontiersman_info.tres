@@ -12,6 +12,7 @@ canParry = false
 effectiveParry = false
 wepName = &"Frontiersman"
 wepDesc = &"A plastic-handled hunting knife. It\'s sharp, if nothing else."
+drawTime = 1.0
 damage = 50
 selections = Array[int]([5, 2])
 position = Vector3(0, -0.3, -0.3)

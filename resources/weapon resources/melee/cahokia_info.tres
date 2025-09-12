@@ -12,6 +12,7 @@ canParry = true
 effectiveParry = false
 wepName = &"Cahokia"
 wepDesc = &"A two-bladed, American-made ductwork knife. Championed as an effective combat knife for the poor."
+drawTime = 1.0
 damage = 30
 selections = Array[int]([5, 2])
 position = Vector3(0, -0.3, -0.3)

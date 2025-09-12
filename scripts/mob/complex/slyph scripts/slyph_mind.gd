@@ -225,10 +225,10 @@ var targetsPresent = 1 #assume there's a target.
 func do_Senses():
 	
 
-	#INDEX 0,1,2,3 AND 4,5: VISION SENSES
+	#INDEX 0,1,2,3 AND 4,5 + 18: VISION SENSES
 	do_Vision()
 	#keep in mind 4-5 work are trained on both sylph and target having same root.
-	#if this doesnt happen things will be BAD (is this even true anymore? idk, check)
+	#if this doesnt happen things will be BAD (90% sure this is no longer true with all the changes)
 
 	#INDEX 6: AIM AZIMUTH
 	#between 90 and -90
@@ -244,17 +244,16 @@ func do_Senses():
 		#print("Crosshair size:", sensoryInput[8])
 
 	#INDEX 9: AIMSPEED
-	
 	var speed = aimVector.length()
 	#equal to the hypotenuse of a iscoceles right triangle (with friction applied)
 	var highestPossibleSpeed = sqrt(4 * maxSpeed * maxSpeed) * 0.7
 	var adjustedSpeed = speed / highestPossibleSpeed
 	#print(speed, " ", highestPossibleSpeed)
-	sensoryInput[9] = 0
+	sensoryInput[9] = adjustedSpeed
 	
 	#INDEX 10: TARGETS PRESENT
 	#not currently doing anything with this
-	sensoryInput[10] = targetsPresent
+	sensoryInput[10] = 0#targetsPresent
 	
 	#INDEX 11: Empty! formerly heartcur
 	sensoryInput[11] = 0#heartCur
@@ -350,8 +349,8 @@ func do_Vision():
 		#var dist = (connectingVec.length() / 12.5) -1 #value between 0 and 2
 		sensoryInput[18] = (connectingVec.length() / 12.5) -1 
 		
-		#4: EXTREMA
-		
+		#INDEX 4: EXTREMA
+			
 		#Novel idea: Instead of trying to use trig, what if wejust calculate the distance
 		#between a point extended (distance) out from the sylph's head, and rotated wherever they're facing?
 		var sylphVisCenter: Vector2 
@@ -363,11 +362,10 @@ func do_Vision():
 		var offset = diff.length() #tentative max for offset is 12.3
 		
 		offset /= 6.15
-		
 		offset -=1
-		
-		#print(offset)
 		sensoryInput[4] = offset
+		
+		
 		#var theta : float 
 		#if(absf(connectingVec.x) > absf(connectingVec.z)):
 			#theta = atan(connectingVec.z/connectingVec.x)

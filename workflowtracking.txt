@@ -63,7 +63,15 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-more guns brutherrrr
+Change single round reloading logic off of shotguns and onto heldweapon instance, use a boolean
+to determine which is which.
+Weapon "jump" as primitive animation when fired.
+Whenever recoil is applied, pick a random point from default, teleport there, use
+current recoil value to determine how you should move back.
+Each time the gun is fired, this new point should change. 
+^^ Use this to springboard into having ADS also lerp, and have a deadtime when you cant shot 
+as one toggles.
+
 
 -----------\
 =======+=======> FUTURE PLANS:
@@ -84,6 +92,9 @@ Sylph maintenance:
 
 Before you do ANYTHING with the sylphs again, write a function that takes a node and sets its
 immediate weights/biases to be completely neutral. otherwise you're going to undo everything.
+
+After making Sylph kinematic controller, take sample snapshots of input (looking at target, looking
+above target, not looking at target, far from target) and use those so you can do SGD pre-training.
 
 Randf function may have weird weights due to how floats work, look into it
 Look into mutating by "pulses"-- rather than shooting a shotgun into the network,

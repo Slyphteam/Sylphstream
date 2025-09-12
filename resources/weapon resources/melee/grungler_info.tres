@@ -12,6 +12,7 @@ canParry = true
 effectiveParry = false
 wepName = &"The Grungler"
 wepDesc = &"You really aren\'t sure what this tool is. But it\'s heavy."
+drawTime = 1.0
 damage = 70
 selections = Array[int]([4])
 position = Vector3(0, -0.3, -0.3)

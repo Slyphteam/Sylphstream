@@ -86,7 +86,7 @@ var revertcount = 0
 var mutAmount = 0.09
 var mutPercent = 1
 
-var generation: int = 118
+var generation: int = 120
 var highScore = -0
 
 ##Function that scores all sylphs in the global allSylphs array
@@ -125,7 +125,7 @@ func score_Sylphs_All():
 	print("Best score: ", bestScore, " [", bestScoreInd, "] Runner-up ", secondBestScore, " []", secondScoreInd)
 	
 	ind = 0
-	if(bestScore < (prevBest)):
+	if(bestScore < (prevBest - 1)):
 		print("reverting. count: ", revertcount)
 		#for curSylph in Globalscript.allSylphs:
 			#curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")

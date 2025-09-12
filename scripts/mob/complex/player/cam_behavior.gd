@@ -2,6 +2,7 @@
 # Manages bobbing, tilt, minor camera adjustments
 extends Camera3D
 
+#For new zoom: dot product of players lookdir and speed
 
 # external variables
 @export var bob_speed_target : float = 0.0

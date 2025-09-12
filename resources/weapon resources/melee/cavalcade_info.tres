@@ -12,6 +12,7 @@ canParry = true
 effectiveParry = true
 wepName = &"Cavalcade"
 wepDesc = &"An intricate, though ornamental one-handed longsword. If nothing else, the reach makes it useful."
+drawTime = 1.0
 damage = 20
 selections = Array[int]([2, 4])
 position = Vector3(0, -0.3, -0.3)
