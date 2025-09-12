@@ -19,10 +19,11 @@ func hit_By_Bullet(_dam, _damtype, _dir, _origin):
 	#move_Head_Exact(Vector2(5,5))
 
 func interact_By_Player(_playerRef):
-
-	print("Hi!")
+	
+	move_Head_Exact(Vector2(0, 10))
+	#print("Hi!")
 	#mind.do_Single_Thought(1/60)
-	mind.begin_Test()
+	#mind.begin_Test()
 	#mind.do_Vision()
 	
 
@@ -30,10 +31,11 @@ func interact_By_Player(_playerRef):
 
 ##Moves the Sylph's head with a vector containing the degrees of rotation in vertical, horizontal
 func move_Head_Exact(desired: Vector2):
-	sylphHead.rotation_degrees.x -= desired.y
-	sylphHead.rotation_degrees.y += desired.x
+	sylphHead.rotation_degrees.x -= desired.y #up/down. yeah it's subtractive. welcome to godot.
+	sylphHead.rotation_degrees.y += desired.x #side/side
 	
-	clampf(sylphHead.rotation_degrees.x, -90, 90)
+	#to past self: you have to use the return value for clamp to work, dummy
+	sylphHead.rotation_degrees.x = clampf(sylphHead.rotation_degrees.x, -90, 90) 
 	
 	#This code would update the body's rotation, which looked cool, but isn't something I want to deal with yet
 	#var newangle = sylphHead.rotation_degrees.y
