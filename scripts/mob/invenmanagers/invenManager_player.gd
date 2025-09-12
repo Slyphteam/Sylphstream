@@ -44,9 +44,9 @@ func _ready():
 	user = get_node("../../..")
 	
 	heldAmmunition.ammoRimfire = 0
-	heldAmmunition.ammoPistol = 51
-	heldAmmunition.ammoRifle = 30
-	heldAmmunition.ammoShotgun = 20
+	heldAmmunition.ammoPistol = 0
+	heldAmmunition.ammoRifle = 0
+	heldAmmunition.ammoShotgun = 0
 	recalcWeight()
 	
 	allSlots.resize(5)

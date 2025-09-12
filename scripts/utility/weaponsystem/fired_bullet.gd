@@ -3,7 +3,7 @@ class_name FIREDBULLET extends Node
 var orig: Vector3
 var end: Vector3
 var spaceState:PhysicsDirectSpaceState3D
-var theUser
+var theUser ##reference to the entity who shot the bullet, if applicable
 var dam : int
 
 func assign_Info(origIC: Vector3, endIC: Vector3, spaceStateIC:PhysicsDirectSpaceState3D, theUserIC, damIC):
@@ -28,7 +28,7 @@ func take_Shot():
 	if(castResult):
 		var hitObject = castResult.get("collider")
 		if(hitObject.is_in_group("damage_interactible")):
-			hitObject.hit_By_Bullet(dam,2,3,4)
+			hitObject.hit_By_Bullet(dam,"UNUSED","UNUSED",theUser)
 		if(!hitObject.is_in_group("hit_decal_blacklist")):
 			do_Hit_Decal(castResult.get("position"))
 

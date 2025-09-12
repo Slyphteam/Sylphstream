@@ -1,10 +1,9 @@
-#Variant of a complex healthholder that updates the UI.
+##Variant of a complex healthholder that updates the UI.
 class_name PLAYERHEALTHHOLDER extends COMPLEXHEALTHHOLDER
 @onready var playerUI = $"../Player UI"
-@export var startingAura: int = 10
 
-func _ready():
-	aura = startingAura
+#func _ready():
+
 
 func update_True_Vals(): 
 	super.update_True_Vals()
@@ -12,7 +11,10 @@ func update_True_Vals():
 	
 
 func doDie():
-	print("you are fusksings dead. game oval.")
+	print("you are frickings dead. game oval.")
+	#in the future, we'll want stuff to actually happen, but for now just reset the player
+	Globalscript.thePlayer.position = Vector3(-0.2, 2, 3)
+	give_Health(100 + (0 - health))
 
 
 func give_Health(amount:int):

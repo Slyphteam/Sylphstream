@@ -1,13 +1,19 @@
+##A simple script that keeps track of just a health value
 class_name HEALTHHOLDER extends Node
 #worth doing: think about changing this to not update on process.
 #This will mean you can't have "batch" damage (i.e. grouped shotgun hits)
 #but it will make it simpler and cheaper codewise
 func _init():
-	process_mode = PROCESS_MODE_PAUSABLE
+	health = startingHP
 
-var maxHP = 100
-var health: int = 100
+@export var maxHP = 100
+@export var startingHP = 100
+var health: int = 1
 var takenDamage: int = 0 ##What's the damage we're applying to health for the frame?
+
+##Basic access function that gives the current health
+func check_HP()->int:
+	return health
 
 func take_Dam(incomingDam)->int:
 	takenDamage += incomingDam

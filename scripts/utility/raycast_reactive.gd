@@ -2,7 +2,8 @@ class_name RAYCASTREACTIVE extends PhysicsBody3D
 @export var healthholder: HEALTHHOLDER
 
 ##One of two special raycast. READ COMMENTS IN CLASS FILE FOR MORE INFO.
-func hit_By_Bullet(dam, _damtype, _dir, _originator):
+func hit_By_Bullet(dam, _damtype, _dir, originator):
+
 	print("Target hit! ", dam)
 
 

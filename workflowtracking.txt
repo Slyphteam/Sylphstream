@@ -77,6 +77,8 @@ as one toggles.
 =======+=======> FUTURE PLANS:
 -----------/
 
+Players should take more time to get up to speed. Also revert the friction to default values so we can bhop again.
+ADD BULLET VARIANCE!!! Just make it a toggle!
 Autolean when ADS + ADS makes the camera zoom in
 Change degubby reload and fire sounds to be distinctly not gunshots. cmon. no excuses.
 Watch inventory system video. Make simple shitty top bar for player inv and placeholder one for stims

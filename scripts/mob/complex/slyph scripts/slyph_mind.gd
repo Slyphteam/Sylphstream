@@ -2,6 +2,7 @@ extends Node
 
 @onready var body = $".."
 @onready var manager: SYLPHINVENMANAGER = $"../sylph head v2/sylphinventory"
+@onready var ourHP: HEALTHHOLDER = $"../COMPLEXHEALTHHOLDER"
 
 var aimSensitivity:float = 1 ##fractional multiplier
 var ourNetwork:NNETWORK
@@ -259,8 +260,7 @@ func do_Senses():
 	sensoryInput[11] = 0#heartCur
 	
 	#INDEX 12: HEALTH
-	#not doing this yet
-	sensoryInput[12] = 0
+	sensoryInput[12] = (ourHP.check_HP() / 50) -1
 	
 	#INDEX 13,14,15,16: MODAL INPUTS
 	sensoryInput[13] = desiredActions[12]

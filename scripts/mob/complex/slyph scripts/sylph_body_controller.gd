@@ -3,25 +3,29 @@ extends CharacterBody3D
 @onready var sylphHead = $"sylph head v2"
 @onready var collider = $sylphcollider
 @onready var mind = $"slyph mind"
+@onready var ourHealth = $COMPLEXHEALTHHOLDER
 @onready var manager : INVENMANAGER = $"sylph head v2/sylphinventory"
 @export var ourTar: Node3D
 
 var shoot = false
-func hit_By_Bullet(_dam, _damtype, _dir, _origin):
-	#print("ow!")
-	if(shoot):
-		manager.unShoot()
-		shoot = false
-	else:
-		manager.doShoot()
-		shoot = true
+func hit_By_Bullet(dam, _damtype, _dir, originator):
+	if(originator):
+		if(originator == Globalscript.thePlayer):
+			print("Ow! You shot me for ", dam, " damage!")
 	
-	#move_Head_Exact(Vector2(5,5))
+	var newHP = ourHealth.take_Dam(dam)
+	
+	if(newHP <= 0):
+		print("OWWW! I just died!")
+		
+		#will need more work on this in the future
+		rotation_degrees.x = 90
+	
+	
 
 func interact_By_Player(_playerRef):
 	
-	move_Head_Exact(Vector2(0, 10))
-	#print("Hi!")
+	print("Hi! My current HP is ", ourHealth.health, " with ", ourHealth.aura, " aura")
 	#mind.do_Single_Thought(1/60)
 	#mind.begin_Test()
 	#mind.do_Vision()

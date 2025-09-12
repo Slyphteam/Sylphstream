@@ -1,13 +1,19 @@
+##A more advanced healthholder. Allows for aura, overheal, and status effects. Use on mobs.
 class_name COMPLEXHEALTHHOLDER extends HEALTHHOLDER
 
 func _init():
 	process_mode = PROCESS_MODE_PAUSABLE
+	aura = startingAura
+	super()
 
+
+@export var startingAura: int = 50
 var aura: int = 0
 var takenAura: int = 0 ##What's the damage applied to aura for the frame?
 
 var effectStarter: STATUSEFFECT ##Head of the doubly linked list used to handle statuseffects.
 
+##Processes damage based off incoming dam. Returns the new health. 
 func take_Dam(incomingDam)->int:
 	
 	if(aura > 0): #3/4ths of damage + remainder gets routed to aura.
