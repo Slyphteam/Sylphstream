@@ -1,6 +1,7 @@
-#this script is the PRIMARY driver for kinematic player behavior and input/output.
+##this script is the PRIMARY driver for kinematic player behavior and input/output.
 #This script also communicates with the invenManager script for reloading, shooting,
 #and general interactions with the held object, and also handles incoming damage. It's a lot.
+#commentary at bottom.
 
 extends CharacterBody3D
 
@@ -18,8 +19,8 @@ var viewpunchRecoverSpeed = 0.5 ##LERP amount of the recovery. Should be lower w
 var currentlyRecovering: bool = false ## Are we in the midst of an auto-recovering viewpunch?
 
 #player input/movement variables
-var leftright : float ##variables for how "walking" we are in either cardinal direction
-var forback : float ##How "walking" the player is in the forward/back direction
+var leftright : float ##acceleration in the left/right direction
+var forback : float ##as far as I can tell this is acceleration
 var playerVelocity: Vector3 = Vector3.ZERO ## player's calculated velocity, as a vector
 var playerSpeed = 0 ## speed of player to prevent too many playerVelocity.length calls
 const maxvelocity = 100; ##this might not seem insane but keep in mind 20 is walking speed
@@ -36,20 +37,20 @@ const crouchSlideStart = 17 ##start speed
 const crouchSlideEnd = 4 ##end speed
 const crouchSlideFric = 0.15 ##reductive multiplier on friction
 
-#How long it takes the player to get up to full steam, based on speed bonuses
-const sprintMod = 3 ##it takes time to get up to a sprint though
+#per-frame "additions" to the speed of the player. Not really but effectively.
+const sprintMod = 6 ##sprinting is "better" than running
 const walkMod = 3 ## walking players have a lot of control
-const crouchMod = 5 ## crouching players have a LOT of control
+const crouchMod = 4 ## crouching players have a LOT of control
 
 
 var curMax = 13 ## used to limit speed. Affected by crouch and sprint bonus
 const walkSpeed = 13 
-const crouchSpeed = -5.5 ## negative "bonus" of 6 to player speed
+const crouchSpeed = -5 ## negative "bonus" of 6 to player speed
 const sprintSpeed = 5 ## positive bonus of 5
-const aimSpeed = -4 ##mouse sensitivity is handled in toggle_ADS_Stats
+const aimSpeed = -4 ##Aiming movement reduction; mouse sensitivity is handled in toggle_ADS_Stats
 
 
-const friction = 100 ##This is a force applied to the player each time. It is applied AFTER acceleration is calculated
+const friction = 60 ##In 1/60th speed units per frame
 # used as a constant in dosourcelikeaccelerate
 const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 
@@ -165,21 +166,32 @@ func update_Viewangles():
 func check_Directional_Movement():
 	#update the movement bonus based on our current mode
 	var bonus = walkMod 
-	var limit = walkSpeed
+	var limit = walkSpeed * 10 ##Limit is the "maximum" impulse in 1/10th of units
 	if(crouching):
-		limit += crouchSpeed 
+		limit += crouchSpeed * 10 #Limit will be 12.5 if crouching
 		bonus = crouchMod 
 	elif(sprinting):
-		limit += sprintSpeed
+		limit += sprintSpeed * 10 #21 if running
 		bonus = sprintMod 
-		
-	leftright += int(bonus) * (int(Input.get_action_strength("ui_left") )) 
-	leftright -= int(bonus) * (int(Input.get_action_strength("ui_right"))) 
 	
-	forback += int(bonus) * (int(Input.get_action_strength("ui_up") ))
-	forback -= int(bonus) * (int(Input.get_action_strength("ui_down")))
+	if(aiming):
+		limit += aimSpeed * 10
+		if(sprinting): #further reduction if you're trying to sprint: above walking, but not much
+			limit -= 10
 	
-	# clamp left/right movement
+	
+	#This would probably be best as a linear function, but that's a considerable amount of effort for something that's currently "good enough"
+	if(playerSpeed == 0 && leftright == 0 && forback == 0): #Make starting from a dead stop easier
+		bonus = 50
+	
+	leftright += int(bonus) * (int(Input.get_action_strength("ui_left") )) * Globalscript.deltaButNotStinky
+	leftright -= int(bonus) * (int(Input.get_action_strength("ui_right") )) * Globalscript.deltaButNotStinky
+	
+	forback += int(bonus) * (int(Input.get_action_strength("ui_up") )) * Globalscript.deltaButNotStinky
+	forback -= int(bonus) * (int(Input.get_action_strength("ui_down") )) * Globalscript.deltaButNotStinky
+	
+	
+	# clamp left/right movement (this might cause instant stopping?)
 	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		leftright = 0
 	else:
@@ -253,6 +265,8 @@ func toggle_ADS_Stats():
 ##This is the MAIN function that determines where and how the player will move
 func handle_Move(delta):
 	
+	#print(playerSpeed)
+	
 	#i should really really REALLY REALLY R E A L L Y refactor this section
 	if (is_on_floor()):
 		if(crouchSliding): #Crouchsliding doesn't factor in WASD keypresses. 
@@ -283,26 +297,22 @@ func handle_Floor_Sourcelike(delta):
 	var forwAngle = (Vector3.FORWARD).rotated(Vector3.UP, playerCam.global_rotation.y).normalized()
 	var sideAngle = (Vector3.LEFT).rotated(Vector3.UP, playerCam.global_rotation.y).normalized()
 	
-	#calculate a vector based of our inputs and angles
-	var desiredVec = (leftright * sideAngle) + (forback * forwAngle)
 	
+	#since I changed the "unit" value of forback and leftright, we need to calibrate them
+	var paralelImpulse = forback / 10
+	var perpImpulse = leftright / 10
+	
+	#calculate a vector based off our inputs and angles
+	var desiredVec = (perpImpulse * sideAngle) + (paralelImpulse * forwAngle)
 	var desiredDir: Vector3 = desiredVec.normalized()
 	var desiredSpeed = desiredVec.length()
 	
-	#a really funny bug to have happen was zeroing out the desiredvec.y here instead of lower
-	#which meant you could just phase through the floor by trying hard enough. and also fly.
 	
-	
+	#update our failsafe modifiers, and also check for crouchslides.
+	#might be weird to have these two be lumped in one but that's because 
+	#this was the code that acted as a state-based speed limit
+	#It is now in the hands of friction code and player input code.
 	curMax = walkSpeed;
-	
-	#Apply conditional modifiers to our max speed
-	if(aiming):
-		if(crouching): #aiming and crouching gets ridiculously slow if we apply crouchSpeed penalty also
-			curMax -=1 
-		else:
-			curMax += aimSpeed 
-			
-
 	if(crouching): 
 		curMax += crouchSpeed; #only apply crouch movement bonus
 		if(playerSpeed > crouchSlideStart): 
@@ -310,12 +320,13 @@ func handle_Floor_Sourcelike(delta):
 			#print("crouchsliding! speed:", playerSpeed)
 	elif(sprinting): curMax += sprintSpeed; 
 	
-	#player is not moving if speed is less than 3.5, huh?
+	curMax +=1 #give some wiggle room
+	
+	#failsafe for limiting player speed. This rarely happens, but it's a quite beign fix.
 	if desiredSpeed !=0.0 and desiredSpeed > curMax:
-		
 		desiredVec *= curMax / desiredSpeed # update our vector to not be too silly
 		desiredSpeed = curMax # clamp it
-		#print("limited speed: ", desiredSpeed)
+
 	
 	desiredVec.y = 0; #zero out the y
 	
@@ -519,11 +530,17 @@ func handle_Friction(delta, fricMod):
 	if playerSpeed <= 0:
 		return
 	
-	# Add the amount to the drop amount.
-	var drop = friction * delta * fricMod
+	var speedThreshold = 5 ##formerly stopspeed and also kinda control. If too high, won't work, if too low, will severly limit speed
+	var speedFactor = 1 # how much do we want the player's speed to come into play? control in quake movement
+	
+	if(playerSpeed > speedThreshold):
+		speedFactor = playerSpeed / speedThreshold
+
+	var drop = friction * delta * fricMod * speedFactor
 
 	# scale the velocity
 	var newspeed = playerSpeed - drop
+	
 	if newspeed < 0:
 		newspeed = 0
 	
@@ -609,3 +626,12 @@ func hit_By_Bullet(dam, _damtype, _dir, _origin):
 	
 func get_invenm():
 	return invenManager
+
+
+#Okay, this is the part where I try and use words to describe how the player controller works.
+#a lot of it is self explanatory but some isn;t.
+#the forback and leftright are the acceleration values added to speed each frame,
+#split up depending on where the player is looking.
+#this gets added to each frame; the momentum comes from friction
+#the way speed is limited comes from the friction code, which uses speed as a calculation,
+#but also from builtin state values that pose bounds on what the per frame acc is.

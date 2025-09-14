@@ -5,7 +5,10 @@ var isPlaying = false ##Is the game paused or running?
 var thePlayer
 var allSylphs: Array
 
+var deltaButNotStinky = 0 ##copy of delta that's scaled by 60 to use as a unit
+
 func _process(delta):
+	deltaButNotStinky = delta * 60
 	timer += delta 
 
 ##Returns true/false based on a % chance

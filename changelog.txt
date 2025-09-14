@@ -1,9 +1,14 @@
+9/14:
+Several changes to how playerspeed is computed and handled. 
+Players can no longer gain infinite speed by moving diagonally in a circle
+Player speed is now MUCH more consisten over time
+Friction now actually accounts for current speed
+9/12:
+Sylphs can now also take damage and DIE! so can the player. This doesn't actually do anything (yet)
 7/29: 
 Players can now heal with the x key, which will become the quickstim menu in the future.
 Doing so will give between 0-4 health at a rate of ~1 per second.
 There's currently no way to regain aura.
-9/12:
-Sylphs can now also take damage and DIE! so can the player. This doesn't actually do anything (yet)
 7/27:
 Players can now take damage. If applicable, 3/4ths of damage will be diverted to aura.
 Added status effects framework. Statuses use a doubly linked list and have application,
