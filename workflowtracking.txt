@@ -132,3 +132,6 @@ Archon intro ditty:
 low high bitlower medium - - - - - - high low
 low high bitlower - - + verlow high lowwww
 Archon option buttons
+
+FAAAAR in the future: bother with using normals, directions, trig to get a good decal angle.
+Deflections also!

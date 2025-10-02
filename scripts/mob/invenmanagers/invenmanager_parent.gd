@@ -17,10 +17,13 @@ var wepMesh: MeshInstance3D
 var inAimingTransition:bool ##State variable that tells _process if we're doing any aiming
 var notAimed:bool ##State variable that determines if we're ADS
 var backupOffset
+var didSpeedPenalty = false ##A not quite boolean variable that determines if we did a speed penalty. Incorporates a delay.
+var speedPenaltyAmount = 20
 
 func _process(delta):
 	if(activeItem):
 		activeItem.manualProcess(delta)
+	
 	
 	if(inAimingTransition):
 		inAimingTransition = false
@@ -174,6 +177,25 @@ func startReload():
 		activeItem.startReload()
 	else:
 		pass
+
+var penaltyOffset = 15 ##A value of how much we've offset the aimcone by applying the penalty. In the future, this will be dynamic.
+##Apply a temporary accuracy penalty for sprinting/jumping/crouchsliding
+func check_Apply_Speedpenalty(speed):
+	if(weapType != 1):
+		return
+	
+	activeItem.do_Move_Penalty(speed)
+	#if(didSpeedPenalty): #if already true, check speed penalty, 
+		#if(speed < 14): #return to normal
+			#activeItem.adjustAcuracy(0 - penaltyOffset)
+			#didSpeedPenalty = false
+			#return
+	#
+	#else: #we haven't already
+		#if(speed >= 14): #so, check, and if necessary, apply
+			#activeItem.adjustAcuracy(penaltyOffset)
+			#didSpeedPenalty = true
+		
 
 #functions going down the hierarchy
 func toggleSights():

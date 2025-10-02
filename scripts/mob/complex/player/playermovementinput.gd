@@ -90,6 +90,8 @@ func _input(event):
 	
 	if Input.is_action_pressed("ui_sprint"):
 		sprinting = true
+		
+		
 	else:
 		sprinting = false
 	
@@ -253,7 +255,7 @@ func transition_Crouch(entering):
 		stepF.position.y -= 0.9
 		stepB.position.y -= 0.9
 
-##Function that toggles mouse sensitivity. Speed is handled per-frame. Maybe make dependent on weapons stat????
+##Function that toggles mouse sensitivity. Called by logic in input and the gun side of things are handled by invenmanager.
 func toggle_ADS_Stats():
 	if(aiming): # we want to un-aim
 		mousesensitivity = 0.25
@@ -264,6 +266,11 @@ func toggle_ADS_Stats():
 		
 ##This is the MAIN function that determines where and how the player will move
 func handle_Move(delta):
+	
+	#tell invmanager to check for a speed penalty
+	var tempVelocity = playerVelocity #don't like having to do this but we oughta recalculate purely horizontal speed
+	tempVelocity.y = 0
+	invenManager.check_Apply_Speedpenalty(tempVelocity.length())
 	
 	#print(playerSpeed)
 	

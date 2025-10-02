@@ -37,6 +37,8 @@ var chambering : int
 var maxCapacity : int
 var totalMaxRecoil 
 var totalMinRecoil
+var speedlessMinRecoil ##Min recoil, before speed mod is applied. Think of this as the behavior if speed penalties were disabled.
+var speedlessMaxRecoil ##Max recoil, before speed mod is applied. Think of this as the behavior if speed penalties were disabled.
 var recoveryAmount ##How quickly do we get a hold of the gun?
 var recoilAmount ##Applied per shot
 var punchMult ##Multiplier to viewpunch 
@@ -105,6 +107,10 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	#initialize stats
 	capacity = maxCapacity
 	reloading = false
+	
+
+	speedlessMaxRecoil = maxRecoil
+	speedlessMinRecoil = minRecoil
 	totalMinRecoil = minRecoil
 	totalMaxRecoil = maxRecoil
 	
@@ -206,16 +212,54 @@ func do_Shoot():
 func toggleADS():
 	if(aimDownsight):
 		kickAmount += aimKickBonus
+		
+		#check and ensure we're not carrying any speed modifiers into our calculations
+		if(speedlessMaxRecoil != maxRecoil): #discrepancy between speed modifier and true size
+			maxRecoil = speedlessMaxRecoil #disregard applied modifiers
+		if(speedlessMinRecoil != minRecoil): #same for min speed
+			minRecoil = speedlessMinRecoil
+		
 		adjustAcuracy(aimbonus)
+		speedlessMaxRecoil = maxRecoil
+		speedlessMinRecoil = minRecoil
 		aimDownsight = false
 		#print("unaiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
 	else:
 		kickAmount -= aimKickBonus
 		adjustAcuracy(0 - aimbonus)
+
 		aimDownsight = true
 		#print("aiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
 
-##Updates the max/min aimcone by a given value. Can be negative.
+var didPenalty = false
+
+func do_Move_Penalty(speed):
+	
+	var speedCalib #the speed, offset by the "start" at which we're applying penalties from
+	
+	
+	
+	#if we're ADS and moving at ALL, apply penalty.
+	if(aimDownsight):
+		
+		#speed calib = speed
+		speedCalib = speed - 4
+		if(speedCalib > 0): #check for our threshhold
+			didPenalty = true #it's time to ACTIVATE!
+			doFrameAccuracy(speedCalib)
+		
+	
+	#otherwise, check for sprinting speed
+	
+
+##changes the accuracy of the weapon at a given frame. Differs from adjustAcuracy in that it is meant to be called per frame.
+func doFrameAccuracy(amnt):
+	pass
+	#minrecoil is speedless plus amount
+	#maxrecoil is speedless plus amount
+	#I think that's all there is to it
+
+##Updates the max/min aimcone by a given value. Use negative to shrink size.
 func adjustAcuracy(amnt):
 	
 	#I REALLY don't trust float imprecision here
