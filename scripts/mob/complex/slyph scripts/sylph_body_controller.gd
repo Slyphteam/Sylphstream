@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var ourHealth = $COMPLEXHEALTHHOLDER
 @onready var manager : INVENMANAGER = $"sylph head v2/sylphinventory"
 @export var ourTar: Node3D
+@export var moveEnabled:bool = false
 
 var shoot = false
 func hit_By_Bullet(dam, _damtype, _dir, originator):
@@ -50,3 +51,22 @@ func move_Head_Exact(desired: Vector2):
 
 func get_invenm():
 	return manager
+
+
+#########KINEMATIC CODE BELOW
+
+var goFor:bool = false
+var goLef:bool = false
+var goRit:bool = false
+var goBak:bool = false
+
+func _process(delta):
+	
+	if(goFor):
+		goFor = false
+	if(goLef):
+		goLef = false
+	if(goRit):
+		goRit = false
+	if(goBak):
+		goBak = false

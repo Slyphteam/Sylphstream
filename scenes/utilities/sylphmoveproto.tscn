@@ -1,22 +1,73 @@
-[gd_scene load_steps=4 format=3 uid="uid://cr6mp7skeb4ee"]
+[gd_scene load_steps=7 format=3 uid="uid://cr6mp7skeb4ee"]
 
 [ext_resource type="PackedScene" uid="uid://c7e8sby3mvbqo" path="res://models/glbs and textures/interactibles/button stand.glb" id="1_xc1mw"]
-[ext_resource type="Script" uid="uid://kqk8bai6e87f" path="res://scripts/trivial/mystery_button_behav.gd" id="2_o0fgt"]
+[ext_resource type="Script" uid="uid://c5eopqm6bpq0w" path="res://scripts/mob/complex/slyph scripts/sylph controller external.gd" id="1_xy32q"]
+[ext_resource type="PackedScene" uid="uid://pgcq1liicaqr" path="res://models/glbs and textures/interactibles/buttongreen.glb" id="2_r57om"]
+[ext_resource type="Script" uid="uid://c3eg4siknqp52" path="res://scripts/trivial/genericPressableButton.gd" id="3_o0fgt"]
+[ext_resource type="PackedScene" uid="uid://bfyduw5qytyby" path="res://scenes/entities/sylphscene.tscn" id="4_r57om"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r57om"]
 points = PackedVector3Array(0.3, 0, 0, -0.3, 0, 0, -0.3, 0.2, 0, 0.3, 0.2, 0, 0, 0, 0.3, 0, 0, -0.3, 0, 0.2, -0.3, 0, 0.2, 0.3)
 
 [node name="Sylphmoveproto" type="Node3D"]
 
-[node name="button stand" parent="." instance=ExtResource("1_xc1mw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732971, 3.70386)
+[node name="intermediary" type="Node" parent="."]
+script = ExtResource("1_xy32q")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="button stand" groups=["hit_decal_blacklist", "player_interactible"]]
-transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0.828467, -2.28882e-05)
+[node name="Button F" parent="." instance=ExtResource("1_xc1mw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732971, 2.93198)
+
+[node name="buttongreen" parent="Button F" instance=ExtResource("2_r57om")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Button F/buttongreen" groups=["hit_decal_blacklist", "player_interactible"]]
+transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0.846863, 0)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("2_o0fgt")
+script = ExtResource("3_o0fgt")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="button stand/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button F/buttongreen/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 5.68434e-14, 1, 0, -0.00743026, -1.86947e-09)
 shape = SubResource("ConvexPolygonShape3D_r57om")
+
+[node name="Timer" type="Timer" parent="Button F/buttongreen"]
+wait_time = 0.5
+
+[node name="Button R" parent="." instance=ExtResource("1_xc1mw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.99753, 0.732971, 3.25136)
+
+[node name="buttongreen" parent="Button R" instance=ExtResource("2_r57om")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Button R/buttongreen" groups=["hit_decal_blacklist", "player_interactible"]]
+transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0.846863, 0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_o0fgt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button R/buttongreen/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 5.68434e-14, 1, 0, -0.00743026, -1.86947e-09)
+shape = SubResource("ConvexPolygonShape3D_r57om")
+
+[node name="Timer" type="Timer" parent="Button R/buttongreen"]
+wait_time = 0.5
+
+[node name="Button L" parent="." instance=ExtResource("1_xc1mw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.16133, 0.732971, 3.25136)
+
+[node name="buttongreen" parent="Button L" instance=ExtResource("2_r57om")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Button L/buttongreen" groups=["hit_decal_blacklist", "player_interactible"]]
+transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0.846863, 0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_o0fgt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button L/buttongreen/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 5.68434e-14, 1, 0, -0.00743026, -1.86947e-09)
+shape = SubResource("ConvexPolygonShape3D_r57om")
+
+[node name="Timer" type="Timer" parent="Button L/buttongreen"]
+wait_time = 0.5
+
+[node name="sylph body" parent="." instance=ExtResource("4_r57om")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+moveEnabled = true
