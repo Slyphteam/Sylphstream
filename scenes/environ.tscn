@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=57 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="1_os2cn"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="4_2yn2u"]
@@ -16,9 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://bdgwi6tjdsj5u" path="res://scenes/trivial/pickups/degubby pickup.tscn" id="16_eqt0i"]
 [ext_resource type="PackedScene" uid="uid://ckdcn8ikpxnnw" path="res://scenes/utilities/sylphTestingUnit.tscn" id="17_8f4e3"]
 [ext_resource type="PackedScene" uid="uid://b2lu2muc6j2uj" path="res://scenes/trivial/pickups/fourier pickup.tscn" id="17_vnjd3"]
-[ext_resource type="PackedScene" uid="uid://bipjbb3776vms" path="res://scenes/utilities/player_shoot_scene.tscn" id="18_5kovb"]
+[ext_resource type="PackedScene" uid="uid://bipjbb3776vms" path="res://scenes/utilities/buttons/player_shoot_scene.tscn" id="18_5kovb"]
 [ext_resource type="PackedScene" uid="uid://c104tyo0foh0a" path="res://scenes/trivial/pickups/ghostbird pickup.tscn" id="18_c2ovy"]
 [ext_resource type="PackedScene" uid="uid://dwq2fy8mbnx5p" path="res://scenes/trivial/pickups/relata pickup.tscn" id="19_xqkej"]
+[ext_resource type="PackedScene" uid="uid://miqixjbi8xeb" path="res://scenes/utilities/buttons/debugtracebutton.tscn" id="20_by8b2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -549,3 +550,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187381, 1.86011, 3.46502)
 
 [node name="SentryTest" parent="." instance=ExtResource("18_5kovb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5492, 0.533243, -23.2319)
+
+[node name="Debugtracebutton" parent="." instance=ExtResource("20_by8b2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7344, 0.527357, -23.0436)

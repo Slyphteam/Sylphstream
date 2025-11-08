@@ -233,6 +233,7 @@ func toggleADS():
 
 var didPenalty = false
 
+#right now this is ONLY based off the player running/crouching/standing.
 func do_Move_Penalty(speed):
 	
 	var speedCalib #the speed, offset by the "start" at which we're applying penalties from
