@@ -624,7 +624,8 @@ func hit_By_Bullet(dam, _damtype, _dir, _origin):
 	#damSeverity = clampf(damSeverity, 0.005, 0.4)
 	
 	#var damSeverity = 0.005 #have no idea where i was going wtih damseverity
-	
+	#okay no I remember now
+	#it would let me scale the punch amount with incoming damage
 	
 	apply_Autorecover_Viewpunch(punch1, punch2, 0.5)
 	#invenManager.applyViewpunch(punch1, punch2)
