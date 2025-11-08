@@ -63,6 +63,9 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+Change Sylph AI to use new custom randf script from global
+Sylph kinematics.
+
 More future me note: I like this idea but fuckinnnn minimum viable product people sylph AI is a mess.
 
 Change single round reloading logic off of shotguns and onto heldweapon instance, use a boolean
