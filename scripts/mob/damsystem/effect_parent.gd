@@ -28,7 +28,7 @@ func process_Effect(delta):
 	if(nextEffect):
 		nextEffect.process_Effect(delta)
 	
-	if(duration <= 0):
+	if(duration <= 0): #time's out!!
 		
 		 
 		if(!prevEffect && !nextEffect): #special case, we were the final effect in the list.
@@ -36,7 +36,7 @@ func process_Effect(delta):
 		elif(!prevEffect && nextEffect): #special case. we are first in list, but there are more
 			ourHealthHolder.effectStarter = nextEffect
 			nextEffect.prevEffect = null
-		elif(prevEffect && !nextEffect): #special case. last in list.
+		elif(prevEffect && !nextEffect): #special case. last in list but others
 			prevEffect.nextEffect = null
 		else: #Otherwise, cut from list normally
 			nextEffect.prevEffect = prevEffect
@@ -53,6 +53,15 @@ func add_To_Tail(newEffect: STATUSEFFECT):
 	else:
 		newEffect.prevEffect = self
 		nextEffect = newEffect
+
+func check_For_Effect(targName:String)-> bool:
+	if(effectName == targName): #target found
+		return true
+	else:
+		if(nextEffect): #do we have a next?
+			return nextEffect.check_For_Effect(targName) #go down the list
+		else:
+			return false #if we don't have a next, and we haven't found thus far, return false
 
 #called when an effect begins
 func begin_Effect():

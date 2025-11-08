@@ -47,12 +47,22 @@ func _process(_delta: float) -> void:
 		update_True_Vals()
 
 func update_True_Vals():
+	
+	#if there's any effects that alter taken damage,
+	#check for them here with the check_For_Effect() func
+	
 	health -= takenDamage
 	aura -= takenAura
 	takenDamage = 0
 	takenAura = 0
+	
+	if(aura < 0): #speical case if aura is depleted with a scattershot weapon. kind of a "duct tape" solution but worthwhile
+		health -= abs(aura)
+		aura = 0
+
 	if(health <= 0):
 		doDie()
+
 
 func doDie():
 	return
@@ -62,7 +72,7 @@ func doDie():
 #Since status effects use a doubly linked list, all we have to do is call process on the first one,
 #and it'll go down the chain and handle things. Clean and efficient!
 func handle_Effects(_delta):
-	if(effectStarter):
+	if(effectStarter): #is there an effect in the linked list we need to process?
 		effectStarter.process_Effect(_delta)
 
 ##Adds a new effect to the linked list of effects being processed
@@ -70,10 +80,10 @@ func add_Effect(effectToAdd: STATUSEFFECT):
 	effectToAdd.ourHealthHolder = self #link the effect to this healthholder
 	effectToAdd.begin_Effect() #apply on-start logic
 	
-	if (!effectStarter):
+	if (!effectStarter): #do we already have a head of list?
 		effectStarter = effectToAdd
 	else:
-		effectStarter.add_To_Tail(effectToAdd)
+		effectStarter.add_To_Tail(effectToAdd) #otherwise, pass down the chain
 
 #TODO: consider using takenDamage to have this apply on a per-frame loop?
 

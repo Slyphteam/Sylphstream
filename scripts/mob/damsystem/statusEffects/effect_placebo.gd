@@ -1,6 +1,5 @@
 class_name STATUSPLACEBO extends STATUSEFFECT
 
-
 func process_Effect(delta):
 	super.process_Effect(delta)
 #	print(applyCountdown)
