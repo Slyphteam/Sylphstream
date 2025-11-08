@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://miqixjbi8xeb"]
 
-[ext_resource type="PackedScene" uid="uid://c7e8sby3mvbqo" path="res://models/glbs and textures/button stand.glb" id="1_p16ye"]
-[ext_resource type="PackedScene" uid="uid://cq7fnaqalfbe5" path="res://models/glbs and textures/buttonpurple.glb" id="2_poc07"]
+[ext_resource type="PackedScene" uid="uid://c7e8sby3mvbqo" path="res://models/glbs and textures/interactibles/button stand.glb" id="1_p16ye"]
+[ext_resource type="PackedScene" uid="uid://cq7fnaqalfbe5" path="res://models/glbs and textures/interactibles/buttonpurple.glb" id="2_poc07"]
 [ext_resource type="Script" uid="uid://kqk8bai6e87f" path="res://scripts/trivial/mystery_button_behav.gd" id="3_4hi0c"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_myqkj"]

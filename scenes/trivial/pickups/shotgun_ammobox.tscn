@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cahf1scobnpcq"]
 
-[ext_resource type="PackedScene" uid="uid://bvldan4260164" path="res://models/glbs and textures/shotgunbundle.glb" id="1_t8u5d"]
+[ext_resource type="PackedScene" uid="uid://bvldan4260164" path="res://models/glbs and textures/pickups/shotgunbundle.glb" id="1_t8u5d"]
 [ext_resource type="Script" uid="uid://bj8vi2jtp28xr" path="res://scripts/pickups/ammo_pickup_script.gd" id="2_glvft"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t8u5d"]

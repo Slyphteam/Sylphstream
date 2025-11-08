@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvnww568a44gy"]
 
-[ext_resource type="PackedScene" uid="uid://v46mwsdtc3y2" path="res://models/glbs and textures/khwarizmi.glb" id="1_126de"]
+[ext_resource type="PackedScene" uid="uid://v46mwsdtc3y2" path="res://models/glbs and textures/weps/khwarizmi.glb" id="1_126de"]
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/weapon_pickup_script.gd" id="2_n82l4"]
 [ext_resource type="Resource" uid="uid://bgnabya18i1vd" path="res://resources/weapon resources/firearm/khwarizmi_info.tres" id="3_xmlca"]
 

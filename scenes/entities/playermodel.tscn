@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dadgd6x31ovo8"]
 
-[ext_resource type="PackedScene" uid="uid://b663es48t2t74" path="res://models/glbs and textures/playermodel.glb" id="1_ac63u"]
+[ext_resource type="PackedScene" uid="uid://b663es48t2t74" path="res://models/glbs and textures/creatures/playermodel.glb" id="1_ac63u"]
 
 [node name="playermodel" instance=ExtResource("1_ac63u")]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ci3jdwb1gi2gg"]
 
-[ext_resource type="PackedScene" uid="uid://h48v3ktsom7x" path="res://models/glbs and textures/sporting clay.glb" id="1_f4aq7"]
+[ext_resource type="PackedScene" uid="uid://h48v3ktsom7x" path="res://models/glbs and textures/entities/sporting clay.glb" id="1_f4aq7"]
 [ext_resource type="Script" uid="uid://drlwy2fcih1dl" path="res://scripts/trivial/clay_target_script.gd" id="2_texjb"]
 [ext_resource type="Script" uid="uid://1w773btoqbqs" path="res://scripts/mob/damsystem/health_holder.gd" id="3_5ay4c"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnr004t0lyqd1"]
 
-[ext_resource type="PackedScene" uid="uid://mivmmni3ef2p" path="res://models/glbs and textures/rimfire_ammobox.glb" id="1_0aof4"]
+[ext_resource type="PackedScene" uid="uid://mivmmni3ef2p" path="res://models/glbs and textures/pickups/rimfire_ammobox.glb" id="1_0aof4"]
 [ext_resource type="Script" uid="uid://bj8vi2jtp28xr" path="res://scripts/pickups/ammo_pickup_script.gd" id="2_evklm"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xjbfk"]
