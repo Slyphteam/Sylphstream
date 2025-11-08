@@ -414,7 +414,7 @@ func get_Vision_Targets(visionBlock:Area3D):
 			x+=1
 	return false
 
-
+# moved this to network class
 #func mutation_Test(val:float):
 	#
 	#print("Before mutation:")

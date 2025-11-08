@@ -14,7 +14,7 @@ const gravAmount = 60
 #player camera variables
 var ylook : float = 0
 var xlook : float = 0
-var mousesensitivity = 0.25
+var mousesensitivity = 0.20
 var viewpunchRecoverSpeed = 0.5 ##LERP amount of the recovery. Should be lower with more damage.
 var currentlyRecovering: bool = false ## Are we in the midst of an auto-recovering viewpunch?
 
@@ -184,7 +184,7 @@ func check_Directional_Movement():
 	
 	#This would probably be best as a linear function, but that's a considerable amount of effort for something that's currently "good enough"
 	if(playerSpeed == 0 && leftright == 0 && forback == 0): #Make starting from a dead stop easier
-		bonus = 50
+		bonus = 90
 	
 	leftright += int(bonus) * (int(Input.get_action_strength("ui_left") )) * Globalscript.deltaButNotStinky
 	leftright -= int(bonus) * (int(Input.get_action_strength("ui_right") )) * Globalscript.deltaButNotStinky

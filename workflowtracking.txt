@@ -92,6 +92,14 @@ Watch inventory system video. Make simple shitty top bar for player inv and plac
 
 Sylph maintenance:
 
+MODULARIZE SYLPHS?
+Aimer: small neural network that only aims and shoots
+Mover: small neural network that only moves sylph
+Actuator: small neural network that handles weapon
+The idea here is that the neural network is super interconnected,
+not doing a good job learning due to pollution, and
+maybe not doing a good job behaving due to nodes being overloaded.
+
 Before you do ANYTHING with the sylphs again, write a function that takes a node and sets its
 immediate weights/biases to be completely neutral. otherwise you're going to undo everything.
 
@@ -108,6 +116,7 @@ Reimport sylph head but make sure it's actually centered this time, doofus.
 
 
 ====+====> FUNCTIONAL:
+Change archon to use small looping value, not global time
 
 crosshair changes with move speed **
 "button-like" dialogue trees

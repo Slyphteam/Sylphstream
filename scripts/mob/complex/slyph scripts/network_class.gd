@@ -74,7 +74,8 @@ func populate_Layer_Rand(desiredLayer: int):
 			y+=1
 		x+=1
 	
-	
+
+
 
 ##Mutates a selected layer of by random values clamped by 0+-(mutationAmount). Seperate value for activations.
 func mutate_Layer(desiredLayer: int, mutationAmount: float, _activationMut:float, mutationChance: int):

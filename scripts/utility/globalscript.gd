@@ -11,6 +11,12 @@ func _process(delta):
 	deltaButNotStinky = delta * 60
 	timer += delta 
 
+# I suspect the randf function in godot uses noise to populate a float, i.e.,
+#mantissa encoding gives it a logarithmic skew.
+#
+func get_Good_Dist_Randf()-> float:
+	return 0.5
+
 ##Returns true/false based on a % chance
 func prob(chance:int)->bool:
 	chance = abs(chance) #Can take negative inputs

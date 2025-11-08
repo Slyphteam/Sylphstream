@@ -1,28 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://bipjbb3776vms"]
 
-[ext_resource type="ArrayMesh" uid="uid://d1ddticiupjws" path="res://models/mesh models/button mesh.res" id="1_i11ae"]
-[ext_resource type="ArrayMesh" uid="uid://d0710xhmxyik0" path="res://models/mesh models/bullet mesh.res" id="2_guoto"]
+[ext_resource type="PackedScene" uid="uid://c7e8sby3mvbqo" path="res://models/glbs and textures/button stand.glb" id="2_i11ae"]
+[ext_resource type="PackedScene" uid="uid://d1j3wwwb704vn" path="res://models/glbs and textures/button separate.glb" id="3_guoto"]
 [ext_resource type="Script" uid="uid://bkb0d452a3cxn" path="res://scripts/trivial/player_hurting_script.gd" id="3_ns380"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ma53t"]
-points = PackedVector3Array(-0.056977, 0.011307, 0.0125183, 0.0563532, 0.011307, 0.00275, -0.00421678, 0.011307, -0.059777, -0.00812166, -0.00627526, 0.0398647, -0.00421678, -0.00236675, -0.0480501, 0.00164053, 0.011307, 0.065277, 0.0250809, -0.00627526, 0.0340135, 0.0485212, 0.011307, -0.0480501, -0.0354669, -0.00236675, -0.0226378, -0.0413242, 0.0073985, 0.0594136, -0.0472037, 0.011307, -0.0480501, 0.0465799, 0.011307, 0.0437818, 0.0133552, -0.00432015, -0.0382696, -0.0413242, -0.000413358, 0.0086012, 0.0240697, -0.00358175, -0.0286087, -0.0413242, 0.011307, 0.0633184, -0.0296096, -0.00236675, 0.0340135, 0.0563532, 0.011307, -0.0109109, -0.0293592, -0.00202257, -0.0335576, -0.0100741, -0.00627526, 0.0320549, 0.00164053, -0.00236675, -0.0480501, -0.056977, 0.011307, 0.00275, 0.038759, 0.011307, 0.049633, 0.00554541, 0.011307, -0.059777, 0.0250809, -0.00627526, 0.0281501, 0.0465799, 0.011307, -0.0499842, 0.0114027, -0.00627526, 0.0379184, -0.013979, -0.00236675, -0.0441208, -0.0432988, 0.011307, -0.0499842, -0.0413242, -0.000413358, -0.00308895, 0.0114027, -0.00432015, -0.0382696, -0.0452402, 0.011307, 0.057455)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ns380"]
+points = PackedVector3Array(0.3, 0, 0, -0.3, 0, 0, -0.3, 0.2, 0, 0.3, 0.2, 0, 0, 0, 0.3, 0, 0, -0.3, 0, 0.2, -0.3, 0, 0.2, 0.3)
 
 [node name="SentryTest" type="Node3D"]
 
-[node name="ButtonMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.037, 0, 0, 0, -1.74846e-09, -0.18, 0, 0.04, -7.86805e-09, 0, 0, 0)
-mesh = ExtResource("1_i11ae")
+[node name="button stand" parent="." instance=ExtResource("2_i11ae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732971, 0)
 
-[node name="BulletMesh" type="MeshInstance3D" parent="ButtonMesh"]
-transform = Transform3D(108.108, 0, 0, 0, 3.2448e-05, -100, 0, 37.0333, 4.32683e-06, 0, -0.000574267, -10.4835)
-mesh = ExtResource("2_guoto")
-skeleton = NodePath("../..")
+[node name="button separate" parent="button stand" instance=ExtResource("3_guoto")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="ButtonMesh/BulletMesh" groups=["hit_decal_blacklist", "player_interactible"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="button stand/button separate" groups=["hit_decal_blacklist", "player_interactible"]]
+transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0.828467, -2.28882e-05)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_ns380")
 damAmount = 13
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonMesh/BulletMesh/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_ma53t")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button stand/button separate/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 5.68434e-14, 1, 0, -0.00743026, -1.86947e-09)
+shape = SubResource("ConvexPolygonShape3D_ns380")

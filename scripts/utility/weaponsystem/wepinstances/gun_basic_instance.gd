@@ -320,7 +320,8 @@ func calc_Recoil(delta):
 ##Starts reload timer
 func startReload():
 	
-	if(reloading || (capacity >= maxCapacity + 1)): #No reason to reload
+	#No reason to or can't reload
+	if(reloading || (capacity >= maxCapacity + 1) || (invManager.chkAmmoAmt(chambering) == 0)): 
 		return
 	
 	
