@@ -61,7 +61,51 @@ var goRit:bool = false
 var goBak:bool = false
 
 func _process(delta):
+	if(moveEnabled):
+		calcKinemInput()
+		doMove()
+var leftright:float
+var forback:float
+var sylphVel: Vector3 = Vector3.ZERO
+var sylphSpeed = 0
+func calcKinemInput():
 	
+	var bonus = 3
+	var limit = 13 * 10 #player walkspeed is 13
+	
+	#sprint/crouch/whatnot logic would go here
+	#this might seem cargo cult-y to the player's kinematic controller
+	#but truth be told I have no idea how much or how little I want sylphs to be able to do
+	#so I'm keeping the patterns the exact same
+	
+	if(sylphSpeed == 0 && leftright == 0 && forback == 0): 
+		bonus = 90
+	
+	leftright += int(bonus) * (int(goLef )) * Globalscript.deltaButNotStinky
+	leftright -= int(bonus) * (int(goRit )) * Globalscript.deltaButNotStinky
+	
+	forback += int(bonus) * (int(goFor)) * Globalscript.deltaButNotStinky
+	forback -= int(bonus) * (int(goBak )) * Globalscript.deltaButNotStinky
+	
+	#clamp movement, should be the same as how the player does it
+	if(!goLef && !goRit):
+		if(leftright > 2): #in the player script this set the input to be 0 straight but im predicting sylphs
+							# will be a lot less consistent with their movement; so will need soft stops
+			leftright /=2
+		else:
+			leftright = 0
+	else:
+		leftright = clamp(leftright, (0-limit), limit)
+		
+	if(!goFor && !goBak):
+		if(forback > 2): 
+			forback /=2
+		else:
+			forback = 0
+	else:
+		forback = clamp(forback, (0-limit), limit)
+	
+	#reset all of our inputs for next frame
 	if(goFor):
 		goFor = false
 	if(goLef):
@@ -70,3 +114,12 @@ func _process(delta):
 		goRit = false
 	if(goBak):
 		goBak = false
+
+func doMove():
+	#might seem silly to have a function that does nothing but call another function
+	#but as mentioned earlier, if I go all out, there'd be stuff like air/crouchslide
+	#code between domove and dofloormove
+	doFloorMove()
+
+func doFloorMove():
+	pass

@@ -5,10 +5,9 @@ extends Node
 @onready var butL = $"../Button L/buttongreen/StaticBody3D"
 
 func _process(delta):
-	if(ourSylph.moveEnabled):
-		if(butF.isPressed):
-			ourSylph.goFor = true
-		if(butR.isPressed):
-			ourSylph.goLef = true
-		if(butL.isPressed):
-			ourSylph.goRit = true
+	if(butF.isPressed):
+		ourSylph.goFor = true
+	if(butR.isPressed):
+		ourSylph.goLef = true
+	if(butL.isPressed):
+		ourSylph.goRit = true

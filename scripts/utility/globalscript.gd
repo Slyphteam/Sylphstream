@@ -16,11 +16,11 @@ func _process(delta):
 #Therefore it's absolutely worth making a better randf
 ##desired length of the number portion, desired length of the zeros padding number
 func better_Randf_Simple(digits, decimalZeros)-> float:
-	var max = 1 
+	var ourMax = 1 
 	for x in range(digits):
-		max *= 10
+		ourMax *= 10
 	
-	var result:float = randi_range(0-max, max)
+	var result:float = randi_range(0-ourMax, ourMax)
 	for x in range(digits + decimalZeros):
 		result/=10
 	

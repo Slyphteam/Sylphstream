@@ -168,7 +168,7 @@ func update_Viewangles():
 func check_Directional_Movement():
 	#update the movement bonus based on our current mode
 	var bonus = walkMod 
-	var limit = walkSpeed * 10 ##Limit is the "maximum" impulse in 1/10th of units
+	var limit = walkSpeed * 10 #Limit is the "maximum" impulse in 1/10th of units
 	if(crouching):
 		limit += crouchSpeed * 10 #Limit will be 12.5 if crouching
 		bonus = crouchMod 
@@ -209,7 +209,7 @@ func _physics_process(delta: float) -> void:
 	
 	#handle auto-recovery from a viewpunch.
 	if(currentlyRecovering):
-		var theRot = playerCam.rotation
+		#var theRot = playerCam.rotation
 		playerCam.rotation_degrees.x = lerpf(playerCam.rotation_degrees.x, 0, 0.5)
 		playerCam.rotation_degrees.y = lerpf(playerCam.rotation_degrees.y, 0, 0.5)
 		
@@ -453,7 +453,7 @@ func do_Qke_AirAccelerate(desiredVel, delta):
 	if(wspd > 30): #30 units is in QUAKE units, convert this >:(
 		wspd = 30
 	
-	var qkecurspd = playerVelocity.dot(vvel) #this should be used, iirc.
+	var qkecurspd = playerVelocity.dot(vvel) #this should be used, ????
 	
 	var qkespd = wspd - playerSpeed #aka add_speed
 	if(qkespd <=0):
@@ -623,7 +623,7 @@ func hit_By_Bullet(dam, _damtype, _dir, _origin):
 	#damSeverity = (0.405 - damSeverity)
 	#damSeverity = clampf(damSeverity, 0.005, 0.4)
 	
-	var damSeverity = 0.005
+	#var damSeverity = 0.005 #have no idea where i was going wtih damseverity
 	
 	
 	apply_Autorecover_Viewpunch(punch1, punch2, 0.5)
