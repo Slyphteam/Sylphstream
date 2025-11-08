@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=19 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
+[ext_resource type="AudioStream" uid="uid://dvklbsnlwomcb" path="res://sounds/ambient/windchimes.ogg" id="2_ogpgs"]
 [ext_resource type="Resource" uid="uid://1iyc2y86li4i" path="res://resources/weapon resources/hands.tres" id="4_kiyhm"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
@@ -32,6 +33,13 @@ border_color = Color(0, 0, 0, 1)
 [node name="Player" type="CharacterBody3D" groups=["damage_interactible", "has_manager"]]
 collision_layer = 3
 script = ExtResource("1_qlg0r")
+
+[node name="windambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ogpgs")
+volume_db = -9.707
+autoplay = true
+mix_target = 2
+parameters/looping = true
 
 [node name="StepperR" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.516, 0.673, 0)
