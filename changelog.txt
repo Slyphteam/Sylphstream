@@ -1,3 +1,6 @@
+11/8:
+Added a new random float function to global script, should ensure sylphs mutate more reliably
+New button model!
 9/14:
 Several changes to how playerspeed is computed and handled. 
 Players can no longer gain infinite speed by moving diagonally in a circle

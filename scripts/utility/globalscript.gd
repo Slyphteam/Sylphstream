@@ -12,10 +12,22 @@ func _process(delta):
 	timer += delta 
 
 # I suspect the randf function in godot uses noise to populate a float, i.e.,
-#mantissa encoding gives it a logarithmic skew.
-#
-func get_Good_Dist_Randf()-> float:
-	return 0.5
+#mantissa encoding gives it a logarithmic skew. (future me note: oh it definitely does)
+#Therefore it's absolutely worth making a better randf
+##desired length of the number portion, desired length of the zeros padding number
+func better_Randf_Simple(digits, decimalZeros)-> float:
+	var max = 1 
+	for x in range(digits):
+		max *= 10
+	
+	var result:float = randi_range(0-max, max)
+	for x in range(digits + decimalZeros):
+		result/=10
+	
+	return result
+
+#func better_Randf_Clamped(digits, numZeros, max, min)->float:
+	
 
 ##Returns true/false based on a % chance
 func prob(chance:int)->bool:

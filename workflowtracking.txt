@@ -63,6 +63,8 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+More future me note: I like this idea but fuckinnnn minimum viable product people sylph AI is a mess.
+
 Change single round reloading logic off of shotguns and onto heldweapon instance, use a boolean
 to determine which is which.
 Weapon "jump" as primitive animation when fired.
@@ -106,7 +108,6 @@ immediate weights/biases to be completely neutral. otherwise you're going to und
 After making Sylph kinematic controller, take sample snapshots of input (looking at target, looking
 above target, not looking at target, far from target) and use those so you can do SGD pre-training.
 
-Randf function may have weird weights due to how floats work, look into it
 Look into mutating by "pulses"-- rather than shooting a shotgun into the network,
 take a random input, and for x of outputs, mutate those, than take 1-2 from the mutated and pulse again
 
@@ -142,5 +143,5 @@ low high bitlower medium - - - - - - high low
 low high bitlower - - + verlow high lowwww
 Archon option buttons
 
-FAAAAR in the future: bother with using normals, directions, trig to get a good decal angle.
-Deflections also!
+Decals: Parent decals to hit object
+Use normals so decals have proper angle.
