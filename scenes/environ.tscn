@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=59 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="1_os2cn"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="4_2yn2u"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dwq2fy8mbnx5p" path="res://scenes/trivial/pickups/relata pickup.tscn" id="19_xqkej"]
 [ext_resource type="PackedScene" uid="uid://miqixjbi8xeb" path="res://scenes/utilities/buttons/debugtracebutton.tscn" id="20_by8b2"]
 [ext_resource type="PackedScene" uid="uid://cr6mp7skeb4ee" path="res://scenes/utilities/sylphmoveproto.tscn" id="21_eqt0i"]
+[ext_resource type="PackedScene" uid="uid://co5t36kxokupn" path="res://scenes/entities/sylphproto.tscn" id="22_vnjd3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -557,3 +558,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7344, 0.527357, -23.0436)
 
 [node name="Sylphmoveproto" parent="." instance=ExtResource("21_eqt0i")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -46.0153, 0.527356, 9.4755)
+
+[node name="sylph body" parent="." instance=ExtResource("22_vnjd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.1486, 0.52367, 10.0301)
