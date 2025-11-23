@@ -8,8 +8,6 @@ var calcdSin : float
 @onready var curTrainer: TRAINER = $ArchonMesh/Trainer
 
 
-
-
 func look_At_Player(player:Node3D):
 		#use trig to calculate the angle our archon should rotate to
 	#in order to face the player

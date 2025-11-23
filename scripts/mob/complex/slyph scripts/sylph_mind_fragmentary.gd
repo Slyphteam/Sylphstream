@@ -21,17 +21,23 @@ var shootingActions:Array[float] #Outputs: Shoot, updown, leftright
 #var desiredActions:Array[float] ##Array of all desired actions
 
 
+func do_Debug_Action():
+	#print("Wow! You called my debug testing function")
+	
+	shootingNetwork.print_Network()
+	shootingNetwork.mutate_Network_Goodrand(1, 0, 2, 50)
+	shootingNetwork.print_Network()
 
 func _ready():
 	
-	initialize_Rand_Networks()
+	initialize_Basic_Networks()
 	shootingInput.resize(8)
 	shootingInput.fill(0)
 	
 	shootingActions.resize(4)
 	shootingActions.fill(0)
-	
 	Globalscript.add_Sylph(self)
+	
 	ourTarget = body.ourTar
 	#load_From_File("res://resources/txt files/sylph tests/multi evolution test/startingpoint.txt")
 
@@ -39,26 +45,26 @@ func _ready():
 func initialize_Basic_Networks():
 	
 	shootingNetwork = NNETWORK.new()
-	shootingNetwork.initialize_Network([8, 10, 5, 4])
+	shootingNetwork.initialize_Network([8, 8, 4])
 	
 
 ##Creates a new network and fully randomizes it
 func initialize_Rand_Networks():
 	
 	shootingNetwork = NNETWORK.new()
-	shootingNetwork.initialize_Network([8, 10, 5, 4])
+	shootingNetwork.initialize_Network([8, 8, 4])
 	shootingNetwork.populate_Network_Rand()
 	
 	#print("Created random 20-20-40-30-18 network!")
 
-##Saves to specified file
-func save_Nets_To_File(fileString):
-	shootingNetwork.save_Network_To_File(fileString + "SHOOT"+".txt")
+##Saves to specified folder, with a given suffix
+func save_Nets_To_Folder(fileString:String, suffix: String):
+	shootingNetwork.save_Network_To_File(fileString + "SHOOT" + suffix + ".txt")
 	print("Save to file complete!")
 
 ##Loads from specified file
-func load_From_File(fileString):
-	shootingNetwork.load_Network_From_File(fileString+ "SHOOT"+".txt")
+func load_Nets_From_Folder(fileString, suffix: String):
+	shootingNetwork.load_Network_From_File(fileString+ "SHOOT" +suffix +".txt")
 	print("Load from file complete!")
 
 ##Deep copies neural network from other sylphbody

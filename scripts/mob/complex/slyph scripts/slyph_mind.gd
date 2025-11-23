@@ -17,7 +17,8 @@ var microPenalty = 0 ##Vision-based penalty
 var sensoryInput:Array[float] ##Array of all senses
 var desiredActions:Array[float] ##Array of all desired actions
 
-
+func do_Debug_Action():
+	print("Wow! You called my debug testing function")
 
 func _ready():
 	

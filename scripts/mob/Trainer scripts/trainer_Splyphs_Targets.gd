@@ -1,7 +1,8 @@
-class_name trainerV1 extends TRAINER
+class_name trainerSp1 extends TRAINER
 
 var testTime:int = 0
 var testing = false
+var folderDirectory: String = "res://Saved_AI_Agents/Spylphs/Targs1"
 
 func _process(delta):
 	
@@ -20,22 +21,23 @@ func toggle_Test():
 	if(testing):
 		testing = false
 	else:
+		print("Starting test!")
 		begin_Sylph_Test()
 		testing = true 
 
 ##Initializes two random Sylphs and starts testing them
 func begin_Sylph_Test():
 	print("Starting test!")
-	allScores.resize(Globalscript.allSylphs.size())
-	for curSylph in Globalscript.allSylphs:
-		curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
+	allScores.resize(Globalscript.activeSylphs.size())
+	for curSylph in Globalscript.activeSylphs:
+		curSylph.load_Nets_From_Folder(folderDirectory)
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
 func restart_Sylph_Test():
 	
 	testTime = 1250
-	for curSylph in Globalscript.allSylphs:
+	for curSylph in Globalscript.activeSylphs:
 		curSylph.begin_Test()
 
 
@@ -54,10 +56,10 @@ var mutPercent = 1
 var generation: int = 120
 var highScore = -0
 
-##Function that scores all sylphs in the global allSylphs array
+##Function that scores all sylphs in the global activeSylphs array
 func score_Sylphs_All():
 	var ind = 0
-	for curSylph in Globalscript.allSylphs:
+	for curSylph in Globalscript.activeSylphs:
 		allScores[ind] = curSylph.score_Performance(hitMult, missDiv, missAllow, accuracyRew, visionDiv)
 		ind+=1
 	
@@ -92,8 +94,8 @@ func score_Sylphs_All():
 	ind = 0
 	if(bestScore < (prevBest - 1)):
 		print("reverting. count: ", revertcount)
-		#for curSylph in Globalscript.allSylphs:
-			#curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
+		#for curSylph in Globalscript.activeSylphs:
+			#curSylph.load_Nets_From_Folder(folderDirectory)
 			#if(ind > 2):
 				#curSylph.ourNetwork.mutate_Network(mutAmount, 0, 50) 
 			#ind +=1
@@ -115,12 +117,10 @@ func score_Sylphs_All():
 		print("Highscore beat!")
 		highScore = bestScore
 		highScoreInd = bestScoreInd
-		Globalscript.allSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
+		Globalscript.activeSylphs[highScoreInd].save_Nets_To_Folder(folderDirectory, "_highscore")
 	
-	Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/currentBest.txt")
-	Globalscript.allSylphs[secondScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/currentSecond.txt")
-	
-	
+	Globalscript.activeSylphs[bestScoreInd].save_Nets_To_Folder(folderDirectory, "_currentBest")
+	Globalscript.activeSylphs[secondScoreInd].save_Nets_To_Folder(folderDirectory, "_currentSecond")
 	
 
 	generation +=1
@@ -129,24 +129,23 @@ func score_Sylphs_All():
 		print("thats enough!")
 	
 	print("Generation: ", generation)
-	if(generation == 120):
-		Globalscript.allSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen120.txt")
+	
 	
 	ind = 0
-	for curSylph in Globalscript.allSylphs:
+	for curSylph in Globalscript.activeSylphs:
 		
 		if(ind != bestScoreInd && ind != secondScoreInd):
 			if(Globalscript.prob(60)):
 				#print("  Copied from best!")
-				curSylph.copy_From_Other(Globalscript.allSylphs[bestScoreInd])
+				curSylph.copy_From_Other(Globalscript.activeSylphs[bestScoreInd])
 			else:
 				#print("  Copied from second!")
-				curSylph.copy_From_Other(Globalscript.allSylphs[secondScoreInd])
+				curSylph.copy_From_Other(Globalscript.activeSylphs[secondScoreInd])
 		
 		ind+=1
 	
 	ind = 0
-	for curSylph in Globalscript.allSylphs:
+	for curSylph in Globalscript.activeSylphs:
 		if(ind != bestScoreInd):
 			if(Globalscript.prob(60)):
 				curSylph.ourNetwork.mutate_Network(0.05, 0, 5) #dont mutate best, second, or highscore
@@ -161,7 +160,7 @@ func score_Sylphs_All():
 		ind +=1
 	
 
-
+##Old "only score 2 Sylphs" code here
 @export var Sylph1:CharacterBody3D
 @export var Sylph2:CharacterBody3D
 @export var targ1 : SCOREDTARGET
@@ -194,7 +193,7 @@ func score_Sylphs_Two():
 		if(highScore > 1):
 			generation-=1
 			print("Both sucked!") #only load 1 sylph for sake of testing
-			Sylph1.mind.load_From_File()
+			Sylph1.mind.load_Nets_From_Folder(folderDirectory)
 			
 	elif(arr1[1] > arr2[1]):
 		print("Sylph1 was better!")
@@ -203,10 +202,10 @@ func score_Sylphs_Two():
 		if(arr1[1] > highScore):
 			print("new best!")
 			highScore = arr1[1]
-			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
+			Sylph1.mind.save_Nets_To_Folder(folderDirectory, "_currentWinner")
 		
 		if(arr1[1] > avgScore - tolerance):
-			Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")  #only save if we're doing "good"
+			Sylph1.mind.save_Nets_To_Folder(folderDirectory, "_currentWinner")  #only save if we're doing "good"
 		
 		Sylph2.mind.copy_From_Other(Sylph2)
 		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 40)
@@ -219,10 +218,10 @@ func score_Sylphs_Two():
 		if(arr2[1] > highScore):
 			print("new best!")
 			highScore = arr2[1]
-			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
+			Sylph2.mind.save_Nets_To_Folder(folderDirectory)
 		
 		if(arr2[1] > avgScore - tolerance): 
-			Sylph2.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
+			Sylph2.mind.save_Nets_To_Folder(folderDirectory)
 	
 		Sylph1.mind.copy_From_Other(Sylph2)
 		Sylph1.mind.ourNetwork.mutate_Network(0.1, 0, 40)
@@ -239,5 +238,5 @@ func score_Sylphs_Two():
 			generation -=1 # dont update average, so decrement generations again
 	
 	if(generation > 25 || arr2[0] >= 5 || arr1[0] >= 5):
-		Sylph1.mind.save_To_File("res://resources/txt files/sylph tests/gradient descent tests/progtry1.txt")
+		Sylph1.mind.save_Nets_To_Folder(folderDirectory)
 		print("probably enough now!")

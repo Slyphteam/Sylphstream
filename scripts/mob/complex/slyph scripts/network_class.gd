@@ -4,6 +4,7 @@ class_name NNETWORK extends Node
 var ourLayers: Array[LAYER]
 var layerSizes:String
 
+
 ##Create an empty neural network with layer sizes specified in array
 func initialize_Network(layerSizeArr: Array[int]):
 	layerSizes = str(layerSizeArr)
@@ -74,7 +75,34 @@ func populate_Layer_Rand(desiredLayer: int):
 			y+=1
 		x+=1
 	
+##Populates a layer with Weights: a 2d array of size (incoming, outgoing), and Biases: an array of size outgoing
+func populate_Layer_Custom(layer: int, biases: Array[float], weights: Array):
+	var selectedLay = ourLayers[layer]
+	selectedLay.biases = biases
+	selectedLay.weights = weights
 
+##Copies layer from another layer. BOTH HAVE TO BE THE SAME DIMENSIONS
+func copy_Layer_From_Other(ourLayer:LAYER, theirLayer:LAYER):
+	#I coouuuuuld do size sanitity checks. buut nahhhhhhhhhh
+	
+	#biases
+	ourLayer.biases = theirLayer.biases.duplicate(true)
+
+	#weights
+	var x:int = 0
+	while(x<theirLayer.nodesIn): #ordinarily y is used for nodesIn but there is only one loop here
+		ourLayer.weights[x] = theirLayer.weights[x].duplicate(true) #if this doesnt work im gonna cry
+		x+=1
+
+##Mutates the entire network by random values clamped to 0+-(mutationAmount). Seperate value for mutations.
+func mutate_Network(mutateBy: float, activationMut: float, mutationChance: int):
+	var z:int =0
+	
+	while(z<ourLayers.size() - 1):
+		mutate_Layer(z, mutateBy, activationMut, mutationChance)
+		z+=1
+	
+	#ourLayers[0].activations.fill(1) #ensure the first layer always activates.
 
 
 ##Mutates a selected layer of by random values clamped by 0+-(mutationAmount). Seperate value for activations.
@@ -114,24 +142,58 @@ func mutate_Layer(desiredLayer: int, mutationAmount: float, _activationMut:float
 			y+=1
 		x+=1
 
-##Populates a layer with Weights: a 2d array of size (incoming, outgoing), and Biases: an array of size outgoing
-func populate_Layer_Custom(layer: int, biases: Array[float], weights: Array):
-	var selectedLay = ourLayers[layer]
-	selectedLay.biases = biases
-	selectedLay.weights = weights
 
-##Copies layer from another layer. BOTH HAVE TO BE THE SAME DIMENSIONS
-func copy_Layer_From_Other(ourLayer:LAYER, theirLayer:LAYER):
-	#I coouuuuuld do size sanitity checks. buut nahhhhhhhhhh
+func mutate_Network_Goodrand(digits, decims, divBy, mutateChance):
+	var z:int =0
+	
+	while(z<ourLayers.size() - 1):
+		mutate_Layer_Goodrand(z, mutateChance, digits, decims, divBy)
+		z+=1
+
+func mutate_Layer_Goodrand(desiredLayer: int, mutationChance: int, numericalDigits:int, padZeros:int, divideBy:int):
+	var selectedLay = ourLayers[desiredLayer]
+	var newVal:float
 	
 	#biases
-	ourLayer.biases = theirLayer.biases.duplicate(true)
-
-	#weights
 	var x:int = 0
-	while(x<theirLayer.nodesIn): #ordinarily y is used for nodesIn but there is only one loop here
-		ourLayer.weights[x] = theirLayer.weights[x].duplicate(true) #if this doesnt work im gonna cry
+	var numBiases = selectedLay.biases.size()
+	while (x<numBiases):
+		if(prob(mutationChance)):
+			
+			
+			newVal = clampf(selectedLay.biases[x] + Globalscript.better_Randf_Simple(numericalDigits, padZeros, divideBy), -1, 1)
+			selectedLay.biases[x] = newVal
 		x+=1
+	
+	#weights
+	x = 0
+	var y:int
+	var curArray = []
+	while(x<selectedLay.nodesOut):
+		y=0
+		while(y<selectedLay.nodesIn):
+			curArray = selectedLay.weights[y]
+			#curArray[x]#why was this here?
+			if(prob(mutationChance)):
+				newVal = clampf(curArray[x] + Globalscript.better_Randf_Simple(numericalDigits, padZeros, divideBy), -1, 1)
+				curArray[x] = newVal
+			y+=1
+		x+=1
+
+#func mutate_Pulses(numPulses, mutateBy, mutateChance):
+
+#experimental function that mutates in "pulses" through a network.
+##Travels through a network and mutates every node in a random path by mutateChance.
+func mutate_Pulse(digits, decims, divBy, mutateChance):
+	print("Mutate pulse not done yet!")
+	
+	
+	#return
+	#
+#
+#func get_Pulse_Neurons()->Array:
+	#
+
 
 #below are all network functions
 ##Populates a network with random values. WILL OVERWRITE VALUES
@@ -145,25 +207,8 @@ func populate_Network_Rand():
 	#ourLayers[0].activations.fill(1) #ensure the first layer always activates.
 	
 
-#experimental function that mutates in "pulses" through a network.
-#selects a random node, mutates it, selects a random node from the outgoing, mutates
-#func mutate_Pulse(mutateBy, mutateChance, pulseChance, maxPulse):
-	#return
-	#
-#
-#func get_Pulse_Neurons()->Array:
-	#
 
 
-##Mutates the entire network by random values clamped to 0+-(mutationAmount). Seperate value for mutations.
-func mutate_Network(mutateBy: float, activationMut: float, mutationChance: int):
-	var z:int =0
-	
-	while(z<ourLayers.size() - 1):
-		mutate_Layer(z, mutateBy, activationMut, mutationChance)
-		z+=1
-	
-	#ourLayers[0].activations.fill(1) #ensure the first layer always activates.
 
 #func do_SGD_Learning()
 #How does SGD learning work?
@@ -211,8 +256,8 @@ func load_Network_From_File(fileString):
 		currentArray = str_to_var(lineGrabber)
 		currentLayer.biases = currentArray.duplicate()
 		
-		lineGrabber = ourFile.get_line() #activations header
-		lineGrabber = ourFile.get_line() #activations
+		#lineGrabber = ourFile.get_line() #activations header
+		#lineGrabber = ourFile.get_line() #activations
 		#currentArray = str_to_var(lineGrabber)
 		#currentLayer.activations = currentArray.duplicate()
 		
@@ -256,10 +301,10 @@ func save_Network_To_File(fileString):
 		constructedString = var_to_str(currentLayer.biases) + "\n"
 		ourFile.store_string(constructedString) #store layer biases
 		
-		constructedString = "--ACTIVATION CHANCES-- \n"
-		ourFile.store_string(constructedString)
-		constructedString = "(we arent doing those) \n"
-		ourFile.store_string(constructedString)
+		#constructedString = "--ACTIVATION CHANCES-- \n"
+		#ourFile.store_string(constructedString)
+		#constructedString = "(we arent doing those) \n"
+		#ourFile.store_string(constructedString)
 		
 		constructedString = "--WEIGHTS-- \n"
 		ourFile.store_string(constructedString)
@@ -294,3 +339,39 @@ func prob(chance:int)->bool:
 		return true
 	
 	return false
+
+func print_Network():	
+	var z:int = 0
+	var x:int = 0
+	var constructedString:String
+	var currentLayer: LAYER
+	var currentArray
+	
+	print("-<O=====|=/ NETWORK BEGIN \\=|=====O>-")
+	
+	while(z<ourLayers.size() - 1):
+		
+		
+		constructedString = "-----LAYER " + str(z) + "-----"
+		print(constructedString)
+		
+		currentLayer = get_Layer(z)
+		constructedString = "--BIASES--"
+		print(constructedString)
+		constructedString = var_to_str(currentLayer.biases)
+		print(constructedString)
+		
+		
+		constructedString = "--WEIGHTS--"
+		print(constructedString)
+
+		x = 0
+		while(x < currentLayer.nodesIn):
+			currentArray = currentLayer.weights[x]
+			constructedString = var_to_str(currentArray)
+			print(constructedString)
+			x+=1
+		
+		
+		z+=1
+	print("-<O=====|=\\ NETWORK END /=|=====O>-")

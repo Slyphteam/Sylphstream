@@ -28,13 +28,16 @@ Adding a new weapon:
 -----------/
 
 ====+====> MISC:
---Scripts/weaponsystem/invenmanager_parent: the common parent class between the sylph
-	invenmanager and the player invenmanager. Has a good chunk of code in it, so
+--Scripts/mob/invenmanager_parent: the common parent class between the sylph
+	invenmanager and the player invenmanager. Has a *good* chunk of code in it, so
 	read through it if you're doing anything that touches those classes
 	Note that the player and sylph versions are in the associated folders.
+--Scripts/mob/damsystem/: For healthholders, status effects, go here.
+--Models/glbs and textures/: New models go in here in whichever folder is most applicable. do NOT mess with
+the files in this folder. Don't even think about it. 3D model asset paths are PANDORA'S BOX in godot 
 
 ====+====> PLAYER ASSOCIATED
---Scripts/player: basically everything in here is used a lot, but most importantly are:
+--Scripts/player/: basically everything in here is used a lot, but most importantly are:
 --Scripts/player/invenmanager_player: Acts as an in-between for the player and weapon instances.
 --Scripts/player/playermovementinput: Almost everything related to movement and IO is handled here
 
@@ -45,13 +48,14 @@ Adding a new weapon:
 	datasheets and weapon instances inherit from. Extend if you're making your own functionality.
 
 ====+====> SYLPH/NEURAL NETWORKS:
---Scripts/archonscript: The "archon" is the manager for sylph training. Walk up to it and press e
-	if you want to start a training cycle. Will also score sylphs and decide which one gets mutated
---Scripts/sylph scripts/sylph_mind: A manager for the neural network. Processes input and handles output.
-	A similar script is sylph_body_controller, which has much less functionality.
---scripts/sylph scripts/ layer_class and network_class: Contain the actual classes used for neural nets.
-	Network_class has all the utility functions in it. 
---Resources/txt files / sylph tests: Folder where all of the saved sylphs go. 
+--Scripts/mob/Trainer_scripts: The Archon is the interface for training Sylphs, but the actual code that wrangles
+them is in this folder. Simply drag a new trainer script onto the node to swap them out
+--Scripts/mob/complex/sylph scripts/: All Sylph scripts.
+	-sylph_mind: A manager for the neural network. Processes input and handles output.
+	 -sylph_body_controller: Handles output, Sylph movement.
+	 -layer_class and network_class: Contain the actual classes used for neural nets. Mainly network_class.
+--Resources/txt files / sylph tests: Old saved Sylphs
+--Saved AI Agents/ : New saved sylphs
 
 Other places are as follow:
  resources/weaponresources contains all the templates for implemented weapons
@@ -63,11 +67,17 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Test training script where
 
-Sylph maintenance:
+Code pulse mutation with the new randomization system, test it
 
-MODULARIZE SYLPHS?
+Look into mutating by "pulses"-- rather than shooting a shotgun into the network,
+take a random input, and for x of outputs, mutate those, than take 1-2 from the mutated and pulse again
+
+
+Get trainer set up for prototype sylphs against targets.
+
+
+Modulization:
 Aimer: small neural network that only aims and shoots
 Mover: small neural network that only moves sylph
 Actuator: small neural network that handles weapon
@@ -102,9 +112,6 @@ immediate weights/biases to be completely neutral. otherwise you're going to und
 
 After making Sylph kinematic controller, take sample snapshots of input (looking at target, looking
 above target, not looking at target, far from target) and use those so you can do SGD pre-training.
-
-Look into mutating by "pulses"-- rather than shooting a shotgun into the network,
-take a random input, and for x of outputs, mutate those, than take 1-2 from the mutated and pulse again
 
 It looks like we're sabotaging ourselves with memory caching for weights and biases. 
 Consider swapping the traversal order to go row by row on all traversals?

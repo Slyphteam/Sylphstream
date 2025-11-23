@@ -4,6 +4,5 @@ extends StaticBody3D
 ##Creates a bullet that shoots the player.
 func interact_By_Player(player):
 	#print("Wow! You just pressed a MYSTERY BUTTON!")
-	var testy = 0.5
 	#print("Randf value ", randf_range(0-testy, testy))
-	print("Better randf value ", Globalscript.better_Randf_Simple(1, 2))
+	print("Better randf value ", Globalscript.better_Randf_Simple(1, 2, 1))

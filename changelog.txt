@@ -1,4 +1,8 @@
-11/14:
+11/23:
+Created trainer class that archon interacts with
+Sylphs must now be added to a testing pool to test.
+Implemented improved random number generator for floats into mutation
+11/14?:
 Sylphs now have kinematic controllers :)
 11/8:
 Added a new random float function to global script, should ensure sylphs mutate more reliably

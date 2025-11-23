@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var sylphHead = $"sylph head v2"
 @onready var collider = $sylphcollider
 @onready var sylphModel = $sylphmodel
-@onready var mind = $"slyph mind"
+@onready var mind = $"sylph mind"
 @onready var ourHealth = $COMPLEXHEALTHHOLDER
 @onready var manager : INVENMANAGER = $"sylph head v2/sylphinventory"
 @export var ourTar: Node3D
@@ -24,10 +24,23 @@ func hit_By_Bullet(dam, _damtype, _dir, originator):
 		rotation_degrees.x = 90
 	
 	
-
+var addedTraining: bool = false 
 func interact_By_Player(_playerRef):
 	
-	print("Hi! My current HP is ", ourHealth.health, " with ", ourHealth.aura, " aura")
+	
+	mind.do_Debug_Action()
+	
+	
+	
+	#
+	#if(!addedTraining):
+		#print("Adding myself to training pool!")
+		#Globalscript.enroll_Sylph(mind)
+		#return
+	#
+	#print("Hi! My current HP is ", ourHealth.health, " with ", ourHealth.aura, " aura")
+	
+	
 	#mind.do_Single_Thought(1/60)
 	#mind.begin_Test()
 	#mind.do_Vision()

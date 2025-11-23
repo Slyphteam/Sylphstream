@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=58 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="1_os2cn"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="4_2yn2u"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ygjo8v5olr8" path="res://scenes/trivial/pickups/ishim pickup.tscn" id="12_ydxer"]
 [ext_resource type="PackedScene" uid="uid://4g032mafbnwj" path="res://scenes/trivial/pickups/affine pickup.tscn" id="14_os2cn"]
 [ext_resource type="PackedScene" uid="uid://u5vg53ed723w" path="res://scenes/trivial/pickups/bergther pickup.tscn" id="15_by8b2"]
+[ext_resource type="PackedScene" uid="uid://co5t36kxokupn" path="res://scenes/entities/sylphproto.tscn" id="15_eqt0i"]
 [ext_resource type="PackedScene" uid="uid://bdgwi6tjdsj5u" path="res://scenes/trivial/pickups/degubby pickup.tscn" id="16_eqt0i"]
 [ext_resource type="PackedScene" uid="uid://ckdcn8ikpxnnw" path="res://scenes/utilities/sylphTestingUnit.tscn" id="17_8f4e3"]
 [ext_resource type="PackedScene" uid="uid://b2lu2muc6j2uj" path="res://scenes/trivial/pickups/fourier pickup.tscn" id="17_vnjd3"]
@@ -458,6 +459,29 @@ transform = Transform3D(-0.843373, -0.537329, 2.34874e-08, 0, -4.37114e-08, -1, 
 
 [node name="Testing zone" type="Node3D" parent="Environment"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.6961, 2, 5.5732e-06)
+
+[node name="Zone 2" type="Node3D" parent="Environment/Testing zone"]
+
+[node name="prototype sylph" parent="Environment/Testing zone/Zone 2" node_paths=PackedStringArray("ourTar") instance=ExtResource("15_eqt0i")]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -11.8625, -1.47633, -16.7472)
+ourTar = NodePath("../target")
+
+[node name="target" parent="Environment/Testing zone/Zone 2" instance=ExtResource("4_m2myf")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.863, -0.145, -8.27602)
+
+[node name="prototype sylph2" parent="Environment/Testing zone/Zone 2" node_paths=PackedStringArray("ourTar") instance=ExtResource("15_eqt0i")]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -21.4631, -1.47633, -16.7472)
+ourTar = NodePath("../target2")
+
+[node name="target2" parent="Environment/Testing zone/Zone 2" instance=ExtResource("4_m2myf")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.4636, -0.145, -8.27602)
+
+[node name="prototype sylph3" parent="Environment/Testing zone/Zone 2" node_paths=PackedStringArray("ourTar") instance=ExtResource("15_eqt0i")]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -31.9039, -1.47633, -16.7472)
+ourTar = NodePath("../target3")
+
+[node name="target3" parent="Environment/Testing zone/Zone 2" instance=ExtResource("4_m2myf")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -31.9044, -0.145, -8.27602)
 
 [node name="Testing wall" type="MeshInstance3D" parent="Environment/Testing zone"]
 mesh = SubResource("BoxMesh_ldjjd")

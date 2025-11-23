@@ -27,7 +27,7 @@ points = PackedVector3Array(0.302381, 1.16825, 0.0833119, -0.318254, -1.16825, -
 collision_layer = 7
 script = ExtResource("1_6bxm0")
 
-[node name="slyph mind" type="Node" parent="."]
+[node name="sylph mind" type="Node" parent="."]
 script = ExtResource("2_a3el2")
 
 [node name="sylph head v2" parent="." instance=ExtResource("2_avlhl")]

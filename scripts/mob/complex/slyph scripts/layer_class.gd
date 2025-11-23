@@ -21,7 +21,7 @@ func initialize_Layer(incoming, outgoing):
 	
 	
 	biases.resize(outgoing)
-	biases.fill(0.5)
+	biases.fill(0)
 	
 	#gradientBias
 	
@@ -33,7 +33,7 @@ func create_Empty_Grid(width, height):
 	for i in width:
 		grid.append([])
 		for j in height:
-			grid[i].append(0.5) # Set a starter value for each position
+			grid[i].append(0) # Set a starter value for each position
 	return grid
 #
 #func apply_Gradients(learnRate):

@@ -2,7 +2,7 @@ class_name SYLPHINVENMANAGER extends INVENMANAGER
 ##This is the Sylph's invenmanager script. Similar, but slightly different to player invenmanager script.
 
 @onready var sylphHead = $".."
-@onready var sylphMind = $"../../slyph mind"
+@onready var sylphMind = $"../../sylph mind"
 
 func _ready():
 	pass
