@@ -1,3 +1,5 @@
+11/14:
+Sylphs now have kinematic controllers :)
 11/8:
 Added a new random float function to global script, should ensure sylphs mutate more reliably
 New button model!

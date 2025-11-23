@@ -63,19 +63,19 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Change Sylph AI to use new custom randf script from global
-Sylph kinematics.
+Test training script where
 
-More future me note: I like this idea but fuckinnnn minimum viable product people sylph AI is a mess.
+Sylph maintenance:
 
-Change single round reloading logic off of shotguns and onto heldweapon instance, use a boolean
-to determine which is which.
-Weapon "jump" as primitive animation when fired.
-Whenever recoil is applied, pick a random point from default, teleport there, use
-current recoil value to determine how you should move back.
-Each time the gun is fired, this new point should change. 
-^^ Use this to springboard into having ADS also lerp, and have a deadtime when you cant shot 
-as one toggles.
+MODULARIZE SYLPHS?
+Aimer: small neural network that only aims and shoots
+Mover: small neural network that only moves sylph
+Actuator: small neural network that handles weapon
+The idea here is that the neural network is super interconnected,
+not doing a good job learning due to pollution, and
+maybe not doing a good job behaving due to nodes being overloaded.
+
+
 
 
 -----------\
@@ -95,18 +95,10 @@ Watch inventory system video. Make simple shitty top bar for player inv and plac
 	&: Unimportant
 
 
-Sylph maintenance:
 
-MODULARIZE SYLPHS?
-Aimer: small neural network that only aims and shoots
-Mover: small neural network that only moves sylph
-Actuator: small neural network that handles weapon
-The idea here is that the neural network is super interconnected,
-not doing a good job learning due to pollution, and
-maybe not doing a good job behaving due to nodes being overloaded.
-
-Before you do ANYTHING with the sylphs again, write a function that takes a node and sets its
+Write a function that takes a node and sets its
 immediate weights/biases to be completely neutral. otherwise you're going to undo everything.
+^^^^ unsure what I mean by this but it was important?
 
 After making Sylph kinematic controller, take sample snapshots of input (looking at target, looking
 above target, not looking at target, far from target) and use those so you can do SGD pre-training.
@@ -115,8 +107,8 @@ Look into mutating by "pulses"-- rather than shooting a shotgun into the network
 take a random input, and for x of outputs, mutate those, than take 1-2 from the mutated and pulse again
 
 It looks like we're sabotaging ourselves with memory caching for weights and biases. 
-Consider swapping the traversal order to go row by row on all traversals
-Reimport sylph head but make sure it's actually centered this time, doofus.
+Consider swapping the traversal order to go row by row on all traversals?
+
 
 
 ====+====> FUNCTIONAL:
@@ -145,6 +137,17 @@ Archon intro ditty:
 low high bitlower medium - - - - - - high low
 low high bitlower - - + verlow high lowwww
 Archon option buttons
+
+WEAPON SYSTEM:
+Future me note: I like this idea but fuckinnnn minimum viable product people sylph AI is a mess.
+Change single round reloading logic off of shotguns and onto heldweapon instance, use a boolean
+to determine which is which.
+Weapon "jump" as primitive animation when fired.
+Whenever recoil is applied, pick a random point from default, teleport there, use
+current recoil value to determine how you should move back.
+Each time the gun is fired, this new point should change. 
+^^ Use this to springboard into having ADS also lerp, and have a deadtime when you cant shoot 
+while transitioning.
 
 Decals: Parent decals to hit object
 Use normals so decals have proper angle.
