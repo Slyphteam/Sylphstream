@@ -18,8 +18,8 @@ func hit_By_Bullet(dam, _damtype, _dir, _entity):
 	root.global_position.z += move
 	root.global_position.z = clamp(root.global_position.z + move, targetOrig.z - 3,  targetOrig.z + 3 )
 	#forward back
-	@warning_ignore("integer_division") move= randi_range(-20, 20) / 10
-	root.global_position.x += move
-	root.global_position.x = clamp(root.global_position.x + move, targetOrig.x - 3, targetOrig.x + 3 )
+	#@warning_ignore("integer_division") move= randi_range(-20, 20) / 10
+	#root.global_position.x += move
+	#root.global_position.x = clamp(root.global_position.x + move, targetOrig.x - 3, targetOrig.x + 3 )
 	
 	root.totalHits +=1

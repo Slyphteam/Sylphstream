@@ -81,7 +81,9 @@ func get_Origin(): #tested and seems to work.
 	var orig = sylphHead.global_position 
 	
 	return orig
-	
+
+
+var hitdecalscene = preload("res://scenes/trivial/bullet_decal.tscn")
 ##Endpoint of where bullets are coming from. Azimuth is offset, in degrees, and roll is how far around a circle
 func get_End(orig:Vector3, _azimuth:float, _roll:float):
 	var pathVec = Vector3(20, 0, 0)
@@ -95,6 +97,11 @@ func get_End(orig:Vector3, _azimuth:float, _roll:float):
 	pathVec += orig #add the rotated vector to wherever it's coming from
 	
 	#print(pathVec)
+	#gahhhhh
+	var decalInstance = hitdecalscene.instantiate()
+	get_tree().root.add_child(decalInstance)
+	decalInstance.global_position = pathVec
+	
 	return pathVec
 	
 func get_Rotation():

@@ -30,15 +30,15 @@ func toggle_Test():
 func begin_Sylph_Test():
 	print("Starting test!")
 	allScores.resize(Globalscript.activeSylphs.size())
-	for curSylph in Globalscript.activeSylphs:
-		##used to be randomize here as an option but that was added to the body behavior for now
-		curSylph.load_From_File(folderDirectory+"highscore.txt")
+	#for curSylph in Globalscript.activeSylphs:
+		###used to be randomize here as an option but that was added to the body behavior for now
+		#curSylph.load_From_File(folderDirectory+"highscore.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
 func restart_Sylph_Test():
 	
-	testTime = 450
+	testTime = 1050
 	for curSylph in Globalscript.activeSylphs:
 		curSylph.begin_Test()
 
@@ -55,7 +55,7 @@ var revertcount = 0
 var mutAmount = 0.09
 var mutPercent = 1
 
-var generation: int = 21
+var generation: int = 1
 var highScore = -5
 
 ##Function that scores all sylphs in the global allSylphs array

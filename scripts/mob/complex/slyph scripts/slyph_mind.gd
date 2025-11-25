@@ -44,7 +44,13 @@ var desiredActions:Array[float] ##Array of all desired actions
 
 
 func do_Debug_Action():
+	
 	print("Wow! You called my debug testing function")
+	if(Globalscript.prob(50)):
+		body.move_Head_Exact(Vector2(0,20))
+	else:
+		body.move_Head_Exact(Vector2(0,-20))
+	print(body.sylphHead.rotation_degrees.x / 90)
 
 func _ready():
 	
@@ -76,7 +82,7 @@ func initialize_Rand_Network():
 ##Saves to specified file
 func save_To_File(fileString):
 	ourNetwork.save_Network_To_File(fileString)
-	#print("Save to file complete!")
+	print("Save to file complete!")
 
 ##Loads from specified file
 func load_From_File(fileString):
@@ -261,7 +267,7 @@ func do_Senses():
 	#INDEX 6: AIM AZIMUTH
 	#between 90 and -90
 	var head = $"../sylph head v2"
-	sensoryInput[6] = head.rotation_degrees.x / 90
+	sensoryInput[6] = body.sylphHead.rotation_degrees.x / 90
 	
 	#INDEX 7: AMMO LEFT
 	sensoryInput[7] = manager.get_Ammo_Left()

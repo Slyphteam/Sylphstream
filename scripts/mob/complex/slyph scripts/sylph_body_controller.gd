@@ -37,10 +37,10 @@ func hit_By_Bullet(dam, _damtype, _dir, originator):
 var addedTraining: bool = false 
 func interact_By_Player(_playerRef):
 	
+	#print("Hi! My current HP is ", ourHealth.health, " with ", ourHealth.aura, " aura")
+	mind.do_Debug_Action()
 	
-	#mind.do_Debug_Action()
 	
-	print("Hi! My current HP is ", ourHealth.health, " with ", ourHealth.aura, " aura")
 	
 	#mind.do_Single_Thought(1/60)
 	#mind.begin_Test()

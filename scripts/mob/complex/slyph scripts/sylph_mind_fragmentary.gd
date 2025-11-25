@@ -300,7 +300,7 @@ func do_Senses():
 	#INDEX 6: AIM AZIMUTH
 	#between 90 and -90
 	var head = $"../sylph head v2"
-	shootingInput[6] = head.rotation_degrees.x / 90
+	shootingInput[6] = 0#head.rotation_degrees.x / 90
 	
 	
 	#INDEX 7: CROSSHAIR SIZE

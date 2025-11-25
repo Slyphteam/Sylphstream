@@ -71,6 +71,10 @@ Other places are as follow:
 Once the proof-of-concept Sylphs work go back through the Sylph mind script and re-organize all the 
 inputs to be less atrocious
 
+Look into Sylphs still seeming to shoot a LOT lower than they're aiming. Some kind of offset with their head?
+Doesn't seem like it. Could be an issue, maybe with their azimuth? They seem averse to aiming just a little low.
+Could also possibly be a recoil thing but there's no goddamn way they can't learn around that.
+
 
 Look into line 72 in layer class. I starr'd a vector of all 1s with a vector of all 0s and the result was all 0s
 It does look like multiplication is correct, though.
