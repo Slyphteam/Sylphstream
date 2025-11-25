@@ -8,6 +8,16 @@ extends CharacterBody3D
 @onready var manager : INVENMANAGER = $"sylph head v2/sylphinventory"
 @export var ourTar: Node3D
 @export var moveEnabled:bool = false
+@export var doTraining = false
+
+
+
+func _ready():
+	if(doTraining):
+		#print("Adding myself to training pool!")
+		mind.initialize_Rand_Network()
+		Globalscript.enroll_Sylph(mind)
+		return
 
 var shoot = false
 func hit_By_Bullet(dam, _damtype, _dir, originator):
@@ -30,10 +40,6 @@ func interact_By_Player(_playerRef):
 	
 	#mind.do_Debug_Action()
 	
-	if(!addedTraining):
-		print("Adding myself to training pool!")
-		Globalscript.enroll_Sylph(mind)
-		return
 	print("Hi! My current HP is ", ourHealth.health, " with ", ourHealth.aura, " aura")
 	
 	#mind.do_Single_Thought(1/60)

@@ -17,12 +17,38 @@ var microPenalty = 0 ##Vision-based penalty
 var sensoryInput:Array[float] ##Array of all senses
 var desiredActions:Array[float] ##Array of all desired actions
 
+
+#Input directory:
+	#0:
+	#1
+	#2
+	#3
+	#4
+	#5
+	#6
+	#7
+	#8
+	#9
+	#10
+	#11
+	#12
+	#13
+	#14
+	#15
+	#16
+	#17
+	#18
+	#19
+	#20
+
+
+
 func do_Debug_Action():
 	print("Wow! You called my debug testing function")
 
 func _ready():
 	
-	initialize_Rand_Network()
+	initialize_Basic_Network()
 	sensoryInput.resize(20)
 	sensoryInput.fill(0)
 	
@@ -36,13 +62,13 @@ func _ready():
 
 func initialize_Basic_Network():
 	ourNetwork = NNETWORK.new()
-	print("Created basic 20-20-40-30-18 network!")
-	ourNetwork.initialize_Network([20,20,40,30,18])
+	#print("Created basic network!")
+	ourNetwork.initialize_Network([20,40,20,18])
 
 ##Creates a new network and fully randomizes it
 func initialize_Rand_Network():
+	#print("Randomized network!")
 	ourNetwork = NNETWORK.new()
-	#ourNetwork.initialize_Network([20,20,40,30,18])
 	ourNetwork.initialize_Network([20,40,20,18])
 	ourNetwork.populate_Network_Rand()
 	#print("Created random 20-20-40-30-18 network!")
@@ -50,7 +76,7 @@ func initialize_Rand_Network():
 ##Saves to specified file
 func save_To_File(fileString):
 	ourNetwork.save_Network_To_File(fileString)
-	print("Save to file complete!")
+	#print("Save to file complete!")
 
 ##Loads from specified file
 func load_From_File(fileString):
@@ -413,71 +439,4 @@ func get_Vision_Targets(visionBlock:Area3D):
 			if(items[x].is_in_group("sylph_target")):
 				return items[x]
 			x+=1
-	return false #you have got to be FUCKING kiddin gme
-
-# moved this to network class
-#func mutation_Test(val:float):
-	#
-	#print("Before mutation:")
-	#print(ourNetwork.get_Layer(1).weights[0])
-	#print(ourNetwork.get_Layer(1).weights[1])
-	#print(ourNetwork.get_Layer(1).weights[2])
-	#
-	#ourNetwork.mutate_Network(10, 0, 50)
-	##UHOH!!!! DIDNT DO THEM ALL!!!
-	#print("After mutation:")
-	#print(ourNetwork.get_Layer(1).weights[0])
-	#print(ourNetwork.get_Layer(1).weights[1])
-	#print(ourNetwork.get_Layer(1).weights[2])
-
-#Total inputs: 17, with 3 extra nodes
-#Total outputs: 16, with 2 extra nodes
-#Network architecture:
-#I'm thinking a 20/20/40/30/20/18 is what we want.
-
-#Why do I think this?
-#1: second layer of input size lets there be some sensory interplay
-#2: jump up to 40 is where the meat of the interaction comes from
-#3: jump down to for more interaction, but not as beefy as a 40/40 interface would be
-#4: jump down to 20 for a tapering effect
-
-
-#Senses:
-#Vision L, R, U, D (4)
-#Random noise + “heartbeat” (2)
-#Ammo left, Target distance, Crosshair size, aimspeed: 4
-#Aim azimuth 1
-#Aim extremity (L/R), (U/D) : 2
-#Total: 4+2+4+1+2 = 13
-
-#Vision directions: up, down, left, right, center.
-#Will give the bulk of the input, important for aiming.
-#random noise + "heartbeat": gives sylph ability to do some repetitive/random actions.
-#aim azimuth: horizontal aiming is very important and I want the sylph to not get lost
-#if it aims too high or too low. This will hopefully let it correct
-#aim extremity: sort of just the angle of difference, will hopefully let it aim slower
-#if things are closer to the center
-
-
-#Exosenses:
-#Targets present
-#Mode A, B, C, D
-#Health
-#Total: 6
-
-#Targets present: acts like a "global" threat input. 
-#Modes: allows for feedback.
-#health: who knows, might just allow for different behavior if the sylph is injured
-#Total inputs: 17?
-
-#no real commentary needed on outputs
-
-#
-#Outputs:
-#Shoot, L/R, U/D, reload, ADS (5)
-#Mode A, B, C, D (4)
-#Crouch, jump, sprint (3)
-#WASD: (4)
-
-#Total outputs: 
-#16?
+	return null #you have got to be FUCKING kiddin gme

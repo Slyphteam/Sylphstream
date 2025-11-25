@@ -77,10 +77,10 @@ func score_Sylphs_All():
 	
 	for curScore in allScores:
 		if(curScore[0] > bestScore):
-			bestScore = curScore[0]
+			bestScore = curScore[1]
 			bestScoreInd = ind
 		elif(curScore[0] > secondBestScore):
-			secondBestScore = curScore[0]
+			secondBestScore = curScore[1]
 			secondScoreInd = ind
 		#elif(curScore[0] > thirdBestScore):
 			#thirdBestScore = curScore[0]

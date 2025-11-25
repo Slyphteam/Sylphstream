@@ -68,6 +68,10 @@ Other places are as follow:
 -----------/
 
 
+Once the proof-of-concept Sylphs work go back through the Sylph mind script and re-organize all the 
+inputs to be less atrocious
+
+
 Look into line 72 in layer class. I starr'd a vector of all 1s with a vector of all 0s and the result was all 0s
 It does look like multiplication is correct, though.
 
@@ -75,17 +79,6 @@ This has some slightly concerning implications for weights being a value bound t
 I'm sure there's a lot of sabotage produced by that fact. Though maybe there isn't, what with
 the constraining effect it has. Either way, it's worth looking into to ensure everything's working correctly.
 ^^Additionally, look into a potential mutation of flipping a sign? weights should not start as all 0s?? dunno...
-
-Get trainer set up for prototype sylphs against targets.
-
-
-Modulization:
-Aimer: small neural network that only aims and shoots
-Mover: small neural network that only moves sylph
-Actuator: small neural network that handles weapon
-The idea here is that the neural network is super interconnected,
-not doing a good job learning due to pollution, and
-maybe not doing a good job behaving due to nodes being overloaded.
 
 
 

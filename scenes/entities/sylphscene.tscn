@@ -26,6 +26,7 @@ points = PackedVector3Array(0.302381, 1.16825, 0.0833119, -0.318254, -1.16825, -
 [node name="sylph body" type="CharacterBody3D" groups=["damage_interactible", "has_manager", "player_interactible"]]
 collision_layer = 7
 script = ExtResource("1_6bxm0")
+doTraining = true
 
 [node name="sylph mind" type="Node" parent="."]
 script = ExtResource("2_a3el2")
