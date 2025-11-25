@@ -9,13 +9,16 @@ var aimSensitivity:float = 1 ##fractional multiplier
 var ourTarget
 var mindEnabled = false
 var activeTime:int = 0 ##about 400
+var microPenalty = 0 ##Vision-based penalty. Shouldn't this be in the trainer??
 
-var microPenalty = 0 ##Vision-based penalty
+
 
 #Shooting network. 
 var shootingNetwork:NNETWORK
 var shootingInput:Array[float] #Inputs: U,D,L,R,C vision components, random, current spread, azimuth, offset
 var shootingActions:Array[float] #Outputs: Shoot, updown, leftright
+
+var inputSize = 11
 
 #var sensoryInput:Array[float] ##Array of all senses
 #var desiredActions:Array[float] ##Array of all desired actions
@@ -24,14 +27,24 @@ var shootingActions:Array[float] #Outputs: Shoot, updown, leftright
 func do_Debug_Action():
 	#print("Wow! You called my debug testing function")
 	
-	shootingNetwork.print_Network()
-	shootingNetwork.mutate_Network_Goodrand(1, 0, 2, 50)
+	#var inputData:Array[float] = [1,1,1,1,1,1,1,1]
+	#var outputData = shootingNetwork.get_Layer(0).calc_Outputs(inputData)
+	#print(outputData)
+	#var output2 = shootingNetwork.get_Layer(1).calc_Outputs(outputData)
+	#print(output2)
+	#print("done?")
+	
+	
+	#shootingNetwork.print_Network()
+	print("Doing pulse mutation!")
+	
+	shootingNetwork.mutate_Pulse(1, 0, 2, 50)
 	shootingNetwork.print_Network()
 
 func _ready():
 	
-	initialize_Basic_Networks()
-	shootingInput.resize(8)
+	initialize_Basic_Networks() #kind of wasteful but id rather the networks ALWAYS exist than not.
+	shootingInput.resize(inputSize)
 	shootingInput.fill(0)
 	
 	shootingActions.resize(4)
@@ -45,17 +58,18 @@ func _ready():
 func initialize_Basic_Networks():
 	
 	shootingNetwork = NNETWORK.new()
-	shootingNetwork.initialize_Network([8, 8, 4])
+	shootingNetwork.initialize_Network([inputSize, 8, 6, 4])
 	
+	#print("Created Basic S")
 
 ##Creates a new network and fully randomizes it
 func initialize_Rand_Networks():
 	
 	shootingNetwork = NNETWORK.new()
-	shootingNetwork.initialize_Network([8, 8, 4])
+	shootingNetwork.initialize_Network([inputSize, 8, 6, 4])
 	shootingNetwork.populate_Network_Rand()
 	
-	#print("Created random 20-20-40-30-18 network!")
+	print("Created random Splylph network!")
 
 ##Saves to specified folder, with a given suffix
 func save_Nets_To_Folder(fileString:String, suffix: String):
@@ -145,7 +159,7 @@ var aimingSights: bool = false
 var modeData: Array[float] = [0.0,0.0,0.0,0.0]
 var maxSpeed = 3 
 
-func process_Shooting_Actions(delta):
+func process_Shooting_Actions(delta): #total of 4
 	
 	#print("Desired actions:", desiredActions)
 	
@@ -161,7 +175,7 @@ func process_Shooting_Actions(delta):
 	var leftRight = shootingActions[0] * aimSensitivity * deltaScalar ##max per-frame movement is 3 degrees
 	var upDown = shootingActions[1] * aimSensitivity * deltaScalar ##Max per-frame movement is 3 degrees
 	
-	#Index 16: stop movement
+	#Index 2: STOP
 	var mouseStop = shootingActions[2]
 	if(mouseStop > 0.8):
 		leftRight *=  1 - mouseStop + 0.4
@@ -189,7 +203,7 @@ func process_Shooting_Actions(delta):
 
 	body.move_Head_Exact(aimVector)
 	
-	#INDEX 2: SHOOT OR NOT (formerly belonged to index 1)
+	#INDEX 3: SHOOT OR NOT (formerly belonged to index 1)
 	if(shootingActions[3] > 0.5):
 		manager.doShoot()
 	else:
@@ -249,8 +263,8 @@ func do_Senses():
 		microPenalty +=1
 	
 	if(!targetTrue): #we do not have a target anywhere in sight, you get no awareness, bwomp bwomp
-		shootingInput[4] = -1 #INDEX 4: EXTREMA
-		shootingInput[5] = -1 #INDEX 5: DISTANCE
+		shootingInput[4] = 1 #INDEX 4: EXTREMA (actually max awareness)
+		shootingInput[5] = 1 #INDEX 5: DISTANCE
 		
 	else:
 		
@@ -298,22 +312,23 @@ func do_Senses():
 	var speed = aimVector.length()
 	#equal to the hypotenuse of a iscoceles right triangle (with friction applied)
 	var highestPossibleSpeed = sqrt(4 * maxSpeed * maxSpeed) * 0.7
-	var adjustedSpeed = speed / highestPossibleSpeed
+	var adjustedSpeed:float = speed / highestPossibleSpeed
 	#print(speed, " ", highestPossibleSpeed)
 	shootingInput[8] = adjustedSpeed
 	
-	#INDEX 9, RANDOM NOISE
-	shootingInput[9] = randf_range(-0.05, 0.05)
+	#INDEX 9+10: MOTIONS
+	shootingInput[9] = 0#randf_range(-0.05, 0.05)
+	shootingInput[10] = 0
 
 
 
-#returns the target, if any exist in a visionblock, or false.
+##returns the target, if any exist in a visionblock, or false.
 func get_Vision_Targets(visionBlock:Area3D):
 	if(visionBlock.has_overlapping_bodies()):
 		var items = visionBlock.get_overlapping_bodies()
 		var x:int = 0
 		while(x < items.size()):
-			if(items[x] is testing_target): #only targets for now
+			if(items[x].is_in_group("sylph_target")):
 				return items[x]
 			x+=1
 	return false

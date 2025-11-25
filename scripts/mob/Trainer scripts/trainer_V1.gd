@@ -2,6 +2,7 @@ class_name trainerV1 extends TRAINER
 
 var testTime:int = 0
 var testing = false
+var folderDirectory: String = "res://Saved_AI_Agents/Sylphs/Targs1/"
 
 func _process(delta):
 	
@@ -30,7 +31,7 @@ func begin_Sylph_Test():
 	print("Starting test!")
 	allScores.resize(Globalscript.activeSylphs.size())
 	for curSylph in Globalscript.activeSylphs:
-		curSylph.load_From_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
+		curSylph.load_From_File(folderDirectory+"highscore.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -53,7 +54,7 @@ var revertcount = 0
 var mutAmount = 0.09
 var mutPercent = 1
 
-var generation: int = 120
+var generation: int = 1
 var highScore = -0
 
 ##Function that scores all sylphs in the global allSylphs array
@@ -117,10 +118,10 @@ func score_Sylphs_All():
 		print("Highscore beat!")
 		highScore = bestScore
 		highScoreInd = bestScoreInd
-		Globalscript.activeSylphs[highScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/highscore.txt")
+		Globalscript.activeSylphs[highScoreInd].save_To_File(folderDirectory+"highscore.txt")
 	
-	Globalscript.activeSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/currentBest.txt")
-	Globalscript.activeSylphs[secondScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/currentSecond.txt")
+	Globalscript.activeSylphs[bestScoreInd].save_To_File(folderDirectory+"currentBest.txt")
+	Globalscript.activeSylphs[secondScoreInd].save_To_File(folderDirectory+"currentSecond.txt")
 	
 	
 	
@@ -131,9 +132,9 @@ func score_Sylphs_All():
 		print("thats enough!")
 	
 	print("Generation: ", generation)
-	if(generation == 120):
-		Globalscript.activeSylphs[bestScoreInd].save_To_File("res://resources/txt files/sylph tests/generations test 2/gen120.txt")
-	
+	#if(generation == 120):
+		#Globalscript.activeSylphs[bestScoreInd].save_To_File(folderDirectory+"gen120.txt")
+	#
 	ind = 0
 	for curSylph in Globalscript.activeSylphs:
 		

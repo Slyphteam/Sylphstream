@@ -30,7 +30,8 @@ func begin_Sylph_Test():
 	print("Starting test!")
 	allScores.resize(Globalscript.activeSylphs.size())
 	for curSylph in Globalscript.activeSylphs:
-		curSylph.load_Nets_From_Folder(folderDirectory)
+		curSylph.initialize_Rand_Networks() 
+		#curSylph.load_Nets_From_Folder(folderDirectory)
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
@@ -53,8 +54,8 @@ var revertcount = 0
 var mutAmount = 0.09
 var mutPercent = 1
 
-var generation: int = 120
-var highScore = -0
+var generation: int = 0
+var highScore = -1
 
 ##Function that scores all sylphs in the global activeSylphs array
 func score_Sylphs_All():
@@ -91,33 +92,32 @@ func score_Sylphs_All():
 	print(allScores)
 	print("Best score: ", bestScore, " [", bestScoreInd, "] Runner-up ", secondBestScore, " []", secondScoreInd)
 	
-	ind = 0
-	if(bestScore < (prevBest - 1)):
-		print("reverting. count: ", revertcount)
-		#for curSylph in Globalscript.activeSylphs:
-			#curSylph.load_Nets_From_Folder(folderDirectory)
-			#if(ind > 2):
-				#curSylph.ourNetwork.mutate_Network(mutAmount, 0, 50) 
-			#ind +=1
-		revertcount +=1
-		
-		if(revertcount > 7):
-			print("too much revertion!")
-		
-		prevBest -= 2
-		return
-	else:
-		revertcount = 0
-		
-		if(bestScore >prevBest):
-			prevBest = bestScore
-	
-	
-	if(bestScore >= highScore):
-		print("Highscore beat!")
-		highScore = bestScore
-		highScoreInd = bestScoreInd
-		Globalscript.activeSylphs[highScoreInd].save_Nets_To_Folder(folderDirectory, "_highscore")
+	#ind = 0
+	#if(bestScore < (prevBest - 1)):
+		#print("reverting. count: ", revertcount)
+		##for curSylph in Globalscript.activeSylphs:
+			##curSylph.load_Nets_From_Folder(folderDirectory)
+			##if(ind > 2):
+				##curSylph.ourNetwork.mutate_Network(mutAmount, 0, 50) 
+			##ind +=1
+		#revertcount +=1
+		#
+		#if(revertcount > 7):
+			#print("too much revertion!")
+		#prevBest -= 2
+		#return
+	#else:
+		#revertcount = 0
+		#
+		#if(bestScore >prevBest):
+			#prevBest = bestScore
+	#
+	#
+	#if(bestScore >= highScore):
+		#print("Highscore beat!")
+		#highScore = bestScore
+		#highScoreInd = bestScoreInd
+		#Globalscript.activeSylphs[highScoreInd].save_Nets_To_Folder(folderDirectory, "_highscore")
 	
 	Globalscript.activeSylphs[bestScoreInd].save_Nets_To_Folder(folderDirectory, "_currentBest")
 	Globalscript.activeSylphs[secondScoreInd].save_Nets_To_Folder(folderDirectory, "_currentSecond")
@@ -125,15 +125,15 @@ func score_Sylphs_All():
 
 	generation +=1
 	
-	if(generation > 120):
+	if(generation > 10):
 		print("thats enough!")
 	
 	print("Generation: ", generation)
 	
 	
 	ind = 0
+	#Replace all other neural networks with the best/second best minds
 	for curSylph in Globalscript.activeSylphs:
-		
 		if(ind != bestScoreInd && ind != secondScoreInd):
 			if(Globalscript.prob(60)):
 				#print("  Copied from best!")
@@ -147,16 +147,14 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.activeSylphs:
 		if(ind != bestScoreInd):
-			if(Globalscript.prob(60)):
+			if(Globalscript.prob(60)): #roll to mutate
 				curSylph.ourNetwork.mutate_Network(0.05, 0, 5) #dont mutate best, second, or highscore
-			else:
-				if(Globalscript.prob(50)):
-					curSylph.ourNetwork.mutate_Network(0.3, 0, 1)
-				else:
-					curSylph.ourNetwork.mutate_Network(0.05, 0, 50)
-			#print("  Mutated!")
-		#else:
-			#print("  Didn't!")
+			#else:
+				#if(Globalscript.prob(50)):
+					#curSylph.ourNetwork.mutate_Network(0.3, 0, 1)
+				#else:
+					#curSylph.ourNetwork.mutate_Network(0.05, 0, 50)
+
 		ind +=1
 	
 

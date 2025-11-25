@@ -17,7 +17,6 @@ func initialize_Network(layerSizeArr: Array[int]):
 		ourLayers[i].initialize_Layer(layerSizeArr[i], layerSizeArr[i+1])
 		i+=1
 	
-	#ourLayers[0].activations.fill(1) #ensure the first layer always activates.
 
 ##run inputs through the neural network
 func calc_Outputs_Network(inputData:Array[float])->Array[float]:
@@ -185,14 +184,30 @@ func mutate_Layer_Goodrand(desiredLayer: int, mutationChance: int, numericalDigi
 #experimental function that mutates in "pulses" through a network.
 ##Travels through a network and mutates every node in a random path by mutateChance.
 func mutate_Pulse(digits, decims, divBy, mutateChance):
-	print("Mutate pulse not done yet!")
+	var currentLayer:LAYER = get_Layer(0)
+	var currentIncoming:int = randi_range(0, currentLayer.nodesIn - 1) 
+	var currentOutgoing:int = randi_range(0, currentLayer.nodesOut - 1) 
+	var currentWeightArr
+	var newVal:float
 	
+	var count = 0
 	
-	#return
-	#
-#
-#func get_Pulse_Neurons()->Array:
-	#
+	#as far as I can tell (and being VERY careful when I say this), this does in fact produce results.
+	while(count < ourLayers.size()-1):
+		currentLayer = get_Layer(count) #arrays are off here
+		currentOutgoing = randi_range(0, currentLayer.nodesOut - 1)#traverse to a random next node
+		
+		if(Globalscript.prob(mutateChance)):
+			newVal = clampf(currentLayer.weights[currentIncoming][currentOutgoing] + Globalscript.better_Randf_Simple(digits, decims, divBy), -1, 1)
+			currentLayer.weights[currentIncoming][currentOutgoing] = newVal #mutate weight
+			
+			newVal = clampf(currentLayer.biases[currentOutgoing] + Globalscript.better_Randf_Simple(digits, decims, divBy), -1, 1)
+			currentLayer.biases[currentOutgoing] = newVal
+		
+		currentIncoming = currentOutgoing#randi_range(0, currentOutgoing) #set us up for the next layer
+		
+		count+=1
+		
 
 
 #below are all network functions

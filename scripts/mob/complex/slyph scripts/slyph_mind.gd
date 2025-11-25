@@ -321,9 +321,8 @@ func do_Vision():
 		microPenalty +=1
 	
 	if(!targetTrue): #we do not have a target anywhere in sight, you get no awareness, bwomp bwomp
-		sensoryInput[4] = -1
-		sensoryInput[5] = -1
-		sensoryInput[18] = 1
+		sensoryInput[4] = 1 #max extrema
+		sensoryInput[18] = 1 #max distance
 		
 	else:
 		
@@ -348,7 +347,8 @@ func do_Vision():
 		# therefore, our range will be 1.9 offset by 1
 		#connectingvec / 23 is between 0 and 1
 		#var dist = (connectingVec.length() / 12.5) -1 #value between 0 and 2
-		sensoryInput[18] = (connectingVec.length() / 12.5) -1 
+		var dist = (connectingVec.length() /23) # not married to the idea of dist being negative
+		sensoryInput[18] = dist
 		
 		#INDEX 4: EXTREMA
 			
@@ -410,10 +410,10 @@ func get_Vision_Targets(visionBlock:Area3D):
 		var items = visionBlock.get_overlapping_bodies()
 		var x:int = 0
 		while(x < items.size()):
-			if(items[x] is testing_target): #only targets for now
+			if(items[x].is_in_group("sylph_target")):
 				return items[x]
 			x+=1
-	return false
+	return false #you have got to be FUCKING kiddin gme
 
 # moved this to network class
 #func mutation_Test(val:float):

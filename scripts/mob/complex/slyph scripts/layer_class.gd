@@ -25,15 +25,15 @@ func initialize_Layer(incoming, outgoing):
 	
 	#gradientBias
 	
-	activations.resize(outgoing)
-	activations.fill(1)
-
+	#activations.resize(outgoing)
+	#activations.fill(1)
+##Fills in the weights table for a network
 func create_Empty_Grid(width, height):
 	var grid = []
 	for i in width:
 		grid.append([])
 		for j in height:
-			grid[i].append(0) # Set a starter value for each position
+			grid[i].append(0.5) # Set a starter value for each position 
 	return grid
 #
 #func apply_Gradients(learnRate):
@@ -58,8 +58,8 @@ func create_Empty_Grid(width, height):
 #runtime seems to be associated with inputs being an empty array.
 #how does this happen?
 func calc_Outputs(inputs: Array[float])-> Array[float]:
-	var computedInputs : Array[float]
-	computedInputs.resize(nodesOut)
+	var computedOutputs : Array[float]
+	computedOutputs.resize(nodesOut)
 	
 	var curOut:int = 0
 	var currentArray
@@ -68,12 +68,12 @@ func calc_Outputs(inputs: Array[float])-> Array[float]:
 		var weightedIn = biases[curOut]
 		var curIn = 0
 		while(curIn < nodesIn):
-			currentArray = weights[curIn]
-			weightedIn+= inputs[curIn] * currentArray[curOut] 
+			currentArray = weights[curIn] #oh we are SOOOOOO sabotaging ourselves here but changing this is a terrifying prospect
+			weightedIn+= inputs[curIn] * currentArray[curOut] #unsure i fully trust the * operator here?
 			curIn+=1
-		computedInputs[curOut] = apply_Activation(weightedIn) #apply_Activation_Threshhold(weightedIn)
+		computedOutputs[curOut] = apply_Activation(weightedIn) #apply_Activation_Threshhold(weightedIn)
 		curOut+=1
-	return computedInputs
+	return computedOutputs
 
 
 ##Given a weighted input and the node's activation chance, see if it fires.

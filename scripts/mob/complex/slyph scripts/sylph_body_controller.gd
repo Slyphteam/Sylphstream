@@ -28,18 +28,13 @@ var addedTraining: bool = false
 func interact_By_Player(_playerRef):
 	
 	
-	mind.do_Debug_Action()
+	#mind.do_Debug_Action()
 	
-	
-	
-	#
-	#if(!addedTraining):
-		#print("Adding myself to training pool!")
-		#Globalscript.enroll_Sylph(mind)
-		#return
-	#
-	#print("Hi! My current HP is ", ourHealth.health, " with ", ourHealth.aura, " aura")
-	
+	if(!addedTraining):
+		print("Adding myself to training pool!")
+		Globalscript.enroll_Sylph(mind)
+		return
+	print("Hi! My current HP is ", ourHealth.health, " with ", ourHealth.aura, " aura")
 	
 	#mind.do_Single_Thought(1/60)
 	#mind.begin_Test()
