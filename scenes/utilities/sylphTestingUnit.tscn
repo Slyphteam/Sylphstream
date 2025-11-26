@@ -7,6 +7,7 @@
 
 [node name="sylph body" parent="." node_paths=PackedStringArray("ourTar") instance=ExtResource("1_ojdi1")]
 ourTar = NodePath("../target")
+moveEnabled = true
 
 [node name="target" parent="." instance=ExtResource("2_8vb3w")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.25465, 6.15122)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.25465, 4.12287)

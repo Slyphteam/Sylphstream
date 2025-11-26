@@ -25,37 +25,39 @@ var desiredActions:Array[float] ##Array of all desired actions
 	#3
 	#4
 	#5
-	#6
-	#7
-	#8
-	#9
-	#10
-	#11
-	#12
-	#13
-	#14
-	#15
-	#16
-	#17
-	#18
-	#19
-	#20
+	#6 Aiming
+	#7 ammo
+	#8 crosshair
+	#9 aimspeed
+	#10 Target exists? (1)
+	#11 Health
+	#12 Mode
+	#13 Mode
+	#14 Mode
+	#15 Empty
 
-
+#Output directory:
+#change to be 0-1 "mouse" movement
+#2,3: future divorced mouse movement
+#4 for "stop"
+#5/6/7 for shoot/ADS/reload
+#8,9,10,11 for WASD
+#12/13 for crouch/jump
+#14,13,16 for modal
 
 func do_Debug_Action():
 	
 	print("Wow! You called my debug testing function")
-	if(Globalscript.prob(50)):
-		body.move_Head_Exact(Vector2(0,20))
-	else:
-		body.move_Head_Exact(Vector2(0,-20))
-	print(body.sylphHead.rotation_degrees.x / 90)
+	#if(Globalscript.prob(50)):
+		#body.move_Head_Exact(Vector2(0,20))
+	#else:
+		#body.move_Head_Exact(Vector2(0,-20))
+	#print(body.sylphHead.rotation_degrees.x / 90)
 
 func _ready():
 	
 	initialize_Basic_Network()
-	sensoryInput.resize(20)
+	sensoryInput.resize(16)
 	sensoryInput.fill(0)
 	
 	desiredActions.resize(18)
@@ -69,13 +71,13 @@ func _ready():
 func initialize_Basic_Network():
 	ourNetwork = NNETWORK.new()
 	#print("Created basic network!")
-	ourNetwork.initialize_Network([20,40,20,18])
+	ourNetwork.initialize_Network([16,20,20,18])
 
 ##Creates a new network and fully randomizes it
 func initialize_Rand_Network():
 	#print("Randomized network!")
 	ourNetwork = NNETWORK.new()
-	ourNetwork.initialize_Network([20,40,20,18])
+	ourNetwork.initialize_Network([16,20,20,18])
 	ourNetwork.populate_Network_Rand()
 	#print("Created random 20-20-40-30-18 network!")
 
@@ -165,9 +167,15 @@ func do_Single_Thought(delta):
 var aimVector: Vector2
 
 var aimingSights: bool = false
-var modeData: Array[float] = [0.0,0.0,0.0,0.0]
+#var modeData: Array[float] = [0.0,0.0,0.0,0.0]
 var maxSpeed = 3 
 
+#change to be 0-3 for "mouse" movement
+#4 for "stop"
+#5/6/7 for shoot/ADS/reload
+#8,9,10,11 for WASD
+#12/13 for crouch/jump
+#14,13,16 for modal
 func process_Actions(delta):
 	
 	#print("Desired actions:", desiredActions)
@@ -175,30 +183,27 @@ func process_Actions(delta):
 	#INDEX 0,1: LEFT/RIGHT, UP/DOWN
 	
 	#what are the bounds of outputs? they seem to be in the teens. 
-	
 	for x in desiredActions.size():
 		desiredActions[x] /= 0.7
-	
 	
 	
 	var deltaScalar = 60 * delta
 	var leftRight = desiredActions[0] * aimSensitivity * deltaScalar ##max per-frame movement is 3 degrees
 	var upDown = desiredActions[1] * aimSensitivity * deltaScalar ##Max per-frame movement is 3 degrees
 	
-	#Index 16: stop movement
-	var mouseStop = desiredActions[16]
+	#Index 2,3: To be the divorced up/down
+	
+	#Index 4: stop
+	var mouseStop = desiredActions[4]
 	if(mouseStop > 0.8):
 		leftRight *=  1 - mouseStop + 0.4
 		upDown *= 1 - mouseStop + 0.4
 
-	
 		#add friction
 	aimVector *= 0.7 #does this work?
 	aimVector += Vector2(leftRight, upDown) 
 	
 	#microPenalty += Vector2(desiredActions[0], desiredActions[1]).length() / 3
-	
-
 	
 	#inaccuracy currently disabled
 	#if(speed >= 2.2):
@@ -213,18 +218,18 @@ func process_Actions(delta):
 
 	body.move_Head_Exact(aimVector)
 	
-	#INDEX 2: SHOOT OR NOT (formerly belonged to index 1)
-	if(desiredActions[2] > 0.5):
+	#INDEX 5: SHOOT OR NOT
+	if(desiredActions[5] > 0.5):
 		manager.doShoot()
 	else:
 		manager.unShoot()
 	
-	#INDEX 3: RELOAD
-	if(desiredActions[3] > 0.9):
+	#INDEX 6: RELOAD
+	if(desiredActions[6] > 0.9):
 		manager.startReload()
 	
-	#INDEX 4: ADS
-	if(desiredActions[4] > 0.5):
+	#INDEX 7: ADS
+	if(desiredActions[7] > 0.5):
 		if(aimingSights): #STOP aiming
 			manager.toggleSights()
 			aimingSights = false
@@ -236,18 +241,18 @@ func process_Actions(delta):
 			aimSensitivity = 0.6 #calculated from the player's ADS ratio of 15/25
 	
 	
-	#INDEX 5, 6 ,7, 8: W,A,S,D
-	
-	#INDEX 9,10,11, CROUCH, JUMP, SPRINT
-	#also not worried about this yet
-	
-	#INDEX 12,13,14,15 MODAL DATA
-	#we don't actually do anything for modal data output/input. 
-	#that's for the sylphs :)
-	
-	#INDEX 17: EXTRAS
-	#we also dont do anything with this.
-	#total: 18
+	#INDEX 8,9,10,11 for WASD
+	if(body.moveEnabled):
+		if(desiredActions[8] > 0.5):
+			body.goFor = true
+		if(desiredActions[9] > 0.5):
+			body.goLef = true
+		if(desiredActions[10] > 0.5):
+			body.goRit = true
+		if(desiredActions[11] > 0.5):
+			body.goBak = true
+	#12/13 for crouch/jump (not implemented)
+	#14,13,16 for modal
 
 @onready var visionR: Area3D = $"../sylph head v2/senses/vision/triangleR"
 @onready var visionL: Area3D = $"../sylph head v2/senses/vision/triangleL"
@@ -267,7 +272,7 @@ func do_Senses():
 	#INDEX 6: AIM AZIMUTH
 	#between 90 and -90
 	var head = $"../sylph head v2"
-	sensoryInput[6] = body.sylphHead.rotation_degrees.x / 90
+	sensoryInput[6] = (body.sylphHead.rotation_degrees.x / 180) + 0.5 #range of 0-1, let's see if this fixes anything
 	
 	#INDEX 7: AMMO LEFT
 	sensoryInput[7] = manager.get_Ammo_Left()
@@ -287,30 +292,17 @@ func do_Senses():
 	
 	#INDEX 10: TARGETS PRESENT
 	#not currently doing anything with this
-	sensoryInput[10] = 0#targetsPresent
+	sensoryInput[10] = 1#targetsPresent
 	
-	#INDEX 11: Empty! formerly heartcur
-	sensoryInput[11] = 0#heartCur
+	#INDEX 11: Health!
+	sensoryInput[11] = (ourHP.check_HP() / 50) -1
 	
-	#INDEX 12: HEALTH
-	sensoryInput[12] = (ourHP.check_HP() / 50) -1
-	
-	#INDEX 13,14,15,16: MODAL INPUTS
-	sensoryInput[13] = desiredActions[12]
-	sensoryInput[14] = desiredActions[13]
-	sensoryInput[15] = desiredActions[14]
-	sensoryInput[16] = desiredActions[15]
-	
-	#INDEX 17, RANDOM NOISE
-	sensoryInput[17] = randf_range(-0.05, 0.05)
-	
-	#18: DISTANCE (put this in vision function since it sort of is vision
-	#sensoryInput[18] = 0
+	#INDEX 12,13,14,15: MODAL INPUTS
+	#sensoryInput[13] = desiredActions[12]
+	#sensoryInput[14] = desiredActions[13]
+	#sensoryInput[15] = desiredActions[14]
+	#sensoryInput[16] = desiredActions[15]
 
-	#19: TOTAL DAMAGE DEALT
-	sensoryInput[19] = 0
-	#TOTAL: 20
-	
 ##Gathers vision info and updates the first 6 elements of sensoryInput
 func do_Vision():
 	
@@ -354,7 +346,7 @@ func do_Vision():
 	
 	if(!targetTrue): #we do not have a target anywhere in sight, you get no awareness, bwomp bwomp
 		sensoryInput[4] = 1 #max extrema
-		sensoryInput[18] = 1 #max distance
+		sensoryInput[5] = 1 #max distance
 		
 	else:
 		
@@ -373,14 +365,14 @@ func do_Vision():
 		if(absf(connectingVec.z)<0.01):
 			connectingVec.z = 0
 			
-		#18: DISTANCE
+		#5: DISTANCE
 		#Sylph's max vision range is currently 23, so we'll use that as our basis
 		#We'll go from -1 to .90 to better differentiate it from max dist
 		# therefore, our range will be 1.9 offset by 1
 		#connectingvec / 23 is between 0 and 1
 		#var dist = (connectingVec.length() / 12.5) -1 #value between 0 and 2
 		var dist = (connectingVec.length() /23) # not married to the idea of dist being negative
-		sensoryInput[18] = dist
+		sensoryInput[5] = dist
 		
 		#INDEX 4: EXTREMA
 			
@@ -432,8 +424,7 @@ func do_Vision():
 		#change *= 2.2 #Sylphs only have about 50 degrees of FOV, so our range of values is +- 0.47
 		#sensoryInput[4] = clampf(change, 0, 1) #shouldnt ever matter but be safe
 		
-		#I'm too lazy to do the azimuth extrema and i dont think it matters too much. soooo.
-		sensoryInput[5] = 0
+
 
 
 #returns the target, if any exist in a visionblock, or false.
@@ -443,6 +434,7 @@ func get_Vision_Targets(visionBlock:Area3D):
 		var x:int = 0
 		while(x < items.size()):
 			if(items[x].is_in_group("sylph_target")):
-				return items[x]
+				if(items[x] == body.ourTar.ourTrueTarget):
+					return items[x]
 			x+=1
 	return null #you have got to be FUCKING kiddin gme

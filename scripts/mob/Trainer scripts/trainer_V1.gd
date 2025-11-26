@@ -31,20 +31,20 @@ func begin_Sylph_Test():
 	print("Starting test!")
 	allScores.resize(Globalscript.activeSylphs.size())
 	#for curSylph in Globalscript.activeSylphs:
-		###used to be randomize here as an option but that was added to the body behavior for now
+		#used to be randomize here as an option but that was added to the body behavior for now
 		#curSylph.load_From_File(folderDirectory+"highscore.txt")
 	restart_Sylph_Test()
 
 ##Does a new cycle of testing
 func restart_Sylph_Test():
 	
-	testTime = 1050
+	testTime = 750
 	for curSylph in Globalscript.activeSylphs:
 		curSylph.begin_Test()
 
 
 var allScores: Array
-var hitMult: int = 2 ##Multiplicative reward for hits
+var hitMult: int = 3 ##Multiplicative reward for hits
 var missDiv: int =  0 ##Divide penalty for misses by this amount
 var missAllow: int = 1000000 ##How many misses will we tolerate before punishing?
 var accuracyRew: int = 0 ##If we're in the tolerance, what reward is given?
@@ -56,7 +56,7 @@ var mutAmount = 0.09
 var mutPercent = 1
 
 var generation: int = 1
-var highScore = -5
+var highScore = -12
 
 ##Function that scores all sylphs in the global allSylphs array
 func score_Sylphs_All():
@@ -153,14 +153,15 @@ func score_Sylphs_All():
 	ind = 0
 	for curSylph in Globalscript.activeSylphs:
 		if(ind != bestScoreInd):
-			if(Globalscript.prob(50)):
-				curSylph.ourNetwork.mutate_Network(0.08, 0, 10) #dont mutate best, second, or highscore
-			#else:
-				#if(Globalscript.prob(50)):
-					#curSylph.ourNetwork.mutate_Network(0.3, 0, 1)
-				#else:
-					#curSylph.ourNetwork.mutate_Network(0.05, 0, 50)
-				print("  Mutated!")
+			if(Globalscript.prob(50)): #coin flip to mutate
+				if(Globalscript.prob(50)):
+					curSylph.ourNetwork.mutate_Network(0.15, 0, 30) #dont mutate best, second, or highscore
+				else: #allow for some whacky mutations to happen, keep the gene pool fresh
+					if(Globalscript.prob(50)):
+						curSylph.ourNetwork.mutate_Network(0.3, 0, 1)
+					else:
+						curSylph.ourNetwork.mutate_Network(0.05, 0, 50)
+					print("  Mutated!")
 		#else:
 			#print("  Didn't!")
 		ind +=1
