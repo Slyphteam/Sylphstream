@@ -3,7 +3,7 @@
 Sylphstream is a first person shooter deveoped in the Godot engine that aims to recreate the signature feel, high skill ceiling, and fast pace of source engine PVP by
 pitting players against machine-learning driven opponents in 1-on-1 combat.
 
-All content (as it stands) is listed under CC BY-NC-SA 3.0
+All content is currently listed under CC BY-NC-SA 3.0, though this is likely to change in the future.
 
 [![license-badge](https://shields.io/badge/license-CC--BY--NC--SA-lightgrey?style=for-the-badge)](https://creativecommons.org/licenses/by-nc-sa/3.0/)
 
@@ -13,13 +13,34 @@ https://docs.google.com/document/d/118_IEV_9k2dqLq8unO5gw8Gx04xngHV5QysfVkentBs/
 
 ### Features in active development:
 
-Stochastic Gradient Descent
+Status effect integration with AI agent training cycles
 
-Neural network training on complex use of weapon systems
+AI agent input vetting
 
-Kinematic controllers for neural networks
+AI agent output vetting
+
+AI agent debugging
+
+Prototype fragmentary AI agent testing
+
+AI agent EvE testing trial
+
+Rudimentary player inventory
+
 
 ### Completed features:
+
+~~Stochastic Gradient Descent~~ (Implemented, scrapped as not worth pursuit)
+
+Player UI
+
+Modular health system
+
+Modular status effect system
+
+Health system for Neural networks
+
+Kinematic controllers for neural networks
 
 Expansion of weapon system
 
@@ -45,13 +66,15 @@ Neural network/entity API
 
 ### Planned features:
 
-Player UI
+Melee system
+
+Scrolling text chat
 
 Quickstim system
 
 Cast abilities (stutter, augur, freeze, surge)
 
-Inventory system
+Drag-and-drop Inventory system
 
 NPC dialogue system
 
