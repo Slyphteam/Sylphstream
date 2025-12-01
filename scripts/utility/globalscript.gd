@@ -70,3 +70,10 @@ func togglePaused():
 		Globalscript.isPlaying = true
 		thePlayer.uiInfo.pauseMenu.visible = false
 		get_tree().paused = false
+
+##"Raises" a custom exception by printing a message and then divding by zero
+func raise_Panic_Exception(exceptionMessage:String):
+	print(exceptionMessage)
+	
+	var crashMaker = 0
+	print(42/crashMaker)

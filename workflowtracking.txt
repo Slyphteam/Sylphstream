@@ -97,6 +97,12 @@ Autolean when ADS + ADS makes the camera zoom in
 Change degubby reload and fire sounds to be distinctly not gunshots. cmon. no excuses.
 Watch inventory system video. Make simple shitty top bar for player inv and placeholder one for stims
 
+Look into the pause menu jank. I don't like it being in the globalscript. Can you make ui_manager an always process
+thingy and then move the functionality to there?
+
+Likewise, sort out the Input versus input event stuff. Figure out which you want to use and which you want
+to be situational.
+
 ====+====> KEY:
 	+: Easy
 	-: Hard

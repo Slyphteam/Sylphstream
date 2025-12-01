@@ -76,6 +76,7 @@ func _ready():
 	load_Wep(ourHands)
 	await get_tree().create_timer(0.1).timeout #wait one tenth of a second because it takes a bit longer for ui to init
 	uiInfo.hide_Ammo_Elements()
+	
 
 #----------------Inventory management functions
 
@@ -101,6 +102,9 @@ func load_Wep(wep2Load):
 		reserve.text = ""
 		var gunName = $"../../../Player UI/Ammo/name"
 		gunName.text = wep2Load.wepName
+	
+	elif(weapType == 0): #if weapon is bare hands, reset our crosshair size to default
+		uiInfo.crosshair_Reset_Size()
 	
 
 var weight22 = 1 ##Weight of 22 rimfire rounds
@@ -128,7 +132,6 @@ func update_To_Slot(weapon: WEAP_INFO, slot: int, rounds):
 	#nothing else to do...
 
 
-#TODO: eventually use slot arrays
 ##Puts a new weapon into an inventory slot. DOES NOT UNLOAD THE WEAPON. Returns if it could fit.
 func add_To_Slot(weapon: WEAP_INFO, slot: int)->bool:
 	#commented this out because support for literally anything going into hand slots seems like a bad idea
@@ -143,7 +146,6 @@ func add_To_Slot(weapon: WEAP_INFO, slot: int)->bool:
 	
 	var chosenSlot = allSlots[slot - 1]
 	
-
 	if(chosenSlot.size() >= slotMaxes): #cant fit anything else into a slot
 		return false
 	
@@ -179,7 +181,7 @@ func change_To_Slot(newSlot: int):
 			return
 		uiInfo.show_Ammo_Anything()
 	if(weapType == 0 && currentSlot != 1): #something is fucky
-		print("UHOH")
+		Globalscript.raise_Panic_Exception("A hands weapon is somehow trying to be loaded in the wrong slot!")
 	
 	if(weapType == 1): #we have a gun, update to inventory before putting away
 		update_To_Slot(activeItem.ourDataSheet, currentSlot, activeItem.capacity)
