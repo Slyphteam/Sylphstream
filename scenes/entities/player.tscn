@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=28 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
@@ -14,20 +14,24 @@
 [ext_resource type="Texture2D" uid="uid://dvtr0683clxu2" path="res://resources/image resources/healthholderUI.png" id="10_ddril"]
 [ext_resource type="StyleBox" uid="uid://c7v5hhr02av55" path="res://resources/button BG theme.tres" id="12_33423"]
 [ext_resource type="Texture2D" uid="uid://dxdc2ni5jtua0" path="res://resources/image resources/pre alpha splash.png" id="12_kiyhm"]
-[ext_resource type="StyleBox" uid="uid://bknfwgxkmuiep" path="res://resources/UI/Styles/pausebutton.tres" id="13_b4o2o"]
+[ext_resource type="StyleBox" uid="uid://bknfwgxkmuiep" path="res://resources/UI/Styles/stylebox/pausebutton.tres" id="13_b4o2o"]
 [ext_resource type="Script" uid="uid://bkssejl7vp64a" path="res://scripts/mob/complex/player/ui associated/pausebuttons.gd" id="13_oajfq"]
 [ext_resource type="Script" uid="uid://cytij8tvgs1nb" path="res://scripts/mob/complex/player/ui associated/quitbutton.gd" id="14_gor7x"]
-[ext_resource type="Theme" uid="uid://2cantvfw7aob" path="res://resources/UI/Styles/menu background.tres" id="18_yr3on"]
-[ext_resource type="Theme" uid="uid://dw7a1ri10mgkj" path="res://resources/UI/Styles/inventory background.tres" id="19_2ngu4"]
-[ext_resource type="StyleBox" uid="uid://bee7asfke6wiv" path="res://resources/UI/Styles/tab_stylebox_focus.tres" id="20_2ngu4"]
-[ext_resource type="StyleBox" uid="uid://8jqqrmfq2b0u" path="res://resources/UI/Styles/tab_stylebox_hovered.tres" id="21_jv5ih"]
-[ext_resource type="StyleBox" uid="uid://dd7vojv8f5q5l" path="res://resources/UI/Styles/tab_stylebox_unselected.tres" id="22_n36er"]
+[ext_resource type="Theme" uid="uid://2cantvfw7aob" path="res://resources/UI/Styles/themes/menu background.tres" id="18_yr3on"]
+[ext_resource type="Theme" uid="uid://dw7a1ri10mgkj" path="res://resources/UI/Styles/themes/inventory background.tres" id="19_2ngu4"]
+[ext_resource type="StyleBox" uid="uid://bee7asfke6wiv" path="res://resources/UI/Styles/stylebox/tab_stylebox_focus.tres" id="20_2ngu4"]
+[ext_resource type="StyleBox" uid="uid://8jqqrmfq2b0u" path="res://resources/UI/Styles/stylebox/tab_stylebox_hovered.tres" id="21_jv5ih"]
+[ext_resource type="StyleBox" uid="uid://dd7vojv8f5q5l" path="res://resources/UI/Styles/stylebox/tab_stylebox_unselected.tres" id="22_n36er"]
+[ext_resource type="Theme" uid="uid://dqjaym6ysvovi" path="res://resources/UI/Styles/themes/inventory panel.tres" id="23_qc1tv"]
+[ext_resource type="StyleBox" uid="uid://daemxqyncvffi" path="res://resources/UI/Styles/stylebox/inventory div style.tres" id="24_xe83n"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_oajfq"]
 length = 0.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f4klr"]
 points = PackedVector3Array(0.330305, 0.920269, 0.0344127, -0.386635, -0.776089, -0.063091, -0.350895, -0.800871, -0.158618, 0.358755, -0.844057, 0.0990035, -0.0942994, 0.734913, 0.385134, -0.063091, 0.776089, -0.386635, 0.192083, -0.730015, -0.34763, -0.357384, 0.84832, -0.0963208, -0.0959277, -0.844914, 0.359117, 0.19096, 0.725711, 0.348745, 0.349979, 0.728291, -0.188458, -0.34763, 0.730015, 0.192083, -0.0653278, -1.07085, -0.132243, -0.18958, -0.73259, -0.348861, -0.0990502, 1.07326, 0.102225, 0.190957, -0.725702, 0.348741, -0.286494, -0.799943, 0.257634, 0.348741, 0.725702, 0.190957, 0.385134, -0.734913, -0.0942994, -0.312336, 0.690456, -0.249566, 0.101353, 1.03063, -0.197944, 0.19208, 0.730004, -0.347624, 0.135835, -1.07419, 0.0351098, -0.197944, -1.03063, 0.101353, 0.0662163, -0.775496, -0.386338, 0.198614, -0.984784, -0.195439, 0.101183, 1.02888, 0.200779, 0.384492, 0.733681, 0.0973134, -0.195805, 0.986616, -0.195805, -0.383887, -0.738606, 0.0979559, -0.384533, 0.739844, -0.0949428, 0.0973134, -0.733681, 0.384492)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwche"]
 
 [node name="Player" type="CharacterBody3D" groups=["damage_interactible", "has_manager"]]
 collision_layer = 3
@@ -238,6 +242,7 @@ text = "Ipsum Lorem"
 horizontal_alignment = 2
 
 [node name="pauseContainer" type="CenterContainer" parent="Player UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -291,17 +296,16 @@ position = Vector2(275, -83)
 texture = ExtResource("12_kiyhm")
 
 [node name="menuContainer" type="CenterContainer" parent="Player UI"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -264.0
+offset_top = -199.5
+offset_right = 286.0
+offset_bottom = 200.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -324,9 +328,36 @@ theme_override_styles/tab_hovered = ExtResource("21_jv5ih")
 theme_override_styles/tab_unselected = ExtResource("22_n36er")
 current_tab = 0
 
-[node name="Inventory" type="PanelContainer" parent="Player UI/menuContainer/invBkg/TabContainer"]
+[node name="Inventory panel" type="PanelContainer" parent="Player UI/menuContainer/invBkg/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/menuContainer/invBkg/TabContainer/Inventory panel"]
+layout_mode = 2
+size_flags_vertical = 0
+tooltip_text = "wha?
+"
+
+[node name="Label" type="Label" parent="Player UI/menuContainer/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("23_qc1tv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cwche")
+text = "MetempsychOS interface v0.2.1"
+
+[node name="Panel" type="Panel" parent="Player UI/menuContainer/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("23_qc1tv")
+theme_override_styles/panel = ExtResource("24_xe83n")
+
+[node name="CheckButton" type="CheckButton" parent="Player UI/menuContainer/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+layout_mode = 2
+text = "this is a button :)"
+
+[node name="CenterContainer" type="CenterContainer" parent="Player UI/menuContainer/invBkg/TabContainer/Inventory panel"]
+layout_mode = 2
+size_flags_vertical = 0
 
 [node name="Quests" type="PanelContainer" parent="Player UI/menuContainer/invBkg/TabContainer"]
 visible = false
