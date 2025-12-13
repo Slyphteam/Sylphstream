@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ce220mf2ujope"]
 
 [ext_resource type="Script" uid="uid://du7arwj5oiahi" path="res://scripts/trivial/deprecated and archive/held_weapon_behavior.gd" id="1_05mij"]
-[ext_resource type="Resource" uid="uid://sy0ndq1n1a7f" path="res://resources/weapon resources/firearm/fourier9_info.tres" id="2_ocur0"]
+[ext_resource type="Resource" uid="uid://sy0ndq1n1a7f" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/fourier9_info.tres" id="2_ocur0"]
 
 [node name="weaponHolder" type="Node3D"]
 script = ExtResource("1_05mij")

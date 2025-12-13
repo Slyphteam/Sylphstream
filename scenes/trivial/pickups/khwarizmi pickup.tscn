@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvnww568a44gy"]
 
 [ext_resource type="PackedScene" uid="uid://v46mwsdtc3y2" path="res://models/glbs and textures/weps/khwarizmi.glb" id="1_126de"]
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/weapon_pickup_script.gd" id="2_n82l4"]
-[ext_resource type="Resource" uid="uid://bgnabya18i1vd" path="res://resources/weapon resources/firearm/khwarizmi_info.tres" id="3_xmlca"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_n82l4"]
+[ext_resource type="Resource" uid="uid://bgnabya18i1vd" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/khwarizmi_info.tres" id="3_xmlca"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_126de"]
 points = PackedVector3Array(-0.23232, 0.0343811, -0.891751, 0.353634, 0.0343811, 0.433926, 0.353634, -0.0272621, 0.433926, -0.108946, -0.0581078, 0.804027, 0.0452856, -0.0272621, -1.16933, -0.108946, 0.0652268, 0.773121, 0.0452856, 0.0652268, -0.675795, -0.0472304, -0.0581078, -0.891751, 0.137744, -0.0581078, 0.804027, -0.23232, -0.0272621, 0.156351, 0.322776, 0.0343811, -0.18265, 0.106886, 0.0652268, 0.804027, -0.23232, -0.0272621, -0.891751, 0.0452856, 0.0343811, -1.16933, 0.0760287, -0.0581078, -0.614176, -0.23232, 0.0343811, 0.156351, -0.0780882, 0.0652268, -0.706701, 0.28203, -0.0224708, -0.18265, 0.199402, -0.0581078, 0.372307, 0.168545, 0.0343811, 0.804027, -0.108946, -0.0581078, -0.706701, -0.01643, 0.0343811, -1.16933, -0.01643, -0.0272621, -1.16933, -0.108946, 0.0343811, 0.804027, 0.168545, -0.0272621, 0.804027, 0.0144278, -0.0581078, -0.891751, 0.353634, -0.0272621, 0.40302, 0.199402, -0.0581078, 0.557164, -0.0780882, 0.0652268, 0.804027, 0.106886, 0.0652268, 0.711502, 0.353634, 0.0343811, 0.40302, 0.0144278, 0.0652268, -0.706701)

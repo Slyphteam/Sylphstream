@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
 [ext_resource type="AudioStream" uid="uid://dvklbsnlwomcb" path="res://sounds/ambient/windchimes.ogg" id="2_ogpgs"]
-[ext_resource type="Resource" uid="uid://1iyc2y86li4i" path="res://resources/weapon resources/hands.tres" id="4_kiyhm"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
+[ext_resource type="Resource" uid="uid://1spaunb34an3" path="res://scripts/utility/invSystem/invData/invWeapons/handsInvData.tres" id="5_xe83n"]
 [ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/mob/damsystem/player_healthholder.gd" id="6_1yk18"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
 [ext_resource type="Script" uid="uid://vgp60urmu5q7" path="res://scripts/utility/invSystem/parents/INVITEM_PARENT.gd" id="6_cwche"]
-[ext_resource type="Resource" uid="uid://cu2beecnqqpll" path="res://resources/weapon resources/firearm/ishim_info.tres" id="6_spk56"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/entities/playermodel.tscn" id="6_tgbf5"]
-[ext_resource type="Resource" uid="uid://bnfxlen8t7aa0" path="res://scripts/utility/invSystem/items/redTriagData.tres" id="7_3hm5d"]
-[ext_resource type="Resource" uid="uid://126jxfaiye4p" path="res://scripts/utility/invSystem/items/blueCircData.tres" id="8_yw3xw"]
+[ext_resource type="Resource" uid="uid://bnfxlen8t7aa0" path="res://scripts/utility/invSystem/invData/redTriagData.tres" id="7_3hm5d"]
+[ext_resource type="Resource" uid="uid://126jxfaiye4p" path="res://scripts/utility/invSystem/invData/blueCircData.tres" id="8_yw3xw"]
+[ext_resource type="Resource" uid="uid://bvaii4h7xnqob" path="res://scripts/utility/invSystem/invData/invWeapons/degubbyInvData.tres" id="9_3hm5d"]
 [ext_resource type="Texture2D" uid="uid://5h5e2fdfww0f" path="res://resources/image resources/uiholdertest.png" id="9_f4klr"]
 [ext_resource type="Texture2D" uid="uid://dvtr0683clxu2" path="res://resources/image resources/healthholderUI.png" id="10_ddril"]
 [ext_resource type="StyleBox" uid="uid://c7v5hhr02av55" path="res://resources/button BG theme.tres" id="12_33423"]
@@ -77,9 +77,9 @@ player = NodePath("../..")
 
 [node name="weapon_rig" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
-ourHands = ExtResource("4_kiyhm")
+ourHands = ExtResource("5_xe83n")
 itemsTest = Array[ExtResource("6_cwche")]([ExtResource("7_3hm5d"), null, ExtResource("8_yw3xw"), null, null, null])
-starterWeapon = ExtResource("6_spk56")
+starterWeapon = ExtResource("9_3hm5d")
 
 [node name="Player Health" type="Node" parent="."]
 script = ExtResource("6_1yk18")
@@ -152,15 +152,40 @@ width = 1.0
 [node name="tooltips" type="Control" parent="Player UI/Reticle"]
 layout_mode = 2
 
-[node name="tooltip" type="Label" parent="Player UI/Reticle/tooltips"]
-offset_left = 59.0
-offset_top = 15.5
-offset_right = 201.0
-offset_bottom = 70.5
+[node name="toolDesc" type="Label" parent="Player UI/Reticle/tooltips"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 28.5
+offset_right = 192.0
+offset_bottom = 83.5
 theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 10
 text = "Lipsum Dorem"
+
+[node name="toolTip" type="Label" parent="Player UI/Reticle/tooltips/toolDesc"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = -20.0
+offset_right = 257.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Press E to equip
+Press R to add to Inventory"
+
+[node name="toolTitle" type="Label" parent="Player UI/Reticle/tooltips/toolDesc"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -29.0
+offset_right = 134.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Lipsum dorem
+"
 
 [node name="Health" type="Control" parent="Player UI"]
 layout_mode = 1
@@ -255,7 +280,6 @@ text = "Ipsum Lorem"
 horizontal_alignment = 2
 
 [node name="pauseContainer" type="PanelContainer" parent="Player UI"]
-visible = false
 z_index = 4
 custom_minimum_size = Vector2(600, 300)
 layout_mode = 1

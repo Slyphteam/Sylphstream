@@ -358,7 +358,8 @@ func reload_Complete() -> void:
 ##Updates UI. Called every frame so there's no need to call it anywhere else.
 func update_UI():
 	uiInfo.adjust_spread(currentRecoil)
-	
+
+##Does some extra cleanup on the instance
 func unload():
 	weaponMesh.queue_free()
 	gunshotPlayer.queue_free()

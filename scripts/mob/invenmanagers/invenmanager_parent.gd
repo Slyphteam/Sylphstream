@@ -4,7 +4,7 @@
 #and genuinely kill you in roblox in minecraft in fortnite in real life
 class_name INVENMANAGER extends Node3D
 
-@export var starterWeapon: WEAP_INFO
+@export var starterWeapon: INVWEP
 enum Ammotypes {ammoRimfire, ammoPistol, ammoRifle, ammoThirtycal, ammoShotgun}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
@@ -32,9 +32,8 @@ func _process(delta):
 		else:
 			wepMesh.position.x = backupOffset
 
-
 ##Loads a WEPINSTANCE using universal logic.
-func load_Wep(wep2Load):
+func load_Wep(wep2Load:WEAP_INFO):
 	
 	if(activeItem): #unload old item
 		activeItem.unload()

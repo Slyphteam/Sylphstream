@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwq2fy8mbnx5p"]
 
 [ext_resource type="PackedScene" uid="uid://bf3p0b5crwc2g" path="res://models/new models and meshes/relata N.glb" id="1_r3ypa"]
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/weapon_pickup_script.gd" id="2_eqwb4"]
-[ext_resource type="Resource" uid="uid://vmo1b3o1awtj" path="res://resources/weapon resources/firearm/relata_info.tres" id="3_va5en"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_eqwb4"]
+[ext_resource type="Resource" uid="uid://vmo1b3o1awtj" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/relata_info.tres" id="3_va5en"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r3ypa"]
 points = PackedVector3Array(-0.146664, 0.00785344, 0.178075, -0.144804, -0.0070397, -0.067662, -0.182095, -0.00707371, -0.0609868, -0.154425, 0.0309557, -0.04523, 0.60795, -0.0229496, -0.0221209, 0.60795, 0.023255, -0.0375435, -0.393128, -0.0152489, 0.162627, -0.154425, -0.0306504, -0.04523, -0.40855, 0.0155542, -0.00672315, -0.393128, 0.0155542, 0.162627, -0.162087, -0.0152489, 0.178075, -0.400789, -0.0152489, -0.0144345, 0.60795, -0.00754809, -0.0529413, 0.60795, 0.00785344, -0.00672315, -0.169748, 0.0155542, 0.178075, -0.129432, 0.014477, -0.0671631, -0.0927346, -0.0306504, -0.0221209, 0.60795, 0.023255, -0.0221209, -0.0619888, 0.0309557, -0.0298322, -0.0774115, -0.0306504, -0.0529413, 0.60795, -0.00754809, -0.00672315, -0.40855, -0.0152489, 0.14723, 0.60795, 0.00785344, -0.0529413, -0.0774115, 0.0309557, -0.0529413, 0.60795, -0.0229496, -0.0375435, -0.393128, -0.00754809, 0.170363, -0.40855, 0.0155542, 0.14723, -0.400789, 0.0155542, -0.0144345, -0.129636, -0.0141843, -0.067268, 0.253528, 0.023255, 0.0317837, 0.253528, -0.0229496, 0.0317837, -0.169748, -0.0306504, -0.0375435)

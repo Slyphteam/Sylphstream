@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1ygjo8v5olr8"]
 
 [ext_resource type="ArrayMesh" uid="uid://cnyll180q44c8" path="res://models/new models and meshes/ishim mesh.res" id="1_hnchp"]
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/weapon_pickup_script.gd" id="2_vafmq"]
-[ext_resource type="Resource" uid="uid://cu2beecnqqpll" path="res://resources/weapon resources/firearm/ishim_info.tres" id="3_qjefn"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_vafmq"]
+[ext_resource type="Resource" uid="uid://cu2beecnqqpll" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/ishim_info.tres" id="3_qjefn"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_amg03"]
 points = PackedVector3Array(0.0300206, 0.0405336, 0.165332, 0.290013, -0.0367302, -0.0945774, 0.051107, -0.135113, 0.0740117, 0.06515, 0.131912, -0.00325691, -0.159713, 0.0335025, -0.0594645, 0.290013, 0.0264714, -0.0313607, 0.274165, 0.0244928, -0.100956, -0.159713, -0.0367302, -0.0594645, 0.0721495, -0.11402, -0.0454126, 0.0370641, -0.0577974, 0.158323, 0.051107, 0.131912, 0.0810208, -0.0683242, 0.0264714, -0.171846, -0.0924364, -0.0147163, 0.0757231, 0.290013, -0.0296991, -0.0313607, -0.0683242, -0.0296991, -0.171846, -0.0208032, 0.0711022, 0.122547, -0.15267, -0.0367302, -0.122681, -0.013719, -0.106775, 0.0824044, -0.159713, 0.0405336, -0.0875683, 0.0126605, -0.126263, 0.00351989, -0.00769807, 0.117661, 0.069801, -0.0265735, -0.00813412, 0.14768, 0.0370641, 0.0896991, 0.137228, -0.103498, 0.0335025, -0.157828, 0.00668132, 0.121887, -0.00299376, 0.0300206, -0.0156369, 0.172341, -0.0200096, -0.0802118, 0.114852, 0.290013, 0.0335025, -0.0454126, 0.0441076, -0.0999579, 0.123177, 0.0581505, -0.135113, 0.0459079, -0.00732122, -0.120245, 0.0496535, -0.0683242, 0.0335025, -0.164837)

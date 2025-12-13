@@ -13,7 +13,8 @@ func _ready():
 	#heldAmmunition.ammoRifle = 30
 	
 	user = $"../.."
-	load_Wep(starterWeapon)
+	if(starterWeapon):
+		load_Wep(starterWeapon.weapInfoSheet)
 	
 	#moved to parent
 	#if(starterWeapon is FIREARM_INFO):

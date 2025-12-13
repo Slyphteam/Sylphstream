@@ -1,9 +1,12 @@
 extends RAYCASTREACTIVE
-@export var weptoGive: WEAP_INFO
+@export var thingToGive: INVENITEMPARENT #CHANGE THIS TO INVWEP
 
 func interact_By_Player(player):
+	do_consume(player)
+
+func do_consume(player):
 	var invem: INVENMANAGER = player.invenManager
-	if invem.give_New_Weapon(weptoGive, weptoGive.selections):
+	if invem.give_Generic(thingToGive):
 		var theRoot = $"../.."
 		theRoot.queue_free()
 	else:

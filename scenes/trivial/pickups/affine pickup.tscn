@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://4g032mafbnwj"]
 
 [ext_resource type="PackedScene" uid="uid://cppumgcrqjb2k" path="res://models/new models and meshes/affine N.glb" id="1_wpno3"]
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/weapon_pickup_script.gd" id="2_u0oi3"]
-[ext_resource type="Resource" uid="uid://bhtixavevlm6g" path="res://resources/weapon resources/firearm/affine_info.tres" id="3_e2djt"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_u0oi3"]
+[ext_resource type="Resource" uid="uid://cpsodhd6fs3le" path="res://scripts/utility/invSystem/invData/invWeapons/affineInvData.tres" id="3_e2djt"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wpno3"]
 points = PackedVector3Array(0.977084, -0.284787, -0.858323, 0.977084, 0.307727, -0.858323, 0.0291745, 0.372496, 1.19984, -0.975102, -0.737965, -0.0564688, 0.0291745, -0.384342, 1.19984, 0.175196, 0.970388, -0.404926, -1.0938, 0.490851, -0.241087, 0.80277, -0.807729, -0.230803, 1.08193, 0.342705, -0.160985, -1.14963, -0.389337, 0.814992, -0.326991, -0.461939, -0.624646, 0.175196, -0.982234, -0.404926, 0.140464, 0.691333, -0.718686, 0.80277, 0.795883, -0.230803, -1.04478, 0.726119, 0.361595, -1.04478, -0.737965, 0.361595, 1.04677, -0.14526, -0.0215596, -1.07946, -0.495978, -0.234819, -1.14963, 0.412278, 0.814992, 0.175196, 0.970388, -0.265501, 1.08193, -0.389337, -0.195894, -0.23491, -0.00592303, -0.681993, 0.175196, -0.982234, -0.30041, 0.165867, -0.63883, -0.710043, 1.04677, 0.307727, -0.858323, -1.0718, -0.135539, -0.328888, -0.326606, 0.48214, -0.623535, 1.04677, -0.319573, -0.823413, -1.14963, -0.14526, 0.84969, -0.941094, 0.69967, -0.0463938, 1.04677, 0.133413, -0.0215596, 1.08193, 0.412278, -0.230803)
@@ -13,7 +13,7 @@ points = PackedVector3Array(0.977084, -0.284787, -0.858323, 0.977084, 0.307727, 
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("2_u0oi3")
-weptoGive = ExtResource("3_e2djt")
+thingToGive = ExtResource("3_e2djt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Affine/Affine shape" index="0"]
 shape = SubResource("ConvexPolygonShape3D_wpno3")

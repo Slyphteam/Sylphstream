@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://co5t36kxokupn"]
+[gd_scene load_steps=12 format=3 uid="uid://co5t36kxokupn"]
 
 [ext_resource type="Script" uid="uid://buu3b8gxsbyw3" path="res://scripts/mob/complex/slyph scripts/sylph_body_controller.gd" id="1_ar8do"]
 [ext_resource type="Script" uid="uid://bxkd08xc2wfmu" path="res://scripts/mob/complex/slyph scripts/sylph_mind_fragmentary.gd" id="2_284ft"]
 [ext_resource type="PackedScene" uid="uid://dp1v64jvcociq" path="res://models/glbs and textures/creatures/sylphheadPurple.glb" id="3_284ft"]
 [ext_resource type="Script" uid="uid://bf3xq6wkexy62" path="res://scripts/mob/invenmanagers/invenManager_sylph.gd" id="4_v73jt"]
-[ext_resource type="Resource" uid="uid://d0r7hvlt81jkh" path="res://resources/weapon resources/firearm/degubby.tres" id="5_rqn6h"]
 [ext_resource type="PackedScene" uid="uid://brs26wyrgtlx3" path="res://models/glbs and textures/creatures/sylphbodyPurple.glb" id="6_284ft"]
 [ext_resource type="Script" uid="uid://3n3k3buhmy1a" path="res://scripts/mob/damsystem/complex_healthholder.gd" id="7_1raw2"]
 
@@ -77,7 +76,6 @@ debug_color = Color(0.384314, 0.611765, 0, 0.705882)
 [node name="sylphinventory" type="Node3D" parent="sylph head v2"]
 transform = Transform3D(0.999999, 0, -2.38418e-07, 0, 0.999999, 0, 2.38418e-07, 0, 0.999999, -1.91454e-08, -0.0151474, 0.218998)
 script = ExtResource("4_v73jt")
-starterWeapon = ExtResource("5_rqn6h")
 
 [node name="sylphcollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16596, 0)

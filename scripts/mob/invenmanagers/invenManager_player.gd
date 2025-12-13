@@ -7,8 +7,8 @@ class_name PLAYERINVENMANAGER extends INVENMANAGER
 var weight = 0 ##The current held ammo pool's "weight"
 @onready var uiInfo = $"../../../Player UI"
 @onready var healthHolder = $"../../../Player Health"
-@export var ourHands: WEAP_INFO
-@export var secondStarter: WEAP_INFO 
+@export var ourHands: INVWEP
+@export var secondStarter: INVWEP 
 
 
 var maxweight = 1350 ##lets say 9 30-round mags of 5.56 (9*30*5) as a reasonable maximum amount of ammo weight
@@ -61,28 +61,28 @@ func _ready():
 	
 	##Add 2 starter pistols
 	if(starterWeapon):
-		add_To_Slot(starterWeapon, starterWeapon.selections[0])
+		add_InvWeap_To_Slot(starterWeapon, starterWeapon.weapInfoSheet.selections[0])
 	if(secondStarter):
-		add_To_Slot(secondStarter, starterWeapon.selections[0])
+		add_InvWeap_To_Slot(secondStarter, starterWeapon.weapInfoSheet.selections[0])
 	
 	#load our hands and override weaptype
 	#Manually add our hands to slot1
-	var theHands = INVWEP.new()
-	theHands.slotUsed = 1
-	theHands.theWeapon = ourHands
-	theHands.roundInside  = 0
+	#var theHands = INVWEP.new()
+	#theHands.slotUsed = 1
+	#theHands.theWeapon = ourHands
+	#theHands.roundInside  = 0
 	slot1.resize(1)
-	slot1[0] = theHands #slightly weird way but it ensures that everything is airtight
+	slot1[0] = ourHands #slightly weird way but it ensures that everything is airtight
 	allSlots[0] = slot1
 	
-	load_Wep(ourHands)
+	load_Wep(ourHands.weapInfoSheet)
 	await get_tree().create_timer(0.1).timeout #wait one tenth of a second because it takes a bit longer for ui to init
 	uiInfo.hide_Ammo_Elements()
 	
 
 #----------------Inventory management functions
 
-func load_Wep(wep2Load):
+func load_Wep(wep2Load: WEAP_INFO):
 	super(wep2Load)
 	
 	if(weapType == 1): #handle firearm UI
@@ -124,54 +124,81 @@ func recalcWeight():
 	weight += weightShotgun * heldAmmunition.ammoShotgun
 	#print("Current ammo weight: ", weight)
 
-##Updates the information of a weapon stowed in a slot.
-func update_To_Slot(weapon: WEAP_INFO, slot: int, rounds):
+func update_Slot(slot:int, rounds):
 	if(slot == 1):
 		return
-	if(slot == 2):
-		if(weapType == 1):
-			slot2[slotSelection].roundInside = rounds
+	else:
+		var curArr = allSlots[slot -1]
+		curArr[slotSelection].roundInside = rounds
+		
+
+##Updates the information of a weapon stowed in a slot.
+#func update_To_Slot(weapon: WEAP_INFO, slot: int, rounds):
+	#if(slot == 1):
+		#return
+	#if(slot == 2):
+		#if(weapType == 1):
+			#slot2[slotSelection].roundInside = rounds
 	#nothing else to do...
 
-
-##Puts a new weapon into an inventory slot. DOES NOT UNLOAD THE WEAPON. Returns if it could fit.
-func add_To_Slot(weapon: WEAP_INFO, slot: int)->bool:
-	#commented this out because support for literally anything going into hand slots seems like a bad idea
-	#if(slot == 1):
-		#slot1 = INVWEP.new()
-		#slot1.slotUsed = weapon.selection
-		#slot1.theWeapon = weapon
-		#if(rounds):
-			#slot1.roundInside = rounds
-		#else:
-			#slot1.roundInside  = 0
-	
+func add_InvWeap_To_Slot(invWeapon:INVWEP, slot:int)->bool:
 	var chosenSlot = allSlots[slot - 1]
-	
 	if(chosenSlot.size() >= slotMaxes): #cant fit anything else into a slot
 		return false
 	
-	var newInvwep = INVWEP.new()
-	newInvwep.slotUsed = slot
-	newInvwep.theWeapon = weapon
+	invWeapon.slotUsed = slot #assign our slot
 	
-	if(weapon is FIREARM_INFO):
-		newInvwep.roundInside = weapon.maxCapacity
+	if(invWeapon.weapInfoSheet is FIREARM_INFO):
+		invWeapon.roundInside = invWeapon.weapInfoSheet.maxCapacity
 	else:
-		newInvwep.roundInside  = 0
+		invWeapon.roundInside  = 0
 	
-	chosenSlot.resize(chosenSlot.size() + 1)
-	chosenSlot[chosenSlot.size() - 1] = newInvwep
-	print("Added ", weapon.wepName, " to index ", (chosenSlot.size() - 1), " of slot ", slot)
+	chosenSlot.append(invWeapon)
+	#chosenSlot.resize(chosenSlot.size() + 1)
+	#chosenSlot[chosenSlot.size() - 1] = invWeapon
+	
+	print("Added ", invWeapon.itemName, " to index ", (chosenSlot.size() - 1), " of slot ", slot)
 	
 	return true
+
+##Puts a new weapon into an inventory slot. DOES NOT UNLOAD THE WEAPON. Returns if it could fit.
+#func add_To_Slot(weapon: WEAP_INFO, slot: int)->bool:
+	##commented this out because support for literally anything going into hand slots seems like a bad idea
+	##if(slot == 1):
+		##slot1 = INVWEP.new()
+		##slot1.slotUsed = weapon.selection
+		##slot1.theWeapon = weapon
+		##if(rounds):
+			##slot1.roundInside = rounds
+		##else:
+			##slot1.roundInside  = 0
+	#
+	#var chosenSlot = allSlots[slot - 1]
+	#
+	#if(chosenSlot.size() >= slotMaxes): #cant fit anything else into a slot
+		#return false
+	#
+	#var newInvwep = INVWEP.new()
+	#newInvwep.slotUsed = slot
+	#newInvwep.theWeapon = weapon
+	#
+	#if(weapon is FIREARM_INFO):
+		#newInvwep.roundInside = weapon.maxCapacity
+	#else:
+		#newInvwep.roundInside  = 0
+	#
+	#chosenSlot.resize(chosenSlot.size() + 1)
+	#chosenSlot[chosenSlot.size() - 1] = newInvwep
+	#print("Added ", weapon.wepName, " to index ", (chosenSlot.size() - 1), " of slot ", slot)
+	#
+	#return true
 	
 	#it seems like going from pistol to hands doesnt update current slot.
 ##Unloads held weapon, then loads weapon out of newSlot. Uses hl2-like logic to decide which weapon.
 func change_To_Slot(newSlot: int):
 	
-	var newSlotArr = allSlots[newSlot - 1]
-	if(newSlotArr.size() == 0): #if we cant even switch, dont bother
+	var selectedArr = allSlots[newSlot - 1]
+	if(selectedArr.size() == 0): #if we cant even switch, dont bother
 		return
 	
 	if(user.aiming): #unaim if we are ADS
@@ -186,42 +213,55 @@ func change_To_Slot(newSlot: int):
 		Globalscript.raise_Panic_Exception("A hands weapon is somehow trying to be loaded in the wrong slot!")
 	
 	if(weapType == 1): #we have a gun, update to inventory before putting away
-		update_To_Slot(activeItem.ourDataSheet, currentSlot, activeItem.capacity)
+		update_Slot(currentSlot, activeItem.capacity)
 	
 
 	
 	if(currentSlot == newSlot): #if we're staying in the same slot, index
-		if(newSlotArr.size() == 1): # dont bother
+		if(selectedArr.size() == 1): # dont bother
 			currentSlot = newSlot
 			return
 
 		
 		slotSelection +=1
-		if(slotSelection >= newSlotArr.size()):
+		if(slotSelection >= selectedArr.size()):
 			slotSelection = 0 #loop back to start
 	else: 
 		slotSelection = 0 #if we aren't, start at the top
 	
 	#since the load weapon script already deals with unloading stuff, we dont have to do too much
 	if(newSlot == 1): #special case for loading hands, hide UI
-		load_Wep(slot1[0].theWeapon) #it's kind of bad practice to be directly accessing slot1 but its such a special case
+		load_Wep(slot1[0].weapInfoSheet) #it's kind of bad practice to be directly accessing slot1 but its such a special case
 		uiInfo.hide_Ammo_Elements() 
 	else: #otherwise act normal
-		var drawnWep = newSlotArr[slotSelection]
-		load_Wep(drawnWep.theWeapon)
+		var drawnInvWep = selectedArr[slotSelection]
+		print(type_string(typeof(drawnInvWep)))
+		load_Wep(drawnInvWep.weapInfoSheet)
 		if(weapType == 1): #if we are loading a gun, dont assume we start with default ammo count
-			activeItem.capacity = drawnWep.roundInside
-			uiInfo.updateMag(drawnWep.roundInside)
+			activeItem.capacity = drawnInvWep.roundInside
+			uiInfo.updateMag(drawnInvWep.roundInside)
 		
 	#if we've gotten this far, update our active slot
 	currentSlot = newSlot
 
-##Adds a new weapon to an inventory. Differs from add_To_Slot in that it handles slot and capacity logic.
-func give_New_Weapon(weapon: WEAP_INFO, validSlots: Array[int])->bool:
+func consume_item(thingy):
+	print(type_string(typeof(thingy)))
+	#if(type_string(typeof(thingy)) == "????"):
+	#	give_New_InvWeap(thingy, thingToGive.selections)
+
+func give_New_InvWeap(weapon:INVWEP, validSlots:Array[int])->bool:
 	for x in validSlots.size():
 		if(allSlots[validSlots[x] - 1].size() < slotMaxes): #we have room in the first of the desired slots.
-			return add_To_Slot(weapon, validSlots[x])
+			return add_InvWeap_To_Slot(weapon, validSlots[x])
 	return false
+
+
+##Adds a new weapon to an inventory. Differs from add_To_Slot in that it handles slot and capacity logic.
+#func give_New_Weapon(weapon: WEAP_INFO, validSlots: Array[int])->bool:
+	#for x in validSlots.size():
+		#if(allSlots[validSlots[x] - 1].size() < slotMaxes): #we have room in the first of the desired slots.
+			#return add_To_Slot(weapon, validSlots[x])
+	#return false
 
 #everything below here is standard stuff, just with some overrides
 
