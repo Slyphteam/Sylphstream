@@ -235,7 +235,7 @@ func change_To_Slot(newSlot: int):
 		uiInfo.hide_Ammo_Elements() 
 	else: #otherwise act normal
 		var drawnInvWep = selectedArr[slotSelection]
-		print(type_string(typeof(drawnInvWep)))
+		#print(type_string(typeof(drawnInvWep)))
 		load_Wep(drawnInvWep.weapInfoSheet)
 		if(weapType == 1): #if we are loading a gun, dont assume we start with default ammo count
 			activeItem.capacity = drawnInvWep.roundInside
@@ -244,10 +244,16 @@ func change_To_Slot(newSlot: int):
 	#if we've gotten this far, update our active slot
 	currentSlot = newSlot
 
-func consume_item(thingy)->bool:
-	print(type_string(typeof(thingy)))
-	#if(type_string(typeof(thingy)) == "????"):
-	#	give_New_InvWeap(thingy, thingToGive.selections)
+func consume_item(thingToGive)->bool:
+	if(thingToGive is INVWEP):
+		give_New_InvWeap(thingToGive, thingToGive.weapInfoSheet.selections)
+		return true
+	elif(thingToGive is INVAMMBOX):
+		for x in range (thingToGive.arrLength):
+			#some kind of check for ammo weight would go here
+			giveAmmo(thingToGive.typeArr[x], thingToGive.amtArr[x])
+		return true
+		
 	
 	return false
 
