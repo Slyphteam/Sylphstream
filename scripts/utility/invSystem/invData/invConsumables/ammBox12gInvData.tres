@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="INVAMMBOX" load_steps=3 format=3 uid="uid://dcrbgb5ycwr84"]
+
+[ext_resource type="Texture2D" uid="uid://cbmmu3lccad7h" path="res://resources/image resources/itemIcons/consumIcons/ambox12g.png" id="1_umooo"]
+[ext_resource type="Script" uid="uid://bofsmi7krun2i" path="res://scripts/utility/invSystem/parents/INVITEM_AMMBOX.gd" id="2_3f11s"]
+
+[resource]
+script = ExtResource("2_3f11s")
+arrLength = 1
+typeArr = Array[int]([4])
+amtArr = Array[int]([10])
+itemName = "Shotgun shell bunch"
+itemDesc = "A handful of 10 shotgun shells, bound with a rubber band"
+itemIcon = ExtResource("1_umooo")
+itemEntScene = ""
+itemTyp = ""
+metadata/_custom_type_script = "uid://bofsmi7krun2i"

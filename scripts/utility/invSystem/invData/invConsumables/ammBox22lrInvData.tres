@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="INVAMMBOX" load_steps=3 format=3 uid="uid://cnlv5r8tujtib"]
+
+[ext_resource type="Texture2D" uid="uid://bbmg6tpmjm604" path="res://resources/image resources/itemIcons/consumIcons/ammbox22lr.png" id="1_icwoc"]
+[ext_resource type="Script" uid="uid://bofsmi7krun2i" path="res://scripts/utility/invSystem/parents/INVITEM_AMMBOX.gd" id="2_q8xav"]
+
+[resource]
+script = ExtResource("2_q8xav")
+arrLength = 1
+typeArr = Array[int]([0])
+amtArr = Array[int]([50])
+itemName = "22 Longrifle Ammo Box"
+itemDesc = "A plastic tray containing 50 .22lr rimfire rounds."
+itemIcon = ExtResource("1_icwoc")
+itemEntScene = ""
+itemTyp = ""
+metadata/_custom_type_script = "uid://bofsmi7krun2i"

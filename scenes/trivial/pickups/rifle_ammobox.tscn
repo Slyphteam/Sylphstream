@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0ggseuf34obn"]
+[gd_scene load_steps=5 format=3 uid="uid://b0ggseuf34obn"]
 
 [ext_resource type="PackedScene" uid="uid://clyqj16lwdolw" path="res://models/glbs and textures/pickups/rifle_ammobox.glb" id="1_80ktm"]
-[ext_resource type="Script" uid="uid://bj8vi2jtp28xr" path="res://scripts/pickups/ammo_pickup_script.gd" id="2_k48e6"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_82a5o"]
+[ext_resource type="Resource" uid="uid://4h42yb5vc1mj" path="res://scripts/utility/invSystem/invData/invConsumables/ammBox556InvData.tres" id="3_82a5o"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_82a5o"]
 points = PackedVector3Array(-13.2869, -1.64223, 2.52982, 13.2477, 2.50364, 2.11522, 13.2477, 2.50364, -0.372401, 13.2477, -2.4716, -0.372401, -13.2869, 2.50364, -0.372401, -13.2869, -2.4716, -0.372401, 13.2477, -2.4716, 2.11522, -12.0428, 2.08871, 2.52982, 13.2477, -0.398423, 2.94442, -13.2869, -2.4716, 2.11522, -13.2869, 0.430458, 2.94442, -13.2869, 2.50364, 2.11522, 12.4165, 2.08871, 2.52982, 12.4165, -2.05667, 2.52982, -13.2869, -0.398423, 2.94442, 13.2477, 0.430458, 2.94442, -12.0428, -2.05667, 2.52982, -13.2869, 1.67427, 2.52982, 13.2477, 1.67427, 2.52982, 13.2477, -1.64223, 2.52982)
@@ -11,9 +12,8 @@ points = PackedVector3Array(-13.2869, -1.64223, 2.52982, 13.2477, 2.50364, 2.115
 [node name="StaticBody3D" type="StaticBody3D" parent="Rifle box" index="0" groups=["player_interactible"]]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("2_k48e6")
-typeToGive = 2
-amtToGive = 20
+script = ExtResource("2_82a5o")
+thingToGive = ExtResource("3_82a5o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rifle box/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_82a5o")

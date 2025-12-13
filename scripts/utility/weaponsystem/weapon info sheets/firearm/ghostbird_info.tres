@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://up52p06xonfc"]
 
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearm_resource.gd" id="1_7copu"]
-[ext_resource type="AudioStream" uid="uid://c7xne0xmb6kea" path="res://sounds/gunshots/pistolcarbine.mp3" id="1_h6xou"]
-[ext_resource type="ArrayMesh" uid="uid://bdlvykvo3phn6" path="res://models/new models and meshes/ghostbird N mesh.res" id="2_h6xou"]
-[ext_resource type="AudioStream" uid="uid://8rtx1mf3r3ma" path="res://sounds/reloads/ghostbird reload.mp3" id="3_h6xou"]
+[ext_resource type="AudioStream" uid="uid://c7xne0xmb6kea" path="res://sounds/gunshots/pistolcarbine.mp3" id="1_3dxlt"]
+[ext_resource type="ArrayMesh" uid="uid://bdlvykvo3phn6" path="res://models/new models and meshes/ghostbird N mesh.res" id="2_bgm85"]
+[ext_resource type="AudioStream" uid="uid://8rtx1mf3r3ma" path="res://sounds/reloads/ghostbird reload.mp3" id="3_76uh6"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearm_resource.gd" id="4_i7vrj"]
 
 [resource]
-script = ExtResource("1_7copu")
-gunshot = ExtResource("1_h6xou")
-reload = ExtResource("3_h6xou")
+script = ExtResource("4_i7vrj")
+gunshot = ExtResource("1_3dxlt")
+reload = ExtResource("3_76uh6")
 shotCooldown = 3
 chambering = 1
 maxCapacity = 25
@@ -24,8 +24,8 @@ pelletAMT = 12
 burstMode = false
 burstAMT = 3
 wepName = &"Ghostbird"
-wepDesc = &"An ingenious bullpup SMG of Brazilian design. Video game logic trades damage for cyclic rate."
-mesh = ExtResource("2_h6xou")
+wepDesc = &""
+mesh = ExtResource("2_bgm85")
 drawTime = 1.0
 damage = 17
 selections = Array[int]([3, 4])

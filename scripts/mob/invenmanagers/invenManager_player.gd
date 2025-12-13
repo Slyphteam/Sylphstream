@@ -244,10 +244,12 @@ func change_To_Slot(newSlot: int):
 	#if we've gotten this far, update our active slot
 	currentSlot = newSlot
 
-func consume_item(thingy):
+func consume_item(thingy)->bool:
 	print(type_string(typeof(thingy)))
 	#if(type_string(typeof(thingy)) == "????"):
 	#	give_New_InvWeap(thingy, thingToGive.selections)
+	
+	return false
 
 func give_New_InvWeap(weapon:INVWEP, validSlots:Array[int])->bool:
 	for x in validSlots.size():

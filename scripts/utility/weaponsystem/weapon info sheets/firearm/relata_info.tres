@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://vmo1b3o1awtj"]
 
-[ext_resource type="AudioStream" uid="uid://jmjas3ug865v" path="res://sounds/gunshots/relatapump.mp3" id="1_kq0qm"]
-[ext_resource type="ArrayMesh" uid="uid://hj16uuuo3d2j" path="res://models/new models and meshes/relata N mesh.res" id="2_bmc76"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearm_resource.gd" id="3_bmc76"]
-[ext_resource type="AudioStream" uid="uid://boahsq60oy1gj" path="res://sounds/reloads/shellinsert.mp3" id="3_kq0qm"]
+[ext_resource type="AudioStream" uid="uid://jmjas3ug865v" path="res://sounds/gunshots/relatapump.mp3" id="1_5yl1k"]
+[ext_resource type="ArrayMesh" uid="uid://hj16uuuo3d2j" path="res://models/new models and meshes/relata N mesh.res" id="2_34065"]
+[ext_resource type="AudioStream" uid="uid://boahsq60oy1gj" path="res://sounds/reloads/shellinsert.mp3" id="3_1c3wg"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearm_resource.gd" id="4_yvxy3"]
 
 [resource]
-script = ExtResource("3_bmc76")
-gunshot = ExtResource("1_kq0qm")
-reload = ExtResource("3_kq0qm")
+script = ExtResource("4_yvxy3")
+gunshot = ExtResource("1_5yl1k")
+reload = ExtResource("3_1c3wg")
 shotCooldown = 50
 chambering = 4
 maxCapacity = 8
@@ -24,8 +24,8 @@ pelletAMT = 12
 burstMode = false
 burstAMT = 3
 wepName = &"Relata"
-wepDesc = &"This entirely handcrafted steel abomination smells faintly of benadryl and weegees."
-mesh = ExtResource("2_bmc76")
+wepDesc = &""
+mesh = ExtResource("2_34065")
 drawTime = 1.0
 damage = 7
 selections = Array[int]([4])

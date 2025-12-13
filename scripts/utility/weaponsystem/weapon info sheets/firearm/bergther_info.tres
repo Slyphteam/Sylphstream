@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://dml6uaueraa87"]
 
-[ext_resource type="AudioStream" uid="uid://b172helr4d31a" path="res://sounds/gunshots/bergther.mp3" id="1_kbr7q"]
-[ext_resource type="ArrayMesh" uid="uid://dvepunob6blsv" path="res://models/new models and meshes/bergther N mesh.res" id="2_kbr7q"]
-[ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="3_1tmam"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearm_resource.gd" id="3_as8nn"]
+[ext_resource type="AudioStream" uid="uid://b172helr4d31a" path="res://sounds/gunshots/bergther.mp3" id="1_2pesw"]
+[ext_resource type="ArrayMesh" uid="uid://dvepunob6blsv" path="res://models/new models and meshes/bergther N mesh.res" id="2_6xuhf"]
+[ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="3_kpfbf"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearm_resource.gd" id="4_i240n"]
 
 [resource]
-script = ExtResource("3_as8nn")
-gunshot = ExtResource("1_kbr7q")
-reload = ExtResource("3_1tmam")
+script = ExtResource("4_i240n")
+gunshot = ExtResource("1_2pesw")
+reload = ExtResource("3_kpfbf")
 shotCooldown = 10
 chambering = 1
 maxCapacity = 12
@@ -24,8 +24,8 @@ pelletAMT = 12
 burstMode = false
 burstAMT = 3
 wepName = &"Bergther G5P"
-wepDesc = &"A fairly unremarkable, though chimeric pistol chambered in 7.822 Longman"
-mesh = ExtResource("2_kbr7q")
+wepDesc = &""
+mesh = ExtResource("2_6xuhf")
 drawTime = 1.0
 damage = 22
 selections = Array[int]([2])

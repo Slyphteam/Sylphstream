@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5m0b6abxw6de" path="res://models/new models and meshes/fourier N.glb" id="1_byd0r"]
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_dakyp"]
-[ext_resource type="Resource" uid="uid://sy0ndq1n1a7f" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/fourier9_info.tres" id="3_chxjm"]
+[ext_resource type="Resource" uid="uid://c73muqq67rk4m" path="res://scripts/utility/invSystem/invData/invWeapons/fourierInvData.tres" id="3_chxjm"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_byd0r"]
 points = PackedVector3Array(1.93725, 0.163281, 0.164223, 0.127373, -0.0727216, -0.858949, 0.127373, 0.0845674, -0.858949, -2.38999, -0.151435, 0.636267, -2.54825, 0.163281, -0.386682, 0.520804, -0.151435, 1.4233, -0.658994, 0.163281, 1.26581, 1.54382, -0.230149, -0.229185, -2.54825, -0.151435, -0.386682, 1.54382, 0.242041, -0.229185, 2.48845, -0.0727216, -0.0719111, -2.38999, 0.163281, 0.636267, -0.658994, -0.230149, -0.308045, -0.658994, 0.242041, -0.308045, 0.756961, 0.163281, -0.780089, 0.756961, -0.151435, -0.780089, 0.189124, 0.0790161, 1.34273, 2.48845, 0.0845674, 0.0855858, 1.85886, 0.163281, -0.465318, 1.54382, 0.242041, 0.00694907, 1.6227, -0.151435, -0.543955, 0.205764, -0.151435, 1.4233, 1.54382, -0.230149, 0.00694907, -0.658994, -0.230149, -0.0719111, 2.48845, -0.0727216, 0.0855858, -2.54825, 0.163281, 0.0855858, -0.265071, 0.163281, 1.26581, -0.658994, 0.242041, -0.150548, 0.127373, 0.163281, -0.780089, 0.127373, -0.151435, -0.780089, -2.54825, -0.151435, 0.0855858, 1.93725, -0.151435, 0.243083)
@@ -13,7 +13,7 @@ points = PackedVector3Array(1.93725, 0.163281, 0.164223, 0.127373, -0.0727216, -
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("2_dakyp")
-weptoGive = ExtResource("3_chxjm")
+thingToGive = ExtResource("3_chxjm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Fourier-9/Fourier shape" index="0"]
 shape = SubResource("ConvexPolygonShape3D_byd0r")
