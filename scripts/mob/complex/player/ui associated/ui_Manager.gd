@@ -48,6 +48,13 @@ func adjust_spread(amount):
 
 var healthAmDisabled:bool = false
 var ammoEnabledBeforeToggle:bool = false
+
+
+func showToolTipText(title:String, desc:String,tip:String):
+	return
+
+
+
 ##Toggles health and ammo. elements. Currently unused. 
 func toggle_Health_And_Ammo():
 	if(healthAmDisabled):
@@ -137,7 +144,7 @@ func updateMagReserve(mag, reserve):
 
 
 #===---===}>    Inventory stuff
-@onready var invContain = $menuContainer
+@onready var invContain = $invBkg
 
 func toggle_Inv():
 	#Should probably have sanity checks here

@@ -1,4 +1,5 @@
-====+====> Angeion 
+	====+====> Angeion 
+
 Not an NPC, but the player character. Made of fired clay and flesh. Probably some bronze in there. Wears burlap?
 ^^ super cute idea: give them a little battery backpack like the energizer bunny???
 Who is Angeion? whoever they need to be to as the PC. From greek for vessel.
@@ -6,7 +7,11 @@ As far as Sylphstream has a coherent setting, Angeion is a construct with agency
 kind of spiritual influence. Should resemble Millian a little, but not too much. Defo the mask at least.
 
 
-====+====> The Prince of Communications
+		====+====> The Prince of Communications
+		
+Wide-headed despot put in "control" of the safe town. Manages the unlock system and may give starter quests. 
+Capricious and devil-may-cry, kind of a brat, no real power or willingness to project it.
+
 (Smeeked to meek you): There's this weird gerbil thing that's trying to usurp my soverignty. 
 (Friends forever): See that maniac over there? Don't stare, but yeah, that one. They keep saying I'm their friend.
 I want you to find someone to hang out with them to get them to shut up.
@@ -20,7 +25,9 @@ Probably the only person who actually pays taxes in mmy domain.
 What do you think of the archon?
 We made out in a back alley once. Don't ask how. You don't want to know.
 
-====+====> the beautiful chimera
+		====+====> the beautiful chimera
+		
+Six-limbed beast who is also an accomplished alchemist. Blends the line between narcissicm and self-love. Transgender allegory.
 
 ======>Initial introduction:
 (A six-limbed beast stands on an intricate dais. As you approach, it regards you with little in the way of intent.)
@@ -100,10 +107,51 @@ Oh... (end dialogue)
 
 I am not a combative NPC. I don't even have a healthholder. You can shoot me all you'd like and it will simply do nothing.
 
+	====+====> Pipe Bomb Andy
+Pipe bomb andy, from his initial incarantion (aka NOT catboy). World merchant that sells explosives.
+
+(A man in a skull mask(?) and captain's attire approaches you. He holds a suspiciously bulky backpack in two hands)
+Hello, it is I, pipe bomb andy.
+I offer you a heartfelt gift.
+(Pipe bomb andy offers you the satchel. Do you accept?)
+Yes (accept)
+Dude. (decline)
+
+(later)
+
+Hi, it's me again, pipebomb andy. 
+Look, I know we got off on the wrong foot here and I just wanted to say I'm sorry. 
+You don't have to, but I wanted to give you something to make up for our differences.
+PLAYER OPTIONS:
+1) Is it a pipe bomb?
+2) It better not be another pipe bomb andy.
+I SWEAR it's not a pipe bomb.
 
 
+(Even later)
 
-====+====> Trustworthy greg's
+It was really fucked up of me to give you a pipe bomb. and then apologize and give you another pipe bomb.
+And then even later when I had a pipe bomb on me and I was going to apologize and then that goblin took it and blew the pipebomb up
+Actually I have no real association with that goblin they were totally unrelated 
+I have no association with that goblin so it wasn't actually me that did that come to think of it. So two out of three really isn't that bad.
+but anyway yeah it was really fucked up and manipulative of me to try and give you a pipe bomb twice in a row.
+and I just wanted to say I'm sorry and I've grown and changed as a person. 
+and I really mean it. I've realized the error of my ways turned a new leaf. 
+and I know you probably won't accept it, and I have nobody to blame but myself,
+but I wanted to offer you an olive branch, if you're in the right state of mind and you wanted to forgive me.
+
+andy. andy I want you to be level with me. 100% truthful. is there a pipe bomb in that box.
+
+(pipe bomb andy seems suddenly and remarkably uncomfortable) u-uh. w-weeell. 
+
+well?
+
+y-nnooooo. No there is not. (andy puts the gift behind his back and seems to do something else)
+
+
+	====+====> Trustworthy greg's
+Crusty old divorced man who is also a woman. I like to imagine she looks like a generic ass anime girl who is also green and always wears filthy wifebeaters.
+
 (As you walk up to the cardboard storefront, you can hear a rhaspy, somehow audibly short voice echoing from the store's back room)
 Ohhhhhh no. 
 Oooohhhhh shit. Shit shit shit shit shit. This is bad. 
@@ -185,30 +233,150 @@ I mean, what the hell? There's nothing but paws all the way down and I really ho
 chimera spit up in the injectors. (unlocks chimera stupid question)
 
 
-====+====> The Twelph arbiter
+	====+====> The Twelph arbiter
+Hestoile merchant. May give quests?
 
-====+====> Crunko, Gupsnoo, Slunkus
+	====+====> Crunko, Gupsnoo, Slunkus
+Three young void beings. None of them can spell, they're all 2d beings brought into a 3D world, look intimidating but 
+kind of give pathetic baby seal vibes. 
 
-====+====> The Wasteflower
+	====+====> The Wasteflower
+Safe-room encounter. Made from dregs of models, doesn't know much about anything. Asks a series of
+riddles/philosophical questions to the player. 
 
-====+====> Bestie
+	====+====> Bestie
+All black being with a starfish-like head and conch snail jaws. She pops up randomly in town, kind of obnoxious, only goes HIII BESTIEE. Optional quest for
+bringing them to wasteflower.
 
-====+====> The archon
+	====+====> The archon
+Helper entity, kind of like the Bion from psycho patrol R. Untrustworthy in the "ai agent who's malware and spying" sense yet attempts to come off as friendly/silly.
 
-====+====> Millian
+	====+====> Millian
+	
+My own avatar. Appears at the end of the campaign to talk about keyfabe. Also has test dialogue.
 
-====+====> Sunburnt white woman
+======> Encounter Dialogue:
+(The figure before you is tall and curly-haired; clad in strange, decorated armor. They seem familiar, somehow.)
+-Okay. We need to talk about the npc dialogue.
+Whats up with it?
+-It doesn't make sense. Like, all of it. It's all just phrases and words.
+Haha yeah but what isn't?
+-Can we be serious here. You understand what I mean, right?
+nah nah I do. Most of them are from snippets I'll think or dream up and then write down every once in a while. Its pretty fun.
+-It feels... out of place. 
+Does it? Sylphstream isn't a story game. The npcs are really just set dressing.
+That's a dirty lie and you know it. Sylphstream does have a story. 
+You got me there. Sylphstream's is my story.
+-Oh.
+It's a jank-ass mishmash of all the stuff that's been bouncing around in my head, mangled and bundled together.
+It's a weird story, but it's mine to tell. And I figured there'd be no honest way to tell it other than all at once in a bizarre jumble.
 
+PLAYER OPTIONS:
+1:Including the snippets? 
+
+1;Including the snippets.
+
+======> Encounter 2 Dialogue:
+Type Millian (complex dialogue test):
+Hi, it's me, Millian!
+
+Woah! Hi Millian! I'm Millian! 
+Woah! Hi Millian! I'm Millian!
+
+But *I'm* Millian!
+And am I not also Millian?
+That doesn't make any sense.
+
+Of course it does. The clay that consitutes us was cut from the same bank. The hand that gave us form is 
+one and the same. The image of our likeness is one and the same. The voice that speaks through us is one 
+and the same. I am Millian; a partial and abstracted representation of a facet of a far greater likeness. 
+And.So.Are.You.
+
+If what you say is true, then what around us *isn't* Millian?
+
+That depends entirely on the diegetic framework you'd like to adopt. 
+
+That's stupid and you can stuff your diegetic framework! I'm the only Millian here!
+
+Nuh uh
+
+Uh huh
+
+Nuh uh
+
+*stick your tongue out and blow a raspberry at Millian*
+The exact same one is blown back at you
+
+	====+====> Sunburnt white woman
+	
+Random encounter, has an associated quest with the Chimera. Evil spiritual white women. Kind of based off 4dmom tumblr blog.
+
+(You repress a gag as the intense, oversweet scent of the ponytailed woman's perfume threatens your constitution. Her eyes and lips are peeled open
+in a permanent threat display)
+
+(If you took the Chimera sidequest): 
+Wow. You have NO Orgone reverberations + your aura is absolutely decrepit. 
+It's EMBARRASING that you'd go out in public like this. 
+If something like that happened to me I'd KILL MYSELF. Love and light.
+(Unlocks going back to the chimera and getting Aura)
+(if you have aura:)
 Have you been selling bioalchemical actitives?
 Bio-what now? Sweetie, I'm going to let that slide, because you clearly have no fucking clue who you're talking to. 
 Everything *I* sell is 100% vegan AND non-GMO AND made exclusively by single women of color in developing nations.
 Don't. You. Fucking. Forget. It.
 
-====+====> The Investor
+Heyyyyy girl I just wanted to say you look like DIVINE and your vibrations are VIVACIOUS.
+Btw are you interested in selling crystals or essential oils with me? 
+It's a new kind of feminist and socially aware business hierarchy.
 
-====+====> The #mysmee
+I just snorted a line of ivermectin and my yonic chakra is SO aligned right now. 
+I could bear a fucking archangel into the world right now if I so chose.
 
-====+====> Field Captain of the order of sarko-autosedimentarim. (Boneplate Yvette)
+With enough essential oils you can actually become a holistic deep Aeon projection. 
+I'm on 272 right now and there's at least five leylines running through me. I'm thrumming.
+
+Next time that whore Bethany shows her ugly face at the HOA potluck I'm going to 
+fucking rip her limbs apart. She REALLY thinks her fruit salad is better.
+Better than than my wholesome organic Castor Bean and Queen Anne's Lace cobbler.
+I swear to god I'll fucking eviscerate her on sight. Love and light.
+
+If you mix Peyote with Salvia, Mandrake, and Belladonna you can actually levitate and see the 12 
+karmic strings. My Hitachi magic wand told me this last night when I was 18 strata deep
+into manifesting my reincarnation as a lotus flower. 
+
+Um compulsory tribadism is actually a SCIENTIFICALLY DOCUMENTED SIDE EFFECT of a few too many
+buzzballs at the PTA afterparty. I remain heterosexual. 
+I REMAIN HETEROSEXUAL. 
+
+My yonic divine feminine moon attunement means I actually can't do anything wrong. 
+I could do anything. I could hurt anyone. 
+My ancestral goddess would just stop my karma from shifting. Love and light.
+
+Aaaaa lot of people don't actually know this but vaccines are only necessary if you don't have
+a good Mother Gaia connection. I've never gotten the jab but my vaxxed mother in law is ALWAYS 
+getting sick even though I keep telling her to go on a Pondwater cleanse! LOL!!
+
+PLAYER OPTIONS:
+1: Hang on, isn't castor and queen anne's lace violently poisonous? And also peyote, salvia, mandrake, 
+and basically the entire nightshade family? Have you been poisoning yourself and other people under the guise
+of spiritual herbalism??
+2: I think you're a horrible person who needs to do some seriously critical introspection.
+3: You are going to be reincarnated as a dung beetle and there is NOTHING you can do about it.
+4: (say nothing and leave)
+
+1;2;3: FUCK YOU. FUCK YOU. FUCK YOU. I WROTE YOUR NAME ON A MOUSE AND LET IT STARVE.
+I'M IMBUING YOUR BLOODLINE WITH A CURSE. I'M ACTIVATING MY PSYCHIC WARDS TO SHRED YOUR AURA.
+I'M SABOTAGING YOUR SHUNGITE RESERVES. I'M DOXXING YOU ON PARROTFARMS.
+I'M ASTRALLY REFRACTING 5G CANCER RAYS INTO YOUR HOUSE. RRRAAAAUUUUGHHH I HATE YOU SO FUCKING MUCH.
+4; (as you retreat, you realize this woman wasn't ever talking to you in the first place)
+
+	====+====> The Investor
+Cruelty squad CEO/brian thompson stand-in, associated quest with greg.
+
+	====+====> The #mysmee
+
+	====+====> Field Captain of the order of sarko-autosedimentarim. (Boneplate Yvette)
+Quest NPC I probably won't actually add to the game
 
 My sargent has gone missing!
 
@@ -225,3 +393,22 @@ I think I know who you're here for. There's this shady, arachnid figure selling 
 ====+====> Booth kisser
 
 I don't make them stay around! They just choose to. 
+
+
+
+	====+====> Gemmis and Sharptop
+Random encounter NPCs, meet sharptop first. Have to find gemmis in the world and bring her back.
+One is four-armed rabbit-like creature, Gemmis is disc-headed animal. Gemmis you can hold like the #mysmee and get health from.
+
+Gemmis held dialogue:
+hey.. I think I might have to go pee soon.
+I can talk to aliens! glorb beezp boop gwazp bong zap glump 
+What's your favorite flavor of pickle?
+I could totally beat you in a hiding in bushes competition.
+My girlfriend is SUPER cool and tall and fuzzy but not as fuzzy as me but that's okay because I'm really fuzzy myself. She has four arms!
+What's the most number of glizzies you've ever eaten in one sitting? Mine is, uhm... I forgot.
+
+Sharpbunny dialogue:
+Oh jeez... I was just looking the other way and I think my girlfriend just wandered off. 
+Hey, uhm, if it's not too much of an ask and you see her, could you bring her back? 
+She has a lot of eyes and a kind of flat head and she's REALLY not built for these streets

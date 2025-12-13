@@ -67,6 +67,14 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+Step 1: Change INVENMANAGER to use INVDATA stuff.
+Step 2: Change pickups to use INVDATA instead of WEAPINFO 
+Step 3: Add tooltips
+Step 4: I think now you can circle back around to adding inventory grid
+
+
+
+
 
 Once the proof-of-concept Sylphs work go back through the Sylph mind script and re-organize all the 
 inputs to be less atrocious

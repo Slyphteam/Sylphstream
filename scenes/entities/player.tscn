@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=33 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
@@ -8,8 +8,11 @@
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
 [ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/mob/damsystem/player_healthholder.gd" id="6_1yk18"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
+[ext_resource type="Script" uid="uid://vgp60urmu5q7" path="res://scripts/utility/invSystem/parents/INVITEM_PARENT.gd" id="6_cwche"]
 [ext_resource type="Resource" uid="uid://cu2beecnqqpll" path="res://resources/weapon resources/firearm/ishim_info.tres" id="6_spk56"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/entities/playermodel.tscn" id="6_tgbf5"]
+[ext_resource type="Resource" uid="uid://bnfxlen8t7aa0" path="res://scripts/utility/invSystem/items/redTriagData.tres" id="7_3hm5d"]
+[ext_resource type="Resource" uid="uid://126jxfaiye4p" path="res://scripts/utility/invSystem/items/blueCircData.tres" id="8_yw3xw"]
 [ext_resource type="Texture2D" uid="uid://5h5e2fdfww0f" path="res://resources/image resources/uiholdertest.png" id="9_f4klr"]
 [ext_resource type="Texture2D" uid="uid://dvtr0683clxu2" path="res://resources/image resources/healthholderUI.png" id="10_ddril"]
 [ext_resource type="StyleBox" uid="uid://c7v5hhr02av55" path="res://resources/button BG theme.tres" id="12_33423"]
@@ -24,6 +27,7 @@
 [ext_resource type="StyleBox" uid="uid://dd7vojv8f5q5l" path="res://resources/UI/Styles/stylebox/tab_stylebox_unselected.tres" id="22_n36er"]
 [ext_resource type="Theme" uid="uid://dqjaym6ysvovi" path="res://resources/UI/Styles/themes/inventory panel.tres" id="23_qc1tv"]
 [ext_resource type="StyleBox" uid="uid://daemxqyncvffi" path="res://resources/UI/Styles/stylebox/inventory div style.tres" id="24_xe83n"]
+[ext_resource type="Texture2D" uid="uid://d0wp5vcb8sc1i" path="res://resources/image resources/invenSlot_prototype.png" id="25_xe83n"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_oajfq"]
 length = 0.5
@@ -32,6 +36,9 @@ length = 0.5
 points = PackedVector3Array(0.330305, 0.920269, 0.0344127, -0.386635, -0.776089, -0.063091, -0.350895, -0.800871, -0.158618, 0.358755, -0.844057, 0.0990035, -0.0942994, 0.734913, 0.385134, -0.063091, 0.776089, -0.386635, 0.192083, -0.730015, -0.34763, -0.357384, 0.84832, -0.0963208, -0.0959277, -0.844914, 0.359117, 0.19096, 0.725711, 0.348745, 0.349979, 0.728291, -0.188458, -0.34763, 0.730015, 0.192083, -0.0653278, -1.07085, -0.132243, -0.18958, -0.73259, -0.348861, -0.0990502, 1.07326, 0.102225, 0.190957, -0.725702, 0.348741, -0.286494, -0.799943, 0.257634, 0.348741, 0.725702, 0.190957, 0.385134, -0.734913, -0.0942994, -0.312336, 0.690456, -0.249566, 0.101353, 1.03063, -0.197944, 0.19208, 0.730004, -0.347624, 0.135835, -1.07419, 0.0351098, -0.197944, -1.03063, 0.101353, 0.0662163, -0.775496, -0.386338, 0.198614, -0.984784, -0.195439, 0.101183, 1.02888, 0.200779, 0.384492, 0.733681, 0.0973134, -0.195805, 0.986616, -0.195805, -0.383887, -0.738606, 0.0979559, -0.384533, 0.739844, -0.0949428, 0.0973134, -0.733681, 0.384492)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwche"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe83n"]
+bg_color = Color(0, 0.535038, 0.688868, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["damage_interactible", "has_manager"]]
 collision_layer = 3
@@ -71,6 +78,7 @@ player = NodePath("../..")
 [node name="weapon_rig" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
 ourHands = ExtResource("4_kiyhm")
+itemsTest = Array[ExtResource("6_cwche")]([ExtResource("7_3hm5d"), null, ExtResource("8_yw3xw"), null, null, null])
 starterWeapon = ExtResource("6_spk56")
 
 [node name="Player Health" type="Node" parent="."]
@@ -141,13 +149,18 @@ default_color = Color(0, 0, 0, 1)
 points = PackedVector2Array(6, 0, 24, 0)
 width = 1.0
 
-[node name="Infopanel" type="PanelContainer" parent="Player UI"]
-custom_minimum_size = Vector2(200, 0)
+[node name="tooltips" type="Control" parent="Player UI/Reticle"]
 layout_mode = 2
-offset_right = 200.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/Infopanel"]
-layout_mode = 2
+[node name="tooltip" type="Label" parent="Player UI/Reticle/tooltips"]
+offset_left = 59.0
+offset_top = 15.5
+offset_right = 201.0
+offset_bottom = 70.5
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Lipsum Dorem"
 
 [node name="Health" type="Control" parent="Player UI"]
 layout_mode = 1
@@ -241,41 +254,44 @@ theme_override_font_sizes/font_size = 15
 text = "Ipsum Lorem"
 horizontal_alignment = 2
 
-[node name="pauseContainer" type="CenterContainer" parent="Player UI"]
+[node name="pauseContainer" type="PanelContainer" parent="Player UI"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Player UI/pauseContainer"]
 z_index = 4
 custom_minimum_size = Vector2(600, 300)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = ExtResource("13_b4o2o")
 
-[node name="MarginContainer" type="MarginContainer" parent="Player UI/pauseContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Player UI/pauseContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 140
 theme_override_constants/margin_right = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/pauseContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/pauseContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Player UI/pauseContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0.647059, 1)
 text = "Game is paused! :)"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Player UI/pauseContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="resumeButton" type="Button" parent="Player UI/pauseContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="resumeButton" type="Button" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.682353, 0.901961, 0.788235, 1)
@@ -283,7 +299,7 @@ theme_override_styles/normal = ExtResource("12_33423")
 text = "Resume"
 script = ExtResource("13_oajfq")
 
-[node name="quitButton" type="Button" parent="Player UI/pauseContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="quitButton" type="Button" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.682353, 0.901961, 0.788235, 1)
@@ -291,30 +307,28 @@ theme_override_styles/normal = ExtResource("12_33423")
 text = "Exit game"
 script = ExtResource("14_gor7x")
 
-[node name="PreAlphaSplash" type="Sprite2D" parent="Player UI/pauseContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PreAlphaSplash" type="Sprite2D" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer"]
 position = Vector2(275, -83)
 texture = ExtResource("12_kiyhm")
 
-[node name="menuContainer" type="CenterContainer" parent="Player UI"]
+[node name="invBkg" type="PanelContainer" parent="Player UI"]
+visible = false
+custom_minimum_size = Vector2(600, 600)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -264.0
-offset_top = -199.5
-offset_right = 286.0
-offset_bottom = 200.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="invBkg" type="PanelContainer" parent="Player UI/menuContainer"]
-custom_minimum_size = Vector2(450, 400)
-layout_mode = 2
 theme = ExtResource("18_yr3on")
 
-[node name="TabContainer" type="TabContainer" parent="Player UI/menuContainer/invBkg"]
+[node name="TabContainer" type="TabContainer" parent="Player UI/invBkg"]
 layout_mode = 2
 theme = ExtResource("19_2ngu4")
 theme_override_colors/font_outline_color = Color(0.93493, 0.806878, 0.951575, 1)
@@ -328,43 +342,160 @@ theme_override_styles/tab_hovered = ExtResource("21_jv5ih")
 theme_override_styles/tab_unselected = ExtResource("22_n36er")
 current_tab = 0
 
-[node name="Inventory panel" type="PanelContainer" parent="Player UI/menuContainer/invBkg/TabContainer"]
+[node name="Inventory panel" type="PanelContainer" parent="Player UI/invBkg/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/menuContainer/invBkg/TabContainer/Inventory panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel"]
 layout_mode = 2
 size_flags_vertical = 0
 tooltip_text = "wha?
 "
 
-[node name="Label" type="Label" parent="Player UI/menuContainer/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("23_qc1tv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cwche")
-text = "MetempsychOS interface v0.2.1"
+text = "__//: MetempsychOS interface v0.2.1"
 
-[node name="Panel" type="Panel" parent="Player UI/menuContainer/invBkg/TabContainer/Inventory panel/VBoxContainer"]
-custom_minimum_size = Vector2(300, 50)
+[node name="WeaponSlots" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = ExtResource("24_xe83n")
 
-[node name="CheckButton" type="CheckButton" parent="Player UI/menuContainer/invBkg/TabContainer/Inventory panel/VBoxContainer"]
-layout_mode = 2
-text = "this is a button :)"
+[node name="InvenGrid" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -124.0
+offset_right = 158.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="Player UI/menuContainer/invBkg/TabContainer/Inventory panel"]
+[node name="Slot1" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid"]
+layout_mode = 2
+
+[node name="Slot11" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot1"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot1/Slot11"]
+position = Vector2(30, 0)
+texture = ExtResource("25_xe83n")
+
+[node name="Slot2" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Slot21" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot2/Slot21"]
+position = Vector2(30, 0)
+texture = ExtResource("25_xe83n")
+
+[node name="Slot22" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot2/Slot22"]
+position = Vector2(30, 0)
+texture = ExtResource("25_xe83n")
+
+[node name="Slot3" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="slot31" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot3"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot3/slot31"]
+position = Vector2(30, 0)
+texture = ExtResource("25_xe83n")
+
+[node name="Slot32" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot3"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot3/Slot32"]
+position = Vector2(30, 0)
+texture = ExtResource("25_xe83n")
+
+[node name="Slot4" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Slot41" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot4"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot4/Slot41"]
+position = Vector2(30, 0)
+texture = ExtResource("25_xe83n")
+
+[node name="Slot42" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot4"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot4/Slot42"]
+position = Vector2(30, 0)
+texture = ExtResource("25_xe83n")
+
+[node name="CheckButton" type="CheckButton" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+layout_mode = 2
+text = "reminder that margins exist :)"
+
+[node name="InvSlotTest" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 0
+theme = ExtResource("23_qc1tv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe83n")
 
-[node name="Quests" type="PanelContainer" parent="Player UI/menuContainer/invBkg/TabContainer"]
+[node name="GridContainer" type="GridContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/InvSlotTest"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quests" type="PanelContainer" parent="Player UI/invBkg/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="mystery tab" type="PanelContainer" parent="Player UI/menuContainer/invBkg/TabContainer"]
+[node name="mystery tab" type="PanelContainer" parent="Player UI/invBkg/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2

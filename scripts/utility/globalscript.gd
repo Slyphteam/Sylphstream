@@ -61,6 +61,9 @@ func _input(event):
 
 func togglePaused():
 	if(Globalscript.isPlaying):
+		if(thePlayer.uiInfo.invContain.visible):
+			thePlayer.uiInfo.toggle_Inv()
+			
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Globalscript.isPlaying = false
 		thePlayer.uiInfo.pauseMenu.visible = true

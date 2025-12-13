@@ -20,6 +20,8 @@ var slotSelection: int = 0 ##Which index into said slot are we?
 
 var slotMaxes = 2 ##Will change once out of alpha, but for now max of 2 weapons per slot.
 
+@export var itemsTest: Array[INVENITEMPARENT]
+
 var slot1: Array[INVWEP] ##Custom slot exclusively for the hands
 var slot2: Array[INVWEP] ##Holster slots.
 var slot3: Array[INVWEP] ##chest slots

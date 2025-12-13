@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="INVENITEMPARENT" load_steps=3 format=3 uid="uid://bnfxlen8t7aa0"]
+
+[ext_resource type="Texture2D" uid="uid://blovjcsj7076s" path="res://resources/image resources/itemIcons/redTriangle.png" id="1_ejjur"]
+[ext_resource type="Script" uid="uid://vgp60urmu5q7" path="res://scripts/utility/invSystem/parents/INVITEM_PARENT.gd" id="2_fc3pf"]
+
+[resource]
+script = ExtResource("2_fc3pf")
+itemName = "Red Triangle"
+itemIcon = ExtResource("1_ejjur")
+itemEntScene = ""
+itemTyp = ""
+metadata/_custom_type_script = "uid://vgp60urmu5q7"
