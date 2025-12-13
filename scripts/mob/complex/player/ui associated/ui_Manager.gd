@@ -49,9 +49,17 @@ func adjust_spread(amount):
 var healthAmDisabled:bool = false
 var ammoEnabledBeforeToggle:bool = false
 
-
-func showToolTipText(title:String, desc:String,tip:String):
-	return
+@onready var toolTitle = $Reticle/tooltips/toolTitle
+@onready var toolDesc = $Reticle/tooltips/toolTitle/toolDesc
+@onready var toolTip = $Reticle/tooltips/toolTitle/toolTip
+func doTooltipText(title:String, desc:String,tip:String):
+	if(title == toolTitle.text): #check for update
+		return
+	
+	toolTitle.text = title
+	toolDesc.text = desc
+	toolTip.text = tip
+	
 
 
 

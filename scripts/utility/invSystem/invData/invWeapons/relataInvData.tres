@@ -8,7 +8,7 @@
 script = ExtResource("2_ry8ry")
 weapInfoSheet = ExtResource("3_ry8ry")
 itemName = "Relata"
-itemDesc = "This entirely handcrafted steel abomination smells faintly of benadryl and weegees."
+itemDesc = "This steel pump-action abomination smells faintly of benadryl and weegees."
 itemIcon = ExtResource("1_g01rg")
 itemEntScene = ""
 itemTyp = ""

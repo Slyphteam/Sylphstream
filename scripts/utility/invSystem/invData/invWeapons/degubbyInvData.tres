@@ -8,7 +8,7 @@
 script = ExtResource("2_uhk7o")
 weapInfoSheet = ExtResource("3_xpppe")
 itemName = "Debug gun"
-itemDesc = "A very special weapon for very special purposes"
+itemDesc = "Wow! It's the Sylph training gun. Why do you have this?"
 itemIcon = ExtResource("1_8c2oe")
 itemEntScene = ""
 itemTyp = ""

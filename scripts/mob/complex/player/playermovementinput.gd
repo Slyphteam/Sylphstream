@@ -113,8 +113,6 @@ func _input(event):
 		invenManager.toggleSights()
 		toggle_ADS_Stats()
 	
-	if (event.is_action_pressed("ui_interact") && !event.is_echo()):
-		do_Interact_Raycast()
 	
 	if (event.is_action_pressed("ui_stimMenu") && !event.is_echo()):
 		invenManager.take_Autostim(1)
@@ -132,10 +130,10 @@ func _input(event):
 	#if event.is_action_pressed("ui_num5"):
 		#invenManager.change_To_Slot(5)
 
-##Cleanliness function that just makes a short-ranged raycast
-func do_Interact_Raycast():
+##Called every frame. Does tooltip hovers, interacts, so on and so forth. called each frame.
+@onready var space = invenManager.get_space_state()
+func do_Hover_Raycast():
 	
-	var space = invenManager.get_space_state()
 	var orig:Vector3 = playerCam.project_ray_origin(get_viewport().size / 2)
 	var end:Vector3 = orig + playerCam.project_ray_normal(get_viewport().size / 2) * 100
 		
@@ -149,10 +147,14 @@ func do_Interact_Raycast():
 		if(hitObject.is_in_group("player_interactible")): #check if we even CAN interact before anything else
 			var castLocation = castResult.get("position")
 			var dist = (orig - castLocation).length()
-			if(dist <= 2.5):
-				var interactResult = hitObject.interact_By_Player(self)
-				if(interactResult):
-					print("K-chk!")
+			if(dist<= 2.5):
+				if(hitObject.thingToGive):
+					uiInfo.doTooltipText(hitObject.thingToGive.itemName, hitObject.thingToGive.itemDesc, "E to pick up")
+					if(Input.is_action_just_pressed("ui_interact")):
+						var interactResult = hitObject.interact_By_Player(self)
+	else:
+		uiInfo.doTooltipText(" "," "," ")
+
 
 func input_Mouse(event):
 	xlook += -event.relative.y * mousesensitivity
@@ -206,6 +208,8 @@ func check_Directional_Movement():
 
 
 func _physics_process(delta: float) -> void:
+	
+	do_Hover_Raycast()
 	
 	#handle auto-recovery from a viewpunch.
 	if(currentlyRecovering):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=32 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
@@ -36,9 +36,6 @@ length = 0.5
 points = PackedVector3Array(0.330305, 0.920269, 0.0344127, -0.386635, -0.776089, -0.063091, -0.350895, -0.800871, -0.158618, 0.358755, -0.844057, 0.0990035, -0.0942994, 0.734913, 0.385134, -0.063091, 0.776089, -0.386635, 0.192083, -0.730015, -0.34763, -0.357384, 0.84832, -0.0963208, -0.0959277, -0.844914, 0.359117, 0.19096, 0.725711, 0.348745, 0.349979, 0.728291, -0.188458, -0.34763, 0.730015, 0.192083, -0.0653278, -1.07085, -0.132243, -0.18958, -0.73259, -0.348861, -0.0990502, 1.07326, 0.102225, 0.190957, -0.725702, 0.348741, -0.286494, -0.799943, 0.257634, 0.348741, 0.725702, 0.190957, 0.385134, -0.734913, -0.0942994, -0.312336, 0.690456, -0.249566, 0.101353, 1.03063, -0.197944, 0.19208, 0.730004, -0.347624, 0.135835, -1.07419, 0.0351098, -0.197944, -1.03063, 0.101353, 0.0662163, -0.775496, -0.386338, 0.198614, -0.984784, -0.195439, 0.101183, 1.02888, 0.200779, 0.384492, 0.733681, 0.0973134, -0.195805, 0.986616, -0.195805, -0.383887, -0.738606, 0.0979559, -0.384533, 0.739844, -0.0949428, 0.0973134, -0.733681, 0.384492)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwche"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe83n"]
-bg_color = Color(0, 0.535038, 0.688868, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["damage_interactible", "has_manager"]]
 collision_layer = 3
@@ -152,40 +149,42 @@ width = 1.0
 [node name="tooltips" type="Control" parent="Player UI/Reticle"]
 layout_mode = 2
 
-[node name="toolDesc" type="Label" parent="Player UI/Reticle/tooltips"]
+[node name="toolTitle" type="Label" parent="Player UI/Reticle/tooltips"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 28.5
-offset_right = 192.0
-offset_bottom = 83.5
+offset_left = 42.0
+offset_top = -0.5
+offset_right = 184.0
+offset_bottom = 54.5
 theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 10
-text = "Lipsum Dorem"
+theme_override_font_sizes/font_size = 20
+text = "Lipsum dorem
+"
 
-[node name="toolTip" type="Label" parent="Player UI/Reticle/tooltips/toolDesc"]
+[node name="toolDesc" type="Label" parent="Player UI/Reticle/tooltips/toolTitle"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 0
-offset_left = 115.0
-offset_top = -20.0
-offset_right = 257.0
-offset_bottom = 35.0
+offset_left = -3.0
+offset_top = 29.0
+offset_right = 139.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Lipsum Dorem"
+autowrap_mode = 2
+
+[node name="toolTip" type="Label" parent="Player UI/Reticle/tooltips/toolTitle"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -38.0
+offset_right = 147.0
+offset_bottom = 17.0
 theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Press E to equip
 Press R to add to Inventory"
-
-[node name="toolTitle" type="Label" parent="Player UI/Reticle/tooltips/toolDesc"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = -29.0
-offset_right = 134.0
-offset_bottom = 26.0
-theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
-text = "Lipsum dorem
-"
 
 [node name="Health" type="Control" parent="Player UI"]
 layout_mode = 1
@@ -280,6 +279,7 @@ text = "Ipsum Lorem"
 horizontal_alignment = 2
 
 [node name="pauseContainer" type="PanelContainer" parent="Player UI"]
+visible = false
 z_index = 4
 custom_minimum_size = Vector2(600, 300)
 layout_mode = 1
@@ -336,7 +336,6 @@ position = Vector2(275, -83)
 texture = ExtResource("12_kiyhm")
 
 [node name="invBkg" type="PanelContainer" parent="Player UI"]
-visible = false
 custom_minimum_size = Vector2(600, 600)
 layout_mode = 1
 anchors_preset = 8
@@ -498,7 +497,7 @@ custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("23_qc1tv")
-theme_override_styles/panel = SubResource("StyleBoxFlat_xe83n")
+theme_override_styles/panel = ExtResource("24_xe83n")
 
 [node name="GridContainer" type="GridContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/InvSlotTest"]
 layout_mode = 1

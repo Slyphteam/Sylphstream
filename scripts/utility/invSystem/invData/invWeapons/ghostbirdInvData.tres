@@ -8,7 +8,7 @@
 script = ExtResource("1_fmv76")
 weapInfoSheet = ExtResource("3_y68ce")
 itemName = "Ghostbird"
-itemDesc = "An ingenious bullpup of Brazilian design. Trades damage for cyclic rate."
+itemDesc = "A Brazillian polymer bullpup named after the Potoo. High cyclic rate."
 itemIcon = ExtResource("1_vr73b")
 itemEntScene = ""
 itemTyp = ""

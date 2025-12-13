@@ -8,7 +8,7 @@
 script = ExtResource("1_q2fye")
 weapInfoSheet = ExtResource("2_55nek")
 itemName = "Khwarizmi"
-itemDesc = "A Persian rifle featuring a 3-round burst."
+itemDesc = "A Persian military bullpup, derived from a gun derived from an M16. Fires in bursts."
 itemIcon = ExtResource("1_55nek")
 itemEntScene = ""
 itemTyp = ""

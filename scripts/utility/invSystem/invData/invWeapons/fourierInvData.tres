@@ -8,7 +8,7 @@
 script = ExtResource("1_b0513")
 weapInfoSheet = ExtResource("2_m1sjm")
 itemName = "Fourier-9"
-itemDesc = "A cheap, not entirely robust carbine that places an emphasis on the importance of transmissions."
+itemDesc = "A cheap, not entirely robust carbine whose philosophy places an emphasis on transmissions."
 itemIcon = ExtResource("1_m1sjm")
 itemEntScene = ""
 itemTyp = ""

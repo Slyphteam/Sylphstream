@@ -67,7 +67,6 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Step 3: Add tooltips
 Step 4: I think now you can circle back around to adding inventory grid
 
 

@@ -1,4 +1,6 @@
+
 12/12:
+Adds tooltips! :)
 Massive overhaul of Invmanager class system. items are now stored as INVITEM,
 which can have WEAPINFO reference. This is in prep for tooltips and grid inventory
 and stims and consumables and all else that is good in the world
