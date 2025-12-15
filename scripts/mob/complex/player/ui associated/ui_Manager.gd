@@ -153,6 +153,7 @@ func updateMagReserve(mag, reserve):
 
 #===---===}>    Inventory stuff
 @onready var invContain = $invBkg
+@onready var invSlotsUI = $"invBkg/TabContainer/Inventory panel/VBoxContainer/InvSlotTest"
 
 func toggle_Inv():
 	#Should probably have sanity checks here
@@ -162,3 +163,5 @@ func toggle_Inv():
 		invContain.visible = true 
 	else:
 		invContain.visible = false #Open inventory
+	
+	invSlotsUI.update_Inven_Data()

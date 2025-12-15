@@ -67,6 +67,8 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+https://youtu.be/L0GXV3teW-0?si=uRaHTF_pqmsedOA_&t=989
+having issues with clicks actually registering on what we want them to. guh. pain in the ass.
 Step 4: I think now you can circle back around to adding inventory grid
 
 

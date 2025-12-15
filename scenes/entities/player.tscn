@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=33 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
@@ -28,6 +28,7 @@
 [ext_resource type="Theme" uid="uid://dqjaym6ysvovi" path="res://resources/UI/Styles/themes/inventory panel.tres" id="23_qc1tv"]
 [ext_resource type="StyleBox" uid="uid://daemxqyncvffi" path="res://resources/UI/Styles/stylebox/inventory div style.tres" id="24_xe83n"]
 [ext_resource type="Texture2D" uid="uid://d0wp5vcb8sc1i" path="res://resources/image resources/invenSlot_prototype.png" id="25_xe83n"]
+[ext_resource type="Script" uid="uid://va5e078j4pol" path="res://scripts/utility/invSystem/inv_slot_test.gd" id="29_yw3xw"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_oajfq"]
 length = 0.5
@@ -279,7 +280,6 @@ text = "Ipsum Lorem"
 horizontal_alignment = 2
 
 [node name="pauseContainer" type="PanelContainer" parent="Player UI"]
-visible = false
 z_index = 4
 custom_minimum_size = Vector2(600, 300)
 layout_mode = 1
@@ -336,6 +336,7 @@ position = Vector2(275, -83)
 texture = ExtResource("12_kiyhm")
 
 [node name="invBkg" type="PanelContainer" parent="Player UI"]
+visible = false
 custom_minimum_size = Vector2(600, 600)
 layout_mode = 1
 anchors_preset = 8
@@ -490,14 +491,16 @@ texture = ExtResource("25_xe83n")
 
 [node name="CheckButton" type="CheckButton" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
 layout_mode = 2
-text = "reminder that margins exist :)"
+text = "hi its me a test button :)"
 
-[node name="InvSlotTest" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+[node name="InvSlotTest" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer" node_paths=PackedStringArray("managerAcc")]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = ExtResource("24_xe83n")
+script = ExtResource("29_yw3xw")
+managerAcc = NodePath("../../../../../../camCage/came/weapon_rig")
 
 [node name="GridContainer" type="GridContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/InvSlotTest"]
 layout_mode = 1
@@ -506,12 +509,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 3
 
 [node name="Quests" type="PanelContainer" parent="Player UI/invBkg/TabContainer"]
 visible = false

@@ -1,12 +1,14 @@
-extends TextureRect
+class_name invenSlot extends TextureRect
 @export var curItem:INVENITEMPARENT
-@onready var ourIcon:TextureRect
+var defIcon: Texture2D# var defTexture
 
 func _ready() -> void:
+	defIcon = texture
 	update_info()
 
 func update_info():
-	if(curItem== null):
-		return
-	ourIcon.texture = curItem.itemIcon
+	if(curItem):
+		texture = curItem.itemIcon
+	else:
+		texture = defIcon
 	
