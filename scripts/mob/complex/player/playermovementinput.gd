@@ -58,7 +58,7 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 @onready var playerCam = $camCage/came
 @onready var playerShape = $playermodel
 @onready var playerCollider = $playercollidercapsule
-@onready var invenManager: PLAYERINVENMANAGER = $camCage/came/weapon_rig
+@onready var invenManager: PLAYERINVENMANAGER = $camCage/came/PlayerInvManager
 @onready var uiInfo = $"Player UI"
 @onready var healthHolder = $"Player Health"
 

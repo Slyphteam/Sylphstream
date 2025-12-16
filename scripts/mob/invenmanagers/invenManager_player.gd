@@ -18,7 +18,7 @@ var allSlots: Array #2D matrix of all five slots.
 var currentSlot: int = 1 ##Which of the 4 invslots are we on?
 var slotSelection: int = 0 ##Which index into said slot are we?
 
-var slotMaxes = 2 ##Will change once out of alpha, but for now max of 2 weapons per slot.
+var slotMaxes:Array[int] = [1,2,2,2,1] ##Array of all the slot maximums: hand, holster, chest, back, sheathe
 
 @export var itemsTest: Array[INVENITEMPARENT]
 
@@ -143,7 +143,7 @@ func update_Slot(slot:int, rounds):
 
 func add_InvWeap_To_Slot(invWeapon:INVWEP, slot:int)->bool:
 	var chosenSlot = allSlots[slot - 1]
-	if(chosenSlot.size() >= slotMaxes): #cant fit anything else into a slot
+	if(chosenSlot.size() >= slotMaxes[slot - 1]): #cant fit anything else into a slot
 		return false
 	
 	invWeapon.slotUsed = slot #assign our slot
@@ -259,7 +259,7 @@ func consume_item(thingToGive)->bool:
 
 func give_New_InvWeap(weapon:INVWEP, validSlots:Array[int])->bool:
 	for x in validSlots.size():
-		if(allSlots[validSlots[x] - 1].size() < slotMaxes): #we have room in the first of the desired slots.
+		if(allSlots[validSlots[x] - 1].size() < slotMaxes[validSlots[x] - 1]): #we have room in the first of the desired slots.
 			return add_InvWeap_To_Slot(weapon, validSlots[x])
 	return false
 

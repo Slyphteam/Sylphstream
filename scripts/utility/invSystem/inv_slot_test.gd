@@ -8,6 +8,7 @@ var currIndex:int ##Index we have dragged an item from, in case we can't put it 
 #follows the mouse
 
 func _process(delta)->void:
+	return
 	if(not has_node("ItemDrag")): #look for node called itemdrag
 		return
 	#make itemdrag node, if it exists, follow mouse
@@ -16,6 +17,7 @@ func _process(delta)->void:
 
 ##called when we open inventory, called when we change inventory. Expensive?
 func update_Inven_Data():
+	return
 	
 	#purge inventory
 	for slot in ourGrid.get_children():
@@ -29,6 +31,7 @@ func update_Inven_Data():
 		ourGrid.add_child(newSlot)
 
 func _input(event: InputEvent) -> void:
+	return
 	if(event.is_action_pressed("ui_click")):
 		#print(get_global_mouse_position())
 		#check here for if inventory is even open
@@ -62,6 +65,7 @@ func _input(event: InputEvent) -> void:
 				update_Inven_Data()
 
 func make_Drag_Item(thingy:INVENITEMPARENT):
+	return
 	curDraggedDat = thingy #assign the data
 	var itemDrag :TextureRect = TextureRect.new()
 	itemDrag.texture = curDraggedDat.itemIcon

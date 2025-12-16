@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=34 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
 [ext_resource type="Resource" uid="uid://1spaunb34an3" path="res://scripts/utility/invSystem/invData/invWeapons/handsInvData.tres" id="5_xe83n"]
 [ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/mob/damsystem/player_healthholder.gd" id="6_1yk18"]
+[ext_resource type="Resource" uid="uid://bgri72vk3tr6y" path="res://scripts/utility/invSystem/invData/invWeapons/ghostbirdInvData.tres" id="6_6gvyl"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
 [ext_resource type="Script" uid="uid://vgp60urmu5q7" path="res://scripts/utility/invSystem/parents/INVITEM_PARENT.gd" id="6_cwche"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/entities/playermodel.tscn" id="6_tgbf5"]
@@ -24,10 +25,10 @@
 [ext_resource type="Theme" uid="uid://dw7a1ri10mgkj" path="res://resources/UI/Styles/themes/inventory background.tres" id="19_2ngu4"]
 [ext_resource type="StyleBox" uid="uid://bee7asfke6wiv" path="res://resources/UI/Styles/stylebox/tab_stylebox_focus.tres" id="20_2ngu4"]
 [ext_resource type="StyleBox" uid="uid://8jqqrmfq2b0u" path="res://resources/UI/Styles/stylebox/tab_stylebox_hovered.tres" id="21_jv5ih"]
+[ext_resource type="Script" uid="uid://mqdfpronm7vb" path="res://scripts/utility/invSystem/inv_quartermaster.gd" id="22_6gvyl"]
 [ext_resource type="StyleBox" uid="uid://dd7vojv8f5q5l" path="res://resources/UI/Styles/stylebox/tab_stylebox_unselected.tres" id="22_n36er"]
 [ext_resource type="Theme" uid="uid://dqjaym6ysvovi" path="res://resources/UI/Styles/themes/inventory panel.tres" id="23_qc1tv"]
 [ext_resource type="StyleBox" uid="uid://daemxqyncvffi" path="res://resources/UI/Styles/stylebox/inventory div style.tres" id="24_xe83n"]
-[ext_resource type="Texture2D" uid="uid://d0wp5vcb8sc1i" path="res://resources/image resources/invenSlot_prototype.png" id="25_xe83n"]
 [ext_resource type="Script" uid="uid://va5e078j4pol" path="res://scripts/utility/invSystem/inv_slot_test.gd" id="29_yw3xw"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_oajfq"]
@@ -73,9 +74,10 @@ far = 500.0
 script = ExtResource("2_f4klr")
 player = NodePath("../..")
 
-[node name="weapon_rig" type="Node3D" parent="camCage/came"]
+[node name="PlayerInvManager" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
 ourHands = ExtResource("5_xe83n")
+secondStarter = ExtResource("6_6gvyl")
 itemsTest = Array[ExtResource("6_cwche")]([ExtResource("7_3hm5d"), null, ExtResource("8_yw3xw"), null, null, null])
 starterWeapon = ExtResource("9_3hm5d")
 
@@ -366,8 +368,10 @@ theme_override_styles/tab_hovered = ExtResource("21_jv5ih")
 theme_override_styles/tab_unselected = ExtResource("22_n36er")
 current_tab = 0
 
-[node name="Inventory panel" type="PanelContainer" parent="Player UI/invBkg/TabContainer"]
+[node name="Inventory panel" type="PanelContainer" parent="Player UI/invBkg/TabContainer" node_paths=PackedStringArray("invenManager")]
 layout_mode = 2
+script = ExtResource("22_6gvyl")
+invenManager = NodePath("../../../../camCage/came/PlayerInvManager")
 metadata/_tab_index = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel"]
@@ -389,7 +393,7 @@ size_flags_vertical = 0
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = ExtResource("24_xe83n")
 
-[node name="InvenGrid" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots"]
+[node name="WeapGrid" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
 anchors_preset = 7
@@ -404,90 +408,20 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Slot1" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid"]
+[node name="Slot1" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/WeapGrid"]
 layout_mode = 2
 
-[node name="Slot11" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot1"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot1/Slot11"]
-position = Vector2(30, 0)
-texture = ExtResource("25_xe83n")
-
-[node name="Slot2" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid"]
+[node name="Slot2" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/WeapGrid"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Slot21" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot2"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot2/Slot21"]
-position = Vector2(30, 0)
-texture = ExtResource("25_xe83n")
-
-[node name="Slot22" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot2"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot2/Slot22"]
-position = Vector2(30, 0)
-texture = ExtResource("25_xe83n")
-
-[node name="Slot3" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid"]
+[node name="Slot3" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/WeapGrid"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="slot31" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot3"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot3/slot31"]
-position = Vector2(30, 0)
-texture = ExtResource("25_xe83n")
-
-[node name="Slot32" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot3"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot3/Slot32"]
-position = Vector2(30, 0)
-texture = ExtResource("25_xe83n")
-
-[node name="Slot4" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid"]
+[node name="Slot4" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/WeapGrid"]
 layout_mode = 2
 size_flags_vertical = 4
-
-[node name="Slot41" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot4"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot4/Slot41"]
-position = Vector2(30, 0)
-texture = ExtResource("25_xe83n")
-
-[node name="Slot42" type="Control" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot4"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InvenSlotPrototype3" type="Sprite2D" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/WeaponSlots/InvenGrid/Slot4/Slot42"]
-position = Vector2(30, 0)
-texture = ExtResource("25_xe83n")
 
 [node name="CheckButton" type="CheckButton" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
 layout_mode = 2
@@ -500,7 +434,7 @@ size_flags_vertical = 0
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = ExtResource("24_xe83n")
 script = ExtResource("29_yw3xw")
-managerAcc = NodePath("../../../../../../camCage/came/weapon_rig")
+managerAcc = NodePath("../../../../../../camCage/came/PlayerInvManager")
 
 [node name="GridContainer" type="GridContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/InvSlotTest"]
 layout_mode = 1

@@ -1,6 +1,8 @@
 class_name invenSlot extends TextureRect
 @export var curItem:INVENITEMPARENT
 var defIcon: Texture2D# var defTexture
+var slotTyp:String #"WEP", ...
+var slotInd:int  = -1##Which slot do we belong to, if any?
 
 func _ready() -> void:
 	defIcon = texture
@@ -9,6 +11,7 @@ func _ready() -> void:
 func update_info():
 	if(curItem):
 		texture = curItem.itemIcon
+		#print("Item received: ",curItem.itemName)
 	else:
 		texture = defIcon
 	

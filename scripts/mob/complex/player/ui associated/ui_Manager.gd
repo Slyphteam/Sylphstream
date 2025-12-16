@@ -7,7 +7,9 @@ extends Control
 func _input(event):
 	if(Input.is_action_just_pressed("ui_inven")):
 		toggle_Inv()
-		
+	
+	if Input.is_action_just_pressed("ui_reload"):
+		quarterMaster.update_Inven_Data()
 
 
 func toggle_Mouse():
@@ -154,14 +156,18 @@ func updateMagReserve(mag, reserve):
 #===---===}>    Inventory stuff
 @onready var invContain = $invBkg
 @onready var invSlotsUI = $"invBkg/TabContainer/Inventory panel/VBoxContainer/InvSlotTest"
-
+@onready var quarterMaster = $"invBkg/TabContainer/Inventory panel"
 func toggle_Inv():
 	#Should probably have sanity checks here
 	toggle_Mouse()
 	#toggle_Health_And_Ammo()
 	if(invContain.visible == false): #closes inventory
 		invContain.visible = true 
+		quarterMaster.currentlyOpen = true
+		quarterMaster.update_Inven_Data()
+		
 	else:
 		invContain.visible = false #Open inventory
+		quarterMaster.currentlyOpen = false
 	
-	invSlotsUI.update_Inven_Data()
+	#invSlotsUI.update_Inven_Data()

@@ -4,4 +4,4 @@ class_name INVENITEMPARENT extends Resource
 @export var itemDesc:String = "Generic Description"
 @export var itemIcon:Texture2D 
 @export var itemEntScene:String
-@export var itemTyp:String = "" #INTEG for undropp
+@export var itemFlags:Array = []
