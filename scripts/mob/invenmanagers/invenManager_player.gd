@@ -51,12 +51,28 @@ func _ready():
 	heldAmmunition.ammoShotgun = 0
 	recalcWeight()
 	
+	#Begin with slot init
 	allSlots.resize(5)
 	
-	#Populate our inventory with the slotarrays
+	slot1.resize(slotMaxes[0])
+	slot1[0] = ourHands #slightly weird way but it ensures that everything is airtight
+	allSlots[0] = slot1
+	
+	#Populate the remaining arrays
+	for x in range(slotMaxes[1]): #hips
+		slot2.append(null)
 	allSlots[1] = slot2
+	
+	for x in range(slotMaxes[2]): #chest
+		slot3.append(null)
 	allSlots[2] = slot3
+	
+	for x in range(slotMaxes[3]): #back
+		slot4.append(null)
 	allSlots[3] = slot4
+	
+	for x in range(slotMaxes[4]): #sheathe
+		slot5.append(null)
 	allSlots[4] = slot5
 	
 	##Add 2 starter pistols
@@ -65,23 +81,14 @@ func _ready():
 	if(secondStarter):
 		add_InvWeap_To_Slot(secondStarter, starterWeapon.weapInfoSheet.selections[0])
 	
-	#load our hands and override weaptype
-	#Manually add our hands to slot1
-	#var theHands = INVWEP.new()
-	#theHands.slotUsed = 1
-	#theHands.theWeapon = ourHands
-	#theHands.roundInside  = 0
-	slot1.resize(1)
-	slot1[0] = ourHands #slightly weird way but it ensures that everything is airtight
-	allSlots[0] = slot1
-	
+	#always load hands to start
 	load_Wep(ourHands.weapInfoSheet)
 	await get_tree().create_timer(0.1).timeout #wait one tenth of a second because it takes a bit longer for ui to init
 	uiInfo.hide_Ammo_Elements()
 	
 
 #----------------Inventory management functions
-
+##Create an active weapon instance from a wepinfo datasheet
 func load_Wep(wep2Load: WEAP_INFO):
 	super(wep2Load)
 	
@@ -140,11 +147,22 @@ func update_Slot(slot:int, rounds):
 		#if(weapType == 1):
 			#slot2[slotSelection].roundInside = rounds
 	#nothing else to do...
-
+##Function that adds an invenitem to a selected slot. 
 func add_InvWeap_To_Slot(invWeapon:INVWEP, slot:int)->bool:
 	var chosenSlot = allSlots[slot - 1]
-	if(chosenSlot.size() >= slotMaxes[slot - 1]): #cant fit anything else into a slot
+	
+	#Check if we have any empty entries in our selected array
+	var hasEmpty = false
+	var emptyInd = 0
+	for curItem in allSlots[slot - 1]:
+		if(curItem == null):
+			hasEmpty = true
+			break #We want the FIRST empty slot, not the last one
+		emptyInd +=1
+	
+	if(hasEmpty == false):
 		return false
+	
 	
 	invWeapon.slotUsed = slot #assign our slot
 	
@@ -153,9 +171,9 @@ func add_InvWeap_To_Slot(invWeapon:INVWEP, slot:int)->bool:
 	else:
 		invWeapon.roundInside  = 0
 	
-	chosenSlot.append(invWeapon)
-	#chosenSlot.resize(chosenSlot.size() + 1)
-	#chosenSlot[chosenSlot.size() - 1] = invWeapon
+	
+	
+	chosenSlot[emptyInd] = invWeapon
 	
 	print("Added ", invWeapon.itemName, " to index ", (chosenSlot.size() - 1), " of slot ", slot)
 	
@@ -198,7 +216,12 @@ func add_InvWeap_To_Slot(invWeapon:INVWEP, slot:int)->bool:
 func change_To_Slot(newSlot: int):
 	
 	var selectedArr = allSlots[newSlot - 1]
-	if(selectedArr.size() == 0): #if we cant even switch, dont bother
+	#Ensure the slot we're loading to is not in fact vacant
+	var checkEmpty = false
+	for curr in selectedArr:
+		if(curr != null):
+			checkEmpty = true
+	if(checkEmpty == false):
 		return
 	
 	if(user.aiming): #unaim if we are ADS
@@ -212,42 +235,53 @@ func change_To_Slot(newSlot: int):
 	if(weapType == 0 && currentSlot != 1): #something is fucky
 		Globalscript.raise_Panic_Exception("A hands weapon is somehow trying to be loaded in the wrong slot!")
 	
-	if(weapType == 1): #we have a gun, update to inventory before putting away
+	if(weapType == 1): #we are presently holding a gun, update to inventory before putting away
 		update_Slot(currentSlot, activeItem.capacity)
 	
-
+	if(currentSlot != newSlot):
+		slotSelection = -1
 	
-	if(currentSlot == newSlot): #if we're staying in the same slot, index
-		if(selectedArr.size() == 1): # dont bother
-			currentSlot = newSlot
-			return
-
+	var nextWeap:INVWEP
+	slotSelection +=1 #already index one into the next slot
+	for x in range(selectedArr.size()):
+		if(slotSelection >= selectedArr.size()): #loop to start
+			slotSelection = 0
+		nextWeap = selectedArr[slotSelection]
+		if(nextWeap != null): #we have what we want
+			break
+		slotSelection +=1 #keep going
 		
-		slotSelection +=1
-		if(slotSelection >= selectedArr.size()):
-			slotSelection = 0 #loop back to start
-	else: 
-		slotSelection = 0 #if we aren't, start at the top
+	
+	
+	#old slotSelection logic
+	#if(currentSlot == newSlot): #if we're staying in the same slot, index
+		#if(selectedArr.size() == 1): # dont bother
+			#currentSlot = newSlot
+			#return
+		#slotSelection +=1
+		#if(slotSelection >= selectedArr.size()):
+			#slotSelection = 0 #loop back to start
+	#else: 
+		#slotSelection = 0 #if we aren't, start at the top
 	
 	#since the load weapon script already deals with unloading stuff, we dont have to do too much
 	if(newSlot == 1): #special case for loading hands, hide UI
 		load_Wep(slot1[0].weapInfoSheet) #it's kind of bad practice to be directly accessing slot1 but its such a special case
 		uiInfo.hide_Ammo_Elements() 
 	else: #otherwise act normal
-		var drawnInvWep = selectedArr[slotSelection]
+		
 		#print(type_string(typeof(drawnInvWep)))
-		load_Wep(drawnInvWep.weapInfoSheet)
+		load_Wep(nextWeap.weapInfoSheet)
 		if(weapType == 1): #if we are loading a gun, dont assume we start with default ammo count
-			activeItem.capacity = drawnInvWep.roundInside
-			uiInfo.updateMag(drawnInvWep.roundInside)
+			activeItem.capacity = nextWeap.roundInside
+			uiInfo.updateMag(nextWeap.roundInside)
 		
 	#if we've gotten this far, update our active slot
 	currentSlot = newSlot
 
 func consume_item(thingToGive)->bool:
 	if(thingToGive is INVWEP):
-		give_New_InvWeap(thingToGive, thingToGive.weapInfoSheet.selections)
-		return true
+		return give_New_InvWeap(thingToGive, thingToGive.weapInfoSheet.selections)
 	elif(thingToGive is INVAMMBOX):
 		for x in range (thingToGive.arrLength):
 			#some kind of check for ammo weight would go here
@@ -258,9 +292,12 @@ func consume_item(thingToGive)->bool:
 	return false
 
 func give_New_InvWeap(weapon:INVWEP, validSlots:Array[int])->bool:
-	for x in validSlots.size():
-		if(allSlots[validSlots[x] - 1].size() < slotMaxes[validSlots[x] - 1]): #we have room in the first of the desired slots.
-			return add_InvWeap_To_Slot(weapon, validSlots[x])
+	var result:bool 
+	#poll through the slots our weapon wants to go into, return positive if there's any hits
+	for x in validSlots.size(): 
+		result = add_InvWeap_To_Slot(weapon.duplicate(), validSlots[x])
+		if(result):
+			return result
 	return false
 
 

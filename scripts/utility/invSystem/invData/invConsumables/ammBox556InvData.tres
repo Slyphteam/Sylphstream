@@ -12,5 +12,5 @@ itemName = "Light rifle ammo box"
 itemDesc = "A pair of plastic bullet carriages, totaling 20 intermediate rifle rounds. Lethal for their size."
 itemIcon = ExtResource("1_rd040")
 itemEntScene = ""
-itemTyp = ""
+itemFlags = []
 metadata/_custom_type_script = "uid://bofsmi7krun2i"

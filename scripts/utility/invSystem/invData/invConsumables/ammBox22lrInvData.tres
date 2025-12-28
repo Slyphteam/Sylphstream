@@ -12,5 +12,5 @@ itemName = "22 Longrifle Ammo Box"
 itemDesc = "A plastic tray containing 50 rimfire rounds. Cheap and diminutive. "
 itemIcon = ExtResource("1_icwoc")
 itemEntScene = ""
-itemTyp = ""
+itemFlags = []
 metadata/_custom_type_script = "uid://bofsmi7krun2i"

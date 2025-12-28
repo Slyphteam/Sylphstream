@@ -60,10 +60,19 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if(event.is_action_pressed("ui_click")):
+		return
 		#print(get_global_mouse_position())
 		#check here for if inventory is even open
 		var clickedNode = get_viewport().gui_get_hovered_control()
 		if(clickedNode is invenSlot):
+			
+			if(clickedNode.curItem == null):
+				return
+			
+			if(clickedNode.slotTyp == "WEP"): #handle weapon logic
+				print("bazinga")
+		
+		##Half working old code
 			heldInvIndex.x = clickedNode.slotInd #Get the slot we're in, TODO UNTESTED
 			heldInvIndex.y = clickedNode.get_index()
 			print("Clicked item: ",heldInvIndex)
@@ -97,7 +106,8 @@ func _input(event: InputEvent) -> void:
 			invenManager.allSlots[heldInvIndex.x + 1][heldInvIndex.y] = null
 			update_Inven_Data()
 			
-			
+	
+	##Old old stuff
 	#if(event.is_action_released("ui_click")):
 		#if(has_node("ItemDrag")):
 			#var hovNode = get_viewport().gui_get_hovered_control()
