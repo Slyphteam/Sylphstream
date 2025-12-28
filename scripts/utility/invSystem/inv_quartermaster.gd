@@ -31,7 +31,7 @@ func populate_Inven_Data():
 			newSlot.slotTyp = "WEP"
 			wepSlotRefs[x-1].add_child(newSlot)
 
-#Refreshes the inven icons with new data
+##Refreshes the inven icons with new data from invenmanager
 func update_Inven_Data():
 	for x in range(1,wepSlotMaxes.size()):
 		#print("Slot ", x)
@@ -52,49 +52,29 @@ func _process(delta)->void:
 	if(not has_node("ItemDrag")): #look for node called itemdrag
 		return
 	#make itemdrag node, if it exists, follow mouse
-	get_node("ItemDrag").global_position = get_global_mouse_position() - get_node("ItemDrag").size /2
+	get_node("ItemDrag").global_position = get_viewport().get_mouse_position() - Vector2(30,30)
 
 
 func _input(event: InputEvent) -> void:
-	if(not currentlyOpen):
-		return
+	
 	
 	if(event.is_action_pressed("ui_click")):
-		return
+		if(not currentlyOpen):
+			return
 		#print(get_global_mouse_position())
 		#check here for if inventory is even open
 		var clickedNode = get_viewport().gui_get_hovered_control()
-		if(clickedNode is invenSlot):
+		if(clickedNode is invenSlot && clickedNode.curItem != null):
 			
-			if(clickedNode.curItem == null):
-				return
+			var invenItem:INVENITEMPARENT #= invenManager.allSlots[heldInvIndex.x + 1][heldInvIndex.y]
+			#var guiItem = wepSlotRefs[heldInvIndex.x].get_children()[heldInvIndex.y].curItem
 			
 			if(clickedNode.slotTyp == "WEP"): #handle weapon logic
-				print("bazinga")
-		
-		##Half working old code
-			heldInvIndex.x = clickedNode.slotInd #Get the slot we're in, TODO UNTESTED
-			heldInvIndex.y = clickedNode.get_index()
-			print("Clicked item: ",heldInvIndex)
-			#currIndex = clickedNode.get_index() #get order assigned by the grid controller
-			#this next part relies on the inventories and gui having same data, which should always happen,
-			#but I'm still iffy on trusting like that
-			
-			#curse me and my dynamic ass arrays
-			if(invenManager.allSlots[heldInvIndex.x + 1].size() < heldInvIndex.y+1 ):
-				#we can't index into the array, abort
-				return
-				#print("wuh oh")
-			var invenItem = invenManager.allSlots[heldInvIndex.x + 1][heldInvIndex.y]
-			var guiItem = wepSlotRefs[heldInvIndex.x].get_children()[heldInvIndex.y].curItem
-			if(invenItem != guiItem):
-				Globalscript.raise_Panic_Exception("Attempted to click-and-drag from inventory with INCONSISTENT data!!!")
-			
-			#in theory there should never be a null in either because null values would mean
-			#we cant index into the invenmanager array, handled above, but because I want to, fuck it
-			if(invenItem == null || guiItem == null):#due to prev this means they both must be
-				return
-			
+				heldInvIndex.x = clickedNode.slotInd #Get the slot we're in, TODO UNTESTED
+				heldInvIndex.y = clickedNode.get_index()
+				invenItem = invenManager.allSlots[heldInvIndex.x + 1][heldInvIndex.y]
+				#print("Clicked item: ",heldInvIndex)
+				
 			#create drag item. no idea why wed want this to be a unique function that seems poorly thought out
 			heldInvDat = invenItem #assign the data
 			var itemDrag :TextureRect = TextureRect.new()
@@ -102,33 +82,41 @@ func _input(event: InputEvent) -> void:
 			itemDrag.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			itemDrag.z_index = 3 #gotta set z index
 			itemDrag.name = "ItemDrag"
+			#print(itemDrag.stretch_mode )
+			itemDrag.stretch_mode = 2 
 			add_child(itemDrag)
-			invenManager.allSlots[heldInvIndex.x + 1][heldInvIndex.y] = null
+			#invenManager.allSlots[heldInvIndex.x + 1][heldInvIndex.y] = null
 			update_Inven_Data()
-			
 	
-	##Old old stuff
-	#if(event.is_action_released("ui_click")):
-		#if(has_node("ItemDrag")):
-			#var hovNode = get_viewport().gui_get_hovered_control()
-			#if(hovNode is invenSlot):
-				#var hovInd = hovNode.get_index()
-				#if(managerAcc.itemsTest[hovInd] == null):
-					#managerAcc.itemsTest[hovInd] = curDraggedDat
-				#else: #abort procedure
-					#managerAcc.itemsTest[currIndex] = curDraggedDat
-				##delete dragitem
-				#get_node("ItemDrag").queue_free()
-				#curDraggedDat = null
-				#currIndex = -1
-				#update_Inven_Data()
-			#else: #also delete it
-				#managerAcc.itemsTest[currIndex] = curDraggedDat
-				#get_node("ItemDrag").queue_free()
-				#curDraggedDat = null
-				#currIndex = -1
-				#update_Inven_Data()
+	if(event.is_action_released("ui_click")):
+		if(!has_node("ItemDrag")):
+			return
+		
+		var hovNode = get_viewport().gui_get_hovered_control()
+		if(hovNode is invenSlot && hovNode.curItem == null):
+			if(check_Typ_Compatible(hovNode.slotTyp, heldInvDat.itemTyp)):
+				
+				#logic for weapons
+				if(hovNode.slotTyp == "WEP"):
+					#check slot eligibility
+					var eligibleSlots = heldInvDat.weapInfoSheet.selections  #check slot eligibility
+					if(eligibleSlots.has(hovNode.slotInd + 1)):
+						var result = invenManager.remove_Invwep(heldInvIndex.x + 1, heldInvIndex.y)
+						if(result != heldInvDat):
+							Globalscript.raise_Panic_Exception("Held inven data and removed invweapon were not the same!")
+						#update the invenmanager to re-add the object at the new coords
+						invenManager.allSlots[hovNode.slotInd + 1][hovNode.get_index()] = result
+						hovNode.curItem = result
+				
+		#no matter what happens, clean up itemDrag if the mouse is released
+		get_node("ItemDrag").queue_free()
+		heldInvDat = null
+		update_Inven_Data()
 
-#func make_Drag_Item(thingy:INVENITEMPARENT):
-	
-	
+##Returns whether typItem can be inserted into typSlot.
+func check_Typ_Compatible(typSlot, typItem):
+	if(typSlot == typItem):
+		return true
+	if(typSlot == "GEN"):
+		return true
+	return false

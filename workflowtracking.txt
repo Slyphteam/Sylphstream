@@ -66,17 +66,9 @@ Other places are as follow:
 -----------\
 =======+=======> CURRENT DEV CYCLE:
 -----------/
-did half of the porting inventest functionality to quarter master before realizing that:
-	1) i wasnt coding for upward growth,
-	2) shit was a bigger undertaking than i thought,
-	3) I still had the clunky ass stuff going on with invenmanager array sizes
-	4) it was fucking finals
-
-Before you go any further with UI, change INVENMANGER to no longer use dynamic array sizes, god damn.
-you're going to have to anyway with click/drag functionality. may as well do it sooner than later.
 
 Once the proof-of-concept Sylphs work go back through the Sylph mind script and re-organize all the 
-inputs to be less atrocious
+inputs to be less atrocious?
 
 Look into Sylphs still seeming to shoot a LOT lower than they're aiming. Some kind of offset with their head?
 Doesn't seem like it. Could be an issue, maybe with their azimuth? They seem averse to aiming just a little low.

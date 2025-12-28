@@ -5,3 +5,4 @@ class_name INVENITEMPARENT extends Resource
 @export var itemIcon:Texture2D 
 @export var itemEntScene:String
 @export var itemFlags:Array = []
+@export var itemTyp = "GEN"

@@ -1,4 +1,5 @@
-
+12/28:
+Heavy changes to how weapons are stored in invenmanager, weapons can now be shuffled
 12/12:
 Adds tooltips! :)
 Massive overhaul of Invmanager class system. items are now stored as INVITEM,

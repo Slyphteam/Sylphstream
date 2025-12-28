@@ -18,7 +18,7 @@ var allSlots: Array #2D matrix of all five slots.
 var currentSlot: int = 1 ##Which of the 4 invslots are we on?
 var slotSelection: int = 0 ##Which index into said slot are we?
 
-var slotMaxes:Array[int] = [1,2,2,2,1] ##Array of all the slot maximums: hand, holster, chest, back, sheathe
+var slotMaxes:Array[int] = [1,2,3,2,1] ##Array of all the slot maximums: hand, holster, chest, back, sheathe
 
 @export var itemsTest: Array[INVENITEMPARENT]
 
@@ -171,8 +171,6 @@ func add_InvWeap_To_Slot(invWeapon:INVWEP, slot:int)->bool:
 	else:
 		invWeapon.roundInside  = 0
 	
-	
-	
 	chosenSlot[emptyInd] = invWeapon
 	
 	print("Added ", invWeapon.itemName, " to index ", (chosenSlot.size() - 1), " of slot ", slot)
@@ -295,11 +293,27 @@ func give_New_InvWeap(weapon:INVWEP, validSlots:Array[int])->bool:
 	var result:bool 
 	#poll through the slots our weapon wants to go into, return positive if there's any hits
 	for x in validSlots.size(): 
-		result = add_InvWeap_To_Slot(weapon.duplicate(), validSlots[x])
+		result = add_InvWeap_To_Slot(weapon, validSlots[x])
 		if(result):
 			return result
 	return false
 
+##Removes an invenweapon from the specified slot cordinates, cleans up the rest of the arrays, returns removed item. ONLY USE THIS IF YOU KNOW WHAT YOU'RE DOING.
+func remove_Invwep(theSlot, theIndex)->INVWEP:
+	var theWep = allSlots[theSlot][theIndex]#.itemName #since stuff is getting nulled we'll use names
+	allSlots[theSlot][theIndex] = null
+	
+	
+	
+	#goes through every other index in the slot
+	#print(slotMaxes[theSlot] - theIndex -1)
+	var nextItem
+	for x in range(slotMaxes[theSlot] - theIndex -1):
+		nextItem = allSlots[theSlot][x+theIndex+1]
+		if(nextItem): #if there's an item ahead, move it up a slot
+			allSlots[theSlot][x+theIndex+1] = null
+			allSlots[theSlot][x+theIndex] = nextItem
+	return theWep
 
 ##Adds a new weapon to an inventory. Differs from add_To_Slot in that it handles slot and capacity logic.
 #func give_New_Weapon(weapon: WEAP_INFO, validSlots: Array[int])->bool:

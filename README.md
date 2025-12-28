@@ -32,6 +32,8 @@ Rudimentary player inventory
 
 ~~Stochastic Gradient Descent~~ (Implemented, scrapped as not worth pursuit)
 
+Drag-and-drop Inventory system
+
 Player UI
 
 Modular health system
@@ -73,8 +75,6 @@ Scrolling text chat
 Quickstim system
 
 Cast abilities (stutter, augur, freeze, surge)
-
-Drag-and-drop Inventory system
 
 NPC dialogue system
 
