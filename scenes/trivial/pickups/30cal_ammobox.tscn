@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1u5hj48ilnd0"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_3teig"]
+[ext_resource type="Resource" uid="uid://3xjpnepk4spv" path="res://scripts/utility/invSystem/invData/invConsumables/ammBox30calInvData.tres" id="2_runbi"]
+[ext_resource type="PackedScene" uid="uid://bnousc71yyvke" path="res://models/glbs and textures/pickups/thirtycal stripperclip.glb" id="3_3teig"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_er4cl"]
+size = Vector3(0.309326, 0.0687866, 0.392039)
+
+[node name="30calBox" type="Node3D"]
+
+[node name="thirtycal stripperclip" parent="." instance=ExtResource("3_3teig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.155)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="thirtycal stripperclip" groups=["player_interactible"]]
+transform = Transform3D(1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, 0, 0, -0.155)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_3teig")
+thingToGive = ExtResource("2_runbi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="thirtycal stripperclip/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.043, 0, -0.002)
+shape = SubResource("BoxShape3D_er4cl")

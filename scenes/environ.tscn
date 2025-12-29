@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=59 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="1_os2cn"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="4_2yn2u"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b0ggseuf34obn" path="res://scenes/trivial/pickups/rifle_ammobox.tscn" id="10_n8uj3"]
 [ext_resource type="PackedScene" uid="uid://dnr004t0lyqd1" path="res://scenes/trivial/pickups/rimfire_ammobox.tscn" id="11_ttle0"]
 [ext_resource type="PackedScene" uid="uid://oh4304fixaus" path="res://scenes/entities/archonscene.tscn" id="12_c4nfh"]
+[ext_resource type="PackedScene" uid="uid://d1u5hj48ilnd0" path="res://scenes/trivial/pickups/30cal_ammobox.tscn" id="12_vnjd3"]
 [ext_resource type="PackedScene" uid="uid://d1ygjo8v5olr8" path="res://scenes/trivial/pickups/ishim pickup.tscn" id="12_ydxer"]
 [ext_resource type="PackedScene" uid="uid://4g032mafbnwj" path="res://scenes/trivial/pickups/affine pickup.tscn" id="14_os2cn"]
 [ext_resource type="PackedScene" uid="uid://u5vg53ed723w" path="res://scenes/trivial/pickups/bergther pickup.tscn" id="15_by8b2"]
@@ -414,6 +415,15 @@ shape = SubResource("ConvexPolygonShape3D_aggi3")
 
 [node name="rifle_ammobox" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
 transform = Transform3D(0.25887, 0, -0.965912, 0, 1, 0, 0.965912, 0, 0.25887, 0.0427322, 0.78372, -4.47123)
+
+[node name="30calBox3" parent="Environment/Range" instance=ExtResource("12_vnjd3")]
+transform = Transform3D(0.045066, -0.0492519, 0.997769, -0.325904, 0.943414, 0.0612889, -0.944329, -0.327939, 0.0264647, -0.156837, 0.801409, 4.2674)
+
+[node name="30calBox2" parent="Environment/Range" instance=ExtResource("12_vnjd3")]
+transform = Transform3D(-0.940224, -0.175284, 0.291985, -0.161153, 0.984302, 0.0719644, -0.300016, 0.0206084, -0.953712, -0.222202, 0.79364, 4.51888)
+
+[node name="30calBox" parent="Environment/Range" instance=ExtResource("12_vnjd3")]
+transform = Transform3D(-0.722062, 0.0399088, -0.690676, 0, 0.998335, 0.057686, 0.691828, 0.0416529, -0.72086, -0.0384712, 0.762882, 4.6083)
 
 [node name="rifle_ammobox2" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
 transform = Transform3D(0.0525629, 0, -0.998618, 0, 1, 0, 0.998618, 0, 0.0525629, -0.136368, 0.7905, -4.72606)
