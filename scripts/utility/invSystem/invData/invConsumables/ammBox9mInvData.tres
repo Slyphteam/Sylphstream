@@ -13,4 +13,5 @@ itemDesc = "A cardboard box containing 50 parabellum cartridges. Popular in pist
 itemIcon = ExtResource("1_1ispf")
 itemEntScene = ""
 itemFlags = []
+itemTyp = "GEN"
 metadata/_custom_type_script = "uid://bofsmi7krun2i"

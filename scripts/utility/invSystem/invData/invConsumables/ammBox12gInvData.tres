@@ -13,4 +13,5 @@ itemDesc = "A handful of 10 shotgun shells, bound with a rubber band. Expensive,
 itemIcon = ExtResource("1_umooo")
 itemEntScene = ""
 itemFlags = []
+itemTyp = "GEN"
 metadata/_custom_type_script = "uid://bofsmi7krun2i"

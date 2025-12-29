@@ -93,8 +93,7 @@ the constraining effect it has. Either way, it's worth looking into to ensure ev
 Players should take more time to get up to speed. Also revert the friction to default values so we can bhop again.
 ADD BULLET VARIANCE!!! Just make it a toggle!
 Autolean when ADS + ADS makes the camera zoom in
-Change degubby reload and fire sounds to be distinctly not gunshots. cmon. no excuses.
-Watch inventory system video. Make simple shitty top bar for player inv and placeholder one for stims
+Make simple shitty top bar for player inv and placeholder one for stims
 
 Look into the pause menu jank. I don't like it being in the globalscript. Can you make ui_manager an always process
 thingy and then move the functionality to there?

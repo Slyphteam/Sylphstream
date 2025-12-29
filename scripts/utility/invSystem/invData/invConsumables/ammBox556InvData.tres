@@ -13,4 +13,5 @@ itemDesc = "A pair of plastic bullet carriages, totaling 20 intermediate rifle r
 itemIcon = ExtResource("1_rd040")
 itemEntScene = ""
 itemFlags = []
+itemTyp = "GEN"
 metadata/_custom_type_script = "uid://bofsmi7krun2i"

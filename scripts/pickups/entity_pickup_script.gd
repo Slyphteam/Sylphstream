@@ -1,4 +1,4 @@
-extends RAYCASTREACTIVE
+class_name PICKUPABLE extends RAYCASTREACTIVE
 @export var thingToGive: INVENITEMPARENT #CHANGE THIS TO INVWEP
 
 func interact_By_Player(player):

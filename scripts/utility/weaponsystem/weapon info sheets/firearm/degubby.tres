@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://d0r7hvlt81jkh"]
 
-[ext_resource type="AudioStream" uid="uid://b6313qn0yic35" path="res://sounds/gunshots/shotgun.mp3" id="1_f1eyr"]
+[ext_resource type="AudioStream" uid="uid://d0gb7xwn5sixe" path="res://sounds/gunshots/degubbyShot.mp3" id="1_f1eyr"]
 [ext_resource type="ArrayMesh" uid="uid://vw6edrkqrxou" path="res://models/new models and meshes/degubby N mesh.res" id="2_3bjd2"]
-[ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="3_j7h25"]
+[ext_resource type="AudioStream" uid="uid://bbutn7n4jxwqx" path="res://sounds/reloads/degubbyReload.mp3" id="3_3bjd2"]
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearm_resource.gd" id="4_iqi25"]
 
 [resource]
 script = ExtResource("4_iqi25")
 gunshot = ExtResource("1_f1eyr")
-reload = ExtResource("3_j7h25")
+reload = ExtResource("3_3bjd2")
 shotCooldown = 10
 chambering = 1
-maxCapacity = 10
-reloadtime = 2.5
+maxCapacity = 6
+reloadtime = 4.0
 aimBonus = 10.0
 maxRecoil = 30.0
 minRecoil = 10.0
