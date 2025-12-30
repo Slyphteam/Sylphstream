@@ -43,7 +43,7 @@ func load_Wep(wep2Load:WEAP_INFO):
 	#Decide what script is going to handle the weapon behavior
 	if(wep2Load is FIREARM_INFO):
 		backupOffset = wep2Load.position.x
-		if(wep2Load.shotgunMode):
+		if(wep2Load.shotgunModeOverride):
 			activeItem = SHOTGUNINSTANCE.new()
 			activeItem.invManager = self
 			activeItem.load_Weapon(wep2Load)

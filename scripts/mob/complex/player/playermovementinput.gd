@@ -149,9 +149,10 @@ func do_Hover_Raycast():
 			var dist = (orig - castLocation).length()
 			if(dist<= 2.5):
 				if(hitObject is PICKUPABLE):
-					uiInfo.doTooltipText(hitObject.thingToGive.itemName, hitObject.thingToGive.itemDesc, "E to pick up")
-					if(Input.is_action_just_pressed("ui_interact")):
-						var interactResult = hitObject.interact_By_Player(self)
+					uiInfo.doTooltipText(hitObject.thingToGive.itemName, hitObject.thingToGive.itemDesc, hitObject.thingToGive.itemHint)
+				if(Input.is_action_just_pressed("ui_interact")):
+					var interactResult = hitObject.interact_By_Player(self)
+				
 	else:
 		uiInfo.doTooltipText(" "," "," ")
 

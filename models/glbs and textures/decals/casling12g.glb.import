@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cn67eojk4t1ga"
-path="res://.godot/imported/sphere.glb-a2d6fe482f7debcb2446deb483252a5a.scn"
+uid="uid://bg573j6nsi1f8"
+path="res://.godot/imported/casling12g.glb-63e96382ab357b743be7fc98458b64c2.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/props/sphere.glb"
-dest_files=["res://.godot/imported/sphere.glb-a2d6fe482f7debcb2446deb483252a5a.scn"]
+source_file="res://models/glbs and textures/decals/casling12g.glb"
+dest_files=["res://.godot/imported/casling12g.glb-63e96382ab357b743be7fc98458b64c2.scn"]
 
 [params]
 
@@ -34,13 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"sphere_Sphere": {
+"casling12g_Cube_022": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://models/mesh models/rawShapes/sphereShape.res"
+"save_to_file/path": "res://models/glbs and textures/decals/12gMesh.res"
 }
 }
 }

@@ -314,6 +314,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_41a6k")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Boundaries/Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00808, 0)
+collision_layer = 17
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Boundaries/Floor/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_41a6k")
@@ -503,6 +505,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02869e-06, 0, -46.4111)
 mesh = SubResource("BoxMesh_2yn2u")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall/Divider wall"]
+collision_layer = 17
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/Divider wall/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_ydxer")
@@ -523,6 +527,8 @@ mesh = SubResource("PrismMesh_d6ln1")
 surface_material_override/0 = ExtResource("6_m2myf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall/half 1 ramp"]
+collision_layer = 17
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/half 1 ramp/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_eqt0i")
@@ -533,11 +539,15 @@ mesh = SubResource("PrismMesh_d6ln1")
 surface_material_override/0 = ExtResource("6_m2myf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall/half 1 ramp2"]
+collision_layer = 17
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/half 1 ramp2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_2yn2u")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall"]
+collision_layer = 17
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_8f4e3")
