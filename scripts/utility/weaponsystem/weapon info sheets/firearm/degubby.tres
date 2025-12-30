@@ -3,10 +3,10 @@
 [ext_resource type="AudioStream" uid="uid://d0gb7xwn5sixe" path="res://sounds/gunshots/degubbyShot.mp3" id="1_f1eyr"]
 [ext_resource type="ArrayMesh" uid="uid://vw6edrkqrxou" path="res://models/new models and meshes/degubby N mesh.res" id="2_3bjd2"]
 [ext_resource type="AudioStream" uid="uid://bbutn7n4jxwqx" path="res://sounds/reloads/degubbyReload.mp3" id="3_3bjd2"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearm_resource.gd" id="4_iqi25"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearminfo.gd" id="4_f1eyr"]
 
 [resource]
-script = ExtResource("4_iqi25")
+script = ExtResource("4_f1eyr")
 gunshot = ExtResource("1_f1eyr")
 reload = ExtResource("3_3bjd2")
 shotCooldown = 10
@@ -19,7 +19,11 @@ minRecoil = 10.0
 recoilAmount = 15.0
 viewpunchMult = 1.0
 recoverAmount = 0.8
-shotgunMode = false
+doCasing = true
+casingPath = "\"bazinga\""
+ejectOnReload = false
+casingDelay = 0.5
+shotgunModeOverride = false
 pelletAMT = 12
 burstMode = false
 burstAMT = 3

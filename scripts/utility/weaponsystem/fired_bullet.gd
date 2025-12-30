@@ -35,7 +35,7 @@ func take_Shot():
 func do_Hit_Decal(pos):
 	#USE NORMALS!!!!!
 	var tree = Globalscript.thePlayer.get_tree()
-	var hitdecalscene = preload("res://scenes/trivial/bullet_decal.tscn")
+	var hitdecalscene = preload("res://scenes/trivial/decals/bullet_decal.tscn")
 	var decalInstance = hitdecalscene.instantiate()
 	tree.root.add_child(decalInstance)
 	decalInstance.global_position = pos

@@ -76,17 +76,18 @@ func do_Shoot():
 	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * punchMult
 	invManager.applyViewpunch(drift, lift)
 
-func do_Hit_Decal(pos):
-	var managerTree = invManager.get_tree()
-	var hitdecalscene = preload("res://scenes/trivial/bullet_decal.tscn")
-	var decalInstance = hitdecalscene.instantiate()
-	managerTree.root.add_child(decalInstance)
-	decalInstance.global_position = pos
-	decalInstance.rotation = invManager.get_Rotation()
-	
-	decalInstance.rotation.z = randi_range(-2, 2)
-	await managerTree.create_timer(10).timeout
-	decalInstance.queue_free()
+##99% sure this isn't used ever on account of decals now belonging to fired bullet code
+#func do_Hit_Decal(pos):
+	#var managerTree = invManager.get_tree()
+	#var hitdecalscene = preload("res://scenes/trivial/decals/bullet_decal.tscn")
+	#var decalInstance = hitdecalscene.instantiate()
+	#managerTree.root.add_child(decalInstance)
+	#decalInstance.global_position = pos
+	#decalInstance.rotation = invManager.get_Rotation()
+	#
+	#decalInstance.rotation.z = randi_range(-2, 2)
+	#await managerTree.create_timer(10).timeout
+	#decalInstance.queue_free()
 
 # keep the function, since we use "shotguns" to mean guns that load one at a time as well
 func toggleADS():

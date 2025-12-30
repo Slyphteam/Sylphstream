@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7fuapjfoq1ld"]
+
+[ext_resource type="PackedScene" uid="uid://c7e8sby3mvbqo" path="res://models/glbs and textures/interactibles/button stand.glb" id="1_bqrco"]
+[ext_resource type="PackedScene" uid="uid://bk4h0tw6ifgij" path="res://models/glbs and textures/interactibles/buttonRedcone.glb" id="2_1ud4i"]
+[ext_resource type="Script" uid="uid://kqk8bai6e87f" path="res://scripts/trivial/mystery_button_behav.gd" id="3_tflyw"]
+[ext_resource type="PackedScene" uid="uid://b51t511qxml7u" path="res://models/glbs and textures/interactibles/buttonBlueball.glb" id="4_tflyw"]
+[ext_resource type="Script" uid="uid://u7tlil24wkw8" path="res://scripts/trivial/dev and debug/shapeButtonScript.gd" id="5_tflyw"]
+[ext_resource type="PackedScene" uid="uid://cak2gxq05pfl0" path="res://models/glbs and textures/interactibles/buttonCasing.glb" id="6_u0sjp"]
+[ext_resource type="ArrayMesh" uid="uid://coh52uafigpwq" path="res://models/mesh models/rawShapes/coneShape.res" id="7_yhgeq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_myqkj"]
+points = PackedVector3Array(0.3, 0, 0, -0.3, 0, 0, -0.3, 0.2, 0, 0.3, 0.2, 0, 0, 0, 0.3, 0, 0, -0.3, 0, 0.2, -0.3, 0, 0.2, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ud4i"]
+albedo_color = Color(0.604599, 0.318101, 0.981755, 1)
+metallic = 1.0
+metallic_specular = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_tflyw"]
+material = SubResource("StandardMaterial3D_1ud4i")
+size = Vector3(2, 0.5, 1.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hjww2"]
+points = PackedVector3Array(-1, -0.25, -0.75, -1, 0.25, -0.75, 1, -0.25, -0.75, -1, -0.25, 0.75, -1, 0.25, 0.75, 1, 0.25, -0.75, 1, -0.25, 0.75, 1, 0.25, 0.75)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nammc"]
+points = PackedVector3Array(-9.78708e-05, 0.75, -9.78708e-05, 0.249902, -0.25, -0.433046, -9.78708e-05, -0.25, -0.5, -0.250098, -0.25, -0.433046, -0.433046, -0.25, -0.250098, -0.5, -0.25, -9.78708e-05, -0.433046, -0.25, 0.249902, -0.250098, -0.25, 0.432948, -9.78708e-05, -0.25, 0.5, 0.249902, -0.25, 0.432948, 0.432948, -0.25, 0.249902, 0.5, -0.25, -9.78708e-05, 0.432948, -0.25, -0.250098)
+
+[node name="shapebuttons" type="Node3D"]
+
+[node name="button stand" parent="." instance=ExtResource("1_bqrco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.733, 0)
+
+[node name="buttonRedcone" parent="button stand" instance=ExtResource("2_1ud4i")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="button stand/buttonRedcone" groups=["hit_decal_blacklist", "player_interactible"]]
+transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0.828467, -2.28882e-05)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_tflyw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button stand/buttonRedcone/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 5.68434e-14, 1, 0, -0.00743026, -1.86947e-09)
+shape = SubResource("ConvexPolygonShape3D_myqkj")
+
+[node name="button stand2" parent="." instance=ExtResource("1_bqrco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.733, 0)
+
+[node name="buttonBlueball" parent="button stand2" instance=ExtResource("4_tflyw")]
+transform = Transform3D(0.565154, 0, -0.824985, 0, 1, 0, 0.824985, 0, 0.565154, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="button stand2/buttonBlueball" groups=["hit_decal_blacklist", "player_interactible"]]
+transform = Transform3D(0.565154, 1.24569e-07, -0.824985, 0, -1, -1.50996e-07, -0.824985, 8.5336e-08, -0.565154, -1.88947e-05, 0.828467, -1.29342e-05)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_tflyw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button stand2/buttonBlueball/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 5.68434e-14, 1, 0, -0.00743026, -1.86947e-09)
+shape = SubResource("ConvexPolygonShape3D_myqkj")
+
+[node name="dais" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223572, -1.70822)
+mesh = SubResource("BoxMesh_tflyw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="dais"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dais/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_hjww2")
+
+[node name="button stand3" parent="." instance=ExtResource("1_bqrco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1287, 0.733, -0.385254)
+
+[node name="buttonCasing" parent="button stand3" instance=ExtResource("6_u0sjp")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="button stand3/buttonCasing" groups=["hit_decal_blacklist", "player_interactible"]]
+transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0.828467, -2.28882e-05)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_tflyw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="button stand3/buttonCasing/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 5.68434e-14, 1, 0, -0.00743026, -1.86947e-09)
+shape = SubResource("ConvexPolygonShape3D_myqkj")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11286, 0.983887, -1.62686)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_nammc")
+
+[node name="ConeShape" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = ExtResource("7_yhgeq")
+skeleton = NodePath("../..")

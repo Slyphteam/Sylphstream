@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bfdes3a4k3bgw"
+path.s3tc="res://.godot/imported/buttonRedcone_buttonRedcone.png-5fbba2f29433d4d799693e8cf6c98a61.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "136aaab02ad8db3b80ef510fdf3e2e43"
+}
+
+[deps]
+
+source_file="res://models/glbs and textures/interactibles/buttonRedcone_buttonRedcone.png"
+dest_files=["res://.godot/imported/buttonRedcone_buttonRedcone.png-5fbba2f29433d4d799693e8cf6c98a61.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
