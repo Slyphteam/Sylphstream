@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0ojyvnsxlxyo"
-path.s3tc="res://.godot/imported/khwarizmi_Khwarizmi full.png-8cf7d6e2f487e00b3d1f11533509d1a2.s3tc.ctex"
+path.s3tc="res://.godot/imported/khwarizmi_Khwarizmi full.png-a1ed3b7810ef140d69e79208c65db836.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/glbs and textures/weps/khwarizmi_Khwarizmi full.png"
-dest_files=["res://.godot/imported/khwarizmi_Khwarizmi full.png-8cf7d6e2f487e00b3d1f11533509d1a2.s3tc.ctex"]
+source_file="res://models/glbs and textures/guns/khwarizmi_Khwarizmi full.png"
+dest_files=["res://.godot/imported/khwarizmi_Khwarizmi full.png-a1ed3b7810ef140d69e79208c65db836.s3tc.ctex"]
 
 [params]
 

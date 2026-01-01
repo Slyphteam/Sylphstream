@@ -6,7 +6,10 @@
 [resource]
 script = ExtResource("2_fc3pf")
 itemName = "Red Triangle"
+itemDesc = "A small red cone. Entirely useless?"
+itemHint = ""
 itemIcon = ExtResource("1_ejjur")
 itemEntScene = ""
-itemTyp = ""
+itemFlags = []
+itemTyp = "GEN"
 metadata/_custom_type_script = "uid://vgp60urmu5q7"

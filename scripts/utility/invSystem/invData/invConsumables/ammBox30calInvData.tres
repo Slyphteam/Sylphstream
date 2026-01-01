@@ -10,6 +10,7 @@ typeArr = Array[int]([3])
 amtArr = Array[int]([8])
 itemName = "30 cal stripper clip"
 itemDesc = "A stripper clip containing 8 high-power rifle rounds. Devastating, but not cheap."
+itemHint = ""
 itemIcon = ExtResource("1_n5b3o")
 itemEntScene = ""
 itemFlags = []

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://dml6uaueraa87"]
 
 [ext_resource type="AudioStream" uid="uid://b172helr4d31a" path="res://sounds/gunshots/bergther.mp3" id="1_2pesw"]
-[ext_resource type="ArrayMesh" uid="uid://dvepunob6blsv" path="res://models/new models and meshes/bergther N mesh.res" id="2_6xuhf"]
+[ext_resource type="ArrayMesh" uid="uid://c6mqdm7s3rxj5" path="res://models/glbs and textures/guns/bergtherMesh.res" id="2_2pesw"]
 [ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="3_kpfbf"]
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearminfo.gd" id="4_i240n"]
 
@@ -19,17 +19,20 @@ minRecoil = 20.0
 recoilAmount = 10.0
 viewpunchMult = 1.0
 recoverAmount = 0.3
-shotgunMode = false
+doCasing = false
+casingPath = ""
+ejectOnReload = false
+casingDelay = 0.5
+shotgunModeOverride = false
 pelletAMT = 12
 burstMode = false
 burstAMT = 3
 wepName = &"Bergther G5P"
 wepDesc = &""
-mesh = ExtResource("2_6xuhf")
+mesh = ExtResource("2_2pesw")
 drawTime = 1.0
 damage = 22
 selections = Array[int]([2])
 position = Vector3(0.6, -0.2, -0.6)
 rotation = Vector3(90, 90, 0)
-scale = Vector3(0.18, 0.042, 0.106)
 metadata/_custom_type_script = "uid://b24hqmuxy0hut"

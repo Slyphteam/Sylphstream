@@ -65,7 +65,7 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	weaponMesh.mesh = wepToLoad.mesh
 	weaponMesh.position = wepToLoad.position
 	weaponMesh.rotation_degrees = wepToLoad.rotation
-	weaponMesh.scale = wepToLoad.scale
+	#weaponMesh.scale = wepToLoad.scale
 	
 	gunshotPlayer = AudioStreamPlayer3D.new()
 	invManager.add_child(gunshotPlayer)

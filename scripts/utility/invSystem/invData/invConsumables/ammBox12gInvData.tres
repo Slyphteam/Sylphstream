@@ -10,6 +10,7 @@ typeArr = Array[int]([4])
 amtArr = Array[int]([10])
 itemName = "Shotgun shell bunch"
 itemDesc = "A handful of 10 shotgun shells, bound with a rubber band. Expensive, bulky, and damaging."
+itemHint = ""
 itemIcon = ExtResource("1_umooo")
 itemEntScene = ""
 itemFlags = []

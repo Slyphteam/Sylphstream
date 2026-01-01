@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=62 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="1_os2cn"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="4_2yn2u"]
@@ -110,6 +110,12 @@ size = Vector3(1, 1.5, 8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ycbjd"]
 size = Vector3(1, 1.5, 16)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vnjd3"]
+points = PackedVector3Array(-0.5, -0.75, -8, 0.5, -0.75, -8, -0.5, -0.75, 8, -0.5, 0.75, -8, 0.5, 0.75, -8, 0.5, -0.75, 8, -0.5, 0.75, 8, 0.5, 0.75, 8)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c2ovy"]
+points = PackedVector3Array(-0.5, -0.75, -8, 0.5, -0.75, -8, -0.5, -0.75, 8, -0.5, 0.75, -8, 0.5, 0.75, -8, 0.5, -0.75, 8, -0.5, 0.75, 8, 0.5, 0.75, 8)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aggi3"]
 points = PackedVector3Array(0.579253, 0.83714, 4.06349, -0.56338, -0.81333, -4.06349, 0.579253, -0.81333, -4.06349, -0.56338, -0.81333, 4.06349, -0.56338, 0.83714, -4.06349, 0.579253, 0.83714, -4.06349, 0.579253, -0.81333, 4.06349, -0.56338, 0.83714, 4.06349)
@@ -315,7 +321,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_41a6k")
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Boundaries/Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00808, 0)
 collision_layer = 17
-collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Boundaries/Floor/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_41a6k")
@@ -361,33 +366,9 @@ skeleton = NodePath("../wall1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Boundaries/wall4/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_6wnxl")
 
-[node name="khwarizmi" parent="Environment/Boundaries" instance=ExtResource("1_os2cn")]
-transform = Transform3D(-4.25716e-08, 0.973925, -0.226872, -1, -4.37114e-08, 0, -9.9169e-09, 0.226872, 0.973925, 42.5553, 1.84605, 21.3048)
-
 [node name="Range" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.638, 1.02, 21.446)
 mesh = SubResource("BoxMesh_6wnxl")
-
-[node name="affine N" parent="Environment/Range" instance=ExtResource("14_os2cn")]
-transform = Transform3D(-0.805691, -9.63276e-08, -0.592337, 0.592337, 1.65659e-08, -0.805691, 8.74228e-08, -1, 4.37114e-08, -0.787598, 0.443887, -4.49684)
-
-[node name="IshimPickup" parent="Environment/Range" instance=ExtResource("12_ydxer")]
-transform = Transform3D(-2.11758e-22, 0, 1, -0.5, 0.866025, -1.77636e-15, -0.866025, -0.5, -3.07674e-15, -0.121326, 0.892475, 1.98968)
-
-[node name="bergther N" parent="Environment/Range" instance=ExtResource("15_by8b2")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.354713, 0.861407, -3.49442)
-
-[node name="degubby N" parent="Environment/Range" instance=ExtResource("16_eqt0i")]
-transform = Transform3D(-3.09086e-08, 0.707107, -0.707107, -1, -4.37114e-08, 0, -3.09086e-08, 0.707107, 0.707107, 0.194084, 0.811675, -2.16365)
-
-[node name="fourier N" parent="Environment/Range" instance=ExtResource("17_vnjd3")]
-transform = Transform3D(-3.09086e-08, 0.707107, -0.707107, -1, -4.37114e-08, 0, -3.09086e-08, 0.707107, 0.707107, 0.155277, 0.820649, -2.95815)
-
-[node name="ghostbird N" parent="Environment/Range" instance=ExtResource("18_c2ovy")]
-transform = Transform3D(-8.59625e-08, 0.655532, -0.755167, 1, 1.31134e-07, -3.38813e-21, 9.90281e-08, -0.755167, -0.655532, 0.0503998, 0.831287, 2.69031)
-
-[node name="relata N" parent="Environment/Range" instance=ExtResource("19_xqkej")]
-transform = Transform3D(0.881732, -2.06209e-08, -0.471751, -0.469389, 0.0999449, -0.877317, 0.0471491, 0.994993, 0.0881246, -0.725754, 0.306163, 3.66494)
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/Range"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.4957, 0.00011003, -4.5904)
@@ -398,6 +379,18 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1936, 0, 0)
 mesh = SubResource("BoxMesh_ycbjd")
 skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Range/MeshInstance3D3/MeshInstance3D4"]
+collision_layer = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Range/MeshInstance3D3/MeshInstance3D4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_vnjd3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Range/MeshInstance3D3"]
+collision_layer = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Range/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_c2ovy")
 
 [node name="target" parent="Environment/Range" instance=ExtResource("4_m2myf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.48683, 0.648801, -1.71955)
@@ -413,41 +406,77 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.8764
 
 [node name="range table" type="StaticBody3D" parent="Environment/Range"]
 
+[node name="Degubby" parent="Environment/Range/range table" instance=ExtResource("16_eqt0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052803, 1.19031, -3.73796)
+
+[node name="Affine" parent="Environment/Range/range table" instance=ExtResource("14_os2cn")]
+transform = Transform3D(-0.0168526, -0.85464, -0.518947, -0.0277394, 0.519221, -0.85419, 0.999473, 0, -0.0324574, -0.736965, 0.766858, -4.52336)
+
+[node name="Fourier9" parent="Environment/Range/range table" instance=ExtResource("17_vnjd3")]
+transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, 0.0664558, 1.08027, -2.94365)
+
+[node name="rifle_ammobox" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+transform = Transform3D(0.25887, 0, -0.965912, 0, 1, 0, 0.965912, 0, 0.25887, 0.0427322, 0.78372, -4.47123)
+
+[node name="30calBox3" parent="Environment/Range/range table" instance=ExtResource("12_vnjd3")]
+transform = Transform3D(0.045066, -0.0492519, 0.997769, -0.325904, 0.943414, 0.0612889, -0.944329, -0.327939, 0.0264647, -0.156837, 0.801409, 4.2674)
+
+[node name="30calBox2" parent="Environment/Range/range table" instance=ExtResource("12_vnjd3")]
+transform = Transform3D(-0.940224, -0.175284, 0.291985, -0.161153, 0.984302, 0.0719644, -0.300016, 0.0206084, -0.953712, -0.222202, 0.79364, 4.51888)
+
+[node name="30calBox" parent="Environment/Range/range table" instance=ExtResource("12_vnjd3")]
+transform = Transform3D(-0.722062, 0.0399088, -0.690676, 0, 0.998335, 0.057686, 0.691828, 0.0416529, -0.72086, -0.0384712, 0.762882, 4.6083)
+
+[node name="rifle_ammobox2" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+transform = Transform3D(0.0525629, 0, -0.998618, 0, 1, 0, 0.998618, 0, 0.0525629, -0.136368, 0.7905, -4.72606)
+
+[node name="rifle_ammobox3" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+transform = Transform3D(-0.732757, 0.680491, -6.1775e-08, 4.37114e-08, -4.37114e-08, -1, -0.680491, -0.732757, 2.28462e-09, -0.334549, 0.80931, -4.19209)
+
+[node name="9mm ammobox2" parent="Environment/Range/range table" instance=ExtResource("6_btmrn")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.300518, 0.757752, -3.38909)
+
+[node name="9mm ammobox3" parent="Environment/Range/range table" instance=ExtResource("6_btmrn")]
+transform = Transform3D(0.0790322, -0.953475, -0.290927, 0.02339, 0.293534, -0.955662, 0.996597, 0.0687234, 0.0455004, 0.0865822, 0.845069, -2.31893)
+
+[node name="9mm ammobox" parent="Environment/Range/range table" instance=ExtResource("6_btmrn")]
+transform = Transform3D(-0.642667, 0, -0.766145, 0, 1, 0, 0.766145, 0, -0.642667, -0.0103569, 0.745666, 3.06318)
+
+[node name="shotgunbundle" parent="Environment/Range/range table" instance=ExtResource("9_ttle0")]
+transform = Transform3D(0.195237, -0.973548, 0.118691, 0.485725, -0.00915404, -0.874064, 0.852029, 0.228301, 0.471089, -0.34584, 0.828797, 3.22716)
+
+[node name="shotgunbundle2" parent="Environment/Range/range table" instance=ExtResource("9_ttle0")]
+transform = Transform3D(0.707107, -6.32203e-08, -0.707107, -8.9407e-08, -1, 0, -0.707107, 6.32203e-08, -0.707107, -0.146194, 0.858371, 3.54751)
+
+[node name="rimfire_ammobox" parent="Environment/Range/range table" instance=ExtResource("11_ttle0")]
+transform = Transform3D(0.921714, 0, 0.38787, 0, 1, 0, -0.38787, 0, 0.921714, 0.228092, 0.84564, 2.91271)
+
+[node name="rifle_ammobox4" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+transform = Transform3D(0.400781, 0, 0.916175, 0, 1, 0, -0.916175, 0, 0.400781, 0.299358, 0.768282, 0.0898209)
+
+[node name="rifle_ammobox5" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+transform = Transform3D(0.5, 0.866025, -3.78552e-08, 0, -4.37114e-08, -1, -0.866026, 0.5, -2.18557e-08, -0.231297, 0.778513, 0.188086)
+
+[node name="rifle_ammobox6" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+transform = Transform3D(-0.843373, -0.537329, 2.34874e-08, 0, -4.37114e-08, -1, 0.537329, -0.843373, 3.6865e-08, -0.0437698, 0.890736, 0.380224)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Range/range table"]
 shape = SubResource("ConvexPolygonShape3D_aggi3")
 
-[node name="rifle_ammobox" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
-transform = Transform3D(0.25887, 0, -0.965912, 0, 1, 0, 0.965912, 0, 0.25887, 0.0427322, 0.78372, -4.47123)
+[node name="Bergther" parent="Environment/Range/range table" instance=ExtResource("15_by8b2")]
+transform = Transform3D(0.953064, 0, 0.302769, 0, 1, 0, -0.302769, 0, 0.953064, -0.235405, 0.863453, 2.6878)
 
-[node name="30calBox3" parent="Environment/Range" instance=ExtResource("12_vnjd3")]
-transform = Transform3D(0.045066, -0.0492519, 0.997769, -0.325904, 0.943414, 0.0612889, -0.944329, -0.327939, 0.0264647, -0.156837, 0.801409, 4.2674)
+[node name="Ishim" parent="Environment/Range/range table" instance=ExtResource("12_ydxer")]
+transform = Transform3D(0.893943, 0, -0.44818, -0.44818, 0, -0.893943, 0, 1, 0, -0.142822, 0.968729, 2.09047)
 
-[node name="30calBox2" parent="Environment/Range" instance=ExtResource("12_vnjd3")]
-transform = Transform3D(-0.940224, -0.175284, 0.291985, -0.161153, 0.984302, 0.0719644, -0.300016, 0.0206084, -0.953712, -0.222202, 0.79364, 4.51888)
+[node name="Node3D" parent="Environment/Range/range table" instance=ExtResource("18_c2ovy")]
+transform = Transform3D(-0.0698235, 0.260585, -0.962923, 0.965926, 0.258819, -4.94929e-08, 0.249223, -0.930112, -0.269777, -0.285809, 0.957954, -1.88228)
 
-[node name="30calBox" parent="Environment/Range" instance=ExtResource("12_vnjd3")]
-transform = Transform3D(-0.722062, 0.0399088, -0.690676, 0, 0.998335, 0.057686, 0.691828, 0.0416529, -0.72086, -0.0384712, 0.762882, 4.6083)
+[node name="Khwarizmi" parent="Environment/Range/range table" instance=ExtResource("1_os2cn")]
+transform = Transform3D(-0.759453, -7.07615e-08, -0.650562, 8.71384e-08, -1, 7.04619e-09, -0.650562, -5.13377e-08, 0.759453, -0.43771, 0.879804, -0.279934)
 
-[node name="rifle_ammobox2" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
-transform = Transform3D(0.0525629, 0, -0.998618, 0, 1, 0, 0.998618, 0, 0.0525629, -0.136368, 0.7905, -4.72606)
-
-[node name="rifle_ammobox3" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
-transform = Transform3D(-0.732757, 0.680491, -6.1775e-08, 4.37114e-08, -4.37114e-08, -1, -0.680491, -0.732757, 2.28462e-09, -0.334549, 0.80931, -4.19209)
-
-[node name="9mm ammobox2" parent="Environment/Range" instance=ExtResource("6_btmrn")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0153618, 0.757752, -3.56738)
-
-[node name="9mm ammobox" parent="Environment/Range" instance=ExtResource("6_btmrn")]
-transform = Transform3D(-0.642667, 0, -0.766145, 0, 1, 0, 0.766145, 0, -0.642667, -0.0103569, 0.745666, 3.06318)
-
-[node name="shotgunbundle" parent="Environment/Range" instance=ExtResource("9_ttle0")]
-transform = Transform3D(0.195237, -0.973548, 0.118691, 0.485725, -0.00915404, -0.874064, 0.852029, 0.228301, 0.471089, -0.34584, 0.828797, 3.22716)
-
-[node name="shotgunbundle2" parent="Environment/Range" instance=ExtResource("9_ttle0")]
-transform = Transform3D(0.707107, -6.32203e-08, -0.707107, -8.9407e-08, -1, 0, -0.707107, 6.32203e-08, -0.707107, -0.146194, 0.858371, 3.54751)
-
-[node name="rimfire_ammobox" parent="Environment/Range" instance=ExtResource("11_ttle0")]
-transform = Transform3D(1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, 1, 0.145142, 0.84564, 2.0163)
+[node name="Relata" parent="Environment/Range/range table" instance=ExtResource("19_xqkej")]
+transform = Transform3D(0.618299, -0.785943, 0, 0.785943, 0.618299, 0, 0, 0, 1, -0.765621, 0.893507, -1.41261)
 
 [node name="sporting clay2" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.38655, 3.00265, -2.00308)
@@ -460,15 +489,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5962
 
 [node name="sporting clay5" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.65326, 1.32227, 2.23695)
-
-[node name="rifle_ammobox4" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
-transform = Transform3D(-0.0161607, 0, -0.99987, 0, 1, 0, 0.99987, 0, -0.0161607, 0.313858, 0.768282, -0.206093)
-
-[node name="rifle_ammobox5" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
-transform = Transform3D(0.5, 0.866025, -3.78552e-08, 0, -4.37114e-08, -1, -0.866026, 0.5, -2.18557e-08, 0.0618935, 0.778513, 0.321911)
-
-[node name="rifle_ammobox6" parent="Environment/Range" instance=ExtResource("10_n8uj3")]
-transform = Transform3D(-0.843373, -0.537329, 2.34874e-08, 0, -4.37114e-08, -1, 0.537329, -0.843373, 3.6865e-08, 0.24942, 0.890736, 0.51405)
 
 [node name="Testing zone" type="Node3D" parent="Environment"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.6961, 2, 5.5732e-06)
@@ -600,4 +620,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5492, 0.533243, -26.9504)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2014, 0.527357, -25.9287)
 
 [node name="shapebuttons" parent="." instance=ExtResource("23_c2ovy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.9642, 0.550098, -23.5325)
+transform = Transform3D(-0.57931, 0, -0.815108, 0, 1, 0, 0.815108, 0, -0.57931, 40.9642, 0.550098, 13.5022)

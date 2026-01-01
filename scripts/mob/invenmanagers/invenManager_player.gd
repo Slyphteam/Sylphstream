@@ -13,14 +13,15 @@ var weight = 0 ##The current held ammo pool's "weight"
 
 var maxweight = 1350 ##lets say 9 30-round mags of 5.56 (9*30*5) as a reasonable maximum amount of ammo weight
 
-var allSlots: Array #2D matrix of all five slots.
+var allSlots: Array ##2D array of all five weapon slots.
+@export var genericItems: Array[INVENITEMPARENT] ##Array that holds generic items, formerly itemsTest
 
 var currentSlot: int = 1 ##Which of the 4 invslots are we on?
 var slotSelection: int = 0 ##Which index into said slot are we?
 
-var slotMaxes:Array[int] = [1,2,3,2,1] ##Array of all the slot maximums: hand, holster, chest, back, sheathe
+var slotMaxes:Array[int] = [1,2,2,2,1] ##Array of all the slot maximums: hand, holster, chest, back, sheathe
 
-@export var itemsTest: Array[INVENITEMPARENT]
+
 
 var slot1: Array[INVWEP] ##Custom slot exclusively for the hands
 var slot2: Array[INVWEP] ##Holster slots.
@@ -53,6 +54,7 @@ func _ready():
 	
 	#Begin with slot init
 	allSlots.resize(5)
+	genericItems.resize(6)
 	
 	slot1.resize(slotMaxes[0])
 	slot1[0] = ourHands #slightly weird way but it ensures that everything is airtight
@@ -131,6 +133,34 @@ func recalcWeight():
 	weight += weightShotgun * heldAmmunition.ammoShotgun
 	#print("Current ammo weight: ", weight)
 
+#===============> INVENSYSTEM STUFF
+func consume_item(thingToGive)->bool:
+	if(thingToGive is INVWEP):
+		return give_New_InvWeap(thingToGive, thingToGive.weapInfoSheet.selections)
+	elif(thingToGive is INVAMMBOX):
+		for x in range (thingToGive.arrLength):
+			#some kind of check for ammo weight would go here
+			giveAmmo(thingToGive.typeArr[x], thingToGive.amtArr[x])
+		return true
+	else:
+		return add_GenericItem(thingToGive)
+	
+	return false
+
+##Adds a generic item to genericItems array if it can
+func add_GenericItem(thingToGive:INVENITEMPARENT)->bool:
+	
+	var itemCheck
+	for x in range(genericItems.size()):
+		itemCheck = genericItems[x]
+		if(itemCheck == null):
+			genericItems[x] = thingToGive
+			return true
+	
+	return false
+
+#=============== WEAPON STUFF
+##Updats the counted rounds tracked by a weapon invenitem
 func update_Slot(slot:int, rounds):
 	if(slot == 1):
 		return
@@ -277,17 +307,6 @@ func change_To_Slot(newSlot: int):
 	#if we've gotten this far, update our active slot
 	currentSlot = newSlot
 
-func consume_item(thingToGive)->bool:
-	if(thingToGive is INVWEP):
-		return give_New_InvWeap(thingToGive, thingToGive.weapInfoSheet.selections)
-	elif(thingToGive is INVAMMBOX):
-		for x in range (thingToGive.arrLength):
-			#some kind of check for ammo weight would go here
-			giveAmmo(thingToGive.typeArr[x], thingToGive.amtArr[x])
-		return true
-		
-	
-	return false
 
 func give_New_InvWeap(weapon:INVWEP, validSlots:Array[int])->bool:
 	var result:bool 

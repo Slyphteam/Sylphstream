@@ -10,6 +10,7 @@ typeArr = Array[int]([0])
 amtArr = Array[int]([50])
 itemName = "22 Longrifle Ammo Box"
 itemDesc = "A plastic tray containing 50 rimfire rounds. Cheap and diminutive. "
+itemHint = ""
 itemIcon = ExtResource("1_icwoc")
 itemEntScene = ""
 itemFlags = []

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bf3p0b5crwc2g"
-path="res://.godot/imported/relata N.glb-9d41085254cd96b7bbfbbcbd17092c97.scn"
+uid="uid://v46mwsdtc3y2"
+path="res://.godot/imported/khwarizmi.glb-cdc20d8e513e38f6c854becb78153e0b.scn"
 
 [deps]
 
-source_file="res://models/new models and meshes/relata N.glb"
-dest_files=["res://.godot/imported/relata N.glb-9d41085254cd96b7bbfbbcbd17092c97.scn"]
+source_file="res://models/glbs and textures/guns/khwarizmi.glb"
+dest_files=["res://.godot/imported/khwarizmi.glb-cdc20d8e513e38f6c854becb78153e0b.scn"]
 
 [params]
 
@@ -34,13 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"relata N_Cube_011": {
+"khwarizmi_Cube_028": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://models/new models and meshes/relata N mesh.res"
+"save_to_file/path": "res://models/mesh models/khwarizmi mesh.res"
 }
 }
 }

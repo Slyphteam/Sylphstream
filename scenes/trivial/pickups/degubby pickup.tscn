@@ -1,19 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdgwi6tjdsj5u"]
 
-[ext_resource type="PackedScene" uid="uid://bc1mf2egbgx10" path="res://models/new models and meshes/degubby N.glb" id="1_ki2ub"]
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_ybqhr"]
 [ext_resource type="Resource" uid="uid://bvaii4h7xnqob" path="res://scripts/utility/invSystem/invData/invWeapons/degubbyInvData.tres" id="3_cbxty"]
+[ext_resource type="ArrayMesh" uid="uid://vw6edrkqrxou" path="res://models/new models and meshes/degubby N mesh.res" id="4_8j368"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ki2ub"]
-points = PackedVector3Array(-0.265071, 0.0845674, 1.34461, 0.127373, -0.0727216, -0.858949, 0.127373, 0.0845674, -0.858949, -2.54825, -0.151435, -0.386574, 1.54382, -0.230149, 0.00685659, 2.48845, 0.0845674, -0.0718727, -2.54825, 0.163281, -0.386574, -2.38999, -0.151435, 0.636043, 1.54382, 0.242041, 0.00685659, -2.38999, 0.163281, 0.636043, -0.265071, -0.151435, 1.26588, 2.48845, -0.0727216, 0.0855858, 0.756961, -0.151435, -0.78022, 0.756961, 0.163281, -0.78022, -0.658994, -0.230149, -0.30806, -0.265071, 0.163281, 1.26588, -0.658994, 0.242041, -0.30806, 1.6227, -0.151435, -0.544032, 2.48845, 0.0845674, 0.0855858, 1.85886, 0.163281, -0.465303, -0.658994, 0.163281, 1.26588, -0.658994, -0.230149, -0.0718727, -0.265071, -0.0727216, 1.34461, 1.54382, -0.230149, -0.229331, 1.54382, 0.242041, -0.229331, 1.93725, -0.151435, 0.242829, -2.54825, 0.163281, 0.0855858, -0.658994, 0.242041, -0.150602, 1.85886, 0.163281, 0.242829, 0.127373, 0.163281, -0.78022, 0.127373, -0.151435, -0.78022, 2.48845, -0.0727216, -0.0718727)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cbxty"]
+points = PackedVector3Array(0.0175103, 0.182788, -0.0264054, -0.0150579, -0.273345, 0.0549321, 0.0175103, -0.273345, 0.0549321, -0.0313516, 0.085007, 0.527445, -0.0476452, 0.0524579, -0.319608, 0.0175103, -0.0127295, -0.515145, 0.033804, -0.14297, 0.494788, 0.0500976, 0.00356733, -0.319608, 0.033804, 0.085007, 0.511116, -0.0313516, -0.14297, 0.494788, -0.0313516, 0.166491, -0.156729, -0.0313516, -0.273345, 0.0712609, 0.033804, -0.273345, 0.103816, 0.033804, 0.166491, -0.156729, -0.0150579, 0.0198642, -0.515145, 0.0500976, 0.0687547, 0.136474, -0.0476452, 0.0687547, 0.136474, 0.033804, 0.117601, -0.335937, -0.0313516, -0.0452786, -0.401048, -0.0313516, 0.117601, -0.335937, -0.0476452, 0.00356733, -0.319608, -0.0476452, 0.0198642, 0.136474, -0.0150579, 0.182788, -0.0264054, 0.033804, -0.0290264, 0.527445, 0.0500976, 0.0524579, -0.319608, -0.0150579, -0.0127295, -0.515145, 0.033804, -0.0452786, -0.401048, 0.0500976, 0.036161, 0.136474, 0.033804, -0.273345, 0.0712609, -0.0313516, -0.273345, 0.103816, -0.0313516, 0.166491, -0.0264054, 0.033804, 0.166491, -0.0264054)
 
-[node name="degubby N" instance=ExtResource("1_ki2ub")]
+[node name="Degubby" type="Node3D"]
 
-[node name="Degubby shape" type="StaticBody3D" parent="gun parent" index="0" groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 17
 script = ExtResource("2_ybqhr")
 thingToGive = ExtResource("3_cbxty")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gun parent/Degubby shape" index="0"]
-shape = SubResource("ConvexPolygonShape3D_ki2ub")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0.00895774, 1.56337e-07, 0.0024153)
+shape = SubResource("ConvexPolygonShape3D_cbxty")
+
+[node name="DegubbyNMesh" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, -3.72695e-22, 0, 3.72695e-22, 0.22, 0.00895774, 1.56337e-07, 0.0024153)
+mesh = ExtResource("4_8j368")
+skeleton = NodePath("")

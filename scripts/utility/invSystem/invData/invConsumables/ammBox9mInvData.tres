@@ -10,6 +10,7 @@ typeArr = Array[int]([1])
 amtArr = Array[int]([50])
 itemName = "9mm Ammobox"
 itemDesc = "A cardboard box containing 50 parabellum cartridges. Popular in pistols and carbines."
+itemHint = ""
 itemIcon = ExtResource("1_1ispf")
 itemEntScene = ""
 itemFlags = []

@@ -10,6 +10,7 @@ typeArr = Array[int]([2])
 amtArr = Array[int]([20])
 itemName = "Light rifle ammo box"
 itemDesc = "A pair of plastic bullet carriages, totaling 20 intermediate rifle rounds. Lethal for their size."
+itemHint = ""
 itemIcon = ExtResource("1_rd040")
 itemEntScene = ""
 itemFlags = []

@@ -1,19 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://u5vg53ed723w"]
 
-[ext_resource type="PackedScene" uid="uid://fba5x7u8qfhj" path="res://models/new models and meshes/bergther N.glb" id="1_sgsvv"]
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_juh54"]
+[ext_resource type="ArrayMesh" uid="uid://c6mqdm7s3rxj5" path="res://models/glbs and textures/guns/bergtherMesh.res" id="3_7fxke"]
 [ext_resource type="Resource" uid="uid://bqtt26oq7s13c" path="res://scripts/utility/invSystem/invData/invWeapons/bergtherInvData.tres" id="3_jvlf8"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sgsvv"]
-points = PackedVector3Array(-0.969475, -0.0992765, 1.03391, 1.1217, 0.073961, -0.423202, 1.1217, -0.104174, -0.423202, -0.840043, -0.175492, -0.815633, -0.703294, 0.792068, -0.537653, -0.732989, 0.715985, 1.28888, -0.732989, -0.710538, 1.28888, 0.154246, -0.784176, -0.569349, 1.05027, 0.466371, -0.637072, 1.1217, 0.0383019, -0.958213, -0.703295, -0.786783, -0.537653, 1.08588, -0.460925, -0.601539, 0.153819, 0.786187, -0.566217, -0.640241, 0.521549, -0.854644, 0.186388, -0.603986, -0.861718, -0.942873, 0.51708, 1.17774, -0.66176, -0.532243, 1.32464, -0.946519, -0.513525, 1.18139, -0.467389, -0.239405, -0.92455, 0.185827, 0.606747, -0.85737, -0.66176, 0.537689, 1.32464, 0.152083, 0.77288, -0.0512412, 1.1217, 0.430712, -0.565782, 0.150891, -0.758462, -0.0152936, -0.811586, 0.658696, -0.403851, -0.643711, -0.51871, -0.85985, -0.982272, 0.278248, 1.18253, -0.811587, -0.653256, -0.403851, 1.1217, -0.425266, -0.565782, -0.462491, 0.24256, -0.914094, 0.158638, 0.680325, 0.25439, 1.1217, -0.0328556, -0.958213)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gkxsj"]
+points = PackedVector3Array(-0.0222182, -0.195951, 0.0992436, 0.0185555, -0.195951, 0.0992436, -0.00590315, 0.0160928, -0.333079, -0.0303786, 0.0323823, 0.140023, 0.0185555, 0.0568585, -0.333079, -0.0303786, 0.073176, -0.0883004, 0.0267214, -0.187792, 0.172626, -0.0303786, -0.195951, 0.131847, -0.0222182, 0.0405411, -0.324902, 0.0267214, 0.073176, 0.107369, -0.00590315, 0.0894935, -0.333079, -0.00590315, 0.073176, 0.148148, -0.0222182, -0.179633, 0.180802, 0.0267214, 0.0650173, -0.178035, 0.0267214, -0.195951, 0.107369, -0.0222182, 0.0813348, 0.107369, 0.0185555, 0.0323823, -0.333079, -0.0303786, 0.0323823, -0.178035, 0.0104008, 0.073176, 0.148148, 0.00224042, 0.0894935, -0.333079, 0.0267214, 0.00793403, -0.178035, 0.00224042, 0.0160928, -0.333079, -0.0222182, -0.155157, 0.180802, 0.00996308, -0.175109, 0.179637, 0.00949225, 0.0788908, 0.0713806, -0.0222182, 0.0486998, -0.324902, -0.0303786, -0.195951, 0.123721, 0.0267214, -0.0654387, -0.0964256, -0.0303786, -0.187792, 0.148148, -0.0303786, 0.0486998, 0.115545, -0.0222182, 0.0813348, -0.161683, 0.0267214, -0.179633, 0.172626)
 
-[node name="bergther N" instance=ExtResource("1_sgsvv")]
+[node name="Bergther" type="Node3D"]
 
-[node name="Bergther shape" type="StaticBody3D" parent="Bergther GS5" index="0" groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 17
 script = ExtResource("2_juh54")
 thingToGive = ExtResource("3_jvlf8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bergther GS5/Bergther shape" index="0"]
-shape = SubResource("ConvexPolygonShape3D_sgsvv")
+[node name="BergtherMesh" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 0, 0)
+mesh = ExtResource("3_7fxke")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_gkxsj")

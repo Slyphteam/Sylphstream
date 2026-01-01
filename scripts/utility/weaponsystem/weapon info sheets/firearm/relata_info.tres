@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://vmo1b3o1awtj"]
 
 [ext_resource type="AudioStream" uid="uid://jmjas3ug865v" path="res://sounds/gunshots/relatapump.mp3" id="1_5yl1k"]
-[ext_resource type="ArrayMesh" uid="uid://hj16uuuo3d2j" path="res://models/new models and meshes/relata N mesh.res" id="2_34065"]
+[ext_resource type="ArrayMesh" uid="uid://bw6xf5xrhqshs" path="res://models/glbs and textures/guns/relataMesh.res" id="2_5yl1k"]
 [ext_resource type="AudioStream" uid="uid://boahsq60oy1gj" path="res://sounds/reloads/shellinsert.mp3" id="3_1c3wg"]
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearminfo.gd" id="4_yvxy3"]
 
@@ -19,17 +19,20 @@ minRecoil = 20.0
 recoilAmount = 10.0
 viewpunchMult = 4.0
 recoverAmount = 0.4
-shotgunMode = true
+doCasing = false
+casingPath = ""
+ejectOnReload = false
+casingDelay = 0.5
+shotgunModeOverride = false
 pelletAMT = 12
 burstMode = false
 burstAMT = 3
 wepName = &"Relata"
 wepDesc = &""
-mesh = ExtResource("2_34065")
+mesh = ExtResource("2_5yl1k")
 drawTime = 1.0
 damage = 7
 selections = Array[int]([4])
 position = Vector3(0.5, -0.25, -0.5)
 rotation = Vector3(90, 90, 0)
-scale = Vector3(1, 1, 1)
 metadata/_custom_type_script = "uid://b24hqmuxy0hut"
