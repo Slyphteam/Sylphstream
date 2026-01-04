@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bc1mf2egbgx10"
-path="res://.godot/imported/degubby N.glb-f819f02ee72ae6d14e96ad3bc5090ebf.scn"
+uid="uid://dxoq1s6qwlpdm"
+path="res://.godot/imported/degubby.glb-6044b2277366744f1693da89fad712e5.scn"
 
 [deps]
 
-source_file="res://models/new models and meshes/degubby N.glb"
-dest_files=["res://.godot/imported/degubby N.glb-f819f02ee72ae6d14e96ad3bc5090ebf.scn"]
+source_file="res://models/glbs and textures/guns/degubby.glb"
+dest_files=["res://.godot/imported/degubby.glb-6044b2277366744f1693da89fad712e5.scn"]
 
 [params]
 
@@ -34,13 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"degubby N_Cube_008": {
+"degubby_Cube_008": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://models/new models and meshes/degubby N mesh.res"
+"save_to_file/path": "res://models/glbs and textures/guns/degubbyMesh.res"
 }
 }
 }

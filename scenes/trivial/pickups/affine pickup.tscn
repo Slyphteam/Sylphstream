@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://4g032mafbnwj"]
 
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_u0oi3"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_u0oi3"]
 [ext_resource type="Resource" uid="uid://cpsodhd6fs3le" path="res://scripts/utility/invSystem/invData/invWeapons/affineInvData.tres" id="3_e2djt"]
 [ext_resource type="ArrayMesh" uid="uid://bcdw70suvkae5" path="res://models/glbs and textures/guns/affineMesh.res" id="3_ohjqu"]
 
@@ -10,7 +10,7 @@ points = PackedVector3Array(-0.0468389, -0.0249817, -1.24307, 0.211343, 0.007285
 [node name="Affine" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
-collision_layer = 4
+collision_layer = 5
 collision_mask = 17
 script = ExtResource("2_u0oi3")
 thingToGive = ExtResource("3_e2djt")

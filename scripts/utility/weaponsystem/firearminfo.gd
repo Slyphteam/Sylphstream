@@ -22,7 +22,7 @@ class_name FIREARM_INFO extends WEAP_INFO
 @export var ejectOnReload: bool = false ##Eject when we reload or immediately after firing?
 @export var casingDelay: float = 0.5 ##in seconds
 @export_category("Script override")
-@export var shotgunModeOverride: bool = false ##Override script to use SHOTGUNINSTANCE
-@export var pelletAMT: int = 12 ##How many pellets in a volley?
+@export var singleReloadOverride: bool = false ##Override script to use SHOTGUNINSTANCE, primarily changes reload behavior
+@export var pelletAMT: int = 12 ##How many bullets in a volley?
 @export var burstMode: bool = false ##Do we fire in bursts, requiring a trigger reset after each?
 @export var burstAMT: int = 3

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://clx72iwhdmou0"
-path="res://.godot/imported/ishim.glb-81b7560d7815e772ec2c8fb74dd23144.scn"
+uid="uid://bubohhpagryhn"
+path="res://.godot/imported/ishim.glb-97b22fabc85a27a2b32162d04deffa5c.scn"
 
 [deps]
 
-source_file="res://models/new models and meshes/ishim.glb"
-dest_files=["res://.godot/imported/ishim.glb-81b7560d7815e772ec2c8fb74dd23144.scn"]
+source_file="res://models/glbs and textures/guns/ishim.glb"
+dest_files=["res://.godot/imported/ishim.glb-97b22fabc85a27a2b32162d04deffa5c.scn"]
 
 [params]
 
@@ -40,7 +40,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://models/new models and meshes/ishim mesh.res"
+"save_to_file/path": "res://models/glbs and textures/guns/ishimMesh.res"
 }
 }
 }

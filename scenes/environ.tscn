@@ -419,13 +419,13 @@ transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74
 transform = Transform3D(0.25887, 0, -0.965912, 0, 1, 0, 0.965912, 0, 0.25887, 0.0427322, 0.78372, -4.47123)
 
 [node name="30calBox3" parent="Environment/Range/range table" instance=ExtResource("12_vnjd3")]
-transform = Transform3D(0.045066, -0.0492519, 0.997769, -0.325904, 0.943414, 0.0612889, -0.944329, -0.327939, 0.0264647, -0.156837, 0.801409, 4.2674)
+transform = Transform3D(0.045066, -0.0492519, 0.997769, -0.325904, 0.943414, 0.0612889, -0.944329, -0.327939, 0.0264647, -0.156837, 1.03402, 4.2674)
 
 [node name="30calBox2" parent="Environment/Range/range table" instance=ExtResource("12_vnjd3")]
-transform = Transform3D(-0.940224, -0.175284, 0.291985, -0.161153, 0.984302, 0.0719644, -0.300016, 0.0206084, -0.953712, -0.222202, 0.79364, 4.51888)
+transform = Transform3D(-0.940224, -0.175284, 0.291985, -0.161153, 0.984302, 0.0719644, -0.300016, 0.0206084, -0.953712, -0.222202, 0.938429, 4.51888)
 
 [node name="30calBox" parent="Environment/Range/range table" instance=ExtResource("12_vnjd3")]
-transform = Transform3D(-0.722062, 0.0399088, -0.690676, 0, 0.998335, 0.057686, 0.691828, 0.0416529, -0.72086, -0.0384712, 0.762882, 4.6083)
+transform = Transform3D(-0.722062, 0.0399088, -0.690676, 0, 0.998335, 0.057686, 0.691828, 0.0416529, -0.72086, -0.0384712, 0.84515, 4.6083)
 
 [node name="rifle_ammobox2" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
 transform = Transform3D(0.0525629, 0, -0.998618, 0, 1, 0, 0.998618, 0, 0.0525629, -0.136368, 0.7905, -4.72606)
@@ -437,7 +437,7 @@ transform = Transform3D(-0.732757, 0.680491, -6.1775e-08, 4.37114e-08, -4.37114e
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.300518, 0.757752, -3.38909)
 
 [node name="9mm ammobox3" parent="Environment/Range/range table" instance=ExtResource("6_btmrn")]
-transform = Transform3D(0.0790322, -0.953475, -0.290927, 0.02339, 0.293534, -0.955662, 0.996597, 0.0687234, 0.0455004, 0.0865822, 0.845069, -2.31893)
+transform = Transform3D(0.0790322, -0.953475, -0.290927, 0.02339, 0.293534, -0.955662, 0.996597, 0.0687234, 0.0455004, 0.0865822, 1.09283, -2.31893)
 
 [node name="9mm ammobox" parent="Environment/Range/range table" instance=ExtResource("6_btmrn")]
 transform = Transform3D(-0.642667, 0, -0.766145, 0, 1, 0, 0.766145, 0, -0.642667, -0.0103569, 0.745666, 3.06318)
@@ -473,10 +473,10 @@ transform = Transform3D(0.893943, 0, -0.44818, -0.44818, 0, -0.893943, 0, 1, 0, 
 transform = Transform3D(-0.0698235, 0.260585, -0.962923, 0.965926, 0.258819, -4.94929e-08, 0.249223, -0.930112, -0.269777, -0.285809, 0.957954, -1.88228)
 
 [node name="Khwarizmi" parent="Environment/Range/range table" instance=ExtResource("1_os2cn")]
-transform = Transform3D(-0.759453, -7.07615e-08, -0.650562, 8.71384e-08, -1, 7.04619e-09, -0.650562, -5.13377e-08, 0.759453, -0.43771, 0.879804, -0.279934)
+transform = Transform3D(-0.372534, -3.9001e-08, -0.928018, 8.71384e-08, -1, 7.04619e-09, -0.928018, -7.82411e-08, 0.372534, -0.166077, 0.879804, -0.279934)
 
 [node name="Relata" parent="Environment/Range/range table" instance=ExtResource("19_xqkej")]
-transform = Transform3D(0.618299, -0.785943, 0, 0.785943, 0.618299, 0, 0, 0, 1, -0.765621, 0.893507, -1.41261)
+transform = Transform3D(0.469364, -0.883005, 0, 0.883005, 0.469364, 0, 0, 0, 1, -1.02415, 0.902497, 1.68467)
 
 [node name="sporting clay2" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.38655, 3.00265, -2.00308)

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://d0r7hvlt81jkh"]
 
 [ext_resource type="AudioStream" uid="uid://d0gb7xwn5sixe" path="res://sounds/gunshots/degubbyShot.mp3" id="1_f1eyr"]
-[ext_resource type="ArrayMesh" uid="uid://vw6edrkqrxou" path="res://models/new models and meshes/degubby N mesh.res" id="2_3bjd2"]
+[ext_resource type="ArrayMesh" uid="uid://c3sccuhb4478y" path="res://models/glbs and textures/guns/degubbyMesh.res" id="2_f1eyr"]
 [ext_resource type="AudioStream" uid="uid://bbutn7n4jxwqx" path="res://sounds/reloads/degubbyReload.mp3" id="3_3bjd2"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearminfo.gd" id="4_f1eyr"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="4_f1eyr"]
 
 [resource]
 script = ExtResource("4_f1eyr")
@@ -29,11 +29,10 @@ burstMode = false
 burstAMT = 3
 wepName = &"Degubby!"
 wepDesc = &""
-mesh = ExtResource("2_3bjd2")
+mesh = ExtResource("2_f1eyr")
 drawTime = 1.0
 damage = 1
 selections = Array[int]([3])
 position = Vector3(0.5, -0.15, -0.4)
 rotation = Vector3(90, 90, 0)
-scale = Vector3(0.2, 0.2, 0.2)
 metadata/_custom_type_script = "uid://b24hqmuxy0hut"

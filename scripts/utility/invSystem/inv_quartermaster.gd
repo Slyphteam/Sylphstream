@@ -100,7 +100,7 @@ func _input(event: InputEvent) -> void:
 				if(hovNode.slotTyp == "WEP"):
 					#check slot eligibility
 					var eligibleSlots = heldInvDat.weapInfoSheet.selections  #check slot eligibility
-					if(eligibleSlots.has(hovNode.slotInd + 1)):
+					if(eligibleSlots.has(hovNode.slotInd + 2)): #yes, ths +2 is correct here.
 						var result = invenManager.remove_Invwep(heldInvIndex.x + 1, heldInvIndex.y)
 						if(result != heldInvDat):
 							Globalscript.raise_Panic_Exception("Held inven data and removed invweapon were not the same!")

@@ -43,6 +43,7 @@ var recoveryAmount ##How quickly do we get a hold of the gun?
 var recoilAmount ##Applied per shot
 var punchMult ##Multiplier to viewpunch 
 var aimbonus ##Bonus to ADS accuracy/handling
+var pelletAMT
 
 var reloadTime: float
 
@@ -98,6 +99,7 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	reloadTime = wepToLoad.reloadtime
 	aimbonus = wepToLoad.aimBonus
 	damage = wepToLoad.damage
+	pelletAMT = wepToLoad.pelletAMT
 	
 	gunshotPlayer.stream = wepToLoad.gunshot
 	reloadPlayer.stream = wepToLoad.reload
@@ -195,9 +197,10 @@ func do_Shoot():
 	var end:Vector3 = invManager.get_End(orig, randAzimuth, randRoll)
 	
 	#This function "actually shoots the bullet" but we only ACTUALLY "shoot" the bullet here.
-	var theShot = FIREDBULLET.new()
-	theShot.assign_Info(orig, end, space, invManager.user, damage)
-	theShot.take_Shot()
+	for x in range(pelletAMT):
+		var theShot = FIREDBULLET.new()
+		theShot.assign_Info(orig, end, space, invManager.user, damage)
+		theShot.take_Shot()
 	
 	#Update the current magazine capacity
 	if(affectUI):

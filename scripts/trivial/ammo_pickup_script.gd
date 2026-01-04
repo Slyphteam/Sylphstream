@@ -1,3 +1,4 @@
+##I'm at least 99% sure this script is deprecated by now
 extends RAYCASTREACTIVE
 @export var typeToGive: int
 @export var amtToGive: int

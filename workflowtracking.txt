@@ -69,6 +69,8 @@ Other places are as follow:
 
 
 
+Decals: Parent decals to hit object
+Use normals so decals have proper angle.
   Have hit decals auto-stick themselves to objects and be managed by globalScript, have player decals 
 last longer (separate array)
 
@@ -157,10 +159,7 @@ footstep sounds +++
 fix weapon clipping +++ &
 Scrolling chat
 
-Sylph and playermodel bodies v2, but test with the millian prior
-
-Millian porcelaindoll variant
-Garry's mod mixed media renders START WITH WE'RE TOGETHER NOW
+Sylph body v2?
 
 Archon intro ditty:
 low high bitlower medium - - - - - - high low
@@ -177,6 +176,3 @@ current recoil value to determine how you should move back.
 Each time the gun is fired, this new point should change. 
 ^^ Use this to springboard into having ADS also lerp, and have a deadtime when you cant shoot 
 while transitioning.
-
-Decals: Parent decals to hit object
-Use normals so decals have proper angle.

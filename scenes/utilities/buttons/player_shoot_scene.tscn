@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c7e8sby3mvbqo" path="res://models/glbs and textures/interactibles/button stand.glb" id="2_i11ae"]
 [ext_resource type="PackedScene" uid="uid://d1j3wwwb704vn" path="res://models/glbs and textures/interactibles/button separate.glb" id="3_guoto"]
 [ext_resource type="Script" uid="uid://bkb0d452a3cxn" path="res://scripts/trivial/player_hurting_script.gd" id="3_ns380"]
-[ext_resource type="ArrayMesh" uid="uid://vw6edrkqrxou" path="res://models/new models and meshes/degubby N mesh.res" id="4_0kr3w"]
+[ext_resource type="ArrayMesh" uid="uid://c3sccuhb4478y" path="res://models/glbs and textures/guns/degubbyMesh.res" id="4_0kr3w"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ns380"]
 points = PackedVector3Array(0.3, 0, 0, -0.3, 0, 0, -0.3, 0.2, 0, 0.3, 0.2, 0, 0, 0, 0.3, 0, 0, -0.3, 0, 0.2, -0.3, 0, 0.2, 0.3)
@@ -26,6 +26,6 @@ damAmount = 13
 transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 5.68434e-14, 1, 0, -0.00743026, -1.86947e-09)
 shape = SubResource("ConvexPolygonShape3D_ns380")
 
-[node name="DegubbyNMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.18557e-08, 0, 0.5, -0.5, -2.18557e-08, -2.18557e-08, 2.18557e-08, -0.5, 9.55343e-16, -0.0294724, 4.25027, 1.38373)
+[node name="DegubbyMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.5, -1.31134e-07, 5.73206e-15, 0, -6.55671e-08, -1.5, 1.31134e-07, -1.5, 6.55671e-08, 1.08427, 2.07678, 0.0202942)
 mesh = ExtResource("4_0kr3w")

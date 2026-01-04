@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b51t511qxml7u" path="res://models/glbs and textures/interactibles/buttonBlueball.glb" id="4_tflyw"]
 [ext_resource type="Script" uid="uid://u7tlil24wkw8" path="res://scripts/trivial/dev and debug/shapeButtonScript.gd" id="5_tflyw"]
 [ext_resource type="PackedScene" uid="uid://cak2gxq05pfl0" path="res://models/glbs and textures/interactibles/buttonCasing.glb" id="6_u0sjp"]
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="6_wwc2a"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="6_wwc2a"]
 [ext_resource type="ArrayMesh" uid="uid://g8mnv7c33x85" path="res://models/mesh models/rawShapes/sphereShape.res" id="7_hjww2"]
 [ext_resource type="Resource" uid="uid://126jxfaiye4p" path="res://scripts/utility/invSystem/invData/blueCircData.tres" id="7_qp1n4"]
 [ext_resource type="ArrayMesh" uid="uid://b8xs76f0r73hl" path="res://models/mesh models/rawShapes/coneShape.res" id="7_yhgeq"]

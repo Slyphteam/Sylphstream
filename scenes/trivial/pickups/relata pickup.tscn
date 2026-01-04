@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwq2fy8mbnx5p"]
 
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_eqwb4"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_eqwb4"]
 [ext_resource type="ArrayMesh" uid="uid://bw6xf5xrhqshs" path="res://models/glbs and textures/guns/relataMesh.res" id="3_42efk"]
 [ext_resource type="Resource" uid="uid://to2vbod675ey" path="res://scripts/utility/invSystem/invData/invWeapons/relataInvData.tres" id="3_va5en"]
 
@@ -10,7 +10,7 @@ points = PackedVector3Array(-0.278017, -0.0150072, -0.157186, -0.277812, 0.01541
 [node name="Relata" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
-collision_layer = 4
+collision_layer = 5
 collision_mask = 17
 script = ExtResource("2_eqwb4")
 thingToGive = ExtResource("3_va5en")

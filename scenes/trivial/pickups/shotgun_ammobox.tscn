@@ -1,19 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://cahf1scobnpcq"]
 
-[ext_resource type="PackedScene" uid="uid://bvldan4260164" path="res://models/glbs and textures/pickups/shotgunbundle.glb" id="1_t8u5d"]
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_eb8vk"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_eb8vk"]
 [ext_resource type="Resource" uid="uid://dcrbgb5ycwr84" path="res://scripts/utility/invSystem/invData/invConsumables/ammBox12gInvData.tres" id="3_eb8vk"]
+[ext_resource type="ArrayMesh" uid="uid://clnifkrgr5wnk" path="res://models/mesh models/shotgunbundle mesh.res" id="3_jhey8"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t8u5d"]
-points = PackedVector3Array(-0.111393, -2.82503, -0.398535, 3.3701, -1.08461, 0.0108103, -2.74919, -0.416596, 0.6527, -2.85423, -0.24349, -0.6548, 2.56537, 0.801352, -0.6548, 2.47727, 0.866178, 0.6527, -0.00875084, -2.72303, 0.727621, -0.823592, 2.79178, 0.6527, -2.47358, 1.65736, -0.6548, 0.853947, -2.81092, -0.6548, -3.08096, -1.39189, 0.317995, 2.29344, -1.88377, 0.6527, 1.21975, -3.2356, 0.317995, -2.60462, 1.71511, 0.289889, -0.762758, 2.89342, -0.6548, 2.47006, -1.76489, -0.6548, -3.1836, -1.08461, -0.398535, 0.297893, 3.01017, -0.0913508, -1.85182, 2.70353, -0.398535, 2.14096, 1.57639, 0.317995, -2.38211, 1.59977, 0.6527, 3.3701, -0.879322, 0.317995, 0.297893, 3.01017, -0.398535, 0.0932498, 2.60852, 0.6527, -0.775261, 3.03117, 0.300219, -2.56889, -1.00419, -0.6548, 1.21975, -3.2356, 0.0108103, 2.75539, -1.28893, -0.6548, -1.23725, -2.3131, -0.398535, -1.85182, 2.70353, -0.0913508, -2.60462, 1.71511, -0.361083, 2.66052, -1.24152, 0.6527)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jc4h0"]
+points = PackedVector3Array(0.1, 0.1, 0.05, 0.1, -0.1, 0.05, 0.03, 0.1, 0.11, 0.03, -0.1, 0.11, -0.11, 0.1, 0.03, -0.11, -0.1, 0.03, -0.1, 0.1, -0.06, -0.1, -0.1, -0.06, -0.02, 0.1, -0.1, -0.02, -0.1, -0.1, 0.11, 0.1, -0.04, 0.11, -0.1, -0.04)
 
-[node name="shotgunbundle" instance=ExtResource("1_t8u5d")]
+[node name="Node3D" type="Node3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Shotgun bundle" index="0" groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 17
+mass = 0.5
 script = ExtResource("2_eb8vk")
 thingToGive = ExtResource("3_eb8vk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Shotgun bundle/StaticBody3D" index="0"]
-shape = SubResource("ConvexPolygonShape3D_t8u5d")
+[node name="goodcollisionshape" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_jc4h0")
+
+[node name="Shotgun bundle" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(-0.0178346, 0.0293269, 2.12496e-15, 0, 0, -0.14953, -0.0293269, -0.0178346, -1.06248e-15, 0, 0, 0)
+mesh = ExtResource("3_jhey8")
+skeleton = NodePath("")

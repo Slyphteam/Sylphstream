@@ -1,19 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnr004t0lyqd1"]
+[gd_scene load_steps=8 format=4 uid="uid://dnr004t0lyqd1"]
 
-[ext_resource type="PackedScene" uid="uid://mivmmni3ef2p" path="res://models/glbs and textures/pickups/rimfire_ammobox.glb" id="1_0aof4"]
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/pickups/entity_pickup_script.gd" id="2_xjbfk"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_xjbfk"]
+[ext_resource type="Texture2D" uid="uid://scauwe7jnmab" path="res://models/glbs and textures/pickups/rimfire_ammobox_22box.png" id="3_xjbfk"]
 [ext_resource type="Resource" uid="uid://cnlv5r8tujtib" path="res://scripts/utility/invSystem/invData/invConsumables/ammBox22lrInvData.tres" id="3_xofol"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xjbfk"]
-points = PackedVector3Array(1.13163, 1.7658, 0.998427, -1.15151, -0.1606, -0.999321, -1.13343, -0.145352, 1, 1.1515, -0.1606, -0.999321, -1.13164, 1.7658, -0.981935, 1.13343, -0.145352, 1, 1.13163, 1.7658, -0.981935, -1.13164, 1.7658, 0.998427)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts23x"]
+resource_name = "ammobox 22"
+cull_mode = 2
+albedo_texture = ExtResource("3_xjbfk")
+metallic = 0.727273
+roughness = 0.78
 
-[node name="rimfire_ammobox" instance=ExtResource("1_0aof4")]
+[sub_resource type="ArrayMesh" id="ArrayMesh_38iqj"]
+_surfaces = [{
+"aabb": AABB(-1.15487, -0.160592, -1, 2.30974, 1.92641, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "ammobox 22",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" index="0" groups=["player_interactible"]]
+[sub_resource type="ArrayMesh" id="ArrayMesh_xofol"]
+resource_name = "rimfire_ammobox_Cube_010"
+_surfaces = [{
+"aabb": AABB(-1.15487, -0.160592, -1, 2.30974, 1.92641, 2),
+"attribute_data": PackedByteArray("j/y4+/KXvsqP/L7K8pcg/2uB3v3Yk2bC05Pe/2uBZsLul///uPK+yvKXvsq48pf8a4FmwtOT3v/Yk2bCa4He/f27kpA7w/XRO8OSkP279dH//+HGqJXugv//7oKoleHG"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_ts23x"),
+"name": "ammobox 22",
+"primitive": 3,
+"uv_scale": Vector4(1.96314, 2.00042, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//AcAAAP//AAABwAAA//////+/AAAAAAAACcAAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAOwA////////9wD/////AAAAAP//AAD//+QB//8AAP//ukAAAP/////qQP////////8/AAAAAP//pEEAAAAAAAD/P///AAD///8///8AAAAA/z8AAAAA////P/////8AAFTVAAD/////VNUAAP//AABU1f///////1TVGn40/AN+Bvz/f///O3x2+LHATL+MwHG/P8G/vv+//799v/t+dr/ufv+//3/2vu59/////////////////////wAA/38AAP9/AAD/fwAA/39U1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_38iqj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3cwr8"]
+size = Vector3(0.129333, 0.107361, 0.466064)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 17
+mass = 0.5
 script = ExtResource("2_xjbfk")
 thingToGive = ExtResource("3_xofol")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D" index="0"]
-shape = SubResource("ConvexPolygonShape3D_xjbfk")
+[node name="Cube_001" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(0.0529267, 0, 0, 0, 0.0529267, 0, 0, 0, 0.230572, 0, 0, 0)
+mesh = SubResource("ArrayMesh_xofol")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000579834, 0.0423279, 0.000854492)
+shape = SubResource("BoxShape3D_3cwr8")
