@@ -67,13 +67,16 @@ func do_Shoot():
 		var end:Vector3 = invManager.get_End(orig, randAzimuth, randRoll)
 		
 		var theShot = FIREDBULLET.new()
-		theShot.assign_Info(orig, end, space, invManager.user, damage)
+		theShot.assign_Info(orig, end, space, invManager.user, ourWeaponSheet.damage)
 		theShot.take_Shot()
 		
 	
+	if(ourWeaponSheet.doCasing && !ourWeaponSheet.ejectOnReload):
+		eject_Casing()
+	
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.
-	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * punchMult
-	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * punchMult
+	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * ourWeaponSheet.viewpunchMult
+	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * ourWeaponSheet.viewpunchMult
 	invManager.applyViewpunch(drift, lift)
 
 ##99% sure this isn't used ever on account of decals now belonging to fired bullet code
@@ -110,7 +113,7 @@ func startReload():
 	reloading = true
 	
 	#Should we have capacity being >= max here? Double check at some point
-	if(triggerDepressed || capacity > maxCapacity+1 || invManager.chkAmmoAmt(chambering)<1): #No reason to reload
+	if(triggerDepressed || capacity > ourWeaponSheet.maxCapacity+1 || invManager.chkAmmoAmt(ourWeaponSheet.chambering)<1): #No reason to reload
 		#print("exiting")
 		reloading = false
 		return
@@ -133,7 +136,7 @@ func reload_Complete() -> void:
 	#if(capacity > 0):
 		#takenAmount+=1 #we have 1 in the chamber, so add a bonus round
 
-	var shell = invManager.withdrawAmmo(chambering, 1)
+	var shell = invManager.withdrawAmmo(ourWeaponSheet.chambering, 1)
 	
 	capacity += shell
 	
@@ -143,5 +146,5 @@ func reload_Complete() -> void:
 	
 	reloadPlayer.play() #play AS we insert the round, not before
 	#print("Finished reload! Rounds: ", capacity)
-	if(capacity <= maxCapacity):
+	if(capacity <= ourWeaponSheet.maxCapacity):
 		startReload()

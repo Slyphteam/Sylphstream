@@ -3,10 +3,10 @@
 [ext_resource type="AudioStream" uid="uid://c3sljf55bxm0a" path="res://sounds/gunshots/affine.mp3" id="1_vy6dq"]
 [ext_resource type="ArrayMesh" uid="uid://bcdw70suvkae5" path="res://models/glbs and textures/guns/affineMesh.res" id="2_vy6dq"]
 [ext_resource type="AudioStream" uid="uid://c8h4dh1gf7jql" path="res://sounds/reloads/fullreloadrifle.mp3" id="3_q1lvo"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="4_tyoho"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="4_vy6dq"]
 
 [resource]
-script = ExtResource("4_tyoho")
+script = ExtResource("4_vy6dq")
 gunshot = ExtResource("1_vy6dq")
 reload = ExtResource("3_q1lvo")
 shotCooldown = 15
@@ -19,12 +19,12 @@ minRecoil = 5.0
 recoilAmount = 20.0
 viewpunchMult = 1.0
 recoverAmount = 0.7
-doCasing = false
-casingPath = ""
+doCasing = true
+casingPath = "res://scenes/trivial/decals/556Casing.tscn"
 ejectOnReload = false
-casingDelay = 0.5
-shotgunModeOverride = false
-pelletAMT = 12
+casingDelay = 0.0
+singleReloadOverride = false
+pelletAMT = 1
 burstMode = false
 burstAMT = 3
 wepName = &"Affine"

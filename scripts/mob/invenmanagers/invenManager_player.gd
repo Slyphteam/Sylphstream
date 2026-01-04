@@ -46,10 +46,10 @@ func _ready():
 	
 	user = get_node("../../..")
 	
-	heldAmmunition.ammoRimfire = 0
-	heldAmmunition.ammoPistol = 0
-	heldAmmunition.ammoRifle = 0
-	heldAmmunition.ammoShotgun = 0
+	heldAmmunition.ammoRimfire = 50
+	heldAmmunition.ammoPistol = 50
+	heldAmmunition.ammoRifle = 50
+	heldAmmunition.ammoShotgun = 50
 	recalcWeight()
 	
 	#Begin with slot init
@@ -432,3 +432,6 @@ func get_End(orig:Vector3, azimuth:float, roll:float):
 	
 func get_Rotation():
 	return user.playerCam.global_rotation
+
+func get_Speed()->Vector3:
+	return user.playerVelocity

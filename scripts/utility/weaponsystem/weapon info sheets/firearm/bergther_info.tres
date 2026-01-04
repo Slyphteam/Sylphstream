@@ -3,10 +3,10 @@
 [ext_resource type="AudioStream" uid="uid://b172helr4d31a" path="res://sounds/gunshots/bergther.mp3" id="1_2pesw"]
 [ext_resource type="ArrayMesh" uid="uid://c6mqdm7s3rxj5" path="res://models/glbs and textures/guns/bergtherMesh.res" id="2_2pesw"]
 [ext_resource type="AudioStream" uid="uid://d0iimhufvn3pi" path="res://sounds/reloads/pistolreloadfast.mp3" id="3_kpfbf"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="4_i240n"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="4_2pesw"]
 
 [resource]
-script = ExtResource("4_i240n")
+script = ExtResource("4_2pesw")
 gunshot = ExtResource("1_2pesw")
 reload = ExtResource("3_kpfbf")
 shotCooldown = 10
@@ -19,12 +19,12 @@ minRecoil = 20.0
 recoilAmount = 10.0
 viewpunchMult = 1.0
 recoverAmount = 0.3
-doCasing = false
-casingPath = ""
+doCasing = true
+casingPath = "res://scenes/trivial/decals/22lrCasing.tscn"
 ejectOnReload = false
-casingDelay = 0.5
-shotgunModeOverride = false
-pelletAMT = 12
+casingDelay = 0.0
+singleReloadOverride = false
+pelletAMT = 1
 burstMode = false
 burstAMT = 3
 wepName = &"Bergther G5P"

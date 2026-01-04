@@ -17,12 +17,14 @@ class_name FIREARM_INFO extends WEAP_INFO
 @export var recoilAmount: float = 10 ##pixels of recoil per shot. Also affects camera offset. 10 is barely any
 @export var viewpunchMult: float = 1 ##Multiplier on viewpunch
 @export var recoverAmount: float = 0.5 ##In pixels per frame. Feels best between 1 and 0.25
+@export_category("Casing options")
 @export var doCasing: bool = false ##Create casings when gun is fired
 @export var casingPath: String = ""
 @export var ejectOnReload: bool = false ##Eject when we reload or immediately after firing?
-@export var casingDelay: float = 0.5 ##in seconds
+@export var casingDelay: float = 0 ##in seconds
+@export var casingSpeedBoost: float = 1.0 ##Bonus/malus to the speed of ejected casings
 @export_category("Script override")
 @export var singleReloadOverride: bool = false ##Override script to use SHOTGUNINSTANCE, primarily changes reload behavior
-@export var pelletAMT: int = 12 ##How many bullets in a volley?
+@export var pelletAMT: int = 1 ##How many bullets in a volley?
 @export var burstMode: bool = false ##Do we fire in bursts, requiring a trigger reset after each?
 @export var burstAMT: int = 3

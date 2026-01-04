@@ -1,3 +1,6 @@
+12/4:
+All pickups are now physics objects
+Completion of casing system
 12/28:
 Heavy changes to how weapons are stored in invenmanager, weapons can now be shuffled
 12/12:

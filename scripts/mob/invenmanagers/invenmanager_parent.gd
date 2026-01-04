@@ -233,3 +233,7 @@ func get_End(orig:Vector3, azimuth:float, roll:float):
 func get_Rotation()-> Vector3:
 	print("Attempted to get rotation on invenmanager parent! Bad!")
 	return Vector3(0,0,0)
+
+func get_Speed()->Vector3:
+	print("Attempted to get speed on invenmanager parent! Bad!")
+	return Vector3(0,0,0)

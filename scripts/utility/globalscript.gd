@@ -5,8 +5,13 @@ var isPlaying = false ##Is the game paused or running?
 var thePlayer
 var allSylphs: Array
 var activeSylphs: Array
+var theTree
 
 var deltaButNotStinky = 0 ##copy of delta that's scaled by 60 to use as a unit
+
+func _ready():
+	theTree = get_tree()
+	#print(theRoot)
 
 func _process(delta):
 	deltaButNotStinky = delta * 60
@@ -80,3 +85,15 @@ func raise_Panic_Exception(exceptionMessage:String):
 	
 	var crashMaker = 0
 	print(42/crashMaker)
+
+
+var playerCasings:Array
+var maxCasings:int = 100
+
+func push_Casing(theCasings, isPlayer):
+	if(!isPlayer):
+		print("We dont do npc casings yet!")
+		return
+	playerCasings.push_back(theCasings)
+	if(playerCasings.size() > maxCasings):
+		playerCasings.pop_front().queue_free()

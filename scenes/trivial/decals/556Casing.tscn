@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://01bm5fbkshcf"]
+
+[ext_resource type="ArrayMesh" uid="uid://dxs4l5vkqsvhs" path="res://models/glbs and textures/decals/556Mesh.res" id="1_1wjxw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bytx7"]
+points = PackedVector3Array(0, 1.48, 5, 1.429, 0.428, 5, 0, 1.48, -5, -1.429, 0.428, 5, 1.429, 0.428, -5, 0.739, -1.25, 5, -1.429, 0.428, -5, -0.739, -1.25, 5, 0.739, -1.25, -5, -0.739, -1.25, -5)
+
+[node name="Casing" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 16
+mass = 0.01
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, -0.000968933)
+shape = SubResource("ConvexPolygonShape3D_bytx7")
+
+[node name="556Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.02, 0, 7.51836e-09, 0, 0.02, 0, -1.74846e-09, 0, -0.086, 0, 0, 0.00494385)
+mesh = ExtResource("1_1wjxw")

@@ -34,10 +34,9 @@ func take_Shot():
 
 func do_Hit_Decal(pos):
 	#USE NORMALS!!!!!
-	var tree = Globalscript.thePlayer.get_tree()
 	var hitdecalscene = preload("res://scenes/trivial/decals/bullet_decal.tscn")
 	var decalInstance = hitdecalscene.instantiate()
-	tree.root.add_child(decalInstance)
+	Globalscript.theTree.root.add_child(decalInstance)
 	decalInstance.global_position = pos
 	
 	#Make our rotation the exact angle of the cast
@@ -57,5 +56,5 @@ func do_Hit_Decal(pos):
 	#give it some variation on the roll, though
 	decalInstance.rotation.z = randi_range(-2, 2)
 	
-	await tree.create_timer(10).timeout
+	await Globalscript.theTree.create_timer(10).timeout
 	decalInstance.queue_free()

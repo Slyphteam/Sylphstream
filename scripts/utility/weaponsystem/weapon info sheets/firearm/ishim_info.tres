@@ -3,10 +3,10 @@
 [ext_resource type="AudioStream" uid="uid://c7xne0xmb6kea" path="res://sounds/gunshots/pistolcarbine.mp3" id="1_gchtv"]
 [ext_resource type="ArrayMesh" uid="uid://iacvrhw6fyj6" path="res://models/glbs and textures/guns/ishimMesh.res" id="2_gchtv"]
 [ext_resource type="AudioStream" uid="uid://cdg5xrna7i6r8" path="res://sounds/reloads/ishimreload.mp3" id="3_hoaeb"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="4_y8qtu"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="4_gchtv"]
 
 [resource]
-script = ExtResource("4_y8qtu")
+script = ExtResource("4_gchtv")
 gunshot = ExtResource("1_gchtv")
 reload = ExtResource("3_hoaeb")
 shotCooldown = 5
@@ -19,10 +19,10 @@ minRecoil = 10.0
 recoilAmount = 5.0
 viewpunchMult = 1.0
 recoverAmount = 0.5
-doCasing = false
-casingPath = ""
+doCasing = true
+casingPath = "res://scenes/trivial/decals/22lrCasing.tscn"
 ejectOnReload = false
-casingDelay = 0.5
+casingDelay = 0.1
 singleReloadOverride = true
 pelletAMT = 1
 burstMode = false

@@ -186,7 +186,7 @@ func check_Directional_Movement():
 	
 	
 	#This would probably be best as a linear function, but that's a considerable amount of effort for something that's currently "good enough"
-	if(playerSpeed == 0 && leftright == 0 && forback == 0): #Make starting from a dead stop easier
+	if(playerSpeed <= 3 && leftright == 0 && forback == 0): #Make starting from a dead stop easier
 		bonus = 90
 	
 	leftright += int(bonus) * (int(Input.get_action_strength("ui_left") )) * Globalscript.deltaButNotStinky
@@ -531,7 +531,7 @@ func do_Floorsnap_Check():
 		
 		if(PhysicsServer3D.body_test_motion(self.get_rid(), checkParameters, moveCheckRes)):
 			var neededMove = moveCheckRes.get_travel().y ##How far we need to go to be about to collide
-			position.y += neededMove #wow. this should be better code.
+			position.y += neededMove #wow. this should be better code. <-- not only that but isnt this the invenMANAGER's position being moved??
 			apply_floor_snap() #supposedly prevents bouncing. IDRC enough to test it, tbh
 			return true
 			
