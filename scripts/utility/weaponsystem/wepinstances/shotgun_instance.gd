@@ -69,15 +69,17 @@ func do_Shoot():
 		var theShot = FIREDBULLET.new()
 		theShot.assign_Info(orig, end, space, invManager.user, ourWeaponSheet.damage)
 		theShot.take_Shot()
-		
-	
-	if(ourWeaponSheet.doCasing && !ourWeaponSheet.ejectOnReload):
-		eject_Casing()
-	
+
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.
 	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * ourWeaponSheet.viewpunchMult
 	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * ourWeaponSheet.viewpunchMult
 	invManager.applyViewpunch(drift, lift)
+	
+	#do this as the last thing to not delay any other effects: wait, then eject
+	if(ourWeaponSheet.doCasing && !ourWeaponSheet.ejectOnReload):
+		if(ourWeaponSheet.casingDelay !=0):
+			await invManager.get_tree().create_timer(ourWeaponSheet.casingDelay).timeout #probably a lot of overhhead here?
+		eject_Casing()
 
 ##99% sure this isn't used ever on account of decals now belonging to fired bullet code
 #func do_Hit_Decal(pos):

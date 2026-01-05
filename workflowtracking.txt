@@ -67,18 +67,14 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-In initialization, the invenmanager parent seems to load every single weaponmesh. Find out what's up with that
+In initialization, the invenmanager parent seems to load every single weaponmesh. Find out what's up with that. (preloading?)
 Change Globalscript.thePlayer calls in firedbullet and casing system to NOT refer to the player
 
 Go through shotgun instance and gut half the functionality to gun_basic im tired of updating shit >:{
+Also: check all await() calls to ensure they're using the global script, not some fucky wucky reference
 
 Clean up gun_basic_instance to not have as many tracked variables, you can literally
 just have it reference the infosheet for static stuff.
-
-Decals: Parent decals to hit object
-Use normals so decals have proper angle.
-  Have hit decals auto-stick themselves to objects and be managed by globalScript, have player decals 
-last longer (separate array)
 
   Follow guide for players picking up physics objects. Follow guide for players BEING physics objects?
 

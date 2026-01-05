@@ -23,6 +23,7 @@ doCasing = true
 casingPath = "res://scenes/trivial/decals/9mmCasing.tscn"
 ejectOnReload = false
 casingDelay = 0.0
+casingSpeedBoost = 1.0
 singleReloadOverride = false
 pelletAMT = 1
 burstMode = false

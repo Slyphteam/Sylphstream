@@ -197,6 +197,8 @@ func do_Shoot():
 		theShot.assign_Info(orig, end, space, invManager.user, ourWeaponSheet.damage)
 		theShot.take_Shot()
 		if(ourWeaponSheet.doCasing && !ourWeaponSheet.ejectOnReload):
+			if(ourWeaponSheet.casingDelay !=0):
+				await invManager.get_tree().create_timer(ourWeaponSheet.casingDelay).timeout #probably a lot of overhhead here?
 			eject_Casing()
 	
 	#Update the current magazine capacity

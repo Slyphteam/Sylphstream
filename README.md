@@ -13,22 +13,22 @@ https://docs.google.com/document/d/118_IEV_9k2dqLq8unO5gw8Gx04xngHV5QysfVkentBs/
 
 ### Features in active development:
 
-Status effect integration with AI agent training cycles
+Expanded inventory system/inventory functionality
 
-AI agent input vetting
-
-AI agent output vetting
-
-AI agent debugging
+Alternative Neural Network paradigms/layouts
 
 Prototype fragmentary AI agent testing
 
-AI agent EvE testing trial
+Status effect integration with AI agent training cycles
 
-Rudimentary player inventory
+AI agent EvE testing trial
 
 
 ### Completed features:
+
+AI agent movement systems
+
+Casing system
 
 ~~Stochastic Gradient Descent~~ (Implemented, scrapped as not worth pursuit)
 
@@ -68,7 +68,7 @@ Neural network/entity API
 
 ### Planned features:
 
-Melee system
+Melee weapInstance system
 
 Scrolling text chat
 
@@ -76,13 +76,13 @@ Quickstim system
 
 Cast abilities (stutter, augur, freeze, surge)
 
+Expanded UI elements
+
 NPC dialogue system
 
 Objective system
 
 Dynamic player body and player animations
-
-Casing system
 
 Implementation of grenade, fragmentation, and explosive systems
 

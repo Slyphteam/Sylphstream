@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://llaxyw1pq21o"]
+[gd_scene load_steps=3 format=3 uid="uid://llaxyw1pq21o"]
 
 [ext_resource type="PackedScene" uid="uid://u26sbabbdpl7" path="res://models/glbs and textures/entities/bullet decal.glb" id="1_avx2e"]
+[ext_resource type="ArrayMesh" uid="uid://dlv7ayqmpetd3" path="res://models/mesh models/rawShapes/compassRoseMesh.res" id="2_7qjc7"]
 
 [node name="bullet decal" instance=ExtResource("1_avx2e")]
 
 [node name="Cube" parent="." index="0"]
-transform = Transform3D(-1.33748e-14, 3.0598e-07, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, 3.0598e-07, 0, 0, 0)
+transform = Transform3D(4.37114e-08, -1, -4.37114e-07, -1, -4.37114e-08, 0, -1.91069e-14, 4.37114e-07, -1, -0.0240279, 0, 0)
+
+[node name="CompassRoseMesh" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.464079, 0, 0)
+mesh = ExtResource("2_7qjc7")
