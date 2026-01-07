@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr7gtbg3hgl4n"
-path.s3tc="res://.godot/imported/slyphstream turret_turrettexture.png-4c44da7fa297c7dfdaa327aec413e0a6.s3tc.ctex"
+uid="uid://567cgnsv3a0"
+path.s3tc="res://.godot/imported/sylph head v2_sylphcolors.png-aac31e049aa09795c22fa86c5dab1d01.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "8cd8a29aa2f36db95f81a92409045597"
+"md5": "6c61bb6eaf037ffc970b054ac19a1aa8"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/slyphstream turret_turrettexture.png"
-dest_files=["res://.godot/imported/slyphstream turret_turrettexture.png-4c44da7fa297c7dfdaa327aec413e0a6.s3tc.ctex"]
+source_file="res://models/glbs and textures/creatures/enemies/sylph/sylph head v2_sylphcolors.png"
+dest_files=["res://.godot/imported/sylph head v2_sylphcolors.png-aac31e049aa09795c22fa86c5dab1d01.s3tc.ctex"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6vwbx1oy0kr7"
-path.s3tc="res://.godot/imported/archon_archontextures.png-5cbae00d6cb058494929cc4cb995b593.s3tc.ctex"
+uid="uid://0bynqi3f8cpg"
+path.s3tc="res://.godot/imported/sylphheadPurple_sylphcolorsalt.png-843f932656ed43c9ba5a8a7c6d01fff4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "fb35b0b46d56d086ca31aa2f844a66e4"
+"md5": "471dd18df8dd5b35ea0e9788d61611ef"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/archon_archontextures.png"
-dest_files=["res://.godot/imported/archon_archontextures.png-5cbae00d6cb058494929cc4cb995b593.s3tc.ctex"]
+source_file="res://models/glbs and textures/creatures/enemies/sylph/sylphheadPurple_sylphcolorsalt.png"
+dest_files=["res://.godot/imported/sylphheadPurple_sylphcolorsalt.png-843f932656ed43c9ba5a8a7c6d01fff4.s3tc.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=64 format=3 uid="uid://bh3powm0a35or"]
 
 [ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="1_os2cn"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="4_2yn2u"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dwq2fy8mbnx5p" path="res://scenes/trivial/pickups/relata pickup.tscn" id="19_xqkej"]
 [ext_resource type="PackedScene" uid="uid://miqixjbi8xeb" path="res://scenes/utilities/buttons/debugtracebutton.tscn" id="20_by8b2"]
 [ext_resource type="PackedScene" uid="uid://b7fuapjfoq1ld" path="res://scenes/utilities/buttons/coneandSphere.tscn" id="23_c2ovy"]
+[ext_resource type="PackedScene" uid="uid://d2y6vux751ctf" path="res://scenes/entities/enemy/springtail.tscn" id="25_jn6mq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -368,7 +369,7 @@ skeleton = NodePath("../wall1")
 shape = SubResource("ConvexPolygonShape3D_6wnxl")
 
 [node name="Range" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.638, 1.02, 21.446)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.4569, 1.02, -16.9365)
 mesh = SubResource("BoxMesh_6wnxl")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Environment/Range"]
@@ -400,10 +401,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.4868
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.44322, 0.648801, -0.467051)
 
 [node name="target 4" parent="Environment/Range" instance=ExtResource("4_m2myf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.10754, 1.08201, -23.6202)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.9511, 1.08201, -0.483713)
 
 [node name="target 3" parent="Environment/Range" instance=ExtResource("4_m2myf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.25917, 0.576347, -25.1597)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.7994, 0.576347, -2.02322)
 
 [node name="sporting clay" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.87644, 2.82441, 2.62155)
@@ -626,4 +627,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5492, 0.533243, -26.9504)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2014, 0.527357, -25.9287)
 
 [node name="shapebuttons" parent="." instance=ExtResource("23_c2ovy")]
-transform = Transform3D(-0.57931, 0, -0.815108, 0, 1, 0, 0.815108, 0, -0.57931, 40.9642, 0.550098, 13.5022)
+transform = Transform3D(0.637397, 0, -0.770536, 0, 1, 0, 0.770536, 0, 0.637397, 31.5257, 0.550097, -25.3479)
+
+[node name="Node3D" parent="." instance=ExtResource("25_jn6mq")]
+transform = Transform3D(-0.525486, 0, 0.850802, 0, 1, 0, -0.850802, 0, -0.525486, 40.6743, 0.678799, -25.4885)

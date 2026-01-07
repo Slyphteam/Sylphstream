@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b3q2y50pp50x5"
-path="res://.godot/imported/sentryshittyindev.glb-3bfb97d0f55c706f8d93c3d04cb7e44c.scn"
+path="res://.godot/imported/sentryshittyindev.glb-29153f3e2aa58e51846fea98bd48ffb0.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/sentryshittyindev.glb"
-dest_files=["res://.godot/imported/sentryshittyindev.glb-3bfb97d0f55c706f8d93c3d04cb7e44c.scn"]
+source_file="res://models/glbs and textures/creatures/enemies/sentry/sentryshittyindev.glb"
+dest_files=["res://.godot/imported/sentryshittyindev.glb-29153f3e2aa58e51846fea98bd48ffb0.scn"]
 
 [params]
 

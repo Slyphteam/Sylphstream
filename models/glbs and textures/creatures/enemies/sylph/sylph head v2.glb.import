@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dp1v64jvcociq"
-path="res://.godot/imported/sylphheadPurple.glb-a700f697da6d7a053b74d0b3fb9a632f.scn"
+uid="uid://x2dv4kxfm3w7"
+path="res://.godot/imported/sylph head v2.glb-df8b294e75c83593128e282624e83d95.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/sylphheadPurple.glb"
-dest_files=["res://.godot/imported/sylphheadPurple.glb-a700f697da6d7a053b74d0b3fb9a632f.scn"]
+source_file="res://models/glbs and textures/creatures/enemies/sylph/sylph head v2.glb"
+dest_files=["res://.godot/imported/sylph head v2.glb-df8b294e75c83593128e282624e83d95.scn"]
 
 [params]
 

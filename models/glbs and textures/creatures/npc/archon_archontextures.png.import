@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://567cgnsv3a0"
-path.s3tc="res://.godot/imported/sylph head v2_sylphcolors.png-813371b7321d985b048fd4752fc2e25e.s3tc.ctex"
+uid="uid://b6vwbx1oy0kr7"
+path.s3tc="res://.godot/imported/archon_archontextures.png-3e9b898401e40dac09f1be9a33c0770a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "6c61bb6eaf037ffc970b054ac19a1aa8"
+"md5": "fb35b0b46d56d086ca31aa2f844a66e4"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/sylph head v2_sylphcolors.png"
-dest_files=["res://.godot/imported/sylph head v2_sylphcolors.png-813371b7321d985b048fd4752fc2e25e.s3tc.ctex"]
+source_file="res://models/glbs and textures/creatures/npc/archon_archontextures.png"
+dest_files=["res://.godot/imported/archon_archontextures.png-3e9b898401e40dac09f1be9a33c0770a.s3tc.ctex"]
 
 [params]
 

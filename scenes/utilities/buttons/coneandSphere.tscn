@@ -1,8 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7fuapjfoq1ld"]
+[gd_scene load_steps=24 format=3 uid="uid://b7fuapjfoq1ld"]
 
 [ext_resource type="PackedScene" uid="uid://c7e8sby3mvbqo" path="res://models/glbs and textures/interactibles/button stand.glb" id="1_bqrco"]
 [ext_resource type="PackedScene" uid="uid://bk4h0tw6ifgij" path="res://models/glbs and textures/interactibles/buttonRedcone.glb" id="2_1ud4i"]
-[ext_resource type="Script" uid="uid://kqk8bai6e87f" path="res://scripts/trivial/mystery_button_behav.gd" id="3_tflyw"]
 [ext_resource type="PackedScene" uid="uid://b51t511qxml7u" path="res://models/glbs and textures/interactibles/buttonBlueball.glb" id="4_tflyw"]
 [ext_resource type="Script" uid="uid://u7tlil24wkw8" path="res://scripts/trivial/dev and debug/shapeButtonScript.gd" id="5_tflyw"]
 [ext_resource type="PackedScene" uid="uid://cak2gxq05pfl0" path="res://models/glbs and textures/interactibles/buttonCasing.glb" id="6_u0sjp"]
@@ -55,7 +54,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.733, 0)
 transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0.828467, -2.28882e-05)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("3_tflyw")
+script = ExtResource("5_tflyw")
+objectType = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="button stand/buttonRedcone/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 5.68434e-14, 1, 0, -0.00743026, -1.86947e-09)
@@ -72,6 +72,7 @@ transform = Transform3D(0.565154, 1.24569e-07, -0.824985, 0, -1, -1.50996e-07, -
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("5_tflyw")
+objectType = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="button stand2/buttonBlueball/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 5.68434e-14, 1, 0, -0.00743026, -1.86947e-09)

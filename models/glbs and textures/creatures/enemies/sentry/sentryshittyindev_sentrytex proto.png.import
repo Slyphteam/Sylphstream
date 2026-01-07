@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bq8a25ckmka8h"
-path.s3tc="res://.godot/imported/sentryshittyindev_sentrytex proto.png-a13e6d58e21e73eef94e2ef139b7b986.s3tc.ctex"
+path.s3tc="res://.godot/imported/sentryshittyindev_sentrytex proto.png-1458a1759c52e7988945679ec618baef.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/sentryshittyindev_sentrytex proto.png"
-dest_files=["res://.godot/imported/sentryshittyindev_sentrytex proto.png-a13e6d58e21e73eef94e2ef139b7b986.s3tc.ctex"]
+source_file="res://models/glbs and textures/creatures/enemies/sentry/sentryshittyindev_sentrytex proto.png"
+dest_files=["res://.godot/imported/sentryshittyindev_sentrytex proto.png-1458a1759c52e7988945679ec618baef.s3tc.ctex"]
 
 [params]
 

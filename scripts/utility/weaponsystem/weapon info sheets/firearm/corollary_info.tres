@@ -2,13 +2,14 @@
 
 [ext_resource type="AudioStream" uid="uid://c3sljf55bxm0a" path="res://sounds/gunshots/gunshotRifleLow.mp3" id="1_2s3ev"]
 [ext_resource type="ArrayMesh" uid="uid://ccqqd6eoawgyp" path="res://models/glbs and textures/guns/corollaryMesh.res" id="1_qxrc1"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearminfo.gd" id="2_2s3ev"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="2_2s3ev"]
 [ext_resource type="AudioStream" uid="uid://q7haq3pkiyqy" path="res://sounds/reloads/arLoad.mp3" id="3_74hli"]
 
 [resource]
 script = ExtResource("2_2s3ev")
 gunshot = ExtResource("1_2s3ev")
 reload = ExtResource("3_74hli")
+bulletVariance = 0
 shotCooldown = 10
 chambering = 3
 maxCapacity = 10

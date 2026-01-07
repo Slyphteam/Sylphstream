@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0bynqi3f8cpg"
-path.s3tc="res://.godot/imported/sylphheadPurple_sylphcolorsalt.png-409e801154cf7e8895504f2b2a0bbc4c.s3tc.ctex"
+uid="uid://ckv633tg2uen"
+path.s3tc="res://.godot/imported/sylphbodyPurple_sylphcolorsalt.png-358c8f4f8c137091985bed715e68d17b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/sylphheadPurple_sylphcolorsalt.png"
-dest_files=["res://.godot/imported/sylphheadPurple_sylphcolorsalt.png-409e801154cf7e8895504f2b2a0bbc4c.s3tc.ctex"]
+source_file="res://models/glbs and textures/creatures/enemies/sylph/sylphbodyPurple_sylphcolorsalt.png"
+dest_files=["res://.godot/imported/sylphbodyPurple_sylphcolorsalt.png-358c8f4f8c137091985bed715e68d17b.s3tc.ctex"]
 
 [params]
 

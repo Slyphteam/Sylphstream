@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bqltcy1i67nbx"
-path="res://.godot/imported/sylph body.glb-b7fff1f92c61e54a59ec94243154dc53.scn"
+uid="uid://7u3fambuprg2"
+path="res://.godot/imported/archon.glb-dee851cf96c618d548d3a73ee2dac3ea.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/sylph body.glb"
-dest_files=["res://.godot/imported/sylph body.glb-b7fff1f92c61e54a59ec94243154dc53.scn"]
+source_file="res://models/glbs and textures/creatures/npc/archon.glb"
+dest_files=["res://.godot/imported/archon.glb-dee851cf96c618d548d3a73ee2dac3ea.scn"]
 
 [params]
 
@@ -33,10 +33,14 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
-"materials": {
-"sylph material": {
-"use_external/enabled": true,
-"use_external/path": ""
+"meshes": {
+"archon_Cube_019": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://models/mesh models/archon mesh.res"
 }
 }
 }
