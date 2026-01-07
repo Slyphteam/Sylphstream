@@ -61,17 +61,6 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-WEAPON SYSTEM WORKFLOW:
-In initialization, the invenmanager parent seems to load every single weaponmesh. Find out what's up with that. (preloading?)
-
-Change Globalscript.thePlayer calls in firedbullet and casing system to NOT refer to the player
-
-Go through shotgun instance and gut half the functionality to gun_basic im tired of updating shit >:{
-Also: check all await() calls to ensure they're using the global script, not some fucky wucky reference
-
-Clean up gun_basic_instance to not have as many tracked variables, you can literally
-just have it reference the infosheet for static stuff.
-
 INVENTORY SYSTEM WORKFLOW:
   Include drop slot to inventory menu. Let players drag items into drop slot to drop them at cursor, only guns for now.
 
@@ -103,7 +92,6 @@ the constraining effect it has. Either way, it's worth looking into to ensure ev
 -----------/
 
 Players should take more time to get up to speed. Also revert the friction to default values so we can bhop again.
-ADD BULLET VARIANCE!!! Just make it a toggle!
 Autolean when ADS + ADS makes the camera zoom in
 Make simple shitty top bar for player inv and placeholder one for stims
 

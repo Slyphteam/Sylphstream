@@ -1,4 +1,4 @@
-##Old script for health tracking. functionality moved to player UI
+##Old script for health tracking. functionality moved to player UI manager
 extends Control
 #@onready var aura = $Aura
 #@onready var health = $Health

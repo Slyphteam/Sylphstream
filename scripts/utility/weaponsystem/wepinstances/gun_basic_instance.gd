@@ -14,10 +14,10 @@ var currentCooldown : float = 0
 var offCooldown = true ##Used to track whether or not the gun is on COOLDOWN, nothing else 
 var triggerDepressed = false
 var aimDownsight = false
-var totalShots = 0 ##TOTAL number of ATTEMPTED shots taken in lifetime
+var totalShots = 0 ##TOTAL number of ATTEMPTED shots taken in lifetime. IIRC used in sylph training.
 var shotCooldown: int = 0
 
-#Variables we track and calculate with
+#Variables we track and calculate with (A.K.A state variables 2 electric boogaloo)
 var capacity : int
 var reloading : bool
 var currentRecoil: float = 0 ##The current "amount" of recoil, in abstract units
@@ -38,10 +38,7 @@ var totalMaxRecoil
 var totalMinRecoil
 var speedlessMinRecoil ##Min recoil, before speed mod is applied. Think of this as the behavior if speed penalties were disabled.
 var speedlessMaxRecoil ##Max recoil, before speed mod is applied. Think of this as the behavior if speed penalties were disabled.
-var recoveryAmount ##How quickly do we get a hold of the gun?
-
-var aimbonus ##Bonus to ADS accuracy/handling
-
+var recoveryAmount ##How quickly does recoil go away?
 
 var casingPath:String
 
@@ -94,7 +91,6 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	maxRecoil = wepToLoad.maxRecoil
 	recoveryAmount = wepToLoad.recoverAmount
 	reloadTime = wepToLoad.reloadtime
-	aimbonus = wepToLoad.aimBonus
 	
 	gunshotPlayer.stream = wepToLoad.gunshot
 	reloadPlayer.stream = wepToLoad.reload
@@ -138,7 +134,11 @@ func manualProcess(delta):
 	#old logical block
 	if(offCooldown): #we CAN shoot
 		if(triggerDepressed): #and we ARE shooting
-			try_Shoot() #take the shot.
+			if(reloading && ourWeaponSheet.singleReloadOverride): 
+				reloading = false #if we're a shotgun-style reloader, exit reload loop early
+				triggerDepressed = false
+			else:
+				try_Shoot() #take the shot.
 			
 	else: #we CAN'T shoot. Do other things!
 		if(currentCooldown >= 1):
@@ -159,8 +159,9 @@ func try_Shoot():
 		#apply aimcone recoil. Calculations are done in calc_Recoil, called by manualProcess
 		recoilDebt += ourWeaponSheet.recoilAmount 
 		do_Shoot() #actually shoot the bullet, vollleyfire is handled in function
-	#else:
-	#	print("click!")
+		
+	else:
+		print("click!")
 	
 	#no matter what, counts as a "shot"
 	totalShots+=1
@@ -193,9 +194,13 @@ func do_Shoot():
 	
 	#This function "actually shoots the bullet" but we only ACTUALLY "shoot" the bullet here.
 	for x in range(ourWeaponSheet.pelletAMT):
-		var theShot = FIREDBULLET.new()
-		theShot.assign_Info(orig, end, space, invManager.user, ourWeaponSheet.damage)
+		var theShot = FIREDBULLET.new() 
+		var theDamage = randi_range(ourWeaponSheet.damage - ourWeaponSheet.bulletVariance, ourWeaponSheet.damage + ourWeaponSheet.bulletVariance)
+		theShot.assign_Info(orig, end, space, invManager.user, theDamage)
 		theShot.take_Shot()
+		randAzimuth = randf_range(0 - maxAzimuth, maxAzimuth)
+		randRoll = randi_range(0, 360)
+		end = invManager.get_End(orig, randAzimuth, randRoll)
 		
 	
 	#Update the current magazine capacity
@@ -209,7 +214,7 @@ func do_Shoot():
 	
 	if(ourWeaponSheet.doCasing && !ourWeaponSheet.ejectOnReload):
 		if(ourWeaponSheet.casingDelay !=0):
-			await invManager.get_tree().create_timer(ourWeaponSheet.casingDelay).timeout #probably a lot of overhhead here?
+			await Globalscript.theTree.create_timer(ourWeaponSheet.casingDelay).timeout #probably a lot of overhhead here?
 		eject_Casing()
 
 
@@ -220,20 +225,22 @@ func toggleADS():
 		#check and ensure we're not carrying any speed modifiers into our calculations
 		if(speedlessMaxRecoil != maxRecoil): #discrepancy between speed modifier and true size
 			maxRecoil = speedlessMaxRecoil #disregard applied modifiers
-		if(speedlessMinRecoil != minRecoil): #same for min speed
-			minRecoil = speedlessMinRecoil
+		if(speedlessMinRecoil != minRecoil): #same for min speed, but we want to begin "aimed"
+			minRecoil = speedlessMinRecoil - ourWeaponSheet.aimBonus
 		
-		adjustAcuracy(aimbonus)
+		
+		adjustAcuracy(ourWeaponSheet.aimBonus)
 		speedlessMaxRecoil = maxRecoil
 		speedlessMinRecoil = minRecoil
 		aimDownsight = false
-		#print("unaiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
+		#print("unaiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount, " Minrecoil: ", minRecoil)
 	else:
 		kickAmount -= aimKickBonus
-		adjustAcuracy(0 - aimbonus)
+		
+		adjustAcuracy(0 - ourWeaponSheet.aimBonus)
 
 		aimDownsight = true
-		#print("aiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
+		#print("aiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount, " Minrecoil: ", minRecoil)
 
 var didPenalty = false
 
@@ -242,7 +249,7 @@ func do_Move_Penalty(speed):
 	
 	var speedCalib #the speed, offset by the "start" at which we're applying penalties from
 	
-	
+	 
 	
 	#if we're ADS and moving at ALL, apply penalty.
 	if(aimDownsight):
@@ -277,6 +284,7 @@ func adjustAcuracy(amnt):
 	var absoluteMin = totalMaxRecoil - totalMinRecoil
 	
 	#never EVER go above 11 degrees of recoil (an absurd amount)
+	print(minRecoil+amnt)
 	minRecoil = clamp(minRecoil+amnt, 0, 80) 
 	maxRecoil = clamp(maxRecoil+amnt, absoluteMin, 80)
 	
@@ -322,17 +330,22 @@ func calc_Recoil(delta):
 	if(currentRecoil > 120): #provide a hard maximum ceiling for recoil that is ridiculously high.
 		currentRecoil = 120
 
-##Starts reload timer
+##Starts reload timer 
 func startReload():
 	
 	#No reason to or can't reload
-	if(reloading || (capacity >= ourWeaponSheet.maxCapacity + 1) || (invManager.chkAmmoAmt(ourWeaponSheet.chambering) == 0)): 
-		return
+	if((capacity >= ourWeaponSheet.maxCapacity + 1) || (invManager.chkAmmoAmt(ourWeaponSheet.chambering) == 0)): 
+		#single/multi reloads have slightly different early cancel logic
+		if((ourWeaponSheet.singleReloadOverride && triggerDepressed) || (!ourWeaponSheet.singleReloadOverride && reloading)):
+			reloading = false
+			return
 	
-	
-	reloadPlayer.play()
-	#print("Starting reload!")
 	reloading = true
+	
+	if(!ourWeaponSheet.singleReloadOverride): #single reloads play the sound AFTER the reload completes
+		reloadPlayer.play()
+	#print("Starting reload!")
+		
 	#reloadTimer.start();
 	
 	#In theory, this is bad code, but in case I ever want to revert back to
@@ -342,20 +355,34 @@ func startReload():
 	
 
 func reload_Complete() -> void:
-	reloading = false
-	var takenAmount = (ourWeaponSheet.maxCapacity - capacity)
+	if(!reloading):
+		return
 	
-	if(capacity > 0):
-		takenAmount+=1 #we have 1 in the chamber, so add a bonus round
-
-	#Withdraw ammo. This will update the reserve counter on the UI automatically
-	var newCap = invManager.withdrawAmmo(ourWeaponSheet.chambering, takenAmount)
+	#fairly differing behaviors for single/multi reload
+	if(!ourWeaponSheet.singleReloadOverride):
+		reloading = false
+		var takenAmount = (ourWeaponSheet.maxCapacity - capacity)
+		if(capacity > 0):
+			takenAmount+=1 #we have 1 in the chamber, so add a bonus round
+		#Withdraw ammo. This will update the reserve counter on the UI automatically
+		var newCap = invManager.withdrawAmmo(ourWeaponSheet.chambering, takenAmount)
+		capacity += newCap
 	
-	capacity += newCap
+	else:
+		var shell = invManager.withdrawAmmo(ourWeaponSheet.chambering, 1)
+		capacity += shell
+		reloadPlayer.play()
+		if(capacity <= ourWeaponSheet.maxCapacity):
+			startReload()
+		else:
+			reloading = false
+		
+		
+	if(affectUI):
+			uiInfo.updateMag(capacity)
 	
 	#however, we'll still need to update the counter
-	if(affectUI):
-		uiInfo.updateMag(capacity)
+	
 	#print("Finished reload! Rounds: ", capacity)
 
 func eject_Casing():

@@ -1,5 +1,5 @@
 ##This is NOT my code and was borrowed from  https://github.com/EricXu1728/Godot4SourceEngineMovement
-##It is NOT used, and I put it here as a quick reference for the variables and values used in his implementation.
+#It is NOT used, though I put it here as a quick reference for the variables and values used while I made player movement
 extends CharacterBody3D
 # much of this code is interpreted from 
 #https://github.com/atlrvrse/GodotSourceEngineMovement

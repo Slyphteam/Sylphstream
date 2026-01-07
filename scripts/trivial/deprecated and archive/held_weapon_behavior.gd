@@ -1,6 +1,6 @@
 #This was the script associated with the weapon_holder scene.
 #Since I changed invenmanagers to create a new script depending on behaviors, 
-#this script is now deprecated
+#this script is now DEPRECATED.
 #99% of the functionality now belongs to gun_basic_instance
 
 # this is THE script that drives weapon behavior and loads weapon models/stats
@@ -176,7 +176,7 @@ func doShoot():
 
 @export var decalTimer: int = 10
 #var decals = 0
-var hitdecalscene = preload("res://scenes/trivial/bullet_decal.tscn")
+var hitdecalscene #= preload("res://scenes/trivial/bullet_decal.tscn")
 func doHitDecal(pos):
 	var decalInstance = hitdecalscene.instantiate()
 	get_tree().root.add_child(decalInstance)

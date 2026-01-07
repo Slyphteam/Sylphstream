@@ -1,5 +1,6 @@
 #extends Node3D
-###This is a DEPRECATED script that formerly loaded weapon information
+#This is a DEPRECATED script that formerly loaded a weapon model from a resource. The functionality is now
+#native to gun_basic_instance's load_weap() function, since having a seperate model and functionality was stinky
 ##I've gone and commented it out because it was causing parse errors >:(
 #@export var WEP_TYPE: Wep
 #@onready var weapon_mesh: MeshInstance3D = $wepmodel

@@ -1,4 +1,4 @@
-# this is a DEPRECATED script that has been superceded by held_weapon_behavior
+# this is a DEPRECATED script that has been superceded by held_weapon_behavior and later GUN_BASIC_INSTANCE
 #It acts in much the same way, but only works for a single weapon and does not load
 #from any external resources.
 

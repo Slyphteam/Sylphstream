@@ -1,3 +1,4 @@
+##This script is DEPRECATED on account of ui_manager taking over its functionality
 extends Control
 @onready var wepName = $name
 @onready var magAmt = $Currentmag

@@ -1,4 +1,4 @@
-##I'm at least 99% sure this script is deprecated by now
+##This script is DEPRECATED on account of the invensystem making all pickups generic
 extends RAYCASTREACTIVE
 @export var typeToGive: int
 @export var amtToGive: int

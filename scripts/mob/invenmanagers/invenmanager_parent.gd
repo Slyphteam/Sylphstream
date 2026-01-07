@@ -44,7 +44,7 @@ func load_Wep(wep2Load:WEAP_INFO):
 	if(wep2Load is FIREARM_INFO):
 		backupOffset = wep2Load.position.x
 		if(wep2Load.singleReloadOverride):
-			activeItem = SHOTGUNINSTANCE.new()
+			activeItem = GUNBASICINSTANCE.new()#SHOTGUNINSTANCE.new() #
 			activeItem.invManager = self
 			activeItem.load_Weapon(wep2Load)
 			weapType = 1 #still use the firearm control schema

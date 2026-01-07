@@ -1,3 +1,5 @@
+#This script is DEPRECATED and all the functionality is now natively apart of gun_basic_instance
+#as apart of the inventory system WEAPINSTANCE cleanup.
 ##A somewhat poorly named variety of weapon script. Has individual reloads and optional volley firing. 
 class_name SHOTGUNINSTANCE extends GUNBASICINSTANCE
 
@@ -100,12 +102,12 @@ func toggleADS():
 		return
 	if(aimDownsight):
 		kickAmount += aimKickBonus
-		adjustAcuracy(aimbonus)
+		#adjustAcuracy(aimBonus)
 		aimDownsight = false
 		#print("unaiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
 	else:
 		kickAmount -= aimKickBonus
-		adjustAcuracy(0 - aimbonus)
+		#adjustAcuracy(0 - aimBonus)
 		aimDownsight = true
 		#print("aiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount)
 

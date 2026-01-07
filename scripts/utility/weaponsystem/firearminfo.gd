@@ -7,6 +7,7 @@ class_name FIREARM_INFO extends WEAP_INFO
 @export var reload : AudioStreamMP3 
 
 @export_category("Behavioral variables")
+@export var bulletVariance: int = 0 ##Variation on the damage dealt
 @export var shotCooldown: int = 10 ##in frames, determine firerate
 @export var chambering : int = 1 ## 1- Pistol; 2- Light rifle (5.56); 3- Heavy rifle (30 caliber); 4- Shotgun; 5- Plinking (.22 lr); 6- Magnum
 @export var maxCapacity : int = 5
