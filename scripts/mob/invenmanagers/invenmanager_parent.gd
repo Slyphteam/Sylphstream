@@ -78,6 +78,9 @@ func giveAmmo(amTyp: int, amount: int):
 	elif (amTyp == 2):
 		heldAmmunition.ammoRifle += amount
 		return heldAmmunition.ammoRifle
+	elif (amTyp == 3):
+		heldAmmunition.ammoThirtycal += amount
+		return heldAmmunition.ammoThirtycal
 	elif (amTyp == 4): 
 		heldAmmunition.ammoShotgun += amount
 		return heldAmmunition.ammoShotgun
@@ -123,6 +126,17 @@ func withdrawAmmo(amTyp: int, amount: int)-> int:
 		heldAmmunition.ammoRifle -= amount;
 		return amount
 	
+	elif (amTyp == 3): 
+		print("Taking ", amount, " from pool of ", heldAmmunition.ammoThirtycal)
+		if(amount >= heldAmmunition.ammoThirtycal):
+			print("making do with ", heldAmmunition.ammoThirtycal)
+			var leftover = heldAmmunition.ammoThirtycal
+			heldAmmunition.ammoThirtycal = 0
+			return leftover
+			
+		heldAmmunition.ammoThirtycal -= amount;
+		return amount
+	
 	elif (amTyp == 4): 
 		print("Taking ", amount, " from pool of ", heldAmmunition.ammoShotgun)
 		if(amount >= heldAmmunition.ammoShotgun):
@@ -146,6 +160,8 @@ func chkAmmoAmt(amTyp:int ) -> int:
 		return heldAmmunition.ammoPistol
 	elif(amTyp == 2):
 		return heldAmmunition.ammoRifle
+	elif(amTyp == 3):
+		return heldAmmunition.ammoThirtycal
 	elif(amTyp == 4):
 		return heldAmmunition.ammoShotgun
 	else:

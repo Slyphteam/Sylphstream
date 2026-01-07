@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://c7xne0xmb6kea" path="res://sounds/gunshots/pistolcarbine.mp3" id="1_88snx"]
 [ext_resource type="ArrayMesh" uid="uid://cxds50gkr0k8a" path="res://models/glbs and textures/guns/fourier9 Mesh.res" id="2_88snx"]
 [ext_resource type="AudioStream" uid="uid://3ip3kfhlj6tn" path="res://sounds/reloads/scrapereload.mp3" id="3_43uo3"]
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="4_88snx"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearminfo.gd" id="4_88snx"]
 
 [resource]
 script = ExtResource("4_88snx")

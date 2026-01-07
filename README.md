@@ -88,7 +88,7 @@ Implementation of grenade, fragmentation, and explosive systems
 
 Kicking
 
-Implementation of all planned weapons (5/16)
+Implementation of all planned weapons (6/16)
 
 First finite state enemy
 

@@ -49,6 +49,7 @@ func _ready():
 	heldAmmunition.ammoRimfire = 50
 	heldAmmunition.ammoPistol = 50
 	heldAmmunition.ammoRifle = 50
+	heldAmmunition.ammoThirtycal = 50
 	heldAmmunition.ammoShotgun = 50
 	recalcWeight()
 	

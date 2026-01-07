@@ -196,10 +196,7 @@ func do_Shoot():
 		var theShot = FIREDBULLET.new()
 		theShot.assign_Info(orig, end, space, invManager.user, ourWeaponSheet.damage)
 		theShot.take_Shot()
-		if(ourWeaponSheet.doCasing && !ourWeaponSheet.ejectOnReload):
-			if(ourWeaponSheet.casingDelay !=0):
-				await invManager.get_tree().create_timer(ourWeaponSheet.casingDelay).timeout #probably a lot of overhhead here?
-			eject_Casing()
+		
 	
 	#Update the current magazine capacity
 	if(affectUI):
@@ -209,6 +206,11 @@ func do_Shoot():
 	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * ourWeaponSheet.viewpunchMult
 	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * ourWeaponSheet.viewpunchMult
 	invManager.applyViewpunch(drift, lift)
+	
+	if(ourWeaponSheet.doCasing && !ourWeaponSheet.ejectOnReload):
+		if(ourWeaponSheet.casingDelay !=0):
+			await invManager.get_tree().create_timer(ourWeaponSheet.casingDelay).timeout #probably a lot of overhhead here?
+		eject_Casing()
 
 
 func toggleADS():

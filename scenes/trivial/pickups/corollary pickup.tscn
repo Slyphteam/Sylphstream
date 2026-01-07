@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc6qmemiohpdn"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="1_jgc65"]
+[ext_resource type="Resource" uid="uid://bhakorrunjtwy" path="res://scripts/utility/invSystem/invData/invWeapons/corollaryInvData.tres" id="2_jgc65"]
+[ext_resource type="ArrayMesh" uid="uid://ccqqd6eoawgyp" path="res://models/glbs and textures/guns/corollaryMesh.res" id="3_ngs7x"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iti7r"]
+points = PackedVector3Array(-0.0468389, -0.0249817, -1.24307, 0.211343, 0.00728509, 1.00057, 0.211343, 0.00728509, 0.968287, -0.0629707, 0.0557074, -0.742556, -0.030707, -0.0411151, 1.00057, -0.030707, 0.039563, 1.00057, -0.159834, -0.0249817, -1.16225, 0.0338203, -0.0572596, -0.38743, 0.0176884, 0.0234296, -1.21079, 0.179043, 0.039563, 0.91975, -0.143666, 0.039563, -0.306829, 0.162911, -0.0411151, 0.968287, -0.143666, -0.0411151, -0.306829, 0.179043, -0.0249817, 0.419455, -0.159834, 0.0234296, -1.21079, 0.0176884, -0.0249817, -1.1785, -0.0629707, 0.00728509, 1.00057, -0.0145752, 0.0557074, -0.952513, 0.179043, 0.0234296, 0.419455, -0.030707, -0.0572596, -0.661955, 0.179043, 0.039563, 0.984319, 0.195175, -0.0249817, 1.00057, -0.111402, -0.0411151, -0.952513, 0.00155662, 0.0234296, -1.24307, 0.0499521, -0.0411151, -0.629671, 0.00155662, -0.0411151, -0.984797, -0.159834, -0.0249817, -1.21079, -0.0468389, -0.0249817, 1.00057, 0.146779, -0.0411151, 0.516308, 0.146779, 0.039563, 0.419455, 0.130648, -0.0249817, -0.0812791, 0.00155662, -0.0249817, -1.24307)
+
+[node name="Corollary" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+collision_layer = 5
+collision_mask = 17
+script = ExtResource("1_jgc65")
+thingToGive = ExtResource("2_jgc65")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -0.999575, -4.36928e-08, 0.0291429, 0.0291429, 1.27387e-09, 0.999575, 0, -0.0126769, 0.0488882)
+shape = SubResource("ConvexPolygonShape3D_iti7r")
+
+[node name="CorollaryMesh" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = ExtResource("3_ngs7x")

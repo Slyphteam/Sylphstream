@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene load_steps=30 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/mob/damsystem/player_healthholder.gd" id="6_1yk18"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/entities/playermodel.tscn" id="6_tgbf5"]
-[ext_resource type="Resource" uid="uid://bvaii4h7xnqob" path="res://scripts/utility/invSystem/invData/invWeapons/degubbyInvData.tres" id="6_yv3je"]
 [ext_resource type="Texture2D" uid="uid://dvtr0683clxu2" path="res://resources/image resources/healthholderUI.png" id="10_ddril"]
 [ext_resource type="StyleBox" uid="uid://c7v5hhr02av55" path="res://resources/button BG theme.tres" id="12_33423"]
 [ext_resource type="Texture2D" uid="uid://dxdc2ni5jtua0" path="res://resources/image resources/pre alpha splash.png" id="12_kiyhm"]
@@ -74,7 +73,6 @@ player = NodePath("../..")
 [node name="PlayerInvManager" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
 ourHands = ExtResource("5_xe83n")
-starterWeapon = ExtResource("6_yv3je")
 
 [node name="Player Health" type="Node" parent="."]
 script = ExtResource("6_1yk18")

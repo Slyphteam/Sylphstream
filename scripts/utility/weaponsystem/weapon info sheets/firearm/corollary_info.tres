@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://btqv6cpuqryrq"]
+
+[ext_resource type="AudioStream" uid="uid://c3sljf55bxm0a" path="res://sounds/gunshots/gunshotRifleLow.mp3" id="1_2s3ev"]
+[ext_resource type="ArrayMesh" uid="uid://ccqqd6eoawgyp" path="res://models/glbs and textures/guns/corollaryMesh.res" id="1_qxrc1"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/firearminfo.gd" id="2_2s3ev"]
+[ext_resource type="AudioStream" uid="uid://q7haq3pkiyqy" path="res://sounds/reloads/arLoad.mp3" id="3_74hli"]
+
+[resource]
+script = ExtResource("2_2s3ev")
+gunshot = ExtResource("1_2s3ev")
+reload = ExtResource("3_74hli")
+shotCooldown = 10
+chambering = 3
+maxCapacity = 10
+reloadtime = 2.0
+aimBonus = 10.0
+maxRecoil = 80.0
+minRecoil = 15.0
+recoilAmount = 30.0
+viewpunchMult = 3.0
+recoverAmount = 2.0
+doCasing = true
+casingPath = "res://scenes/trivial/decals/30calCasing.tscn"
+ejectOnReload = false
+casingDelay = 0.0
+casingSpeedBoost = 3.0
+singleReloadOverride = false
+pelletAMT = 1
+burstMode = false
+burstAMT = 3
+wepName = &"Corollary"
+wepDesc = &""
+mesh = ExtResource("1_qxrc1")
+drawTime = 1.0
+damage = 75
+selections = Array[int]([4])
+position = Vector3(0.4, -0.2, -0.4)
+rotation = Vector3(0, 0, 0)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"

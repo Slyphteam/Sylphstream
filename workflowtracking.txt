@@ -7,21 +7,15 @@ Collision mask information:
 5: Environment only
 
 
-Importing new weapon model:
-	
-	1: import the glb
-	2: drag into scene (optional?)
-	3: re-import the mesh
-	4: wait a bit, for reasons. (how long?)
-	5: move the texture into the right folder
-	5: do NOT touch anything else
-
 Adding a new weapon:
-	1: import weapon model (see above)
-	2: import gunshot and reload sound, if necessary
-	3: in playerinvenmanager, set the starter weapon (NOT hands) to new firearm_info
-	4: fill out all the fields
-	6: test it out, will require several cycles to get the positioning right.
+	1: import the glb into glbs and textures/guns
+	2: re-import the mesh, save into the same folder
+	3: import gunshot and reload sound into the sound effects folders, invenicon to the resources/ui/icons folder
+	4: Create a pickup scene, save to scenes/trivial/pickups folder
+	5: drag the model in, make a mesh collider (SIMPLIFIED SIBLING)
+	6: In the pickup field, set to be a new invWeapon. Set the object type field to WEP
+	7: Copy and paste casing scene path, assign gunshots, icons, mesh, rotation, transform fields you want.
+	8: Put an instance of the pickup into the shooting range to test the offsets. You can change values and swap back to update them.
 
 -----------\
 =======+=======> DIRECTORY OF WHERE THINGS ARE:
@@ -67,7 +61,9 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+WEAPON SYSTEM WORKFLOW:
 In initialization, the invenmanager parent seems to load every single weaponmesh. Find out what's up with that. (preloading?)
+
 Change Globalscript.thePlayer calls in firedbullet and casing system to NOT refer to the player
 
 Go through shotgun instance and gut half the functionality to gun_basic im tired of updating shit >:{
@@ -76,12 +72,12 @@ Also: check all await() calls to ensure they're using the global script, not som
 Clean up gun_basic_instance to not have as many tracked variables, you can literally
 just have it reference the infosheet for static stuff.
 
-  Follow guide for players picking up physics objects. Follow guide for players BEING physics objects?
-
+INVENTORY SYSTEM WORKFLOW:
   Include drop slot to inventory menu. Let players drag items into drop slot to drop them at cursor, only guns for now.
 
   Return of the generic item slots. Let players pick up the cone/sphere, go into generic slots.
   
+Follow guide for players picking up physics objects. Follow guide for players BEING physics objects?
 
 Once the proof-of-concept Sylphs work go back through the Sylph mind script and re-organize all the 
 inputs to be less atrocious?
@@ -92,7 +88,7 @@ Could also possibly be a recoil thing but there's no goddamn way they can't lear
 
 
 Look into line 72 in layer class. I starr'd a vector of all 1s with a vector of all 0s and the result was all 0s
-It does look like multiplication is correct, though.
+It does look like multiplication is correct, though?
 
 This has some slightly concerning implications for weights being a value bound to -1 and 1. 
 I'm sure there's a lot of sabotage produced by that fact. Though maybe there isn't, what with

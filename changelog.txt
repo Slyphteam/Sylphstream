@@ -1,3 +1,5 @@
+12/5: 
+New gun using the new 30 cal ammotype: the Corrolary
 12/4:
 All pickups are now physics objects
 Completion of casing system
