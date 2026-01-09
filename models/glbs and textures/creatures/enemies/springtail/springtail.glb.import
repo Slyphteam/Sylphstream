@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://iadr0m3rk254"
-path="res://.godot/imported/springtailTest.glb-22953800541aa4401521c56e1506b88a.scn"
+uid="uid://bqwrqrf5bybkf"
+path="res://.godot/imported/springtail.glb-b402fef30d186b578374f865065d5dd8.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/enemies/springtail/springtailTest.glb"
-dest_files=["res://.godot/imported/springtailTest.glb-22953800541aa4401521c56e1506b88a.scn"]
+source_file="res://models/glbs and textures/creatures/enemies/springtail/springtail.glb"
+dest_files=["res://.godot/imported/springtail.glb-b402fef30d186b578374f865065d5dd8.scn"]
 
 [params]
 

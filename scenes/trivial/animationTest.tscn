@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://cq5aay4a88mn2"]
+
+[ext_resource type="Texture2D" uid="uid://dnh842aerijfv" path="res://resources/image resources/devtexture.png" id="1_hsm17"]
+[ext_resource type="Texture2D" uid="uid://begwrt3f2tsiq" path="res://resources/image resources/itemIcons/blueSphere.png" id="2_y2e7h"]
+[ext_resource type="Texture2D" uid="uid://cpsem4uuco87v" path="res://resources/image resources/itemIcons/weaponIcons/kilijIcon.png" id="3_iy81q"]
+[ext_resource type="Texture2D" uid="uid://blovjcsj7076s" path="res://resources/image resources/itemIcons/redTriangle.png" id="4_f783n"]
+[ext_resource type="Texture2D" uid="uid://bgu6m8xov75y0" path="res://resources/image resources/hudElements/spinnerDisc.png" id="5_y2e7h"]
+
+[sub_resource type="Animation" id="Animation_iy81q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueSphere:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(127, 288)]
+}
+
+[sub_resource type="Animation" id="Animation_g8ipv"]
+resource_name = "testAnim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueSphere:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(127, 288)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_63lo0"]
+_data = {
+&"RESET": SubResource("Animation_iy81q"),
+&"testAnim": SubResource("Animation_g8ipv")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_63lo0")
+}
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(378, 376)
+texture = ExtResource("1_hsm17")
+
+[node name="BlueSphere" type="Sprite2D" parent="."]
+position = Vector2(127, 288)
+texture = ExtResource("2_y2e7h")
+
+[node name="KilijIcon" type="Sprite2D" parent="BlueSphere"]
+position = Vector2(52, -32)
+texture = ExtResource("3_iy81q")
+
+[node name="RedTriangle" type="Sprite2D" parent="."]
+position = Vector2(450, 262)
+texture = ExtResource("4_f783n")
+
+[node name="SpinnerDisc" type="Sprite2D" parent="RedTriangle"]
+position = Vector2(-39, -41)
+texture = ExtResource("5_y2e7h")
+
+[node name="SpinnerDisc2" type="Sprite2D" parent="RedTriangle"]
+position = Vector2(48, -31)
+texture = ExtResource("5_y2e7h")
