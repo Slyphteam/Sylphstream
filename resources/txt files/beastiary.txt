@@ -66,15 +66,21 @@ Half hitbox, half models
 
 
 Springtails:
+"Nobody knows where these microplastic-based lifeforms come from, but it's common knowledge that they live and die as
+walking pollutants. Extremely chewy and come in a mouthwatering variety of fruit flavors."
 
 Gummy bear little annoying things, run at the player and occasionally jump. Should exhibit pack behavior, and each should be fairly tanky.
-It should be FUN to spray into the packs. Random colors? Limited turning capacity. I feel like they should make squeaky hammer noises.
+It should be FUN to spray into the packs. Random colors? Limited turning capacity. I feel like they should make squeaky hammer/baloon noises.
+When they die they should turn into a rigid phyx object, lose all gravity, and get flung really hard in a direction. I thjink itd be funny.
 
 AI should be simple FSMs with a lot of supporting code for their pack/running behaviors. Mess around with the bugs from Raider.
 
 Springtail mother should be the gazing ball of fishhooks from untitled ship game. Makes metal rustling noises? 
 
 Springtail guardian-> barbed wire-coated springtail?
+Alpha springtails ought to be spikier and not stay with the packs, but instead exhibit dash and chase behaviors. Should be FUN to dodge with dash.
+
+Beta springtails should be a lot like minecraft skeletons: Simple projectile-based enemies with a surprising mechanical depth to them
 
 
 Sawflies:
@@ -87,6 +93,7 @@ Sawfly item to make a buddy that'll fight alongside you?
 
 
 Hestrella:
+Very low development priority
 
 "A group of militant zealots devoted to the mysterious will of their Hierophant. Their motives for being here are unknown."
 

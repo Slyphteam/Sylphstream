@@ -1,11 +1,11 @@
-##A simple script that keeps track of just a health value
+##The generic healthholder script, just keeps track of a value. The parent object MUST implement doDie()
 class_name HEALTHHOLDER extends Node
 #worth doing: think about changing this to not update on process.
 #This will mean you can't have "batch" damage (i.e. grouped shotgun hits)
 #but it will make it simpler and cheaper codewise
 func _init():
 	health = startingHP
-
+@onready var ourParent = $".."
 @export var maxHP = 100
 @export var startingHP = 100
 var health: int = 1
@@ -30,4 +30,4 @@ func _process(_delta: float) -> void:
 			doDie()
 
 func doDie():
-	return
+	ourParent.doDie()

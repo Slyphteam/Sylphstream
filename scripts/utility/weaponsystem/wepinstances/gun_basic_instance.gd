@@ -284,7 +284,6 @@ func adjustAcuracy(amnt):
 	var absoluteMin = totalMaxRecoil - totalMinRecoil
 	
 	#never EVER go above 11 degrees of recoil (an absurd amount)
-	print(minRecoil+amnt)
 	minRecoil = clamp(minRecoil+amnt, 0, 80) 
 	maxRecoil = clamp(maxRecoil+amnt, absoluteMin, 80)
 	

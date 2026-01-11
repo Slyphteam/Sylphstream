@@ -170,14 +170,15 @@ shadow_enabled = true
 [node name="Springtail pen" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4948, 0, -30.8867)
 
-[node name="springtail" parent="Environment/Springtail pen" instance=ExtResource("25_jn6mq")]
-transform = Transform3D(-0.460153, 0, 0.88784, 0, 1, 0, -0.88784, 0, -0.460153, 0.988317, 0.678799, -5.99678)
+[node name="Springtail" parent="Environment/Springtail pen" instance=ExtResource("25_jn6mq")]
+transform = Transform3D(0.595874, 0, -0.803077, 0, 1, 0, 0.803077, 0, 0.595874, 3.16051, 0.523671, -14.2826)
 
 [node name="wall1" type="MeshInstance3D" parent="Environment/Springtail pen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 mesh = SubResource("BoxMesh_fs720")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Springtail pen/wall1"]
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Springtail pen/wall1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mfyce")
@@ -187,6 +188,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -20)
 mesh = SubResource("BoxMesh_fs720")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Springtail pen/wall2"]
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Springtail pen/wall2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mfyce")
@@ -196,6 +198,7 @@ transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 10, 0.
 mesh = SubResource("BoxMesh_fs720")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Springtail pen/wall3"]
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Springtail pen/wall3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mfyce")
@@ -205,6 +208,7 @@ transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -10, 0
 mesh = SubResource("BoxMesh_fs720")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Springtail pen/wall4"]
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Springtail pen/wall4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mfyce")

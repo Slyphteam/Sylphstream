@@ -6,8 +6,21 @@ Who is Angeion? whoever they need to be to as the PC. From greek for vessel.
 As far as Sylphstream has a coherent setting, Angeion is a construct with agency and self awareness. Has at least some 
 kind of spiritual influence. Should resemble Millian a little, but not too much. Defo the mask at least.
 
+====+====> Aeonic Glimmer
+Spectre-like NPC, is the most common in rest areas. Speaks mostly gibberish, but has a chance to cause random npc triggers.
 
-		====+====> The Prince of Communications
+Refrain:: Echo:: Refrain:: Echo:: Refrain:: Echo:: Refrain:: Echo:: Refrain:: Echo
+(A ghastly, many-faced spectre contorts and whorls before you.)
+(Like crashing waves, its voice and appearance surges and fades, waning into incoherence before rebounding with sudden clarity)
+(Much of what it says, if anything, is lost to the chaos: truely meaningless gibberish, intangible nothingness and nothing more)
+(Though rarely, just rarely, some thread of the divine is audible despite the frenzied babble)
+(Attempt to glean some higher truth from the noise?)
+
+
+
+
+	
+	====+====> The Prince of Communications
 		
 Wide-headed despot put in "control" of the safe town. Manages the unlock system and may give starter quests. 
 Capricious and devil-may-cry, kind of a brat, no real power or willingness to project it.
@@ -245,8 +258,28 @@ Safe-room encounter. Made from dregs of models, doesn't know much about anything
 riddles/philosophical questions to the player. 
 
 	====+====> Bestie
-All black being with a starfish-like head and conch snail jaws. She pops up randomly in town, kind of obnoxious, only goes HIII BESTIEE. Optional quest for
+All black being with a starfish-like head and cowrie shell jaws. She pops up randomly in town, kind of obnoxious, only goes HIII BESTIEE. Optional quest for
 bringing them to wasteflower.
+(A gently swaying figure stands before you. A ring of pseudopods dance around a cowrie shell-like mouth; from within echoes an excitable voice)
+my bestie! helloo! :3
+my bestie in christ HAIIII!!!! hiii! helloooo!! bestie!!!!!
+hi!! :33 bestieeee! haaiiii~~!!!!
+omg haiiiiiii~~! 
+HIIII!!!!!
+ohmygod hiiiii!!! :3
+bestie! omg! hi! hi bestie!!!
+
+PLAYER OPTIONS:
+1; Bestie!
+2; Im Gonna Level With You Buddy I Have Literally Never Seen You Before In My Life
+
+1; haaaiiiii bestIIIIIIIIIIIIIIIIIIIIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+2; Bestie why would you say something like that :(
+
+
+
+
+
 
 	====+====> The archon
 Helper entity, kind of like the Bion from psycho patrol R. Untrustworthy in the "ai agent who's malware and spying" sense yet attempts to come off as friendly/silly.

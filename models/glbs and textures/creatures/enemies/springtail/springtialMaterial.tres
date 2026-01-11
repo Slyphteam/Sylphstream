@@ -2,4 +2,7 @@
 
 [resource]
 transparency = 1
-cull_mode = 1
+specular_mode = 2
+roughness = 0.43
+clearcoat_enabled = true
+clearcoat_roughness = 0.17
