@@ -69,7 +69,7 @@ func do_Shoot():
 		var end:Vector3 = invManager.get_End(orig, randAzimuth, randRoll)
 		
 		var theShot = FIREDBULLET.new()
-		theShot.assign_Info(orig, end, space, invManager.user, ourWeaponSheet.damage)
+		#theShot.assign_Info(orig, end, space, invManager.user, ourWeaponSheet.damage) #threw error after deprecation >:(
 		theShot.take_Shot()
 
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.

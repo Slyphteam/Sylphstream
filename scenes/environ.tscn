@@ -171,7 +171,13 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4948, 0, -30.8867)
 
 [node name="Springtail" parent="Environment/Springtail pen" instance=ExtResource("25_jn6mq")]
-transform = Transform3D(0.595874, 0, -0.803077, 0, 1, 0, 0.803077, 0, 0.595874, 3.16051, 0.523671, -14.2826)
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 6.63166, 0.523671, -14.2826)
+
+[node name="Springtail2" parent="Environment/Springtail pen" instance=ExtResource("25_jn6mq")]
+transform = Transform3D(0.307705, 0, -0.951481, 0, 1, 0, 0.951481, 0, 0.307705, -4.496, 0.524, -10.959)
+
+[node name="Springtail3" parent="Environment/Springtail pen" instance=ExtResource("25_jn6mq")]
+transform = Transform3D(0.590056, 0, -0.807362, 0, 1, 0, 0.807362, 0, 0.590056, -2.101, 0.524, -5.597)
 
 [node name="wall1" type="MeshInstance3D" parent="Environment/Springtail pen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
@@ -212,6 +218,9 @@ collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Springtail pen/wall4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mfyce")
+
+[node name="Springtail4" parent="Environment/Springtail pen" instance=ExtResource("25_jn6mq")]
+transform = Transform3D(0.489367, 0, 0.872077, 0, 1, 0, -0.872077, 0, 0.489367, 6.24479, 0.523671, -3.54144)
 
 [node name="Movement blocks" type="Node3D" parent="Environment"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.497, 0, -29.6132)

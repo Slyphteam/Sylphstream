@@ -61,6 +61,13 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+Springtails:
+	Springtails' local pathfinding seems quite good, but they still need global pathfinding if they're to function.
+	To do this, you'll need, yes, shamefully, trig. Specifically, trig to determine whether they should turn left or right
+	in order to be facing towards some globally desired (and accessible) waypoint. After that, all they need to do is 
+	turn towards it and we've got an agent capable of traversing a navmesh AND local maneuvering.
+
+
 INVENTORY SYSTEM WORKFLOW:
   Include drop slot to inventory menu. Let players drag items into drop slot to drop them at cursor, only guns for now.
 
