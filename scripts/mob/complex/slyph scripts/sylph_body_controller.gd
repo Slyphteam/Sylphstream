@@ -20,12 +20,13 @@ func _ready():
 		return
 
 var shoot = false
-func hit_By_Bullet(dam, _damtype, _dir, originator):
-	if(originator):
-		if(originator == Globalscript.thePlayer):
-			print("Ow! You shot me for ", dam, " damage!")
+func hit_By_Bullet(theDamInfo:DAMINFO):
 	
-	var newHP = ourHealth.take_Dam(dam)
+	var newHP = ourHealth.take_DamInfo(theDamInfo)
+	
+	if(theDamInfo.entity):
+		if(theDamInfo.entity == Globalscript.thePlayer):
+			print("Ow! You shot me for ", theDamInfo.damage, " damage!")
 	
 	if(newHP <= 0):
 		print("OWWW! I just died!")

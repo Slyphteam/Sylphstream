@@ -3,9 +3,9 @@ class_name testing_target extends RAYCASTREACTIVE
 @onready var root:SCOREDTARGET = $"../.."
 @onready var targetOrig = root.global_position
 
-func hit_By_Bullet(dam, _damtype, _dir, _entity):
+func hit_By_Bullet(theDamInfo:DAMINFO):
 	#print(root.global_position.z)
-	print("Target hit! ", dam)
+	print("Target hit! ", theDamInfo.damage)
 	
 	
 	

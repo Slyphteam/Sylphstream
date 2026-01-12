@@ -1,3 +1,4 @@
+##Old, DEPRECATED script, casings now have a seperate scene for different types
 extends RigidBody3D
 
 var casingMesh:MeshInstance3D

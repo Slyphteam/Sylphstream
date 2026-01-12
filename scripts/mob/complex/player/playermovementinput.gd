@@ -616,7 +616,7 @@ func apply_Autorecover_Viewpunch(lift, drift, punchSpeed):
 
 
 
-func hit_By_Bullet(dam, _damtype, _dir, _origin):
+func hit_By_Bullet(theDamInfo:DAMINFO):
 	
 	#It'll be fun to play with these values as polish, have them scale with damage taken,
 	#but for now, keep things simple, stupid.
@@ -634,7 +634,7 @@ func hit_By_Bullet(dam, _damtype, _dir, _origin):
 	
 	apply_Autorecover_Viewpunch(punch1, punch2, 0.5)
 	#invenManager.applyViewpunch(punch1, punch2)
-	healthHolder.take_Dam(dam)
+	healthHolder.take_DamInfo(theDamInfo)
 	
 	
 func get_invenm():

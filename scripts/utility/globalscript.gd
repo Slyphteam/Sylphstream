@@ -34,9 +34,7 @@ func better_Randf_Simple(digits, decimalZeros, divBy)-> float:
 	result /=divBy
 	return result
 
-#func better_Randf_Clamped(digits, numZeros, max, min)->float:
-	
-
+#func better_Randf_Clamped(digits, numZeros, max, min)->float: 
 ##Returns true/false based on a % chance
 func prob(chance:int)->bool:
 	chance = abs(chance) #Can take negative inputs

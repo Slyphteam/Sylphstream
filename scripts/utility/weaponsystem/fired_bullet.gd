@@ -3,38 +3,47 @@ class_name FIREDBULLET extends Node
 var orig: Vector3
 var end: Vector3
 var spaceState:PhysicsDirectSpaceState3D
-var theUser ##reference to the entity who shot the bullet, if applicable
-var dam : int
+#var theUser ##reference to the entity who shot the bullet, if applicable
+#var dam : int
+var ourDamInfo:DAMINFO
 
-func assign_Info(origIC: Vector3, endIC: Vector3, spaceStateIC:PhysicsDirectSpaceState3D, theUserIC, damIC):
+
+func assign_Info(origIC: Vector3, endIC: Vector3, spaceStateIC:PhysicsDirectSpaceState3D, theDamInfo):
 	orig = origIC
 	end = endIC
 	spaceState = spaceStateIC
-	theUser = theUserIC
-	dam = damIC
+	#theUser = theUserIC
+	#dam = damIC
+	ourDamInfo = theDamInfo
+	
+	
 	
 func take_Shot():
 	var raycheck:PhysicsRayQueryParameters3D
 	
 	#3 is 110etc, aka the bullet collision layer
 	#also, always exclude the weapon's origin/user from getting hit
-	if(theUser):
-		raycheck = PhysicsRayQueryParameters3D.create(orig, end, 3, [theUser]) 
+	if(ourDamInfo.entity):
+		raycheck = PhysicsRayQueryParameters3D.create(orig, end, 3, [ourDamInfo.entity]) 
 	else:
 		raycheck = PhysicsRayQueryParameters3D.create(orig, end, 3)
 	raycheck.collide_with_bodies = true
 	var castResult = spaceState.intersect_ray(raycheck)
 	
 	if(castResult):
+		
+		ourDamInfo.direction = (castResult.get("position") - orig)
+		#assign_Info(dam, "UNUSED", theUser, castResult.get("position") - orig)
+		
 		#print(castResult)
 		var hitObject = castResult.get("collider")
 		if(!hitObject.is_in_group("hit_decal_blacklist")):
-			do_Hit_Decal(castResult.get("position"), hitObject, orig)
+			do_Hit_Decal(ourDamInfo, hitObject, castResult)
 		if(hitObject.is_in_group("damage_interactible")):
-			hitObject.hit_By_Bullet(dam,"UNUSED","UNUSED",theUser)
+			hitObject.hit_By_Bullet(ourDamInfo)
 		
 
-func do_Hit_Decal(pos, item, origin):
+func do_Hit_Decal(damInfo, item, castResult):
 	
 	#USE NORMALS!!!!!
 	var hitdecalscene = preload("res://scenes/trivial/decals/bullet_decal.tscn")
@@ -49,7 +58,10 @@ func do_Hit_Decal(pos, item, origin):
 	decalInstance.global_rotation = Vector3.ZERO
 	
 	#yes, these are reversed. Things work right now and i'm terrified to break them.
-	var direction = (origin - pos).normalized() #this seems to be the cause of the issue; something uses local cordinates
+	
+	
+	var direction = (orig - castResult.get("position")).normalized() 
+	#var direction = damInfo.direction
 	
 	var hypotenuse = sqrt((direction.x * direction.x) + (direction.z * direction.z))
 	
@@ -122,7 +134,7 @@ func do_Hit_Decal(pos, item, origin):
 	#give it some variation on the roll, though
 	#decalInstance.rotation.z = randi_range(-2, 2)
 	
-	decalInstance.global_position = pos
+	decalInstance.global_position = castResult.get("position")
 	
 	
 	

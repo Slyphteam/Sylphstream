@@ -194,10 +194,15 @@ func do_Shoot():
 	
 	#This function "actually shoots the bullet" but we only ACTUALLY "shoot" the bullet here.
 	for x in range(ourWeaponSheet.pelletAMT):
-		var theShot = FIREDBULLET.new() 
+		
 		var theDamage = randi_range(ourWeaponSheet.damage - ourWeaponSheet.bulletVariance, ourWeaponSheet.damage + ourWeaponSheet.bulletVariance)
-		theShot.assign_Info(orig, end, space, invManager.user, theDamage)
+		var theDamInfo = DAMINFO.new()
+		theDamInfo.assign_Info(theDamage, 0, invManager.user, (end-orig).normalized())
+		
+		var theShot = FIREDBULLET.new() 
+		theShot.assign_Info(orig, end, space, theDamInfo)
 		theShot.take_Shot()
+		
 		randAzimuth = randf_range(0 - maxAzimuth, maxAzimuth)
 		randRoll = randi_range(0, 360)
 		end = invManager.get_End(orig, randAzimuth, randRoll)
@@ -391,8 +396,8 @@ func eject_Casing():
 		return
 	
 	#print(casingPath)
-	var testyScene = load(casingPath)
-	var newCasing = testyScene.instantiate()
+	#var testyScene = 
+	var newCasing = load(casingPath).instantiate()
 	#ResourceLoader.load(casingPath).instantiate()
 	
 	

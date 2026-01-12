@@ -43,18 +43,16 @@ func interact_By_Player(player):
 	print("hello i am springtail")
 	print(ourForwards)
 
-var lastDamDirection
-func hit_By_Bullet(dam, _damtype, dir, _entity):
-	lastDamDirection = dir
-	print(lastDamDirection)
-	print(_damtype)
-	print(_entity)
-	print(dam)
-	ourHealth.take_Dam(dam)
-	pass
+var lastDam:DAMINFO
+func hit_By_Bullet(damInfo:DAMINFO):
+	
+	var remaining = ourHealth.take_DamInfo(damInfo)
+	if(remaining <= 0):
+		springTailDie()
+	
 
-func doDie():
-	print("I am die")
+func springTailDie():
+	print("Springtail am die")
 	#todo: initialize a floating phyx object that gets YEETED the direction of lastDamDirection,
 	#reuse decal trigonometry code for this.
 	ourRoot.queue_free()
