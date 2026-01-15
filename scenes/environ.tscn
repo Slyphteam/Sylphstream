@@ -1,5 +1,6 @@
-[gd_scene load_steps=67 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=70 format=3 uid="uid://bh3powm0a35or"]
 
+[ext_resource type="ArrayMesh" uid="uid://dlv7ayqmpetd3" path="res://models/mesh models/rawShapes/compassRoseMesh.res" id="1_fs720"]
 [ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="1_os2cn"]
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="4_2yn2u"]
 [ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="4_m2myf"]
@@ -38,6 +39,12 @@ background_mode = 2
 sky = SubResource("Sky_a202f")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfyce"]
+albedo_color = Color(0.580428, 0.298587, 0.768026, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ky5o2"]
+size = Vector3(0.369141, 0.618164, 0.373901)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn6mq"]
 albedo_color = Color(0.802385, 0.66802, 0.0896842, 1)
@@ -170,14 +177,35 @@ shadow_enabled = true
 [node name="Springtail pen" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4948, 0, -30.8867)
 
-[node name="Springtail" parent="Environment/Springtail pen" instance=ExtResource("25_jn6mq")]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 6.63166, 0.523671, -14.2826)
+[node name="Springtail Beacon" type="Node3D" parent="Environment/Springtail pen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.722998, 1.06029, -25.1314)
 
-[node name="Springtail2" parent="Environment/Springtail pen" instance=ExtResource("25_jn6mq")]
-transform = Transform3D(0.307705, 0, -0.951481, 0, 1, 0, 0.951481, 0, 0.307705, -4.496, 0.524, -10.959)
+[node name="CompassRoseMesh" type="MeshInstance3D" parent="Environment/Springtail pen/Springtail Beacon"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("1_fs720")
+surface_material_override/0 = SubResource("StandardMaterial3D_mfyce")
 
-[node name="Springtail3" parent="Environment/Springtail pen" instance=ExtResource("25_jn6mq")]
-transform = Transform3D(0.590056, 0, -0.807362, 0, 1, 0, 0.807362, 0, 0.590056, -2.101, 0.524, -5.597)
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Springtail pen/Springtail Beacon"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Springtail pen/Springtail Beacon/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000976563, 0.190918, -0.00250244)
+shape = SubResource("BoxShape3D_ky5o2")
+
+[node name="Springtail" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("25_jn6mq")]
+transform = Transform3D(1.19209e-07, 0, -0.999999, 0, 1, 0, 0.999999, 0, 1.19209e-07, -8.1151, 0.523684, -25.0987)
+navNode = NodePath("../Springtail Beacon")
+
+[node name="Springtail2" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("25_jn6mq")]
+transform = Transform3D(0.999975, 0, -0.00701621, 0, 1, 0, 0.00701621, 0, 0.999975, 0.679403, 0.524, -13.8171)
+navNode = NodePath("../Springtail Beacon")
+
+[node name="Springtail3" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("25_jn6mq")]
+transform = Transform3D(-0.999721, 0, 0.0235948, 0, 1, 0, -0.0235948, 0, -0.999721, 0.988792, 0.524, -5.40389)
+navNode = NodePath("../Springtail Beacon")
+
+[node name="Springtail4" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("25_jn6mq")]
+transform = Transform3D(-0.0122342, 0, 0.999924, 0, 1, 0, -0.999924, 0, -0.0122342, 0.774727, 0.604998, -9.83406)
+navNode = NodePath("../Springtail Beacon")
 
 [node name="wall1" type="MeshInstance3D" parent="Environment/Springtail pen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
@@ -200,7 +228,7 @@ collision_layer = 17
 shape = SubResource("ConcavePolygonShape3D_mfyce")
 
 [node name="wall3" type="MeshInstance3D" parent="Environment/Springtail pen"]
-transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 10, 0.8, -10)
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 10, 0.8, -30.7971)
 mesh = SubResource("BoxMesh_fs720")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Springtail pen/wall3"]
@@ -218,9 +246,6 @@ collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Springtail pen/wall4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mfyce")
-
-[node name="Springtail4" parent="Environment/Springtail pen" instance=ExtResource("25_jn6mq")]
-transform = Transform3D(0.489367, 0, 0.872077, 0, 1, 0, -0.872077, 0, 0.489367, 6.24479, 0.523671, -3.54144)
 
 [node name="Movement blocks" type="Node3D" parent="Environment"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.497, 0, -29.6132)

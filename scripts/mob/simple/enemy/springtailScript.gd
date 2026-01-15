@@ -3,7 +3,8 @@ class_name SPRINGTAIL extends CharacterBody3D
 enum SpringtailState{
 	DISABLED,
 	WANDER,
-	TURN
+	TURN,
+	PATHING
 }
 
 @onready var ourRoot = $".."
@@ -21,8 +22,15 @@ var ourState = SpringtailState.DISABLED
 @export var runSpeed = 3
 var ourHandedness = turnSpeed
 
+#turning variables
 var desiredOrient:float = 0
 var orientProgress:float = 0
+
+#pathing variables
+var pathing:bool = false
+var currentDest:Node3D
+@onready var visualizeMesh = $Senses/CompassRoseMesh
+
 
 func _ready() -> void:
 	
@@ -48,7 +56,13 @@ func _ready() -> void:
 func interact_By_Player(player):
 	ourState = SpringtailState.WANDER
 	print("hello i am springtail")
-	print(ourForwards)
+	
+	if(ourRoot.navNode):
+		print("Attempting to path to a nav node")
+		pathing = true
+		currentDest = ourRoot.navNode
+		ourState = SpringtailState.PATHING
+	
 
 var lastDam:DAMINFO
 func hit_By_Bullet(damInfo:DAMINFO):
@@ -79,6 +93,8 @@ func _physics_process(delta: float) -> void:
 		do_wander(delta)
 	elif(ourState == SpringtailState.TURN):
 		do_turn(delta)
+	elif(ourState == SpringtailState.PATHING):
+		do_path(delta)
 		
 	move_and_slide()
 	#velocity = ()
@@ -144,6 +160,7 @@ func do_wander(delta):
 
 func do_turn(delta):
 	
+
 	
 	rotation.y = lerpf(rotation.y, desiredOrient, orientProgress)
 	orientProgress +=delta
@@ -151,3 +168,37 @@ func do_turn(delta):
 	#accept a range of values to stop turning
 	if((rotation.y <= desiredOrient + 0.05) && (rotation.y >= desiredOrient - 0.05)) || orientProgress>1:
 		ourState = SpringtailState.WANDER
+
+func do_path(delta):
+	#Pezza: "An elegant and simple way to orient an object, is to apply a rotation proportional, to 
+	#the dot product between the target direction and the current heading's normal"
+	#in other words:
+	#find the vector connecting our global position with the target's position
+	#create a vector perpindicular to our forwards
+	#apply the dot product and then ?????
+	
+	#this works well, in relative terms. If the springtail has any rotation, it doesn't, though.
+	var targHeading = currentDest.global_position - global_position 
+	#the heading is absolute, but we want to localize it, so let's undo our current rotation
+	targHeading = targHeading.rotated(Vector3.UP, -rotation.y)
+	targHeading.y = 0
+	targHeading = targHeading.normalized() #normalize to dot it later
+	
+	visualizeMesh.position = targHeading
+	#next, get a perpindicular
+	
+	#no idea why but using RIGHT or LEFT here makes the end result whacky
+	var ourPerp = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
+	ourPerp = ourPerp.normalized()
+	
+
+	print(targHeading)
+	
+	var theDot = targHeading.dot(ourPerp)
+	print(theDot)
+	#if we're X ALLIGNED, the dot product will be -1 for 
+	
+	#var secondPerp = Vector3.LEFT.rotated(Vector3.UP, rotation.y)
+	#print("Second:", secondPerp)
+	
+	ourState = SpringtailState.DISABLED

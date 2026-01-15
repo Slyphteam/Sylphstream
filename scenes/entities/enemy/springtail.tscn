@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=4 uid="uid://d2y6vux751ctf"]
+[gd_scene load_steps=15 format=4 uid="uid://d2y6vux751ctf"]
 
+[ext_resource type="Script" uid="uid://bn4670sh3ptqh" path="res://scenes/entities/enemy/springtailWrapper.gd" id="1_hgoai"]
 [ext_resource type="Script" uid="uid://1w773btoqbqs" path="res://scripts/mob/damsystem/health_holder.gd" id="1_rnm0q"]
 [ext_resource type="Script" uid="uid://bwp2ika1pq4g8" path="res://scripts/mob/simple/enemy/springtailScript.gd" id="1_xprdt"]
 [ext_resource type="Material" uid="uid://jjfxm4ehgiq5" path="res://models/glbs and textures/creatures/enemies/springtail/springtialMaterial.tres" id="2_mm6el"]
@@ -550,6 +551,7 @@ points = PackedVector3Array(4.33349, 1, 6.48339, 4.33349, -1, 6.48339, 6.14673e-
 points = PackedVector3Array(4.33349, 1, 6.48339, 4.33349, -1, 6.48339, 6.14673e-08, -0.000195742, -2, 6.14673e-08, 1, 6.48339, 6.14673e-08, -1, 6.48339)
 
 [node name="Springtail" type="Node3D"]
+script = ExtResource("1_hgoai")
 
 [node name="springtailBody" type="CharacterBody3D" parent="." groups=["damage_interactible", "player_interactible"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423883, -0.0422184)
@@ -814,8 +816,6 @@ shape = SubResource("ConvexPolygonShape3D_rnm0q")
 debug_color = Color(0, 0.649606, 0.0536531, 1)
 
 [node name="CompassRoseMesh" type="MeshInstance3D" parent="springtailBody/Senses"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.875436, -7.14222)
-visible = false
 mesh = ExtResource("3_dgthc")
 skeleton = NodePath("../../..")
 

@@ -6,13 +6,13 @@ Who is Angeion? whoever they need to be to as the PC. From greek for vessel.
 As far as Sylphstream has a coherent setting, Angeion is a construct with agency and self awareness. Has at least some 
 kind of spiritual influence. Should resemble Millian a little, but not too much. Defo the mask at least.
 
-THE VESSEL LIES SUNDERED
+THIS VESSEL LIES SUNDERED
 YET THE AEONS' TUG STILL LAPS AT ITS BROKEN FORM
 
 LET SPIN ONCE MORE THE WHEEL OF DHARMA
-TAKE NOW YOUR GENTLE REPOSE
+TAKE NOW A GENTLE REPOSE
 
-YOU ARE A SHATTERED, TRITE, DEFEATED MOUND OF CARNAGE
+YOU ARE A SHATTERED, TRITE, DEFEATED HEAP OF CARNAGE
 WILL YOU STAY THIS WAY?
 
 GRASP AGAIN THAT SILVER THREAD
@@ -32,9 +32,9 @@ Spectre-like NPC, is the most common in rest areas. Speaks mostly gibberish, but
 Refrain:: Echo:: Refrain:: Echo:: Refrain:: Echo:: Refrain:: Echo:: Refrain:: Echo
 (A ghastly, many-faced spectre contorts and whorls before you.)
 (Like crashing waves, its voice and appearance surges and fades, waning into incoherence before rebounding with sudden clarity)
-(Much of what it says, if anything, is lost to the chaos: truely meaningless gibberish, intangible nothingness and nothing more)
-(Though rarely, just rarely, some thread of the divine is audible despite the frenzied babble)
-(Attempt to glean some higher truth from the noise?)
+(Much of what it says, if anything, is lost to the noise: truely meaningless gibberish, intangible nothing and little more)
+(Though rarely, just rarely, some thread of the divine can be audible through the frenzied babble)
+(Attempt to glean a higher truth from the chaos?)
 
 
 
@@ -49,6 +49,7 @@ Capricious and devil-may-cry, kind of a brat, no real power or willingness to pr
 (Friends forever): See that maniac over there? Don't stare, but yeah, that one. They keep saying I'm their friend.
 I want you to find someone to hang out with them to get them to shut up.
 
+======>Small talk:
 What do you think of the chimera?
 Useful merchant, but could stand to be a little less vain, like me. I can't really stand its ego.
 
@@ -58,25 +59,29 @@ Probably the only person who actually pays taxes in mmy domain.
 What do you think of the archon?
 We made out in a back alley once. Don't ask how. You don't want to know.
 
-		====+====> the beautiful chimera
-		
-Six-limbed beast who is also an accomplished alchemist. Blends the line between narcissicm and self-love. Transgender allegory.
+What's your read on pipe bomb andy?
+Angeion, I'll be so honest, I don't like him. I don't like his deal. But the children of the world are counting on him, I guess, so what can I do?
+
+
+	====+====> the beautiful chimera
+	
+A six-limbed beast who a talented alchemist. Blends the line between narcissicm and self-love. Definitely a metaphor for something.
 
 ======>Initial introduction:
 (A six-limbed beast stands on an intricate dais. As you approach, it regards you with little in the way of intent.)
-After many years of hard work I have become a beautiful chimera. 
-My scales are smooth and glossy and shine under the light of the sun.
-My teeth are pearlescent and their tapering points are astutely-rounded and sharp.
+After many years of hard work I have transformed myself into a beautiful chimera. 
+My scales are smooth and glossy; they shine under the light of the sun.
+My teeth are pearlescent; their tapering points are long astutely sharp.
 My stinger-tail is deft; it swishes and sways however I so wish it to.
-My fur is soft and gossamer and without tangle or speck.
-My claws are manicured and click and clack whenever I walk.
+My fur is soft and gossamer; it is without tangle or speck.
+My claws are vicious and well-manicured; they click and clack whenever I walk.
 I think I look quite stunning. Wouldn't you agree~?
 
 PLAYER OPTIONS:
 1: I would. You're beautiful.
-2: I don't think so but I can see why you'd hold yourself in that regard.
+2: I don't think so. But I can see why you'd hold yourself in that regard.
 3: You are very beautiful. For a chimera.
-4: I don't think I could agree.
+4: Hmm. I don't think so.
 
 1; (The chimera hides a flattered, toothy smile with one of its forepaws)
 2;4 Hmm. To each their own, I suppose.
@@ -84,7 +89,7 @@ PLAYER OPTIONS:
 
 - Do you do anything here?
 
-I sell autoinjectors! I'm sure you've seen some color-coded syringes around; I'm the one who makes their contents.
+I create the medicine that goes into autoinjectors! I'm sure you've seen some color-coded syringes around; I'm the one who brews their contents.
 
 ======>Quest lines:
 Any odd jobs?
@@ -97,7 +102,7 @@ Oh, my. I'm sure you already know this but that's never the answer to life's qua
 
 (A mirror to stare into): Mmhmmm, you know what makes for a perfect makeup mirror?
 			The mirror-sheen, hypercomposite blade of a sawfly. Extravagant, I know, but I'll
-			make it worth your while. You player types like your rewards, don't you? How about
+			make it worth your while. Your type likes your rewards, don't you? How about
 			access to some of my more limited stock?
 
 
@@ -105,10 +110,10 @@ Oh, my. I'm sure you already know this but that's never the answer to life's qua
 
 What do you think of greg?
 -She reeks and I have no idea where she gets all those firearms from. I've never seen anything enter or come out of
-that cardboard box of hers. It is honestly distressing to think about. (unlocks greg's stupid question)
+that cardboard box of hers. It violates several laws of conservation and is honestly distressing to think about. (unlocks greg's stupid question)
 What do you think of the corpus dei?
--Hhmmhh. For a group of zealots they don't appear to be very theologically versed.
-I suppose that is par for the course, though.
+-Mmhmmm... for a group of zealots they don't appear to be very spiritually versed.
+Though I suppose that would be par for the course, wouldn't it~?
 
 ======> Small talk:
 (begin)
@@ -116,39 +121,92 @@ This might be a stupid question, but how do you make your autoinjectors?
 
 Why that's simple! I just use psychokenises and alchemy!
 0) Psychokinesis??
-0; The magical power of Picking Shit Up With My Mind. 
-1) Alchemy??
-1: What, did you suppose I scienced them up in a lab somewhere? 
+0; The magical power of Picking Objects Up With My Mind. 
+1) Alchemy????
+1: What, did you suppose I scienced them up using data and statistics in a laboratory somewhere? 
 1) Yes?
 2) No?
 Well, I didn't/Of course not! ->
 I'm quite the accomplished biothaumaturge. How else do you suppose I've attained my gorgeous figure? (end)
 
 (begin) Can a chimera be made without heartbreak?
-Of course not. My consummation entailed almost entirely suffering, dear.
+Of course not. My consummation was agonial, dear.
 Then why'd you do it?
-Mmhmm, is it possible to experience joy without pain?
+Mmhmm... is it possible to experience joy in life without first feeling pain?
 1) I guess not.
 2) No...
-3) yea brah it totally is brah trust me brah
+3) it definitely is trust me bro (GODSBLOOD check)
 1;2: Then you, and everyone around you have already completed that prerequisite, haven't you?
 3: If you insist. (ends)
 1) I guess that makes sense. (ends)
 2) Checks out. Can you make me a chiemra, then?
--> I would, but I'm afraid you're not a vivaciously ensouled form of life, Angion.
+-> You silly little vessel. Don't you know you're not an ensouled form of life?
 Oh... (end dialogue)
+
+
+(begin)
+-What am I?
+What makes you suppose that I should know anything about that, Angeion?
+(If you completed one other small talk) 0) Because you're a talented alchemist who was able to successfully transmute their whole body into something else?
+1) I don't know. I'm sort of just grasping at straws, here.
+(If pick option 4) 2) Just a hunch.
+3) You're right, I'm sorry for bothering you.
+4)(Closely examine the Chimera's demeanor as it speaks) (WORLD-DRINKER or RATIONO-CYNICISM check)
+4; The beast's quartet of eyes are squinted in the tiniest smile. Its tail sways with poorly-masked excitement. 
+It knows something, but wants to know why YOU know it does.
+
+1;3: Perhaps, then, it may be worth looking closely at yourself to seek answers. Or, brushing up on greek.
+2; You and your hunches, mhhmmm?
+0; Oh, flattery will get you EVERYWHERE with me.
+Very well. You very obviously carry the alchemical symbol for clay on your chest, which you are made of. Fired clay, for that matter. Quite unconventional.
+Humanoid constructs made of clay are almost universally uncooked. You only fire clay if you wish to use it in crockery, or a pot, or... (The Chimera abruptly cuts off)
+- Or what?
+Or a container. Clay is only fired if it's going to be used as a container, Αγγεῖον.
+But a container for what, exactly? What a fascinating little thing you are. Please. Come. Let me break you open. I MUST know. I'll pay.
+(You no longer feel safe in this conversation.)
+1) I... think I'll have to pass.
+2) If it gets me an answer. (Kills the player, unlocks a one-time "did you figure anything out?" "no clue at all" exchange.)
 
 I am not a combative NPC. I don't even have a healthholder. You can shoot me all you'd like and it will simply do nothing.
 
 	====+====> Pipe Bomb Andy
 Pipe bomb andy, from his initial incarantion (aka NOT catboy). World merchant that sells explosives.
 
+======> Exchanges:
+1) Andy, are your pipe bombs a metaphor for something?
+2) Say, if you gave me a bomb that DOESN'T have the fuze already lit, I'd be willing to pay for it.
+(If opened shop) 3) Say, andy, my boy, my son, my beautiful ugly horrid little shithead, how'd you like to come to a proper marketplace and sell your wares there?
+4) What's, like, your deal?
+
+1; What? What do you mean?
+1) Like... I don't know, abuse, or something? It feels like there's some kind of metacommentary going on here with our relationship.
+1; (Andy suddenly gets very serious.) My pipe bombs. Are not. Metaphorical. They're real bombs. The explosions aren't figurative or anything.
+
+2; Uh.. okay, sure, I guess. Take a look at my stock.
+3; You mean... poeple.. they WNAT my bombas?? (Andy goes to the hub)
+
+- My deal?
+1; Like, why do you go around giving people bombs in boxes. You don't have, like, a manifesto or anything, right?
+- I do it... for the Children Of the World.
+The children of the world? 
+- They're counting on me. The hopes of all the puppies and the kitties who play together in grassy meadows and the panda bears and even the gerbils 
+all ride or die on what I do. 
+-I do it for the sea turtles, and the dolphins, and the gerbils as well did I mention the gerbils, and also the dreams of every single baby animal, ever, collectively.
+-I do it... for America.
+
+Oh okay that makes total sense I was kinda lost before but everything's suddenly so clear now. Thanks for explaining.
+
+======> Questline:
+
 (A man in a skull mask(?) and captain's attire approaches you. He holds a suspiciously bulky backpack in two hands)
 Hello, it is I, pipe bomb andy.
 I offer you a heartfelt gift.
 (Pipe bomb andy offers you the satchel. Do you accept?)
 Yes (accept)
-Dude. (decline)
+Dude... no. (decline) (Forecalculus check)
+
+On accept, spawns a pipe bomb at the player's feet with halved timer. On decline, andy sticks around, but you cant talk to him.
+
 
 (later)
 
@@ -156,15 +214,20 @@ Hi, it's me again, pipebomb andy.
 Look, I know we got off on the wrong foot here and I just wanted to say I'm sorry. 
 You don't have to, but I wanted to give you something to make up for our differences.
 PLAYER OPTIONS:
-1) Is it a pipe bomb?
-2) It better not be another pipe bomb andy.
-I SWEAR it's not a pipe bomb.
+1) Is it a pipe bomb? (Intra para-abberance check)
+2) It better not be another pipe bomb, Andy. (Rationo-cynicism check)
+3) Oh, okay, thanks, Andy. (Accept)
+1;2; I SWEAR it's not a pipe bomb. That would be lovebomb gaslight dark empathic of me and I'm changing for the better.
+1) If you say so.
+2) Andy I'm going to be so honest I somehow find myself not believing you (Forecalculus check.)
 
+If you accept, a goblin runs by and spawns a pipe bomb. 
+If you decline, a goblin runs by and steals andy.
 
 (Even later)
 
 It was really fucked up of me to give you a pipe bomb. and then apologize and give you another pipe bomb.
-And then even later when I had a pipe bomb on me and I was going to apologize and then that goblin took it and blew the pipebomb up
+And then even later when I had a pipe bomb on me and I was going to apologize and then that goblin took it and blew the pipebomb up that was also fucked up.
 Actually I have no real association with that goblin they were totally unrelated 
 I have no association with that goblin so it wasn't actually me that did that come to think of it. So two out of three really isn't that bad.
 but anyway yeah it was really fucked up and manipulative of me to try and give you a pipe bomb twice in a row.
@@ -172,14 +235,24 @@ and I just wanted to say I'm sorry and I've grown and changed as a person.
 and I really mean it. I've realized the error of my ways turned a new leaf. 
 and I know you probably won't accept it, and I have nobody to blame but myself,
 but I wanted to offer you an olive branch, if you're in the right state of mind and you wanted to forgive me.
+I love you, and I only want what's best for us. Please. If not for yourself, then for me, please, just take this meager token of apology.
 
-andy. andy I want you to be level with me. 100% truthful. is there a pipe bomb in that box.
+1)Thanks, Andy. It really warms my heart to know you're righting your wrongs. (Accept) (You know what happens)
+2) (Rationo-Cynicism check) Andy, what's in the box?
 
-(pipe bomb andy seems suddenly and remarkably uncomfortable) u-uh. w-weeell. 
+I.. I can't say. It's a surprise, and, well, I'm worried you might be mad at me if you knew what it wasy.
 
-well?
+1) Oh, okay. (Accept.)
+2)Andy. Andy I want you to be level with me. 100% truthful. Look me in the eyes. Is there A Pipe Bomb in that box? (Forecalculus check)
 
-y-nnooooo. No there is not. (andy puts the gift behind his back and seems to do something else)
+(Pipe Bomb Andy seems suddenly and remarkably uncomfortable) U-uh. W-weeell...
+
+1) (He's clearly too embarrased to do something as brazen as put a bomb in the box after all this) (Accept)
+2) Well? (Svelte Carapace check)
+
+Y-Nnooooo. No there is not. (andy puts the gift behind his back and seems to do something else) (You get 3 .22lr bullets, a rock, and a placebo syringe)
+
+
 
 
 	====+====> Trustworthy greg's
