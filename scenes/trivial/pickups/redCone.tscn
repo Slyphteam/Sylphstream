@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://kx431q8n74el"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="1_p2j8j"]
+[ext_resource type="Resource" uid="uid://bnfxlen8t7aa0" path="res://scripts/utility/invSystem/invData/redTriagData.tres" id="2_r8j5b"]
+[ext_resource type="ArrayMesh" uid="uid://b8xs76f0r73hl" path="res://models/mesh models/rawShapes/coneShape.res" id="3_aitlx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3d8o"]
+albedo_color = Color(1, 0.23, 0.23, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l61hi"]
+points = PackedVector3Array(-0.2, -0.203846, -3.91454e-05, -0.173218, -0.203846, -0.100039, -0.173218, -0.203846, 0.0999609, -3.91454e-05, 0.196154, -3.91454e-05, -0.100039, -0.203846, -0.173218, -0.100039, -0.203846, 0.173179, 0.173179, -0.203846, 0.0999609, 0.199961, -0.203846, -3.91454e-05, 0.173179, -0.203846, -0.100039, 0.0999609, -0.203846, -0.173218, -3.91454e-05, -0.203846, -0.2, -3.91454e-05, -0.203846, 0.199961, 0.0999609, -0.203846, 0.173179)
+
+[node name="RedCone" type="Node3D"]
+
+[node name="Cone" type="RigidBody3D" parent="." groups=["player_interactible"]]
+collision_layer = 5
+script = ExtResource("1_p2j8j")
+thingToGive = ExtResource("2_r8j5b")
+
+[node name="ConeShape" type="MeshInstance3D" parent="Cone"]
+mesh = ExtResource("3_aitlx")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_h3d8o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cone"]
+shape = SubResource("ConvexPolygonShape3D_l61hi")

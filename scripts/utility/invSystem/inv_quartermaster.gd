@@ -4,12 +4,32 @@
 extends PanelContainer
 @export var invenManager: PLAYERINVENMANAGER
 @onready var weapSlotGrid = $VBoxContainer/WeaponSlots/WeapGrid
+@onready var genericSlotGrid = $VBoxContainer/GenericSlots/HBoxContainer/GridContainer
+
+##Ammo management stuff:
+@onready var weightLabel = $VBoxContainer/TotalWeight
+@onready var dropButton = $VBoxContainer/HBoxContainer/DropButton
+
+@onready var rimfireLabel = $VBoxContainer/HBoxContainer/ammos1/rimfire
+@onready var rimfireSlider = $VBoxContainer/HBoxContainer/sliders1/rimfireSl
+@onready var pistolLabel =$VBoxContainer/HBoxContainer/ammos1/pistol
+@onready var pistolSlider =$VBoxContainer/HBoxContainer/sliders1/pistolSl
+@onready var magnumLabel =$VBoxContainer/HBoxContainer/ammos1/magnum
+@onready var magnumSlider =$VBoxContainer/HBoxContainer/sliders1/magnumSl
+@onready var rifleLabel =$VBoxContainer/HBoxContainer/ammos2/rifle
+@onready var rifleSlider =$VBoxContainer/HBoxContainer/sliders2/rifleSl
+@onready var shotgunLabel =$VBoxContainer/HBoxContainer/ammos2/shotgun
+@onready var shotgunSlider =$VBoxContainer/HBoxContainer/sliders2/shotgunSl
+@onready var heavyLabel =$VBoxContainer/HBoxContainer/ammos2/heavy
+@onready var heavySlider =$VBoxContainer/HBoxContainer/sliders2/heavySl
+
 #@export var emptySlot: Texture2D
 var currentlyOpen:bool
 var heldInvDat: INVENITEMPARENT ##item data that is being dragged
 var heldInvIndex:Vector2i ##slotInd, order in slotInd
 var wepSlotMaxes:Array
 var wepSlotRefs: Array ##Array referencing all the vboxes for each customizable slot
+var prevSlotTyp: String ##Previous type of slot we pulled from. useful in indexing into the right invenmanager array
 
 func _ready():
 	wepSlotRefs.append($VBoxContainer/WeaponSlots/WeapGrid/Slot1)
@@ -23,16 +43,24 @@ func populate_Inven_Data():
 	wepSlotMaxes = invenManager.slotMaxes
 	
 	for x in range(1,wepSlotMaxes.size()):
-		var tempSlotArr = invenManager.allSlots[x] 
+		#var tempSlotArr = invenManager.allSlots[x] 
 		#Populate with empty
 		for y1 in range(0, wepSlotMaxes[x]):
-			var newSlot = preload("res://scripts/utility/invSystem/invSlot.tscn").instantiate()
+			var newSlot = preload("res://scenes/utilities/Player or UI/invSlot.tscn").instantiate()
 			newSlot.slotInd = x-1
 			newSlot.slotTyp = "WEP"
 			wepSlotRefs[x-1].add_child(newSlot)
+	
+	for x in range(0, invenManager.genericItems.size()):
+		var newSlot = preload("res://scenes/utilities/Player or UI/invSlot.tscn").instantiate()
+		#newSlot.slotInd 
+		newSlot.slotTyp = "GEN"
+		genericSlotGrid.add_child(newSlot)
+	
 
-##Refreshes the inven icons with new data from invenmanager
+##Refreshes all display portions of inventory UI
 func update_Inven_Data():
+	#Do weapons
 	for x in range(1,wepSlotMaxes.size()):
 		#print("Slot ", x)
 		var tempSlotArr = invenManager.allSlots[x] ##Invenmanager's info
@@ -45,6 +73,25 @@ func update_Inven_Data():
 		for y2 in range(0, tempSlotArr.size()):
 			currentEntries[y2].curItem = tempSlotArr[y2]
 			currentEntries[y2].update_info()
+	#Do generics
+	var ind = 0
+	for currentSlot in genericSlotGrid.get_children():
+		currentSlot.curItem = invenManager.genericItems[ind]
+		currentSlot.update_info()
+		ind+=1
+	
+	#Do ammo section
+	invenManager.recalc_Weight()
+	#print(invenManager.ammoWeight)
+	weightLabel.text = "Current ammo weight: " + str(invenManager.ammoWeight) + "/" + str(invenManager.maxweight)
+	
+	rimfireLabel.text = "Rimfire: " + str(invenManager.heldAmmunition.ammoRimfire)# + ";"+ str(invenManager.weight22)
+	pistolLabel.text = "Pistol: " + str(invenManager.heldAmmunition.ammoPistol)# + "; " + str(invenManager.weightpistol)
+	magnumLabel.text = "Magnum: " +  str(invenManager.heldAmmunition.ammoMagnum)# + ";" + str(invenManager.weightrifle)
+	shotgunLabel.text = "Shotgun: " + str(invenManager.heldAmmunition.ammoShotgun)# + ";" + str(invenManager.weightShotgun)
+	rifleLabel.text = "Rifle: " + str(invenManager.heldAmmunition.ammoRifle)# + "; " + str(invenManager.weightrifle)
+	heavyLabel.text = "30 cal: " + str(invenManager.heldAmmunition.ammoThirtycal)# + "; " + str(invenManager.weight30cal)
+	
 
 func _process(delta)->void:
 	if(not currentlyOpen):
@@ -70,14 +117,21 @@ func _input(event: InputEvent) -> void:
 			#var guiItem = wepSlotRefs[heldInvIndex.x].get_children()[heldInvIndex.y].curItem
 			
 			if(clickedNode.slotTyp == "WEP"): #handle weapon logic
-				heldInvIndex.x = clickedNode.slotInd #Get the slot we're in, TODO UNTESTED
+				heldInvIndex.x = clickedNode.slotInd 
 				heldInvIndex.y = clickedNode.get_index()
 				invenItem = invenManager.allSlots[heldInvIndex.x + 1][heldInvIndex.y]
 				#print("Clicked item: ",heldInvIndex)
-				
+			elif(clickedNode.slotTyp == "GEN"):
+				invenItem = invenManager.genericItems[clickedNode.get_index()]
+				heldInvIndex.x = clickedNode.get_index()
+				#print(invenItem.itemName)
+			else:
+				Globalscript.raise_Panic_Exception("Couldn't figure out where to pull data from when making a dragitem! Check the clickedNode logic?")
+				#invenItem = in
 			#create drag item. no idea why wed want this to be a unique function that seems poorly thought out
 			heldInvDat = invenItem #assign the data
 			var itemDrag :TextureRect = TextureRect.new()
+			prevSlotTyp = clickedNode.slotTyp
 			itemDrag.texture = heldInvDat.itemIcon
 			itemDrag.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			itemDrag.z_index = 3 #gotta set z index
@@ -94,20 +148,61 @@ func _input(event: InputEvent) -> void:
 		
 		var hovNode = get_viewport().gui_get_hovered_control()
 		if(hovNode is invenSlot && hovNode.curItem == null):
+			
+			##Check the slot compatibility logic
 			if(check_Typ_Compatible(hovNode.slotTyp, heldInvDat.itemTyp)):
+				
 				
 				#logic for weapons
 				if(hovNode.slotTyp == "WEP"):
-					#check slot eligibility
 					var eligibleSlots = heldInvDat.weapInfoSheet.selections  #check slot eligibility
 					if(eligibleSlots.has(hovNode.slotInd + 2)): #yes, ths +2 is correct here.
-						var result = invenManager.remove_Invwep(heldInvIndex.x + 1, heldInvIndex.y)
+						var result
+						if(prevSlotTyp == "GEN"): #remove from general storage
+							result = invenManager.genericItems[heldInvIndex.x]
+							invenManager.genericItems[heldInvIndex.x] = null
+						else: #remove from wepslots
+							result = invenManager.remove_Invwep(heldInvIndex.x + 1, heldInvIndex.y)
 						if(result != heldInvDat):
 							Globalscript.raise_Panic_Exception("Held inven data and removed invweapon were not the same!")
 						#update the invenmanager to re-add the object at the new coords
 						invenManager.allSlots[hovNode.slotInd + 1][hovNode.get_index()] = result
 						hovNode.curItem = result
 				
+	
+				if(hovNode.slotTyp == "GEN"): #placing into general storage
+					if(prevSlotTyp == "WEP"):
+						#if((invenManager.currentSlot -2 == heldInvIndex.x) && (invenManager.slotSelection == heldInvIndex.y)):
+						#	invenManager.change_To_Slot(1) #swap to hands
+						var withdrawResult = invenManager.remove_Invwep(heldInvIndex.x + 1, heldInvIndex.y)
+						hovNode.curItem = withdrawResult
+						invenManager.genericItems[hovNode.get_index()] = withdrawResult
+					if(prevSlotTyp == "GEN"):
+						var withdrawResult = invenManager.genericItems[heldInvIndex.x]
+						invenManager.genericItems[heldInvIndex.x] = null
+						
+						hovNode.curItem = withdrawResult
+						invenManager.genericItems[hovNode.get_index()] = withdrawResult
+						
+	
+			#whatever we have, we're dropping
+				if(hovNode.slotTyp == "DROP"):
+					var withdrawResult
+					if(prevSlotTyp == "WEP"): #dropping from weapons
+						withdrawResult = invenManager.remove_Invwep(heldInvIndex.x + 1, heldInvIndex.y)
+					if(prevSlotTyp == "GEN"): #dropping from general
+						withdrawResult = invenManager.genericItems[heldInvIndex.x]
+						invenManager.genericItems[heldInvIndex.x] = null
+						
+					if(!withdrawResult.itemEntScene):
+						Globalscript.raise_Panic_Exception("Tried to drop a weapon that didn't know its own entity scene!!")
+					var droppedItem = load(withdrawResult.itemEntScene).instantiate()
+					#put it at the player
+					droppedItem.position = invenManager.get_Origin()
+					#and a little in front of them
+					droppedItem.position += (Vector3.FORWARD * 2).rotated(Vector3.UP, invenManager.get_Rotation().y)
+					Globalscript.theTree.root.add_child(droppedItem)
+					
 		#no matter what happens, clean up itemDrag if the mouse is released
 		get_node("ItemDrag").queue_free()
 		heldInvDat = null
@@ -115,8 +210,13 @@ func _input(event: InputEvent) -> void:
 
 ##Returns whether typItem can be inserted into typSlot.
 func check_Typ_Compatible(typSlot, typItem):
-	if(typSlot == typItem):
+	if(typSlot == prevSlotTyp): #we're putting into a slot from the same type, yeah, they're gonna be compatible
 		return true
-	if(typSlot == "GEN"):
+	if(typSlot == "DROP"): #can always put into drop slots
 		return true
+	if(typSlot == "GEN"): #can always put into general slots
+		return true
+	if(typSlot == typItem): #the slot and the item match up
+		return true
+
 	return false

@@ -4,7 +4,7 @@
 
 class_name PLAYERINVENMANAGER extends INVENMANAGER
 
-var weight = 0 ##The current held ammo pool's "weight"
+var ammoWeight = 0 ##The current held ammo pool's "weight"
 @onready var uiInfo = $"../../../Player UI"
 @onready var healthHolder = $"../../../Player Health"
 @export var ourHands: INVWEP
@@ -21,7 +21,14 @@ var slotSelection: int = 0 ##Which index into said slot are we?
 
 var slotMaxes:Array[int] = [1,2,2,2,1] ##Array of all the slot maximums: hand, holster, chest, back, sheathe
 
+var ammoWeightInfo:Array[int] = [1,3,5,7,10,4]
 
+var weight22 = 1 ##Weight of 22 rimfire rounds
+var weightpistol = 3 ##weight of pistol rounds
+var weightrifle = 5 ##Weight of small rifle rounds
+var weight30cal = 7 ##weight of large rifle rounds
+var weightShotgun = 10 ##Weight of shotgun shells
+var weightRimmed = 4 ## Weight of magnum rounds
 
 var slot1: Array[INVWEP] ##Custom slot exclusively for the hands
 var slot2: Array[INVWEP] ##Holster slots.
@@ -46,12 +53,15 @@ func _ready():
 	
 	user = get_node("../../..")
 	
-	heldAmmunition.ammoRimfire = 50
-	heldAmmunition.ammoPistol = 50
-	heldAmmunition.ammoRifle = 50
-	heldAmmunition.ammoThirtycal = 50
-	heldAmmunition.ammoShotgun = 50
-	recalcWeight()
+	
+	heldAmmunition.ammoRimfire = 25
+	heldAmmunition.ammoPistol = 25
+	heldAmmunition.ammoRifle = 60
+	heldAmmunition.ammoThirtycal = 20
+	heldAmmunition.ammoShotgun = 12
+	heldAmmunition.ammoMagnum = 12
+	
+	recalc_Weight()
 	
 	#Begin with slot init
 	allSlots.resize(5)
@@ -60,6 +70,9 @@ func _ready():
 	slot1.resize(slotMaxes[0])
 	slot1[0] = ourHands #slightly weird way but it ensures that everything is airtight
 	allSlots[0] = slot1
+	
+	#Populate our generic slots
+	
 	
 	#Populate the remaining arrays
 	for x in range(slotMaxes[1]): #hips
@@ -119,29 +132,20 @@ func load_Wep(wep2Load: WEAP_INFO):
 		uiInfo.crosshair_Reset_Size()
 	
 
-var weight22 = 1 ##Weight of 22 rimfire rounds
-var weightpistol = 3 ##weight of pistol rounds
-var weightrifle = 5 ##Weight of small rifle rounds
-var weight30cal = 7 ##weight of large rifle rounds
-var weightShotgun = 10 ##Weight of shotgun shells
-var weightRimmed = 4 ## Weight of magnum rounds
 
-func recalcWeight():
-	weight = 0
-	weight += weight22 * heldAmmunition.ammoRimfire
-	weight += weightpistol * heldAmmunition.ammoPistol
-	weight += weightrifle * heldAmmunition.ammoRifle
-	weight += weightShotgun * heldAmmunition.ammoShotgun
-	#print("Current ammo weight: ", weight)
+
+
 
 #===============> INVENSYSTEM STUFF
-func consume_item(thingToGive)->bool:
+func consume_item(thingToGive):
 	if(thingToGive is INVWEP):
 		return give_New_InvWeap(thingToGive, thingToGive.weapInfoSheet.selections)
 	elif(thingToGive is INVAMMBOX):
 		for x in range (thingToGive.arrLength):
-			#some kind of check for ammo weight would go here
-			giveAmmo(thingToGive.typeArr[x], thingToGive.amtArr[x])
+			#ammo boxes will always return true because the check to delete or preserve them
+			#happens on the pickup side of the script. what we gotta worry about is cramming as much as we can carry
+			#and updating the data to account for what we can't
+			thingToGive.amtArr[x] = giveAmmo(thingToGive.typeArr[x], thingToGive.amtArr[x])
 		return true
 	else:
 		return add_GenericItem(thingToGive)
@@ -320,10 +324,13 @@ func give_New_InvWeap(weapon:INVWEP, validSlots:Array[int])->bool:
 
 ##Removes an invenweapon from the specified slot cordinates, cleans up the rest of the arrays, returns removed item. ONLY USE THIS IF YOU KNOW WHAT YOU'RE DOING.
 func remove_Invwep(theSlot, theIndex)->INVWEP:
+	
+	#if we're currently holding the weapon we wish to remove, swap off before removing it
+	if((theSlot+1 == currentSlot) && (theIndex == slotSelection)):
+		change_To_Slot(1)
+	
 	var theWep = allSlots[theSlot][theIndex]#.itemName #since stuff is getting nulled we'll use names
 	allSlots[theSlot][theIndex] = null
-	
-	
 	
 	#goes through every other index in the slot
 	#print(slotMaxes[theSlot] - theIndex -1)
@@ -333,6 +340,17 @@ func remove_Invwep(theSlot, theIndex)->INVWEP:
 		if(nextItem): #if there's an item ahead, move it up a slot
 			allSlots[theSlot][x+theIndex+1] = null
 			allSlots[theSlot][x+theIndex] = nextItem
+	
+	#if our slot is affected, there's a decent chance our weapon was as well
+	if((theSlot+1 == currentSlot) && !(theIndex == slotSelection)):
+		var count = 0
+		#go through our slot until we find a matching weapon, we'll consider that the new position for slotSelection
+		for item:INVWEP in allSlots[theSlot]: 
+			if(activeItem.wepName == item.weapInfoSheet.wepName):
+				slotSelection = count
+				break
+			count+=1
+	
 	return theWep
 
 ##Adds a new weapon to an inventory. Differs from add_To_Slot in that it handles slot and capacity logic.
@@ -344,18 +362,58 @@ func remove_Invwep(theSlot, theIndex)->INVWEP:
 
 #everything below here is standard stuff, just with some overrides
 
+func add_Generic_Item(theItem:INVENITEMPARENT)->bool:
+	
+	for x in range(genericItems.size()):
+		if(genericItems[x] == null):
+			genericItems[x] = theItem
+			return true
+	
+	return false
 
-##Gives ammo to invenmanager and updates ammo weight
+func calc_Weight(amTyp, amt):
+	var result1 = ammoWeightInfo[amTyp] * amt
+	
+	return result1
+	
+
+func recalc_Weight():
+	ammoWeight = 0
+	ammoWeight += weight22 * heldAmmunition.ammoRimfire
+	ammoWeight += weightpistol * heldAmmunition.ammoPistol
+	ammoWeight += weightrifle * heldAmmunition.ammoRifle
+	ammoWeight += weightShotgun * heldAmmunition.ammoShotgun
+	ammoWeight += weight30cal * heldAmmunition.ammoThirtycal
+	ammoWeight += weightRimmed * heldAmmunition.ammoMagnum
+	#print("Current ammo weight: ", weight)
+
+##Gives ammo to invenmanager and updates ammo weight, returns leftover bullets not gotten
 func giveAmmo(amTyp: int, amount: int):
-	var result = super.giveAmmo(amTyp, amount)
-	uiInfo.updateReserve(result)
-	recalcWeight()
+	
+	var result:int
+	var addedWeight = calc_Weight(amTyp, amount)
+	if(ammoWeight + addedWeight <= maxweight): #we have enough room, easy breezy
+		ammoWeight += addedWeight
+		super.giveAmmo(amTyp, amount)
+		result = 0
+	else: #otherwise, calculate how many of the ammotype we'll need
+		var actualRoom = maxweight - ammoWeight
+		var ammountAccepted = floor(actualRoom / ammoWeightInfo[amTyp])
+		ammoWeight += calc_Weight(amTyp, ammountAccepted)
+		super.giveAmmo(amTyp, ammountAccepted)
+		
+		print("Could not take ", amount, " rounds from box only was able to fit ", ammountAccepted)
+		
+		result = amount - ammountAccepted
+	
+	if(weapType == 1): #check and see if we should update the UI
+		if(activeItem.ourDataSheet.chambering == amTyp):
+			uiInfo.updateReserve(chkAmmoAmt(amTyp))
 	return result
-
 ##Withdraws ammo from invenmanager and updates weight
 func withdrawAmmo(amTyp: int, amount: int)-> int:
 	var result = super.withdrawAmmo(amTyp, amount)
-	recalcWeight()
+	recalc_Weight()
 	uiInfo.updateReserve(chkAmmoAmt(amTyp))
 	return result
 	
@@ -382,7 +440,7 @@ func get_space_state():
 	return user.playerCam.get_world_3d().direct_space_state 
 	 
 func get_Origin():
-	var orig = user.playerCam.project_ray_origin(get_viewport().size / 2)
+	var orig = user.playerCam.global_position#project_ray_origin(get_viewport().size / 2)
 	#heldItem.doHitDecal(orig) positional debug code ignore
 	#var orig2 = user.playerCam.global_position#head position?
 	#heldItem.doHitDecal(orig2)

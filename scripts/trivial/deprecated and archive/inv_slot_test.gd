@@ -2,7 +2,7 @@
 extends Panel
 @export var managerAcc: PLAYERINVENMANAGER
 var curDraggedDat: INVENITEMPARENT ##item data that is being dragged
-@onready var ourGrid = $GridContainer
+@onready var ourGrid = $HBoxContainer/GridContainer
 var currIndex:int ##Index we have dragged an item from, in case we can't put it back
 ##honorable mention: itemdrag, a texture 2d which only exists when we are dragging that just
 #follows the mouse
@@ -26,7 +26,7 @@ func update_Inven_Data():
 	#populate from invenmanager's information
 	for loadItem in managerAcc.itemsTest:
 		#create new slot
-		var newSlot = preload("res://scripts/utility/invSystem/invSlot.tscn").instantiate()
+		var newSlot = preload("res://scenes/utilities/Player or UI/invSlot.tscn").instantiate()
 		newSlot.curItem = loadItem
 		ourGrid.add_child(newSlot)
 

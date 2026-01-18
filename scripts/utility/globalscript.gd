@@ -20,7 +20,7 @@ func _process(delta):
 # I suspect the randf function in godot uses noise to populate a float, i.e.,
 #mantissa encoding gives it a logarithmic skew. (future me note: oh it definitely does)
 #Therefore it's absolutely worth making a better randf
-##desired length of the number portion, desired length of the zeros padding number
+##Desired length of the number portion, desired length of the zeros padding number
 func better_Randf_Simple(digits, decimalZeros, divBy)-> float:
 	var ourMax = 1 
 	for x in range(digits):
@@ -82,7 +82,7 @@ func raise_Panic_Exception(exceptionMessage:String):
 	print(exceptionMessage)
 	
 	var crashMaker = 0
-	print(42/crashMaker)
+	@warning_ignore("integer_division") print(42/crashMaker)
 
 
 var playerCasings:Array

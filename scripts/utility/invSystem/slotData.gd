@@ -1,8 +1,8 @@
 class_name invenSlot extends TextureRect
 @export var curItem:INVENITEMPARENT
 var defIcon: Texture2D# var defTexture
-var slotTyp:String #"WEP", ...
-var slotInd:int  = -1##Which slot do we belong to, if any?
+@export var slotTyp:String #"WEP", ...
+var slotInd:int  = -1 ##For weapon slots: which do we belong to, if any?
 
 func _ready() -> void:
 	defIcon = texture

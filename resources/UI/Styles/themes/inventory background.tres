@@ -1,7 +1,7 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dw7a1ri10mgkj"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dw7a1ri10mgkj"]
 
 [ext_resource type="StyleBox" uid="uid://8jqqrmfq2b0u" path="res://resources/UI/Styles/stylebox/tab_stylebox_hovered.tres" id="1_hjaab"]
-[ext_resource type="StyleBox" uid="uid://5uqdc3ic36m2" path="res://resources/UI/Styles/stylebox/tab_stylebox_selected.tres" id="2_yim6w"]
+[ext_resource type="StyleBox" uid="uid://bee7asfke6wiv" path="res://resources/UI/Styles/stylebox/tab_stylebox_focus.tres" id="2_hjaab"]
 [ext_resource type="StyleBox" uid="uid://dd7vojv8f5q5l" path="res://resources/UI/Styles/stylebox/tab_stylebox_unselected.tres" id="3_o6nu3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjaab"]
@@ -15,6 +15,16 @@ corner_radius_bottom_left = 3
 shadow_color = Color(0, 0, 0, 0)
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjaab"]
+content_margin_left = 6.0
+bg_color = Color(1, 0.499754, 0.628015, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_right = 10
+anti_aliasing = false
+
 [resource]
 Button/styles/focus = SubResource("StyleBoxEmpty_hjaab")
 MarginContainer/constants/margin_bottom = 5
@@ -22,6 +32,7 @@ MarginContainer/constants/margin_left = 5
 MarginContainer/constants/margin_right = 5
 MarginContainer/constants/margin_top = 5
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ow734")
+TabBar/styles/tab_focus = SubResource("StyleBoxFlat_hjaab")
 TabBar/styles/tab_hovered = ExtResource("1_hjaab")
-TabBar/styles/tab_selected = ExtResource("2_yim6w")
+TabBar/styles/tab_selected = ExtResource("2_hjaab")
 TabBar/styles/tab_unselected = ExtResource("3_o6nu3")

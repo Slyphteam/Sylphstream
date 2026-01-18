@@ -7,7 +7,7 @@ var gunshotPlayer: AudioStreamPlayer3D
 var reloadPlayer: AudioStreamPlayer3D
 var reloadTimer: Timer
 
-var wepName: String
+
 
 #State variables
 var currentCooldown : float = 0
@@ -51,7 +51,7 @@ var reloadTime: float
 func load_Weapon(wepToLoad:WEAP_INFO):
 	super(wepToLoad) #this just grabs the datasheet and nothing else
 	
-	wepName = wepToLoad.wepName
+	
 	
 	if(!wepToLoad is FIREARM_INFO):
 		print("Tried to load non-firearm info resource as a firearm! Bad! USE THE RIGHT CLASS!")

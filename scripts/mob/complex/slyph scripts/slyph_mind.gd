@@ -295,7 +295,7 @@ func do_Senses():
 	sensoryInput[10] = 1#targetsPresent
 	
 	#INDEX 11: Health!
-	sensoryInput[11] = (ourHP.check_HP() / 50) -1
+	@warning_ignore("integer_division") sensoryInput[11] = (ourHP.check_HP() / 50) -1
 	
 	#INDEX 12,13,14,15: MODAL INPUTS
 	#sensoryInput[13] = desiredActions[12]

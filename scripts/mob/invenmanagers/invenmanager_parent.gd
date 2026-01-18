@@ -5,7 +5,7 @@
 class_name INVENMANAGER extends Node3D
 
 @export var starterWeapon: INVWEP
-enum Ammotypes {ammoRimfire, ammoPistol, ammoRifle, ammoThirtycal, ammoShotgun}
+enum Ammotypes {ammoRimfire, ammoPistol, ammoRifle, ammoThirtycal, ammoShotgun, ammoMagnum}
 var heldAmmunition = {} # dictionary of all the player's held ammotypes and ammo
 var reloading = false
 #var heldItem: Node3D #old name for activeItem prior to the WEPINSTANCE refactor
@@ -68,25 +68,24 @@ func load_Wep(wep2Load:WEAP_INFO):
 
 
 #--------- ALL OF THESE FUNCTIONS EXIST INTERNALLY WITH THE INVENMANAGER
+##Give amount of amTyp bullets. Returns leftovers, which in this case, is 0, since generic behavior doesn't worry about loadout limits
 func giveAmmo(amTyp: int, amount: int):
+
 	if (amTyp == 0):
 		heldAmmunition.ammoRimfire += amount
-		return heldAmmunition.ammoRimfire
-	if (amTyp == 1):
+	elif (amTyp == 1):
 		heldAmmunition.ammoPistol += amount
-		return heldAmmunition.ammoPistol
 	elif (amTyp == 2):
 		heldAmmunition.ammoRifle += amount
-		return heldAmmunition.ammoRifle
 	elif (amTyp == 3):
 		heldAmmunition.ammoThirtycal += amount
-		return heldAmmunition.ammoThirtycal
 	elif (amTyp == 4): 
 		heldAmmunition.ammoShotgun += amount
-		return heldAmmunition.ammoShotgun
+	elif (amTyp == 5): 
+		heldAmmunition.ammoMagnum += amount
 	else:
-		print("Attemted to give invalid chambering!")
-		return 1
+		Globalscript.raise_Panic_Exception("Attemted to give invalid chambering!")
+	return 0
 	
 
 ##Decrease ammo of desired type by desired amount. Returns updated reserve.
@@ -147,6 +146,16 @@ func withdrawAmmo(amTyp: int, amount: int)-> int:
 			
 		heldAmmunition.ammoShotgun -= amount;
 		return amount
+	elif (amTyp == 5): 
+		print("Taking ", amount, " from pool of ", heldAmmunition.ammoMagnum)
+		if(amount >= heldAmmunition.ammoMagnum):
+			print("making do with ", heldAmmunition.ammoMagnum)
+			var leftover = heldAmmunition.ammoMagnum
+			heldAmmunition.ammoMagnum = 0
+			return leftover
+			
+		heldAmmunition.ammoMagnum -= amount;
+		return amount
 	else:
 		print("Attemted to withdraw invalid chambering!")
 		return 1
@@ -164,6 +173,8 @@ func chkAmmoAmt(amTyp:int ) -> int:
 		return heldAmmunition.ammoThirtycal
 	elif(amTyp == 4):
 		return heldAmmunition.ammoShotgun
+	elif(amTyp == 5):
+		return heldAmmunition.ammoMagnum
 	else:
 		print("Attempted to check invalid chambering!")
 		return 0;

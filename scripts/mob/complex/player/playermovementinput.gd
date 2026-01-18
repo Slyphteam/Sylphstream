@@ -147,7 +147,7 @@ func do_Hover_Raycast():
 		if(hitObject.is_in_group("player_interactible")): #check if we even CAN interact before anything else
 			var castLocation = castResult.get("position")
 			var dist = (orig - castLocation).length()
-			if(dist<= 2.5):
+			if(dist<= 3.5):
 				if(hitObject is PICKUPABLE):
 					uiInfo.doTooltipText(hitObject.thingToGive.itemName, hitObject.thingToGive.itemDesc, hitObject.thingToGive.itemHint)
 				if(Input.is_action_just_pressed("ui_interact")):

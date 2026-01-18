@@ -69,10 +69,14 @@ Springtails:
 
 
 INVENTORY SYSTEM WORKFLOW:
-  Include drop slot to inventory menu. Let players drag items into drop slot to drop them at cursor, only guns for now.
+	
+	
+	Add to generic storage, addition and remoavl from /generic storage functions for invenmanager
+	Anchor offsets create margin
+	custom anchors are worthwhile
 
-  Return of the generic item slots. Let players pick up the cone/sphere, go into generic slots.
-  
+Refactor held ammo to use an array and ammo types to be enum. dictionary is stinky here.
+
 Follow guide for players picking up physics objects. Follow guide for players BEING physics objects?
 
 Once the proof-of-concept Sylphs work go back through the Sylph mind script and re-organize all the 
