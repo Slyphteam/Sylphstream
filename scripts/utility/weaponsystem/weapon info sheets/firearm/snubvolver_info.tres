@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://dpjbyyitpf1bg"]
+
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="1_72qw5"]
+[ext_resource type="AudioStream" uid="uid://bxpx5bwwy646e" path="res://sounds/gunshots/SundayMorning.mp3" id="1_onjnw"]
+[ext_resource type="ArrayMesh" uid="uid://c6nbg8b8efnc0" path="res://models/glbs and textures/guns/snubvolverMesh.res" id="2_j6jj3"]
+[ext_resource type="AudioStream" uid="uid://l22abak1nqcs" path="res://sounds/reloads/snubLoad.mp3" id="3_a3g3t"]
+
+[resource]
+script = ExtResource("1_72qw5")
+gunshot = ExtResource("1_onjnw")
+reload = ExtResource("3_a3g3t")
+bulletVariance = 12
+shotCooldown = 10
+chambering = 5
+maxCapacity = 6
+aimBonus = 8.0
+maxRecoil = 50.0
+minRecoil = 10.0
+recoilAmount = 10.0
+viewpunchMult = 2.0
+recoverAmount = 0.5
+doCasing = true
+casingPath = "res://scenes/trivial/decals/rimmedCasing.tscn"
+ejectOnReload = true
+casingDelay = 0.0
+casingSpeedBoost = 0.5
+singleReloadOverride = true
+reloadtime = 0.7
+allowPlus1 = false
+pelletAMT = 1
+burstMode = false
+burstAMT = 3
+wepName = &"Sunday Supreme"
+wepDesc = &"A cheapA cheap revolver destined for the bottom of a river. Hits harder than a semi-auto, but is less reliable. revolver destined for the bottom of a river. Hits harder than a semi-auto, but is less reliable."
+mesh = ExtResource("2_j6jj3")
+drawTime = 1.0
+damage = 28
+selections = Array[int]([2])
+position = Vector3(0.6, -0.2, -0.5)
+rotation = Vector3(0, 0, 0)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"

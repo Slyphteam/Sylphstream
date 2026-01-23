@@ -1,3 +1,9 @@
+1/18: 
+Added generic inventory slots, added an ammunition panel to player UI, re-enabled ammunition weights, 
+added a drop button to inventory UI, added the ability to consume items directly from inventory
+1/12:
+New "enemy": the Springtail. These are the first enemy and they use finite state machines.
+They also like to flock :)
 12/5: 
 New gun using the new 30 cal ammotype: the Corrolary
 12/4:

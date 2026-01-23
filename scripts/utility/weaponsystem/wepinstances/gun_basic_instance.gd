@@ -6,7 +6,7 @@ class_name GUNBASICINSTANCE extends WEPINSTANCE
 var gunshotPlayer: AudioStreamPlayer3D 
 var reloadPlayer: AudioStreamPlayer3D
 var reloadTimer: Timer
-
+var ejected:bool = false ##eject on reload
 
 
 #State variables
@@ -159,6 +159,7 @@ func try_Shoot():
 		#apply aimcone recoil. Calculations are done in calc_Recoil, called by manualProcess
 		recoilDebt += ourWeaponSheet.recoilAmount 
 		do_Shoot() #actually shoot the bullet, vollleyfire is handled in function
+		ejected = false
 		
 	else:
 		print("click!")
@@ -337,10 +338,20 @@ func calc_Recoil(delta):
 ##Starts reload timer 
 func startReload():
 	
+	
+	
+	if(ourWeaponSheet.ejectOnReload && !ejected): #revolvers, double barrel shotguns, and such
+		for x in range(ourWeaponSheet.maxCapacity - capacity):
+			eject_Casing()
+		ejected = true
+	
 	#No reason to or can't reload
 	if((capacity >= ourWeaponSheet.maxCapacity + 1) || (invManager.chkAmmoAmt(ourWeaponSheet.chambering) == 0)): 
-		#single/multi reloads have slightly different early cancel logic
-		if((ourWeaponSheet.singleReloadOverride && triggerDepressed) || (!ourWeaponSheet.singleReloadOverride && reloading)):
+		reloading = false
+		return
+	
+	#single/multi reloads have slightly different  logic
+	if((ourWeaponSheet.singleReloadOverride && triggerDepressed) || (!ourWeaponSheet.singleReloadOverride && reloading)):
 			reloading = false
 			return
 	
@@ -361,25 +372,31 @@ func startReload():
 func reload_Complete() -> void:
 	if(!reloading):
 		return
-	
+	var takenAmt:int
 	#fairly differing behaviors for single/multi reload
 	if(!ourWeaponSheet.singleReloadOverride):
 		reloading = false
-		var takenAmount = (ourWeaponSheet.maxCapacity - capacity)
-		if(capacity > 0):
-			takenAmount+=1 #we have 1 in the chamber, so add a bonus round
+		takenAmt = (ourWeaponSheet.maxCapacity - capacity)
+		if(capacity > 0 && ourWeaponSheet.allowPlus1):
+			takenAmt+=1 #we have 1 in the chamber, so add a bonus round
 		#Withdraw ammo. This will update the reserve counter on the UI automatically
-		var newCap = invManager.withdrawAmmo(ourWeaponSheet.chambering, takenAmount)
+		var newCap = invManager.withdrawAmmo(ourWeaponSheet.chambering, takenAmt)
 		capacity += newCap
+		
 	
 	else:
-		var shell = invManager.withdrawAmmo(ourWeaponSheet.chambering, 1)
-		capacity += shell
+		takenAmt = invManager.withdrawAmmo(ourWeaponSheet.chambering, 1)
+		capacity += takenAmt
 		reloadPlayer.play()
-		if(capacity <= ourWeaponSheet.maxCapacity):
+		if(capacity < ourWeaponSheet.maxCapacity):
+			startReload()
+		elif(ourWeaponSheet.allowPlus1 && capacity == ourWeaponSheet.maxCapacity):
 			startReload()
 		else:
 			reloading = false
+		
+		
+			
 		
 		
 	if(affectUI):

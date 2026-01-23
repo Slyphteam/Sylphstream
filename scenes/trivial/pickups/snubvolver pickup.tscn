@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://er17epgwp6ac"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="1_yps5i"]
+[ext_resource type="Resource" uid="uid://bk5mu1etaqbej" path="res://scripts/utility/invSystem/invData/invWeapons/snubvolverInvData.tres" id="2_yps5i"]
+[ext_resource type="ArrayMesh" uid="uid://c6nbg8b8efnc0" path="res://models/glbs and textures/guns/snubvolverMesh.res" id="3_yps5i"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qmf70"]
+points = PackedVector3Array(-0.00181428, -0.162621, 0.113973, -0.00925118, -0.155176, 0.106561, 0.0205037, 0.0531332, -0.287821, -0.0390206, 0.0159378, 0.0171957, -0.0166954, 0.0978238, 0.0395253, -0.0166954, 0.0382704, -0.287821, 0.0353921, 0.00849362, 0.0171957, 0.0205037, -0.147732, 0.113973, -0.0157431, -0.0846333, 0.166202, 0.0114, 0.0832379, 0.0295314, -0.00925118, -0.103067, -0.0497, 0.00562262, 0.08291, -0.280362, -0.0390206, 0.0159378, -0.0794418, 0.0205037, -0.140288, 0.180962, -0.0166954, -0.155176, 0.128844, -0.0166954, 0.0680471, -0.265491, -0.0166954, 0.00849362, 0.136256, 0.0205037, -0.0287273, 0.151127, 0.0353921, 0.00849362, -0.0794418, 0.0303008, 0.0478546, 0.00804172, 0.0205037, 0.0457145, -0.287821, -0.0157835, -0.140665, 0.166828, -0.00925118, 0.0680471, 0.0841846, 0.00562262, 0.0308262, -0.287821, 0.0048, -0.0952503, -0.0497, 0.0205037, -0.0956485, 0.180962, 0.0205037, 0.0605774, -0.280362, -0.00925118, 0.0754913, -0.287821, -0.00181428, -0.149745, 0.177886, 0.00562262, -0.162621, 0.113973, 0.0302791, 0.0478005, -0.0753546, -0.00181428, -0.0855896, 0.177264)
+
+[node name="Snubvolver" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 17
+script = ExtResource("1_yps5i")
+thingToGive = ExtResource("2_yps5i")
+
+[node name="SnubvolverMesh" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = ExtResource("3_yps5i")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_qmf70")

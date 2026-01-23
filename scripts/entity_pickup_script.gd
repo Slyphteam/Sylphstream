@@ -18,15 +18,12 @@ func do_consume(player):
 		for val in thingToGive.amtArr: #the invenmanager will update the held item's counts of ammo
 			if(val != 0):
 				print("Didn't pick up all the ammo! preserving box!")
-				return
 
 	if (result == true): #success
 		var theRoot
-		#if(thingToGive.itemTyp == "WEP"):
 		theRoot = $".."
 		theRoot.queue_free()
-	#elif( && result is int):
-	#	print("bazinga???")
-	
+		return true
 	else:
 		print("Not enough room!")
+		return false

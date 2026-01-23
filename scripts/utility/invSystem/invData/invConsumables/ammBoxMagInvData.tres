@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="INVAMMBOX" load_steps=3 format=3 uid="uid://cn5ii7swofnn6"]
+
+[ext_resource type="Texture2D" uid="uid://b0ogyxkchgatd" path="res://resources/image resources/itemIcons/consumIcons/ammoboxMagnum.png" id="1_dybqt"]
+[ext_resource type="Script" uid="uid://bofsmi7krun2i" path="res://scripts/utility/invSystem/parents/INVITEM_AMMBOX.gd" id="1_ypi7t"]
+
+[resource]
+script = ExtResource("1_ypi7t")
+arrLength = 0
+typeArr = Array[int]([5])
+amtArr = Array[int]([14])
+itemName = "Magnum ammo booklet"
+itemDesc = "A leather wallet case containing 14 rimmed cartriges. Good stopping power for a pistol round, but not compact."
+itemHint = ""
+itemIcon = ExtResource("1_dybqt")
+itemEntScene = ""
+itemFlags = []
+itemTyp = "GEN"
+metadata/_custom_type_script = "uid://bofsmi7krun2i"

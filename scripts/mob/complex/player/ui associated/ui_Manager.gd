@@ -155,7 +155,7 @@ func updateMagReserve(mag, reserve):
 
 #===---===}>    Inventory stuff
 @onready var invContain = $invBkg
-@onready var invSlotsUI = $"invBkg/TabContainer/Inventory panel/VBoxContainer/GenericSlots"
+#@onready var invSlotsUI = $"invBkg/TabContainer/Inventory panel/VBoxContainer/GenericSlots"
 @onready var quarterMaster = $"invBkg/TabContainer/Inventory panel"
 func toggle_Inv():
 	#Should probably have sanity checks here

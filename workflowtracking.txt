@@ -69,11 +69,7 @@ Springtails:
 
 
 INVENTORY SYSTEM WORKFLOW:
-	
-	
-	Add to generic storage, addition and remoavl from /generic storage functions for invenmanager
-	Anchor offsets create margin
-	custom anchors are worthwhile
+	add a "add to backpack" button directly for world objects, ammoboxes
 
 Refactor held ammo to use an array and ammo types to be enum. dictionary is stinky here.
 

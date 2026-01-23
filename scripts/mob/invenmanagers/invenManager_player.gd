@@ -264,7 +264,7 @@ func change_To_Slot(newSlot: int):
 		if(newSlot == 1):  #special return case, still on hands
 			currentSlot = newSlot
 			return
-		uiInfo.show_Ammo_Anything()
+		uiInfo.show_Ammo_Anything() #name and info is set by wepinstance superclass
 	if(weapType == 0 && currentSlot != 1): #something is fucky
 		Globalscript.raise_Panic_Exception("A hands weapon is somehow trying to be loaded in the wrong slot!")
 	
