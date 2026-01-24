@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://miqixjbi8xeb"]
+[gd_scene load_steps=6 format=3 uid="uid://miqixjbi8xeb"]
 
 [ext_resource type="PackedScene" uid="uid://c7e8sby3mvbqo" path="res://models/glbs and textures/interactibles/button stand.glb" id="1_p16ye"]
+[ext_resource type="Script" uid="uid://cpojcch1icohp" path="res://scripts/trivial/dev and debug/debugButtonInfo.gd" id="1_poc07"]
 [ext_resource type="PackedScene" uid="uid://cq7fnaqalfbe5" path="res://models/glbs and textures/interactibles/buttonpurple.glb" id="2_poc07"]
 [ext_resource type="Script" uid="uid://kqk8bai6e87f" path="res://scripts/trivial/mystery_button_behav.gd" id="3_4hi0c"]
 
@@ -8,6 +9,7 @@
 points = PackedVector3Array(0.3, 0, 0, -0.3, 0, 0, -0.3, 0.2, 0, 0.3, 0.2, 0, 0, 0, 0.3, 0, 0, -0.3, 0, 0.2, -0.3, 0, 0.2, 0.3)
 
 [node name="Debugtracebutton" type="Node3D"]
+script = ExtResource("1_poc07")
 
 [node name="button stand" parent="." instance=ExtResource("1_p16ye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732971, 0)

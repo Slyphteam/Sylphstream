@@ -1,3 +1,7 @@
+1/24:
+New area has been added to the test scene: the proving pit! Now with ambient springtails.
+1/23:
+Added footsteps
 1/18: 
 Added generic inventory slots, added an ammunition panel to player UI, re-enabled ammunition weights, 
 added a drop button to inventory UI, added the ability to consume items directly from inventory

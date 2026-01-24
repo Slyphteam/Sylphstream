@@ -91,7 +91,7 @@ func do_Steps(theta, delta):
 func do_Stepsound():
 	var stepPlay = AudioStreamPlayer.new()
 	stepPlay.stream = AudioStreamMP3.load_from_file(ourSounds.pick_random())
-	stepPlay.volume_db = -5
+	stepPlay.volume_db = -7
 	add_child(stepPlay)
 	stepPlay.playing = true
 	

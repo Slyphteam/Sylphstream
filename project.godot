@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Slyphstream"
-run/main_scene="uid://bh3powm0a35or"
+run/main_scene="uid://bcali3jjpv7w8"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://bjv0g2c73lijv"
 config/windows_native_icon="res://resources/sylphcroppedcellshade.ico"

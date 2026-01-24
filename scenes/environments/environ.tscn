@@ -1,33 +1,34 @@
-[gd_scene load_steps=71 format=3 uid="uid://bh3powm0a35or"]
+[gd_scene load_steps=72 format=3 uid="uid://bcali3jjpv7w8"]
 
-[ext_resource type="ArrayMesh" uid="uid://dlv7ayqmpetd3" path="res://models/mesh models/rawShapes/compassRoseMesh.res" id="1_fs720"]
-[ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="1_os2cn"]
-[ext_resource type="PackedScene" uid="uid://cr6mp7skeb4ee" path="res://scenes/utilities/sylphmoveproto.tscn" id="3_mfyce"]
-[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="4_2yn2u"]
-[ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="4_m2myf"]
-[ext_resource type="PackedScene" uid="uid://c4xof0ncli7gu" path="res://scenes/trivial/pickups/9_mm_ammobox.tscn" id="6_btmrn"]
-[ext_resource type="Material" uid="uid://0awlgsjd4q27" path="res://resources/testingbluecolor.tres" id="6_m2myf"]
-[ext_resource type="PackedScene" uid="uid://ci3jdwb1gi2gg" path="res://scenes/trivial/clay_target.tscn" id="9_8f4e3"]
-[ext_resource type="PackedScene" uid="uid://cahf1scobnpcq" path="res://scenes/trivial/pickups/shotgun_ammobox.tscn" id="9_ttle0"]
-[ext_resource type="PackedScene" uid="uid://b0ggseuf34obn" path="res://scenes/trivial/pickups/rifle_ammobox.tscn" id="10_n8uj3"]
-[ext_resource type="PackedScene" uid="uid://dnr004t0lyqd1" path="res://scenes/trivial/pickups/rimfire_ammobox.tscn" id="11_ttle0"]
-[ext_resource type="PackedScene" uid="uid://oh4304fixaus" path="res://scenes/entities/archonscene.tscn" id="12_c4nfh"]
-[ext_resource type="PackedScene" uid="uid://d1u5hj48ilnd0" path="res://scenes/trivial/pickups/30cal_ammobox.tscn" id="12_vnjd3"]
-[ext_resource type="PackedScene" uid="uid://d1ygjo8v5olr8" path="res://scenes/trivial/pickups/ishim pickup.tscn" id="12_ydxer"]
-[ext_resource type="PackedScene" uid="uid://4g032mafbnwj" path="res://scenes/trivial/pickups/affine pickup.tscn" id="14_os2cn"]
-[ext_resource type="PackedScene" uid="uid://u5vg53ed723w" path="res://scenes/trivial/pickups/bergther pickup.tscn" id="15_by8b2"]
-[ext_resource type="PackedScene" uid="uid://co5t36kxokupn" path="res://scenes/entities/sylphproto.tscn" id="15_eqt0i"]
-[ext_resource type="PackedScene" uid="uid://bdgwi6tjdsj5u" path="res://scenes/trivial/pickups/degubby pickup.tscn" id="16_eqt0i"]
-[ext_resource type="PackedScene" uid="uid://bc6qmemiohpdn" path="res://scenes/trivial/pickups/corollary pickup.tscn" id="16_jn6mq"]
-[ext_resource type="PackedScene" uid="uid://ckdcn8ikpxnnw" path="res://scenes/utilities/sylphTestingUnit.tscn" id="17_8f4e3"]
-[ext_resource type="PackedScene" uid="uid://b2lu2muc6j2uj" path="res://scenes/trivial/pickups/fourier pickup.tscn" id="17_vnjd3"]
-[ext_resource type="PackedScene" uid="uid://bipjbb3776vms" path="res://scenes/utilities/buttons/player_shoot_scene.tscn" id="18_5kovb"]
-[ext_resource type="PackedScene" uid="uid://c104tyo0foh0a" path="res://scenes/trivial/pickups/ghostbird pickup.tscn" id="18_c2ovy"]
-[ext_resource type="PackedScene" uid="uid://dwq2fy8mbnx5p" path="res://scenes/trivial/pickups/relata pickup.tscn" id="19_xqkej"]
-[ext_resource type="PackedScene" uid="uid://miqixjbi8xeb" path="res://scenes/utilities/buttons/debugtracebutton.tscn" id="20_by8b2"]
-[ext_resource type="PackedScene" uid="uid://b7fuapjfoq1ld" path="res://scenes/utilities/buttons/coneandSphere.tscn" id="23_c2ovy"]
-[ext_resource type="PackedScene" uid="uid://d2y6vux751ctf" path="res://scenes/entities/enemy/springtail.tscn" id="25_jn6mq"]
-[ext_resource type="PackedScene" uid="uid://er17epgwp6ac" path="res://scenes/trivial/pickups/snubvolver pickup.tscn" id="28_ky5o2"]
+[ext_resource type="ArrayMesh" uid="uid://dlv7ayqmpetd3" path="res://models/mesh models/rawShapes/compassRoseMesh.res" id="1_nyw3s"]
+[ext_resource type="PackedScene" uid="uid://d2y6vux751ctf" path="res://scenes/entities/enemy/springtail.tscn" id="2_u1gox"]
+[ext_resource type="PackedScene" uid="uid://cr6mp7skeb4ee" path="res://scenes/utilities/sylphmoveproto.tscn" id="3_k3qjg"]
+[ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="4_whipo"]
+[ext_resource type="PackedScene" uid="uid://ci3jdwb1gi2gg" path="res://scenes/trivial/clay_target.tscn" id="5_m43px"]
+[ext_resource type="PackedScene" uid="uid://bdgwi6tjdsj5u" path="res://scenes/trivial/pickups/degubby pickup.tscn" id="6_s43vw"]
+[ext_resource type="PackedScene" uid="uid://4g032mafbnwj" path="res://scenes/trivial/pickups/affine pickup.tscn" id="7_nnc13"]
+[ext_resource type="PackedScene" uid="uid://b2lu2muc6j2uj" path="res://scenes/trivial/pickups/fourier pickup.tscn" id="8_7jqqp"]
+[ext_resource type="PackedScene" uid="uid://b0ggseuf34obn" path="res://scenes/trivial/pickups/rifle_ammobox.tscn" id="9_1ww43"]
+[ext_resource type="PackedScene" uid="uid://d1u5hj48ilnd0" path="res://scenes/trivial/pickups/30cal_ammobox.tscn" id="10_7v36v"]
+[ext_resource type="PackedScene" uid="uid://c4xof0ncli7gu" path="res://scenes/trivial/pickups/9_mm_ammobox.tscn" id="11_1lgxx"]
+[ext_resource type="PackedScene" uid="uid://cahf1scobnpcq" path="res://scenes/trivial/pickups/shotgun_ammobox.tscn" id="12_y2ccu"]
+[ext_resource type="PackedScene" uid="uid://dnr004t0lyqd1" path="res://scenes/trivial/pickups/rimfire_ammobox.tscn" id="13_p4pb1"]
+[ext_resource type="PackedScene" uid="uid://er17epgwp6ac" path="res://scenes/trivial/pickups/snubvolver pickup.tscn" id="14_oi37v"]
+[ext_resource type="PackedScene" uid="uid://u5vg53ed723w" path="res://scenes/trivial/pickups/bergther pickup.tscn" id="15_ehcxm"]
+[ext_resource type="PackedScene" uid="uid://d1ygjo8v5olr8" path="res://scenes/trivial/pickups/ishim pickup.tscn" id="16_0ijxf"]
+[ext_resource type="PackedScene" uid="uid://c104tyo0foh0a" path="res://scenes/trivial/pickups/ghostbird pickup.tscn" id="17_wx1rp"]
+[ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="18_lj05l"]
+[ext_resource type="PackedScene" uid="uid://dwq2fy8mbnx5p" path="res://scenes/trivial/pickups/relata pickup.tscn" id="19_ejflf"]
+[ext_resource type="PackedScene" uid="uid://bc6qmemiohpdn" path="res://scenes/trivial/pickups/corollary pickup.tscn" id="20_0e1lj"]
+[ext_resource type="PackedScene" uid="uid://co5t36kxokupn" path="res://scenes/entities/sylphproto.tscn" id="21_rw1jn"]
+[ext_resource type="Material" uid="uid://0awlgsjd4q27" path="res://resources/testingbluecolor.tres" id="22_ouhdi"]
+[ext_resource type="PackedScene" uid="uid://ckdcn8ikpxnnw" path="res://scenes/utilities/sylphTestingUnit.tscn" id="23_se8du"]
+[ext_resource type="PackedScene" uid="uid://oh4304fixaus" path="res://scenes/entities/archonscene.tscn" id="24_1i7au"]
+[ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="25_vxy5b"]
+[ext_resource type="PackedScene" uid="uid://d24b440rmbmsm" path="res://scenes/environments/sylphstream_pit.tscn" id="26_nyw3s"]
+[ext_resource type="PackedScene" uid="uid://bipjbb3776vms" path="res://scenes/utilities/buttons/player_shoot_scene.tscn" id="27_4qvx4"]
+[ext_resource type="PackedScene" uid="uid://miqixjbi8xeb" path="res://scenes/utilities/buttons/debugtracebutton.tscn" id="28_1ieyi"]
+[ext_resource type="PackedScene" uid="uid://b7fuapjfoq1ld" path="res://scenes/utilities/buttons/coneandSphere.tscn" id="29_i07vp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -181,22 +182,22 @@ transform = Transform3D(-0.956677, 0, -0.291153, 0, 1, 0, 0.291153, 0, -0.956677
 
 [node name="CompassRoseMesh" type="MeshInstance3D" parent="Environment/Springtail pen/Springtail Beacon"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = ExtResource("1_fs720")
+mesh = ExtResource("1_nyw3s")
 surface_material_override/0 = SubResource("StandardMaterial3D_mfyce")
 
-[node name="Springtail" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("25_jn6mq")]
+[node name="Springtail" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("2_u1gox")]
 transform = Transform3D(-0.999049, -3.80876e-09, 0.043567, -8.78185e-15, 1, 8.74226e-08, -0.043567, 8.73398e-08, -0.999049, 4.31407, 0.70265, 16.9259)
 navNode = NodePath("../Springtail Beacon")
 
-[node name="Springtail2" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("25_jn6mq")]
+[node name="Springtail2" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("2_u1gox")]
 transform = Transform3D(-0.968295, 0, -0.249805, 0, 1, 0, 0.249805, 0, -0.968295, 3.20666, 0.524, -10.4575)
 navNode = NodePath("../Springtail Beacon")
 
-[node name="Springtail3" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("25_jn6mq")]
+[node name="Springtail3" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("2_u1gox")]
 transform = Transform3D(-0.523822, 0, -0.851827, 0, 1, 0, 0.851827, 0, -0.523822, 3.06454, 0.524, -6.71902)
 navNode = NodePath("../Springtail Beacon")
 
-[node name="Springtail4" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("25_jn6mq")]
+[node name="Springtail4" parent="Environment/Springtail pen" node_paths=PackedStringArray("navNode") instance=ExtResource("2_u1gox")]
 transform = Transform3D(-0.992026, 0, 0.126026, 0, 1, 0, -0.126026, 0, -0.992026, 4.45806, 0.604998, 19.985)
 navNode = NodePath("../Springtail Beacon")
 
@@ -240,7 +241,7 @@ collision_layer = 17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Springtail pen/wall4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mfyce")
 
-[node name="Sylphmoveproto" parent="Environment/Springtail pen" instance=ExtResource("3_mfyce")]
+[node name="Sylphmoveproto" parent="Environment/Springtail pen" instance=ExtResource("3_k3qjg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.2472, 0.527356, 71.4431)
 
 [node name="Movement blocks" type="Node3D" parent="Environment"]
@@ -501,112 +502,112 @@ collision_layer = 17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Range/MeshInstance3D3/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_c2ovy")
 
-[node name="target" parent="Environment/Range" instance=ExtResource("4_m2myf")]
+[node name="target" parent="Environment/Range" instance=ExtResource("4_whipo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.48683, 0.648801, -1.71955)
 
-[node name="target2" parent="Environment/Range" instance=ExtResource("4_m2myf")]
+[node name="target2" parent="Environment/Range" instance=ExtResource("4_whipo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.44322, 0.648801, -0.467051)
 
-[node name="target 4" parent="Environment/Range" instance=ExtResource("4_m2myf")]
+[node name="target 4" parent="Environment/Range" instance=ExtResource("4_whipo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.9511, 1.08201, -0.483713)
 
-[node name="target 3" parent="Environment/Range" instance=ExtResource("4_m2myf")]
+[node name="target 3" parent="Environment/Range" instance=ExtResource("4_whipo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.7994, 0.576347, -2.02322)
 
-[node name="sporting clay" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
+[node name="sporting clay" parent="Environment/Range" instance=ExtResource("5_m43px")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.87644, 2.82441, 2.62155)
 
 [node name="range table" type="StaticBody3D" parent="Environment/Range"]
 collision_layer = 17
 
-[node name="Degubby" parent="Environment/Range/range table" instance=ExtResource("16_eqt0i")]
+[node name="Degubby" parent="Environment/Range/range table" instance=ExtResource("6_s43vw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052803, 1.19031, -3.73796)
 
-[node name="Affine" parent="Environment/Range/range table" instance=ExtResource("14_os2cn")]
+[node name="Affine" parent="Environment/Range/range table" instance=ExtResource("7_nnc13")]
 transform = Transform3D(-0.0168526, -0.85464, -0.518947, -0.0277394, 0.519221, -0.85419, 0.999473, 0, -0.0324574, -0.949348, 0.766859, -4.41531)
 
-[node name="Fourier9" parent="Environment/Range/range table" instance=ExtResource("17_vnjd3")]
+[node name="Fourier9" parent="Environment/Range/range table" instance=ExtResource("8_7jqqp")]
 transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, 0.0664558, 1.08027, -2.94365)
 
-[node name="rifle_ammobox" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+[node name="rifle_ammobox" parent="Environment/Range/range table" instance=ExtResource("9_1ww43")]
 transform = Transform3D(0.25887, 0, -0.965912, 0, 1, 0, 0.965912, 0, 0.25887, 0.0427322, 0.78372, -4.47123)
 
-[node name="30calBox3" parent="Environment/Range/range table" instance=ExtResource("12_vnjd3")]
+[node name="30calBox3" parent="Environment/Range/range table" instance=ExtResource("10_7v36v")]
 transform = Transform3D(0.173804, -0.144549, 0.974114, 0.316938, -0.92833, -0.194304, 0.932386, 0.342504, -0.115535, -0.156837, 1.03402, 4.2674)
 
-[node name="30calBox2" parent="Environment/Range/range table" instance=ExtResource("12_vnjd3")]
+[node name="30calBox2" parent="Environment/Range/range table" instance=ExtResource("10_7v36v")]
 transform = Transform3D(-0.940224, -0.175284, 0.291985, -0.161153, 0.984302, 0.0719644, -0.300016, 0.0206084, -0.953712, -0.222202, 0.938429, 4.51888)
 
-[node name="30calBox" parent="Environment/Range/range table" instance=ExtResource("12_vnjd3")]
+[node name="30calBox" parent="Environment/Range/range table" instance=ExtResource("10_7v36v")]
 transform = Transform3D(-0.722062, 0.0399088, -0.690676, 0, 0.998335, 0.057686, 0.691828, 0.0416529, -0.72086, -0.0384712, 0.84515, 4.6083)
 
-[node name="rifle_ammobox2" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+[node name="rifle_ammobox2" parent="Environment/Range/range table" instance=ExtResource("9_1ww43")]
 transform = Transform3D(0.0525629, 0, -0.998618, 0, 1, 0, 0.998618, 0, 0.0525629, -0.136368, 0.7905, -4.72606)
 
-[node name="rifle_ammobox3" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+[node name="rifle_ammobox3" parent="Environment/Range/range table" instance=ExtResource("9_1ww43")]
 transform = Transform3D(-0.732757, 0.680491, -6.1775e-08, 4.37114e-08, -4.37114e-08, -1, -0.680491, -0.732757, 2.28462e-09, -0.334549, 0.80931, -4.19209)
 
-[node name="9mm ammobox2" parent="Environment/Range/range table" instance=ExtResource("6_btmrn")]
+[node name="9mm ammobox2" parent="Environment/Range/range table" instance=ExtResource("11_1lgxx")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.300518, 0.757752, -3.38909)
 
-[node name="9mm ammobox3" parent="Environment/Range/range table" instance=ExtResource("6_btmrn")]
+[node name="9mm ammobox3" parent="Environment/Range/range table" instance=ExtResource("11_1lgxx")]
 transform = Transform3D(0.183573, -0.951267, 0.247775, -0.0608179, 0.240584, 0.96872, -0.981122, -0.1929, -0.0136894, 0.0865841, 1.09283, -2.31893)
 
-[node name="9mm ammobox" parent="Environment/Range/range table" instance=ExtResource("6_btmrn")]
+[node name="9mm ammobox" parent="Environment/Range/range table" instance=ExtResource("11_1lgxx")]
 transform = Transform3D(-0.483038, 0, -0.875599, 0, 1, 0, 0.875599, 0, -0.483038, -0.253389, 0.745666, 2.40531)
 
-[node name="shotgunbundle" parent="Environment/Range/range table" instance=ExtResource("9_ttle0")]
+[node name="shotgunbundle" parent="Environment/Range/range table" instance=ExtResource("12_y2ccu")]
 transform = Transform3D(0.195237, -0.973548, 0.118691, 0.485725, -0.00915404, -0.874064, 0.852029, 0.228301, 0.471089, 0.21847, 0.828797, 3.45935)
 
-[node name="shotgunbundle2" parent="Environment/Range/range table" instance=ExtResource("9_ttle0")]
+[node name="shotgunbundle2" parent="Environment/Range/range table" instance=ExtResource("12_y2ccu")]
 transform = Transform3D(0.707107, -6.32203e-08, -0.707107, -8.9407e-08, -1, 0, -0.707107, 6.32203e-08, -0.707107, -0.146194, 0.858371, 3.54751)
 
-[node name="rimfire_ammobox" parent="Environment/Range/range table" instance=ExtResource("11_ttle0")]
+[node name="rimfire_ammobox" parent="Environment/Range/range table" instance=ExtResource("13_p4pb1")]
 transform = Transform3D(-0.819072, 0, -0.573692, 0, 1, 0, 0.573692, 0, -0.819072, -0.183306, 0.84564, 2.08091)
 
-[node name="rifle_ammobox4" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+[node name="rifle_ammobox4" parent="Environment/Range/range table" instance=ExtResource("9_1ww43")]
 transform = Transform3D(0.949864, 0, -0.312667, 0, 1, 0, 0.312667, 0, 0.949864, -0.214756, 0.768282, -0.385017)
 
-[node name="rifle_ammobox5" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+[node name="rifle_ammobox5" parent="Environment/Range/range table" instance=ExtResource("9_1ww43")]
 transform = Transform3D(-0.145483, 0.0817532, -0.985977, -0.016808, 0.996232, 0.0850835, 0.989218, 0.02895, -0.14356, 0.214746, 0.823092, -1.23969)
 
-[node name="rifle_ammobox6" parent="Environment/Range/range table" instance=ExtResource("10_n8uj3")]
+[node name="rifle_ammobox6" parent="Environment/Range/range table" instance=ExtResource("9_1ww43")]
 transform = Transform3D(0.999552, -0.0299455, 1.30895e-09, 1.37398e-15, -4.37114e-08, -1, 0.0299455, 0.999552, -4.36918e-08, -0.241229, 0.890736, -1.52096)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Range/range table"]
 shape = SubResource("ConvexPolygonShape3D_aggi3")
 
-[node name="snubvolver" parent="Environment/Range/range table" instance=ExtResource("28_ky5o2")]
+[node name="snubvolver" parent="Environment/Range/range table" instance=ExtResource("14_oi37v")]
 transform = Transform3D(-0.0443966, 0.41135, -0.910396, -0.999013, -0.01928, 0.0400068, -0.00109562, 0.911274, 0.4118, -0.120514, 0.995998, 1.69249)
 
-[node name="Bergther" parent="Environment/Range/range table" instance=ExtResource("15_by8b2")]
+[node name="Bergther" parent="Environment/Range/range table" instance=ExtResource("15_ehcxm")]
 transform = Transform3D(0.873721, 0, -0.486427, 0, 1, 0, 0.486427, 0, 0.873721, 0.0668821, 0.863453, 2.44007)
 
-[node name="Ishim" parent="Environment/Range/range table" instance=ExtResource("12_ydxer")]
+[node name="Ishim" parent="Environment/Range/range table" instance=ExtResource("16_0ijxf")]
 transform = Transform3D(0.877199, 0.192642, -0.439785, -0.44818, 0, -0.893943, -0.172211, 0.981269, 0.0863382, 0.0613689, 0.968729, 2.03606)
 
-[node name="Node3D" parent="Environment/Range/range table" instance=ExtResource("18_c2ovy")]
+[node name="Node3D" parent="Environment/Range/range table" instance=ExtResource("17_wx1rp")]
 transform = Transform3D(-0.0698235, 0.260585, -0.962923, 0.965926, 0.258819, -4.94929e-08, 0.249223, -0.930112, -0.269777, -0.0205917, 1.1325, -1.89688)
 
-[node name="Khwarizmi" parent="Environment/Range/range table" instance=ExtResource("1_os2cn")]
+[node name="Khwarizmi" parent="Environment/Range/range table" instance=ExtResource("18_lj05l")]
 transform = Transform3D(0.399901, 2.83885e-08, -0.916558, 8.71384e-08, -1, 7.04619e-09, -0.916558, -8.26852e-08, -0.399901, 0.146201, 0.879804, -0.639597)
 
-[node name="Relata" parent="Environment/Range/range table" instance=ExtResource("19_xqkej")]
+[node name="Relata" parent="Environment/Range/range table" instance=ExtResource("19_ejflf")]
 transform = Transform3D(0.469364, -0.883005, 0, 0.883005, 0.469364, 0, 0, 0, 1, -1.19443, 0.902497, 3.2809)
 
-[node name="Corollary" parent="Environment/Range/range table" instance=ExtResource("16_jn6mq")]
+[node name="Corollary" parent="Environment/Range/range table" instance=ExtResource("20_0e1lj")]
 transform = Transform3D(0.874484, -2.12024e-08, -0.485054, -0.485054, -3.82249e-08, -0.874484, 0, 1, -4.37114e-08, -1.17638, 0.843119, 3.89375)
 
-[node name="sporting clay2" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
+[node name="sporting clay2" parent="Environment/Range" instance=ExtResource("5_m43px")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.38655, 3.00265, -2.00308)
 
-[node name="sporting clay3" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
+[node name="sporting clay3" parent="Environment/Range" instance=ExtResource("5_m43px")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.48756, 3.50473, 0.193213)
 
-[node name="sporting clay4" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
+[node name="sporting clay4" parent="Environment/Range" instance=ExtResource("5_m43px")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.59629, 1.57643, -3.38325)
 
-[node name="sporting clay5" parent="Environment/Range" instance=ExtResource("9_8f4e3")]
+[node name="sporting clay5" parent="Environment/Range" instance=ExtResource("5_m43px")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.65326, 1.32227, 2.23695)
 
 [node name="Testing zone" type="Node3D" parent="Environment"]
@@ -614,25 +615,25 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.69
 
 [node name="Zone 2" type="Node3D" parent="Environment/Testing zone"]
 
-[node name="prototype sylph" parent="Environment/Testing zone/Zone 2" node_paths=PackedStringArray("ourTar") instance=ExtResource("15_eqt0i")]
+[node name="prototype sylph" parent="Environment/Testing zone/Zone 2" node_paths=PackedStringArray("ourTar") instance=ExtResource("21_rw1jn")]
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -11.8625, -1.47633, -16.7472)
 ourTar = NodePath("../target")
 
-[node name="target" parent="Environment/Testing zone/Zone 2" instance=ExtResource("4_m2myf")]
+[node name="target" parent="Environment/Testing zone/Zone 2" instance=ExtResource("4_whipo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.863, -0.145, -8.27602)
 
-[node name="prototype sylph2" parent="Environment/Testing zone/Zone 2" node_paths=PackedStringArray("ourTar") instance=ExtResource("15_eqt0i")]
+[node name="prototype sylph2" parent="Environment/Testing zone/Zone 2" node_paths=PackedStringArray("ourTar") instance=ExtResource("21_rw1jn")]
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -21.4631, -1.47633, -16.7472)
 ourTar = NodePath("../target2")
 
-[node name="target2" parent="Environment/Testing zone/Zone 2" instance=ExtResource("4_m2myf")]
+[node name="target2" parent="Environment/Testing zone/Zone 2" instance=ExtResource("4_whipo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.4636, -0.145, -8.27602)
 
-[node name="prototype sylph3" parent="Environment/Testing zone/Zone 2" node_paths=PackedStringArray("ourTar") instance=ExtResource("15_eqt0i")]
+[node name="prototype sylph3" parent="Environment/Testing zone/Zone 2" node_paths=PackedStringArray("ourTar") instance=ExtResource("21_rw1jn")]
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -31.9039, -1.47633, -16.7472)
 ourTar = NodePath("../target3")
 
-[node name="target3" parent="Environment/Testing zone/Zone 2" instance=ExtResource("4_m2myf")]
+[node name="target3" parent="Environment/Testing zone/Zone 2" instance=ExtResource("4_whipo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -31.9044, -0.145, -8.27602)
 
 [node name="Testing wall" type="MeshInstance3D" parent="Environment/Testing zone"]
@@ -653,7 +654,7 @@ shape = SubResource("ConvexPolygonShape3D_ydxer")
 [node name="mainramp" type="MeshInstance3D" parent="Environment/Testing zone/Testing wall"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.08018e-08, -0.0445449, 5.43344)
 mesh = SubResource("PrismMesh_d6ln1")
-surface_material_override/0 = ExtResource("6_m2myf")
+surface_material_override/0 = ExtResource("22_ouhdi")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall/mainramp"]
 
@@ -663,7 +664,7 @@ shape = SubResource("ConvexPolygonShape3D_2yn2u")
 [node name="half 1 ramp" type="MeshInstance3D" parent="Environment/Testing zone/Testing wall"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 5.55317, 0, -3.13464)
 mesh = SubResource("PrismMesh_d6ln1")
-surface_material_override/0 = ExtResource("6_m2myf")
+surface_material_override/0 = ExtResource("22_ouhdi")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall/half 1 ramp"]
 collision_layer = 17
@@ -675,7 +676,7 @@ shape = SubResource("ConvexPolygonShape3D_eqt0i")
 [node name="half 1 ramp2" type="MeshInstance3D" parent="Environment/Testing zone/Testing wall"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.60939, 0, -3.13464)
 mesh = SubResource("PrismMesh_d6ln1")
-surface_material_override/0 = ExtResource("6_m2myf")
+surface_material_override/0 = ExtResource("22_ouhdi")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Testing zone/Testing wall/half 1 ramp2"]
 collision_layer = 17
@@ -691,31 +692,67 @@ collision_mask = 17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Testing zone/Testing wall/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_8f4e3")
 
-[node name="Sylph 1" parent="Environment/Testing zone" instance=ExtResource("17_8f4e3")]
+[node name="Sylph 1" parent="Environment/Testing zone" instance=ExtResource("23_se8du")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3991, -1.4886, -24.6417)
 
-[node name="Sylph 2" parent="Environment/Testing zone" instance=ExtResource("17_8f4e3")]
+[node name="Sylph 2" parent="Environment/Testing zone" instance=ExtResource("23_se8du")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.67, -1.4886, -24.6417)
 
-[node name="Sylph 3" parent="Environment/Testing zone" instance=ExtResource("17_8f4e3")]
+[node name="Sylph 3" parent="Environment/Testing zone" instance=ExtResource("23_se8du")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4457, -1.4886, -24.6417)
 
-[node name="Sylph 4" parent="Environment/Testing zone" instance=ExtResource("17_8f4e3")]
+[node name="Sylph 4" parent="Environment/Testing zone" instance=ExtResource("23_se8du")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.6247, -1.4886, -24.6417)
 
-[node name="Sylph 5" parent="Environment/Testing zone" instance=ExtResource("17_8f4e3")]
+[node name="Sylph 5" parent="Environment/Testing zone" instance=ExtResource("23_se8du")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.646, -1.4886, -24.6417)
 
-[node name="archonRoot" parent="Environment" instance=ExtResource("12_c4nfh")]
+[node name="archonRoot" parent="Environment" instance=ExtResource("24_1i7au")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -42.6555, 3.70594, -0.182655)
 
-[node name="Player" parent="." instance=ExtResource("4_2yn2u")]
+[node name="Player" parent="." instance=ExtResource("25_vxy5b")]
 
-[node name="SentryTest" parent="." instance=ExtResource("18_5kovb")]
+[node name="provingPit" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384.708, 0, 0)
+
+[node name="sylphstreamPit" parent="provingPit" instance=ExtResource("26_nyw3s")]
+
+[node name="utilities" type="Node3D" parent="provingPit"]
+
+[node name="Springtail Beacon" type="Node3D" parent="provingPit/utilities"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2574, 2.61552, 23.4243)
+
+[node name="CompassRoseMesh" type="MeshInstance3D" parent="provingPit/utilities/Springtail Beacon"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("1_nyw3s")
+surface_material_override/0 = SubResource("StandardMaterial3D_mfyce")
+
+[node name="Debugtracebutton" parent="provingPit/utilities" instance=ExtResource("28_1ieyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5411, 1.24457, 23.7746)
+behavior = 16
+
+[node name="Springtail4" parent="provingPit" node_paths=PackedStringArray("navNode") instance=ExtResource("2_u1gox")]
+transform = Transform3D(0.996201, 3.80151e-09, -0.0870511, -3.80874e-09, 1, 8.31406e-11, 0.0870511, 2.48995e-10, 0.996201, 0.91333, 1.67082, -20.0613)
+navNode = NodePath("../../Environment/Springtail pen/Springtail Beacon")
+
+[node name="Springtail" parent="provingPit" node_paths=PackedStringArray("navNode") instance=ExtResource("2_u1gox")]
+transform = Transform3D(-0.999049, -3.80876e-09, 0.043567, -8.78185e-15, 1, 8.74226e-08, -0.043567, 8.73398e-08, -0.999049, 4.31406, 0.70265, -2.58722)
+navNode = NodePath("../../Environment/Springtail pen/Springtail Beacon")
+
+[node name="Springtail2" parent="provingPit" node_paths=PackedStringArray("navNode") instance=ExtResource("2_u1gox")]
+transform = Transform3D(-0.999049, -3.80876e-09, 0.043567, -8.78185e-15, 1, 8.74226e-08, -0.043567, 8.73398e-08, -0.999049, 4.31406, 0.70265, 4.83229)
+navNode = NodePath("../../Environment/Springtail pen/Springtail Beacon")
+
+[node name="Springtail3" parent="provingPit" node_paths=PackedStringArray("navNode") instance=ExtResource("2_u1gox")]
+transform = Transform3D(-0.999049, -3.80876e-09, 0.043567, -8.78185e-15, 1, 8.74226e-08, -0.043567, 8.73398e-08, -0.999049, -23.6607, 12.0795, 16.9259)
+navNode = NodePath("../../Environment/Springtail pen/Springtail Beacon")
+
+[node name="SentryTest" parent="." instance=ExtResource("27_4qvx4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.3733, 0.533243, -17.8904)
 
-[node name="Debugtracebutton" parent="." instance=ExtResource("20_by8b2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7308, 0.527357, -30.3871)
+[node name="Debugtracebutton" parent="." instance=ExtResource("28_1ieyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7518, 0.527357, -4.07825)
+behavior = 15
 
-[node name="shapebuttons" parent="." instance=ExtResource("23_c2ovy")]
+[node name="shapebuttons" parent="." instance=ExtResource("29_i07vp")]
 transform = Transform3D(-0.189696, 0, -0.981843, 0, 1, 0, 0.981843, 0, -0.189696, 7.01695, 0.550099, -18.2245)

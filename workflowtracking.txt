@@ -140,8 +140,7 @@ Change the player step code to be the better, suggested version. Steppers work b
 
 ====+====> EXPERIENTIAL:
 
-re-add FOV changing with speed, but make it steppy to prevent jitters
-footstep sounds +++
+re-add FOV changing with speed, but make it steppy to prevent jitters. and viewbob.
 fix weapon clipping +++ &
 Scrolling chat
 
