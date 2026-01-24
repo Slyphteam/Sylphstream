@@ -46,7 +46,7 @@ const crouchMod = 4 ## crouching players have a LOT of control
 var curMax = 13 ## used to limit speed. Affected by crouch and sprint bonus
 const walkSpeed = 13 
 const crouchSpeed = -5 ## negative "bonus" of 6 to player speed
-const sprintSpeed = 5 ## positive bonus of 5
+const sprintSpeed = 7 ## positive bonus of 5
 const aimSpeed = -4 ##Aiming movement reduction; mouse sensitivity is handled in toggle_ADS_Stats
 
 
@@ -329,6 +329,7 @@ func handle_Floor_Sourcelike(delta):
 		curMax += crouchSpeed; #only apply crouch movement bonus
 		if(playerSpeed > crouchSlideStart): 
 			crouchSliding = true # Enter into a crouchslide! (will only apply effects next frame)
+			playerSpeed *= 1.7 #may as well give a boost
 			#print("crouchsliding! speed:", playerSpeed)
 	elif(sprinting): curMax += sprintSpeed; 
 	

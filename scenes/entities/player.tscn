@@ -1,7 +1,7 @@
 [gd_scene load_steps=38 format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
-[ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/cam_behavior.gd" id="2_f4klr"]
+[ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/player_flavor.gd" id="2_f4klr"]
 [ext_resource type="AudioStream" uid="uid://dvklbsnlwomcb" path="res://sounds/ambient/windchimes.ogg" id="2_ogpgs"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
@@ -95,11 +95,12 @@ shape = SubResource("SeparationRayShape3D_oajfq")
 [node name="camCage" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59654, 0)
 
-[node name="came" type="Camera3D" parent="camCage" node_paths=PackedStringArray("player")]
+[node name="came" type="Camera3D" parent="camCage"]
 fov = 100.0
 far = 500.0
 script = ExtResource("2_f4klr")
-player = NodePath("../..")
+footstepDelay = 0.4
+bobIntensity = 10.0
 
 [node name="PlayerInvManager" type="Node3D" parent="camCage/came"]
 script = ExtResource("5_tuyoq")
@@ -125,6 +126,17 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("6_78t0m")
 crosshairs = [NodePath("Reticle/Top"), NodePath("Reticle/Bot"), NodePath("Reticle/Left"), NodePath("Reticle/Right")]
+
+[node name="debugText" type="Label" parent="Player UI"]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 150.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "hi :)"
 
 [node name="Reticle" type="CenterContainer" parent="Player UI"]
 layout_mode = 1
