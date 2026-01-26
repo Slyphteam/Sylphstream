@@ -1,3 +1,5 @@
+1/25: 
+Magnum ammo pickup
 1/24:
 New area has been added to the test scene: the proving pit! Now with ambient springtails.
 1/23:

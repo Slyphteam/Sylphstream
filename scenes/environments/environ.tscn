@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bcali3jjpv7w8"]
+[gd_scene load_steps=73 format=3 uid="uid://bcali3jjpv7w8"]
 
 [ext_resource type="ArrayMesh" uid="uid://dlv7ayqmpetd3" path="res://models/mesh models/rawShapes/compassRoseMesh.res" id="1_nyw3s"]
 [ext_resource type="PackedScene" uid="uid://d2y6vux751ctf" path="res://scenes/entities/enemy/springtail.tscn" id="2_u1gox"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dwq2fy8mbnx5p" path="res://scenes/trivial/pickups/relata pickup.tscn" id="19_ejflf"]
 [ext_resource type="PackedScene" uid="uid://bc6qmemiohpdn" path="res://scenes/trivial/pickups/corollary pickup.tscn" id="20_0e1lj"]
 [ext_resource type="PackedScene" uid="uid://co5t36kxokupn" path="res://scenes/entities/sylphproto.tscn" id="21_rw1jn"]
+[ext_resource type="PackedScene" uid="uid://b15c30r3lydhw" path="res://scenes/trivial/pickups/magnum_ammobox.tscn" id="21_u1gox"]
 [ext_resource type="Material" uid="uid://0awlgsjd4q27" path="res://resources/testingbluecolor.tres" id="22_ouhdi"]
 [ext_resource type="PackedScene" uid="uid://ckdcn8ikpxnnw" path="res://scenes/utilities/sylphTestingUnit.tscn" id="23_se8du"]
 [ext_resource type="PackedScene" uid="uid://oh4304fixaus" path="res://scenes/entities/archonscene.tscn" id="24_1i7au"]
@@ -578,13 +579,13 @@ transform = Transform3D(0.999552, -0.0299455, 1.30895e-09, 1.37398e-15, -4.37114
 shape = SubResource("ConvexPolygonShape3D_aggi3")
 
 [node name="snubvolver" parent="Environment/Range/range table" instance=ExtResource("14_oi37v")]
-transform = Transform3D(-0.0443966, 0.41135, -0.910396, -0.999013, -0.01928, 0.0400068, -0.00109562, 0.911274, 0.4118, -0.120514, 0.995998, 1.69249)
+transform = Transform3D(-0.0443966, 0.41135, -0.910396, -0.999013, -0.01928, 0.0400068, -0.00109562, 0.911274, 0.4118, 0.0279007, 0.995998, 1.69249)
 
 [node name="Bergther" parent="Environment/Range/range table" instance=ExtResource("15_ehcxm")]
 transform = Transform3D(0.873721, 0, -0.486427, 0, 1, 0, 0.486427, 0, 0.873721, 0.0668821, 0.863453, 2.44007)
 
 [node name="Ishim" parent="Environment/Range/range table" instance=ExtResource("16_0ijxf")]
-transform = Transform3D(0.877199, 0.192642, -0.439785, -0.44818, 0, -0.893943, -0.172211, 0.981269, 0.0863382, 0.0613689, 0.968729, 2.03606)
+transform = Transform3D(0.742532, -0.556832, -0.372269, -0.44818, 7.31102e-09, -0.893943, 0.497776, 0.830625, -0.249561, 0.0950928, 0.968729, 2.14553)
 
 [node name="Node3D" parent="Environment/Range/range table" instance=ExtResource("17_wx1rp")]
 transform = Transform3D(-0.0698235, 0.260585, -0.962923, 0.965926, 0.258819, -4.94929e-08, 0.249223, -0.930112, -0.269777, -0.0205917, 1.1325, -1.89688)
@@ -597,6 +598,12 @@ transform = Transform3D(0.469364, -0.883005, 0, 0.883005, 0.469364, 0, 0, 0, 1, 
 
 [node name="Corollary" parent="Environment/Range/range table" instance=ExtResource("20_0e1lj")]
 transform = Transform3D(0.874484, -2.12024e-08, -0.485054, -0.485054, -3.82249e-08, -0.874484, 0, 1, -4.37114e-08, -1.17638, 0.843119, 3.89375)
+
+[node name="9mmBox" parent="Environment/Range/range table" instance=ExtResource("21_u1gox")]
+transform = Transform3D(-0.219931, 0, 0.975515, 0, 1, 0, -0.975515, 0, -0.219931, 0.0852356, 0.842294, 1.43187)
+
+[node name="9mmBox2" parent="Environment/Range/range table" instance=ExtResource("21_u1gox")]
+transform = Transform3D(-0.996012, -0.0467988, -0.0759663, 0, 0.851407, -0.524506, 0.0892245, -0.522414, -0.848011, 0.329223, 0.936167, 1.99527)
 
 [node name="sporting clay2" parent="Environment/Range" instance=ExtResource("5_m43px")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.38655, 3.00265, -2.00308)

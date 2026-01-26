@@ -5,14 +5,14 @@
 
 [resource]
 script = ExtResource("1_ypi7t")
-arrLength = 0
+arrLength = 1
 typeArr = Array[int]([5])
 amtArr = Array[int]([14])
 itemName = "Magnum ammo booklet"
 itemDesc = "A leather wallet case containing 14 rimmed cartriges. Good stopping power for a pistol round, but not compact."
 itemHint = ""
 itemIcon = ExtResource("1_dybqt")
-itemEntScene = ""
+itemEntScene = "res://scenes/trivial/pickups/magnum_ammobox.tscn"
 itemFlags = []
 itemTyp = "GEN"
 metadata/_custom_type_script = "uid://bofsmi7krun2i"
