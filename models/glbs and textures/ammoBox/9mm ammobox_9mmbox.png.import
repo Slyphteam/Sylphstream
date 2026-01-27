@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://udvaywbhmhan"
-path.s3tc="res://.godot/imported/magnum ammobox_walletTexture.png-88e6988c33dcc867d00ad118b5f652b0.s3tc.ctex"
+uid="uid://clhgcs0b0bb8u"
+path.s3tc="res://.godot/imported/9mm ammobox_9mmbox.png-fe3e9ecde4ee641bd0eb27816a95888d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "4ee8ba07a2902c1103af9720cef32a53"
+"md5": "b6ece8b557291f9397b2fe29c65ac5e1"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/magnum ammobox_walletTexture.png"
-dest_files=["res://.godot/imported/magnum ammobox_walletTexture.png-88e6988c33dcc867d00ad118b5f652b0.s3tc.ctex"]
+source_file="res://models/glbs and textures/ammoBox/9mm ammobox_9mmbox.png"
+dest_files=["res://.godot/imported/9mm ammobox_9mmbox.png-fe3e9ecde4ee641bd0eb27816a95888d.s3tc.ctex"]
 
 [params]
 

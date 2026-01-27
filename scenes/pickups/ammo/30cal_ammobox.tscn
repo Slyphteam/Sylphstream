@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_3teig"]
 [ext_resource type="Resource" uid="uid://3xjpnepk4spv" path="res://scripts/utility/invSystem/invData/invConsumables/ammBox30calInvData.tres" id="2_runbi"]
-[ext_resource type="PackedScene" uid="uid://bnousc71yyvke" path="res://models/glbs and textures/pickups/thirtycal stripperclip.glb" id="3_3teig"]
+[ext_resource type="PackedScene" uid="uid://bnousc71yyvke" path="res://models/glbs and textures/ammoBox/thirtycal stripperclip.glb" id="3_3teig"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_runbi"]
 size = Vector3(0.270996, 0.0687866, 0.392039)

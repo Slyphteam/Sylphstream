@@ -54,12 +54,12 @@ func _ready():
 	user = get_node("../../..")
 	
 	
-	heldAmmunition.ammoRimfire = 25
-	heldAmmunition.ammoPistol = 25
-	heldAmmunition.ammoRifle = 60
-	heldAmmunition.ammoThirtycal = 20
-	heldAmmunition.ammoShotgun = 12
-	heldAmmunition.ammoMagnum = 12
+	heldAmmunition.ammoRimfire = 0
+	heldAmmunition.ammoPistol = 0
+	heldAmmunition.ammoRifle = 0
+	heldAmmunition.ammoThirtycal = 0
+	heldAmmunition.ammoShotgun = 0
+	heldAmmunition.ammoMagnum = 0
 	
 	recalc_Weight()
 	

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1y1tq8ed2yy5"
-path.s3tc="res://.godot/imported/thirtycal stripperclip_stripperClip.png-963d6596affd536cf2df168376429152.s3tc.ctex"
+path.s3tc="res://.godot/imported/thirtycal stripperclip_stripperClip.png-d8c2a1dfcc1d1f8248da44d7bc57ae1c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/thirtycal stripperclip_stripperClip.png"
-dest_files=["res://.godot/imported/thirtycal stripperclip_stripperClip.png-963d6596affd536cf2df168376429152.s3tc.ctex"]
+source_file="res://models/glbs and textures/ammoBox/thirtycal stripperclip_stripperClip.png"
+dest_files=["res://.godot/imported/thirtycal stripperclip_stripperClip.png-d8c2a1dfcc1d1f8248da44d7bc57ae1c.s3tc.ctex"]
 
 [params]
 

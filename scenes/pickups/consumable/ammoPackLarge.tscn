@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2v1ii83rpx65"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_4scsm"]
+[ext_resource type="PackedScene" uid="uid://c661rm7g7ati8" path="res://models/glbs and textures/ammoBox/ammoCannister.glb" id="2_4scsm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxhji"]
+size = Vector3(0.305782, 0.561337, 0.891167)
+
+[node name="ammoCan" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+collision_layer = 5
+collision_mask = 17
+mass = 0.5
+sleeping = true
+script = ExtResource("1_4scsm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00263405, 0.108175, 0.0110588)
+shape = SubResource("BoxShape3D_wxhji")
+
+[node name="ammoCannister" parent="RigidBody3D" instance=ExtResource("2_4scsm")]

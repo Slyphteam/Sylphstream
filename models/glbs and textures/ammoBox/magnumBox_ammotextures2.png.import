@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://scauwe7jnmab"
-path.s3tc="res://.godot/imported/rimfire_ammobox_22box.png-b248f1a2c2e8f2b3b83409430019066d.s3tc.ctex"
+uid="uid://dwjea00namcx1"
+path.s3tc="res://.godot/imported/magnumBox_ammotextures2.png-96b194f88dedf65ea9ff65c1100915ac.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c26da759753b2ca6d9bc0317b2bed064"
+"md5": "8545884c941082c15ba57fb283f6a7a5"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/rimfire_ammobox_22box.png"
-dest_files=["res://.godot/imported/rimfire_ammobox_22box.png-b248f1a2c2e8f2b3b83409430019066d.s3tc.ctex"]
+source_file="res://models/glbs and textures/ammoBox/magnumBox_ammotextures2.png"
+dest_files=["res://.godot/imported/magnumBox_ammotextures2.png-96b194f88dedf65ea9ff65c1100915ac.s3tc.ctex"]
 
 [params]
 

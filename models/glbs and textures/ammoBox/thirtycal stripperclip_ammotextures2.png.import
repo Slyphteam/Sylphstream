@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7ndmpok4x0mv"
-path.s3tc="res://.godot/imported/shotgunbundle_ammotextures2.png-4d424d9b8b4e9a9fca6eea56f53bebb1.s3tc.ctex"
+uid="uid://bobsmejbbyta"
+path.s3tc="res://.godot/imported/thirtycal stripperclip_ammotextures2.png-fe099e83dd591615b7921ac58ec94953.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d0d0bd5808e1f143d2846b9ef0e28bcd"
+"md5": "b85b92a89891cb74e06898c7df5f864e"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/shotgunbundle_ammotextures2.png"
-dest_files=["res://.godot/imported/shotgunbundle_ammotextures2.png-4d424d9b8b4e9a9fca6eea56f53bebb1.s3tc.ctex"]
+source_file="res://models/glbs and textures/ammoBox/thirtycal stripperclip_ammotextures2.png"
+dest_files=["res://.godot/imported/thirtycal stripperclip_ammotextures2.png-fe099e83dd591615b7921ac58ec94953.s3tc.ctex"]
 
 [params]
 

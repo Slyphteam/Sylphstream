@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://mivmmni3ef2p"
-path="res://.godot/imported/rimfire_ammobox.glb-f5a5d821fcc5ecd7bfb10adf26d36c23.scn"
+uid="uid://c661rm7g7ati8"
+path="res://.godot/imported/ammoCannister.glb-d9b4700614689a261317f7b407d6bada.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/rimfire_ammobox.glb"
-dest_files=["res://.godot/imported/rimfire_ammobox.glb-f5a5d821fcc5ecd7bfb10adf26d36c23.scn"]
+source_file="res://models/glbs and textures/ammoBox/ammoCannister.glb"
+dest_files=["res://.godot/imported/ammoCannister.glb-d9b4700614689a261317f7b407d6bada.scn"]
 
 [params]
 

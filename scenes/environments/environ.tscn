@@ -1,27 +1,27 @@
-[gd_scene load_steps=73 format=3 uid="uid://bcali3jjpv7w8"]
+[gd_scene load_steps=74 format=3 uid="uid://bcali3jjpv7w8"]
 
 [ext_resource type="ArrayMesh" uid="uid://dlv7ayqmpetd3" path="res://models/mesh models/rawShapes/compassRoseMesh.res" id="1_nyw3s"]
 [ext_resource type="PackedScene" uid="uid://d2y6vux751ctf" path="res://scenes/entities/enemy/springtail.tscn" id="2_u1gox"]
 [ext_resource type="PackedScene" uid="uid://cr6mp7skeb4ee" path="res://scenes/utilities/sylphmoveproto.tscn" id="3_k3qjg"]
 [ext_resource type="PackedScene" uid="uid://bhux7iep3xeg7" path="res://scenes/trivial/target.tscn" id="4_whipo"]
 [ext_resource type="PackedScene" uid="uid://ci3jdwb1gi2gg" path="res://scenes/trivial/clay_target.tscn" id="5_m43px"]
-[ext_resource type="PackedScene" uid="uid://bdgwi6tjdsj5u" path="res://scenes/trivial/pickups/degubby pickup.tscn" id="6_s43vw"]
-[ext_resource type="PackedScene" uid="uid://4g032mafbnwj" path="res://scenes/trivial/pickups/affine pickup.tscn" id="7_nnc13"]
-[ext_resource type="PackedScene" uid="uid://b2lu2muc6j2uj" path="res://scenes/trivial/pickups/fourier pickup.tscn" id="8_7jqqp"]
-[ext_resource type="PackedScene" uid="uid://b0ggseuf34obn" path="res://scenes/trivial/pickups/rifle_ammobox.tscn" id="9_1ww43"]
-[ext_resource type="PackedScene" uid="uid://d1u5hj48ilnd0" path="res://scenes/trivial/pickups/30cal_ammobox.tscn" id="10_7v36v"]
-[ext_resource type="PackedScene" uid="uid://c4xof0ncli7gu" path="res://scenes/trivial/pickups/9_mm_ammobox.tscn" id="11_1lgxx"]
-[ext_resource type="PackedScene" uid="uid://cahf1scobnpcq" path="res://scenes/trivial/pickups/shotgun_ammobox.tscn" id="12_y2ccu"]
-[ext_resource type="PackedScene" uid="uid://dnr004t0lyqd1" path="res://scenes/trivial/pickups/rimfire_ammobox.tscn" id="13_p4pb1"]
-[ext_resource type="PackedScene" uid="uid://er17epgwp6ac" path="res://scenes/trivial/pickups/snubvolver pickup.tscn" id="14_oi37v"]
-[ext_resource type="PackedScene" uid="uid://u5vg53ed723w" path="res://scenes/trivial/pickups/bergther pickup.tscn" id="15_ehcxm"]
-[ext_resource type="PackedScene" uid="uid://d1ygjo8v5olr8" path="res://scenes/trivial/pickups/ishim pickup.tscn" id="16_0ijxf"]
-[ext_resource type="PackedScene" uid="uid://c104tyo0foh0a" path="res://scenes/trivial/pickups/ghostbird pickup.tscn" id="17_wx1rp"]
-[ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/trivial/pickups/khwarizmi pickup.tscn" id="18_lj05l"]
-[ext_resource type="PackedScene" uid="uid://dwq2fy8mbnx5p" path="res://scenes/trivial/pickups/relata pickup.tscn" id="19_ejflf"]
-[ext_resource type="PackedScene" uid="uid://bc6qmemiohpdn" path="res://scenes/trivial/pickups/corollary pickup.tscn" id="20_0e1lj"]
+[ext_resource type="PackedScene" uid="uid://bdgwi6tjdsj5u" path="res://scenes/pickups/weapons/degubby pickup.tscn" id="6_s43vw"]
+[ext_resource type="PackedScene" uid="uid://4g032mafbnwj" path="res://scenes/pickups/weapons/affine pickup.tscn" id="7_nnc13"]
+[ext_resource type="PackedScene" uid="uid://b2lu2muc6j2uj" path="res://scenes/pickups/weapons/fourier pickup.tscn" id="8_7jqqp"]
+[ext_resource type="PackedScene" uid="uid://b0ggseuf34obn" path="res://scenes/pickups/ammo/rifle_ammobox.tscn" id="9_1ww43"]
+[ext_resource type="PackedScene" uid="uid://d1u5hj48ilnd0" path="res://scenes/pickups/ammo/30cal_ammobox.tscn" id="10_7v36v"]
+[ext_resource type="PackedScene" uid="uid://c4xof0ncli7gu" path="res://scenes/pickups/ammo/9_mm_ammobox.tscn" id="11_1lgxx"]
+[ext_resource type="PackedScene" uid="uid://cahf1scobnpcq" path="res://scenes/pickups/ammo/shotgun_ammobox.tscn" id="12_y2ccu"]
+[ext_resource type="PackedScene" uid="uid://dnr004t0lyqd1" path="res://scenes/pickups/ammo/rimfire_ammobox.tscn" id="13_p4pb1"]
+[ext_resource type="PackedScene" uid="uid://er17epgwp6ac" path="res://scenes/pickups/weapons/snubvolver pickup.tscn" id="14_oi37v"]
+[ext_resource type="PackedScene" uid="uid://u5vg53ed723w" path="res://scenes/pickups/weapons/bergther pickup.tscn" id="15_ehcxm"]
+[ext_resource type="PackedScene" uid="uid://d1ygjo8v5olr8" path="res://scenes/pickups/weapons/ishim pickup.tscn" id="16_0ijxf"]
+[ext_resource type="PackedScene" uid="uid://c104tyo0foh0a" path="res://scenes/pickups/weapons/ghostbird pickup.tscn" id="17_wx1rp"]
+[ext_resource type="PackedScene" uid="uid://cvnww568a44gy" path="res://scenes/pickups/weapons/khwarizmi pickup.tscn" id="18_lj05l"]
+[ext_resource type="PackedScene" uid="uid://dwq2fy8mbnx5p" path="res://scenes/pickups/weapons/relata pickup.tscn" id="19_ejflf"]
+[ext_resource type="PackedScene" uid="uid://bc6qmemiohpdn" path="res://scenes/pickups/weapons/corollary pickup.tscn" id="20_0e1lj"]
 [ext_resource type="PackedScene" uid="uid://co5t36kxokupn" path="res://scenes/entities/sylphproto.tscn" id="21_rw1jn"]
-[ext_resource type="PackedScene" uid="uid://b15c30r3lydhw" path="res://scenes/trivial/pickups/magnum_ammobox.tscn" id="21_u1gox"]
+[ext_resource type="PackedScene" uid="uid://b15c30r3lydhw" path="res://scenes/pickups/ammo/magnum_ammobox.tscn" id="21_u1gox"]
 [ext_resource type="Material" uid="uid://0awlgsjd4q27" path="res://resources/testingbluecolor.tres" id="22_ouhdi"]
 [ext_resource type="PackedScene" uid="uid://ckdcn8ikpxnnw" path="res://scenes/utilities/sylphTestingUnit.tscn" id="23_se8du"]
 [ext_resource type="PackedScene" uid="uid://oh4304fixaus" path="res://scenes/entities/archonscene.tscn" id="24_1i7au"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bipjbb3776vms" path="res://scenes/utilities/buttons/player_shoot_scene.tscn" id="27_4qvx4"]
 [ext_resource type="PackedScene" uid="uid://miqixjbi8xeb" path="res://scenes/utilities/buttons/debugtracebutton.tscn" id="28_1ieyi"]
 [ext_resource type="PackedScene" uid="uid://b7fuapjfoq1ld" path="res://scenes/utilities/buttons/coneandSphere.tscn" id="29_i07vp"]
+[ext_resource type="PackedScene" uid="uid://jgq76rwq30xg" path="res://scenes/pickups/ammo/starter_ammobox.tscn" id="31_k3qjg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -525,28 +526,28 @@ collision_layer = 17
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052803, 1.19031, -3.73796)
 
 [node name="Affine" parent="Environment/Range/range table" instance=ExtResource("7_nnc13")]
-transform = Transform3D(-0.0168526, -0.85464, -0.518947, -0.0277394, 0.519221, -0.85419, 0.999473, 0, -0.0324574, -0.949348, 0.766859, -4.41531)
+transform = Transform3D(-0.0168526, -0.85464, -0.518947, -0.0277394, 0.519221, -0.85419, 0.999473, 0, -0.0324574, -0.949348, 0.766859, 4.57591)
 
 [node name="Fourier9" parent="Environment/Range/range table" instance=ExtResource("8_7jqqp")]
 transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, 0.0664558, 1.08027, -2.94365)
 
 [node name="rifle_ammobox" parent="Environment/Range/range table" instance=ExtResource("9_1ww43")]
-transform = Transform3D(0.25887, 0, -0.965912, 0, 1, 0, 0.965912, 0, 0.25887, 0.0427322, 0.78372, -4.47123)
+transform = Transform3D(-0.870063, 0, -0.49294, 0, 1, 0, 0.49294, 0, -0.870063, -0.0114517, 0.78372, 4.86266)
 
 [node name="30calBox3" parent="Environment/Range/range table" instance=ExtResource("10_7v36v")]
-transform = Transform3D(0.173804, -0.144549, 0.974114, 0.316938, -0.92833, -0.194304, 0.932386, 0.342504, -0.115535, -0.156837, 1.03402, 4.2674)
+transform = Transform3D(0.173804, -0.144549, 0.974114, 0.316938, -0.92833, -0.194304, 0.932386, 0.342504, -0.115535, 0.0369072, 1.03402, 3.91459)
 
 [node name="30calBox2" parent="Environment/Range/range table" instance=ExtResource("10_7v36v")]
-transform = Transform3D(-0.940224, -0.175284, 0.291985, -0.161153, 0.984302, 0.0719644, -0.300016, 0.0206084, -0.953712, -0.222202, 0.938429, 4.51888)
+transform = Transform3D(-0.940224, -0.175284, 0.291985, -0.161153, 0.984302, 0.0719644, -0.300016, 0.0206084, -0.953712, -0.0284576, 0.938429, 4.16607)
 
 [node name="30calBox" parent="Environment/Range/range table" instance=ExtResource("10_7v36v")]
-transform = Transform3D(-0.722062, 0.0399088, -0.690676, 0, 0.998335, 0.057686, 0.691828, 0.0416529, -0.72086, -0.0384712, 0.84515, 4.6083)
+transform = Transform3D(-0.722062, 0.0399088, -0.690676, 0, 0.998335, 0.057686, 0.691828, 0.0416529, -0.72086, 0.155272, 0.84515, 4.25549)
 
 [node name="rifle_ammobox2" parent="Environment/Range/range table" instance=ExtResource("9_1ww43")]
-transform = Transform3D(0.0525629, 0, -0.998618, 0, 1, 0, 0.998618, 0, 0.0525629, -0.136368, 0.7905, -4.72606)
+transform = Transform3D(-0.953486, 0, -0.301439, 0, 1, 0, 0.301439, 0, -0.953486, 0.190289, 0.7905, 4.62535)
 
 [node name="rifle_ammobox3" parent="Environment/Range/range table" instance=ExtResource("9_1ww43")]
-transform = Transform3D(-0.732757, 0.680491, -6.1775e-08, 4.37114e-08, -4.37114e-08, -1, -0.680491, -0.732757, 2.28462e-09, -0.334549, 0.80931, -4.19209)
+transform = Transform3D(0.474872, 0.880055, -1.77111e-08, 4.37114e-08, -4.37114e-08, -1, -0.880055, 0.474872, -5.92257e-08, -0.376324, 0.80931, 4.56749)
 
 [node name="9mm ammobox2" parent="Environment/Range/range table" instance=ExtResource("11_1lgxx")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.300518, 0.757752, -3.38909)
@@ -763,3 +764,6 @@ behavior = 15
 
 [node name="shapebuttons" parent="." instance=ExtResource("29_i07vp")]
 transform = Transform3D(-0.189696, 0, -0.981843, 0, 1, 0, 0.981843, 0, -0.189696, 7.01695, 0.550099, -18.2245)
+
+[node name="starterPack" parent="." instance=ExtResource("31_k3qjg")]
+transform = Transform3D(0.496429, 0, -0.868078, 0, 1, 0, 0.868078, 0, 0.496429, -14.6729, 2.0653, -12.5013)

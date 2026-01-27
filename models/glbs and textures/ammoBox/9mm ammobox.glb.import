@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://blfxm53hgy6mb"
-path="res://.godot/imported/9mm ammobox.glb-ae6e3c5a38d7307554b8d54d9ae9a805.scn"
+path="res://.godot/imported/9mm ammobox.glb-0c6d4603d029eaa34c236b9719b743eb.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/9mm ammobox.glb"
-dest_files=["res://.godot/imported/9mm ammobox.glb-ae6e3c5a38d7307554b8d54d9ae9a805.scn"]
+source_file="res://models/glbs and textures/ammoBox/9mm ammobox.glb"
+dest_files=["res://.godot/imported/9mm ammobox.glb-0c6d4603d029eaa34c236b9719b743eb.scn"]
 
 [params]
 

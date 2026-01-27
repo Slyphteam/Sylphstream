@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvbiyohpoivyi"
-path.s3tc="res://.godot/imported/rifle_ammobox_riflebox.png-d3af4699bf6d58c24fe4fbf1b686ca8a.s3tc.ctex"
+uid="uid://c7ndmpok4x0mv"
+path.s3tc="res://.godot/imported/shotgunbundle_ammotextures2.png-da5783d5e4e5980338cccb3387d5653a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b58745fa8f347d57842e87503899c58c"
+"md5": "d0d0bd5808e1f143d2846b9ef0e28bcd"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/rifle_ammobox_riflebox.png"
-dest_files=["res://.godot/imported/rifle_ammobox_riflebox.png-d3af4699bf6d58c24fe4fbf1b686ca8a.s3tc.ctex"]
+source_file="res://models/glbs and textures/ammoBox/shotgunbundle_ammotextures2.png"
+dest_files=["res://.godot/imported/shotgunbundle_ammotextures2.png-da5783d5e4e5980338cccb3387d5653a.s3tc.ctex"]
 
 [params]
 

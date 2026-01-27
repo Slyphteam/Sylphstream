@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bnousc71yyvke"
-path="res://.godot/imported/thirtycal stripperclip.glb-026fdee0ce07d92e5f0cabb79fec9b33.scn"
+uid="uid://d31g1conwo3b3"
+path="res://.godot/imported/ammoKit.glb-15072160fec8ee37f6a44dc1d5bbbfc4.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/thirtycal stripperclip.glb"
-dest_files=["res://.godot/imported/thirtycal stripperclip.glb-026fdee0ce07d92e5f0cabb79fec9b33.scn"]
+source_file="res://models/glbs and textures/ammoBox/ammoKit.glb"
+dest_files=["res://.godot/imported/ammoKit.glb-15072160fec8ee37f6a44dc1d5bbbfc4.scn"]
 
 [params]
 

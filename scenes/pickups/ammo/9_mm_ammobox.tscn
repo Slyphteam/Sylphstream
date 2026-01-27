@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://c4xof0ncli7gu"]
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_hluod"]
-[ext_resource type="Texture2D" uid="uid://clhgcs0b0bb8u" path="res://models/glbs and textures/pickups/9mm ammobox_9mmbox.png" id="2_ikmy5"]
+[ext_resource type="Texture2D" uid="uid://clhgcs0b0bb8u" path="res://models/glbs and textures/ammoBox/9mm ammobox_9mmbox.png" id="2_ikmy5"]
 [ext_resource type="Resource" uid="uid://bx63qqsmwoqsk" path="res://scripts/utility/invSystem/invData/invConsumables/ammBox9mInvData.tres" id="3_ikmy5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4j5fy"]
@@ -25,7 +25,7 @@ albedo_texture = ExtResource("2_ikmy5")
 metallic = 0.727273
 roughness = 0.78
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_p6n6j"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ikmy5"]
 _surfaces = [{
 "aabb": AABB(-3.89585, -0.0384526, -1.33353, 7.78288, 9.73984, 2.66658),
 "format": 34896613377,
@@ -105,7 +105,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("vADdAlaAXAX//4dtD0CyAwAAKJoXU1sFTp3GAIg/YAWKyd0C4R69AB3zLixmX5EoHtTdAop+TimKyd0C4R5mKbWnAADonHBEGhEomv//3UX//4dtD0A3P4QJ3QIx2kJGHtTdAop+/0Ed8y4sZl9SQLwA3QJWgN+lGhEomv//36WECd0CMdrfpQAAKJoXU9+ljQj//4up36X//4dtD0DlxBoRKJr//3LAjQj//4upR76NCP//i6l/8gAAKJoXU1zy//+HbQ9Aw/+fmyiawBBfBZ+bKJrAEJvzeMv//3NWwPMtpP//NGe58+vCKJoAAMDzuqwomqe9CUS6rCiap72Qsi2k//80Z7uxBtQomuesdLF4y///c1Z0sTXuLizMLbkoTp3GAIg/lAXrwiiaAACTBZ+bKJrAEIwFisndAuEemQW6rCiap72lQbWnAADonPVDBtQomuesgD+p8L2+mUblxGf1RoaIduXE68IomgAAY/mp8L2+mUYQ+XjL//9zVrT56+tGhqoWmPh4y///c1Y/t2f1RoaIdjm4BtQomues0bWp8L2+mUaeuuvrRoaqFrsA68IomgAAygA17i4szC2pAAbUKJrnrIRAHtTdAop+6T5n9UaGiHZjQjXuLizMLbID6+tGhqoWsgNn9UaGiHY3Px3zLixmXzc/HfMuLGZfmhT//4dtD0CaFDXuLizMLZoU6+tGhqoWw/+p8L2+mUbD/1g+p8Dsva5HdD7GwN49IsDVOau+rxZVuXwVtLdUFX63rAIV9osC2fXlEBocggLH9QYCwfRcAwQRZ4Xe92mF4Pdlhdz3aYXg92mF4Pc6r/RwDpSHjumUSY65yGCwSsoWr6wuIED5PUDAir6/uG+9p7mjvXy5b72nubUCJvZpmruM35qajAibjowIm46Mbxb+uKg8nb3sPOi9fD6gvzA7ALwQAtD0zAFs9EwCKPU6r/RwOq/0cNe91bV+v1O0QLxJt/LBFrJIpeuBrqRegjOmPYFJo2eD6znCviY5+73pOsG/aAMJEQUD2hDfA0MR7L2uR+y9rkflEBoc5RAaHFQLNrJUCzayVAs2sqwuIECsLiBA")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_p6n6j")
+shadow_mesh = SubResource("ArrayMesh_ikmy5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1sj31"]
 size = Vector3(0.206787, 0.196899, 0.172119)

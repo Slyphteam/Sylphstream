@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dmn0iobk2wuin"
-path="res://.godot/imported/magnum ammobox.glb-4c982b458a5aa9133ca53e8086853acd.scn"
+uid="uid://bvldan4260164"
+path="res://.godot/imported/shotgunbundle.glb-438bbbfdb887b9fef55f5bd8540747fe.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/magnum ammobox.glb"
-dest_files=["res://.godot/imported/magnum ammobox.glb-4c982b458a5aa9133ca53e8086853acd.scn"]
+source_file="res://models/glbs and textures/ammoBox/shotgunbundle.glb"
+dest_files=["res://.godot/imported/shotgunbundle.glb-438bbbfdb887b9fef55f5bd8540747fe.scn"]
 
 [params]
 
@@ -34,13 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"magnum ammobox_Cube_086": {
+"shotgunbundle_Cube_033": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://models/glbs and textures/pickups/magnumAmmoMesh.res"
+"save_to_file/path": "res://models/mesh models/shotgunbundle mesh.res"
 }
 }
 }

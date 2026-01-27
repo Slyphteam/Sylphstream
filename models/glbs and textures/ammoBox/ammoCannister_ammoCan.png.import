@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clhgcs0b0bb8u"
-path.s3tc="res://.godot/imported/9mm ammobox_9mmbox.png-9f6017212317e8daf121a530d8334ece.s3tc.ctex"
+uid="uid://dcd5y4y84guxp"
+path.s3tc="res://.godot/imported/ammoCannister_ammoCan.png-ec4ccc584cc611a49681b11a22726f11.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b6ece8b557291f9397b2fe29c65ac5e1"
+"md5": "7f4f68aba001a02af311f7e9265ee210"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/9mm ammobox_9mmbox.png"
-dest_files=["res://.godot/imported/9mm ammobox_9mmbox.png-9f6017212317e8daf121a530d8334ece.s3tc.ctex"]
+source_file="res://models/glbs and textures/ammoBox/ammoCannister_ammoCan.png"
+dest_files=["res://.godot/imported/ammoCannister_ammoCan.png-ec4ccc584cc611a49681b11a22726f11.s3tc.ctex"]
 
 [params]
 

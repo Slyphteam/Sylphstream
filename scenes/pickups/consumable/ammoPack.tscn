@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://buubgt30myx7n"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_yjwxr"]
+[ext_resource type="PackedScene" uid="uid://d31g1conwo3b3" path="res://models/glbs and textures/ammoBox/ammoKit.glb" id="2_6qgfe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_keqo8"]
+size = Vector3(0.387146, 0.149841, 0.260498)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+collision_layer = 5
+collision_mask = 17
+mass = 0.5
+sleeping = true
+script = ExtResource("1_yjwxr")
+
+[node name="ammoKit" parent="RigidBody3D" instance=ExtResource("2_6qgfe")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00228882, 0.00210571, -0.00012207)
+shape = SubResource("BoxShape3D_keqo8")

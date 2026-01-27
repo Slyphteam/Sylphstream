@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duxfsv8rmlbmq"
-path.s3tc="res://.godot/imported/rifle_ammobox_ammotextures.png-2c848fc89df974428c338de025c06227.s3tc.ctex"
+uid="uid://cs562jraqb6bj"
+path.s3tc="res://.godot/imported/ammoKit_paperBox.png-47a09da87cdd926848f118f2f62800bb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "fe750eeff1650b139ef3577e0090f0ed"
+"md5": "9a7291db23dba156c598ca8ec2bedbe6"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/pickups/rifle_ammobox_ammotextures.png"
-dest_files=["res://.godot/imported/rifle_ammobox_ammotextures.png-2c848fc89df974428c338de025c06227.s3tc.ctex"]
+source_file="res://models/glbs and textures/ammoBox/ammoKit_paperBox.png"
+dest_files=["res://.godot/imported/ammoKit_paperBox.png-47a09da87cdd926848f118f2f62800bb.s3tc.ctex"]
 
 [params]
 

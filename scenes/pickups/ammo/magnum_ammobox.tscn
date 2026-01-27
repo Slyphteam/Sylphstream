@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_lcivi"]
 [ext_resource type="Resource" uid="uid://cn5ii7swofnn6" path="res://scripts/utility/invSystem/invData/invConsumables/ammBoxMagInvData.tres" id="2_lcivi"]
-[ext_resource type="ArrayMesh" uid="uid://cx28y05ti0xh" path="res://models/glbs and textures/pickups/magnumAmmoMesh.res" id="3_07x88"]
+[ext_resource type="PackedScene" uid="uid://wj1nay53bn7p" path="res://models/glbs and textures/ammoBox/magnumBox.glb" id="3_2jocp"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gsqqg"]
 points = PackedVector3Array(-0.116589, 0.0254655, 0.067, 0.124946, 0.14883, 0.183594, -0.103471, 0.0370562, -0.0884997, 0.111012, 0.00121139, -0.064039, -0.1132, 0.163421, 0.198176, 0.104836, 0.0207934, 0.117737, 0.105487, 0.0370562, -0.0884997, -0.0985377, 0.131716, 0.215158, -0.111806, 0.00250504, 0.0624136, -0.0956288, 0.000649018, -0.0791093, 0.0973331, 0.137177, 0.217348, -0.110568, 0.0352583, 0.130733, 0.110339, 0.163421, 0.193336, 0.109252, 0.00248446, 0.0715876, -0.12293, 0.0370562, -0.069047, 0.124946, 0.0370562, -0.0641762, -0.12293, 0.153683, 0.188465, -0.0929414, 0.016637, 0.112818, -0.1132, 0.163421, 0.193336, 0.114886, 0.0389603, 0.122759, 0.106884, 0.11683, 0.202124, 0.0971837, 0.0010313, -0.0784124, -0.113214, 0.0015284, -0.0542006, 0.119008, 0.0298958, 0.0623916, -0.113475, 0.122852, 0.202499, 0.120069, 0.0370562, -0.0787582, -0.117201, 0.0483504, 0.117957, -0.0945502, 0.141398, 0.21615, 0.110339, 0.163421, 0.198176, -0.0951905, 0.00471821, 0.0803982, 0.120069, 0.158552, 0.188465, -0.118053, 0.0370562, -0.0787582)
@@ -17,10 +17,8 @@ sleeping = true
 script = ExtResource("1_lcivi")
 thingToGive = ExtResource("2_lcivi")
 
-[node name="MagnumAmmoMesh" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = ExtResource("3_07x88")
-skeleton = NodePath("../..")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00515382, 0.00515383)
 shape = SubResource("ConvexPolygonShape3D_gsqqg")
+
+[node name="magnumBox" parent="RigidBody3D" instance=ExtResource("3_2jocp")]

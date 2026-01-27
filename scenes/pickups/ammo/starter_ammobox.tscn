@@ -1,0 +1,59 @@
+[gd_scene load_steps=12 format=3 uid="uid://jgq76rwq30xg"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_2xfly"]
+[ext_resource type="Texture2D" uid="uid://cpl8wlsk2mvbm" path="res://resources/image resources/itemIcons/consumIcons/ambox9m.png" id="2_3wn72"]
+[ext_resource type="Script" uid="uid://bofsmi7krun2i" path="res://scripts/utility/invSystem/parents/INVITEM_AMMBOX.gd" id="3_o0d8h"]
+[ext_resource type="PackedScene" uid="uid://blfxm53hgy6mb" path="res://models/glbs and textures/ammoBox/9mm ammobox.glb" id="5_xnbya"]
+[ext_resource type="PackedScene" uid="uid://wj1nay53bn7p" path="res://models/glbs and textures/ammoBox/magnumBox.glb" id="6_xnb7u"]
+[ext_resource type="PackedScene" uid="uid://c661rm7g7ati8" path="res://models/glbs and textures/ammoBox/ammoCannister.glb" id="7_xnb7u"]
+[ext_resource type="PackedScene" uid="uid://bnousc71yyvke" path="res://models/glbs and textures/ammoBox/thirtycal stripperclip.glb" id="7_yas5p"]
+[ext_resource type="PackedScene" uid="uid://bvldan4260164" path="res://models/glbs and textures/ammoBox/shotgunbundle.glb" id="8_yas5p"]
+[ext_resource type="PackedScene" uid="uid://clyqj16lwdolw" path="res://models/glbs and textures/ammoBox/rifle_ammobox.glb" id="9_yas5p"]
+
+[sub_resource type="Resource" id="Resource_8gw1g"]
+script = ExtResource("3_o0d8h")
+arrLength = 6
+typeArr = Array[int]([0, 1, 2, 3, 4, 5])
+amtArr = Array[int]([30, 50, 40, 20, 8, 12])
+itemName = "Ammo sampler kit"
+itemDesc = "A metal can containing a bit of every ammotype. Good for getting started."
+itemHint = "E to consume"
+itemIcon = ExtResource("2_3wn72")
+itemEntScene = "res://scenes/pickups/ammo/starter_ammobox.tscn"
+itemFlags = []
+itemTyp = "GEN"
+metadata/_custom_type_script = "uid://bofsmi7krun2i"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wn72"]
+size = Vector3(0.305782, 0.550472, 0.891167)
+
+[node name="starterPack" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+collision_layer = 5
+collision_mask = 17
+mass = 0.5
+sleeping = true
+script = ExtResource("1_2xfly")
+thingToGive = SubResource("Resource_8gw1g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00263405, 0.115259, 0.0110588)
+shape = SubResource("BoxShape3D_3wn72")
+
+[node name="9mm ammobox" parent="RigidBody3D" instance=ExtResource("5_xnbya")]
+transform = Transform3D(0.334268, 0, 0.942478, 0, 1, 0, -0.942478, 0, 0.334268, -0.00591333, 0.38405, 0.224786)
+
+[node name="magnumBox" parent="RigidBody3D" instance=ExtResource("6_xnb7u")]
+transform = Transform3D(0.612314, 0, -0.790615, 0, 1, 0, 0.790615, 0, 0.612314, 0.364658, -0.135456, -0.403763)
+
+[node name="thirtycal stripperclip" parent="RigidBody3D" instance=ExtResource("7_yas5p")]
+transform = Transform3D(-0.00718616, 0.158434, -0.987343, 0.00115309, 0.98737, 0.15843, 0.999974, 0, -0.00727808, -0.112802, 0.433335, -0.0997469)
+
+[node name="ammoCannister" parent="RigidBody3D" instance=ExtResource("7_xnb7u")]
+
+[node name="shotgunbundle" parent="RigidBody3D" instance=ExtResource("8_yas5p")]
+transform = Transform3D(0.287361, 0, -0.957823, 0, 1, 0, 0.957823, 0, 0.287361, 0.25878, -0.0552622, -0.046397)
+
+[node name="rifle_ammobox" parent="RigidBody3D" instance=ExtResource("9_yas5p")]
+transform = Transform3D(0.405796, 0, 0.913964, 0, 1, 0, -0.913964, 0, 0.405796, 0.297222, -0.1467, 0.330608)
