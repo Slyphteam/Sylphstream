@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://c4xof0ncli7gu"]
 
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_hluod"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_hluod"]
 [ext_resource type="Texture2D" uid="uid://clhgcs0b0bb8u" path="res://models/glbs and textures/pickups/9mm ammobox_9mmbox.png" id="2_ikmy5"]
 [ext_resource type="Resource" uid="uid://bx63qqsmwoqsk" path="res://scripts/utility/invSystem/invData/invConsumables/ammBox9mInvData.tres" id="3_ikmy5"]
 

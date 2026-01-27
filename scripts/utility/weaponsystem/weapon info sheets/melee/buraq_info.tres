@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MELEE_INFO" load_steps=3 format=3 uid="uid://cdavx6lb5f7ya"]
 
 [ext_resource type="ArrayMesh" uid="uid://b56xm2chs1p1l" path="res://models/mesh models/buraq mesh N.res" id="1_aat0g"]
-[ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/utility/weaponsystem/MELEEINFO.gd" id="1_rioib"]
+[ext_resource type="Script" uid="uid://c3mmopjw0avmi" path="res://scripts/utility/weaponsystem/weapon info sheets/MELEEINFO.gd" id="1_rioib"]
 
 [resource]
 script = ExtResource("1_rioib")

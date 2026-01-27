@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://buu3b8gxsbyw3" path="res://scripts/mob/complex/slyph scripts/sylph_body_controller.gd" id="1_ar8do"]
 [ext_resource type="Script" uid="uid://bxkd08xc2wfmu" path="res://scripts/mob/complex/slyph scripts/sylph_mind_fragmentary.gd" id="2_284ft"]
 [ext_resource type="PackedScene" uid="uid://dp1v64jvcociq" path="res://models/glbs and textures/creatures/enemies/sylph/sylphheadPurple.glb" id="3_284ft"]
-[ext_resource type="Script" uid="uid://bf3xq6wkexy62" path="res://scripts/mob/invenmanagers/invenManager_sylph.gd" id="4_v73jt"]
+[ext_resource type="Script" uid="uid://bf3xq6wkexy62" path="res://scripts/utility/invSystem/invenmanagers/invenManager_sylph.gd" id="4_v73jt"]
 [ext_resource type="PackedScene" uid="uid://brs26wyrgtlx3" path="res://models/glbs and textures/creatures/enemies/sylph/sylphbodyPurple.glb" id="6_284ft"]
-[ext_resource type="Script" uid="uid://3n3k3buhmy1a" path="res://scripts/mob/damsystem/complex_healthholder.gd" id="7_1raw2"]
+[ext_resource type="Script" uid="uid://3n3k3buhmy1a" path="res://scripts/utility/damsystem/health/complex_healthholder.gd" id="7_1raw2"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a3el2"]
 points = PackedVector3Array(4.33349, 1, 6.48339, 4.33349, -1, 6.48339, 6.14673e-08, -0.000195742, -2, 6.14673e-08, 1, 6.48339, 6.14673e-08, -1, 6.48339)

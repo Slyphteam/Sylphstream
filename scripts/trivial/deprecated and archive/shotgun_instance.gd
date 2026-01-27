@@ -69,18 +69,18 @@ func do_Shoot():
 		var end:Vector3 = invManager.get_End(orig, randAzimuth, randRoll)
 		
 		var theShot = FIREDBULLET.new()
-		#theShot.assign_Info(orig, end, space, invManager.user, ourWeaponSheet.damage) #threw error after deprecation >:(
+		#theShot.assign_Info(orig, end, space, invManager.user, weaponSheet.damage) #threw error after deprecation >:(
 		theShot.take_Shot()
 
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.
-	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * ourWeaponSheet.viewpunchMult
-	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * ourWeaponSheet.viewpunchMult
+	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * weaponSheet.viewpunchMult
+	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * weaponSheet.viewpunchMult
 	invManager.applyViewpunch(drift, lift)
 	
 	#do this as the last thing to not delay any other effects: wait, then eject
-	if(ourWeaponSheet.doCasing && !ourWeaponSheet.ejectOnReload):
-		if(ourWeaponSheet.casingDelay !=0):
-			await invManager.get_tree().create_timer(ourWeaponSheet.casingDelay).timeout #probably a lot of overhhead here?
+	if(weaponSheet.doCasing && !weaponSheet.ejectOnReload):
+		if(weaponSheet.casingDelay !=0):
+			await invManager.get_tree().create_timer(weaponSheet.casingDelay).timeout #probably a lot of overhhead here?
 		eject_Casing()
 
 ##99% sure this isn't used ever on account of decals now belonging to fired bullet code
@@ -117,7 +117,7 @@ func startReload():
 	reloading = true
 	
 	#Should we have capacity being >= max here? Double check at some point
-	if(triggerDepressed || capacity > ourWeaponSheet.maxCapacity+1 || invManager.chkAmmoAmt(ourWeaponSheet.chambering)<1): #No reason to reload
+	if(triggerDepressed || capacity > weaponSheet.maxCapacity+1 || invManager.chkAmmoAmt(weaponSheet.chambering)<1): #No reason to reload
 		#print("exiting")
 		reloading = false
 		return
@@ -140,7 +140,7 @@ func reload_Complete() -> void:
 	#if(capacity > 0):
 		#takenAmount+=1 #we have 1 in the chamber, so add a bonus round
 
-	var shell = invManager.withdrawAmmo(ourWeaponSheet.chambering, 1)
+	var shell = invManager.withdrawAmmo(weaponSheet.chambering, 1)
 	
 	capacity += shell
 	
@@ -150,5 +150,5 @@ func reload_Complete() -> void:
 	
 	reloadPlayer.play() #play AS we insert the round, not before
 	#print("Finished reload! Rounds: ", capacity)
-	if(capacity <= ourWeaponSheet.maxCapacity):
+	if(capacity <= weaponSheet.maxCapacity):
 		startReload()

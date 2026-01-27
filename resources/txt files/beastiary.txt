@@ -82,6 +82,21 @@ Alpha springtails ought to be spikier and not stay with the packs, but instead e
 
 Beta springtails should be a lot like minecraft skeletons: Simple projectile-based enemies with a surprising mechanical depth to them
 
+	Springtail worker: The most common type of springtail and the backbone of their nests. These gummy plastic creatures most well known
+	known for their swarming tendencies, surprisingly high bite force, and wide array of mouth-watering fruit flavors. Eating is 
+	severely discouraged.
+	drops: Springtail slop: Several globules of chewy macroplastics harvested from the body of a springtail. They're still 
+	uncomfortably warm, and twitch occasionally. This one seems to be a [X] flavored.
+		-> Effects: Gives [full of microplastics] status effect for 10-30 seconds, max hp is reduced by 7-12 and restored on expiry.
+					Gives [full of macroplastics] status effect, regenerate for 5-30 hp over 5-7 seconds
+	
+	Springtail spiker: A far more robust type of springtail made of denser plastic. Launches volleys of plastic spikes at its enemies
+	that are nonetheless long and heavy enough to cause serious harm. Spikes should have 20% chance to inflict macroplastics status.
+	Drops springtail slop, and
+	Spiker spear [CONSUMABLE; THROWABLE]: An uncomfortably warm spike pulled from the back of a dead springtail. You don't have
+	pneumatic gunkblast pores in your back, but you could still chuck it and deal some serious damage.
+	
+
 
 Sawflies:
 

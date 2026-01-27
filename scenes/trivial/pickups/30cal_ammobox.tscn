@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1u5hj48ilnd0"]
 
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_3teig"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_3teig"]
 [ext_resource type="Resource" uid="uid://3xjpnepk4spv" path="res://scripts/utility/invSystem/invData/invConsumables/ammBox30calInvData.tres" id="2_runbi"]
 [ext_resource type="PackedScene" uid="uid://bnousc71yyvke" path="res://models/glbs and textures/pickups/thirtycal stripperclip.glb" id="3_3teig"]
 

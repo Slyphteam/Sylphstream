@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c104tyo0foh0a"]
 
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_t41yx"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_t41yx"]
 [ext_resource type="Resource" uid="uid://bgri72vk3tr6y" path="res://scripts/utility/invSystem/invData/invWeapons/ghostbirdInvData.tres" id="3_itlfj"]
 [ext_resource type="ArrayMesh" uid="uid://npr0ddofuab7" path="res://models/glbs and textures/guns/ghostbirdMesh.res" id="3_pl08r"]
 

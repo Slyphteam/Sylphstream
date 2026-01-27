@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://u5vg53ed723w"]
 
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_juh54"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_juh54"]
 [ext_resource type="ArrayMesh" uid="uid://c6mqdm7s3rxj5" path="res://models/glbs and textures/guns/bergtherMesh.res" id="3_7fxke"]
 [ext_resource type="Resource" uid="uid://bqtt26oq7s13c" path="res://scripts/utility/invSystem/invData/invWeapons/bergtherInvData.tres" id="3_jvlf8"]
 

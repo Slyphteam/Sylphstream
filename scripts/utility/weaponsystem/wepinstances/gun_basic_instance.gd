@@ -29,7 +29,7 @@ var kickAmount: int ##Used in randomly generating recoil viewpunch
 var aimKickBonus ##Used because we don't like integer division around these parts
 var pitchWarningAmount ##used to determine when the pitch change starts and how many increments there are
 
-var ourWeaponSheet: WEAP_INFO ##Datasheet for weapon constants
+var weaponSheet: WEAP_INFO ##Datasheet for weapon constants
 
 #Variables inferred from the resource
 var minRecoil 
@@ -54,7 +54,7 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	
 	
 	if(!wepToLoad is FIREARM_INFO):
-		print("Tried to load non-firearm info resource as a firearm! Bad! USE THE RIGHT CLASS!")
+		Globalscript.raise_Panic_Exception("Tried to load non-firearm info resource as a firearm! Bad! USE THE RIGHT CLASS!")
 		return
 	
 	#Instantiate other components we'll need to function
@@ -71,7 +71,7 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	invManager.add_child(reloadPlayer)
 	
 	
-	ourWeaponSheet = wepToLoad ##assign our sheet
+	weaponSheet = wepToLoad ##assign our sheet
 	
 	
 	#For now just adds a new timer to the scene tree rather than reusing one
@@ -134,7 +134,7 @@ func manualProcess(delta):
 	#old logical block
 	if(offCooldown): #we CAN shoot
 		if(triggerDepressed): #and we ARE shooting
-			if(reloading && ourWeaponSheet.singleReloadOverride): 
+			if(reloading && weaponSheet.singleReloadOverride): 
 				reloading = false #if we're a shotgun-style reloader, exit reload loop early
 				triggerDepressed = false
 			else:
@@ -157,7 +157,7 @@ func manualProcess(delta):
 func try_Shoot():
 	if(capacity > 0 && not reloading):
 		#apply aimcone recoil. Calculations are done in calc_Recoil, called by manualProcess
-		recoilDebt += ourWeaponSheet.recoilAmount 
+		recoilDebt += weaponSheet.recoilAmount 
 		do_Shoot() #actually shoot the bullet, vollleyfire is handled in function
 		ejected = false
 		
@@ -194,9 +194,9 @@ func do_Shoot():
 	var end:Vector3 = invManager.get_End(orig, randAzimuth, randRoll)
 	
 	#This function "actually shoots the bullet" but we only ACTUALLY "shoot" the bullet here.
-	for x in range(ourWeaponSheet.pelletAMT):
+	for x in range(weaponSheet.pelletAMT):
 		
-		var theDamage = randi_range(ourWeaponSheet.damage - ourWeaponSheet.bulletVariance, ourWeaponSheet.damage + ourWeaponSheet.bulletVariance)
+		var theDamage = randi_range(weaponSheet.damage - weaponSheet.bulletVariance, weaponSheet.damage + weaponSheet.bulletVariance)
 		var theDamInfo = DAMINFO.new()
 		theDamInfo.assign_Info(theDamage, 0, invManager.user, (end-orig).normalized())
 		
@@ -214,13 +214,13 @@ func do_Shoot():
 		uiInfo.updateMag(capacity)
 	
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.
-	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * ourWeaponSheet.viewpunchMult
-	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * ourWeaponSheet.viewpunchMult
+	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * weaponSheet.viewpunchMult
+	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * weaponSheet.viewpunchMult
 	invManager.applyViewpunch(drift, lift)
 	
-	if(ourWeaponSheet.doCasing && !ourWeaponSheet.ejectOnReload):
-		if(ourWeaponSheet.casingDelay !=0):
-			await Globalscript.theTree.create_timer(ourWeaponSheet.casingDelay).timeout #probably a lot of overhhead here?
+	if(weaponSheet.doCasing && !weaponSheet.ejectOnReload):
+		if(weaponSheet.casingDelay !=0):
+			await Globalscript.theTree.create_timer(weaponSheet.casingDelay).timeout #probably a lot of overhhead here?
 		eject_Casing()
 
 
@@ -232,10 +232,10 @@ func toggleADS():
 		if(speedlessMaxRecoil != maxRecoil): #discrepancy between speed modifier and true size
 			maxRecoil = speedlessMaxRecoil #disregard applied modifiers
 		if(speedlessMinRecoil != minRecoil): #same for min speed, but we want to begin "aimed"
-			minRecoil = speedlessMinRecoil - ourWeaponSheet.aimBonus
+			minRecoil = speedlessMinRecoil - weaponSheet.aimBonus
 		
 		
-		adjustAcuracy(ourWeaponSheet.aimBonus)
+		adjustAcuracy(weaponSheet.aimBonus)
 		speedlessMaxRecoil = maxRecoil
 		speedlessMinRecoil = minRecoil
 		aimDownsight = false
@@ -243,7 +243,7 @@ func toggleADS():
 	else:
 		kickAmount -= aimKickBonus
 		
-		adjustAcuracy(0 - ourWeaponSheet.aimBonus)
+		adjustAcuracy(0 - weaponSheet.aimBonus)
 
 		aimDownsight = true
 		#print("aiming. recovery speed: ", recoveryAmount, "  kick amount: ", kickAmount, " Minrecoil: ", minRecoil)
@@ -340,24 +340,24 @@ func startReload():
 	
 	
 	
-	if(ourWeaponSheet.ejectOnReload && !ejected): #revolvers, double barrel shotguns, and such
-		for x in range(ourWeaponSheet.maxCapacity - capacity):
+	if(weaponSheet.ejectOnReload && !ejected): #revolvers, double barrel shotguns, and such
+		for x in range(weaponSheet.maxCapacity - capacity):
 			eject_Casing()
 		ejected = true
 	
 	#No reason to or can't reload
-	if((capacity >= ourWeaponSheet.maxCapacity + 1) || (invManager.chkAmmoAmt(ourWeaponSheet.chambering) == 0)): 
+	if((capacity >= weaponSheet.maxCapacity + 1) || (invManager.chkAmmoAmt(weaponSheet.chambering) == 0)): 
 		reloading = false
 		return
 	
 	#single/multi reloads have slightly different  logic
-	if((ourWeaponSheet.singleReloadOverride && triggerDepressed) || (!ourWeaponSheet.singleReloadOverride && reloading)):
+	if((weaponSheet.singleReloadOverride && triggerDepressed) || (!weaponSheet.singleReloadOverride && reloading)):
 			reloading = false
 			return
 	
 	reloading = true
 	
-	if(!ourWeaponSheet.singleReloadOverride): #single reloads play the sound AFTER the reload completes
+	if(!weaponSheet.singleReloadOverride): #single reloads play the sound AFTER the reload completes
 		reloadPlayer.play()
 	#print("Starting reload!")
 		
@@ -374,23 +374,23 @@ func reload_Complete() -> void:
 		return
 	var takenAmt:int
 	#fairly differing behaviors for single/multi reload
-	if(!ourWeaponSheet.singleReloadOverride):
+	if(!weaponSheet.singleReloadOverride):
 		reloading = false
-		takenAmt = (ourWeaponSheet.maxCapacity - capacity)
-		if(capacity > 0 && ourWeaponSheet.allowPlus1):
+		takenAmt = (weaponSheet.maxCapacity - capacity)
+		if(capacity > 0 && weaponSheet.allowPlus1):
 			takenAmt+=1 #we have 1 in the chamber, so add a bonus round
 		#Withdraw ammo. This will update the reserve counter on the UI automatically
-		var newCap = invManager.withdrawAmmo(ourWeaponSheet.chambering, takenAmt)
+		var newCap = invManager.withdrawAmmo(weaponSheet.chambering, takenAmt)
 		capacity += newCap
 		
 	
 	else:
-		takenAmt = invManager.withdrawAmmo(ourWeaponSheet.chambering, 1)
+		takenAmt = invManager.withdrawAmmo(weaponSheet.chambering, 1)
 		capacity += takenAmt
 		reloadPlayer.play()
-		if(capacity < ourWeaponSheet.maxCapacity):
+		if(capacity < weaponSheet.maxCapacity):
 			startReload()
-		elif(ourWeaponSheet.allowPlus1 && capacity == ourWeaponSheet.maxCapacity):
+		elif(weaponSheet.allowPlus1 && capacity == weaponSheet.maxCapacity):
 			startReload()
 		else:
 			reloading = false
@@ -408,7 +408,7 @@ func reload_Complete() -> void:
 
 func eject_Casing():
 	
-	if(!casingPath || !ourWeaponSheet.doCasing): #this shouldnt happen but lets not crash the program
+	if(!casingPath || !weaponSheet.doCasing): #this shouldnt happen but lets not crash the program
 		print("weapinstance eject_Casing had invalid call, fix your stuff!!")
 		return
 	
@@ -423,7 +423,7 @@ func eject_Casing():
 	newCasing.linear_velocity = invManager.get_Speed()
 	
 	#Add a "kick" to the ejected casing
-	var casingVel = (Vector3(3, 2, 0) * ourWeaponSheet.casingSpeedBoost) 
+	var casingVel = (Vector3(3, 2, 0) * weaponSheet.casingSpeedBoost) 
 	casingVel += Vector3(randi_range(-1, 1), randi_range(-0.5, 0.5), randi_range(-0.5, 0.5))
 	newCasing.linear_velocity += casingVel.rotated(Vector3.UP, invManager.get_Rotation().y) #ensure it's perpindicular to ourselves
 	

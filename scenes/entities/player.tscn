@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/player_flavor.gd" id="2_f4klr"]
 [ext_resource type="AudioStream" uid="uid://dvklbsnlwomcb" path="res://sounds/ambient/windchimes.ogg" id="2_ogpgs"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
-[ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/mob/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
+[ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/utility/invSystem/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
 [ext_resource type="Resource" uid="uid://1spaunb34an3" path="res://scripts/utility/invSystem/invData/invWeapons/handsInvData.tres" id="5_xe83n"]
-[ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/mob/damsystem/player_healthholder.gd" id="6_1yk18"]
+[ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/utility/damsystem/health/player_healthholder.gd" id="6_1yk18"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/entities/playermodel.tscn" id="6_tgbf5"]
 [ext_resource type="Texture2D" uid="uid://dvtr0683clxu2" path="res://resources/image resources/healthholderUI.png" id="10_ddril"]
@@ -66,7 +66,7 @@ bg_color = Color(2.35841e-06, 0.569401, 0.502726, 1)
 border_color = Color(0.286275, 0.4, 0.364706, 1)
 expand_margin_left = 10.0
 
-[node name="Player" type="CharacterBody3D" groups=["damage_interactible", "has_manager"]]
+[node name="Player" type="CharacterBody3D" groups=["damage_interactible", "has_manager", "hit_decal_blacklist"]]
 collision_layer = 3
 script = ExtResource("1_qlg0r")
 

@@ -618,7 +618,6 @@ func apply_Autorecover_Viewpunch(lift, drift, punchSpeed):
 
 
 func hit_By_Bullet(theDamInfo:DAMINFO):
-	
 	#It'll be fun to play with these values as polish, have them scale with damage taken,
 	#but for now, keep things simple, stupid.
 	

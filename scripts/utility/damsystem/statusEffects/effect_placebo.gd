@@ -14,3 +14,4 @@ func begin_Effect():
 	duration = randi_range(30, 300)
 	applyWindow = 100
 	applyCountdown = applyWindow
+	doStack = true

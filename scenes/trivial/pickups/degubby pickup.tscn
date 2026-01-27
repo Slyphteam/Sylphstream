@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdgwi6tjdsj5u"]
 
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_ybqhr"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_ybqhr"]
 [ext_resource type="ArrayMesh" uid="uid://c3sccuhb4478y" path="res://models/glbs and textures/guns/degubbyMesh.res" id="3_8j368"]
 [ext_resource type="Resource" uid="uid://bvaii4h7xnqob" path="res://scripts/utility/invSystem/invData/invWeapons/degubbyInvData.tres" id="3_cbxty"]
 

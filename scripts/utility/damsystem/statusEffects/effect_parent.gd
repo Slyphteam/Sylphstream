@@ -13,6 +13,8 @@ var prevEffect: STATUSEFFECT = null
 var duration: float  = 1 ##In delta-adjusted frames. Modify during beginEffect.
 var applyWindow: float = 60 ##What's the cooldown between each application? Modify during beginEffect.
 var applyCountdown: float = applyWindow ##Counter until we apply our effect next. set to 1 to apply every frame
+var doStack: bool = true ##Determines if effects with same name
+
 
 ##Process an effect for 1 frame. Returns true if the effect expires.
 func process_Effect(delta):
@@ -48,12 +50,17 @@ func process_Effect(delta):
 
 ##passes a status effect until it hits the tail of the DLL
 func add_To_Tail(newEffect: STATUSEFFECT):
+	if(newEffect.effectName == effectName): #if both effects have the same name, they BETTER have same stack behavior
+		if(doStack):
+			duration += newEffect.duration
+			newEffect.queue_free()
 	if(nextEffect):
 		nextEffect.add_To_Tail(newEffect)
 	else:
 		newEffect.prevEffect = self
 		nextEffect = newEffect
 
+##utility function. returns true or false.
 func check_For_Effect(targName:String)-> bool:
 	if(effectName == targName): #target found
 		return true
@@ -63,7 +70,7 @@ func check_For_Effect(targName:String)-> bool:
 		else:
 			return false #if we don't have a next, and we haven't found thus far, return false
 
-#called when an effect begins
+##called when an effect begins. USE THIS TO SET PARAMETERS AND CALL SUPER AFTER.
 func begin_Effect():
 	return
 

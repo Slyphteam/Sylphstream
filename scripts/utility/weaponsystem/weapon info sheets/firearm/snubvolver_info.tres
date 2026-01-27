@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" load_steps=5 format=3 uid="uid://dpjbyyitpf1bg"]
 
-[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/FIREARMINFO.gd" id="1_72qw5"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/weapon info sheets/FIREARMINFO.gd" id="1_72qw5"]
 [ext_resource type="AudioStream" uid="uid://bxpx5bwwy646e" path="res://sounds/gunshots/SundayMorning.mp3" id="1_onjnw"]
 [ext_resource type="ArrayMesh" uid="uid://c6nbg8b8efnc0" path="res://models/glbs and textures/guns/snubvolverMesh.res" id="2_j6jj3"]
 [ext_resource type="AudioStream" uid="uid://l22abak1nqcs" path="res://sounds/reloads/snubLoad.mp3" id="3_a3g3t"]

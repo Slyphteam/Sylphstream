@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2lu2muc6j2uj"]
 
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_dakyp"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_dakyp"]
 [ext_resource type="Resource" uid="uid://c73muqq67rk4m" path="res://scripts/utility/invSystem/invData/invWeapons/fourierInvData.tres" id="3_chxjm"]
 [ext_resource type="ArrayMesh" uid="uid://cxds50gkr0k8a" path="res://models/glbs and textures/guns/fourier9 Mesh.res" id="3_fndoq"]
 

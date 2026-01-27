@@ -88,10 +88,12 @@ func raise_Panic_Exception(exceptionMessage:String):
 var playerCasings:Array
 var maxCasings:int = 100
 
-func push_Casing(theCasings, isPlayer):
+
+
+func push_Casing(theCasing, isPlayer):
 	if(!isPlayer):
-		print("We dont do npc casings yet!")
-		return
-	playerCasings.push_back(theCasings)
+		await theTree.create_timer(10).timeout
+		theCasing.queue_free()
+	playerCasings.push_back(theCasing)
 	if(playerCasings.size() > maxCasings):
 		playerCasings.pop_front().queue_free()

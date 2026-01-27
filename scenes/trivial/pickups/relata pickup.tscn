@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwq2fy8mbnx5p"]
 
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_eqwb4"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_eqwb4"]
 [ext_resource type="ArrayMesh" uid="uid://bw6xf5xrhqshs" path="res://models/glbs and textures/guns/relataMesh.res" id="3_42efk"]
 [ext_resource type="Resource" uid="uid://to2vbod675ey" path="res://scripts/utility/invSystem/invData/invWeapons/relataInvData.tres" id="3_va5en"]
 

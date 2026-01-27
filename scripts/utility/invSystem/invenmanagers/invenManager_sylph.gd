@@ -16,6 +16,7 @@ func _ready():
 	if(starterWeapon):
 		load_Wep(starterWeapon.weapInfoSheet)
 	
+	
 	#moved to parent
 	#if(starterWeapon is FIREARM_INFO):
 		#activeItem = GUNBASICINSTANCE.new()
@@ -30,11 +31,14 @@ func _ready():
 
 
 func get_Ammo_Left():
+	
 	var ratio:float = 1
-	var cur:float = activeItem.capacity
-	var ma:float = activeItem.maxCapacity
-	if(activeItem.capacity != activeItem.maxCapacity):
-		ratio = cur / ma #value from 0-1
+	if(!activeItem is GUNBASICINSTANCE):
+		return 1
+	var theGun = activeItem as GUNBASICINSTANCE
+	var cur:float = theGun.capacity
+	var ma:float = theGun.weaponSheet.maxCapacity #gotta check the sheet for the max since its not stored in WEAPINSTANCE anymore
+	ratio = cur / ma #value from 0-1
 	ratio *=2 #value from 0-2
 	ratio -=1 #value from -1 - 1
 	return ratio
@@ -107,3 +111,8 @@ func get_End(orig:Vector3, _azimuth:float, _roll:float):
 	
 func get_Rotation():
 	return user.sylphHead.global_rotation
+	
+func get_Speed()->Vector3:
+#	print("Attempted to get speed on invenmanager parent! Bad!")
+	#return Vector3(0,0,0)
+	return user.velocity

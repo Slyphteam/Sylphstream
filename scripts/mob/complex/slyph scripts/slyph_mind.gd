@@ -65,6 +65,9 @@ func _ready():
 	
 	Globalscript.add_Sylph(self)
 	ourTarget = body.ourTar
+	if(!ourTarget):
+		print("Sylph target was invalid, turning self off")
+		mindEnabled = false
 	#load_From_File("res://resources/txt files/sylph tests/multi evolution test/startingpoint.txt")
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvnww568a44gy"]
 
-[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/entity_pickup_script.gd" id="2_n82l4"]
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_n82l4"]
 [ext_resource type="Resource" uid="uid://c1bb3tuf1xy3y" path="res://scripts/utility/invSystem/invData/invWeapons/khwarizmiInvData.tres" id="3_n82l4"]
 [ext_resource type="ArrayMesh" uid="uid://b1wdec5u8ttw8" path="res://models/mesh models/khwarizmi mesh.res" id="3_xmlca"]
 

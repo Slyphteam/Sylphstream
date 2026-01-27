@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WEAP_INFO" load_steps=2 format=3 uid="uid://1iyc2y86li4i"]
 
-[ext_resource type="Script" uid="uid://b3lupwo5yp3hj" path="res://scripts/utility/weaponsystem/WEAPINFO.gd" id="1_aipdq"]
+[ext_resource type="Script" uid="uid://b3lupwo5yp3hj" path="res://scripts/utility/weaponsystem/weapon info sheets/WEAPINFO.gd" id="1_aipdq"]
 
 [resource]
 script = ExtResource("1_aipdq")

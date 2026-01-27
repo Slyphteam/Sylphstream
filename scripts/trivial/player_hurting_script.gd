@@ -8,6 +8,7 @@ func interact_By_Player(player):
 	var end = player.global_position
 	var orig = end + Vector3(0, 10, 0) #from DA SKY!
 	var theShot = FIREDBULLET.new()
+	Globalscript.theTree.root.add_child(theShot)
 	var theDam = DAMINFO.new()
 	theDam.assign_Info(damAmount, 0, null, (end-orig).normalized())
 	theShot.assign_Info(orig, end, space, theDam)

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://h48v3ktsom7x" path="res://models/glbs and textures/entities/sporting clay.glb" id="1_f4aq7"]
 [ext_resource type="Script" uid="uid://drlwy2fcih1dl" path="res://scripts/trivial/clay_target_script.gd" id="2_texjb"]
-[ext_resource type="Script" uid="uid://1w773btoqbqs" path="res://scripts/mob/damsystem/health_holder.gd" id="3_5ay4c"]
+[ext_resource type="Script" uid="uid://1w773btoqbqs" path="res://scripts/utility/damsystem/health/health_holder.gd" id="3_5ay4c"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f4aq7"]
 points = PackedVector3Array(0.227549, 0.0159853, -4.58956e-05, 0.117383, 0.0260269, 0.118614, 0.153645, 0.0159853, 0.160569, 0.227549, -0.0322664, -4.58956e-05, 0.153645, 0.0159853, -0.160615, 0.117383, 0.0260269, -0.11866, 0.170617, 0.0260269, -4.58956e-05, -4.45694e-05, 0.0476913, -4.58956e-05, -4.45694e-05, 0.0260269, 0.175809, -4.45694e-05, 0.0159853, 0.234473, 0.153645, -0.0322664, 0.160569, 0.153645, -0.0322664, -0.160615, -4.45694e-05, 0.0159853, -0.234473, -4.45694e-05, 0.0260269, -0.175901, -0.117428, 0.0260269, 0.118614, -0.117428, 0.0260269, -0.11866, -0.170706, 0.0260269, -4.58956e-05, -0.153689, 0.0159853, 0.160569, -4.45694e-05, -0.0322664, 0.234473, -4.45694e-05, -0.0322664, -0.234473, -0.153689, 0.0159853, -0.160615, -0.227549, 0.0159853, -4.58956e-05, -0.153689, -0.0322664, 0.160569, -0.153689, -0.0322664, -0.160615, -0.227549, -0.0322664, -4.58956e-05)
