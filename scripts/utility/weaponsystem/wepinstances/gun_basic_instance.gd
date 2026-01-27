@@ -52,10 +52,8 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	super(wepToLoad) #this just grabs the datasheet and nothing else
 	
 	
+	assert(wepToLoad is FIREARM_INFO, "Tried to load non-firearm info resource as a firearm! Bad! USE THE RIGHT CLASS!")
 	
-	if(!wepToLoad is FIREARM_INFO):
-		Globalscript.raise_Panic_Exception("Tried to load non-firearm info resource as a firearm! Bad! USE THE RIGHT CLASS!")
-		return
 	
 	#Instantiate other components we'll need to function
 	weaponMesh = MeshInstance3D.new()

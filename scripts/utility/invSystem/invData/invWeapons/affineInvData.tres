@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="INVWEP" load_steps=4 format=3 uid="uid://cpsodhd6fs3le"]
 
 [ext_resource type="Texture2D" uid="uid://b8qmdvaymwoin" path="res://resources/image resources/itemIcons/weaponIcons/affineIcon.png" id="1_ytssk"]
-[ext_resource type="Script" uid="uid://cy4ktyukcktf8" path="res://scripts/utility/invSystem/parents/INVITEM_WEAPON.gd" id="2_4iysr"]
+[ext_resource type="Script" uid="uid://cy4ktyukcktf8" path="res://scripts/utility/invSystem/invitem generics/INVITEM_WEAPON.gd" id="2_4iysr"]
 [ext_resource type="Resource" uid="uid://bhtixavevlm6g" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/affine_info.tres" id="3_qlj3r"]
 
 [resource]

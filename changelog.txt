@@ -1,3 +1,5 @@
+1/27:
+New item: the ammopack. Gives a random amount of ammo based off what the player has equipped.
 1/25: 
 Magnum ammo pickup
 1/24:

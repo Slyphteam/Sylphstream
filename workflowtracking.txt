@@ -69,11 +69,15 @@ Springtails:
 
 
 INVENTORY SYSTEM WORKFLOW:
-	add a "add to backpack" button directly for world objects, ammoboxes
+
+add a "add to backpack" button directly for world objects, ammoboxes.
 
 Refactor held ammo to use an array and ammo types to be enum. dictionary is stinky here.
 
 Follow guide for players picking up physics objects. Follow guide for players BEING physics objects?
+
+Follow guide for bullet physics impulses. then add it to springtails :3
+
 
 Once the proof-of-concept Sylphs work go back through the Sylph mind script and re-organize all the 
 inputs to be less atrocious?

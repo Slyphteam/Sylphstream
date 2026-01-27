@@ -13,7 +13,7 @@ var ammoWeight = 0 ##The current held ammo pool's "weight"
 
 var maxweight = 1350 ##lets say 9 30-round mags of 5.56 (9*30*5) as a reasonable maximum amount of ammo weight
 
-var allSlots: Array ##2D array of all five weapon slots.
+var allSlots: Array ##2D array of all five weapon slots. USES
 @export var genericItems: Array[INVENITEMPARENT] ##Array that holds generic items, formerly itemsTest
 
 var currentSlot: int = 1 ##Which of the 4 invslots are we on?
@@ -147,6 +147,8 @@ func consume_item(thingToGive):
 			#and updating the data to account for what we can't
 			thingToGive.amtArr[x] = giveAmmo(thingToGive.typeArr[x], thingToGive.amtArr[x])
 		return true
+	elif(thingToGive is INVCONSUM):
+		return activate_Consumable(thingToGive)
 	else:
 		return add_GenericItem(thingToGive)
 	
@@ -163,6 +165,59 @@ func add_GenericItem(thingToGive:INVENITEMPARENT)->bool:
 			return true
 	
 	return false
+
+##Activates the given consumable based on what parameters it has.
+func activate_Consumable(thingToGive: INVCONSUM)->bool:
+	if(thingToGive.consumBehavior == 0 && thingToGive.consumAux == 0):
+		assert(true, "YOUUU didn't set the values for the consume behavior and auxillary! check player invmanager and set them!")
+		return false
+	
+	
+	
+	if(thingToGive.consumBehavior == 1): #ammo kit
+		var weights:Array 
+		
+		for slot in allSlots: #go through all the weapons, count up the chamberings
+			for weapy in slot:
+				if(weapy):
+					if(weapy is INVWEP && weapy.weapInfoSheet is FIREARM_INFO):
+						weights.push_back(weapy.weapInfoSheet.chambering)
+		
+		if(activeItem is GUNBASICINSTANCE): #give a little more weight to what's held
+			weights.push_back(activeItem.weaponSheet.chambering)
+		
+		if(weights.size() == 0): #nothing equipped?
+			return false
+		
+		var currentTyp
+		var currentAmt
+		for x in range(thingToGive.consumAux): #poll from our ammotypes AUX amount of time
+			
+			
+			currentTyp = weights.pick_random()
+			
+			if(currentTyp == 0):
+				currentAmt = randi_range(10, 55)
+			elif(currentTyp == 1):
+				currentAmt = randi_range(8, 56)
+			elif(currentTyp == 2):
+				currentAmt = randi_range(8, 30)
+			elif(currentTyp == 3):
+				currentAmt = randi_range(4, 11)
+			elif(currentTyp == 4):
+				currentAmt = randi_range(3, 12)
+			elif(currentTyp == 5):
+				currentAmt = randi_range(5, 16)
+			
+			var giveResult = giveAmmo(currentTyp, currentAmt)
+			
+			if(giveResult !=0): #we're low on space, stop
+				break
+	
+		
+		
+	return true
+
 
 #=============== WEAPON STUFF
 ##Updats the counted rounds tracked by a weapon invenitem

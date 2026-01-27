@@ -1,4 +1,5 @@
 ##Support script for all pick-uppable items, must have an assigned thingToGive or they won't work
+##why don't we cut out the middleman here? because the thingToGive nonetheless has to be stored on the target node.
 class_name PICKUPABLE extends RAYCASTREACTIVE
 
 @export var thingToGive: INVENITEMPARENT #CHANGE THIS TO INVWEP
@@ -7,6 +8,7 @@ func _ready():
 	thingToGive = thingToGive.duplicate() #ensure we are never operating with the "template" data
 
 func interact_By_Player(player):
+	
 	do_consume(player)
 
 
@@ -25,5 +27,5 @@ func do_consume(player):
 		theRoot.queue_free()
 		return true
 	else:
-		print("Not enough room!")
+		print("Could not consume!")
 		return false

@@ -125,7 +125,8 @@ func _input(event: InputEvent) -> void:
 				heldInvIndex.x = clickedNode.get_index()
 				#print(invenItem.itemName)
 			else:
-				Globalscript.raise_Panic_Exception("Couldn't figure out where to pull data from when making a dragitem! Check the clickedNode logic?")
+				assert(clickedNode.slotTyp == "WEP" && clickedNode.slotTyp == "GEN", 
+				"Couldn't figure out where to pull data from when making a dragitem! Check the clickedNode logic?")
 				#invenItem = in
 			#create drag item. no idea why wed want this to be a unique function that seems poorly thought out
 			heldInvDat = invenItem #assign the data
@@ -163,8 +164,7 @@ func _input(event: InputEvent) -> void:
 							#invenManager.genericItems[heldInvIndex.x] = null
 						#else: #remove from wepslots
 						#	withdrawResult = invenManager.remove_Invwep(heldInvIndex.x + 1, heldInvIndex.y)
-						if(withdrawResult != heldInvDat):
-							Globalscript.raise_Panic_Exception("Held inven data and removed invweapon were not the same!")
+						assert(withdrawResult == heldInvDat, "Held inven data and removed invweapon were not the same!")
 						#update the invenmanager to re-add the object at the new coords
 						invenManager.allSlots[hovNode.slotInd + 1][hovNode.get_index()] = withdrawResult
 						hovNode.curItem = withdrawResult
@@ -198,9 +198,8 @@ func _input(event: InputEvent) -> void:
 					#if(prevSlotTyp == "GEN"): #dropping from general
 						#withdrawResult = invenManager.genericItems[heldInvIndex.x]
 						#invenManager.genericItems[heldInvIndex.x] = null
-						
-					if(!withdrawResult.itemEntScene):
-						Globalscript.raise_Panic_Exception("Tried to drop a weapon that didn't know its own entity scene!!")
+					
+					assert(withdrawResult.itemEntScene, "Tried to drop a weapon that didn't know its own entity scene!!")
 					var droppedItem = load(withdrawResult.itemEntScene).instantiate()
 					#put it at the player
 					droppedItem.position = invenManager.get_Origin()

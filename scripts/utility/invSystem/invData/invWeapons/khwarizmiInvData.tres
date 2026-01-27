@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="INVWEP" load_steps=4 format=3 uid="uid://c1bb3tuf1xy3y"]
 
 [ext_resource type="Texture2D" uid="uid://o4v72s26qmnb" path="res://resources/image resources/itemIcons/weaponIcons/khwarizmiIcon.png" id="1_55nek"]
-[ext_resource type="Script" uid="uid://cy4ktyukcktf8" path="res://scripts/utility/invSystem/parents/INVITEM_WEAPON.gd" id="1_q2fye"]
+[ext_resource type="Script" uid="uid://cy4ktyukcktf8" path="res://scripts/utility/invSystem/invitem generics/INVITEM_WEAPON.gd" id="1_q2fye"]
 [ext_resource type="Resource" uid="uid://bgnabya18i1vd" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/khwarizmi_info.tres" id="2_55nek"]
 
 [resource]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="INVAMMBOX" load_steps=3 format=3 uid="uid://4h42yb5vc1mj"]
 
 [ext_resource type="Texture2D" uid="uid://l4rucy05fjy5" path="res://resources/image resources/itemIcons/consumIcons/ambox556.png" id="1_rd040"]
-[ext_resource type="Script" uid="uid://bofsmi7krun2i" path="res://scripts/utility/invSystem/parents/INVITEM_AMMBOX.gd" id="2_3axgw"]
+[ext_resource type="Script" uid="uid://bofsmi7krun2i" path="res://scripts/utility/invSystem/invitem generics/INVITEM_AMMBOX.gd" id="2_3axgw"]
 
 [resource]
 script = ExtResource("2_3axgw")

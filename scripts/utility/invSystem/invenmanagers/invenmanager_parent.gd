@@ -71,6 +71,8 @@ func load_Wep(wep2Load:WEAP_INFO):
 ##Give amount of amTyp bullets. Returns leftovers, which in this case, is 0, since generic behavior doesn't worry about loadout limits
 func giveAmmo(amTyp: int, amount: int):
 
+	
+	
 	if (amTyp == 0):
 		heldAmmunition.ammoRimfire += amount
 	elif (amTyp == 1):
@@ -84,12 +86,15 @@ func giveAmmo(amTyp: int, amount: int):
 	elif (amTyp == 5): 
 		heldAmmunition.ammoMagnum += amount
 	else:
-		Globalscript.raise_Panic_Exception("Attemted to give invalid chambering!")
-	return 0
+		assert (amTyp <= 5, "Attemted to give invalid chambering!")
+		return 0
 	
 
 ##Decrease ammo of desired type by desired amount. Returns updated reserve.
 func withdrawAmmo(amTyp: int, amount: int)-> int:
+	
+	assert (amTyp <= 5, "Attemted to withdraw invalid chambering!")
+	
 	#print("Selected type ", amTyp)
 	if (amTyp == 0):
 		#print("Taking ", amount, " from pool of ", heldAmmunition.ammoPistol)
@@ -158,7 +163,7 @@ func withdrawAmmo(amTyp: int, amount: int)-> int:
 		return amount
 	else:
 		print("Attemted to withdraw invalid chambering!")
-		return 1
+		return 0
 
 ##Check how much ammunition is in the reserve
 func chkAmmoAmt(amTyp:int ) -> int:
@@ -176,7 +181,7 @@ func chkAmmoAmt(amTyp:int ) -> int:
 	elif(amTyp == 5):
 		return heldAmmunition.ammoMagnum
 	else:
-		print("Attempted to check invalid chambering!")
+		assert(true, "Attempted to check invalid chambering!")
 		return 0;
 	#return heldAmmunition.amTyp  (mad that this doesnt work but whatever)
 
