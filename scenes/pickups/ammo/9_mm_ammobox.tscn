@@ -1,8 +1,23 @@
-[gd_scene load_steps=10 format=4 uid="uid://c4xof0ncli7gu"]
+[gd_scene load_steps=12 format=4 uid="uid://c4xof0ncli7gu"]
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_hluod"]
 [ext_resource type="Texture2D" uid="uid://clhgcs0b0bb8u" path="res://models/glbs and textures/ammoBox/9mm ammobox_9mmbox.png" id="2_ikmy5"]
-[ext_resource type="Resource" uid="uid://bx63qqsmwoqsk" path="res://scripts/utility/invSystem/invData/invConsumables/ammBox9mInvData.tres" id="3_ikmy5"]
+[ext_resource type="Texture2D" uid="uid://cpl8wlsk2mvbm" path="res://resources/image resources/itemIcons/consumIcons/ambox9m.png" id="2_xi78x"]
+[ext_resource type="Script" uid="uid://bofsmi7krun2i" path="res://scripts/utility/invSystem/invitem generics/INVITEM_AMMBOX.gd" id="3_incyu"]
+
+[sub_resource type="Resource" id="Resource_klxhh"]
+script = ExtResource("3_incyu")
+arrLength = 1
+typeArr = Array[int]([1])
+amtArr = Array[int]([50])
+itemName = "Generic Item Name"
+itemDesc = "Generic Description"
+itemHint = "Press E to use. Press ALT to pick up without using."
+itemIcon = ExtResource("2_xi78x")
+itemEntScene = ""
+itemFlags = []
+itemTyp = "GEN"
+metadata/_custom_type_script = "uid://bofsmi7krun2i"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4j5fy"]
 resource_name = "ammobox"
@@ -118,7 +133,7 @@ collision_mask = 17
 mass = 0.5
 sleeping = true
 script = ExtResource("2_hluod")
-thingToGive = ExtResource("3_ikmy5")
+thingToGive = SubResource("Resource_klxhh")
 
 [node name="Pistol box" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(3.52978e-09, 0, -0.0721015, 0, 0.01974, 0, 0.01974, 0, 1.28928e-08, 0, 0, 0)

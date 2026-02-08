@@ -86,7 +86,7 @@ func update_Inven_Data():
 	
 	rimfireLabel.text = "Rimfire: " + str(invenManager.heldAmmunition.ammoRimfire) + " (" + str(invenManager.weight22 * invenManager.heldAmmunition.ammoRimfire) + ")"
 	pistolLabel.text = "Pistol: " + str(invenManager.heldAmmunition.ammoPistol) + " (" + str(invenManager.weightpistol * invenManager.heldAmmunition.ammoPistol) + ")"
-	magnumLabel.text = "Magnum: " +  str(invenManager.heldAmmunition.ammoMagnum) + " (" + str(invenManager.weightrifle * invenManager.heldAmmunition.ammoMagnum) + ")"
+	magnumLabel.text = "Magnum: " +  str(invenManager.heldAmmunition.ammoMagnum) + " (" + str(invenManager.weightRimmed * invenManager.heldAmmunition.ammoMagnum) + ")"
 	shotgunLabel.text = "Shotgun: " + str(invenManager.heldAmmunition.ammoShotgun) + " (" + str(invenManager.weightShotgun * invenManager.heldAmmunition.ammoShotgun) + ")"
 	rifleLabel.text = "Rifle: " + str(invenManager.heldAmmunition.ammoRifle) + " (" + str(invenManager.weightrifle * invenManager.heldAmmunition.ammoRifle) + ")"
 	heavyLabel.text = "30 cal: " + str(invenManager.heldAmmunition.ammoThirtycal) + " (" + str(invenManager.weight30cal * invenManager.heldAmmunition.ammoThirtycal) + ")"

@@ -61,6 +61,8 @@ Other places are as follow:
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+look into billboard particles?
+
 Springtails:
 	Springtails' local pathfinding seems quite good, but they still need global pathfinding if they're to function.
 	To do this, you'll need, yes, shamefully, trig. Specifically, trig to determine whether they should turn left or right

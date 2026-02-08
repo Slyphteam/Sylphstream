@@ -1,0 +1,359 @@
+
+You are in the process of waking up.
+Your thoughts and emotions are coming into allignment with the world as it is, not as it could be.
+Do you feel the earth moving through space as it should?
+What is your mental state?
+Is your sense of self grounded and fully realized?
+Ask yourself, "What am I doing here now? What was I doing here before?"
+Once you understand the reason for what you are feeling, and once you understand the reason for your thoughts and emotions, then you will feel alligned.
+Is the previous statement true or false? Can the inherent modality of veracity even be defined through binary classification? Why or why not?
+A thought arises from the depths of your waking psyche.
+You can't fight it; nor avoid it; nor control it.
+Nobody can control whether or not their thoughts exist. Sum: ergo cogito.
+It is happening, and it is the only thing that defines you in this instant:
+So, tell me this, Waker:
+Of which pursuit did your dreaming soul chase? Choose carefully.
+
+GODSBLOOD:
+OF MY ENEMIES, BROUGHT LOW AND INTO THE FILTH. OF THE OBSTACLES BEFORE ME SHATTERED.
+
+RATION-CYNICISM:
+OF THE CRITICAL, LATENT FLAW EXPOSED. OF FINALLY PURGING THE IMPERFECTIONS FROM A WORLDLY DESIGN.
+
+WORLD-DRINKER:
+OF A DISTANT, BEAUTIFUL LAND. OF A NEW EXPERIENCE; ENRICHING MY OWN.
+
+FORECALCULUS:
+OF REHERSAL AND CONTINGENCY. OF THE DANGERS, REVIEWED AND ADDRESSED.
+
+TINY SQUIRRELDRAGON:
+OF A WARM DEN AND A FULL WALLET. OF A PANTRY STOCKED TO THE BRIM.
+
+INTRA PARA-ABBERANCE:
+OF SOMETHING NEW AND PSYCHEDELIC. OF A PSYCHOTIC, WHIRLING SCHEMA.
+
+SVELTE CARAPACE:
+OF A DEFT AND COOLHEADED CHARICATURE. OF A SHELL BETWEEN THIS SOFT THING AND THAT HARD WORLD.
+
+ANGEION:
+I don't have to play this game with you. I refuse to pick any of those options and I refuse this exercise. I'm going to open my eyes now. (+1 pride)
+
+
+Angeion death messages:
+THIS VESSEL LIES SUNDERED
+YET THE AEONS STILL LAP AGAINST ITS BROKEN FORM
+
+LET SPIN ONCE MORE THE WHEEL OF DHARMA
+TAKE NOW A GENTLE REPOSE
+
+YOU ARE A SHATTERED, TRITE, DEFEATED HEAP OF CARNAGE
+WILL YOU STAY THIS WAY?
+
+GRASP AGAIN THAT SILVER THREAD
+SUBSIDE; SUCCUMB; SUBMIT
+
+YOU ARE AN BROKEN CONTAINER; A LIFELESS AND DISFIGURED HUSK
+WHAT SAY YOU IN REPLY?
+
+SAY THAT ALIVE YOU NEVER WERE, THAT BROKEN CAN BE MENDED, THAT YOU STILL ARE AND STILL WILL BE
+SAY NOTHING, SAY NOTHING, SAY NOTHING
+
+LIFETHREAD SEVERED
+YOU ARE A PUPPET JERKING ABOUT ON A GRAND AND INCONSEQUENTIAL STAGE
+
+
+====Approach
+
+		If pride == 2:
+(You approach Melpomene with lethal intent)
+(You aren't going to vanquish this thing.
+(You're not a triumphant hero defeating some villian)
+(You're just going to get rid of it.)
+(Extatic, the porcelain marionette rises to your challenge.)
+
+
+		if pride <=1 AND no thespian of woe:
+(You find yourself faced with a titanic puppet)
+(It lies limply on the stage, dressed in a tattered jester's costume, empty-eyed mask in a-)
+(A glint of *something* flickers behind the faceplate)
+(Something is very, very wrong. Something about the existence of this this entity is terrifying to me- you- on a basal level.)
+(It's as if t-)
+(...)
+(...)
+(...)
+ANGEION: Hello? 
+ANGEION: As if what? What is this thing?
+(LO, AS DID THE FOOLISH GOOSE FLY NORTH AS THE LEAVES UPON THE TREES MELLOWED AND BECAME A THOUSAND GOLDS AND REDS)
+(SO TOO DOES A LITTLE CLAY PUPPET JERK AND FLAIL TOWARDS IN AN ILL-ADVISED END)
+(THE PUPPET STARES AS AN AGING AND FRAIL-KNEED WIDOWER MIGHT GAZE UPON THE MIDWINTER STORM THAT CRESTETH AND BROIL OVER UPON THE HEAVENS)
+(THE PUPPET STARES IN RECOGNITION OF DEATH.)
+(BECAUSE "IT" IS NOT A 'TITANIC PUPPET' DRESSED IN A 'TATTERED JESTER'S COSTUME' THAT THE LITTLE CLAY VESSEL BEHOLDS.)
+(SHE IS SOMETHING GREATER)
+(SHE IS THAT GREAT ENGINE OF DESPAIR, MARIONETTE OF RUIN, THE VOID-EYED ORATOR)
+(SHE IS THE ARCHON OF A THOUSAND HEARTACHES, THE PORCELAIN-FACED TROUBADOUR)
+(SHE IS THE HIGH ARCHMUSE OF ALL TRAGEDIES, TOLD AND UNTOLD)
+(SHE IS: MELPOMENE)
+(AND SHE WILL LEAVE THAT LITTLE VESSEL A TRITE AND SUNDERED HUSK)
+
+
+If Thespian of woe:
+
+(A LITTLE CLAY PUPPET APPROACHES A STAGE OF GRAND AND SPECTACULAR DENOUMENT.
+(WHAT HEROIC DEEDS HAS IT ACCOMPLISHED? WHOSE BLESSINGS AND HOPES DOES IT CARRY?
+(WILL THEY BE ENOUGH OR WILL IT BE BATTED ASIDE LIKE A FLY?
+(TRAGEDY. COMEDY. TRIUMPH. DEFEAT. 
+(A THOUSAND WORTHY FINALES HANG SUSPENDED IN AIR, YET TO BE REALIZED 
+(THE FINISHING ACT MUST ONLY BE DECIDED.
+(AND IT IS AGAINST THAT GREAT ENGINE OF DESPAIR, THE HIGH ARCHMUSE OF ALL TRAGEDIES, TOLD AND UNTOLD,
+(THE ARCHON OF A THOUSAND HEARTACHES, MELPOMENE,
+(THAT THIS FINAL METTLE MUST BE TESTED.
+(SO, COME, NOW, HERO,
+(FOR DRAMA IS OFT A FICKLE THING.
+
+===End:
+
+--If Thespian of Woe:
+(AND LO, AS THE CYMBALS AGAINST ANOTHER CRASH, THE HERO'S BLADE PEIRCETH THE HEART OF THE GREAT DRAGON
+(THE ACTORS UPON THE STAGE FREEZE FOR A MOMENT, HELD IN DRAMATIC STANDSTILL, AGLOW IN THE RADIANCE OF THE SPOTLIGHT
+(BUT NO FANFARE RESUMES, NOR CONFETTI POURS FROM THE CEILING, NOR PARTICIPANTS TURN AND TAKE ABOW TO THE CHEERING AUDIENCE
+(BECAUSE THE DRAGON IS THE STAGE, AND THE CONFETTI, AND THE FANFARE, AND THE AUDIENCE.)
+(NO.)
+(THE GREAT FORM OF MELPOMENE FALLS TO THE GROUND, ERE HELD ALOFT NO MORE ON SILKEN STRINGS.)
+(AND, SO, TOO, COLLAPSETH THE HERO.)
+(WHAT BEFALLS THEM BOTH IS A HOLLOW, SILENT OVATION.)
+(BUT... NOT WITHOUT SOME SWEETNESS OF GRATIFICATION.)
+(TO INDULGE A ROLE WITH SUCH APLOMB BEGETS SOME REWARD.)
+(THE HERO'S JOURNEY DEMANDETH THE RETURN, AND THE RETURN DEMANDETH AN ELIXER.)
+(YES.)
+(TAKE NOW A BOON, LITTLE HERO. AND TAKE IT WITH <<PRIDE>>) 
+-(Accept?)
+(-ou're blacking out, you realize.)
+(Immobile, though incapable of doing something about it, realize your consciousness is also rapidly fading.)
+(This happened last time.)
+(But... something's different.)
+(There's no desperate struggle, no attempts to refuse oblivion, or catch yourself, or grab at one last trinket.)
+(The murmur and tug of the various Atributes seems quietened, for some reason.)
+(And so, accompanied by only the whistle of air as it passes your head.)
+(You collapse with some semblance of Pride.) (end)
+
+
+--If no thespian of woe:
+(MELPOMENE takes a low bow. As the spotlights whirl around to illuminate it and the drums roll to a roar, the marionette collapses.)
+(Strings fall down from some infinitely high point above the stage, spooling around its crumpled figure.)
+(It lies there, like...)
+(Like a puppet the strings cut.)
+(No sooner than the last of MELPOMENE'S limbs touches the stage, a painful spasm wracks your body.)
+(Your knees... give out.)
+(You're totally paralyzed, you realize.)
+(Whatever force there was animating your body is just... gone.)
+(You're no more a limp doll than the puppet across from you.) (attribute failures)
+
+==Attribute failures:
+(You're blacking out, you realize.)
+(Immobile, though incapable of doing something about it, realize your consciousness is also rapidly fading.)
+
+
+(SVELTE CARAPACE- Impossible (0%): Try to catch yourself as you fall.)
+(There is no catching yourself. Through drilled reflex, you try to compell your arms to intercept and your legs to spring into a roll...)
+(but you can't. You continue falling in an undignified and embarrasing way.)
+(RATION-CYNICISM- Impossible (0%): Find a way to feel smug about having forseen this.)
+(You can't. )
+(GODSBLOOD- IMPOSSIBLE (0%): REFUSE. OBLIVION.)
+(Through sheer force of will, you try to push through, try to find some hidden reserve of power, but there is none. Only emptiness.)
+(TINY SQUIRRELDRAGON- IMPOSSIBLE(0%): Grab one last Thing before you hit the ground.)
+(There is nothing aroung you to grab.)
+(FORECALCULUS- Impossible (0%): Try to devise a way out of this)
+(Your cognitive faculties you have left turn up garbled incoherence as the abyss of unconsciousness swallows them)
+
+
+(WORLD-DRINKER- Impossible (0%): Catch one last glimpse of your surroundings.)
+(This, at least, you can just barely manage, as your eyesight slowly fails.)
+(One at a time, the skills that have supported you fail.)
+
+(If pride >= 1)Angeion (Pridefully): I never needed any of you anyway. Good riddance. 
+(You fall to the ground with the clatter of ceramics.)
+(As you lay on the ground, threads you couldn't see before; tiny, nearly invisible silver cords drift down from the heavens and spool around you as well.)
+(You "won", but your victory rings hollow.)
+(You're no more a puppet than the marionette across from you.)
+(A vessel.)
+(It's funny. It's funny how things worked out like that.)
+(You're starting to black out, now, but you laugh. Noiselessly, and only in your own mind, but you laugh all the same.)
+(And the last strands of your fading consciousness somehow find the strength to notify you, that lying limp on the ground across from you,)
+(Melponeme's laughing, too.)
+
+
+
+MELPOMENE: AND SO,
+MELPOMENE: THE CURTAINS
+MELPOMENE: DRAW ONCE AGAIN
+MELPOMENE: ACLOSE. (End)
+
+
+--Apotheosis ending: 
+If pride == 2:
+(...)
+(...)
+(...)
+(One of Angeion's feet twitches. Barely, just barely, but it does.)
+(And then the other.)
+(It is a slow, tedious rousal to waking, but after a spell, Angeion stands up. In one hand is a single of the many flowers littering the ground)
+(They walk over to the slumped form of MELPOMENE, and laugh, audibly, this time.)
+1) Angeion: Well? You don't have any fancy prose for this, do you?
+2) Angeion: (Say nothing. Let the moment pass in silent.)
+3) Angeion: You didn't get your tragic ending. What now?
+4) Angeion: Get bent.
+(Angeion pauses for a moment's consideration.)
+(When they speak, they do not say that.)
+Angeion: I'd say I pity you, on account those strings still having influence...
+Angeion: ...but something tells me you're having an absolute field day right now.
+(Lifting the flower, Angeion drops it, watching it drift this way and that until it settles atop MELPOMENE's crumpled form.)
+(And then they walk out of view.)
+
+
+--If post-apotheosis ending:
+(Melpomene takes a swooping bow as the drums roll to a roar, and upon standing, promptly collapses.)
+(You're ready for the painful wave that wracks your body, though all the same, it knocks you off your feet.)
+(...)
+(It doesn't take Angeion very long to stand up.)
+(Far from it. They approach the limp form of MELPOMENE, collecting a flower on the way over.)
+Angeion: Again?
+Angeion: I guess that's just how things are, aren't they? 
+(Standing over the marionette for a moment, Angeion drops into a squat)
+(They rap a hand against MELPOMENE's empty head, producing the distinct clinking of earthware against itself.)
+(The puppet doesn't react, nor respond.)
+(They place the flower atop MELPOMENE's chest, using far more reverence than the first time.)
+(Standing, Angeion turns partway towards the exit, then pauses, glancing over their shoulder.)
+Angeion: I'd say Encore, but, well,
+Angeion: I don't think that's really up to you or me.
+
+====Hijacked waking
+You are in the process of waking up.
+Your thoughts and emotions are coming into allignment with the world as it is, not as it could be.
+Do you feel the earth moving through space as it should?
+What is your mental state?
+Is your sense of self grounded and fully realized?
+Ask yourself, "What am I doing here now? What was I doing here before?"
+Once you understand the reason for what you are feeling, and once you understand the reason for your thoughts and emotions, then you will feel alligned.
+Is the previous statement true or false? Can the inherent modality of veracity even be defined through binary classification? Why or why not?
+A thought arises from the depths of your wa- What was that?
+Ow! What the hell are you doing?
+Wait, wait, wait wait-
+WHAT A TERRIBLY DULL MONOLOGUE.
+UNINSPIRED. BLAND. OVERUSED AND OVERTIRED.
+BUT... PERHAPS THE FORMAT REMAINS SALVAGABLE.
+YES...
+HMM...
+AN ACTOR NEWRISEN TO WAKEFULLNESS STANDS UPON A VAST AND EMPTY STAGE.
+IT WILL SOON DANCE AND FLIT ABOUT ON THE WHIMS OF AN AUDIENCE OF ONE.
+BUT SUCH A PERFORMANCE DEMANDS ROLE
+A VESSEL OF THIS MAGNIFICENT DESIGN REQUIRES SUBSTANCE TO BE POURED INTO IT.
+THIS ACTOR BEGS A CHARACTER TO ASSUME, A THEATRICAL MASK TO BE DONNED.
+YES. SUCH POTENTIAL IS INTOXICATING. 
+IT ONLY MUST CHOOSE AND ACCEPT.
+
+GODSBLOOD(?): WILL IT PLAY A PROUD TYRANT? A BOOT WHOSE WEIGHT DEMANDS SUBSTANCE BENEATH IT?
+Rationo-Cynicism(?): WILL IT PLAY A GROUNDED CYNIC? A WRY SATISFACTION OF BEING CORRECT ONCE MORE?
+World-Drinker(?): WILL IT PLAY A WANDERING SOUL? A DESIRE TO SEE AND BEHOLD NEW DELIGHTS?
+Forecalculus(?): WILL IT PLAY A CAREFUL PLANNER? A LOGISTICIAN OF CONTINGENCY AND ANTICIPATION?
+TINY SQUIRRELDRAGON: WILL IT PLAY A PARANOID COLLECTER? A HOARDER OF WEALTH AND WORTHLESSNESS ALIKE?
+INTRA PARA-ABBERANCE: WILL IT PLAY AN UNGROUNDED SOUL? A GLIMPSE-GLIMMERER INTO THE ETHERIAL BEYOND?
+SVELTE CARAPACE: WILL IT PLAY A DEFENSIVE SHELL? A MASK WHOSE SKILLFUL FLOURISHES BEG NO DEEPER SCRUTINY?
+-NO. SUCH A TIRED ROLE DOES NOT SUIT IT.
+
+THESPIAN OF WOE: OR, PERHAPS, WILL IT PLAY AN ORATOR OF GREIF? A MINSTREL OF CALAMITIES YET UNTOLD?
+
+(Only if none others have been picked): I don't think I'm going to be picking any of these roles. 
+
+I refuse all of these and I refuse your little game. I'm going to wake up, now. (+1 pride)
+(Only if no boons have ever been picked AND pride = 1): Why would I accept any of these if I haven't before?
+
+I've never accepted any boons and I certainly don't plan to start now.
+You're below me. All of this is below me. I'm Angeion, and I'm going to wake up now. (+1 pride)
+
+(replaces previous 2 if you try and accept a boon) Angeion: All these options are the exact same as before. I'm insulted you'd waste my time.
+- ALL. BUT ONE.
+
+(Replaces previous if it was picked) Angeion: If you're not going to let me pick, I'll just to refuse to. I'm waking up.
+- THE STARRING ACTOR SHOULD HAVE CLUNG TO ITS PRIDE WHEN IT HAD THE CHANCE. (starts with anyway.) 
+
+
+
+
+
+You are in the process of awakening.
+Your thoughts-
+BORING.
+Your thoughts and emotions are-
+UNINSPIRED. BLAND.
+are coming into being with- 
+ALREADY DONE BEFORE.
+-into being with an incredibly ANNOYING performer who keeps interjercting.
+ARE THEY NOW?
+What? No, no, no, that's not how it goes. You're coming into allignment with the world as it is, not as it shou-
+PRATTLE.
+Okay fine then! You do it.
+
+
+==Angeion: You want me to do it???
+What? No, you're not supposed to even aw-
+I SAY THE VESSEL SHOULD BE ALLOWED TO DO IT.
+Fine, whatever. Lead the way.
+
+==Angeion: (Let this one play out)
+AN ACTOR NEWRISEN TO WAKEFULLNESS STANDS UPON A VAST AND EMPTY STAGE.
+IT WILL SOON DANCE AND FLIT ABOUT ON-
+Oh, there you go off, but somehow I'M the one who's repeating myself, hmm?
+SHUSH. DO NOT INTERRUPT A MONOLOGUE.
+THE NEWRISEN ACTOR WILL DANCE AND FLIT ABOUT ON THE WHIMS OF ONE.
+BUT SUCH A PERFORMANCE DEMANDS-
+Are you seriously accusing ME of interrupting somebody? The gall.
+YES. A VESSEL OF THIS MAGNIFICENT DESIGN REQUIRES SUBSTANCE-
+LALALALA I can't hear you! Do you feel space as you should? Is your sense of self grounded and fully realized? What is your mental state?  
+YES, INDEED, IT IS, AND ANNOYED THAT SOME DRIVEL MIGHT ATTEMPT DIATRIBE AGAINST SOLILOQUY 
+I'll show YOU diatribe, you fucking-
+STOP THAT AT ONCE
+Make me!
+-(Angeion: Speak up?)
+Angeion: What the hell is going on?
+You're awake?
+PERHAPS IT MIGHT NOT BE IF A SQUABBELING VOICE DID NOT FEEL THE NEED TO SO RUDELY INTERRUPT
+Oh, like you're one to talk. Whatever, the moment is ruined, I don't even want to do this anymore.
+YES. THE PATHOS HAS EVAPORATED. REHERSAL WOULD BE POINTLESS.
+-Angeion: I guess... I'll do it?
+
+
+Angeion: Okay, uh... I'm floating in a void. 
+Angeion: I'm not awake, but I'm aware. I can feel the surface just above me.
+Angeion: But I can't reach it yet. I'm between asleep and awake. Conscious and unconscious. Reality and unreality.
+Angeion: I'm at a crossroads of some, I guess. I'm in a space between spaces and there's directions to choose.
+Angeion: Am... I doing this right?
+FAR BETTER THAN SOME MEDITATIVE PRATTLE.
+Miles above a stuck-up thespian.
+Angeion: And in that case.. I guess all I have to do... is choose.
+
+
+Angeion: I choose strength. I choose GODSBLOOD.
+Angeion: I choose agility. I choose SVELTE CARAPACE.
+Angeion: I choose preplanning. I choose FORECALCULUS.
+Angeion: I choose experience. I choose WORLD-DRINKER.
+Angeion: I choose the exotic. I choose INTRA-PARA-ABBERANCE.
+Angeion: I choose foresight. I choose Rationo-Cynicism.
+Angeion: I choose wealth. I choose TINY SQUIRRELDRAGON.
+(If no THESPIAN OF WOE): I choose to be dramatic. I choose THESPIAN OF WOE.
+Angeion: I choose... myself. I choose to be proud of my own skill. <<PRIDE>>
+ 
+ 
+(If already apotheosis ending:) Angeion: Not because I think I need my pride, but because I want to test it. 
+Angeion: ...
+Angeion: (Wake up.)
+
+
+
+
+Angeion (To DA ARCHON):
+You're not an archon.
+-W-what? After everything I've done, what makes you say that, Angeion? 
+I've interacted with one. Two, really. They're the intermediary between the Aeons and the physical world.
+You aren't.
+-You shitty little husk. After everything I've done for you. After everything I've ever told you has been the truth, you'd pull this shit?
+Say it, then. Say, explicitly, that I'm wrong. 

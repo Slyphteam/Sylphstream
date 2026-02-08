@@ -5,7 +5,8 @@ class_name PICKUPABLE extends RAYCASTREACTIVE
 @export var thingToGive: INVENITEMPARENT #CHANGE THIS TO INVWEP
 
 func _ready():
-	thingToGive = thingToGive.duplicate() #ensure we are never operating with the "template" data
+	if(thingToGive):
+		thingToGive = thingToGive.duplicate() #ensure we are never operating with the "template" data
 
 func interact_By_Player(player):
 	
@@ -20,6 +21,7 @@ func do_consume(player):
 		for val in thingToGive.amtArr: #the invenmanager will update the held item's counts of ammo
 			if(val != 0):
 				print("Didn't pick up all the ammo! preserving box!")
+				result = false
 
 	if (result == true): #success
 		var theRoot

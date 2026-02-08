@@ -6,26 +6,6 @@ Who is Angeion? whoever they need to be to as the PC. From greek for vessel.
 As far as Sylphstream has a coherent setting, Angeion is a construct with agency and self awareness. Has at least some 
 kind of spiritual influence. Should resemble Millian a little, but not too much. Defo the mask at least.
 
-THIS VESSEL LIES SUNDERED
-YET THE AEONS' TUG STILL LAPS AT ITS BROKEN FORM
-
-LET SPIN ONCE MORE THE WHEEL OF DHARMA
-TAKE NOW A GENTLE REPOSE
-
-YOU ARE A SHATTERED, TRITE, DEFEATED HEAP OF CARNAGE
-WILL YOU STAY THIS WAY?
-
-GRASP AGAIN THAT SILVER THREAD
-SUBSIDE; SUCCUMB; SUBMIT
-
-YOU ARE AN BROKEN CONTAINER; A LIFELESS AND DISFIGURED HUSK
-WHAT SAY YOU IN REPLY?
-
-SAY THAT ALIVE YOU NEVER WERE, THAT BROKEN CAN BE MENDED, THAT YOU STILL ARE AND STILL WILL BE
-SAY NOTHING, SAY NOTHING, SAY NOTHING
-
-
-
 ====+====> Aeonic Glimmer
 Spectre-like NPC, is the most common in rest areas. Speaks mostly gibberish, but has a chance to cause random npc triggers.
 
@@ -291,6 +271,37 @@ It looks pretty, right? But I have no goddamn clue how it actually makes those..
 I mean, what the hell? It's got no fingers or nothing and I really hope there's no slobber up in those things on account of it using its mouth.
 (unlocks chimera stupid question)
 
+======> Quests:
+
+ANGEION: Any jobs?
+Yea, sure, kid, I think I got somethin' for ya
+Didn't I already give ya one? Get off yer ass and go do that before you come 'round asking for something else.
+Not really. Unless you're a licensed divorce laywer? / Nope. I'm all set for now.
+
+SLOPMAXXING:
+Yeah, uh, sure, I got somethin'. (She lets loose several uncovered tobacco-addled coughs that speckle saliva across your faceplate before continuing.)
+See, I need, uhhh, fuckin.. Idunno, like, maybe fifteen units of springtail slop. For reasons. Don't ask questions.
+Do me this and I'll bust out somethin' REAL special that I promise you'll totally love, or hate, or have nuanced opinions on.
+And that there's a Trustworthy Greg Guarantee..
+1)Springtail slop? 
+You know those plastic gummy bug things, Springtails? Their insides are gooey. Sometimes you can collect the fluids after killing one, just don't eat any of it.
+2)(Squirreldragon) (Ponder the difficulty associated with gathering FIFTEEN whole entire units of springtail slop for this maniac.)
+Success: What could you possibly need FIFTEEN units of springtail slop for? Do you have any idea how hard it is to collect that much, Greg? Fifteen? Seriously?
+-Okay, fine, whatever, I pulled that number outta my ass. If it's really that hard, I'll make do with eight units, okay? Is that better?
+Failure: That seems like an entirely rational and normal amount of slop to request. I love you, Greg.
+-I love you too, kid. Hell, since we're chums, can you actually get me eighteen units instead? May as well stock up.
+3) Whatever you say, boss
+-Sayonara, kiddo.
+4) Okay, but what ARE you going to do with all that slop?
+-You don't want to know.
+I think I do, actually.
+Trust me. There's some facts you're better off without.
+-Maybe this isn't one of thhose facts?
+What I do with my slop ain't pretty, kid. You absolutely certain you wanna know?
+(Svelte Carapace) (Affirm your desire to know what unholy things Greg does with her slop)
+Failure: I LOVE slop and I REALLY reeally want to know what you do with it PLEASE PLEASE PLEASE PLEASE PLEASE tell me
+Success: If I'm the one collecting it, yeah, I think that's reasonable?
+(Regardless): Now you seem a little too excited to find out. Pervert. Mama's gotta slop it up and she DON'T like it when you PRY.
 
 
 	====+====> The Twelph arbiter
