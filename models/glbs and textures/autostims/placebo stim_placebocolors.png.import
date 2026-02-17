@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd7jlt4v558qi"
-path.s3tc="res://.godot/imported/placebo stim_placebocolors.png-c48f2652cfbe184b90436a886e7389bc.s3tc.ctex"
+uid="uid://bowf6t2papnsk"
+path.s3tc="res://.godot/imported/placebo stim_placebocolors.png-712797f542f063ea7f71d86fbe694529.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://textures/pickups/stims/placebo stim_placebocolors.png"
-dest_files=["res://.godot/imported/placebo stim_placebocolors.png-c48f2652cfbe184b90436a886e7389bc.s3tc.ctex"]
+source_file="res://models/glbs and textures/autostims/placebo stim_placebocolors.png"
+dest_files=["res://.godot/imported/placebo stim_placebocolors.png-712797f542f063ea7f71d86fbe694529.s3tc.ctex"]
 
 [params]
 
