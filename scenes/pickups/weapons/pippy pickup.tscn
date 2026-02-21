@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ce6f6v2tytbe5"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_phk6s"]
+[ext_resource type="Resource" uid="uid://dkx2radorqe4f" path="res://scripts/utility/invSystem/invData/invWeapons/pippyInvData.tres" id="2_phk6s"]
+[ext_resource type="ArrayMesh" uid="uid://samp43jrejg0" path="res://models/glbs and textures/guns/pippyMesh.res" id="3_r3xl3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mxptg"]
+points = PackedVector3Array(-0.046496503, 0.049731374, 0.18317208, -0.046496503, -0.19979918, 0.14481166, -0.0017289035, -0.19979918, 0.14481166, -0.046496503, 0.043311037, -0.19429919, 0.02524797, 0.059192687, -0.07083936, -0.0017289035, -0.014248364, -0.19429919, -0.07849921, 0.024113923, -0.07909771, -0.0017289035, 0.12651983, 0.03598353, -0.046496503, -0.11659039, -0.07909771, -0.0037, 0.036272325, 0.1737782, -0.027301261, 0.1200995, -0.16227207, -0.046496503, -0.17418174, 0.2151992, -0.046496503, 0.12651983, 0.05518378, 0.03026316, 0.017725535, 0.03598353, -0.07849921, 0.024113923, 0.03598353, 0.03026316, 0.017725535, -0.07909771, -0.0037, -0.1620728, 0.19717346, -0.0037, -0.109551676, -0.071214095, -0.046496503, -0.014248364, -0.19429919, -0.014525728, 0.113711104, -0.16868551, -0.06920418, 0.068581656, -0.07371058, -0.046496503, -0.12939912, 0.2151992, -0.0037, -0.121232755, 0.19717346, -0.046496503, 0.043311037, 0.18954544, -0.046496503, -0.123010725, -0.066310905, -0.046496503, -0.19979918, 0.16393174, 0.0203106, 0.0729393, -0.07246479, -0.033699676, 0.10090239, -0.17509894, -0.046496503, 0.12651983, 0.03598353, -0.033699676, 0.07531688, -0.18788575, -0.0037, 0.042127427, 0.16796595, -0.0037, -0.11540678, -0.05955302)
+
+[node name="Pippy" type="Node3D" unique_id=1381016235]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=517118854 groups=["player_interactible"]]
+collision_layer = 4
+collision_mask = 17
+script = ExtResource("1_phk6s")
+thingToGive = ExtResource("2_phk6s")
+
+[node name="PippyMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=856032032]
+transform = Transform3D(-4.3711385e-08, 4.3711392e-08, -1, 1, -4.371139e-08, -4.371139e-08, -4.3711392e-08, -1, -4.371139e-08, 0.044712126, 0, -0.027884992)
+mesh = ExtResource("3_r3xl3")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1663445206]
+transform = Transform3D(-4.3711385e-08, 4.3711392e-08, -1, 1, -4.371139e-08, -4.371139e-08, -4.3711392e-08, -1, -4.371139e-08, 0.044712126, 0, -0.027884992)
+shape = SubResource("ConvexPolygonShape3D_mxptg")
