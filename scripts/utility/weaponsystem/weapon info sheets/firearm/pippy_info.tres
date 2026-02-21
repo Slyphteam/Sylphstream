@@ -1,21 +1,23 @@
 [gd_resource type="Resource" script_class="FIREARM_INFO" format=3 uid="uid://dfncjlr0tf1ob"]
 
-[ext_resource type="AudioStream" uid="uid://c7xne0xmb6kea" path="res://sounds/gunshots/pistolcarbine.mp3" id="1_lxfab"]
+[ext_resource type="AudioStream" uid="uid://cewguhpp8jtag" path="res://sounds/gunshots/pippyReset.mp3" id="1_hxa2p"]
 [ext_resource type="ArrayMesh" uid="uid://samp43jrejg0" path="res://models/glbs and textures/guns/pippyMesh.res" id="2_hxa2p"]
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/weapon info sheets/FIREARMINFO.gd" id="3_0fbr4"]
+[ext_resource type="AudioStream" uid="uid://bedgiw7yjd5td" path="res://sounds/reloads/pippyLoad.mp3" id="3_387bq"]
 [ext_resource type="ArrayMesh" uid="uid://c6lohbhtkrass" path="res://models/glbs and textures/decals/mags/pippyCyl.tres" id="4_387bq"]
 
 [resource]
 script = ExtResource("3_0fbr4")
-gunshot = ExtResource("1_lxfab")
+gunshot = ExtResource("1_hxa2p")
+reload = ExtResource("3_387bq")
 bulletVariance = 1
-shotCooldown = 16
+shotCooldown = 45
 chambering = 0
 maxCapacity = 6
 minRecoil = 15.0
 recoilAmount = 4.0
 ejectOnReload = true
-reloadtime = 2.0
+reloadtime = 2.5
 allowPlus1 = false
 wepName = &"Pippy"
 wepDesc = &"Plastic revolva"

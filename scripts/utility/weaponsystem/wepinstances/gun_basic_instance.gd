@@ -338,7 +338,7 @@ func startReload():
 	
 	
 	
-	if(weaponSheet.ejectOnReload && !ejected): #revolvers, double barrel shotguns, and such
+	if(weaponSheet.ejectOnReload && !ejected && weaponSheet.doCasing): #revolvers, double barrel shotguns, and such
 		for x in range(weaponSheet.maxCapacity - capacity):
 			eject_Casing()
 		ejected = true

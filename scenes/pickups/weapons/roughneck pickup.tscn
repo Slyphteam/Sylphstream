@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cw5lkmg15e2he" path="res://resources/image resources/itemIcons/weaponIcons/roughneckIcon.png" id="2_01h2q"]
 [ext_resource type="Script" uid="uid://cy4ktyukcktf8" path="res://scripts/utility/invSystem/invitem generics/INVITEM_WEAPON.gd" id="3_hgmwa"]
 [ext_resource type="Resource" uid="uid://ce6gu7vvy2dia" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/roughneck_info.tres" id="4_0vtfw"]
-[ext_resource type="ArrayMesh" uid="uid://d30cstjedvvkq" path="res://models/glbs and textures/guns/roughneckMesh.res" id="5_hhcua"]
+[ext_resource type="ArrayMesh" uid="uid://yea6nd03v51p" path="res://models/glbs and textures/guns/roughneckMesh.res" id="5_hhcua"]
 
 [sub_resource type="Resource" id="Resource_gw7ae"]
 script = ExtResource("3_hgmwa")

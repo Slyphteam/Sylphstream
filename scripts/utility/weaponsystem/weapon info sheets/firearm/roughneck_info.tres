@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/weapon info sheets/FIREARMINFO.gd" id="1_a3fgg"]
 [ext_resource type="AudioStream" uid="uid://cxxcgsoaclcp5" path="res://sounds/gunshots/gunshotRifleHigh.mp3" id="1_vqgl0"]
-[ext_resource type="ArrayMesh" uid="uid://d30cstjedvvkq" path="res://models/glbs and textures/guns/roughneckMesh.res" id="2_aus3m"]
+[ext_resource type="ArrayMesh" uid="uid://yea6nd03v51p" path="res://models/glbs and textures/guns/roughneckMesh.res" id="2_aus3m"]
+[ext_resource type="AudioStream" uid="uid://bvrmp0itopmyu" path="res://sounds/reloads/roughneckShell.mp3" id="3_aus3m"]
 
 [resource]
 script = ExtResource("1_a3fgg")
 gunshot = ExtResource("1_vqgl0")
+reload = ExtResource("3_aus3m")
 bulletVariance = 1
 chambering = 4
 maxCapacity = 2
@@ -21,7 +23,9 @@ ejectOnReload = true
 singleReloadOverride = true
 allowPlus1 = false
 pelletAMT = 8
+wepName = &"Roughneck"
 mesh = ExtResource("2_aus3m")
 damage = 6
 selections = Array[int]([2, 3])
+position = Vector3(0.4, -0.3, -0.7)
 metadata/_custom_type_script = "uid://b24hqmuxy0hut"
