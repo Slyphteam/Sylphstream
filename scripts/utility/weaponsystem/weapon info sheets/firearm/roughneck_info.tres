@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="FIREARM_INFO" format=3 uid="uid://ce6gu7vvy2dia"]
+
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/weapon info sheets/FIREARMINFO.gd" id="1_a3fgg"]
+[ext_resource type="AudioStream" uid="uid://cxxcgsoaclcp5" path="res://sounds/gunshots/gunshotRifleHigh.mp3" id="1_vqgl0"]
+[ext_resource type="ArrayMesh" uid="uid://d30cstjedvvkq" path="res://models/glbs and textures/guns/roughneckMesh.res" id="2_aus3m"]
+
+[resource]
+script = ExtResource("1_a3fgg")
+gunshot = ExtResource("1_vqgl0")
+bulletVariance = 1
+chambering = 4
+maxCapacity = 2
+aimBonus = 15.0
+minRecoil = 20.0
+recoilAmount = 25.0
+viewpunchMult = 2.0
+recoverAmount = 0.3
+doCasing = true
+casingPath = "res://scenes/trivial/decals/12gCasing.tscn"
+ejectOnReload = true
+singleReloadOverride = true
+allowPlus1 = false
+pelletAMT = 8
+mesh = ExtResource("2_aus3m")
+damage = 6
+selections = Array[int]([2, 3])
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"
