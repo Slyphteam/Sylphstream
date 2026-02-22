@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccdjs06iean8d"
-path.s3tc="res://.godot/imported/buttonmodel_buttontex.png-5d329a0c4720e3c19d2535e3c62a2139.s3tc.ctex"
+uid="uid://cqceb6wq628fl"
+path.s3tc="res://.godot/imported/radiance1.png-66e401f870d070fae6c9287a50cf6580.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "dfc0ac1d59d82d6cfdbd9979b6f42383"
-}
 
 [deps]
 
-source_file="res://textures/entities/buttonmodel_buttontex.png"
-dest_files=["res://.godot/imported/buttonmodel_buttontex.png-5d329a0c4720e3c19d2535e3c62a2139.s3tc.ctex"]
+source_file="res://textures/entities/aeonic/radiance1.png"
+dest_files=["res://.godot/imported/radiance1.png-66e401f870d070fae6c9287a50cf6580.s3tc.ctex"]
 
 [params]
 

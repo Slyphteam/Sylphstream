@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4lj8xc81qe0i"
-path.s3tc="res://.godot/imported/button separate_buttontex.png-46abea52652d7e5a8d27a4a201b36fd8.s3tc.ctex"
+uid="uid://dhps0q2h3r36l"
+path.s3tc="res://.godot/imported/buttonpurple_buttonpurple.png-fc3987a292f4db21f5cb9fc38e1eefcc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dfc0ac1d59d82d6cfdbd9979b6f42383"
+"md5": "5590afda9202f75ee01267dbd4e5f1a4"
 }
 
 [deps]
 
-source_file="res://textures/entities/button separate_buttontex.png"
-dest_files=["res://.godot/imported/button separate_buttontex.png-46abea52652d7e5a8d27a4a201b36fd8.s3tc.ctex"]
+source_file="res://textures/entities/misc/buttonpurple_buttonpurple.png"
+dest_files=["res://.godot/imported/buttonpurple_buttonpurple.png-fc3987a292f4db21f5cb9fc38e1eefcc.s3tc.ctex"]
 
 [params]
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://dgvbo3hu3kqul" path="res://scenes/entities/aeonic/radiant.tscn" id="2_6gvyl"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/player_flavor.gd" id="2_f4klr"]
 [ext_resource type="AudioStream" uid="uid://dvklbsnlwomcb" path="res://sounds/ambient/windchimes.ogg" id="2_ogpgs"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
@@ -69,6 +70,9 @@ expand_margin_left = 10.0
 [node name="Player" type="CharacterBody3D" unique_id=433199677 groups=["damage_interactible", "has_manager", "hit_decal_blacklist"]]
 collision_layer = 3
 script = ExtResource("1_qlg0r")
+
+[node name="theRadiance" parent="." unique_id=817356158 instance=ExtResource("2_6gvyl")]
+transform = Transform3D(-3.322108, 1.8490618, -3.2472398, -2.431677, -4.368861, 0, -2.8373482, 1.579248, 3.8020294, -18.370216, 85.2662, -13.0410185)
 
 [node name="windambience" type="AudioStreamPlayer" parent="." unique_id=1526332551]
 stream = ExtResource("2_ogpgs")

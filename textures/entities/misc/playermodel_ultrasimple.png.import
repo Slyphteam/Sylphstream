@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cadykh1ve5u8q"
-path.s3tc="res://.godot/imported/button stand_buttonstandmaybe.png-cddd712a580f6f54427e738c1ecec24d.s3tc.ctex"
+uid="uid://806n6fd6s5ea"
+path.s3tc="res://.godot/imported/playermodel_ultrasimple.png-ba0fd9f61f23ca93e27fb96c1ae956b1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "5cdd4376fbdc88a57a81951d8cec1c24"
+"md5": "61ab8c92535f1e5d2c0937b6547ff48e"
 }
 
 [deps]
 
-source_file="res://textures/entities/button stand_buttonstandmaybe.png"
-dest_files=["res://.godot/imported/button stand_buttonstandmaybe.png-cddd712a580f6f54427e738c1ecec24d.s3tc.ctex"]
+source_file="res://textures/entities/misc/playermodel_ultrasimple.png"
+dest_files=["res://.godot/imported/playermodel_ultrasimple.png-ba0fd9f61f23ca93e27fb96c1ae956b1.s3tc.ctex"]
 
 [params]
 

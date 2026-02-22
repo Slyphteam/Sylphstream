@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg4f0xkgc8nq3"
-path.s3tc="res://.godot/imported/bullet decal_target.png-88de7ef6cee190b8a572252e65c9c88a.s3tc.ctex"
+uid="uid://ccdjs06iean8d"
+path.s3tc="res://.godot/imported/buttonmodel_buttontex.png-6e178f939a113b385e1293422a00322d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "5284dc4a33da38a6cd91b7a357ac7bb3"
+"md5": "dfc0ac1d59d82d6cfdbd9979b6f42383"
 }
 
 [deps]
 
-source_file="res://textures/entities/bullet decal_target.png"
-dest_files=["res://.godot/imported/bullet decal_target.png-88de7ef6cee190b8a572252e65c9c88a.s3tc.ctex"]
+source_file="res://textures/entities/misc/buttonmodel_buttontex.png"
+dest_files=["res://.godot/imported/buttonmodel_buttontex.png-6e178f939a113b385e1293422a00322d.s3tc.ctex"]
 
 [params]
 

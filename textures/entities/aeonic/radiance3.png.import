@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfx2hrmoc81sh"
-path.s3tc="res://.godot/imported/sporting clay_claytex.png-8511c8b75843a06d11a9dd2a756e7676.s3tc.ctex"
+uid="uid://cp8534jvbcds4"
+path.s3tc="res://.godot/imported/radiance3.png-456fcd0387c493c17c813212440c854c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "ae35d0eb59368f56037d9853cc6668fc"
-}
 
 [deps]
 
-source_file="res://textures/entities/sporting clay_claytex.png"
-dest_files=["res://.godot/imported/sporting clay_claytex.png-8511c8b75843a06d11a9dd2a756e7676.s3tc.ctex"]
+source_file="res://textures/entities/aeonic/radiance3.png"
+dest_files=["res://.godot/imported/radiance3.png-456fcd0387c493c17c813212440c854c.s3tc.ctex"]
 
 [params]
 
