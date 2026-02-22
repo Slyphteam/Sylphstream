@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="FIREARM_INFO" format=3 uid="uid://brceqef45ncqx"]
+
+[ext_resource type="AudioStream" uid="uid://dlr2qyn1ytbga" path="res://sounds/gunshots/shotgunHigh.mp3" id="1_mk854"]
+[ext_resource type="ArrayMesh" uid="uid://de2cnqdviuq3s" path="res://models/glbs and textures/guns/yeomanMesh.tres" id="2_sudr7"]
+[ext_resource type="AudioStream" uid="uid://bvrmp0itopmyu" path="res://sounds/reloads/roughneckShell.mp3" id="3_36srv"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/weaponsystem/weapon info sheets/FIREARMINFO.gd" id="4_jnire"]
+
+[resource]
+script = ExtResource("4_jnire")
+gunshot = ExtResource("1_mk854")
+reload = ExtResource("3_36srv")
+bulletVariance = 1
+shotCooldown = 5
+chambering = 4
+maxCapacity = 2
+aimBonus = 20.0
+minRecoil = 20.0
+recoilAmount = 15.0
+viewpunchMult = 1.5
+recoverAmount = 0.6
+doCasing = true
+casingPath = "res://scenes/trivial/decals/12gCasing.tscn"
+ejectOnReload = true
+reloadtime = 0.7
+allowPlus1 = false
+pelletAMT = 12
+wepName = &"Yeoman"
+mesh = ExtResource("2_sudr7")
+damage = 17
+selections = Array[int]([4])
+position = Vector3(0.4, -0.3, -0.7)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"

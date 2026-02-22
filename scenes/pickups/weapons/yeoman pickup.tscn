@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cq7nruj18yk7h"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_bkvsf"]
+[ext_resource type="Resource" uid="uid://b1q5w2s8b4mim" path="res://scripts/utility/invSystem/invData/invWeapons/yeomanInvData.tres" id="2_l1y36"]
+[ext_resource type="ArrayMesh" uid="uid://de2cnqdviuq3s" path="res://models/glbs and textures/guns/yeomanMesh.tres" id="3_l1y36"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f1wik"]
+points = PackedVector3Array(-0.017379561, -0.18914557, 0.8394501, 0.009596188, -0.18914557, 0.8394501, -0.057850447, -0.0138078295, -0.95474553, 0.063562214, -0.0003087297, -0.95474553, -0.07134558, 0.013215464, 0.4077721, 0.036571935, -0.027281836, 0.86640733, -0.04435531, 0.053662572, -0.90065014, 0.07705735, -0.0003087297, 0.394203, 0.050067075, 0.053662572, -0.80620927, -0.04435531, -0.13517426, 0.87997645, 0.036571935, -0.16214737, 0.87997645, -0.017379561, -0.0138078295, 0.8935455, -0.039573554, 0.054205537, 0.35117707, 0.044636656, 0.052444585, 0.34534046, -0.07134558, -0.0003087297, -0.5093175, 0.050067075, -0.0138078295, -0.95474553, 0.063562214, 0.040163476, -0.92742646, -0.057850447, 0.040163476, -0.95474553, -0.04435531, -0.05428003, 0.87997645, -0.03086017, -0.17564647, 0.8530192, 0.05813037, 0.04340471, 0.3685477, 0.07705735, -0.0003087297, 0.08392312, -0.061924104, 0.039106302, 0.3402651, 0.050067075, -0.081202954, 0.8530192, 0.036571935, 0.053662572, -0.95474553, 0.009596188, -0.0138078295, 0.8935455, 0.036571935, -0.16214737, 0.8260619, -0.07134558, -0.0003087297, 0.394203, -0.03086017, -0.027281836, 0.8935455, 0.036571935, -0.04078093, 0.8935455, -0.04435531, -0.081202954, 0.8935455, 0.050067075, -0.10817607, 0.8530192)
+
+[node name="Yeoman" type="Node3D" unique_id=1706651239]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=596015066 groups=["player_interactible"]]
+collision_layer = 5
+collision_mask = 17
+script = ExtResource("1_bkvsf")
+thingToGive = ExtResource("2_l1y36")
+
+[node name="YeomanMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=1356855991]
+mesh = ExtResource("3_l1y36")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1681345812]
+shape = SubResource("ConvexPolygonShape3D_f1wik")

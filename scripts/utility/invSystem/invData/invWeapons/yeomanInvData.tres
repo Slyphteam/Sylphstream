@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="INVWEP" format=3 uid="uid://b1q5w2s8b4mim"]
+
+[ext_resource type="Texture2D" uid="uid://cw5lkmg15e2he" path="res://resources/image resources/itemIcons/weaponIcons/roughneckIcon.png" id="1_1867t"]
+[ext_resource type="Script" uid="uid://cy4ktyukcktf8" path="res://scripts/utility/invSystem/invitem generics/INVITEM_WEAPON.gd" id="2_rlti4"]
+[ext_resource type="Resource" uid="uid://brceqef45ncqx" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/yeoman_info.tres" id="3_1867t"]
+
+[resource]
+script = ExtResource("2_rlti4")
+weapInfoSheet = ExtResource("3_1867t")
+itemName = "Yeoman"
+itemDesc = "An elaborately-engraved hunting shotgun with a full barrel and a tight choke."
+itemIcon = ExtResource("1_1867t")
+itemEntScene = "res://scenes/pickups/weapons/yeoman pickup.tscn"
+itemTyp = "WEP"
+metadata/_custom_type_script = "uid://cy4ktyukcktf8"

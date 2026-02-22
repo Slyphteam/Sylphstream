@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://c1comohc3tpa5" path="res://scenes/entities/player.tscn" id="25_vxy5b"]
 [ext_resource type="PackedScene" uid="uid://d24b440rmbmsm" path="res://scenes/environments/sylphstream_pit.tscn" id="26_nyw3s"]
 [ext_resource type="PackedScene" uid="uid://bipjbb3776vms" path="res://scenes/utilities/buttons/player_shoot_scene.tscn" id="27_4qvx4"]
+[ext_resource type="PackedScene" uid="uid://cq7nruj18yk7h" path="res://scenes/pickups/weapons/yeoman pickup.tscn" id="27_7jqqp"]
 [ext_resource type="PackedScene" uid="uid://miqixjbi8xeb" path="res://scenes/utilities/buttons/debugtracebutton.tscn" id="28_1ieyi"]
 [ext_resource type="PackedScene" uid="uid://b7fuapjfoq1ld" path="res://scenes/utilities/buttons/coneandSphere.tscn" id="29_i07vp"]
 [ext_resource type="PackedScene" uid="uid://jgq76rwq30xg" path="res://scenes/pickups/ammo/starter_ammobox.tscn" id="31_k3qjg"]
@@ -559,7 +560,7 @@ transform = Transform3D(-0.496429, 0, 0.868078, 0, 1, 0, -0.868078, 0, -0.496429
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052803, 1.19031, -3.73796)
 
 [node name="Affine" parent="Environment/Range/range table" unique_id=1975510890 instance=ExtResource("7_nnc13")]
-transform = Transform3D(-0.0168526, -0.85464, -0.518947, -0.0277394, 0.519221, -0.85419, 0.999473, 0, -0.0324574, -0.949348, 0.766859, 4.57591)
+transform = Transform3D(-0.0168526, -0.85464, -0.518947, -0.0277394, 0.519221, -0.85419, 0.999473, 0, -0.0324574, -0.9493475, 0.76685905, 4.975527)
 
 [node name="Fourier9" parent="Environment/Range/range table" unique_id=1439346671 instance=ExtResource("8_7jqqp")]
 transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, 0.0664558, 1.08027, -2.94365)
@@ -634,10 +635,10 @@ transform = Transform3D(-0.0698235, 0.260585, -0.962923, 0.965926, 0.258819, -4.
 transform = Transform3D(0.399901, 2.83885e-08, -0.916558, 8.71384e-08, -1, 7.04619e-09, -0.916558, -8.26852e-08, -0.399901, 0.146201, 0.879804, -0.639597)
 
 [node name="Relata" parent="Environment/Range/range table" unique_id=64714504 instance=ExtResource("19_ejflf")]
-transform = Transform3D(0.469364, -0.883005, 0, 0.883005, 0.469364, 0, 0, 0, 1, -1.19443, 0.902497, 3.2809)
+transform = Transform3D(0.54486734, 0.8382771, 0.020279547, 0.8114036, -0.52099055, -0.26494023, -0.21152788, 0.1608122, -0.9640515, -0.85334015, 0.90249705, 3.74724)
 
 [node name="Corollary" parent="Environment/Range/range table" unique_id=1140747710 instance=ExtResource("20_0e1lj")]
-transform = Transform3D(0.874484, -2.12024e-08, -0.485054, -0.485054, -3.82249e-08, -0.874484, 0, 1, -4.37114e-08, -1.17638, 0.843119, 3.89375)
+transform = Transform3D(0.874484, -2.1202403e-08, -0.485054, -0.485054, -3.82249e-08, -0.874484, 0, 1, -4.37114e-08, -1.1763802, 0.843119, 4.4851093)
 
 [node name="9mmBox" parent="Environment/Range/range table" unique_id=868002268 instance=ExtResource("21_u1gox")]
 transform = Transform3D(-0.99127, 0, 0.131841, 0, 1, 0, -0.131841, 0, -0.99127, 0.288987, 0.842294, 1.5753)
@@ -665,6 +666,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34886, 1.79135, -4.52813)
 
 [node name="shotgunbundle3" parent="Environment/Range/range table" unique_id=1148632187 instance=ExtResource("12_y2ccu")]
 transform = Transform3D(0.13700563, 0.98104995, -0.13700545, 0.6937072, -0.19375503, -0.69370735, -0.70710707, 1.4898643e-07, -0.70710695, 0.004450798, 0.97345686, 1.464756)
+
+[node name="Yeoman" parent="Environment/Range/range table" unique_id=1108202969 instance=ExtResource("27_7jqqp")]
+transform = Transform3D(-0.019985398, 0.9682568, -0.2491573, -0.07741735, -0.24995756, -0.96515703, -0.99679846, -3.1683697e-08, 0.07995537, -0.66103935, 1.0193119, 4.131834)
 
 [node name="sporting clay2" parent="Environment/Range" unique_id=1890008143 instance=ExtResource("5_m43px")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.38655, 3.00265, -2.00308)

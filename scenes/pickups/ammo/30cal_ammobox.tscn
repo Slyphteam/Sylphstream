@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1u5hj48ilnd0"]
+[gd_scene format=3 uid="uid://d1u5hj48ilnd0"]
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_3teig"]
 [ext_resource type="Resource" uid="uid://3xjpnepk4spv" path="res://scripts/utility/invSystem/invData/invConsumables/ammBox30calInvData.tres" id="2_runbi"]
@@ -7,18 +7,18 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_runbi"]
 size = Vector3(0.270996, 0.0687866, 0.392039)
 
-[node name="30calBox" type="Node3D"]
+[node name="30calBox" type="Node3D" unique_id=442677475]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=340656555 groups=["player_interactible"]]
 collision_layer = 5
 collision_mask = 17
 mass = 0.5
 script = ExtResource("2_3teig")
 thingToGive = ExtResource("2_runbi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1483455987]
 transform = Transform3D(1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, 0.002, 0, 0.023835)
 shape = SubResource("BoxShape3D_runbi")
 
-[node name="thirtycal stripperclip" parent="RigidBody3D" instance=ExtResource("3_3teig")]
+[node name="thirtycal stripperclip" parent="RigidBody3D" unique_id=310093409 instance=ExtResource("3_3teig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.155)

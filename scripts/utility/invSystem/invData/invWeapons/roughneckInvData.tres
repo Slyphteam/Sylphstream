@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="INVWEP" format=3 uid="uid://cpl4bvart4bgp"]
+
+[ext_resource type="Texture2D" uid="uid://cw5lkmg15e2he" path="res://resources/image resources/itemIcons/weaponIcons/roughneckIcon.png" id="1_q1wb0"]
+[ext_resource type="Script" uid="uid://cy4ktyukcktf8" path="res://scripts/utility/invSystem/invitem generics/INVITEM_WEAPON.gd" id="2_xy1e0"]
+[ext_resource type="Resource" uid="uid://ce6gu7vvy2dia" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/roughneck_info.tres" id="3_q1wb0"]
+
+[resource]
+script = ExtResource("2_xy1e0")
+weapInfoSheet = ExtResource("3_q1wb0")
+itemName = "Roughneck"
+itemDesc = "Some maniac with a hacksaw appears to have mangled this formerly perfectly effective double-barrel."
+itemIcon = ExtResource("1_q1wb0")
+itemEntScene = "res://scenes/pickups/weapons/roughneck pickup.tscn"
+itemTyp = "WEP"
+metadata/_custom_type_script = "uid://cy4ktyukcktf8"

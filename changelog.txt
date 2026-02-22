@@ -1,3 +1,9 @@
+2/21:
+	New item: springtail slop. Gives a status effect that reduces max HP, but also applies regen.
+	Consumable items now have support for status effects.
+	Model for springtail spike.
+2/20:
+	Two new weapons, the Pippy .22 and the Roughneck 12 gauge
 1/27:
 New item: the ammopack. Gives a random amount of ammo based off what the player has equipped.
 1/25: 
