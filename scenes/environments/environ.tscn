@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bcali3jjpv7w8"]
 
+[ext_resource type="PackedScene" uid="uid://dnm888rpmtydr" path="res://scenes/pickups/consumable/springSlop.tscn" id="1_nnc13"]
 [ext_resource type="ArrayMesh" uid="uid://dlv7ayqmpetd3" path="res://models/mesh models/rawShapes/compassRoseMesh.res" id="1_nyw3s"]
 [ext_resource type="PackedScene" uid="uid://d2y6vux751ctf" path="res://scenes/entities/enemy/springtail.tscn" id="2_u1gox"]
 [ext_resource type="PackedScene" uid="uid://cr6mp7skeb4ee" path="res://scenes/utilities/sylphmoveproto.tscn" id="3_k3qjg"]
@@ -202,6 +203,9 @@ draw_pass_1 = SubResource("SphereMesh_whipo")
 [node name="Springtail pen" type="Node3D" parent="Environment" unique_id=41636757]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4948, 0, -30.8867)
 
+[node name="SpringSlop" parent="Environment/Springtail pen" unique_id=1124905728 instance=ExtResource("1_nnc13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7933183, 0)
+
 [node name="Springtail Beacon" type="Node3D" parent="Environment/Springtail pen" unique_id=112949233]
 transform = Transform3D(-0.956677, 0, -0.291153, 0, 1, 0, 0.291153, 0, -0.956677, 4.31245, 1.06029, 10.9047)
 
@@ -268,6 +272,9 @@ shape = SubResource("ConcavePolygonShape3D_mfyce")
 
 [node name="Sylphmoveproto" parent="Environment/Springtail pen" unique_id=894219419 instance=ExtResource("3_k3qjg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.2472, 0.527356, 71.4431)
+
+[node name="SpringSlop2" parent="Environment/Springtail pen" unique_id=1386497787 instance=ExtResource("1_nnc13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73851013, 1.5341513, 0)
 
 [node name="Movement blocks" type="Node3D" parent="Environment" unique_id=2003146698]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.497, 0, -29.6132)

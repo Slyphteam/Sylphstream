@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c1comohc3tpa5"]
+[gd_scene format=3 uid="uid://c1comohc3tpa5"]
 
 [ext_resource type="Script" uid="uid://dxh4ypmrqmn0w" path="res://scripts/mob/complex/player/playermovementinput.gd" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bmdium5r31p0v" path="res://scripts/mob/complex/player/player_flavor.gd" id="2_f4klr"]
@@ -66,57 +66,57 @@ bg_color = Color(2.35841e-06, 0.569401, 0.502726, 1)
 border_color = Color(0.286275, 0.4, 0.364706, 1)
 expand_margin_left = 10.0
 
-[node name="Player" type="CharacterBody3D" groups=["damage_interactible", "has_manager", "hit_decal_blacklist"]]
+[node name="Player" type="CharacterBody3D" unique_id=433199677 groups=["damage_interactible", "has_manager", "hit_decal_blacklist"]]
 collision_layer = 3
 script = ExtResource("1_qlg0r")
 
-[node name="windambience" type="AudioStreamPlayer" parent="."]
+[node name="windambience" type="AudioStreamPlayer" parent="." unique_id=1526332551]
 stream = ExtResource("2_ogpgs")
 volume_db = -9.707
 mix_target = 2
 parameters/looping = true
 
-[node name="StepperR" type="CollisionShape3D" parent="."]
+[node name="StepperR" type="CollisionShape3D" parent="." unique_id=645269755]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.516, 0.673, 0)
 shape = SubResource("SeparationRayShape3D_oajfq")
 
-[node name="StepperL" type="CollisionShape3D" parent="."]
+[node name="StepperL" type="CollisionShape3D" parent="." unique_id=1725769880]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.516, 0.673, 0)
 shape = SubResource("SeparationRayShape3D_oajfq")
 
-[node name="StepperF" type="CollisionShape3D" parent="."]
+[node name="StepperF" type="CollisionShape3D" parent="." unique_id=455977464]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.672591, -0.516099)
 shape = SubResource("SeparationRayShape3D_oajfq")
 
-[node name="StepperB" type="CollisionShape3D" parent="."]
+[node name="StepperB" type="CollisionShape3D" parent="." unique_id=1993938911]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.673, 0.516)
 shape = SubResource("SeparationRayShape3D_oajfq")
 
-[node name="camCage" type="Node3D" parent="."]
+[node name="camCage" type="Node3D" parent="." unique_id=110798747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59654, 0)
 
-[node name="came" type="Camera3D" parent="camCage"]
+[node name="came" type="Camera3D" parent="camCage" unique_id=1185689938]
 fov = 100.0
 far = 500.0
 script = ExtResource("2_f4klr")
 footstepDelay = 0.4
 bobIntensity = 10.0
 
-[node name="PlayerInvManager" type="Node3D" parent="camCage/came"]
+[node name="PlayerInvManager" type="Node3D" parent="camCage/came" unique_id=267106708]
 script = ExtResource("5_tuyoq")
 ourHands = ExtResource("5_xe83n")
 
-[node name="Player Health" type="Node" parent="."]
+[node name="Player Health" type="Node" parent="." unique_id=526916329]
 script = ExtResource("6_1yk18")
 
-[node name="playercollidercapsule" type="CollisionShape3D" parent="."]
+[node name="playercollidercapsule" type="CollisionShape3D" parent="." unique_id=1920122073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26282, 0)
 shape = SubResource("ConvexPolygonShape3D_f4klr")
 
-[node name="playermodel" parent="." instance=ExtResource("6_tgbf5")]
+[node name="playermodel" parent="." unique_id=557289881 instance=ExtResource("6_tgbf5")]
 transform = Transform3D(-1.5, 1.14291e-08, -1.30635e-07, 0, 1.49429, 0.130734, 1.31134e-07, 0.130734, -1.49429, 0, 0.236791, 0)
 
-[node name="Player UI" type="Control" parent="." node_paths=PackedStringArray("crosshairs")]
+[node name="Player UI" type="Control" parent="." unique_id=1099220775 node_paths=PackedStringArray("crosshairs")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,8 +127,8 @@ mouse_filter = 1
 script = ExtResource("6_78t0m")
 crosshairs = [NodePath("Reticle/Top"), NodePath("Reticle/Bot"), NodePath("Reticle/Left"), NodePath("Reticle/Right")]
 
-[node name="debugText" type="Label" parent="Player UI"]
-layout_mode = 2
+[node name="debugText" type="Label" parent="Player UI" unique_id=1571197895]
+layout_mode = 0
 offset_left = 19.0
 offset_top = 11.0
 offset_right = 150.0
@@ -138,7 +138,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 19
 text = "hi :)"
 
-[node name="Reticle" type="CenterContainer" parent="Player UI"]
+[node name="Reticle" type="CenterContainer" parent="Player UI" unique_id=1804171408]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -149,46 +149,46 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_smehm")
 
-[node name="Top" type="Line2D" parent="Player UI/Reticle"]
+[node name="Top" type="Line2D" parent="Player UI/Reticle" unique_id=215925702]
 points = PackedVector2Array(0, -3, 0, -15)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Top_highlight" type="Line2D" parent="Player UI/Reticle/Top"]
+[node name="Top_highlight" type="Line2D" parent="Player UI/Reticle/Top" unique_id=348869388]
 points = PackedVector2Array(0, -4, 0, -14)
 width = 1.0
 
-[node name="Bot" type="Line2D" parent="Player UI/Reticle"]
+[node name="Bot" type="Line2D" parent="Player UI/Reticle" unique_id=166079564]
 points = PackedVector2Array(0, 5, 0, 25)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Bot_highlight" type="Line2D" parent="Player UI/Reticle/Bot"]
+[node name="Bot_highlight" type="Line2D" parent="Player UI/Reticle/Bot" unique_id=1083282081]
 points = PackedVector2Array(0, 6, 0, 24)
 width = 1.0
 
-[node name="Left" type="Line2D" parent="Player UI/Reticle"]
+[node name="Left" type="Line2D" parent="Player UI/Reticle" unique_id=929123194]
 points = PackedVector2Array(-5, 0, -25, 0)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Left_highlight" type="Line2D" parent="Player UI/Reticle/Left"]
+[node name="Left_highlight" type="Line2D" parent="Player UI/Reticle/Left" unique_id=2037139554]
 points = PackedVector2Array(-6, 0, -24, 0)
 width = 1.0
 
-[node name="Right" type="Line2D" parent="Player UI/Reticle"]
+[node name="Right" type="Line2D" parent="Player UI/Reticle" unique_id=250920196]
 points = PackedVector2Array(5, 0, 25, 0)
 width = 3.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Right_highlight" type="Line2D" parent="Player UI/Reticle/Right"]
+[node name="Right_highlight" type="Line2D" parent="Player UI/Reticle/Right" unique_id=1644303210]
 points = PackedVector2Array(6, 0, 24, 0)
 width = 1.0
 
-[node name="tooltips" type="Control" parent="Player UI/Reticle"]
+[node name="tooltips" type="Control" parent="Player UI/Reticle" unique_id=1805696876]
 layout_mode = 2
 
-[node name="toolTitle" type="Label" parent="Player UI/Reticle/tooltips"]
+[node name="toolTitle" type="Label" parent="Player UI/Reticle/tooltips" unique_id=67997921]
 layout_mode = 0
 offset_left = 42.0
 offset_top = -0.5
@@ -200,7 +200,7 @@ theme_override_font_sizes/font_size = 20
 text = "Lipsum dorem
 "
 
-[node name="toolDesc" type="Label" parent="Player UI/Reticle/tooltips/toolTitle"]
+[node name="toolDesc" type="Label" parent="Player UI/Reticle/tooltips/toolTitle" unique_id=1884278924]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 0
 offset_left = -3.0
@@ -213,7 +213,7 @@ theme_override_font_sizes/font_size = 15
 text = "Lipsum Dorem"
 autowrap_mode = 2
 
-[node name="toolTip" type="Label" parent="Player UI/Reticle/tooltips/toolTitle"]
+[node name="toolTip" type="Label" parent="Player UI/Reticle/tooltips/toolTitle" unique_id=904140989]
 layout_mode = 0
 offset_left = 5.0
 offset_top = -38.0
@@ -225,7 +225,7 @@ theme_override_font_sizes/font_size = 10
 text = "Press E to equip
 Press R to add to Inventory"
 
-[node name="Health" type="Control" parent="Player UI"]
+[node name="Health" type="Control" parent="Player UI" unique_id=1368708991]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -234,12 +234,12 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="HealthholderUi" type="Sprite2D" parent="Player UI/Health"]
+[node name="HealthholderUi" type="Sprite2D" parent="Player UI/Health" unique_id=397371291]
 z_index = -1
 position = Vector2(157, -22)
 texture = ExtResource("10_ddril")
 
-[node name="Health" type="Label" parent="Player UI/Health"]
+[node name="Health" type="Label" parent="Player UI/Health" unique_id=99787873]
 layout_mode = 0
 offset_left = 20.0
 offset_top = -35.0
@@ -251,7 +251,7 @@ theme_override_font_sizes/font_size = 40
 text = "100"
 horizontal_alignment = 1
 
-[node name="Aura" type="Label" parent="Player UI/Health"]
+[node name="Aura" type="Label" parent="Player UI/Health" unique_id=550308827]
 layout_mode = 0
 offset_left = 173.0
 offset_top = -35.0
@@ -264,7 +264,7 @@ text = "50
 "
 horizontal_alignment = 1
 
-[node name="Ammo" type="Control" parent="Player UI"]
+[node name="Ammo" type="Control" parent="Player UI" unique_id=1754881020]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -276,7 +276,7 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Currentmag" type="Label" parent="Player UI/Ammo"]
+[node name="Currentmag" type="Label" parent="Player UI/Ammo" unique_id=1980650838]
 layout_mode = 0
 offset_left = -141.0
 offset_top = -35.0
@@ -288,7 +288,7 @@ theme_override_font_sizes/font_size = 40
 text = "123"
 horizontal_alignment = 1
 
-[node name="reserve" type="Label" parent="Player UI/Ammo"]
+[node name="reserve" type="Label" parent="Player UI/Ammo" unique_id=302605948]
 layout_mode = 0
 offset_left = -66.0
 offset_top = 14.0
@@ -300,12 +300,12 @@ theme_override_font_sizes/font_size = 20
 text = "456"
 horizontal_alignment = 2
 
-[node name="AmmocounterUi" type="Sprite2D" parent="Player UI/Ammo"]
+[node name="AmmocounterUi" type="Sprite2D" parent="Player UI/Ammo" unique_id=1242281894]
 z_index = -1
 position = Vector2(-69, -45)
 texture = ExtResource("16_u2s01")
 
-[node name="name" type="Label" parent="Player UI/Ammo"]
+[node name="name" type="Label" parent="Player UI/Ammo" unique_id=187099360]
 layout_mode = 0
 offset_left = -150.0
 offset_top = 17.0
@@ -317,17 +317,17 @@ theme_override_font_sizes/font_size = 15
 text = "Ipsum Lorem"
 horizontal_alignment = 2
 
-[node name="spinner1" type="Sprite2D" parent="Player UI/Ammo"]
+[node name="spinner1" type="Sprite2D" parent="Player UI/Ammo" unique_id=1740562634]
 z_index = -2
 position = Vector2(-13, -11)
 texture = ExtResource("17_tb0mf")
 
-[node name="spinner2" type="Sprite2D" parent="Player UI/Ammo"]
+[node name="spinner2" type="Sprite2D" parent="Player UI/Ammo" unique_id=2074808460]
 z_index = -2
 position = Vector2(21, -11)
 texture = ExtResource("17_tb0mf")
 
-[node name="pauseContainer" type="PanelContainer" parent="Player UI"]
+[node name="pauseContainer" type="PanelContainer" parent="Player UI" unique_id=89591680]
 z_index = 4
 custom_minimum_size = Vector2(600, 300)
 layout_mode = 1
@@ -344,46 +344,46 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("13_b4o2o")
 
-[node name="MarginContainer" type="MarginContainer" parent="Player UI/pauseContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Player UI/pauseContainer" unique_id=93588160]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 140
 theme_override_constants/margin_right = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/pauseContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/pauseContainer/MarginContainer" unique_id=2126383022]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer" unique_id=653916874]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0.647059, 1)
 text = "Game is paused! :)"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer" unique_id=392601165]
 layout_mode = 2
 
-[node name="resumeButton" type="Button" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer"]
+[node name="resumeButton" type="Button" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer" unique_id=1745611863]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.682353, 0.901961, 0.788235, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = ExtResource("12_33423")
 text = "Resume"
 script = ExtResource("13_oajfq")
 
-[node name="quitButton" type="Button" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer"]
+[node name="quitButton" type="Button" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer" unique_id=1155815191]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.682353, 0.901961, 0.788235, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = ExtResource("12_33423")
 text = "Exit game"
 script = ExtResource("14_gor7x")
 
-[node name="PreAlphaSplash" type="Sprite2D" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer"]
+[node name="PreAlphaSplash" type="Sprite2D" parent="Player UI/pauseContainer/MarginContainer/VBoxContainer" unique_id=840917933]
 position = Vector2(275, -83)
 texture = ExtResource("12_kiyhm")
 
-[node name="invBkg" type="PanelContainer" parent="Player UI"]
+[node name="invBkg" type="PanelContainer" parent="Player UI" unique_id=1607793915]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -399,46 +399,46 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("18_yr3on")
 
-[node name="TabContainer" type="TabContainer" parent="Player UI/invBkg"]
+[node name="TabContainer" type="TabContainer" parent="Player UI/invBkg" unique_id=2015592685]
 layout_mode = 2
 theme = ExtResource("19_yw3xw")
-theme_override_styles/tab_focus = ExtResource("21_yv3je")
-theme_override_styles/tab_selected = ExtResource("21_yv3je")
-theme_override_styles/tab_hovered = ExtResource("21_jv5ih")
 theme_override_styles/tab_unselected = ExtResource("22_n36er")
+theme_override_styles/tab_hovered = ExtResource("21_jv5ih")
+theme_override_styles/tab_selected = ExtResource("21_yv3je")
+theme_override_styles/tab_focus = ExtResource("21_yv3je")
 current_tab = 0
 
-[node name="Inventory panel" type="PanelContainer" parent="Player UI/invBkg/TabContainer" node_paths=PackedStringArray("invenManager")]
+[node name="Inventory panel" type="PanelContainer" parent="Player UI/invBkg/TabContainer" unique_id=321881725 node_paths=PackedStringArray("invenManager")]
 layout_mode = 2
 theme = ExtResource("23_qc1tv")
 script = ExtResource("22_6gvyl")
 invenManager = NodePath("../../../../camCage/came/PlayerInvManager")
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel" unique_id=1245909639]
 layout_mode = 2
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer" unique_id=1655983033]
 layout_mode = 2
 theme = ExtResource("23_qc1tv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cwche")
 text = "__//: MetempsychOS interface v0.2.1"
 
-[node name="Row1" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+[node name="Row1" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer" unique_id=547229391]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="genericsPane" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1"]
+[node name="genericsPane" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1" unique_id=1533218537]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_u2s01")
 
-[node name="GridContainer" type="GridContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/genericsPane"]
+[node name="GridContainer" type="GridContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/genericsPane" unique_id=1804388633]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -453,12 +453,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 columns = 3
 
-[node name="divider2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1"]
+[node name="divider2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1" unique_id=1598461061]
 z_index = 1
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="WeaponPane" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1"]
+[node name="WeaponPane" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1" unique_id=1664139974]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -466,7 +466,7 @@ size_flags_vertical = 4
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_6gvyl")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/WeaponPane"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/WeaponPane" unique_id=1551183670]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -479,32 +479,32 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="Slot1" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/WeaponPane/HBoxContainer"]
+[node name="Slot1" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/WeaponPane/HBoxContainer" unique_id=1434325689]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="Slot2" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/WeaponPane/HBoxContainer"]
+[node name="Slot2" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/WeaponPane/HBoxContainer" unique_id=708754955]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="Slot3" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/WeaponPane/HBoxContainer"]
+[node name="Slot3" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/WeaponPane/HBoxContainer" unique_id=1198431968]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="Slot4" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/WeaponPane/HBoxContainer"]
+[node name="Slot4" type="VBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/WeaponPane/HBoxContainer" unique_id=1939109052]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="divider3" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1"]
+[node name="divider3" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1" unique_id=996340057]
 z_index = 1
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="WeaponSlots3" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1"]
+[node name="WeaponSlots3" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1" unique_id=1212158001]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -512,14 +512,14 @@ size_flags_vertical = 3
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_u2s01")
 
-[node name="utilitiesPane" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1"]
+[node name="utilitiesPane" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1" unique_id=522429325]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_tb0mf")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane" unique_id=623107324]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -533,7 +533,7 @@ offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="toolTip" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane/HBoxContainer"]
+[node name="toolTip" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane/HBoxContainer" unique_id=2066688155]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -542,7 +542,7 @@ size_flags_stretch_ratio = 0.0
 theme = ExtResource("19_2ngu4")
 theme_override_styles/panel = SubResource("StyleBoxFlat_yw3xw")
 
-[node name="toolTitle" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane/HBoxContainer/toolTip"]
+[node name="toolTitle" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane/HBoxContainer/toolTip" unique_id=37048881]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.058
@@ -561,7 +561,7 @@ theme_override_font_sizes/font_size = 20
 text = "Lipsum dorem
 "
 
-[node name="toolDesc" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane/HBoxContainer/toolTip/toolTitle"]
+[node name="toolDesc" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane/HBoxContainer/toolTip/toolTitle" unique_id=1471628681]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = -4.0
@@ -574,29 +574,29 @@ theme_override_font_sizes/font_size = 15
 text = "Lipsum Dorem"
 autowrap_mode = 2
 
-[node name="divider2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane/HBoxContainer"]
+[node name="divider2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane/HBoxContainer" unique_id=258161550]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="dropSlot" type="TextureRect" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane/HBoxContainer"]
+[node name="dropSlot" type="TextureRect" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row1/utilitiesPane/HBoxContainer" unique_id=1567828088]
 layout_mode = 2
 texture = ExtResource("26_yw3xw")
 stretch_mode = 3
 script = ExtResource("27_6gvyl")
 slotTyp = "DROP"
 
-[node name="CheckButton" type="CheckButton" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer" unique_id=610727482]
 layout_mode = 2
 text = "hi its me a test button :)"
 
-[node name="Row2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+[node name="Row2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer" unique_id=2018899097]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = ExtResource("24_xe83n")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2" unique_id=2096395884]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -606,40 +606,40 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="divider" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer"]
+[node name="divider" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer" unique_id=1067071676]
 visible = false
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="GridContainer2" type="GridContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer"]
+[node name="GridContainer2" type="GridContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer" unique_id=1890444039]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 columns = 4
 
-[node name="ourIcon" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer/GridContainer2" instance=ExtResource("27_yv3je")]
+[node name="ourIcon" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer/GridContainer2" unique_id=1160135934 instance=ExtResource("27_yv3je")]
 layout_mode = 2
 
-[node name="ourIcon2" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer/GridContainer2" instance=ExtResource("27_yv3je")]
+[node name="ourIcon2" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer/GridContainer2" unique_id=1163977830 instance=ExtResource("27_yv3je")]
 layout_mode = 2
 
-[node name="divider2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer"]
+[node name="divider2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer" unique_id=621961838]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="GridContainer3" type="GridContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer"]
+[node name="GridContainer3" type="GridContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer" unique_id=1197500490]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 columns = 4
 
-[node name="ourIcon" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer/GridContainer3" instance=ExtResource("27_yv3je")]
+[node name="ourIcon" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer/GridContainer3" unique_id=870675885 instance=ExtResource("27_yv3je")]
 layout_mode = 2
 
-[node name="ourIcon2" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer/GridContainer3" instance=ExtResource("27_yv3je")]
+[node name="ourIcon2" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/Row2/HBoxContainer/GridContainer3" unique_id=1101640117 instance=ExtResource("27_yv3je")]
 layout_mode = 2
 
-[node name="TotalWeight" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+[node name="TotalWeight" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer" unique_id=2020521276]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -647,19 +647,19 @@ theme_override_font_sizes/font_size = 23
 text = "Current weight: "
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer" unique_id=696995922]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
-[node name="ammos1" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer"]
+[node name="ammos1" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer" unique_id=2003785136]
 custom_minimum_size = Vector2(140, 120)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_3hm5d")
 
-[node name="rimfire" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos1"]
+[node name="rimfire" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos1" unique_id=1649566597]
 layout_mode = 1
 offset_right = 70.0
 offset_bottom = 22.0
@@ -669,7 +669,7 @@ theme_override_font_sizes/font_size = 15
 text = "Rimfire: 0"
 horizontal_alignment = 2
 
-[node name="pistol" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos1"]
+[node name="pistol" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos1" unique_id=1136899647]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -684,7 +684,7 @@ theme_override_font_sizes/font_size = 15
 text = "Pistol: 0"
 horizontal_alignment = 2
 
-[node name="magnum" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos1"]
+[node name="magnum" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos1" unique_id=1378688004]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -698,20 +698,20 @@ theme_override_font_sizes/font_size = 15
 text = "Magnum: 0"
 horizontal_alignment = 2
 
-[node name="sliders1" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer"]
+[node name="sliders1" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer" unique_id=1835594218]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_3hm5d")
 
-[node name="rimfireSl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders1"]
+[node name="rimfireSl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders1" unique_id=85580173]
 custom_minimum_size = Vector2(10, 20)
 layout_mode = 1
 offset_right = 80.0
 offset_bottom = 20.0
 
-[node name="pistolSl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders1"]
+[node name="pistolSl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders1" unique_id=1214987853]
 custom_minimum_size = Vector2(10, 20)
 layout_mode = 1
 anchors_preset = 4
@@ -722,7 +722,7 @@ offset_right = 80.0
 offset_bottom = 10.0
 grow_vertical = 2
 
-[node name="magnumSl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders1"]
+[node name="magnumSl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders1" unique_id=136237540]
 custom_minimum_size = Vector2(10, 20)
 layout_mode = 1
 anchors_preset = 2
@@ -732,14 +732,14 @@ offset_top = -20.0
 offset_right = 80.0
 grow_vertical = 0
 
-[node name="ammos2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer"]
+[node name="ammos2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer" unique_id=1661303556]
 custom_minimum_size = Vector2(140, 120)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_3hm5d")
 
-[node name="rifle" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos2"]
+[node name="rifle" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos2" unique_id=86598412]
 layout_mode = 1
 offset_right = 70.0
 offset_bottom = 22.0
@@ -748,7 +748,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "Rifle: 0"
 
-[node name="shotgun" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos2"]
+[node name="shotgun" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos2" unique_id=834641029]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -762,7 +762,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "Shotgun: 0"
 
-[node name="heavy" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos2"]
+[node name="heavy" type="Label" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/ammos2" unique_id=662578637]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -775,20 +775,20 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 text = "30 cal: 0"
 
-[node name="sliders2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer"]
+[node name="sliders2" type="Panel" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer" unique_id=777982130]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("23_qc1tv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_3hm5d")
 
-[node name="rifleSl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders2"]
+[node name="rifleSl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders2" unique_id=1639057387]
 custom_minimum_size = Vector2(10, 20)
 layout_mode = 1
 offset_right = 80.0
 offset_bottom = 20.0
 
-[node name="shotgunSl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders2"]
+[node name="shotgunSl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders2" unique_id=1646930392]
 custom_minimum_size = Vector2(10, 20)
 layout_mode = 1
 anchors_preset = 4
@@ -799,7 +799,7 @@ offset_right = 80.0
 offset_bottom = 10.0
 grow_vertical = 2
 
-[node name="heavySl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders2"]
+[node name="heavySl" type="HSlider" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders2" unique_id=1391974463]
 custom_minimum_size = Vector2(10, 20)
 layout_mode = 1
 anchors_preset = 2
@@ -809,10 +809,10 @@ offset_top = -20.0
 offset_right = 80.0
 grow_vertical = 0
 
-[node name="DropButton" type="Button" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders2"]
+[node name="DropButton" type="Button" parent="Player UI/invBkg/TabContainer/Inventory panel/VBoxContainer/HBoxContainer/sliders2" unique_id=51115786]
 z_index = 2
 custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
+layout_mode = 0
 offset_left = 139.0
 offset_top = 51.0
 offset_right = 259.0
@@ -822,12 +822,12 @@ size_flags_vertical = 4
 theme = ExtResource("23_qc1tv")
 text = "Drop"
 
-[node name="Quests" type="PanelContainer" parent="Player UI/invBkg/TabContainer"]
+[node name="Quests" type="PanelContainer" parent="Player UI/invBkg/TabContainer" unique_id=1480737893]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="mystery tab" type="PanelContainer" parent="Player UI/invBkg/TabContainer"]
+[node name="mystery tab" type="PanelContainer" parent="Player UI/invBkg/TabContainer" unique_id=1942992282]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2

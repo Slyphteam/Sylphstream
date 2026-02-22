@@ -1,9 +1,12 @@
-##Variant of a complex healthholder that updates the UI.
+##Variant of a complex healthholder that updates the UI. This is done in update_true_vals, which should be called with every utility..
 class_name PLAYERHEALTHHOLDER extends COMPLEXHEALTHHOLDER
 @onready var playerUI = $"../Player UI"
 
 #func _ready():
 
+func add_Effect(effectToAdd: STATUSEFFECT):
+	super(effectToAdd)
+	print("Addint new effect, ", effectToAdd.effectName)
 
 func update_True_Vals(): 
 	super.update_True_Vals()

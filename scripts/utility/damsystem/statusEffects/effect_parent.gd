@@ -81,3 +81,28 @@ func apply_Effect():
 #called when an effect expires
 func expire_Effect():
 	return
+
+##A more advanced version of statuseffectlookup, additionally applies a custom variable.
+static func statusEffectGenerate(effectKey, effectAux)->STATUSEFFECT:
+	var effect: STATUSEFFECT
+	if(effectKey == 0):
+		effect = STATUSPLACEBO.new()
+	
+	if(effectKey == 7):
+		effect = STATUSREGEN.new()
+		#effect.theDuration = effectAux * 30
+	if(effectKey == 84):
+		effect = STATUSMICROPLASTIC.new()
+		
+	
+	return effect
+
+##Looks up and returns a new status effect instance according to global keys.
+static func statusEffectLookup(effectKey)->STATUSEFFECT:
+	if(effectKey == 0):
+		return STATUSPLACEBO.new()
+	
+	if(effectKey == 84):
+		return STATUSMICROPLASTIC.new()
+	
+	return STATUSPLACEBO.new()

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dnm888rpmtydr"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_5637r"]
+[ext_resource type="Script" uid="uid://cbtlbgx7gkuf6" path="res://scripts/mob/simple/enemy/springtailColorScript.gd" id="1_xnhka"]
+[ext_resource type="Resource" uid="uid://dx4bovvo0ip8i" path="res://scripts/utility/invSystem/invData/invConsumables/conSpringSlop.tres" id="2_5637r"]
+[ext_resource type="Material" uid="uid://jjfxm4ehgiq5" path="res://models/glbs and textures/creatures/enemies/springtail/springtialMaterial.tres" id="3_0qndg"]
+[ext_resource type="ArrayMesh" uid="uid://kwmc80qf6aut" path="res://models/glbs and textures/creatures/enemies/springtail/springSlopMesh.tres" id="4_hiqgt"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xnhka"]
+points = PackedVector3Array(-0.090280116, 0.021680173, 0.0794728, 0.08854106, -0.028877208, -0.02928731, -0.08823744, -0.03338458, -0.06174061, 0.018606378, -0.029177597, 0.13943143, 0.04079031, 0.031494256, -0.06571443, 0.0027552268, 0.048502628, 0.07516725, 0.0032380694, 0.01480873, -0.11162086, 0.06496883, -0.040464077, -0.07584146, 0.06848104, 0.006148769, 0.06764379, -0.07186641, -0.047786508, -0.032330297, -0.06951268, 0.040297467, 0.05534427, -0.07213168, 0.0022896826, 0.11627249, 0.053623006, -0.0055220206, 0.126861, -0.05171775, 0.025664482, 0.11871524, 0.03518663, -0.017825376, -0.11117345, 0.089005716, -0.017287327, -0.056932144, -0.020320803, -0.032315165, 0.11351354, -0.08111087, 0.025150057, 0.028778313, 0.05216719, -0.031972926, 0.07825335, -0.09592781, 0.010193581, 0.08470675, 0.03625622, 0.039695237, 0.032252777, 0.05747379, 0.023151493, -0.061557747, -0.0009472002, 0.023151493, -0.09494187, -0.04683158, -0.047786508, -0.023990802, -0.020548834, 0.041240215, 0.10314111, 0.058023337, -0.021340992, 0.11594341, -0.013045046, -0.01777092, 0.14195797, -0.0809248, -0.041658867, -0.05836467, -0.019873014, 0.047235224, 0.054729544, 0.030269844, 0.014042919, -0.10396395, 0.09064378, -0.033581797, -0.06615192, -0.0010481615, 0.014199144, 0.12867168)
+
+[node name="SpringSlop" type="Node3D" unique_id=1124905728]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1142325019 groups=["player_interactible"]]
+collision_layer = 5
+collision_mask = 17
+mass = 0.5
+sleeping = true
+script = ExtResource("1_5637r")
+thingToGive = ExtResource("2_5637r")
+
+[node name="SpringSlopMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=710628473]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.008974938, 0, -0.04658872)
+material_override = ExtResource("3_0qndg")
+mesh = ExtResource("4_hiqgt")
+skeleton = NodePath("../..")
+script = ExtResource("1_xnhka")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=2056740788]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.008974938, 0, -0.04658872)
+shape = SubResource("ConvexPolygonShape3D_xnhka")

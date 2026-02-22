@@ -168,7 +168,7 @@ func add_GenericItem(thingToGive:INVENITEMPARENT)->bool:
 
 ##Activates the given consumable based on what parameters it has.
 func activate_Consumable(thingToGive: INVCONSUM)->bool:
-	if(thingToGive.consumBehavior == 0 && thingToGive.consumAux == 0):
+	if(thingToGive.consumBehavior == 0 && thingToGive.consumAux[0] == 0):
 		assert(true, "YOUUU didn't set the values for the consume behavior and auxillary! check player invmanager and set them!")
 		return false
 	
@@ -191,7 +191,7 @@ func activate_Consumable(thingToGive: INVCONSUM)->bool:
 		
 		var currentTyp
 		var currentAmt
-		for x in range(thingToGive.consumAux): #poll from our ammotypes AUX amount of time
+		for x in range(thingToGive.consumAux[0]): #poll from our ammotypes AUX amount of time
 			
 			
 			currentTyp = weights.pick_random()
@@ -214,7 +214,23 @@ func activate_Consumable(thingToGive: INVCONSUM)->bool:
 			if(giveResult !=0): #we're low on space, stop
 				break
 	
+	#if(thingToGive.consumBehavior == 2): #Status effect
+		#if(thingToGive.consumAux == 0):
+		#
+		#else if (thingToGive.consumAux == 1):
+		#else if (thingToGive.consumAux == 2):
+		#else if (thingToGive.consumAux == 3):
+		#else if (thingToGive.consumAux == ):
+	elif(thingToGive.consumBehavior == 2 ): #primitive status effects. every other index is a utility.
+		var counter = 0
+		for x in range(thingToGive.consumAux.size()/2):
+			var newEffect = STATUSEFFECT.statusEffectGenerate(thingToGive.consumAux[counter], thingToGive.consumAux[counter+1])
+			healthHolder.add_Effect(newEffect)
+			counter+=2
+			
 		
+	elif(thingToGive.consumBehavior == 3): #thrown/placed items
+		return true
 		
 	return true
 
@@ -472,14 +488,12 @@ func withdrawAmmo(amTyp: int, amount: int)-> int:
 	uiInfo.updateReserve(chkAmmoAmt(amTyp))
 	return result
 	
-
-
 #----------------Autostim functions
 ##Tells the player healthholder to add an effect. Called when the player selects an autostim
 func take_Autostim(stimNum: int):
 	var theEffect: STATUSEFFECT
 	if(stimNum == 1):# useless if statement for when we have more stims
-		theEffect = STATUSPLACEBO.new()
+			theEffect = STATUSREGEN.new()
 	
 	#add the status effect to the healthholder
 	healthHolder.add_Effect(theEffect)	
