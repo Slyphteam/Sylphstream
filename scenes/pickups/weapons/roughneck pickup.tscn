@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://8cx6gtdlfiox"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_ogqgj"]
+[ext_resource type="Resource" uid="uid://cpl4bvart4bgp" path="res://scripts/utility/invSystem/invData/invWeapons/roughneckInvData.tres" id="2_ogqgj"]
+[ext_resource type="ArrayMesh" uid="uid://yea6nd03v51p" path="res://models/glbs and textures/guns/roughneckMesh.res" id="5_hhcua"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h3lfc"]
+points = PackedVector3Array(-0.012802391, -0.104610994, 0.45628685, -0.027662175, -0.06004473, -0.25651747, 0.07631269, -0.0155104445, -0.40512693, -0.07222699, 0.043895252, -0.40512693, 0.046593122, -0.0155104445, 0.51565623, -0.042507418, -0.0155104445, 0.51565623, 0.07631269, 0.043895252, -0.40512693, 0.031747878, -0.104610994, 0.48597154, -0.07222699, -0.0155104445, -0.40512693, -0.042507418, -0.08975557, 0.50095344, -0.06011686, 0.032998983, 0.18196096, -0.07222699, -0.0155104445, 0.1889387, -0.057367202, 0.058750674, -0.27140632, 0.03958756, 0.045906305, 0.18273613, 0.016888097, -0.06004473, -0.25651747, 0.046593122, 0.058750674, -0.40512693, 0.046593122, -0.08975557, 0.50095344, 0.06211039, 0.031116515, 0.16623282, -0.012802391, -0.0006550215, 0.51565623, -0.035910297, 0.04665516, 0.18396038, 0.061452907, -0.030349877, -0.40512693, -0.042507418, -0.06004473, 0.53054506, -0.057367202, -0.030349877, -0.40512693, -0.027662175, -0.104610994, 0.47117573, -0.042507418, 0.058750674, -0.40512693, 0.016888097, -0.0006550215, 0.51565623, 0.031747878, -0.0155104445, 0.53054506, 0.049896423, 0.042862065, 0.16584158, 0.031747878, -0.104610994, 0.47117573, 0.046593122, -0.07490015, 0.51565623, -0.012802391, -0.104610994, 0.50095344, 0.046593122, -0.08975557, 0.441398)
+
+[node name="Roughneck" type="Node3D" unique_id=1706651239]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=596015066 groups=["player_interactible"]]
+collision_layer = 5
+collision_mask = 17
+script = ExtResource("1_ogqgj")
+thingToGive = ExtResource("2_ogqgj")
+
+[node name="RoughneckMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=893388818]
+mesh = ExtResource("5_hhcua")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=606234120]
+shape = SubResource("ConvexPolygonShape3D_h3lfc")

@@ -35,10 +35,15 @@ func take_Dam(incomingDam)->int:
 	#whatever happens with aura is finished happening. The value left in incomingdam 
 	#will now affect health.
 	takenDamage += incomingDam
-	var newHealth = health - takenDamage
-	if(newHealth <= 0):
+	return take_TrueDam(takenDamage)
+
+##Takes damage directly to the health, bypasses aura
+func take_TrueDam(takenDamage:int)->int:
+	health = health - takenDamage
+	if(health <= 0):
 		doDie()
-	return newHealth
+	update_True_Vals()
+	return health
 
 func _process(_delta: float) -> void:
 	handle_Effects(_delta)
@@ -46,6 +51,7 @@ func _process(_delta: float) -> void:
 	if(takenDamage != 0 || takenAura != 0):
 		update_True_Vals()
 
+##Finishes calculation and actually updates everything
 func update_True_Vals():
 	
 	#if there's any effects that alter taken damage,

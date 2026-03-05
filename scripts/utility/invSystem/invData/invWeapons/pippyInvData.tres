@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="INVWEP" format=3 uid="uid://dkx2radorqe4f"]
+
+[ext_resource type="Texture2D" uid="uid://b6juwyrhurgy1" path="res://resources/image resources/itemIcons/weaponIcons/pippyIcon.png" id="1_ps0ld"]
+[ext_resource type="Script" uid="uid://cy4ktyukcktf8" path="res://scripts/utility/invSystem/invitem generics/INVITEM_WEAPON.gd" id="2_btv02"]
+[ext_resource type="Resource" uid="uid://dfncjlr0tf1ob" path="res://scripts/utility/weaponsystem/weapon info sheets/firearm/pippy_info.tres" id="3_0ly02"]
+
+[resource]
+script = ExtResource("2_btv02")
+weapInfoSheet = ExtResource("3_0ly02")
+itemName = "Pippy .22"
+itemDesc = "A .22  cal revolver made almost entirely from polymer. You *probably* shouldn't reload this thing."
+itemIcon = ExtResource("1_ps0ld")
+itemEntScene = "res://scenes/pickups/weapons/pippy pickup.tscn"
+itemTyp = "WEP"
+metadata/_custom_type_script = "uid://cy4ktyukcktf8"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="INVCONSUM" format=3 uid="uid://dx4bovvo0ip8i"]
+
+[ext_resource type="Texture2D" uid="uid://dfx76unfr4q0g" path="res://resources/image resources/itemIcons/consumIcons/springtailSlop.png" id="1_ag2fg"]
+[ext_resource type="Script" uid="uid://cqpkkhan0sckl" path="res://scripts/utility/invSystem/invitem generics/INVITEM_CONSUM.gd" id="2_t1epj"]
+
+[resource]
+script = ExtResource("2_t1epj")
+consumBehavior = 2
+consumAux = Array[int]([84, 0, 7, 0])
+itemName = "Springtail Slop"
+itemDesc = "Several globules of chewy, uncomfortably warm macroplastics harvested from the body of a Springtail."
+itemHint = "Press E to guzzle it down. Press ALT to scoop into inventory."
+itemIcon = ExtResource("1_ag2fg")
+itemEntScene = "res://scenes/pickups/consumable/springSlop.tscn"
+metadata/_custom_type_script = "uid://cqpkkhan0sckl"

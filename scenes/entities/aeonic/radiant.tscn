@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://dgvbo3hu3kqul"]
+
+[ext_resource type="Texture2D" uid="uid://cqceb6wq628fl" path="res://textures/entities/aeonic/radiance1.png" id="1_0lqxw"]
+[ext_resource type="Script" uid="uid://cvv8xtmwttio2" path="res://scripts/mob/unusual/radiantScript.gd" id="1_mhgcf"]
+[ext_resource type="Texture2D" uid="uid://b4wclq6imy2of" path="res://textures/entities/aeonic/radiance2.png" id="2_mhgcf"]
+[ext_resource type="Texture2D" uid="uid://cp8534jvbcds4" path="res://textures/entities/aeonic/radiance3.png" id="3_usduo"]
+[ext_resource type="Texture2D" uid="uid://c0cdju0xd2tjd" path="res://textures/entities/aeonic/radiance4.png" id="4_hejxc"]
+[ext_resource type="Texture2D" uid="uid://dj4q2nvcj0x2d" path="res://textures/entities/aeonic/radiance5.png" id="5_1yaij"]
+[ext_resource type="Texture2D" uid="uid://q4om6i4bqgix" path="res://textures/entities/aeonic/radiance6.png" id="6_bu4w2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3eny3"]
+transparency = 1
+albedo_texture = ExtResource("1_0lqxw")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q0qcv"]
+material = SubResource("StandardMaterial3D_3eny3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5iyf"]
+transparency = 1
+albedo_texture = ExtResource("2_mhgcf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p74yv"]
+material = SubResource("StandardMaterial3D_f5iyf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyqm6"]
+transparency = 1
+albedo_texture = ExtResource("3_usduo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uusy5"]
+material = SubResource("StandardMaterial3D_oyqm6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3aii"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("4_hejxc")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8at5x"]
+material = SubResource("StandardMaterial3D_h3aii")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afw23"]
+transparency = 1
+albedo_texture = ExtResource("5_1yaij")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4tqh1"]
+material = SubResource("StandardMaterial3D_afw23")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6cem"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("6_bu4w2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b4cyf"]
+material = SubResource("StandardMaterial3D_v6cem")
+
+[node name="theRadiance" type="Node3D" unique_id=817356158]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+script = ExtResource("1_mhgcf")
+
+[node name="layer1" type="MeshInstance3D" parent="." unique_id=2022731213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7661871, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_q0qcv")
+
+[node name="layer2" type="MeshInstance3D" parent="." unique_id=990897559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68099725, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_p74yv")
+skeleton = NodePath("../layer5")
+
+[node name="layer3" type="MeshInstance3D" parent="." unique_id=1791113841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62350106, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_uusy5")
+
+[node name="layer4" type="MeshInstance3D" parent="." unique_id=1072546650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5125461, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_8at5x")
+skeleton = NodePath("../layer5")
+
+[node name="layer5" type="MeshInstance3D" parent="." unique_id=1303722466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46677893, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_4tqh1")
+skeleton = NodePath("../layer1")
+
+[node name="layer6" type="MeshInstance3D" parent="." unique_id=1369356043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41256243, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_b4cyf")
+skeleton = NodePath("../layer4")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=478184672]
+transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, 0.25, 0, -0.25, -1.0927847e-08, 0, 1.1799932, 0)
+light_energy = 1.186
+spot_range = 5.612
+spot_angle = 62.823887
