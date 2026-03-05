@@ -98,8 +98,8 @@ ANGEION: As if what? What is this thing?
 
 If Thespian of woe:
 
-(A LITTLE CLAY PUPPET APPROACHES A STAGE OF GRAND AND SPECTACULAR DENOUMENT.
-(WHAT HEROIC DEEDS HAS IT ACCOMPLISHED? WHOSE BLESSINGS AND HOPES DOES IT CARRY?
+(A LITTLE CLAY PUPPET APPROACHES A STAGE OF GRAND AND SPECTACULAR DENOUMENT.)
+(WHAT HEROIC DEEDS HAS IT ACCOMPLISHED? WHOSE BLESSINGS AND HOPES DOES IT CARRY?)
 (WILL THEY BE ENOUGH OR WILL IT BE BATTED ASIDE LIKE A FLY?
 (TRAGEDY. COMEDY. TRIUMPH. DEFEAT. 
 (A THOUSAND WORTHY FINALES HANG SUSPENDED IN AIR, YET TO BE REALIZED 
@@ -120,6 +120,7 @@ If Thespian of woe:
 (NO.)
 (THE GREAT FORM OF MELPOMENE FALLS TO THE GROUND, ERE HELD ALOFT NO MORE ON SILKEN STRINGS.)
 (AND, SO, TOO, COLLAPSETH THE HERO.)
+(WHAT A CUTE LITTLE THING IT MUST BE TO PRESUME THE OUTCOME WOULD CHANGE.)
 (WHAT BEFALLS THEM BOTH IS A HOLLOW, SILENT OVATION.)
 (BUT... NOT WITHOUT SOME SWEETNESS OF GRATIFICATION.)
 (TO INDULGE A ROLE WITH SUCH APLOMB BEGETS SOME REWARD.)
@@ -309,7 +310,7 @@ BUT SUCH A PERFORMANCE DEMANDS-
 Are you seriously accusing ME of interrupting somebody? The gall.
 YES. A VESSEL OF THIS MAGNIFICENT DESIGN REQUIRES SUBSTANCE-
 LALALALA I can't hear you! Do you feel space as you should? Is your sense of self grounded and fully realized? What is your mental state?  
-YES, INDEED, IT IS, AND ANNOYED THAT SOME DRIVEL MIGHT ATTEMPT DIATRIBE AGAINST SOLILOQUY 
+YES. INDEED, IT IS. AND ANNOYED THAT SOME DRIVEL MIGHT ATTEMPT DIATRIBE AGAINST SOLILOQUY 
 I'll show YOU diatribe, you fucking-
 STOP THAT AT ONCE
 Make me!
@@ -317,19 +318,20 @@ Make me!
 Angeion: What the hell is going on?
 You're awake?
 PERHAPS IT MIGHT NOT BE IF A SQUABBELING VOICE DID NOT FEEL THE NEED TO SO RUDELY INTERRUPT
-Oh, like you're one to talk. Whatever, the moment is ruined, I don't even want to do this anymore.
-YES. THE PATHOS HAS EVAPORATED. REHERSAL WOULD BE POINTLESS.
+like you're one to talk. Whatever. The moment is ruined, I don't even want to do this anymore.
+YES. THE PATHOS HAS EVAPORATED. REHERSAL WOULD BE POINTLESS-- NOW I WOULD ONLY SCORN THE MEDDLING INTERLOCUTOR.
 -Angeion: I guess... I'll do it?
 
 
 Angeion: Okay, uh... I'm floating in a void. 
 Angeion: I'm not awake, but I'm aware. I can feel the surface just above me.
-Angeion: But I can't reach it yet. I'm between asleep and awake. Conscious and unconscious. Reality and unreality.
-Angeion: I'm at a crossroads of some, I guess. I'm in a space between spaces and there's directions to choose.
+Angeion: But I can't reach it yet. I'm at the in-between. Here and elsewhere. Conscious and unconscious. Reality and unreality.
+Angeion: I'm at a crossroads of some kind, I guess. There's a liminality in this location and some directions to choose.
 Angeion: Am... I doing this right?
 FAR BETTER THAN SOME MEDITATIVE PRATTLE.
-Miles above a stuck-up thespian.
-Angeion: And in that case.. I guess all I have to do... is choose.
+Full points for not being a theatre kid.
+Angeion: Okay, okay, allright.
+Angeion: In that case.. I guess all I have to do right now... is choose.
 
 
 Angeion: I choose strength. I choose GODSBLOOD.
@@ -339,21 +341,56 @@ Angeion: I choose experience. I choose WORLD-DRINKER.
 Angeion: I choose the exotic. I choose INTRA-PARA-ABBERANCE.
 Angeion: I choose foresight. I choose Rationo-Cynicism.
 Angeion: I choose wealth. I choose TINY SQUIRRELDRAGON.
-(If no THESPIAN OF WOE): I choose to be dramatic. I choose THESPIAN OF WOE.
-Angeion: I choose... myself. I choose to be proud of my own skill. <<PRIDE>>
- 
- 
+(If not yet THESPIAN OF WOE): I choose to be dramatic. I choose THESPIAN OF WOE.
+Angeion: I choose... myself. I choose to be proud of my own standing accomplishments. <<PRIDE>>
 (If already apotheosis ending:) Angeion: Not because I think I need my pride, but because I want to test it. 
+
 Angeion: ...
-Angeion: (Wake up.)
+- (Angeion: Wake up.)
 
 
 
+====== Melpomene describes the cast.
 
-Angeion (To DA ARCHON):
-You're not an archon.
--W-what? After everything I've done, what makes you say that, Angeion? 
-I've interacted with one. Two, really. They're the intermediary between the Aeons and the physical world.
-You aren't.
--You shitty little husk. After everything I've done for you. After everything I've ever told you has been the truth, you'd pull this shit?
-Say it, then. Say, explicitly, that I'm wrong. 
+		DA ARCHON: 
+(A WINGED AND HORNED EYE BOBS IDLY.)
+(THIS IS NOT A TRUE ARCHON. THIS IS NO INTERMODAL ENTITY CONNECTING THE AEONIC ORDINATE AND THE EPISTEMIC.)
+(THIS IS A DAEMON.)
+(THIS IS A SERVANT.)
+(IT IS A SLAVE BEARING THE TITLE OF MASTER.)
+(WHAT A GOOD LITTLE PUPPY.)
+
+-You're not an archon.
+What? What the fuck did you just say to me, Angeion?
+-Uh... nothing, forget it. (Cancel dialogue)
+-You're not an Archon. I've met and interacted with one. Two, really. They're nothing like you are.
+Are you for real right now? You shitty little husk. After everything I've done for you. 
+After everything I've ever told you has been the truth, you'd pull this shit? How dare you.
+-Say it, then. Say, explicitly, that I'm wrong and you really are an Archon.
+
+		Greg:
+(THERE IS NOT RACOUS DEBAUCHERY, NOR BACCHAL HEDONISM WITHIN)
+(ONLY DESPERATION)
+(HERE IS A REGRETFUL SOUL, SEEKING CLEMENCY BEHIND A WRY SMIRK AND BOTTLE BOTH)
+(YET LEFT IN RUIN BY THAT VERY SAME PASTICHE)
+
+-Hey, uh, Greg? I'm pretty sure the voice in my head just called you a drunk loser and a deadbeat.
+Oh, well, ain't that sweet? Tell it to go fuck a spool of concertina wire for me, allright, kiddo?
+(AND YET, IT WAS THIS SARDONIC SHELL THAT DROVE SWEET MEREDITH AWAY.)
+(FOR WHILE EACH ROSE BEARETH THORNS, SO TOO CAN THE SWEETEST BLOSSOM OF LOVE BE SUFFOCATED IN OWN BRAMBLE)
+- Now I'm pretty sure it just said something along the lines of "this is why your wife left you"
+Cute. Real cute. Reaaaaaaaal cute. (THE VERDANT GLINT OF A WINE BOTTLE FLASHES FROM THE DIN AS SHE RAISES THE DRINK AND ONCE AGAIN SEEKS TO IMBIBE HER SORROW)
+- Angeion: (Don't relay that)
+So, uh, anything else?
+Nope. That was definitely mostly it.
+
+
+		Hestoile Merchant:
+(THE ONE-EYED LEADS THE BLIND, YES)
+(THOUGH IT IS ONLY WITH VISION ONE MAY PERCEIVE THE WOOL PULLED OVER THIS SHEPHERD'S FLOCK)
+
+-Hey so a voice in my head just called your Heirophant a false prophet.
+(THIS LAMB'S FACEPLATE REMAINS STATIC AS IT AFFIXES YOU A SEVERE STARE)
+You have a voice in your head that goes around insulting people and blaspheming?
+-Yeah, pretty much.
+-Mostly it just airs depressing dirt.

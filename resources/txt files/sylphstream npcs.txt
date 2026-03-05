@@ -68,20 +68,15 @@ PLAYER OPTIONS:
 3; I suppose I'll pretend I didn't hear that last portion.
 
 - Do you do anything here?
-
 I create the medicine that goes into autoinjectors! I'm sure you've seen some color-coded syringes around; I'm the one who brews their contents.
 
 -Were you a man or a woman before... all that?
-
 Hmm. No.
 - No?
-
-No, my little, dear, vessel, I do not believe that I am obliged to answer that question.
-
+No, my dear, little vessel, I do not believe that I am obliged to answer that question.
 - Fair 'nuff. (end)
 -Oh. What would you say you are now?
-
-A Res Bina. The product of the magnum opus.
+A Res Bina. A unified and consummate form. The summative product of the transformative Magnum Opus.
 
 ======>Quest lines:
 Any odd jobs?
@@ -101,9 +96,8 @@ Oh, my. I'm sure you already know this but that's never the answer to life's qua
 ======>Relational lines:
 
 What do you think of greg?
--She reeks and I have no idea where she gets all those firearms from. I've never seen anything enter or come out of
-that cardboard box of hers but she has so many of the things. 
-It violates several laws of conservation and is honestly quite distressing to think about. (unlocks greg's stupid question)
+-She reeks and I have no idea where she gets all those firearms from. I have never seen a single shipment arrive nor depart yet she has so many.
+The implications violate several laws of conservation and is honestly quite distressing to think about. (unlocks greg's stupid question)
 What do you think of the corpus dei?
 -Mmhmmm... for a group of zealots they don't appear to be very spiritually versed. Though.. I suppose that would be par for the course, wouldn't it~?
 
@@ -139,15 +133,16 @@ Oh... (end dialogue)
 (begin)
 -What am I?
 What makes you suppose that I should know anything about that, Angeion?
-(If you completed both small talk) 0) Because you're a talented alchemist who was able to successfully transmute their whole body into something else?
+(If you completed both small talks) 0) Because you're a talented alchemist who was able to successfully transmute their whole body into something else?
 1) I don't know. I'm sort of just grasping at straws, here.
-(If pick option 4) 2) Just a hunch.
+(If successfully pick option 4) 2) Just a hunch.
 3) You're right, I'm sorry for bothering you.
 4)(Closely examine the Chimera's demeanor as it speaks) (WORLD-DRINKER or RATIONO-CYNICISM check)
-4; (The beast's quartet of eyes are pulled up into the tiniest smile. Its tail sways with poorly-masked excitement.) 
-(It doubtlessly knows something, but some mischevious side of it wants to know why YOU know that it does first.)
+4 success; (The beast's quartet of eyes are pulled upwards and into the tiniest smile. Its tail sways with poorly-masked excitement.) 
+(The Chimera doubtlessly knows something, but some mischevious streak in it wants to know why YOU know that it does.)
+4 failure; (Its alien face appears passive. Whatever expression presents isn't one you know how to read.)
 
-1;3: Perhaps, then, it may be worth looking closely at yourself to seek answers. Or, brushing up on greek?
+1;3: Perhaps, then, it may be worth looking closely at yourself to seek answers. Or brushing up on greek?
 2; You and your hunches, mhhmmm?
 0; Oh, flattery will get you EVERYWHERE with me.
 Very well. Foremost: you are not alive in an organic sense, Angeion. You are a construct that was built for a purpose, not unlike a Sylph, or a machine.
@@ -159,6 +154,18 @@ But a container for what, exactly? What a fascinating little thing you are. Plea
 (You no longer feel safe in this conversation.)
 1) I... think I'll have to pass.
 2) If it gets me an answer. (Kills the player, unlocks a one-time "did you figure anything out?" "no clue at all" exchange.)
+
+
+- Well? Did you figure anything out about me?
+I'm afraid not, Angeion. All I discovered within that clay of yours was flesh and viscera.
+1) Maybe the thing I'm a vessel for isn't anything you can meaningfully perceive.
+-What a... fascinating conjecture~.
+2) Wouldn't that mean I'm a homonculus or something?
+- I Do Believe That There Isn't Any Classification For What You Are, Angeion.
+3) Cool.
+4) Gross.
+5) Hot.
+- (The Chimera lets out a bemused giggle and waves you off with a paw.)
 
 I am not a combative NPC. I don't even have a healthholder. You can shoot me all you'd like and it will simply do nothing.
 
@@ -545,8 +552,11 @@ Oh okay that makes total sense I was kinda lost before but everything's suddenly
 Hello, it is I, pipe bomb andy.
 I offer you a heartfelt gift.
 (Pipe bomb andy offers you the satchel. Do you accept?)
-Yes (accept)
-Dude... no. (decline) (Forecalculus check)
+-Yes (accept)
+-FORECALCULUS: (Deduce what might possibly be in that backpack) 
+Success: You're pretty sure it might be a pipe bomb? (returns to yes/no screen)
+Failure: There's no possible way that ths backpack could contain anything malignant, and so you accept the parcel.
+-Dude.. no. (Decline)
 
 On accept, spawns a pipe bomb at the player's feet with halved timer. On decline, andy sticks around, but you cant talk to him.
 
@@ -558,7 +568,9 @@ Look, I know we got off on the wrong foot here and I just wanted to say I'm sorr
 You don't have to, but I wanted to give you something to make up for our differences.
 PLAYER OPTIONS:
 1) Is it a pipe bomb? (Intra para-abberance check)
+-Failure: (He seems genuine?) (moves to "thanks andy")
 2) It better not be another pipe bomb, Andy. (Rationo-cynicism check)
+-Failure: (He seems genuine?) (moves to "thanks andy")
 3) Oh, okay, thanks, Andy. (Accept)
 1;2; I SWEAR it's not a pipe bomb. That would be lovebomb gaslight dark empathic of me and I'm changing for the better.
 1) If you say so.
@@ -582,6 +594,7 @@ I love you, and I only want what's best for us. Please. If not for yourself, the
 
 1)Thanks, Andy. It really warms my heart to know you're righting your wrongs. (Accept) (You know what happens)
 2) (Rationo-Cynicism check) Andy, what's in the box?
+3) (THESPIAN OF WOE check): (Tearfully) Andy...
 
 I.. I can't say. It's a surprise, and, well, I'm worried you might be mad at me if you knew what it wasy.
 
@@ -594,3 +607,15 @@ I.. I can't say. It's a surprise, and, well, I'm worried you might be mad at me 
 2) Well? (Svelte Carapace check)
 
 Y-Nnooooo. No there is not. (andy puts the gift behind his back and seems to do something else) (You get 3 .22lr bullets, a rock, and a placebo syringe)
+
+3) Wh- Angeion- what's wrong?
+- (Start crying) You're so nice. It- (sniff)- it means so much to me you'd do something like this.
+I- it does??? I mean... of course, it's all for the Children of the World
+1) You're doing all this for the CHILREN OF THE WORLD? A-Andy... (start straight up bawling)
+2) ... Is what I WOULD SAY if any of that was true (slam dunk the gift out of his hands and kick him in the grundle)
+1: W- Angeion- Don't cry, okay? Oh, jeez. Look, look, look, we can open it together, okay? Do you want to open it together with me?
+- (Attempt to nod as you continue sniffling and crying)
+(He scoots up and places a reassuring hand on your back, then reaches for the lid of the box)
+(Inside...)
+(Is a pipe bomb.)
+(It blows the both of you up.)
