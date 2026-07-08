@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Slyphstream"
 run/main_scene="uid://bcali3jjpv7w8"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://bjv0g2c73lijv"
 config/windows_native_icon="res://resources/sylphcroppedcellshade.ico"
 
@@ -29,6 +29,10 @@ Globalscript="*res://scripts/utility/globalscript.gd"
 window/size/viewport_width=960
 window/size/viewport_height=505
 window/size/mode=2
+
+[dotnet]
+
+project/assembly_name="Slyphstream"
 
 [editor]
 
