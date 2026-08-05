@@ -7,19 +7,19 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kyu07"]
 points = PackedVector3Array(0.0175103, 0.182788, -0.0264054, -0.0150579, -0.273345, 0.0549321, 0.0175103, -0.273345, 0.0549321, -0.0313516, 0.085007, 0.527445, -0.0476452, 0.0524579, -0.319608, 0.0175103, -0.0127295, -0.515145, 0.033804, -0.14297, 0.494788, 0.0500976, 0.00356733, -0.319608, 0.033804, 0.085007, 0.511116, -0.0313516, -0.14297, 0.494788, -0.0313516, 0.166491, -0.156729, -0.0313516, -0.273345, 0.0712609, 0.033804, -0.273345, 0.103816, 0.033804, 0.166491, -0.156729, -0.0150579, 0.0198642, -0.515145, 0.0500976, 0.0687547, 0.136474, -0.0476452, 0.0687547, 0.136474, 0.033804, 0.117601, -0.335937, -0.0313516, -0.0452786, -0.401048, -0.0313516, 0.117601, -0.335937, -0.0476452, 0.00356733, -0.319608, -0.0476452, 0.0198642, 0.136474, -0.0150579, 0.182788, -0.0264054, 0.033804, -0.0290264, 0.527445, 0.0500976, 0.0524579, -0.319608, -0.0150579, -0.0127295, -0.515145, 0.033804, -0.0452786, -0.401048, 0.0500976, 0.036161, 0.136474, 0.033804, -0.273345, 0.0712609, -0.0313516, -0.273345, 0.103816, -0.0313516, 0.166491, -0.0264054, 0.033804, 0.166491, -0.0264054)
 
-[node name="Fourier9" type="Node3D"]
+[node name="Fourier9" type="Node3D" unique_id=2145981639]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=817571587 groups=["player_interactible"]]
 collision_layer = 4
 collision_mask = 17
 script = ExtResource("2_dakyp")
 thingToGive = ExtResource("3_chxjm")
 
-[node name="Fourier9Mesh" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="Fourier9Mesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=778305188]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
 mesh = ExtResource("3_fndoq")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=44923169]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_kyu07")

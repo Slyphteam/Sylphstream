@@ -7,7 +7,7 @@ class_name FIREARM_INFO extends WEAP_INFO
 @export var reload : AudioStreamMP3 
 
 @export_category("Behavioral variables")
-@export var bulletVariance: int = 0 ##Variation on the damage dealt
+@export var bulletVariance: int = 0 ##Variation on the damage dealt (ENSURE THIS IS IMPLEMENTED)
 @export var shotCooldown: int = 10 ##in frames, determine firerate
 @export var chambering : int = 1 ## 0- .22 1- Pistol; 2- Light rifle (5.56); 3- shotgun ; 4- Heavy rifle; 5- Magnum
 @export var maxCapacity : int = 5
@@ -20,12 +20,16 @@ class_name FIREARM_INFO extends WEAP_INFO
 @export_category("Loading/Casing options")
 @export var doCasing: bool = false ##Create casings when gun is fired
 @export var casingPath: String = ""
+@export var casingDirection: Vector3 = Vector3(3, 2, 0)
 @export var ejectOnReload: bool = false ##Eject when we reload or immediately after firing?
 @export var casingDelay: float = 0 ##in seconds
 @export var casingSpeedBoost: float = 1.0 ##Bonus/malus to the speed of ejected casings
 @export var singleReloadOverride: bool = false ##Reload behavior
 #@export var preReloadSound: AudioStreamMP3 ## For single reloaders, play this before reload loop
 @export var reloadtime : float = 1 ##In seconds
+@export var dropMags:bool = false ##unimplemented
+@export var magPath:String ##unimplemented
+
 @export_category("Behavioral override")
 @export var allowPlus1:bool = true
 @export var pelletAMT: int = 1 ##How many bullets in a volley?

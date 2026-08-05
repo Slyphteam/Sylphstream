@@ -412,7 +412,7 @@ func eject_Casing():
 	
 	#print(casingPath)
 	#var testyScene = 
-	var newCasing = load(casingPath).instantiate()
+	var newCasing = load(casingPath).instantiate() # should we be loading for each individual casing??
 	#ResourceLoader.load(casingPath).instantiate()
 	
 	
@@ -421,7 +421,7 @@ func eject_Casing():
 	newCasing.linear_velocity = invManager.get_Speed()
 	
 	#Add a "kick" to the ejected casing
-	var casingVel = (Vector3(3, 2, 0) * weaponSheet.casingSpeedBoost) 
+	var casingVel = (weaponSheet.casingDirection * weaponSheet.casingSpeedBoost) 
 	casingVel += Vector3(randi_range(-1, 1), randi_range(-0.5, 0.5), randi_range(-0.5, 0.5))
 	newCasing.linear_velocity += casingVel.rotated(Vector3.UP, invManager.get_Rotation().y) #ensure it's perpindicular to ourselves
 	

@@ -6,5 +6,9 @@ class_name INVENITEMPARENT extends Resource
 @export var itemHint: String = "Press E to use. Press ALT to pick up without using."
 @export var itemIcon:Texture2D 
 @export var itemEntScene:String
-@export var itemFlags:Array = []
+@export var extraData:Array = []
+@export var amount:int = 1 #how many things of stuff do we have?
+@export var maxStack:int = 1 #what's the highest we can stack?
 @export var itemTyp = "GEN"
+@export var doConsumeScript:bool = false
+@export var consumeScript:String

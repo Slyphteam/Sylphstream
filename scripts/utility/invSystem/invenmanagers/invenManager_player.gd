@@ -141,16 +141,24 @@ func consume_item(thingToGive):
 	if(thingToGive is INVWEP):
 		return give_New_InvWeap(thingToGive, thingToGive.weapInfoSheet.selections)
 	elif(thingToGive is INVAMMBOX):
-		for x in range (thingToGive.arrLength):
+		#for x in range (thingToGive.arrLength):
 			#ammo boxes will always return true because the check to delete or preserve them
 			#happens on the pickup side of the script. what we gotta worry about is cramming as much as we can carry
 			#and updating the data to account for what we can't
-			thingToGive.amtArr[x] = giveAmmo(thingToGive.typeArr[x], thingToGive.amtArr[x])
+		thingToGive.amount = giveAmmo(thingToGive.ammoType, thingToGive.amount)
 		return true
 	elif(thingToGive is INVCONSUM):
-		return activate_Consumable(thingToGive)
-	else:
-		return add_GenericItem(thingToGive)
+		if(thingToGive.doConsumeScript == true):
+			if(thingToGive.consumeScript == ""):
+					assert(true, "youuuu didn't set up a consume behavior script, did you?")
+					return false
+			else:
+				var scriptEffect = load(thingToGive.consumeScript).new()
+				
+				return scriptEffect.activate(self, thingToGive)
+		else: 
+			print("Consumable doesn't have a consume script? Giving as generic item...")
+			return add_GenericItem(thingToGive)
 	
 	return false
 
@@ -165,74 +173,26 @@ func add_GenericItem(thingToGive:INVENITEMPARENT)->bool:
 			return true
 	
 	return false
-
-##Activates the given consumable based on what parameters it has.
-func activate_Consumable(thingToGive: INVCONSUM)->bool:
-	if(thingToGive.consumBehavior == 0 && thingToGive.consumAux[0] == 0):
-		assert(true, "YOUUU didn't set the values for the consume behavior and auxillary! check player invmanager and set them!")
-		return false
-	
-	
-	
-	if(thingToGive.consumBehavior == 1): #ammo kit
-		var weights:Array 
-		
-		for slot in allSlots: #go through all the weapons, count up the chamberings
-			for weapy in slot:
-				if(weapy):
-					if(weapy is INVWEP && weapy.weapInfoSheet is FIREARM_INFO):
-						weights.push_back(weapy.weapInfoSheet.chambering)
-		
-		if(activeItem is GUNBASICINSTANCE): #give a little more weight to what's held
-			weights.push_back(activeItem.weaponSheet.chambering)
-		
-		if(weights.size() == 0): #nothing equipped?
-			return false
-		
-		var currentTyp
-		var currentAmt
-		for x in range(thingToGive.consumAux[0]): #poll from our ammotypes AUX amount of time
-			
-			
-			currentTyp = weights.pick_random()
-			
-			if(currentTyp == 0):
-				currentAmt = randi_range(10, 55)
-			elif(currentTyp == 1):
-				currentAmt = randi_range(8, 56)
-			elif(currentTyp == 2):
-				currentAmt = randi_range(8, 30)
-			elif(currentTyp == 3):
-				currentAmt = randi_range(4, 11)
-			elif(currentTyp == 4):
-				currentAmt = randi_range(3, 12)
-			elif(currentTyp == 5):
-				currentAmt = randi_range(5, 16)
-			
-			var giveResult = giveAmmo(currentTyp, currentAmt)
-			
-			if(giveResult !=0): #we're low on space, stop
-				break
-	
-	#if(thingToGive.consumBehavior == 2): #Status effect
-		#if(thingToGive.consumAux == 0):
+#we don't need this since everything is script-based now
+###Activates the given consumable based on what parameters it has.
+#func activate_Consumable(thingToGive: INVCONSUM)->bool:
+#
+	#
+	#
+	#
+	#
+	#elif(thingToGive.consumBehavior == 2 ): #primitive status effects. every other index is a utility.
+		#var counter = 0
+		#for x in range(thingToGive.consumAux.size()/2):
+			#var newEffect = STATUSEFFECT.statusEffectGenerate(thingToGive.consumAux[counter], thingToGive.consumAux[counter+1])
+			#healthHolder.add_Effect(newEffect)
+			#counter+=2
+			#
 		#
-		#else if (thingToGive.consumAux == 1):
-		#else if (thingToGive.consumAux == 2):
-		#else if (thingToGive.consumAux == 3):
-		#else if (thingToGive.consumAux == ):
-	elif(thingToGive.consumBehavior == 2 ): #primitive status effects. every other index is a utility.
-		var counter = 0
-		for x in range(thingToGive.consumAux.size()/2):
-			var newEffect = STATUSEFFECT.statusEffectGenerate(thingToGive.consumAux[counter], thingToGive.consumAux[counter+1])
-			healthHolder.add_Effect(newEffect)
-			counter+=2
-			
-		
-	elif(thingToGive.consumBehavior == 3): #thrown/placed items
-		return true
-		
-	return true
+	#elif(thingToGive.consumBehavior == 3): #thrown/placed items
+		#return true
+		#
+	#return true
 
 
 #=============== WEAPON STUFF

@@ -2,7 +2,7 @@
 ##why don't we cut out the middleman here? because the thingToGive nonetheless has to be stored on the target node.
 class_name PICKUPABLE extends RAYCASTREACTIVE
 
-@export var thingToGive: INVENITEMPARENT #CHANGE THIS TO INVWEP
+@export var thingToGive: INVENITEMPARENT #CHANGE THIS TO INVWEP?
 
 func _ready():
 	if(thingToGive):
@@ -14,15 +14,13 @@ func interact_By_Player(player):
 
 
 func do_consume(player):
-	print(thingToGive.amtArr[0])
 	var invem: INVENMANAGER = player.invenManager
 	var result = invem.consume_item(thingToGive)
 	
-	if(thingToGive is INVAMMBOX): #special return only check if there's leftovers in the ammo
-		for val in thingToGive.amtArr: #the invenmanager will update the held item's counts of ammo
-			if(val != 0):
-				print("Didn't pick up all the ammo! preserving box!")
-				result = false
+	if(thingToGive is INVAMMBOX): #special return-only check if there's leftovers in the ammo
+		if(thingToGive.amount != 0):
+			print("Didn't pick up all the ammo! preserving box!")
+			result = false
 
 	if (result == true): #success
 		var theRoot

@@ -14,7 +14,6 @@ shotCooldown = 5
 chambering = 4
 maxCapacity = 2
 aimBonus = 20.0
-minRecoil = 20.0
 recoilAmount = 15.0
 viewpunchMult = 1.5
 recoverAmount = 0.6

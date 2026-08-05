@@ -1,38 +1,24 @@
 [gd_scene format=3 uid="uid://cgewg25x18i1u"]
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_2ln8p"]
-[ext_resource type="Texture2D" uid="uid://et0jntdk1ywm" path="res://resources/image resources/itemIcons/consumIcons/ammPackSmall.png" id="2_0f5cw"]
-[ext_resource type="Script" uid="uid://cqpkkhan0sckl" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_CONSUM.gd" id="2_i37vr"]
+[ext_resource type="Resource" uid="uid://bymwitq4hnjdw" path="res://scripts/utility/Items/Consumables/Ammo/ammPackSmallInvData.tres" id="2_2ln8p"]
 [ext_resource type="PackedScene" uid="uid://d31g1conwo3b3" path="res://models/glbs and textures/ammoBox/ammoKit.glb" id="3_0f5cw"]
-
-[sub_resource type="Resource" id="Resource_6raqw"]
-script = ExtResource("2_i37vr")
-consumBehavior = 1
-consumAux = 1
-itemName = "Small ammopack"
-itemDesc = "A small box that uses schrodingerian hypercalculus to contain a little random ammo from your equipped weapons. Does so once."
-itemHint = "Press E to activate. Press ALT to add to inventory."
-itemIcon = ExtResource("2_0f5cw")
-itemEntScene = "res://scenes/pickups/consumable/ammoPackSmall.tscn"
-itemFlags = []
-itemTyp = "GEN"
-metadata/_custom_type_script = "uid://cqpkkhan0sckl"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_keqo8"]
 size = Vector3(0.387146, 0.149841, 0.260498)
 
-[node name="packSmall" type="Node3D"]
+[node name="packSmall" type="Node3D" unique_id=387247727]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1899454548 groups=["player_interactible"]]
 collision_layer = 5
 collision_mask = 17
 mass = 0.5
 sleeping = true
 script = ExtResource("1_2ln8p")
-thingToGive = SubResource("Resource_6raqw")
+thingToGive = ExtResource("2_2ln8p")
 
-[node name="ammoKit" parent="RigidBody3D" instance=ExtResource("3_0f5cw")]
+[node name="ammoKit" parent="RigidBody3D" unique_id=970897504 instance=ExtResource("3_0f5cw")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=515138118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00228882, 0.00210571, -0.00012207)
 shape = SubResource("BoxShape3D_keqo8")
