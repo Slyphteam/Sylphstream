@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://er17epgwp6ac"]
+[gd_scene format=3 uid="uid://er17epgwp6ac"]
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_yps5i"]
-[ext_resource type="Resource" uid="uid://bk5mu1etaqbej" path="res://scripts/utility/invSystem/invData/invWeapons/snubvolverInvData.tres" id="2_yps5i"]
+[ext_resource type="Resource" uid="uid://bk5mu1etaqbej" path="res://scripts/utility/Items/Weapons/Pistols/snubvolverInvData.tres" id="2_yps5i"]
 [ext_resource type="ArrayMesh" uid="uid://c6nbg8b8efnc0" path="res://models/glbs and textures/guns/snubvolverMesh.res" id="3_yps5i"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qmf70"]

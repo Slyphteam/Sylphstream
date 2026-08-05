@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="INVAMMBOX" format=3 uid="uid://bx63qqsmwoqsk"]
+
+[ext_resource type="Script" uid="uid://bofsmi7krun2i" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_AMMBOX.gd" id="1_0ymnv"]
+[ext_resource type="Texture2D" uid="uid://cpl8wlsk2mvbm" path="res://resources/image resources/itemIcons/consumIcons/ambox9m.png" id="1_1ispf"]
+
+[resource]
+script = ExtResource("1_0ymnv")
+arrLength = 1
+typeArr = Array[int]([1])
+amtArr = Array[int]([50])
+itemName = "9mm Ammobox"
+itemDesc = "A cardboard box containing 50 parabellum cartridges. Popular in pistols and carbines."
+itemHint = ""
+itemIcon = ExtResource("1_1ispf")
+itemEntScene = "res://scenes/pickups/ammo/9_mm_ammobox.tscn"
+itemFlags = []
+itemTyp = "GEN"
+metadata/_custom_type_script = "uid://bofsmi7krun2i"

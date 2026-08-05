@@ -6,7 +6,7 @@ class_name PICKUPABLE extends RAYCASTREACTIVE
 
 func _ready():
 	if(thingToGive):
-		thingToGive = thingToGive.duplicate() #ensure we are never operating with the "template" data
+		thingToGive = thingToGive.duplicate(true) #ensure we are never operating with the "template" data
 
 func interact_By_Player(player):
 	
@@ -14,6 +14,7 @@ func interact_By_Player(player):
 
 
 func do_consume(player):
+	print(thingToGive.amtArr[0])
 	var invem: INVENMANAGER = player.invenManager
 	var result = invem.consume_item(thingToGive)
 	

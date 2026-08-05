@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="FIREARM_INFO" format=3 uid="uid://sy0ndq1n1a7f"]
+
+[ext_resource type="AudioStream" uid="uid://c7xne0xmb6kea" path="res://sounds/gunshots/pistolcarbine.mp3" id="1_88snx"]
+[ext_resource type="ArrayMesh" uid="uid://cxds50gkr0k8a" path="res://models/glbs and textures/guns/fourier9 Mesh.res" id="2_88snx"]
+[ext_resource type="AudioStream" uid="uid://3ip3kfhlj6tn" path="res://sounds/reloads/scrapereload.mp3" id="3_43uo3"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/Items/Weapons/Misc info sheets/FIREARMINFO.gd" id="4_88snx"]
+
+[resource]
+script = ExtResource("4_88snx")
+gunshot = ExtResource("1_88snx")
+reload = ExtResource("3_43uo3")
+bulletVariance = 6
+shotCooldown = 10
+chambering = 1
+maxCapacity = 17
+aimBonus = 5.0
+maxRecoil = 50.0
+minRecoil = 10.0
+recoilAmount = 15.0
+viewpunchMult = 1.0
+recoverAmount = 0.5
+doCasing = true
+casingPath = "res://scenes/trivial/decals/9mmCasing.tscn"
+ejectOnReload = false
+casingDelay = 0.0
+casingSpeedBoost = 1.0
+singleReloadOverride = false
+reloadtime = 1.0
+allowPlus1 = true
+pelletAMT = 1
+burstMode = false
+burstAMT = 3
+wepName = &"Fourier 9"
+wepDesc = &""
+mesh = ExtResource("2_88snx")
+drawTime = 1.0
+damage = 24
+selections = Array[int]([3, 2])
+position = Vector3(0.5, -0.15, -0.4)
+rotation = Vector3(0, 0, 0)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"

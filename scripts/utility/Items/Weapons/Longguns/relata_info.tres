@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="FIREARM_INFO" format=3 uid="uid://vmo1b3o1awtj"]
+
+[ext_resource type="AudioStream" uid="uid://jmjas3ug865v" path="res://sounds/gunshots/relatapump.mp3" id="1_5yl1k"]
+[ext_resource type="ArrayMesh" uid="uid://bw6xf5xrhqshs" path="res://models/glbs and textures/guns/relataMesh.res" id="2_5yl1k"]
+[ext_resource type="AudioStream" uid="uid://boahsq60oy1gj" path="res://sounds/reloads/shellinsert.mp3" id="3_1c3wg"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/Items/Weapons/Misc info sheets/FIREARMINFO.gd" id="4_5yl1k"]
+
+[resource]
+script = ExtResource("4_5yl1k")
+gunshot = ExtResource("1_5yl1k")
+reload = ExtResource("3_1c3wg")
+bulletVariance = 2
+shotCooldown = 50
+chambering = 4
+maxCapacity = 8
+aimBonus = 0.0
+maxRecoil = 40.0
+minRecoil = 20.0
+viewpunchMult = 4.0
+recoverAmount = 0.4
+doCasing = true
+casingPath = "res://scenes/trivial/decals/12gCasing.tscn"
+casingDelay = 0.5
+singleReloadOverride = true
+reloadtime = 0.5
+pelletAMT = 14
+wepName = &"Relata"
+wepDesc = &""
+mesh = ExtResource("2_5yl1k")
+damage = 6
+selections = Array[int]([4])
+position = Vector3(0.5, -0.3, -0.65)
+rotation = Vector3(90, 90, 0)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"

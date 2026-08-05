@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://u5vg53ed723w"]
+[gd_scene format=3 uid="uid://u5vg53ed723w"]
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="2_juh54"]
 [ext_resource type="ArrayMesh" uid="uid://c6mqdm7s3rxj5" path="res://models/glbs and textures/guns/bergtherMesh.res" id="3_7fxke"]
-[ext_resource type="Resource" uid="uid://bqtt26oq7s13c" path="res://scripts/utility/invSystem/invData/invWeapons/bergtherInvData.tres" id="3_jvlf8"]
+[ext_resource type="Resource" uid="uid://bqtt26oq7s13c" path="res://scripts/utility/Items/Weapons/Pistols/bergtherInvData.tres" id="3_jvlf8"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gkxsj"]
 points = PackedVector3Array(-0.0222182, -0.195951, 0.0992436, 0.0185555, -0.195951, 0.0992436, -0.00590315, 0.0160928, -0.333079, -0.0303786, 0.0323823, 0.140023, 0.0185555, 0.0568585, -0.333079, -0.0303786, 0.073176, -0.0883004, 0.0267214, -0.187792, 0.172626, -0.0303786, -0.195951, 0.131847, -0.0222182, 0.0405411, -0.324902, 0.0267214, 0.073176, 0.107369, -0.00590315, 0.0894935, -0.333079, -0.00590315, 0.073176, 0.148148, -0.0222182, -0.179633, 0.180802, 0.0267214, 0.0650173, -0.178035, 0.0267214, -0.195951, 0.107369, -0.0222182, 0.0813348, 0.107369, 0.0185555, 0.0323823, -0.333079, -0.0303786, 0.0323823, -0.178035, 0.0104008, 0.073176, 0.148148, 0.00224042, 0.0894935, -0.333079, 0.0267214, 0.00793403, -0.178035, 0.00224042, 0.0160928, -0.333079, -0.0222182, -0.155157, 0.180802, 0.00996308, -0.175109, 0.179637, 0.00949225, 0.0788908, 0.0713806, -0.0222182, 0.0486998, -0.324902, -0.0303786, -0.195951, 0.123721, 0.0267214, -0.0654387, -0.0964256, -0.0303786, -0.187792, 0.148148, -0.0303786, 0.0486998, 0.115545, -0.0222182, 0.0813348, -0.161683, 0.0267214, -0.179633, 0.172626)

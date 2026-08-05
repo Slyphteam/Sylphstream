@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="INVWEP" format=3 uid="uid://bgri72vk3tr6y"]
+
+[ext_resource type="Script" uid="uid://cy4ktyukcktf8" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_WEAPON.gd" id="1_fmv76"]
+[ext_resource type="Texture2D" uid="uid://b3wdb8sv8e2n3" path="res://resources/image resources/itemIcons/weaponIcons/urutauIcon.png" id="1_vr73b"]
+[ext_resource type="Resource" uid="uid://up52p06xonfc" path="res://scripts/utility/Items/Weapons/Carbines/ghostbird_info.tres" id="3_y68ce"]
+
+[resource]
+script = ExtResource("1_fmv76")
+weapInfoSheet = ExtResource("3_y68ce")
+itemName = "Ghostbird"
+itemDesc = "A Brazillian polymer bullpup named after the Potoo. High cyclic rate."
+itemHint = ""
+itemIcon = ExtResource("1_vr73b")
+itemEntScene = "res://scenes/pickups/weapons/ghostbird pickup.tscn"
+itemFlags = []
+itemTyp = "WEP"
+metadata/_custom_type_script = "uid://cy4ktyukcktf8"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="INVENITEMPARENT" format=3 uid="uid://126jxfaiye4p"]
+
+[ext_resource type="Texture2D" uid="uid://begwrt3f2tsiq" path="res://resources/image resources/itemIcons/blueSphere.png" id="1_frfrx"]
+[ext_resource type="Script" uid="uid://vgp60urmu5q7" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_PARENT.gd" id="2_m53r7"]
+
+[resource]
+script = ExtResource("2_m53r7")
+itemName = "Blue Circle"
+itemDesc = "A small blue sphere. Entirely useless?"
+itemHint = ""
+itemIcon = ExtResource("1_frfrx")
+itemEntScene = "res://scenes/trivial/pickups/blueSphere.tscn"
+itemFlags = []
+itemTyp = "GEN"
+metadata/_custom_type_script = "uid://vgp60urmu5q7"

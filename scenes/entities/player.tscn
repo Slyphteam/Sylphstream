@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dvklbsnlwomcb" path="res://sounds/ambient/windchimes.ogg" id="2_ogpgs"]
 [ext_resource type="Script" uid="uid://cagl2dj4xmgde" path="res://scripts/mob/complex/player/ui associated/reticle.gd" id="5_smehm"]
 [ext_resource type="Script" uid="uid://byw2tb8odojpb" path="res://scripts/utility/invSystem/invenmanagers/invenManager_player.gd" id="5_tuyoq"]
-[ext_resource type="Resource" uid="uid://1spaunb34an3" path="res://scripts/utility/invSystem/invData/invWeapons/handsInvData.tres" id="5_xe83n"]
+[ext_resource type="Resource" uid="uid://1spaunb34an3" path="res://scripts/utility/Items/Weapons/Misc invitems/handsInvData.tres" id="5_xe83n"]
 [ext_resource type="Script" uid="uid://bjh5ssg5usjoy" path="res://scripts/utility/damsystem/health/player_healthholder.gd" id="6_1yk18"]
 [ext_resource type="Script" uid="uid://bthclex85flsh" path="res://scripts/mob/complex/player/ui associated/ui_Manager.gd" id="6_78t0m"]
 [ext_resource type="PackedScene" uid="uid://dadgd6x31ovo8" path="res://scenes/entities/playermodel.tscn" id="6_tgbf5"]
