@@ -27,3 +27,7 @@ func give_Health(amount:int):
 func give_Health_Overmax(amount:int, newMax: int):
 	super.give_Health_Overmax(amount, newMax)
 	playerUI.updateHealth(health)
+	
+func give_Aura(amount:int):
+	super.give_Aura(amount)
+	update_True_Vals()

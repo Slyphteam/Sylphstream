@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_4scsm"]
 [ext_resource type="PackedScene" uid="uid://c661rm7g7ati8" path="res://models/glbs and textures/ammoBox/ammoCannister.glb" id="2_4scsm"]
+[ext_resource type="Script" uid="uid://cqpkkhan0sckl" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_CONSUM.gd" id="2_wxhji"]
+
+[sub_resource type="Resource" id="Resource_btreu"]
+script = ExtResource("2_wxhji")
+metadata/_custom_type_script = "uid://cqpkkhan0sckl"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wxhji"]
 size = Vector3(0.305782, 0.561337, 0.891167)
@@ -14,6 +19,7 @@ collision_mask = 17
 mass = 0.5
 sleeping = true
 script = ExtResource("1_4scsm")
+thingToGive = SubResource("Resource_btreu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=583555070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00263405, 0.108175, 0.0110588)

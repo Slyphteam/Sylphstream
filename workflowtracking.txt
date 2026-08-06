@@ -2,8 +2,10 @@
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Inventory system changes: all invenitems have a *string* to a scene with a few calls. It's
-gotta be a scene because nothing else is generic enough. scene can kill itself but make it work.
+Have consume items self-delete when they're done? Might not be worth but just to be safe
+Add ALT pickup functionality
+Add generic consume sounds, springslop consume sound, ammopack consume sounds
+
 
 Have guns recoil visually
 

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="INVCONSUM" format=3 uid="uid://bxyvi0srat5ou"]
+
+[ext_resource type="Script" uid="uid://cqpkkhan0sckl" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_CONSUM.gd" id="1_636do"]
+
+[resource]
+script = ExtResource("1_636do")
+itemName = "A rat"
+itemDesc = "If Mousey not for eating,,, why is so delightfully crunchy?"
+itemHint = "Press E to partake. Press ALT to save for later"
+maxStack = 5
+metadata/_custom_type_script = "uid://cqpkkhan0sckl"

@@ -10,6 +10,7 @@ func _init():
 @export var startingAura: int = 50
 var aura: int = 0
 var takenAura: int = 0 ##What's the damage applied to aura for the frame?
+var maxAura:int = 100
 
 var effectStarter: STATUSEFFECT ##Head of the doubly linked list used to handle statuseffects.
 
@@ -104,3 +105,9 @@ func give_Health(amount:int):
 	health += amount
 	if(health >= maxHP):
 		health = maxHP
+
+##Gives health. Will never exceed the preset maximum hp, use give_Health_Overmax instead.
+func give_Aura(amount:int):
+	aura += amount
+	if(aura >= maxAura):
+		aura = maxAura

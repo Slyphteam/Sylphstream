@@ -7,5 +7,5 @@ func _ready() -> void:
 	Color.ORANGE_RED, Color.YELLOW, Color.CRIMSON, Color.RED, Color.MEDIUM_SEA_GREEN,
 	Color.AQUA, Color.DODGER_BLUE, Color.TOMATO]
 	ourMaterial.albedo_color = colors[randi_range(0, colors.size()-1 )]
-	ourMaterial.albedo_color.a = 0.5
+	ourMaterial.albedo_color.a = 0.7
 	ourModel.material_override = ourMaterial

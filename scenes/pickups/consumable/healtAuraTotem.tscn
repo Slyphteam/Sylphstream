@@ -8,10 +8,13 @@
 [sub_resource type="Resource" id="Resource_7imn4"]
 script = ExtResource("3_o5pjr")
 itemName = "Aura totem"
-itemDesc = "A totem of blessed brass and wood. Contains 50 thaums of auric charge."
+itemDesc = "A blessed talisman containing 25 thaums of auric charge"
 itemHint = "Press E to channel. Press ALT to pick up without using."
 itemIcon = ExtResource("2_bqcr4")
+extraData = [9, 25]
 maxStack = 2
+doConsumeScript = true
+consumeScript = "res://scripts/utility/Items/Consumables/Healing/consumStatusEffects.gd"
 metadata/_custom_type_script = "uid://cqpkkhan0sckl"
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j0k6w"]

@@ -91,6 +91,16 @@ static func statusEffectGenerate(effectKey, effectAux)->STATUSEFFECT:
 	if(effectKey == 7):
 		effect = STATUSREGEN.new()
 		#effect.theDuration = effectAux * 30
+	#8 is aura regen
+	if(effectKey == 9): 
+		effect = STATUSINSTHEAL.new()
+		if(effectAux >=0):
+			effect.healAmount = effectAux
+	if(effectKey == 9): 
+		effect = STATUSINSTAURA.new()
+		if(effectAux >=0):
+			effect.healAmount = effectAux
+			
 	if(effectKey == 84):
 		effect = STATUSMICROPLASTIC.new()
 		

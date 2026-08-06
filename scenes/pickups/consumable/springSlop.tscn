@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_5637r"]
 [ext_resource type="Script" uid="uid://cbtlbgx7gkuf6" path="res://scripts/mob/simple/enemy/springtailColorScript.gd" id="1_xnhka"]
-[ext_resource type="Resource" uid="uid://dx4bovvo0ip8i" path="res://scripts/utility/Items/Consumables/conSpringSlop.tres" id="2_5637r"]
+[ext_resource type="Resource" uid="uid://dx4bovvo0ip8i" path="res://scripts/utility/Items/Consumables/Healing/conSpringSlop.tres" id="2_5637r"]
 [ext_resource type="Material" uid="uid://jjfxm4ehgiq5" path="res://models/glbs and textures/creatures/enemies/springtail/springtialMaterial.tres" id="3_0qndg"]
 [ext_resource type="ArrayMesh" uid="uid://t7lcigd22p0m" path="res://models/glbs and textures/creatures/enemies/springtail/springSlopMesh.tres" id="4_hiqgt"]
 

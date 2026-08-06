@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="INVCONSUM" format=3 uid="uid://dx4bovvo0ip8i"]
+
+[ext_resource type="Texture2D" uid="uid://dfx76unfr4q0g" path="res://resources/image resources/itemIcons/consumIcons/springtailSlop.png" id="1_jk7mb"]
+[ext_resource type="Script" uid="uid://cqpkkhan0sckl" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_CONSUM.gd" id="2_nhdmk"]
+
+[resource]
+script = ExtResource("2_nhdmk")
+itemName = "Springtail Slop"
+itemDesc = "Globules of warm, soggy, fruit-scented plastic sludge. They pulsate in your grasp."
+itemHint = "Press E to guzzle it down. Press ALT to scoop into inventory."
+itemIcon = ExtResource("1_jk7mb")
+itemEntScene = "res://scenes/pickups/consumable/springSlop.tscn"
+extraData = [7, 0, 84, 0]
+maxStack = 4
+doConsumeScript = true
+consumeScript = "res://scripts/utility/Items/Consumables/Healing/consumStatusEffects.gd"
+metadata/_custom_type_script = "uid://cqpkkhan0sckl"

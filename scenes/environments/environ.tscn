@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://b7fuapjfoq1ld" path="res://scenes/utilities/buttons/coneandSphere.tscn" id="29_i07vp"]
 [ext_resource type="PackedScene" uid="uid://jgq76rwq30xg" path="res://scenes/pickups/ammo/starter_ammobox.tscn" id="31_k3qjg"]
 [ext_resource type="PackedScene" uid="uid://ce6f6v2tytbe5" path="res://scenes/pickups/weapons/pippy pickup.tscn" id="33_m43px"]
+[ext_resource type="PackedScene" uid="uid://cy0dkbd3g7mis" path="res://models/glbs and textures/consumable/healthKit.glb" id="36_1lgxx"]
 [ext_resource type="PackedScene" uid="uid://cjbpcp17hblrb" path="res://scenes/pickups/consumable/healtAuraTotem.tscn" id="36_7v36v"]
 [ext_resource type="PackedScene" uid="uid://b7rwgnww6bo8u" path="res://models/glbs and textures/props/table.glb" id="37_1ww43"]
 
@@ -802,13 +803,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0059814453, 0.8332838, 0.00
 shape = SubResource("BoxShape3D_x6igy")
 
 [node name="SpringSlop" parent="Environment/table" unique_id=1124905728 instance=ExtResource("1_nnc13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7064166, 1.6628788, -0.11512947)
+transform = Transform3D(-0.026688192, 0, -0.9996438, 0, 1, 0, 0.9996438, 0, -0.026688192, 0.107845545, 1.6628788, -0.42489624)
 
 [node name="SpringSlop2" parent="Environment/table" unique_id=1386497787 instance=ExtResource("1_nnc13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83978605, 1.4037118, 0.31993675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3369851, 1.4037118, -0.10737133)
 
-[node name="Node3D" parent="Environment" unique_id=702076173 instance=ExtResource("36_7v36v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7263973, 2.378129, 11.674844)
+[node name="healthKit" parent="Environment/table" unique_id=1153240982 instance=ExtResource("36_1lgxx")]
+transform = Transform3D(-0.96304697, 0, -0.26933354, 0, 1, 0, 0.26933354, 0, -0.96304697, 0.18886495, 1.482125, 0.0747118)
+
+[node name="healthKit2" parent="Environment/table" unique_id=449809947 instance=ExtResource("36_1lgxx")]
+transform = Transform3D(-0.7805889, 0, 0.62504476, 0, 1, 0, -0.62504476, 0, -0.7805889, -0.78768396, 1.482125, -0.3706541)
+
+[node name="Node3D" parent="Environment" unique_id=393917423 instance=ExtResource("36_7v36v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4669952, 2.378129, 12.083358)
 
 [node name="Player" parent="." unique_id=733239100 instance=ExtResource("25_vxy5b")]
 

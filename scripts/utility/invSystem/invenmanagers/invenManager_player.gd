@@ -173,26 +173,6 @@ func add_GenericItem(thingToGive:INVENITEMPARENT)->bool:
 			return true
 	
 	return false
-#we don't need this since everything is script-based now
-###Activates the given consumable based on what parameters it has.
-#func activate_Consumable(thingToGive: INVCONSUM)->bool:
-#
-	#
-	#
-	#
-	#
-	#elif(thingToGive.consumBehavior == 2 ): #primitive status effects. every other index is a utility.
-		#var counter = 0
-		#for x in range(thingToGive.consumAux.size()/2):
-			#var newEffect = STATUSEFFECT.statusEffectGenerate(thingToGive.consumAux[counter], thingToGive.consumAux[counter+1])
-			#healthHolder.add_Effect(newEffect)
-			#counter+=2
-			#
-		#
-	#elif(thingToGive.consumBehavior == 3): #thrown/placed items
-		#return true
-		#
-	#return true
 
 
 #=============== WEAPON STUFF
