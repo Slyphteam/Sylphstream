@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bjk0i3q838goj"]
+
+[ext_resource type="ArrayMesh" uid="uid://beisiy8wa140o" path="res://models/glbs and textures/creatures/npc/cardboardMesh.res" id="1_gjea7"]
+[ext_resource type="Script" uid="uid://1rhr44511qve" path="res://scripts/mob/simple/NPCs/simple_npc_script.gd" id="2_q5j23"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8qtkm"]
+points = PackedVector3Array(0.4358858, 0.6360872, 0.083399996, -0.54977775, 0.74260855, -0.03357005, -0.54977775, 0.74260855, 0.114266634, -0.43889302, -0.8462777, -0.03357005, 0.07828942, -0.7353821, -0.51397777, 0.15224755, 1.5188777, -0.03357005, 0.23590805, -0.73007387, 0.083399996, -0.5127462, 1.5188777, -0.03357005, 0.5219333, 0.29948917, -0.03357005, -0.06931214, -0.8462777, -0.51397777, 0.13591918, 1.402674, 0.083399996, 0.4110486, 1.1491486, -0.03357005, 0.2631323, -0.8462777, -0.03357005, -0.39713404, -0.73007387, 0.083399996, -0.4637302, 1.402674, 0.083399996, 0.46927845, 0.20310766, 0.083399996, 0.07828942, -0.8462777, -0.51397777, 0.44787028, -0.14409325, -0.03357005, 0.3692896, 1.0692755, 0.083399996, -0.54977775, 1.186191, -0.03357005, -0.06931214, -0.7353821, -0.51397777, 0.44787028, 1.0014422, -0.03357005, 0.30005893, -0.77219296, -0.03357005, 0.22610079, 1.444793, -0.03357005, 0.5219333, 0.18859355, -0.03357005, 0.30250424, -0.53007656, 0.083399996, 0.37391216, 1.2232333, -0.03357005, 0.20251536, 1.335869, 0.083399996, 0.4024931, 0.9360832, 0.083399996, 0.33698553, -0.6244865, -0.03357005, 0.48490182, 0.6687553, -0.03357005, 0.46927845, 0.3031063, 0.083399996)
+
+[node name="Node3D" type="Node3D" unique_id=195172170]
+
+[node name="CardboardMesh" type="MeshInstance3D" parent="." unique_id=178216268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22658074, 0.78615534, -0.05987987)
+mesh = ExtResource("1_gjea7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CardboardMesh" unique_id=1600595289 groups=["player_interactible"]]
+collision_layer = 5
+script = ExtResource("2_q5j23")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CardboardMesh/StaticBody3D" unique_id=1652286311]
+shape = SubResource("ConvexPolygonShape3D_8qtkm")

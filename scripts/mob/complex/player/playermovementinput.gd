@@ -398,7 +398,7 @@ func do_Jump():
 		flMul = sqrt(2 * gravAmount * jumpheight) + ((1./60.) * gravAmount)
 		
 	else:
-		move_and_collide(Vector3(0, 2-playerShape.scale.y, 0)) #TODO: make sure playershape here doesnt cause issues
+		move_and_collide(Vector3(0, 1, 0)) # for some ungodly reason this used to use 2- the y scalar of the playermodel???
 		flMul = sqrt(2 * gravAmount * jumpheight)
 	var jumpvel =  flGroundFactor * flMul  + max(0, playerVelocity.y)
 	playerVelocity.y = max(jumpvel, jumpvel + playerVelocity.y)

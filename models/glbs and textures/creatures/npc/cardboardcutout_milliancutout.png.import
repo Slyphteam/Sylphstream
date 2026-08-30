@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0gkfedjudb72"
-path.s3tc="res://.godot/imported/angeionV1_clayTexBody.png-afc6b5274dabf431c54b749d5e73e219.s3tc.ctex"
+uid="uid://brfqcdvycac3t"
+path.s3tc="res://.godot/imported/cardboardcutout_milliancutout.png-a14414d296a6ce10b60cc9712208bee4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dee7fcb95f71724dd746e1cf9ff4f40c"
+"md5": "ad63c566c36b69cc211543c4a5b49b64"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/angeion/angeionV1_clayTexBody.png"
-dest_files=["res://.godot/imported/angeionV1_clayTexBody.png-afc6b5274dabf431c54b749d5e73e219.s3tc.ctex"]
+source_file="res://models/glbs and textures/creatures/npc/cardboardcutout_milliancutout.png"
+dest_files=["res://.godot/imported/cardboardcutout_milliancutout.png-a14414d296a6ce10b60cc9712208bee4.s3tc.ctex"]
 
 [params]
 

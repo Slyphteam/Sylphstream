@@ -39,20 +39,16 @@
 [ext_resource type="PackedScene" uid="uid://cy0dkbd3g7mis" path="res://models/glbs and textures/consumable/healthKit.glb" id="36_1lgxx"]
 [ext_resource type="PackedScene" uid="uid://cjbpcp17hblrb" path="res://scenes/pickups/consumable/healtAuraTotem.tscn" id="36_7v36v"]
 [ext_resource type="PackedScene" uid="uid://b7rwgnww6bo8u" path="res://models/glbs and textures/props/table.glb" id="37_1ww43"]
+[ext_resource type="PackedScene" uid="uid://bjk0i3q838goj" path="res://scenes/entities/NPCs/test_npc.tscn" id="39_y2ccu"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-sun_angle_max = 0.0
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p4pb1"]
 
-[sub_resource type="Sky" id="Sky_a202f"]
-sky_material = SubResource("ProceduralSkyMaterial_4xowi")
+[sub_resource type="Sky" id="Sky_p4pb1"]
+sky_material = SubResource("ProceduralSkyMaterial_p4pb1")
 
-[sub_resource type="Environment" id="Environment_noarx"]
+[sub_resource type="Environment" id="Environment_y2ccu"]
 background_mode = 2
-sky = SubResource("Sky_a202f")
-tonemap_mode = 2
-glow_enabled = true
+sky = SubResource("Sky_p4pb1")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s43vw"]
 direction = Vector3(0, 1, 0)
@@ -188,8 +184,11 @@ size = Vector3(2.1999512, 1, 1.2498779)
 
 [node name="Node3D" type="Node3D" unique_id=1476939966 groups=["hit_decal_blacklist"]]
 
+[node name="Player" parent="." unique_id=733239100 instance=ExtResource("25_vxy5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3623382, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=628631545]
-environment = SubResource("Environment_noarx")
+environment = SubResource("Environment_y2ccu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=369587855]
 transform = Transform3D(-0.940841, 0.293453, -0.169424, -1.49013e-08, 0.499998, 0.866027, 0.338849, 0.814793, -0.470418, -0.600918, 1.25346, -1.02504)
@@ -636,7 +635,7 @@ transform = Transform3D(-0.0698235, 0.260585, -0.962923, 0.965926, 0.258819, -4.
 transform = Transform3D(0.399901, 2.83885e-08, -0.916558, 8.71384e-08, -1, 7.04619e-09, -0.916558, -8.26852e-08, -0.399901, 0.146201, 0.879804, -0.639597)
 
 [node name="Relata" parent="Environment/Range/range table" unique_id=64714504 instance=ExtResource("19_ejflf")]
-transform = Transform3D(0.54486734, 0.8382771, 0.020279547, 0.8114036, -0.52099055, -0.26494023, -0.21152788, 0.1608122, -0.9640515, -0.85334015, 0.90249705, 3.74724)
+transform = Transform3D(0.5448674, 0.8382772, 0.02027956, 0.8361589, -0.5449872, 0.061867177, 0.062913954, -0.016752498, -0.99787825, -0.85334015, 0.90249705, 3.9100685)
 
 [node name="Corollary" parent="Environment/Range/range table" unique_id=1140747710 instance=ExtResource("20_0e1lj")]
 transform = Transform3D(0.874484, -2.1202403e-08, -0.485054, -0.485054, -3.82249e-08, -0.874484, 0, 1, -4.37114e-08, -1.1763802, 0.843119, 4.4851093)
@@ -669,7 +668,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34886, 1.79135, -4.52813)
 transform = Transform3D(0.13700563, 0.98104995, -0.13700545, 0.6937072, -0.19375503, -0.69370735, -0.70710707, 1.4898643e-07, -0.70710695, 0.004450798, 0.97345686, 1.464756)
 
 [node name="Yeoman" parent="Environment/Range/range table" unique_id=1108202969 instance=ExtResource("27_7jqqp")]
-transform = Transform3D(-0.019985398, 0.9682568, -0.2491573, -0.07741735, -0.24995756, -0.96515703, -0.99679846, -3.1683697e-08, 0.07995537, -0.66103935, 1.0193119, 4.131834)
+transform = Transform3D(-0.019985398, 0.9682568, -0.24915728, 0.1277111, -0.24469326, -0.96115315, -0.99161005, -0.051029257, -0.11876689, -0.66103935, 1.0193119, 3.2521114)
 
 [node name="sporting clay2" parent="Environment/Range" unique_id=1890008143 instance=ExtResource("5_m43px")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.38655, 3.00265, -2.00308)
@@ -786,8 +785,8 @@ transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 
 [node name="SentryTest" parent="Environment" unique_id=167636694 instance=ExtResource("27_4qvx4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.3733, 0.533243, -17.8904)
 
-[node name="Debugtracebutton" parent="Environment" unique_id=1239355533 instance=ExtResource("28_1ieyi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7518, 0.527357, -4.07825)
+[node name="teleporter" parent="Environment" unique_id=1239355533 instance=ExtResource("28_1ieyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.722864, 0.527357, -16.409296)
 behavior = 15
 
 [node name="shapebuttons" parent="Environment" unique_id=986187749 instance=ExtResource("29_i07vp")]
@@ -817,7 +816,8 @@ transform = Transform3D(-0.7805889, 0, 0.62504476, 0, 1, 0, -0.62504476, 0, -0.7
 [node name="Node3D" parent="Environment" unique_id=393917423 instance=ExtResource("36_7v36v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4669952, 2.378129, 12.083358)
 
-[node name="Player" parent="." unique_id=733239100 instance=ExtResource("25_vxy5b")]
+[node name="Node3D2" parent="Environment" unique_id=195172170 instance=ExtResource("39_y2ccu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61633205, 0.56529284, -17.560507)
 
 [node name="provingPit" type="Node3D" parent="." unique_id=1420653084]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384.708, 0, 0)

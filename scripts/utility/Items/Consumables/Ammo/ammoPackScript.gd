@@ -1,14 +1,10 @@
 extends CONSUMEBEHAVIOR
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
 func activate(manager: INVENMANAGER, ourItem:INVENITEMPARENT) ->bool:
-	var weights:Array 
+	var weights:Array
 	
-	for slot in manager.allSlots: #go through all the weapons, count up the chamberings
+	for slot in manager.allSlots:
 		for weapy in slot:
 			if(weapy):
 				if(weapy is INVWEP && weapy.weapInfoSheet is FIREARM_INFO):

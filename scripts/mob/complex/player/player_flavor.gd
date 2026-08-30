@@ -24,8 +24,8 @@ var tilt_amount : float = 0.0 # negative is to the left, positive is to the righ
 #footstep variables
 @onready var ourPlayer = $"../.."
 @onready var debugText = $"../../Player UI/debugText"
-@export var footstepDelay = 0.5 ##fractional multiplier to slow down the theta counter that determines footstep times
-@export var bobIntensity:float = 0.5 ##how much do we bob along with the footsteps?
+@export var footstepDelay = 0.6 ##multiplier for time between footsteps
+@export var bobIntensity:float = 1 ##how much do we bob along with the footsteps?
 var previousSign: int = 1
 var played = false
 var ourSounds:Array = ["res://sounds/footsteps/concrete/fsConcLoud4.mp3", 

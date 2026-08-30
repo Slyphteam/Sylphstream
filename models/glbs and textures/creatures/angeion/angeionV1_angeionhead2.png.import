@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dba1u3htxwpc8"
-path.s3tc="res://.godot/imported/angeionV1_clayTexHead.png-1837c32a977c92cd4454fdb2abea0d65.s3tc.ctex"
+uid="uid://b1md3gixyhtfw"
+path.s3tc="res://.godot/imported/angeionV1_angeionhead2.png-a90ba51c3212be68bc1e46632aff824b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "96658677a24e23a75205a2dbb862d8da"
+"md5": "567950173e4450e516f96ea4c906d200"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/creatures/angeion/angeionV1_clayTexHead.png"
-dest_files=["res://.godot/imported/angeionV1_clayTexHead.png-1837c32a977c92cd4454fdb2abea0d65.s3tc.ctex"]
+source_file="res://models/glbs and textures/creatures/angeion/angeionV1_angeionhead2.png"
+dest_files=["res://.godot/imported/angeionV1_angeionhead2.png-a90ba51c3212be68bc1e46632aff824b.s3tc.ctex"]
 
 [params]
 
