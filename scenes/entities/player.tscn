@@ -1481,6 +1481,7 @@ position = Vector2(275, -83)
 texture = ExtResource("12_kiyhm")
 
 [node name="invBkg" type="PanelContainer" parent="Player UI" unique_id=1607793915]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4

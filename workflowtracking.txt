@@ -2,9 +2,12 @@
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Have consume items self-delete when they're done? Might not be worth but just to be safe
+
 Add ALT pickup functionality
 Add generic consume sounds, springslop consume sound, ammopack consume sounds
+Weapon recoil/UI interface retooling
+Give all items a codename
+Player save/loading
 
 
 Have guns recoil visually

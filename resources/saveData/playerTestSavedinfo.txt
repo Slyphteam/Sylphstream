@@ -1,0 +1,54 @@
+;;\PLAYER INSTANCE INFORMATION
+;;Weaponslotcapacities:
+1
+3
+3
+2
+1
+;;\END
+;;Wallet:
+500
+;;Ammweight:
+1350
+;;Maxhp:
+100
+;;Maxaura:
+100
+;;Ammocounts:
+10
+5
+0
+20
+0
+0
+
+//GiveHands:
+yes please :)
+;;Genericslots:
+6
+;;TalkedCutout?
+NOT YET
+;;\END
+everything below here is unimplemented
+;;Quickstimslots:
+4
+;;Utilislots:
+4
+;;Backpackcontents:
+2
+ITE_TOTEM
+ITE_AMPACSMALL
+;;Stimcontents:
+0
+;;Utilcontents:
+0
+;;Playerstats:
+0
+0
+0
+0
+0
+0
+0
+
+;;\END

@@ -30,9 +30,7 @@ albedo_texture = ExtResource("3_usduo")
 material = SubResource("StandardMaterial3D_oyqm6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3aii"]
-transparency = 3
-alpha_hash_scale = 1.0
-alpha_antialiasing_mode = 0
+transparency = 1
 albedo_texture = ExtResource("4_hejxc")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8at5x"]
@@ -46,9 +44,7 @@ albedo_texture = ExtResource("5_1yaij")
 material = SubResource("StandardMaterial3D_afw23")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6cem"]
-transparency = 3
-alpha_hash_scale = 1.0
-alpha_antialiasing_mode = 0
+transparency = 1
 albedo_texture = ExtResource("6_bu4w2")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_b4cyf"]
@@ -92,8 +88,5 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_b4cyf")
 skeleton = NodePath("../layer4")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=478184672]
-transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, 0.25, 0, -0.25, -1.0927847e-08, 0, 1.1799932, 0)
-light_energy = 1.186
-spot_range = 5.612
-spot_angle = 62.823887
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=1397191968]
+transform = Transform3D(0.16666667, 0, 0, 0, 0.16666667, 0, 0, 0, 0.16666667, 0, 1.3249941, 2.6342864)

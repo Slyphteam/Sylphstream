@@ -8,9 +8,9 @@ var ammoWeight = 0 ##The current held ammo pool's "weight"
 @onready var uiInfo = $"../../../Player UI"
 @onready var healthHolder = $"../../../Player Health"
 @export var ourHands: INVWEP
-@export var secondStarter: INVWEP 
 
 
+var walletContents:int = 0
 var maxweight = 1350 ##lets say 9 30-round mags of 5.56 (9*30*5) as a reasonable maximum amount of ammo weight
 
 var allSlots: Array ##2D array of all five weapon slots. USES
@@ -19,7 +19,7 @@ var allSlots: Array ##2D array of all five weapon slots. USES
 var currentSlot: int = 1 ##Which of the 4 invslots are we on?
 var slotSelection: int = 0 ##Which index into said slot are we?
 
-var slotMaxes:Array[int] = [1,2,2,2,1] ##Array of all the slot maximums: hand, holster, chest, back, sheathe
+var slotMaxes:Array[int] = [1,2,2,2,1] ##Array of all the slot maximums: hand, holster, chest, back, sheathe. Used in UI stuff.
 
 var ammoWeightInfo:Array[int] = [1,3,5,7,10,4]
 
@@ -49,61 +49,141 @@ var slot5: Array[INVWEP] ##Sheathe slots
 
 func _ready():
 	
-	print("Hello and welcome to Sylphstream!")
-	
 	user = get_node("../../..")
 	
 	
+	#supercede
 	heldAmmunition.ammoRimfire = 0
 	heldAmmunition.ammoPistol = 0
 	heldAmmunition.ammoRifle = 0
 	heldAmmunition.ammoThirtycal = 0
 	heldAmmunition.ammoShotgun = 0
 	heldAmmunition.ammoMagnum = 0
-	
 	recalc_Weight()
 	
 	#Begin with slot init
 	allSlots.resize(5)
-	genericItems.resize(6)
-	
-	slot1.resize(slotMaxes[0])
-	slot1[0] = ourHands #slightly weird way but it ensures that everything is airtight
-	allSlots[0] = slot1
-	
-	#Populate our generic slots
-	
-	
-	#Populate the remaining arrays
-	for x in range(slotMaxes[1]): #hips
-		slot2.append(null)
-	allSlots[1] = slot2
-	
-	for x in range(slotMaxes[2]): #chest
-		slot3.append(null)
-	allSlots[2] = slot3
-	
-	for x in range(slotMaxes[3]): #back
-		slot4.append(null)
-	allSlots[3] = slot4
-	
-	for x in range(slotMaxes[4]): #sheathe
-		slot5.append(null)
-	allSlots[4] = slot5
-	
-	##Add 2 starter pistols
-	if(starterWeapon):
-		add_InvWeap_To_Slot(starterWeapon, starterWeapon.weapInfoSheet.selections[0])
-	if(secondStarter):
-		add_InvWeap_To_Slot(secondStarter, starterWeapon.weapInfoSheet.selections[0])
+	#this'll populate our heldAmmunition, give us slots, give hands, and instantiate everything
+	load_instInfo("res://resources/saveData/defaultPlayerDat.txt")
+	#load_instInfo("res://resources/saveData/playerTestSavedinfo.txt")
 	
 	#always load hands to start
 	load_Wep(ourHands.weapInfoSheet)
 	await get_tree().create_timer(0.1).timeout #wait one tenth of a second because it takes a bit longer for ui to init
 	uiInfo.hide_Ammo_Elements()
 	
+	print("Player instantiation complete! Hello and welcome to Sylphstream!")
+	
 
 #----------------Inventory management functions
+##Loads a loadout/player info. Reads a file and follows instructions based on strings.
+func load_instInfo(infoFile:String):
+	var ourFile: FileAccess = FileAccess.open(infoFile, FileAccess.READ)
+	var lineGrabber : String =  ourFile.get_line() #header
+	lineGrabber = ourFile.get_line() #First line
+	var bailout = 0 #anti loop fallback
+	while(lineGrabber != ";;\\END" && bailout<200): #main loop
+		print(lineGrabber)
+		
+		if(lineGrabber == ";;Wallet:"): #contents of wallet
+			lineGrabber = ourFile.get_line() #only the one line
+			walletContents = lineGrabber.to_int()
+			print(walletContents)
+
+		if(lineGrabber == ";;Ammweight:"): #max ammo weight
+			lineGrabber = ourFile.get_line()
+			maxweight = lineGrabber.to_int()
+			print(maxweight)
+			
+		if(lineGrabber == ";;Maxhp:"): #maxhp
+			lineGrabber = ourFile.get_line()
+			healthHolder.maxHP = lineGrabber.to_int()
+			print(healthHolder.maxHP)
+			
+		if(lineGrabber == ";;Maxaura:"): #aura
+			lineGrabber = ourFile.get_line()
+			healthHolder.maxAura = lineGrabber.to_int()
+			print(healthHolder.maxAura)
+		
+		if(lineGrabber == ";;Ammocounts:"): #Ammo types
+			lineGrabber = ourFile.get_line()
+			heldAmmunition.ammoRimfire = lineGrabber.to_int()
+			lineGrabber = ourFile.get_line()
+			heldAmmunition.ammoPistol = lineGrabber.to_int()
+			lineGrabber = ourFile.get_line()
+			heldAmmunition.ammoRifle = lineGrabber.to_int()
+			lineGrabber = ourFile.get_line()
+			heldAmmunition.ammoThirtycal = lineGrabber.to_int()
+			lineGrabber = ourFile.get_line()
+			heldAmmunition.ammoShotgun = lineGrabber.to_int()
+			lineGrabber = ourFile.get_line()
+			heldAmmunition.ammoMagnum = lineGrabber.to_int()
+			recalc_Weight()
+			print("Ammo imported!")
+		
+		if(lineGrabber == ";;Weaponslotcapacities:"): #weapon slot capacities
+			var currentMax:int
+			print("Hands")
+			lineGrabber = ourFile.get_line()
+			currentMax = lineGrabber.to_int()
+			slot1.resize(currentMax)
+			slot1[0] = ourHands
+			allSlots[0] = slot1
+			slotMaxes[0] = currentMax
+			
+			print("Pistols")
+			lineGrabber = ourFile.get_line()
+			currentMax = lineGrabber.to_int()
+			for x in range(currentMax):
+				slot2.append(null)
+			allSlots[1] = slot2
+			slotMaxes[1] = currentMax
+			
+			print("Carbines")
+			lineGrabber = ourFile.get_line()
+			currentMax = lineGrabber.to_int()
+			for x in range(currentMax):
+				slot3.append(null)
+			allSlots[2] = slot3
+			slotMaxes[2] = currentMax
+			
+			print("Back")
+			lineGrabber = ourFile.get_line()
+			currentMax = lineGrabber.to_int()
+			for x in range(currentMax):
+				slot4.append(null)
+			allSlots[3] = slot4
+			slotMaxes[3] = currentMax
+			
+			print("Sheathe")
+			lineGrabber = ourFile.get_line()
+			currentMax = lineGrabber.to_int()
+			for x in range(currentMax):
+				slot5.append(null)
+			allSlots[4] = slot5
+			slotMaxes[4] = currentMax
+			
+			
+			print("Weapon slots done!")
+			
+		
+		if(lineGrabber == ";;Genericslots:"): #backpack slots
+			lineGrabber = ourFile.get_line()
+			genericItems.resize(lineGrabber.to_int())
+			print(genericItems.size())
+		#ammo counts
+		#stim slots
+		#util slots
+		#backpack contents
+		#stim contents
+		#util contents
+		#player's stats
+		#talked to cutout?
+		
+		lineGrabber = ourFile.get_line() #parse the next command
+		bailout+=1;
+	#(G,R,W,F,T,I,S)
+
 ##Create an active weapon instance from a wepinfo datasheet
 func load_Wep(wep2Load: WEAP_INFO):
 	super(wep2Load)
