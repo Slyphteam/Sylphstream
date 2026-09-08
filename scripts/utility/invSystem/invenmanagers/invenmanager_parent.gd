@@ -269,3 +269,6 @@ func get_Rotation()-> Vector3:
 func get_Speed()->Vector3:
 	print("Attempted to get speed on invenmanager parent! Bad!")
 	return Vector3(0,0,0)
+	
+func get_Fov():
+	print("Attempted to get FoV on invmanager parent! bad!")

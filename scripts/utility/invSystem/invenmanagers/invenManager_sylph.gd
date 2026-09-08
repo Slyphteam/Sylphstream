@@ -116,3 +116,6 @@ func get_Speed()->Vector3:
 #	print("Attempted to get speed on invenmanager parent! Bad!")
 	#return Vector3(0,0,0)
 	return user.velocity
+
+func get_Fov():
+	return 90 #it's not quite 90 but it's close enough.

@@ -28,6 +28,8 @@ var recoveryDivisor ##Used in recoil recovery computation
 var kickAmount: int ##Used in randomly generating recoil viewpunch
 var aimKickBonus ##Used because we don't like integer division around these parts
 var pitchWarningAmount ##used to determine when the pitch change starts and how many increments there are
+var recoilScreenDivisor: float = 7 ##A UI thing. basically pixels per fov degree of recoil or something weird and obscure
+
 
 var weaponSheet: WEAP_INFO ##Datasheet for weapon constants
 
@@ -72,6 +74,7 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	weaponSheet = wepToLoad ##assign our sheet
 	
 	
+	
 	#For now just adds a new timer to the scene tree rather than reusing one
 	#reloadTimer = Timer.new()
 	#reloadTimer.one_shot = true
@@ -106,12 +109,12 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	totalMaxRecoil = maxRecoil
 	
 	currentRecoil = minRecoil 
-	recoveryCutoff = maxRecoil / 3
+	recoveryCutoff = maxRecoil / 6
 	recoveryDivisor = maxRecoil * 2 * (1 + (1/recoveryAmount))
 	#include aimbonus and recovery speed in calculating. Essentially, the "ergonomics"
 	#recoil amount (reduced)              #negative penalty for low recovery
-	kickAmount = (wepToLoad.recoilAmount / 4) + ((5 / ((10 * recoveryAmount))+1) ) - 3
-	@warning_ignore("integer_division") aimKickBonus = (kickAmount / 2) 
+	kickAmount = (wepToLoad.recoilAmount / 8) + ((5 / ((5 * recoveryAmount))+1) ) - 3
+	@warning_ignore("integer_division") aimKickBonus = (kickAmount / 4) 
 	
 	if(capacity < 2):
 		pitchWarningAmount = -1 #don't bother
@@ -124,6 +127,9 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	if(kickAmount <=0):
 		kickAmount = 1
 		aimKickBonus = 0
+		
+	
+
 	
 
 ##Run state checks per frame and update the UI
@@ -154,8 +160,7 @@ func manualProcess(delta):
 ##Checks eligibility to shoot and takes the shot if eligible
 func try_Shoot():
 	if(capacity > 0 && not reloading):
-		#apply aimcone recoil. Calculations are done in calc_Recoil, called by manualProcess
-		recoilDebt += weaponSheet.recoilAmount 
+		
 		do_Shoot() #actually shoot the bullet, vollleyfire is handled in function
 		ejected = false
 		
@@ -169,7 +174,8 @@ func try_Shoot():
 	currentCooldown = shotCooldown
 
 func do_Shoot():
-	
+	#apply aimcone recoil. Calculations are done in calc_Recoil, called by manualProcess
+	#recoilDebt += weaponSheet.recoilAmount UNDO
 	
 	if(capacity <= pitchWarningAmount): #if we're low, apply a pitchwarning
 		var pitchStep = 0.3 - ((0.3 / pitchWarningAmount) * capacity) + 0.05
@@ -182,8 +188,11 @@ func do_Shoot():
 	#Consume bullet
 	capacity-=1 
 	
+	#FLAG
+	#we have a FoV of 100, and 1853, 1168 pixels in that fov. 
 	
-	var maxAzimuth: float = currentRecoil / 7  ##abstract units divided by 7 to get degrees. why seven? dunno. screenspace reasons.
+	
+	var maxAzimuth: float = currentRecoil / recoilScreenDivisor
 	var randAzimuth = randf_range(0 - maxAzimuth, maxAzimuth)
 	var randRoll = randi_range(0, 360)
 	
@@ -214,7 +223,7 @@ func do_Shoot():
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.
 	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * weaponSheet.viewpunchMult
 	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * weaponSheet.viewpunchMult
-	invManager.applyViewpunch(drift, lift)
+	#invManager.applyViewpunch(drift, lift)UNDO
 	
 	if(weaponSheet.doCasing && !weaponSheet.ejectOnReload):
 		if(weaponSheet.casingDelay !=0):
@@ -288,8 +297,8 @@ func adjustAcuracy(amnt):
 	var absoluteMin = totalMaxRecoil - totalMinRecoil
 	
 	#never EVER go above 11 degrees of recoil (an absurd amount)
-	minRecoil = clamp(minRecoil+amnt, 0, 80) 
-	maxRecoil = clamp(maxRecoil+amnt, absoluteMin, 80)
+	minRecoil = clamp(minRecoil+amnt, 0, 160) 
+	maxRecoil = clamp(maxRecoil+amnt, absoluteMin, 160)
 	
 
 	recoveryDivisor = maxRecoil * 2 * (1 + (1/recoveryAmount)) #recalculate recoverydivisor
@@ -330,8 +339,8 @@ func calc_Recoil(delta):
 			var amnt = sqrt(currentRecoil / recoveryDivisor) + (delta / 10) #take sqrt, but keep some linearity
 			currentRecoil-= amnt * delta
 	
-	if(currentRecoil > 120): #provide a hard maximum ceiling for recoil that is ridiculously high.
-		currentRecoil = 120
+	if(currentRecoil > 240): #provide a hard maximum ceiling for recoil that is ridiculously high.
+		currentRecoil = 240
 
 ##Starts reload timer 
 func startReload():
@@ -436,6 +445,7 @@ func eject_Casing():
 
 ##Updates UI. Called every frame so there's no need to call it anywhere else.
 func update_UI():
+	#FLAG
 	uiInfo.adjust_spread(currentRecoil)
 
 ##Does some extra cleanup on the instance
@@ -447,3 +457,12 @@ func unload():
 
 func getGunMesh():
 	return weaponMesh
+
+func give_Player_UI(newUiInfo):
+	var fovData = DisplayServer.window_get_size().x / invManager.get_Fov() #ratio of degrees per pixel
+	recoilScreenDivisor = fovData /2
+	
+	
+	affectUI = true
+	uiInfo = newUiInfo
+	return

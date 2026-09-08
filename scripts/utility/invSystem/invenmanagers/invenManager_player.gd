@@ -8,7 +8,7 @@ var ammoWeight = 0 ##The current held ammo pool's "weight"
 @onready var uiInfo = $"../../../Player UI"
 @onready var healthHolder = $"../../../Player Health"
 @export var ourHands: INVWEP
-
+@onready var ourCam = $".." #used for fov data
 
 var walletContents:int = 0
 var maxweight = 1350 ##lets say 9 30-round mags of 5.56 (9*30*5) as a reasonable maximum amount of ammo weight
@@ -443,6 +443,8 @@ func remove_Invwep(theSlot, theIndex)->INVWEP:
 			count+=1
 	
 	return theWep
+	
+
 
 ##Adds a new weapon to an inventory. Differs from add_To_Slot in that it handles slot and capacity logic.
 #func give_New_Weapon(weapon: WEAP_INFO, validSlots: Array[int])->bool:
@@ -583,3 +585,6 @@ func get_Rotation():
 
 func get_Speed()->Vector3:
 	return user.playerVelocity
+
+func get_Fov():
+	return ourCam.fov

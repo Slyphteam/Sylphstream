@@ -22,7 +22,4 @@ func unload():
 	pass
 
 func give_Player_UI(newUiInfo):
-	
-	affectUI = true
-	uiInfo = newUiInfo
-	return
+	print("Tried to give UI info to empty parent. What the heck is nothing supposed to do with the UI, huh?")
