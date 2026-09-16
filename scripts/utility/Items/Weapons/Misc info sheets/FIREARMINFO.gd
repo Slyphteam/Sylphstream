@@ -11,12 +11,12 @@ class_name FIREARM_INFO extends WEAP_INFO
 @export var shotCooldown: int = 10 ##in frames, determine firerate
 @export var chambering : int = 1 ## 0- .22 1- Pistol; 2- Light rifle (5.56); 3- shotgun ; 4- Heavy rifle; 5- Magnum
 @export var maxCapacity : int = 5
-@export var aimBonus: float = 5 ##the amount by which ADS boons the aimcone. Should NEVER be greater than minRecoil
-@export var maxRecoil : float = 50 ##Maximum pixels of offset under recoil
-@export var minRecoil : float = 10 ##Default pixels of offset
-@export var recoilAmount: float = 10 ##pixels of recoil per shot. Also affects camera offset. 10 is barely any
+@export var aimBonus: float = 10 ##the amount by which ADS boons the aimcone. Should NEVER be greater than minRecoil
+@export var maxRecoil : float = 80 ##Maximum pixels of offset under recoil
+@export var minRecoil : float = 15 ##Default pixels of offset
+@export var recoilAmount: float = 20 ##pixels of recoil per shot. Also affects camera offset. 10 is barely any
 @export var viewpunchMult: float = 1 ##Multiplier on viewpunch
-@export var recoverAmount: float = 0.5 ##In pixels per frame. Feels best between 1 and 0.25
+@export var recoverAmount: float = 0.8 ##In pixels per frame. Feels best between 1 and 0.25
 @export_category("Loading/Casing options")
 @export var doCasing: bool = false ##Create casings when gun is fired
 @export var casingPath: String = ""

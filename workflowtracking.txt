@@ -3,17 +3,13 @@
 -----------/
 
 
+Add mask as an inventory item
+Player save/loading with inventory contents
+
 Add ALT pickup functionality
 Add generic consume sounds, springslop consume sound, ammopack consume sounds
-Weapon recoil/UI interface retooling
-double all recoil/spread values
-Give all items a codename
-Player save/loading
-
-
 Have guns recoil visually
 
-Have recoil calculate based on pixels/fov
 
 Add a player hands controller. only hands for now, maybe static legs too. pivot will be the shoulder joint.
 

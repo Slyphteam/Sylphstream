@@ -6,12 +6,11 @@
 [resource]
 script = ExtResource("2_a6rc3")
 arrLength = 1
-typeArr = Array[int]([3])
 ammoType = 3
-amtArr = Array[int]([8])
 itemName = "30 cal stripper clip"
 itemDesc = "A stripper clip containing 8 high-power rifle rounds. Devastating, but not cheap."
 itemHint = ""
+itemCode = "amm_30cal"
 itemIcon = ExtResource("1_n5b3o")
 itemEntScene = "res://scenes/pickups/ammo/30cal_ammobox.tscn"
 amount = 8

@@ -7,5 +7,6 @@ script = ExtResource("1_636do")
 itemName = "A rat"
 itemDesc = "If Mousey not for eating,,, why is so delightfully crunchy?"
 itemHint = "Press E to partake. Press ALT to save for later"
+itemCode = "heal_rat"
 maxStack = 5
 metadata/_custom_type_script = "uid://cqpkkhan0sckl"

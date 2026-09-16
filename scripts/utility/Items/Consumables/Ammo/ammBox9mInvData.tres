@@ -6,12 +6,11 @@
 [resource]
 script = ExtResource("1_0ymnv")
 arrLength = 1
-typeArr = Array[int]([1])
 ammoType = 1
-amtArr = Array[int]([50])
 itemName = "9mm Ammobox"
 itemDesc = "A cardboard box containing 50 parabellum cartridges. Popular in pistols and carbines."
 itemHint = ""
+itemCode = "amm_9mm"
 itemIcon = ExtResource("1_1ispf")
 itemEntScene = "res://scenes/pickups/ammo/9_mm_ammobox.tscn"
 amount = 50

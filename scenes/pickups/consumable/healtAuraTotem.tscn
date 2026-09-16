@@ -1,21 +1,8 @@
 [gd_scene format=3 uid="uid://cjbpcp17hblrb"]
 
 [ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_db6n5"]
-[ext_resource type="Texture2D" uid="uid://dgju64u48hi3j" path="res://resources/image resources/itemIcons/consumIcons/healtTotem.png" id="2_bqcr4"]
-[ext_resource type="Script" uid="uid://cqpkkhan0sckl" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_CONSUM.gd" id="3_o5pjr"]
+[ext_resource type="Resource" uid="uid://bxhadsim50d8e" path="res://scripts/utility/Items/Consumables/Healing/conAuraTotem.tres" id="2_bwm8w"]
 [ext_resource type="ArrayMesh" uid="uid://c1m48hewau1e6" path="res://models/glbs and textures/consumable/totemMesh.res" id="4_gf8vm"]
-
-[sub_resource type="Resource" id="Resource_7imn4"]
-script = ExtResource("3_o5pjr")
-itemName = "Aura totem"
-itemDesc = "A blessed talisman containing 25 thaums of auric charge"
-itemHint = "Press E to channel. Press ALT to pick up without using."
-itemIcon = ExtResource("2_bqcr4")
-extraData = [9, 25]
-maxStack = 2
-doConsumeScript = true
-consumeScript = "res://scripts/utility/Items/Consumables/Healing/consumStatusEffects.gd"
-metadata/_custom_type_script = "uid://cqpkkhan0sckl"
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j0k6w"]
 points = PackedVector3Array(0.25091904, -0.1294856, 0.013616124, -0.24635077, -0.14081375, -0.020208983, -0.24635077, -0.14081375, 0.013616124, -0.110691905, 0.29985076, -0.020208983, 0.13789433, -0.42345077, -0.14455077, -0.13332605, -0.4121226, 0.14929047, -0.1446188, -0.42345077, -0.14455077, 0.13789433, -0.4121226, 0.14929047, 0.10396744, 0.29985076, 0.013616124, 0.23957764, 0.14161085, -0.020208983, -0.24635077, 0.14161085, 0.013616124, -0.110691905, 0.29985076, 0.013616124, 0.10396744, 0.29985076, -0.020208983, 0.23957764, 0.14161085, 0.013616124, -0.24635077, 0.14161085, -0.020208983, -0.1446188, -0.42345077, 0.13795792, 0.13789433, -0.38953716, -0.14455077, 0.25091904, -0.14081375, -0.020208983, -0.13332605, -0.38953716, -0.14455077, 0.14918707, -0.4121226, 0.13795792, 0.13789433, -0.4007237, 0.14929047, -0.13332605, -0.4007237, 0.14929047, 0.14918707, -0.4121226, -0.13324697, -0.1446188, -0.4007237, -0.14455077, 0.115260184, 0.2885226, 0.013616124, 0.115260184, 0.2885226, -0.020208983, 0.25091904, -0.14081375, 0.013616124, 0.25091904, -0.1294856, -0.020208983, 0.14918707, -0.4007237, 0.13795792, -0.1446188, -0.38953716, 0.13795792, 0.13395655, -0.41294932, 0.13402078)
@@ -28,7 +15,7 @@ collision_mask = 17
 mass = 0.5
 sleeping = true
 script = ExtResource("1_db6n5")
-thingToGive = SubResource("Resource_7imn4")
+thingToGive = ExtResource("2_bwm8w")
 
 [node name="TotemMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=788808960]
 mesh = ExtResource("4_gf8vm")

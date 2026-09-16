@@ -5,13 +5,13 @@
 
 [resource]
 script = ExtResource("2_pb0jk")
-consumBehavior = 1
 itemName = "Small ammopack"
 itemDesc = "A small box containing a little random ammo from your equipped guns"
 itemHint = "Press E to activate. Press ALT to add to inventory."
+itemCode = "amm_packsmall"
 itemIcon = ExtResource("1_5wqkw")
 itemEntScene = "res://scenes/pickups/consumable/ammoPackSmall.tscn"
-extraData = [1]
+extraData = Array[int]([1])
 doConsumeScript = true
 consumeScript = "res://scripts/utility/Items/Consumables/Ammo/ammoPackScript.gd"
 metadata/_custom_type_script = "uid://cqpkkhan0sckl"

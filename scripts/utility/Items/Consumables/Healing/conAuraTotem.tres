@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="INVCONSUM" format=3 uid="uid://bxhadsim50d8e"]
+
+[ext_resource type="Script" uid="uid://cqpkkhan0sckl" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_CONSUM.gd" id="1_7yh04"]
+[ext_resource type="Texture2D" uid="uid://dgju64u48hi3j" path="res://resources/image resources/itemIcons/consumIcons/healtTotem.png" id="1_o2f38"]
+
+[resource]
+script = ExtResource("1_7yh04")
+itemName = "Aura totem"
+itemDesc = "A blessed talisman containing 25 thaums of auric charge"
+itemHint = "Press E to channel. Press ALT to pick up without using."
+itemCode = "heal_totem"
+itemIcon = ExtResource("1_o2f38")
+extraData = Array[int]([9, 25])
+maxStack = 2
+doConsumeScript = true
+consumeScript = "res://scripts/utility/Items/Consumables/Healing/consumStatusEffects.gd"
+metadata/_custom_type_script = "uid://cqpkkhan0sckl"

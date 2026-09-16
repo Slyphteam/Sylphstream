@@ -6,12 +6,11 @@
 [resource]
 script = ExtResource("2_3f11s")
 arrLength = 1
-typeArr = Array[int]([4])
 ammoType = 4
-amtArr = Array[int]([10])
 itemName = "Shotgun shell bunch"
 itemDesc = "A handful of 10 shotgun shells, bound with a rubber band. Expensive, bulky, and damaging."
 itemHint = ""
+itemCode = "amm_12g"
 itemIcon = ExtResource("1_umooo")
 itemEntScene = "res://scenes/pickups/ammo/shotgun_ammobox.tscn"
 amount = 10

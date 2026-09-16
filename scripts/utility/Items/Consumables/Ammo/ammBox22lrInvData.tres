@@ -6,11 +6,10 @@
 [resource]
 script = ExtResource("2_q8xav")
 arrLength = 1
-typeArr = Array[int]([0])
-amtArr = Array[int]([50])
 itemName = "22 Longrifle Ammo Box"
 itemDesc = "A plastic tray containing 50 rimfire rounds. Cheap and diminutive. "
 itemHint = ""
+itemCode = "amm_22lr"
 itemIcon = ExtResource("1_icwoc")
 itemEntScene = "res://scenes/pickups/ammo/rimfire_ammobox.tscn"
 amount = 50

@@ -4,6 +4,7 @@ class_name INVENITEMPARENT extends Resource
 @export var itemName:String = "Generic Item Name"
 @export var itemDesc:String = "Generic Description"
 @export var itemHint: String = "Press E to use. Press ALT to pick up without using."
+@export var itemCode:String 
 @export var itemIcon:Texture2D 
 @export var itemEntScene:String
 @export var extraData:Array[int] = [] ##Array of extra data, used differently depending on consume script

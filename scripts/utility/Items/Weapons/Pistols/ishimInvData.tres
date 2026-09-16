@@ -10,6 +10,7 @@ weapInfoSheet = ExtResource("3_ghoyx")
 itemName = "Ishim"
 itemDesc = "A 22-caliber pistol with a unique “halo”-style rotary magazine."
 itemHint = ""
+itemCode = "wep_gun_hwmega"
 itemIcon = ExtResource("1_clgmr")
 itemEntScene = "res://scenes/pickups/weapons/ishim pickup.tscn"
 itemTyp = "WEP"

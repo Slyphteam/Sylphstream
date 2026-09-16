@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c5q31fwg5epfj"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_upuna"]
+[ext_resource type="Resource" uid="uid://j5r2isqnknk8" path="res://scripts/utility/Items/Consumables/Healing/conHealthkit.tres" id="2_j57iu"]
+[ext_resource type="ArrayMesh" uid="uid://b1082w2dqw7ou" path="res://models/glbs and textures/consumable/healkitMesh.res" id="3_jiosl"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ria2i"]
+points = PackedVector3Array(0.15634036, -0.00639477, 0.15939887, -0.10234483, -0.04455447, -0.15785703, -0.10223631, -0.012560235, -0.15765016, -0.15306485, -0.07640068, 0.18133485, 0.13979529, -0.1458004, -0.111462615, 0.11380342, 0.10103192, -0.06651352, -0.0994196, 0.10564503, 0.015833348, 0.14209983, -0.14794783, 0.16986266, -0.13937698, -0.14580877, -0.11144303, -0.17966524, 0.07096327, -0.06837163, 0.19208945, -0.012537006, -0.09351657, -0.14164935, -0.14792666, 0.16981559, -0.012236891, -0.049912922, 0.2274301, 0.09522071, 0.063459575, -0.14926447, -0.20390274, -0.025268596, 0.07905493, 0.09678141, -0.10907209, -0.15879394, 0.20433588, -0.025270147, 0.079061665, 0.16234069, 0.07470681, 0.028269887, -0.07955283, 0.042536158, 0.13268284, -0.088059515, 0.09457906, -0.11045133, -0.19157909, -0.025291689, -0.09344113, -0.15437333, 0.01825511, 0.13343744, 0.09964117, 0.061982397, 0.09668476, 0.09653279, -0.108831786, 0.21423483, 0.18011932, 0.071015134, -0.06840351, 0.08676691, -0.012667277, 0.20152925, -0.09481376, 0.06342834, -0.14925075, 0.16654825, -0.114890225, -0.1127156, -0.09523925, -0.018887494, 0.20625104, -0.16606581, -0.11486674, -0.112641074, -0.09611739, -0.10881688, 0.21420656, 0.15332434, -0.012570317, -0.14426172)
+
+[node name="HealtKit" type="Node3D" unique_id=370172222]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=2014664211 groups=["player_interactible"]]
+collision_layer = 5
+collision_mask = 17
+mass = 0.5
+sleeping = true
+script = ExtResource("1_upuna")
+thingToGive = ExtResource("2_j57iu")
+
+[node name="HealkitMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=1220955147]
+mesh = ExtResource("3_jiosl")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1959264070]
+shape = SubResource("ConvexPolygonShape3D_ria2i")

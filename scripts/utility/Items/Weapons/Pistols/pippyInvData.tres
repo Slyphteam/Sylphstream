@@ -9,6 +9,7 @@ script = ExtResource("2_btv02")
 weapInfoSheet = ExtResource("3_0ly02")
 itemName = "Pippy .22"
 itemDesc = "A .22  cal revolver made almost entirely from polymer. You *probably* shouldn't reload this thing."
+itemCode = "wep_gun_ryno"
 itemIcon = ExtResource("1_ps0ld")
 itemEntScene = "res://scenes/pickups/weapons/pippy pickup.tscn"
 itemTyp = "WEP"

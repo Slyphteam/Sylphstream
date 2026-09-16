@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="FIREARM_INFO" format=3 uid="uid://ce6gu7vvy2dia"]
+
+[ext_resource type="AudioStream" uid="uid://cxxcgsoaclcp5" path="res://sounds/gunshots/gunshotRifleHigh.mp3" id="1_pk1cp"]
+[ext_resource type="ArrayMesh" uid="uid://yea6nd03v51p" path="res://models/glbs and textures/guns/roughneckMesh.res" id="2_ydrun"]
+[ext_resource type="AudioStream" uid="uid://bvrmp0itopmyu" path="res://sounds/reloads/roughneckShell.mp3" id="3_mlrm0"]
+[ext_resource type="Script" uid="uid://b24hqmuxy0hut" path="res://scripts/utility/Items/Weapons/Misc info sheets/FIREARMINFO.gd" id="4_cwhht"]
+
+[resource]
+script = ExtResource("4_cwhht")
+gunshot = ExtResource("1_pk1cp")
+reload = ExtResource("3_mlrm0")
+bulletVariance = 1
+chambering = 4
+maxCapacity = 2
+aimBonus = 30.0
+maxRecoil = 160.0
+minRecoil = 40.0
+recoilAmount = 50.0
+viewpunchMult = 2.0
+recoverAmount = 0.6
+doCasing = true
+casingPath = "res://scenes/trivial/decals/12gCasing.tscn"
+ejectOnReload = true
+singleReloadOverride = true
+allowPlus1 = false
+pelletAMT = 12
+wepName = &"Roughneck"
+mesh = ExtResource("2_ydrun")
+damage = 5
+selections = Array[int]([2, 3])
+position = Vector3(0.4, -0.3, -0.7)
+metadata/_custom_type_script = "uid://b24hqmuxy0hut"
