@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://blrmx1mdqmvip"]
+
+[ext_resource type="Script" uid="uid://de566h7iognu2" path="res://scenes/utilities/Player or UI/chat_entry_script.gd" id="1_yxk7u"]
+
+[sub_resource type="Theme" id="Theme_x6igy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sfix"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 2
+border_color = Color(0.20598096, 0.360729, 0.662791, 1)
+
+[node name="chatEntry" type="Panel" unique_id=1866316541]
+custom_minimum_size = Vector2(20, 20)
+theme = SubResource("Theme_x6igy")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8sfix")
+script = ExtResource("1_yxk7u")
+
+[node name="chatContents" type="Label" parent="." unique_id=300978937]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_right = 289.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Hello and welcome to Sylphstream! "
+autowrap_mode = 2
+text_overrun_behavior = 4

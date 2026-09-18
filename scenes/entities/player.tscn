@@ -11,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://b1md3gixyhtfw" path="res://models/glbs and textures/creatures/angeion/angeionV1_angeionhead2.png" id="9_y2dek"]
 [ext_resource type="Texture2D" uid="uid://d0gkfedjudb72" path="res://models/glbs and textures/creatures/angeion/angeionV1_clayTexBody.png" id="10_3sokb"]
 [ext_resource type="Texture2D" uid="uid://dvtr0683clxu2" path="res://resources/image resources/healthholderUI.png" id="10_ddril"]
+[ext_resource type="Texture2D" uid="uid://bhktnfh0dfjma" path="res://resources/image resources/hudElements/chatBorder.png" id="11_u2s01"]
 [ext_resource type="StyleBox" uid="uid://c7v5hhr02av55" path="res://resources/button BG theme.tres" id="12_33423"]
 [ext_resource type="Texture2D" uid="uid://dxdc2ni5jtua0" path="res://resources/image resources/pre alpha splash.png" id="12_kiyhm"]
+[ext_resource type="PackedScene" uid="uid://blrmx1mdqmvip" path="res://scenes/utilities/Player or UI/chatEntry.tscn" id="12_tb0mf"]
 [ext_resource type="StyleBox" uid="uid://bknfwgxkmuiep" path="res://resources/UI/Styles/stylebox/pausebutton.tres" id="13_b4o2o"]
 [ext_resource type="Script" uid="uid://bkssejl7vp64a" path="res://scripts/mob/complex/player/ui associated/pausebuttons.gd" id="13_oajfq"]
 [ext_resource type="Script" uid="uid://cytij8tvgs1nb" path="res://scripts/mob/complex/player/ui associated/quitbutton.gd" id="14_gor7x"]
@@ -805,6 +807,20 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_m66vs")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2dek"]
+bg_color = Color(0.19215687, 0.29411766, 0.26666668, 0.61960787)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.298039, 0.435294, 0.396078, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwche"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2s01"]
@@ -1224,12 +1240,54 @@ mouse_filter = 1
 script = ExtResource("6_78t0m")
 crosshairs = [NodePath("Reticle/Top"), NodePath("Reticle/Bot"), NodePath("Reticle/Left"), NodePath("Reticle/Right")]
 
+[node name="textChat" type="PanelContainer" parent="Player UI" unique_id=2110580556]
+custom_maximum_size = Vector2(-1, 150)
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 145.59
+theme = ExtResource("18_yr3on")
+theme_override_styles/panel = SubResource("StyleBoxFlat_y2dek")
+
+[node name="Control" type="Control" parent="Player UI/textChat" unique_id=1577666250]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="ChatBorder" type="Sprite2D" parent="Player UI/textChat/Control" unique_id=233945428]
+z_index = 2
+texture = ExtResource("11_u2s01")
+offset = Vector2(-137, -47)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player UI/textChat" unique_id=1974303087]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 0.185)
+alignment = 2
+
+[node name="chatEntry" parent="Player UI/textChat/VBoxContainer" unique_id=1866316541 instance=ExtResource("12_tb0mf")]
+layout_mode = 2
+
+[node name="chatEntry2" parent="Player UI/textChat/VBoxContainer" unique_id=1802944853 instance=ExtResource("12_tb0mf")]
+layout_mode = 2
+
+[node name="chatEntry3" parent="Player UI/textChat/VBoxContainer" unique_id=1540416018 instance=ExtResource("12_tb0mf")]
+layout_mode = 2
+
+[node name="chatEntry4" parent="Player UI/textChat/VBoxContainer" unique_id=865142535 instance=ExtResource("12_tb0mf")]
+layout_mode = 2
+
+[node name="chatEntry5" parent="Player UI/textChat/VBoxContainer" unique_id=1308673305 instance=ExtResource("12_tb0mf")]
+layout_mode = 2
+
+[node name="chatEntry6" parent="Player UI/textChat/VBoxContainer" unique_id=1263454757 instance=ExtResource("12_tb0mf")]
+layout_mode = 2
+
 [node name="debugText" type="Label" parent="Player UI" unique_id=1571197895]
 layout_mode = 0
-offset_left = 19.0
-offset_top = 11.0
-offset_right = 150.0
-offset_bottom = 42.0
+offset_left = 810.0
+offset_top = 16.0
+offset_right = 941.0
+offset_bottom = 47.0
 theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 19
@@ -1425,6 +1483,7 @@ position = Vector2(21, -11)
 texture = ExtResource("17_tb0mf")
 
 [node name="pauseContainer" type="PanelContainer" parent="Player UI" unique_id=89591680]
+visible = false
 z_index = 4
 custom_minimum_size = Vector2(600, 300)
 layout_mode = 1

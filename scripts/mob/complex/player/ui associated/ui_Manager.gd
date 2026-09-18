@@ -26,6 +26,17 @@ func toggle_Mouse():
 #IIRC we can't actually have the pause toggle from in this node
 #because it'll never unpause, so everything is handled in the globalscript(?)
 
+#===---===}>    text chat stuff
+@onready var ourChat = $textChat/VBoxContainer
+var chatSize:int = 0
+func give_Chat_Message(message:String):
+	
+	var newBox = preload("res://scenes/utilities/Player or UI/invSlot.tscn").instantiate()
+	ourChat.add_child(newBox)
+	chatSize+=newBox.lines
+	if(chatSize > 6):
+		print("uh oh too much stuff in the chat!!!")
+
 
 #===---===}>    dynamic reticle stuff
 
