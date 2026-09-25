@@ -5,7 +5,7 @@ extends PanelContainer
 @export var invenManager: PLAYERINVENMANAGER
 #@onready var weapSlotGrid = $VBoxContainer/WeapGrid
 @onready var genericSlotGrid = $VBoxContainer/Row1/genericsPane/GridContainer
-
+@onready var uiManager = $"../../.." #only really used for making chat messages
 ##Ammo management stuff:
 @onready var weightLabel = $VBoxContainer/TotalWeight
 
@@ -206,6 +206,8 @@ func _input(event: InputEvent) -> void:
 					#and a little in front of them
 					droppedItem.position += (Vector3.FORWARD * 2).rotated(Vector3.UP, invenManager.get_Rotation().y)
 					Globalscript.theTree.root.add_child(droppedItem)
+					uiManager.give_Chat_Message("Dropped "+withdrawResult.itemName)
+					
 					
 		#no matter what happens, clean up itemDrag if the mouse is released
 		get_node("ItemDrag").queue_free()

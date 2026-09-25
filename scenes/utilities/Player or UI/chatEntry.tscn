@@ -23,6 +23,6 @@ offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.93408, 0.93408, 0.93408, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Hello and welcome to Sylphstream! "
+text = "Message!"
 autowrap_mode = 2
 text_overrun_behavior = 4

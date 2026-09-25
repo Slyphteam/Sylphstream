@@ -790,6 +790,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.373
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.722864, 0.527357, -16.409296)
 behavior = 15
 
+[node name="teleporter" parent="Environment/teleporter" unique_id=947031439 instance=ExtResource("28_1ieyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.671296, -0.013801575, -1.1165638)
+behavior = 46
+
 [node name="shapebuttons" parent="Environment" unique_id=986187749 instance=ExtResource("29_i07vp")]
 transform = Transform3D(-0.189696, 0, -0.981843, 0, 1, 0, 0.981843, 0, -0.189696, 7.01695, 0.550099, -18.2245)
 

@@ -72,7 +72,10 @@ func _ready():
 	await get_tree().create_timer(0.1).timeout #wait one tenth of a second because it takes a bit longer for ui to init
 	uiInfo.hide_Ammo_Elements()
 	
-	print("Player instantiation complete! Hello and welcome to Sylphstream!")
+	if(Globalscript.prob(10)):
+		uiInfo.give_Chat_Message("My legs are OK")
+	else:
+		uiInfo.give_Chat_Message("Player instantiation complete! Hello and welcome to Sylphstream!")
 	
 
 #----------------Inventory management functions
@@ -234,7 +237,7 @@ func consume_item(thingToGive):
 					return false
 			else:
 				var scriptEffect = load(thingToGive.consumeScript).new()
-				
+				uiInfo.give_Chat_Message("Consumed "+ thingToGive.itemName)
 				return scriptEffect.activate(self, thingToGive)
 		else: 
 			print("Consumable doesn't have a consume script? Giving as generic item...")
@@ -251,6 +254,7 @@ func add_GenericItem(thingToGive:INVENITEMPARENT)->bool:
 		if(itemCheck == null):
 			genericItems[x] = thingToGive
 			return true
+			uiInfo.give_Chat_Message("Collected ", thingToGive.itemName)
 	
 	return false
 
@@ -299,8 +303,8 @@ func add_InvWeap_To_Slot(invWeapon:INVWEP, slot:int)->bool:
 	
 	chosenSlot[emptyInd] = invWeapon
 	
-	print("Added ", invWeapon.itemName, " to index ", (chosenSlot.size() - 1), " of slot ", slot)
-	
+	var successString = "Equipped " + invWeapon.itemName + " to slot "+ str(slot)
+	uiInfo.give_Chat_Message(successString)
 	return true
 
 ##Puts a new weapon into an inventory slot. DOES NOT UNLOAD THE WEAPON. Returns if it could fit.

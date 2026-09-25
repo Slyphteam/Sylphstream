@@ -65,6 +65,7 @@ const accelerate = 5 #WHY WAS THIS A THOUSAND??? HUH?????? WHAT???
 
 func _ready():
 	Globalscript.thePlayer = self
+	
 
 
 ##Handles player input. You may notice that there are checks on both Input and event.

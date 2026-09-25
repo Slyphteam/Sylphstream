@@ -29,13 +29,19 @@ func toggle_Mouse():
 #===---===}>    text chat stuff
 @onready var ourChat = $textChat/VBoxContainer
 var chatSize:int = 0
+var chatChildren 
 func give_Chat_Message(message:String):
-	
-	var newBox = preload("res://scenes/utilities/Player or UI/invSlot.tscn").instantiate()
+	chatChildren = ourChat.get_children()
+	var newBox = preload("res://scenes/utilities/Player or UI/chatEntry.tscn").instantiate()
 	ourChat.add_child(newBox)
-	chatSize+=newBox.lines
-	if(chatSize > 6):
-		print("uh oh too much stuff in the chat!!!")
+	
+	var result = newBox.receiveText(message)
+	chatSize+=result
+	while(chatSize > 6):
+		var removedLine = chatChildren.pop_front()
+		chatSize -= removedLine.lines
+		removedLine.queue_free()
+
 
 
 #===---===}>    dynamic reticle stuff
