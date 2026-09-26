@@ -7,6 +7,12 @@ class_name PICKUPABLE extends RAYCASTREACTIVE
 func _ready():
 	if(thingToGive):
 		thingToGive = thingToGive.duplicate(true) #ensure we are never operating with the "template" data
+	update_Ammbox()
+
+func update_Ammbox():
+	if!(thingToGive is INVAMMBOX):
+		return
+	thingToGive.itemDesc = thingToGive.descFirstHalf + str(thingToGive.amount) + thingToGive.descSecondHalf
 
 func interact_By_Player(player):
 	
@@ -19,7 +25,8 @@ func do_consume(player):
 	
 	if(thingToGive is INVAMMBOX): #special return-only check if there's leftovers in the ammo
 		if(thingToGive.amount != 0):
-			print("Didn't pick up all the ammo! preserving box!")
+			player.uiInfo.give_Chat_Message("Didn't pick up all the ammo! preserving box!")
+			update_Ammbox()
 			result = false
 
 	if (result == true): #success
@@ -28,5 +35,4 @@ func do_consume(player):
 		theRoot.queue_free()
 		return true
 	else:
-		print("Could not consume!")
 		return false

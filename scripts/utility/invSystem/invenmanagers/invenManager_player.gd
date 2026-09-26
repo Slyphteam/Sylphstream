@@ -237,8 +237,11 @@ func consume_item(thingToGive):
 					return false
 			else:
 				var scriptEffect = load(thingToGive.consumeScript).new()
-				uiInfo.give_Chat_Message("Consumed "+ thingToGive.itemName)
-				return scriptEffect.activate(self, thingToGive)
+				
+				var result = scriptEffect.activate(self, thingToGive)
+				if(result):
+					uiInfo.give_Chat_Message("Consumed "+ thingToGive.itemName)
+				return result
 		else: 
 			print("Consumable doesn't have a consume script? Giving as generic item...")
 			return add_GenericItem(thingToGive)

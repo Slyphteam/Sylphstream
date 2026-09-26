@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("2_a6rc3")
 arrLength = 1
+descFirstHalf = "A stripper clip containing "
+descSecondHalf = " high-power rifle rounds. Devastating, but not cheap."
 ammoType = 3
 itemName = "30 cal stripper clip"
 itemDesc = "A stripper clip containing 8 high-power rifle rounds. Devastating, but not cheap."

@@ -337,9 +337,9 @@ shadow_mesh = SubResource("ArrayMesh_6l57x")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d81t1"]
 points = PackedVector3Array(0.27, 0.25, 0, 0.27, 0.18, 0.045, 0.27, 0.18, -0.045, 0.27, 0, 0.045, 0.27, 0, -0.045, -0.27, 0.25, 0, -0.27, 0.18, 0.045, -0.27, 0.18, -0.045, -0.27, 0, 0.045, -0.27, 0, -0.045)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=1781595158]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=445835235 groups=["player_interactible"]]
 collision_layer = 4
 collision_mask = 17
 mass = 0.5
@@ -348,11 +348,11 @@ center_of_mass = Vector3(0, 0.12, 0)
 script = ExtResource("2_82a5o")
 thingToGive = ExtResource("3_82a5o")
 
-[node name="Rifle box" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="Rifle box" type="MeshInstance3D" parent="RigidBody3D" unique_id=1716190582]
 transform = Transform3D(-0.01974, 6.27465e-10, -2.92521e-09, -6.27465e-10, 0, 0.0920268, 6.27465e-10, 0.01974, 9.29823e-17, 0, 0.00675437, 0)
 mesh = SubResource("ArrayMesh_5c1vc")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=739083408]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00362998, 0)
 shape = SubResource("ConvexPolygonShape3D_d81t1")

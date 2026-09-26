@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_ypi7t")
 arrLength = 1
+descFirstHalf = "A leather wallet case containing "
+descSecondHalf = " rimmed cartriges. Good stopping power for a pistol round, but not compact."
 ammoType = 5
 itemName = "Magnum ammo booklet"
 itemDesc = "A leather wallet case containing 14 rimmed cartriges. Good stopping power for a pistol round, but not compact."

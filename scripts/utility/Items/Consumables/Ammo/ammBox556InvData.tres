@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("2_3axgw")
 arrLength = 1
+descFirstHalf = "A pair of plastic bullet carriages, totaling "
+descSecondHalf = " intermediate rifle rounds. Lethal for their size."
 ammoType = 2
 itemName = "Light rifle ammo box"
 itemDesc = "A pair of plastic bullet carriages, totaling 20 intermediate rifle rounds. Lethal for their size."

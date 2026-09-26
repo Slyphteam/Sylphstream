@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_0ymnv")
 arrLength = 1
+descFirstHalf = "A cardboard box containing "
+descSecondHalf = " parabellum cartridges. Popular in pistols and carbines."
 ammoType = 1
 itemName = "9mm Ammobox"
 itemDesc = "A cardboard box containing 50 parabellum cartridges. Popular in pistols and carbines."

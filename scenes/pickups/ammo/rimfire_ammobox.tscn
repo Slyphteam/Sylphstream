@@ -46,20 +46,20 @@ shadow_mesh = SubResource("ArrayMesh_38iqj")
 [sub_resource type="BoxShape3D" id="BoxShape3D_3cwr8"]
 size = Vector3(0.129333, 0.107361, 0.466064)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=868515837]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1664795358 groups=["player_interactible"]]
 collision_layer = 4
 collision_mask = 17
 mass = 0.5
 script = ExtResource("2_xjbfk")
 thingToGive = ExtResource("3_xofol")
 
-[node name="Cube_001" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="Cube_001" type="MeshInstance3D" parent="RigidBody3D" unique_id=878582717]
 transform = Transform3D(0.0529267, 0, 0, 0, 0.0529267, 0, 0, 0, 0.230572, 0, 0, 0)
 mesh = SubResource("ArrayMesh_xofol")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=294426559]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000579834, 0.0423279, 0.000854492)
 shape = SubResource("BoxShape3D_3cwr8")

@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("2_3f11s")
 arrLength = 1
+descFirstHalf = "A handful of "
+descSecondHalf = " shotgun shells, bound with a rubber band. Expensive, bulky, and damaging."
 ammoType = 4
 itemName = "Shotgun shell bunch"
 itemDesc = "A handful of 10 shotgun shells, bound with a rubber band. Expensive, bulky, and damaging."

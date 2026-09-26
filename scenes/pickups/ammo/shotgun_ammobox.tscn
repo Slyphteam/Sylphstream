@@ -7,19 +7,19 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jc4h0"]
 points = PackedVector3Array(0.1, 0.1, 0.05, 0.1, -0.1, 0.05, 0.03, 0.1, 0.11, 0.03, -0.1, 0.11, -0.11, 0.1, 0.03, -0.11, -0.1, 0.03, -0.1, 0.1, -0.06, -0.1, -0.1, -0.06, -0.02, 0.1, -0.1, -0.02, -0.1, -0.1, 0.11, 0.1, -0.04, 0.11, -0.1, -0.04)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=803224465]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=378923264 groups=["player_interactible"]]
 collision_layer = 4
 collision_mask = 17
 mass = 0.5
 script = ExtResource("2_eb8vk")
 thingToGive = ExtResource("3_eb8vk")
 
-[node name="goodcollisionshape" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="goodcollisionshape" type="CollisionShape3D" parent="RigidBody3D" unique_id=1586012968]
 shape = SubResource("ConvexPolygonShape3D_jc4h0")
 
-[node name="Shotgun bundle" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="Shotgun bundle" type="MeshInstance3D" parent="RigidBody3D" unique_id=1024234056]
 transform = Transform3D(-0.0178346, 0.0293269, 2.12496e-15, 0, 0, -0.14953, -0.0293269, -0.0178346, -1.06248e-15, 0, 0, 0)
 mesh = ExtResource("3_jhey8")
 skeleton = NodePath("")

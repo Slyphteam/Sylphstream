@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("2_q8xav")
 arrLength = 1
+descFirstHalf = "A plastic tray containing "
+descSecondHalf = " rimfire rounds. Cheap and diminutive."
 itemName = "22 Longrifle Ammo Box"
 itemDesc = "A plastic tray containing 50 rimfire rounds. Cheap and diminutive. "
 itemHint = ""
