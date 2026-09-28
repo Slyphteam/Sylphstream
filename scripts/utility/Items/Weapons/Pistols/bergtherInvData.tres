@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_xqn6w")
+roundInside = 12
 weapInfoSheet = ExtResource("2_t4ex4")
 itemName = "Bergther"
 itemDesc = "The G5P, a chimeric pistol chambered in 7.822 Longman"

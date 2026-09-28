@@ -13,7 +13,7 @@ var ammoWeight = 0 ##The current held ammo pool's "weight"
 var walletContents:int = 0
 var maxweight = 1350 ##lets say 9 30-round mags of 5.56 (9*30*5) as a reasonable maximum amount of ammo weight
 
-var allSlots: Array ##2D array of all five weapon slots. USES
+var allSlots: Array ##2D array of all five weapon slots
 @export var genericItems: Array[INVENITEMPARENT] ##Array that holds generic items, formerly itemsTest
 
 var currentSlot: int = 1 ##Which of the 4 invslots are we on?
@@ -232,7 +232,7 @@ func consume_item(thingToGive):
 		return true
 	elif(thingToGive is INVCONSUM):
 		if(thingToGive.doConsumeScript == true):
-			if(thingToGive.consumeScript == ""):
+			if(thingToGive.consumeScript.is_empty()):
 					assert(true, "youuuu didn't set up a consume behavior script, did you?")
 					return false
 			else:
@@ -263,14 +263,7 @@ func add_GenericItem(thingToGive:INVENITEMPARENT)->bool:
 
 
 #=============== WEAPON STUFF
-##Updats the counted rounds tracked by a weapon invenitem
-func update_Slot(slot:int, rounds):
-	if(slot == 1):
-		return
-	else:
-		var curArr = allSlots[slot -1]
-		curArr[slotSelection].roundInside = rounds
-		
+
 
 ##Updates the information of a weapon stowed in a slot.
 #func update_To_Slot(weapon: WEAP_INFO, slot: int, rounds):
@@ -299,10 +292,12 @@ func add_InvWeap_To_Slot(invWeapon:INVWEP, slot:int)->bool:
 	
 	invWeapon.slotUsed = slot #assign our slot
 	
-	if(invWeapon.weapInfoSheet is FIREARM_INFO):
-		invWeapon.roundInside = invWeapon.weapInfoSheet.maxCapacity
-	else:
-		invWeapon.roundInside  = 0
+	#commented this part out while debugging and it doesn't seem to do anything?
+	#definitely don't like the fact that it's trying to give max ammo
+	#if(invWeapon.weapInfoSheet is FIREARM_INFO):
+		#invWeapon.roundInside = invWeapon.weapInfoSheet.maxCapacity
+	#else:
+		#invWeapon.roundInside  = 0
 	
 	chosenSlot[emptyInd] = invWeapon
 	
@@ -366,8 +361,11 @@ func change_To_Slot(newSlot: int):
 	if(weapType == 0 && currentSlot != 1): #something is fucky
 		Globalscript.raise_Panic_Exception("A hands weapon is somehow trying to be loaded in the wrong slot!")
 	
-	if(weapType == 1): #we are presently holding a gun, update to inventory before putting away
-		update_Slot(currentSlot, activeItem.capacity)
+	if(weapType == 1): #we are presently holding a gun, update to inventory before putting away.
+		#somehow this is ALL the rounds inside tracking we need
+		var curArr = allSlots[currentSlot -1]
+		curArr[slotSelection].roundInside = activeItem.capacity
+		
 	
 	if(currentSlot != newSlot):
 		slotSelection = -1
@@ -400,7 +398,6 @@ func change_To_Slot(newSlot: int):
 		load_Wep(slot1[0].weapInfoSheet) #it's kind of bad practice to be directly accessing slot1 but its such a special case
 		uiInfo.hide_Ammo_Elements() 
 	else: #otherwise act normal
-		
 		#print(type_string(typeof(drawnInvWep)))
 		load_Wep(nextWeap.weapInfoSheet)
 		if(weapType == 1): #if we are loading a gun, dont assume we start with default ammo count
@@ -420,8 +417,9 @@ func give_New_InvWeap(weapon:INVWEP, validSlots:Array[int])->bool:
 			return result
 	return false
 
-##Removes an invenweapon from the specified slot cordinates, cleans up the rest of the arrays, returns removed item. ONLY USE THIS IF YOU KNOW WHAT YOU'RE DOING.
+##Removes an invenweapon from the specified equip slot cordinates, cleans up the rest of the arrays, returns removed item. ONLY USE THIS IF YOU KNOW WHAT YOU'RE DOING.
 func remove_Invwep(theSlot, theIndex)->INVWEP:
+	
 	
 	#if we're currently holding the weapon we wish to remove, swap off before removing it
 	if((theSlot+1 == currentSlot) && (theIndex == slotSelection)):
@@ -448,7 +446,7 @@ func remove_Invwep(theSlot, theIndex)->INVWEP:
 				slotSelection = count
 				break
 			count+=1
-	
+	#print(theWep.roundInside)
 	return theWep
 	
 

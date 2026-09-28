@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_b0513")
+roundInside = 17
 weapInfoSheet = ExtResource("2_m1sjm")
 itemName = "Fourier-9"
 itemDesc = "A cheap, not entirely robust carbine whose philosophy places an emphasis on transmissions."

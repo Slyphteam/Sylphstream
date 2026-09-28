@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_q2fye")
+roundInside = 20
 weapInfoSheet = ExtResource("2_55nek")
 itemName = "Khwarizmi"
 itemDesc = "A Persian military bullpup, derived from a gun derived from an M16. Fires in bursts."

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_benbu")
+roundInside = 40
 weapInfoSheet = ExtResource("3_ghoyx")
 itemName = "Ishim"
 itemDesc = "A 22-caliber pistol with a unique “halo”-style rotary magazine."

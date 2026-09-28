@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_wol1y")
+roundInside = 2
 weapInfoSheet = ExtResource("3_tksw7")
 itemName = "Yeoman"
 itemDesc = "An elaborately-engraved hunting shotgun with a full barrel and a tight choke."

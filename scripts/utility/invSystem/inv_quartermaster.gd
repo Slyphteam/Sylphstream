@@ -152,7 +152,7 @@ func _input(event: InputEvent) -> void:
 			##Check the slot compatibility logic
 			if(check_Typ_Compatible(hovNode.slotTyp, heldInvDat.itemTyp)):
 				
-				print(hovNode.slotTyp)
+				#print(hovNode.slotTyp)
 				var withdrawResult
 				#logic for weapons
 				if(hovNode.slotTyp == "WEP"):
@@ -199,6 +199,8 @@ func _input(event: InputEvent) -> void:
 						#withdrawResult = invenManager.genericItems[heldInvIndex.x]
 						#invenManager.genericItems[heldInvIndex.x] = null
 					
+		
+					
 					assert(withdrawResult.itemEntScene, "Tried to drop a weapon that didn't know its own entity scene!!")
 					var droppedItem = load(withdrawResult.itemEntScene).instantiate()
 					#put it at the player
@@ -206,6 +208,14 @@ func _input(event: InputEvent) -> void:
 					#and a little in front of them
 					droppedItem.position += (Vector3.FORWARD * 2).rotated(Vector3.UP, invenManager.get_Rotation().y)
 					Globalscript.theTree.root.add_child(droppedItem)
+					
+					#guns will reset the rounds inside if they get loaded so we gotta spoonfeed
+					if(withdrawResult is INVWEP): 
+						var droppedGun = droppedItem.get_children()[0].thingToGive
+						if(!droppedGun):
+							assert(false, "we can't find the gunitem that we just dropped, wtf???")
+						droppedGun.roundInside = withdrawResult.roundInside
+					
 					uiManager.give_Chat_Message("Dropped "+withdrawResult.itemName)
 					
 					
@@ -223,12 +233,12 @@ func _input(event: InputEvent) -> void:
 			var insideItem = clickedNode.curItem
 			
 			var consumeResult = invenManager.consume_item(insideItem)
-			print(consumeResult)
+			#print(consumeResult)
 			if(consumeResult == true):
 				remove_Contents_From_Inventory("GEN", clickedNode.get_index(), 0)
 				update_Inven_Data()
 			
-
+##removes something and passes the object. Typ specifies the section being removed from, coords are contextual
 func remove_Contents_From_Inventory(typ, xInd, yInd)->INVENITEMPARENT:
 	#if(!theNode.curItem):
 	#	return null

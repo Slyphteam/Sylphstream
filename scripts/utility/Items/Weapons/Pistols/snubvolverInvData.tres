@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_0b30p")
+roundInside = 6
 weapInfoSheet = ExtResource("2_lyip1")
 itemName = "Sunday Morning Supreme"
 itemDesc = "A cheap revolver destined for the bottom of a river. Hits harder than a semi-auto, but is less reliable."

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_wilqg")
+roundInside = 10
 weapInfoSheet = ExtResource("3_lhlae")
 itemName = "Corollary"
 itemDesc = "This wood-furnished midcentury rifle makes things exceptionally dead. If you can make the follow-up shot."

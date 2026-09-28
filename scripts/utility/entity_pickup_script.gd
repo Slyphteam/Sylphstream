@@ -5,9 +5,14 @@ class_name PICKUPABLE extends RAYCASTREACTIVE
 @export var thingToGive: INVENITEMPARENT #CHANGE THIS TO INVWEP?
 
 func _ready():
+
+	
 	if(thingToGive):
 		thingToGive = thingToGive.duplicate(true) #ensure we are never operating with the "template" data
-	update_Ammbox()
+
+	
+	if(thingToGive is INVAMMBOX):
+		update_Ammbox()
 
 func update_Ammbox():
 	if!(thingToGive is INVAMMBOX):

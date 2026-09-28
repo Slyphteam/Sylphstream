@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_uhk7o")
+roundInside = 20
 weapInfoSheet = ExtResource("3_xpppe")
 itemName = "Debug gun"
 itemDesc = "Wow! It's the Sylph training gun. Why do you have this?"

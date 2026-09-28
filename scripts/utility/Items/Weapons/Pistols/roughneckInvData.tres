@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_xy1e0")
+roundInside = 2
 weapInfoSheet = ExtResource("3_r8qib")
 itemName = "Roughneck"
 itemDesc = "Some maniac with a hacksaw appears to have mangled this formerly perfectly effective double-barrel."

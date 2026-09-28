@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_fmv76")
+roundInside = 25
 weapInfoSheet = ExtResource("3_y68ce")
 itemName = "Ghostbird"
 itemDesc = "A Brazillian polymer bullpup named after the Potoo. High cyclic rate."
