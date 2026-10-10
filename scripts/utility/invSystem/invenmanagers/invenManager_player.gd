@@ -73,9 +73,9 @@ func _ready():
 	uiInfo.hide_Ammo_Elements()
 	
 	if(Globalscript.prob(10)):
-		uiInfo.give_Chat_Message("My legs are OK")
+		uiInfo.chat_Message("My legs are OK")
 	else:
-		uiInfo.give_Chat_Message("Player instantiation complete! Hello and welcome to Sylphstream!")
+		uiInfo.chat_Message("Player instantiation complete! Hello and welcome to Sylphstream!")
 	
 
 #----------------Inventory management functions
@@ -240,10 +240,10 @@ func consume_item(thingToGive):
 				
 				var result = scriptEffect.activate(self, thingToGive)
 				if(result):
-					uiInfo.give_Chat_Message("Consumed "+ thingToGive.itemName)
+					uiInfo.chat_Message("Consumed "+ thingToGive.itemName)
 				return result
 		else: 
-			print("Consumable doesn't have a consume script? Giving as generic item...")
+			print("Consumable doesn't a consume script enabled? Giving as generic item...")
 			return add_GenericItem(thingToGive)
 	
 	return false
@@ -257,7 +257,7 @@ func add_GenericItem(thingToGive:INVENITEMPARENT)->bool:
 		if(itemCheck == null):
 			genericItems[x] = thingToGive
 			return true
-			uiInfo.give_Chat_Message("Collected ", thingToGive.itemName)
+			uiInfo.chat_Message("Collected ", thingToGive.itemName)
 	
 	return false
 
@@ -302,7 +302,7 @@ func add_InvWeap_To_Slot(invWeapon:INVWEP, slot:int)->bool:
 	chosenSlot[emptyInd] = invWeapon
 	
 	var successString = "Equipped " + invWeapon.itemName + " to slot "+ str(slot)
-	uiInfo.give_Chat_Message(successString)
+	uiInfo.chat_Message(successString)
 	return true
 
 ##Puts a new weapon into an inventory slot. DOES NOT UNLOAD THE WEAPON. Returns if it could fit.

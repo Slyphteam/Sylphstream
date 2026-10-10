@@ -5,6 +5,7 @@ class_name STATUSEFFECT extends Node
 
 var effectName:String
 var effectDesc:String
+var doChat:bool = true
 
 var ourHealthHolder: COMPLEXHEALTHHOLDER
 var nextEffect: STATUSEFFECT = null
@@ -83,31 +84,36 @@ func expire_Effect():
 	return
 
 ##A more advanced version of statuseffectlookup, additionally applies a custom variable.
-static func statusEffectGenerate(effectKey, effectAux)->STATUSEFFECT:
+static func statusEffectGenerate(effectKey, effectPrim, effectAux)->STATUSEFFECT:
+	#print("key ", effectKey)
+	#print("primary ", effectPrim)
 	var effect: STATUSEFFECT
 	if(effectKey == 0):
 		effect = STATUSPLACEBO.new()
 	
 	if(effectKey == 7):
 		effect = STATUSREGEN.new()
-		#effect.theDuration = effectAux * 30
+		#effect.theDuration = effectPrim * 30
 	#8 is aura regen
 	if(effectKey == 9): 
 		effect = STATUSINSTHEAL.new()
-		if(effectAux >=0):
-			effect.healAmount = effectAux
-	if(effectKey == 9): 
+		if(effectPrim >=0):
+			effect.healAmount = effectPrim
+	if(effectKey == 10): 
 		effect = STATUSINSTAURA.new()
-		if(effectAux >=0):
-			effect.healAmount = effectAux
-			
+		if(effectPrim >=0):
+			effect.healAmount = effectPrim
+	if(effectKey == 11):
+		effect = STATUSHPBOOST.new()
+		effect.amount = effectPrim
+		effect.duration = effectAux
 	if(effectKey == 84):
 		effect = STATUSMICROPLASTIC.new()
 		
 	
 	return effect
 
-##Looks up and returns a new status effect instance according to global keys.
+##Looks up and returns a new status effect instance according to global keys. Depricate?
 static func statusEffectLookup(effectKey)->STATUSEFFECT:
 	if(effectKey == 0):
 		return STATUSPLACEBO.new()

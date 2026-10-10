@@ -14,7 +14,7 @@ func activate(manager: INVENMANAGER, ourItem:INVENITEMPARENT) ->bool:
 		weights.push_back(manager.activeItem.weaponSheet.chambering)
 	
 	if(weights.size() == 0): #nothing equipped?
-		manager.user.uiInfo.give_Chat_Message("Couldn't use ammopack! Do you have a valid weapon equipped?")
+		manager.user.uiInfo.chat_Message("Couldn't use ammopack! Do you have a valid weapon equipped?")
 		return false
 		
 	

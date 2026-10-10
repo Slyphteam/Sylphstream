@@ -1,10 +1,16 @@
 [gd_resource type="Resource" script_class="INVCONSUM" format=3 uid="uid://j5r2isqnknk8"]
 
+[ext_resource type="Texture2D" uid="uid://c0rc7xart3xui" path="res://resources/image resources/itemIcons/consumIcons/healtKit.png" id="1_3ebdb"]
 [ext_resource type="Script" uid="uid://cqpkkhan0sckl" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_CONSUM.gd" id="1_j4s75"]
 
 [resource]
 script = ExtResource("1_j4s75")
-itemName = "Health Kit INCOMPLETE"
+itemName = "Health Kit"
 itemDesc = "A kit full of little metal trinkets, materials, and several colorful ampoules designed to repair a wide variety of body types. "
 itemCode = "heal_kit"
+itemIcon = ExtResource("1_3ebdb")
+itemEntScene = "res://scenes/pickups/consumable/healtKit.tscn"
+extraData = Array[int]([9, 25, 0])
+doConsumeScript = true
+consumeScript = "res://scripts/utility/Items/Consumables/Healing/consumStatusEffects.gd"
 metadata/_custom_type_script = "uid://cqpkkhan0sckl"

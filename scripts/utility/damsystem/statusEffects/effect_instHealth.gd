@@ -5,6 +5,7 @@ func apply_Effect():
 		ourHealthHolder.give_Health(healAmount)
 		
 func begin_Effect():
+	doChat = false
 	effectName = "Instant heal"
 	effectDesc = "Instantly gives " + str(healAmount) + "health"
 	duration = 3

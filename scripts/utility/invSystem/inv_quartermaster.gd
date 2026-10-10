@@ -216,7 +216,7 @@ func _input(event: InputEvent) -> void:
 							assert(false, "we can't find the gunitem that we just dropped, wtf???")
 						droppedGun.roundInside = withdrawResult.roundInside
 					
-					uiManager.give_Chat_Message("Dropped "+withdrawResult.itemName)
+					uiManager.chat_Message("Dropped "+withdrawResult.itemName)
 					
 					
 		#no matter what happens, clean up itemDrag if the mouse is released

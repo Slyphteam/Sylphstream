@@ -30,7 +30,7 @@ func toggle_Mouse():
 @onready var ourChat = $textChat/VBoxContainer
 var chatSize:int = 0
 var chatChildren 
-func give_Chat_Message(message:String):
+func chat_Message(message:String):
 	chatChildren = ourChat.get_children()
 	var newBox = preload("res://scenes/utilities/Player or UI/chatEntry.tscn").instantiate()
 	ourChat.add_child(newBox)

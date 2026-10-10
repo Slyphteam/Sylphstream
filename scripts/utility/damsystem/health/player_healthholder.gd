@@ -6,7 +6,8 @@ class_name PLAYERHEALTHHOLDER extends COMPLEXHEALTHHOLDER
 
 func add_Effect(effectToAdd: STATUSEFFECT):
 	super(effectToAdd)
-	print("Addint new effect, ", effectToAdd.effectName)
+	if(effectToAdd.doChat):
+		playerUI.chat_Message("Received effect: "+effectToAdd.effectName)
 
 func update_True_Vals(): 
 	super.update_True_Vals()
