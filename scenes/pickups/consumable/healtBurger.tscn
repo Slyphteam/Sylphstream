@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bfi8jkja4it5v"]
+
+[ext_resource type="Script" uid="uid://c48ol14yq58ae" path="res://scripts/utility/entity_pickup_script.gd" id="1_uhfta"]
+[ext_resource type="Texture2D" uid="uid://b88lbf8nv33gh" path="res://resources/image resources/itemIcons/consumIcons/healtBurgy.png" id="2_71ypo"]
+[ext_resource type="Script" uid="uid://cqpkkhan0sckl" path="res://scripts/utility/Items/invData/invitem generics/INVITEM_CONSUM.gd" id="2_aqbn8"]
+[ext_resource type="ArrayMesh" uid="uid://c2tqmgenhtjus" path="res://models/glbs and textures/consumable/burgerMesh.res" id="3_71ypo"]
+
+[sub_resource type="Resource" id="Resource_8wy30"]
+script = ExtResource("2_aqbn8")
+itemName = "Bacon Double Burger with Pepperjack and Tabasco Onions"
+itemDesc = "The dinner of champions"
+itemCode = "heal_burgy"
+itemIcon = ExtResource("2_71ypo")
+itemEntScene = "res://scenes/pickups/consumable/healtBurger.tscn"
+extraData = Array[int]([11, 50, 10800])
+doConsumeScript = true
+consumeScript = "res://scripts/utility/Items/Consumables/Healing/consumStatusEffects.gd"
+metadata/_custom_type_script = "uid://cqpkkhan0sckl"
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_60o5p"]
+points = PackedVector3Array(-0.08063151, -0.05001814, 0.18067016, 0.130789, 0.30483577, 0.014423226, 0.13004003, 0.30373538, 1.3877788e-17, 0.23266165, -0.038694512, 0.0051284647, -0.23488781, 0.06177485, -0.001672418, 0.024333538, 0.22689405, 0.22442389, -0.11852976, 0.22674412, 0.19256857, 0.16742466, 0.04778354, 0.17311767, -0.14111117, 0.28110132, 1.3877788e-17, -0.17430012, -0.05334671, 0.020939626, 0.24193308, 0.15289734, 0.07556715, 0.032014083, -0.042131282, 0.21804532, 0.16169772, 0.22674412, 0.19259366, 0.009544128, 0.2954968, 0.120510474, 0.2128795, 0.26599622, -1.3877788e-17, 0.13882285, -0.052035622, 0.1737333, 0.031571537, 0.07889832, 0.23819622, -0.10298325, -0.042186193, 0.18055506, -0.20290264, 0.21391176, 0.014295044, 0.25209698, 0.08501086, 0.075070836, 0.24634038, 0.015939083, -0.0017070522, -0.20559663, -0.030854633, 0.005268571, -0.08844378, 0.30391574, 0.014971132, 0.20741588, -0.05214202, 0.01400147, 0.24001731, 0.18426906, -0.0024186054, 0.14580998, -0.043645248, 0.1810738, 0.13727173, 0.2581726, 0.16558604, -0.09500551, 0.2573892, 0.16531745, 0.21327837, 0.26626945, 0.02997396, 0.031636436, 0.25576648, 0.20164046, 0.20709112, -0.04422759, 0.08255097, -0.21997553, 0.17639159, -0.0018860461)
+
+[node name="HealtBurger" type="Node3D" unique_id=1640946260]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1748845285 groups=["player_interactible"]]
+collision_layer = 5
+collision_mask = 17
+mass = 0.5
+sleeping = true
+script = ExtResource("1_uhfta")
+thingToGive = SubResource("Resource_8wy30")
+
+[node name="BurgerMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=222938804]
+mesh = ExtResource("3_71ypo")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1065998037]
+shape = SubResource("ConvexPolygonShape3D_60o5p")
