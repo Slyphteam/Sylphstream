@@ -151,9 +151,14 @@ func do_Hover_Raycast():
 			if(dist<= 3.5):
 				if(hitObject is PICKUPABLE):
 					uiInfo.doTooltipText(hitObject.thingToGive.itemName, hitObject.thingToGive.itemDesc, hitObject.thingToGive.itemHint)
+					if(Input.is_action_just_pressed("ui_alt")): #add directly to general inventory, only on pickups
+						print("Attempting to add to inventory!")
+						var result = invenManager.add_GenericItem(hitObject.thingToGive)
+						if(result):
+							hitObject.queue_free() #technically this'll leave an empty node3d but it's so negligible it doesnt matter
 				if(Input.is_action_just_pressed("ui_interact")):
 					var interactResult = hitObject.interact_By_Player(self)
-				
+
 	else:
 		uiInfo.doTooltipText(" "," "," ")
 

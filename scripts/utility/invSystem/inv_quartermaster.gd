@@ -201,7 +201,7 @@ func _input(event: InputEvent) -> void:
 					
 		
 					
-					assert(withdrawResult.itemEntScene, "Tried to drop a weapon that didn't know its own entity scene!!")
+					assert(withdrawResult.itemEntScene, "Tried to drop something that didn't know its own entity scene!!")
 					var droppedItem = load(withdrawResult.itemEntScene).instantiate()
 					#put it at the player
 					droppedItem.position = invenManager.get_Origin()

@@ -8,9 +8,9 @@ var count = 0
 func interact_By_Player(player):
 	if(ourMode.behavior == 46):
 		if(Globalscript.prob(50)):
-			player.uiInfo.give_Chat_Message("buh buh buh buh buh buh buh buh buh buh buh buh buh buh buh buh buh buh")
+			player.uiInfo.chat_Message("buh buh buh buh buh buh buh buh buh buh buh buh buh buh buh buh buh buh")
 		else:
-			player.uiInfo.give_Chat_Message("Test message!" + str(count))
+			player.uiInfo.chat_Message("Test message!" + str(count))
 			count+=1
 	if(ourMode.behavior == 15):
 		player.global_position = Vector3(405.708, 2.616, 23.424)

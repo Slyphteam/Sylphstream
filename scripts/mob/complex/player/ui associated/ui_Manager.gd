@@ -31,18 +31,24 @@ func toggle_Mouse():
 var chatSize:int = 0
 var chatChildren 
 func chat_Message(message:String):
-	chatChildren = ourChat.get_children()
+	
 	var newBox = preload("res://scenes/utilities/Player or UI/chatEntry.tscn").instantiate()
 	ourChat.add_child(newBox)
 	
 	var result = newBox.receiveText(message)
-	chatSize+=result
-	while(chatSize > 6):
+	chatChildren = ourChat.get_children()
+	
+	#count up the total chat messages
+	var tally = 0
+	for countem in chatChildren:
+		tally+=countem.lines
+	
+	#purge until we're under limit. performance on this is beans but given rareness its fine
+	while(tally > 6):
 		var removedLine = chatChildren.pop_front()
-		chatSize -= removedLine.lines
+		tally -= removedLine.lines
 		removedLine.queue_free()
-
-
+	
 
 #===---===}>    dynamic reticle stuff
 

@@ -10,6 +10,7 @@ itemDesc = "A blessed talisman containing 25 thaums of auric charge"
 itemHint = "Press E to channel. Press ALT to pick up without using."
 itemCode = "heal_totem"
 itemIcon = ExtResource("1_o2f38")
+itemEntScene = "res://scenes/pickups/consumable/healtAuraTotem.tscn"
 extraData = Array[int]([10, 25, 0])
 maxStack = 2
 doConsumeScript = true

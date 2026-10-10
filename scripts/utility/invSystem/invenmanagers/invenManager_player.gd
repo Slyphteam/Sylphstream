@@ -256,8 +256,9 @@ func add_GenericItem(thingToGive:INVENITEMPARENT)->bool:
 		itemCheck = genericItems[x]
 		if(itemCheck == null):
 			genericItems[x] = thingToGive
+			
+			uiInfo.chat_Message("Collected "+ thingToGive.itemName)
 			return true
-			uiInfo.chat_Message("Collected ", thingToGive.itemName)
 	
 	return false
 
