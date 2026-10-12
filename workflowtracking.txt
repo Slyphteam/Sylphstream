@@ -2,6 +2,10 @@
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
+Ghostbird mag (balanced): 
+
+
+
 
 Add mask as an inventory item
 Player save/loading with inventory contents

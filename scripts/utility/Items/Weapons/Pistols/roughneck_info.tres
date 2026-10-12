@@ -20,6 +20,7 @@ viewpunchMult = 2.0
 recoverAmount = 0.6
 doCasing = true
 casingPath = "res://scenes/trivial/decals/12gCasing.tscn"
+casingDirection = Vector3(0, 5, 0)
 ejectOnReload = true
 singleReloadOverride = true
 allowPlus1 = false

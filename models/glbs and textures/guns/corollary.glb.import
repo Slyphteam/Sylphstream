@@ -41,11 +41,11 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "meshes": {
-"corollary_Cube_076": {
+"corollary_Cube_090": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
+"lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://models/glbs and textures/guns/corollaryMesh.res",
 "save_to_file/path": "uid://ccqqd6eoawgyp"

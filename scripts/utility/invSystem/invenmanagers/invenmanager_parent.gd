@@ -232,7 +232,7 @@ func check_Apply_Speedpenalty(speed):
 func toggleSights():
 	if(weapType == 1):
 		activeItem.toggleADS()
-		wepMesh = activeItem.getGunMesh()
+		wepMesh = activeItem.getGunMesh()#huh? why is this here?
 		inAimingTransition = true
 		notAimed = activeItem.aimDownsight
 	elif(weapType == 2):

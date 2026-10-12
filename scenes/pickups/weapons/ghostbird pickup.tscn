@@ -7,17 +7,17 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_axsmn"]
 points = PackedVector3Array(-0.0331785, -0.331513, 0.0530599, -0.0536135, 0.0157292, 0.032585, -0.0331785, 0.0157292, -0.804713, 0.0485214, -0.0251087, -0.498229, 0.0485214, -0.106737, 0.502614, -0.0331785, 0.138291, 0.502614, 0.0280764, -0.331513, 0.0530599, 0.0485214, 0.117848, 0.502614, 0.0280764, 0.158734, -0.498229, -0.0331785, 0.158734, -0.498229, -0.0331785, -0.106737, 0.502614, 0.0280764, -0.00471375, -0.804713, -0.0331785, -0.208952, -0.355288, 0.0485214, 0.117848, -0.498229, -0.0536135, 0.0770102, 0.338942, 0.0280764, -0.229299, -0.314466, 0.0280764, 0.0565672, -0.804713, 0.0485214, -0.147623, 0.0734069, -0.0331785, -0.331513, 0.0938819, 0.0280764, 0.138291, 0.502614, -0.0331785, 0.0565672, -0.804713, -0.0536135, 0.0157292, 0.338942, -0.0536135, 0.0770102, 0.032585, 0.0280764, -0.331513, 0.0938819, -0.0127535, -0.00471375, -0.804713, -0.0127535, -0.229299, -0.314466, 0.0485214, -0.147623, 0.196001)
 
-[node name="Ghostbird" type="Node3D"]
+[node name="Ghostbird" type="Node3D" unique_id=1778780423]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1830001250 groups=["player_interactible"]]
 collision_layer = 5
 collision_mask = 17
 script = ExtResource("2_t41yx")
 thingToGive = ExtResource("3_itlfj")
 
-[node name="GhostbirdMesh" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="GhostbirdMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=1915326288]
 mesh = ExtResource("3_pl08r")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=153794067]
 shape = SubResource("ConvexPolygonShape3D_axsmn")

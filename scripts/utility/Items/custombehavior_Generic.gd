@@ -1,3 +1,4 @@
+##Custom behavior script for activate-on-consume item effects
 class_name CONSUMEBEHAVIOR extends Node
 
 

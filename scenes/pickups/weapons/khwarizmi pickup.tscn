@@ -7,16 +7,17 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_11hwn"]
 points = PackedVector3Array(-0.23232, 0.0343811, -0.891751, 0.353634, 0.0343811, 0.433926, 0.353634, -0.0272621, 0.433926, -0.108946, -0.0581078, 0.804027, 0.0452856, -0.0272621, -1.16933, -0.108946, 0.0652268, 0.773121, 0.0452856, 0.0652268, -0.675795, -0.0472304, -0.0581078, -0.891751, 0.137744, -0.0581078, 0.804027, -0.23232, -0.0272621, 0.156351, 0.322776, 0.0343811, -0.18265, 0.106886, 0.0652268, 0.804027, -0.23232, -0.0272621, -0.891751, 0.0452856, 0.0343811, -1.16933, 0.0760287, -0.0581078, -0.614176, -0.23232, 0.0343811, 0.156351, -0.0780882, 0.0652268, -0.706701, 0.28203, -0.0224708, -0.18265, 0.199402, -0.0581078, 0.372307, 0.168545, 0.0343811, 0.804027, -0.108946, -0.0581078, -0.706701, -0.01643, 0.0343811, -1.16933, -0.01643, -0.0272621, -1.16933, -0.108946, 0.0343811, 0.804027, 0.168545, -0.0272621, 0.804027, 0.0144278, -0.0581078, -0.891751, 0.353634, -0.0272621, 0.40302, 0.199402, -0.0581078, 0.557164, -0.0780882, 0.0652268, 0.804027, 0.106886, 0.0652268, 0.711502, 0.353634, 0.0343811, 0.40302, 0.0144278, 0.0652268, -0.706701)
 
-[node name="Khwarizmi" type="Node3D"]
+[node name="Khwarizmi" type="Node3D" unique_id=2085789364]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=264474021 groups=["player_interactible"]]
 collision_layer = 4
 collision_mask = 17
 script = ExtResource("2_n82l4")
 thingToGive = ExtResource("3_n82l4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=186002076]
 shape = SubResource("ConvexPolygonShape3D_11hwn")
 
-[node name="KhwarizmiMesh" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="KhwarizmiMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=788527038]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.03397256, 0, 0)
 mesh = ExtResource("3_xmlca")

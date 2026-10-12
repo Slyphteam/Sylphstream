@@ -62,7 +62,7 @@ func load_Weapon(wepToLoad:WEAP_INFO):
 	invManager.add_child(weaponMesh)
 	weaponMesh.mesh = wepToLoad.mesh
 	weaponMesh.position = wepToLoad.position
-	weaponMesh.rotation_degrees = wepToLoad.rotation
+	#weaponMesh.rotation_degrees = wepToLoad.rotation #disabling this we only allow PROPERLY IMPORTED MODELS now.
 	#weaponMesh.scale = wepToLoad.scale
 	
 	gunshotPlayer = AudioStreamPlayer3D.new()
@@ -167,7 +167,7 @@ func try_Shoot():
 	else:
 		print("click!")
 	
-	#no matter what, counts as a "shot"
+	#no matter what, counts as a "shot" for AI training purposes.
 	totalShots+=1
 	#reset cooldown here since we run try_shoot if the trigger is depressed on a cooldown timer
 	offCooldown = false 
@@ -175,7 +175,7 @@ func try_Shoot():
 
 func do_Shoot():
 	#apply aimcone recoil. Calculations are done in calc_Recoil, called by manualProcess
-	#recoilDebt += weaponSheet.recoilAmount UNDO
+	recoilDebt += weaponSheet.recoilAmount
 	
 	if(capacity <= pitchWarningAmount): #if we're low, apply a pitchwarning
 		var pitchStep = 0.3 - ((0.3 / pitchWarningAmount) * capacity) + 0.05
@@ -223,12 +223,14 @@ func do_Shoot():
 	#finally, apply camera recoil. Aimkickbonus is always half of kick amount.
 	var lift = randi_range((aimKickBonus/2)+1, kickAmount) * weaponSheet.viewpunchMult
 	var drift = randi_range((0 - aimKickBonus), aimKickBonus) * weaponSheet.viewpunchMult
-	#invManager.applyViewpunch(drift, lift)UNDO
+	invManager.applyViewpunch(drift, lift)
 	
+	#Eject casings if we're a gun that ejects immediately after firing
 	if(weaponSheet.doCasing && !weaponSheet.ejectOnReload):
-		if(weaponSheet.casingDelay !=0):
-			await Globalscript.theTree.create_timer(weaponSheet.casingDelay).timeout #probably a lot of overhhead here?
+		if(weaponSheet.ejectDelay !=0):
+			await Globalscript.theTree.create_timer(weaponSheet.ejectDelay).timeout #probably a lot of overhhead here?
 		eject_Casing()
+	
 
 
 func toggleADS():
@@ -345,9 +347,19 @@ func calc_Recoil(delta):
 ##Starts reload timer 
 func startReload():
 	
+	#or drop mags if that's more our speed
+	if(weaponSheet.dropMags):
+		if(weaponSheet.ejectDelay !=0):
+			print("Delaying!")
+			await Globalscript.theTree.create_timer(weaponSheet.ejectDelay).timeout
+		drop_Magazine()
+	
 	
 	
 	if(weaponSheet.ejectOnReload && !ejected && weaponSheet.doCasing): #revolvers, double barrel shotguns, and such
+		if(weaponSheet.ejectDelay !=0):
+			await Globalscript.theTree.create_timer(weaponSheet.ejectDelay).timeout
+		
 		for x in range(weaponSheet.maxCapacity - capacity):
 			eject_Casing()
 		ejected = true
@@ -413,6 +425,10 @@ func reload_Complete() -> void:
 	
 	#print("Finished reload! Rounds: ", capacity)
 
+
+func drop_Magazine():
+	print("Dropping magazine!")
+
 func eject_Casing():
 	
 	if(!casingPath || !weaponSheet.doCasing): #this shouldnt happen but lets not crash the program
@@ -430,8 +446,8 @@ func eject_Casing():
 	newCasing.linear_velocity = invManager.get_Speed()
 	
 	#Add a "kick" to the ejected casing
-	var casingVel = (weaponSheet.casingDirection * weaponSheet.casingSpeedBoost) 
-	casingVel += Vector3(randi_range(-1, 1), randi_range(-0.5, 0.5), randi_range(-0.5, 0.5))
+	var casingVel = (weaponSheet.casingDirection) 
+	casingVel += Vector3(randi_range(-1, 1), randi_range(-1, 1), randi_range(-1, 1))
 	newCasing.linear_velocity += casingVel.rotated(Vector3.UP, invManager.get_Rotation().y) #ensure it's perpindicular to ourselves
 	
 	#some forwards/back spin, a LOT of lateral spin
@@ -455,7 +471,9 @@ func unload():
 	reloadPlayer.queue_free()
 	#reloadTimer.queue_free()
 
+##this is used only once and 
 func getGunMesh():
+	assert(false, "HEY FIX THIS!!")
 	return weaponMesh
 
 func give_Player_UI(newUiInfo):
