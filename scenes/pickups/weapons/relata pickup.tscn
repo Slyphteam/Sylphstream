@@ -7,17 +7,18 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wlhgc"]
 points = PackedVector3Array(-0.278017, -0.0150072, -0.157186, -0.277812, 0.0154151, -0.157083, 1.29159, -0.0159579, -0.0272974, 1.29159, 0.0487164, -0.0919686, -0.810698, -0.0321297, 0.328394, -0.325507, 0.0648882, -0.0919686, -0.147688, -0.0644859, -0.124356, 1.29159, -0.0483015, -0.0919686, -0.843086, 0.0325447, -0.0272974, -0.810698, 0.0325447, 0.328394, -0.325507, -0.0321297, 0.360782, -0.826787, -0.0321297, -0.0434913, -0.325507, 0.0325447, 0.360782, 1.29159, -0.0159579, -0.124356, 1.29159, 0.0487164, -0.059633, -0.260732, -0.0644859, -0.059633, 1.29159, -0.0483015, -0.059633, -0.179867, 0.0648882, -0.059633, -0.147688, 0.0648882, -0.124356, 1.29159, 0.0163729, -0.124356, -0.843086, -0.0321297, 0.296059, 1.29159, 0.0163729, -0.0272974, -0.341597, -0.0644859, -0.0919686, -0.29312, -0.0159579, 0.360782, -0.810698, -0.0159579, 0.344588, -0.843086, 0.0325447, 0.296059, -0.2573, -0.0298913, -0.154412, -0.257024, 0.0302881, -0.15427, -0.826787, 0.0325447, -0.0434913, 0.547501, -0.0483015, 0.05362, 0.547501, 0.0487164, 0.05362, -0.843086, -0.0321297, -0.0272974)
 
-[node name="Relata" type="Node3D"]
+[node name="Relata" type="Node3D" unique_id=743825090]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["player_interactible"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1552697690 groups=["player_interactible"]]
 collision_layer = 5
 collision_mask = 17
 script = ExtResource("2_eqwb4")
 thingToGive = ExtResource("3_va5en")
 
-[node name="RelataMesh" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="RelataMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=821397591]
+transform = Transform3D(-4.371139e-08, 0, -1, 1, -4.371139e-08, -4.371139e-08, -4.371139e-08, -1, 1.9106855e-15, 0.03715819, 0, 0)
 mesh = ExtResource("3_42efk")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1879484526]
 shape = SubResource("ConvexPolygonShape3D_wlhgc")

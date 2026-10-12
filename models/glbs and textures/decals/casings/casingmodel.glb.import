@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bn0goho1xlban"
-path="res://.godot/imported/casingmodel.glb-140e49b6c378c383a43da93c3ea9c2f3.scn"
+path="res://.godot/imported/casingmodel.glb-830763411a6464ecd3acc5a3a58a5b9e.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/decals/casingmodel.glb"
-dest_files=["res://.godot/imported/casingmodel.glb-140e49b6c378c383a43da93c3ea9c2f3.scn"]
+source_file="res://models/glbs and textures/decals/casings/casingmodel.glb"
+dest_files=["res://.godot/imported/casingmodel.glb-830763411a6464ecd3acc5a3a58a5b9e.scn"]
 
 [params]
 

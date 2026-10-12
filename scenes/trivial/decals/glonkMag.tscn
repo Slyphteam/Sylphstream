@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://efb3t8xkoqhh"]
+
+[ext_resource type="PackedScene" uid="uid://bucd07xrtlwnv" path="res://models/glbs and textures/decals/mags/glonkMag.glb" id="1_yf8wp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h4q4k"]
+points = PackedVector3Array(-0.034, -0.085, -0.038, -0.034210205, -0.105407715, 0.03286743, -0.034210205, 0.105407715, -0.03286743, 0.034, -0.085, -0.038, 0.034210205, -0.105407715, 0.03286743, -0.034210205, 0.105407715, 0.03286743, 0.034210205, 0.105407715, -0.03286743, 0.034210205, 0.105407715, 0.03286743)
+
+[node name="glonkMag" type="RigidBody3D" unique_id=1083043077]
+collision_layer = 0
+collision_mask = 16
+mass = 0.01
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=576985403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0068418384)
+shape = SubResource("ConvexPolygonShape3D_h4q4k")
+
+[node name="glonkMag" parent="." unique_id=590435879 instance=ExtResource("1_yf8wp")]
+transform = Transform3D(1, 0, 0, 0, 0.93015015, -0.3671794, 0, 0.3671794, 0.93015015, 0, 0, 0)

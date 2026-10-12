@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://01bm5fbkshcf"]
+[gd_scene format=3 uid="uid://01bm5fbkshcf"]
 
-[ext_resource type="ArrayMesh" uid="uid://dxs4l5vkqsvhs" path="res://models/glbs and textures/decals/556Mesh.res" id="1_1wjxw"]
+[ext_resource type="ArrayMesh" uid="uid://dxs4l5vkqsvhs" path="res://models/glbs and textures/decals/casings/556Mesh.res" id="1_1wjxw"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bytx7"]
 points = PackedVector3Array(0, 1.48, 5, 1.429, 0.428, 5, 0, 1.48, -5, -1.429, 0.428, 5, 1.429, 0.428, -5, 0.739, -1.25, 5, -1.429, 0.428, -5, -0.739, -1.25, 5, 0.739, -1.25, -5, -0.739, -1.25, -5)

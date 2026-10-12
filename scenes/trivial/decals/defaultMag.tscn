@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bc4yrx48k0ky"]
+
+[ext_resource type="PackedScene" uid="uid://cqfae0wt4cm71" path="res://models/glbs and textures/decals/mags/affineMag.glb" id="1_1enb6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p4tmm"]
+size = Vector3(0.06842041, 0.28051758, 0.24243164)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bytx7"]
+points = PackedVector3Array(0, 1.48, 5, 1.429, 0.428, 5, 0, 1.48, -5, -1.429, 0.428, 5, 1.429, 0.428, -5, 0.739, -1.25, 5, -1.429, 0.428, -5, -0.739, -1.25, 5, 0.739, -1.25, -5, -0.739, -1.25, -5)
+
+[node name="Casing" type="RigidBody3D" unique_id=1083043077]
+collision_layer = 0
+collision_mask = 16
+mass = 0.01
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=680249830]
+mesh = SubResource("BoxMesh_p4tmm")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="affineMag" parent="." unique_id=468976500 instance=ExtResource("1_1enb6")]
+transform = Transform3D(1, 0, 0, 0, 0.88811064, 0.45962968, 0, -0.45962968, 0.88811064, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=157630743]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.105767794, 0, -0.000968933)
+shape = SubResource("ConvexPolygonShape3D_bytx7")

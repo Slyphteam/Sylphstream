@@ -24,7 +24,7 @@ func _process(delta):
 	if(activeItem):
 		activeItem.manualProcess(delta)
 	
-	
+	#toggle our aiming.
 	if(inAimingTransition):
 		inAimingTransition = false
 		if(notAimed): 
@@ -228,11 +228,11 @@ func check_Apply_Speedpenalty(speed):
 			#didSpeedPenalty = true
 		
 
-#functions going down the hierarchy
+##secondary click functionality, mainly moves the mesh of our active gun around
 func toggleSights():
 	if(weapType == 1):
 		activeItem.toggleADS()
-		wepMesh = activeItem.getGunMesh()#huh? why is this here?
+		wepMesh = activeItem.getGunMesh() #probably doesn't need to be a function call for this but w/e
 		inAimingTransition = true
 		notAimed = activeItem.aimDownsight
 	elif(weapType == 2):

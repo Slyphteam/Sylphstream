@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dod51j6nrnbjx"
-path="res://.godot/imported/casing22.glb-4869e90718c90042b1c484bd32c394eb.scn"
+path="res://.godot/imported/casing22.glb-738860eae3769f165c93dba17365edaf.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/decals/casing22.glb"
-dest_files=["res://.godot/imported/casing22.glb-4869e90718c90042b1c484bd32c394eb.scn"]
+source_file="res://models/glbs and textures/decals/casings/casing22.glb"
+dest_files=["res://.godot/imported/casing22.glb-738860eae3769f165c93dba17365edaf.scn"]
 
 [params]
 
@@ -47,7 +47,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://models/glbs and textures/decals/22lrMesh.res",
+"save_to_file/fallback_path": "res://models/glbs and textures/decals/casings/22lrMesh.res",
 "save_to_file/path": "uid://c1p5eau3orjiw"
 }
 }

@@ -16,6 +16,7 @@ script = ExtResource("2_u0oi3")
 thingToGive = ExtResource("3_e2djt")
 
 [node name="AffineMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=332744131]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("3_ohjqu")
 skeleton = NodePath("../..")
 

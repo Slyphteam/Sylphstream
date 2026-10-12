@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bfpbhcgh0plgw"]
+
+[ext_resource type="PackedScene" uid="uid://ctxw2hk0y4tpu" path="res://models/glbs and textures/decals/mags/ghostbirdMag.glb" id="1_6nqw1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b43xo"]
+points = PackedVector3Array(0.034210205, 0.16311646, 0.06982422, -0.034210205, 0.16311646, 0.06982422, 0.034, -0.163, 0.02, 0.034, 0.163, -0.04, -0.034, 0.163, -0.04, -0.034, -0.163, 0.02, 0.034, -0.163, -0.09, -0.034, -0.163, -0.09)
+
+[node name="ghostbirdMag" type="RigidBody3D" unique_id=1083043077]
+collision_layer = 0
+collision_mask = 16
+mass = 0.01
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1427362315]
+shape = SubResource("ConvexPolygonShape3D_b43xo")
+
+[node name="ghostbirdMag" parent="." unique_id=12211205 instance=ExtResource("1_6nqw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.006577328)

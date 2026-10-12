@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cohxbqxlq0dp8"
-path.s3tc="res://.godot/imported/casing22_ammotextures.png-92a56e3375a780334255227243ad653a.s3tc.ctex"
+uid="uid://wbhnd36spwfm"
+path.s3tc="res://.godot/imported/khwarizMag_khwarizmag.png-f02be892eb8b0d65285e913879755e21.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "fe750eeff1650b139ef3577e0090f0ed"
+"md5": "445154b3d82a8ba98fb10ec12292e07a"
 }
 
 [deps]
 
-source_file="res://models/glbs and textures/decals/casing22_ammotextures.png"
-dest_files=["res://.godot/imported/casing22_ammotextures.png-92a56e3375a780334255227243ad653a.s3tc.ctex"]
+source_file="res://models/glbs and textures/decals/mags/khwarizMag_khwarizmag.png"
+dest_files=["res://.godot/imported/khwarizMag_khwarizmag.png-f02be892eb8b0d65285e913879755e21.s3tc.ctex"]
 
 [params]
 

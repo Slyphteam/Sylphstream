@@ -425,9 +425,16 @@ func reload_Complete() -> void:
 	
 	#print("Finished reload! Rounds: ", capacity)
 
-
+##Creates a magazine decal. nearly identical to casing logic.
 func drop_Magazine():
 	print("Dropping magazine!")
+	var newMag = load(weaponSheet.magPath).instantiate()
+	newMag.position = weaponMesh.global_position
+	newMag.rotation = invManager.get_Rotation()
+	newMag.linear_velocity = invManager.get_Speed()
+	
+	Globalscript.theTree.root.add_child(newMag)
+	Globalscript.push_Casing(newMag, affectUI)
 
 func eject_Casing():
 	
@@ -473,7 +480,6 @@ func unload():
 
 ##this is used only once and 
 func getGunMesh():
-	assert(false, "HEY FIX THIS!!")
 	return weaponMesh
 
 func give_Player_UI(newUiInfo):

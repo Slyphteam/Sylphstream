@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://omfnypsht61j"]
+
+[ext_resource type="PackedScene" uid="uid://bdi6f72ch0owy" path="res://models/glbs and textures/decals/mags/khwarizMag.glb" id="1_lph5l"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_enf3t"]
+points = PackedVector3Array(0.040603638, 0.14236715, 0.084991455, -0.040603638, 0.14236715, 0.084991455, 0.041, -0.152, 0.055, 0.041, 0.142, -0.055, -0.041, 0.142, -0.055, -0.041, -0.152, 0.055, 0.041, -0.127, -0.085, -0.041, -0.127, -0.085)
+
+[node name="khwarizMag" type="RigidBody3D" unique_id=1083043077]
+collision_layer = 0
+collision_mask = 16
+mass = 0.01
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1656687394]
+transform = Transform3D(1, 0, 0, 0, 0.99926007, -0.03846129, 0, 0.03846129, 0.99926007, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_enf3t")
+
+[node name="khwarizMag" parent="." unique_id=115576820 instance=ExtResource("1_lph5l")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.0003219843, 0, 0.0038762689)

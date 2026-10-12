@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://skm7hdiwn28h"
-path="res://.godot/imported/casingRimmed.glb-91c4f2598fe3666d0208e2ab0ffb222d.scn"
+uid="uid://bg573j6nsi1f8"
+path="res://.godot/imported/casling12g.glb-d1e4958586d7f17e7257ef7780b3e3cb.scn"
 
 [deps]
 
-source_file="res://models/glbs and textures/decals/casingRimmed.glb"
-dest_files=["res://.godot/imported/casingRimmed.glb-91c4f2598fe3666d0208e2ab0ffb222d.scn"]
+source_file="res://models/glbs and textures/decals/casings/casling12g.glb"
+dest_files=["res://.godot/imported/casling12g.glb-d1e4958586d7f17e7257ef7780b3e3cb.scn"]
 
 [params]
 
@@ -41,14 +41,14 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "meshes": {
-"casingRimmed_Cube_078": {
+"casling12g_Cube_022": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://models/glbs and textures/decals/rimmedMesh.res",
-"save_to_file/path": "uid://c5t6x4sqm8ytq"
+"save_to_file/fallback_path": "res://models/glbs and textures/decals/casings/12gMesh.res",
+"save_to_file/path": "uid://b5b1yedchw6xm"
 }
 }
 }

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dog0tpwv3vmwe"]
+
+[ext_resource type="PackedScene" uid="uid://cqfae0wt4cm71" path="res://models/glbs and textures/decals/mags/affineMag.glb" id="1_psmed"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1cfyd"]
+points = PackedVector3Array(0.034210205, 0.14025879, 0.12121582, -0.034210205, 0.14025879, 0.12121582, 0.034, -0.18, 0, 0.034, 0.15, -0.061, -0.034, 0.15, -0.061, -0.034, -0.18, 0, 0.034, -0.09, -0.121, -0.034, -0.09, -0.121, -0.034, -0.06, 0.076, 0.034, -0.06, 0.076)
+
+[node name="Casing" type="RigidBody3D" unique_id=1083043077]
+collision_layer = 0
+collision_mask = 16
+mass = 0.01
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1081778864]
+shape = SubResource("ConvexPolygonShape3D_1cfyd")
+
+[node name="affineMag" parent="." unique_id=468976500 instance=ExtResource("1_psmed")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)

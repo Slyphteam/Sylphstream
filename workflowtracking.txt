@@ -2,15 +2,12 @@
 =======+=======> CURRENT DEV CYCLE:
 -----------/
 
-Ghostbird mag (balanced): 
-
-
-
+Fix weapon recoil, alter the khwarizmi gunshot to be quieter and the pippy reset to be shorter.
 
 Add mask as an inventory item
 Player save/loading with inventory contents
+buccaneer grenade launcher. just have it do physical projectiles for now.
 
-Add ALT pickup functionality
 Add generic consume sounds, springslop consume sound, ammopack consume sounds
 Have guns recoil visually
 
@@ -20,18 +17,14 @@ Add a player hands controller. only hands for now, maybe static legs too. pivot 
 Alt reload time and sound. For single reload guns, have this be played before reloading actually takes place
 (opening of breach noise and delay)
 
-look into billboard particles?
-
 Springtails:
 	Springtails' local pathfinding seems quite good, but they still need global pathfinding if they're to function.
 	To do this, you'll need, yes, shamefully, trig. Specifically, trig to determine whether they should turn left or right
 	in order to be facing towards some globally desired (and accessible) waypoint. After that, all they need to do is 
 	turn towards it and we've got an agent capable of traversing a navmesh AND local maneuvering.
-
+Boids have both an attractive and a repulsive force. I think we're missing the latter.
 
 INVENTORY SYSTEM WORKFLOW:
-
-add a "add to backpack" button directly for world objects, ammoboxes.
 
 Refactor held ammo to use an array and ammo types to be enum. dictionary is stinky here.
 
@@ -97,7 +90,6 @@ Consider swapping the traversal order to go row by row on all traversals?
 Change archon to use small looping value, not global time
 
 crosshair changes with move speed **
-"button-like" dialogue trees
 Tweak the friction values to allow for some airstrafing, change the wishspeed allowance to not
 be too absurdly lenient, though.
 Change the player step code to be the better, suggested version. Steppers work badly.
@@ -107,7 +99,6 @@ Change the player step code to be the better, suggested version. Steppers work b
 
 re-add FOV changing with speed, but make it steppy to prevent jitters. and viewbob.
 fix weapon clipping +++ &
-Scrolling chat
 
 Sylph body v2?
 
@@ -126,9 +117,6 @@ current recoil value to determine how you should move back.
 Each time the gun is fired, this new point should change. 
 ^^ Use this to springboard into having ADS also lerp, and have a deadtime when you cant shoot 
 while transitioning.
-
-
-
 
 
 Collision mask information:

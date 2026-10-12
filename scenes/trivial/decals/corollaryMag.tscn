@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bpuum1v1u3yf1"]
+
+[ext_resource type="PackedScene" uid="uid://bqtr200xkanhb" path="res://models/glbs and textures/decals/mags/corollaryMag.glb" id="1_8um1p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eyu6b"]
+points = PackedVector3Array(-0.034, -0.067, -0.112, 0.034, -0.067, -0.112, -0.034, -0.137, 0.077, -0.034210205, 0.10694885, -0.11230469, 0.034210205, 0.10694885, -0.11230469, 0.034, -0.137, 0.077, -0.034210205, 0.10694885, 0.11228271, 0.034210205, 0.10694885, 0.11228271)
+
+[node name="corollaryMag" type="RigidBody3D" unique_id=1083043077]
+collision_layer = 0
+collision_mask = 16
+mass = 0.01
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=522913621]
+shape = SubResource("ConvexPolygonShape3D_eyu6b")
+
+[node name="corollaryMag" parent="." unique_id=1033910328 instance=ExtResource("1_8um1p")]

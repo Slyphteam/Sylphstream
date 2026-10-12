@@ -13,22 +13,20 @@ https://docs.google.com/document/d/118_IEV_9k2dqLq8unO5gw8Gx04xngHV5QysfVkentBs/
 
 ### Features in active development:
 
-Expanded inventory system/inventory functionality
+Utility item quickslots
 
-Alternative Neural Network paradigms/layouts
+Alternative Neural Network paradigm and layouts
 
-Prototype fragmentary AI agent testing
-
-Status effect integration with AI agent training cycles
-
-AI agent EvE testing trial
+Dialogue boxes and chat system
 
 
 ### Completed features:
 
+Scrolling text chat
+
 AI agent movement systems
 
-Casing system
+Magazine and Casing decal systems
 
 ~~Stochastic Gradient Descent~~ (Implemented, scrapped as not worth pursuit)
 
@@ -70,8 +68,6 @@ Neural network/entity API
 
 Melee weapInstance system
 
-Scrolling text chat
-
 Quickstim system
 
 Cast abilities (stutter, augur, freeze, surge)
@@ -88,20 +84,8 @@ Implementation of grenade, fragmentation, and explosive systems
 
 Kicking
 
-Implementation of all planned weapons (6/16)
+Implementation of all planned weapons (12/16)
 
 First finite state enemy
 
-Neural network training on simple movement
-
-Neural network training on simple movement with simple enemies capable of retaliation
-
-Neural network training on complex movement
-
-Neural network training on complex movement with simple enemies capable of retaliation
-
-Neural network training on complex movement with complex enemies capable of retaliation
-
-Neural network training against other trained neural networks
-
-Neural network training against players
+Loot/enemy director
